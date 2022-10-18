@@ -1,5 +1,12 @@
 package onboarding
 
 fun solution3(number: Int): Int {
-    TODO("프로그램 구현")
+    var sum : Int = 0
+    for (i : Int in 1..number){
+        val IntToString: String = i.toString()
+        sum += IntToString.count { c -> c == '3' }
+        sum += IntToString.count { c -> c == '6' }
+        sum += IntToString.count { c -> c == '9' }
+    }
+    return sum
 }
