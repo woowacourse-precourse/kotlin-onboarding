@@ -10,15 +10,15 @@ fun solution1(pobi: List<Int>, crong: List<Int>): Int {
     }
     return -1
 }
-fun getAddedDigitSum(number: Int): Int =
+private fun getAddedDigitSum(number: Int): Int =
     number.toString()
         .fold(0) { total, digit -> total + Character.getNumericValue(digit) }
 
-fun getMultipliedSum(number: Int): Int =
+private fun getMultipliedSum(number: Int): Int =
     number.toString()
         .fold(1) { total, digit -> total * Character.getNumericValue(digit) }
 
-fun validatePage(leftNumber: Int, rightNumber: Int): Boolean {
+private fun validatePage(leftNumber: Int, rightNumber: Int): Boolean {
     val zero = 0; val one = 1; val two = 2
     val minimumPage = 1; val maximumPage = 400
     when {
@@ -30,7 +30,7 @@ fun validatePage(leftNumber: Int, rightNumber: Int): Boolean {
     return (leftNumber + one) == rightNumber
 }
 
-fun calcMaxPages(pages: List<Int>): Int {
+private fun calcMaxPages(pages: List<Int>): Int {
     var maxValue = 0
     pages.forEach { pageNumber ->
         maxValue = max(maxValue, getAddedDigitSum(pageNumber))
@@ -39,7 +39,7 @@ fun calcMaxPages(pages: List<Int>): Int {
     return maxValue
 }
 
-fun compareNumber(number1: Int, number2: Int): Int {
+private fun compareNumber(number1: Int, number2: Int): Int {
     val diff = number1 - number2
     when {
         diff > 0 -> return 1
