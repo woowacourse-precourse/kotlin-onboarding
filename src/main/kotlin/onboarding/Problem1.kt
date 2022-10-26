@@ -4,22 +4,23 @@ import kotlin.math.max
 
 fun solution1(pobi: List<Int>, crong: List<Int>): Int {
 
+    // 연속되지 않는 페이지면 예외처리를 한다.
+    if(pobi[1] - pobi[0] != 1 || crong[1] - crong[0] != 1) {
+        return -1
+    }
     // 포비의 페이지와 크롱의 페이지를 String으로 바꾼다.
-    // 배열을 돌면서 각 자리수를 합하는 sum()을 구현한다.
-    // 각 자리수를 곱하는 multiplication()을 구현한다.
-    // 각 자리수를 합하거나 곱한거중 큰 수를 찾는다.
-    // 포비와 크롱의 점수를 구한다.
-    // 결과를 반환한다.
-
     val pobiToString = pobi.map { it.toString() }
     val crongToString = crong.map { it.toString() }
 
+    // 배열을 돌면서 각 자리수를 합하는 sum()을 구현한다.
     val sumOfPobi = sum(pobiToString)
-    val multipliOfPobi = multiplication(pobiToString)
-
     val sumOfCrong = sum(crongToString)
+
+    // 각 자리수를 곱하는 multiplication()을 구현한다.
+    val multipliOfPobi = multiplication(pobiToString)
     val multipliOfCrong = multiplication(crongToString)
 
+    // 각 자리수를 합하거나 곱한거중 큰 수를 찾는다.
     val maxSumOfPobi = max(sumOfPobi[0], sumOfPobi[1])
     val maxMultipliOfPobi = max(multipliOfPobi[0], multipliOfPobi[1] )
 
@@ -29,6 +30,7 @@ fun solution1(pobi: List<Int>, crong: List<Int>): Int {
     val scorOfPobi = max(maxSumOfPobi, maxMultipliOfPobi)
     val scoreOfCrong = max(maxSumOfCrong, maxMultipliOfCrong)
 
+    // 결과를 반환한다.
     return when {
         scorOfPobi < scoreOfCrong -> 2
         scorOfPobi > scoreOfCrong -> 1
