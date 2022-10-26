@@ -6,34 +6,29 @@ fun solution1(pobi: List<Int>, crong: List<Int>): Int {
     }
     val pobi_num = calculate(pobi)
     val crong_num = calculate(crong)
-    return if(pobi_num>crong_num){
-        1
-    }else if(pobi_num < crong_num){
-        2
-    }else if(pobi_num == crong_num){
-        0
-    }else {
-        -1
+    return when(pobi_num-crong_num){
+        in 1..300 -> 1
+        0 -> 0
+        else ->2
     }
 }
 
 //예외 입력값 검토
 fun checkException(list : List<Int>): Boolean {
     //왼쪽이 홀수, //오른쪽이 왼쪽 바로 다음 페이지//왼쪽은 3 이상 397이하
-    if((list[0]%2==1)&&(list[1]==list[0]+1)&&(list[0]>=3)&&(list[0]<=397)){
-        return true
+    return when((list[0]%2==1)&&(list[1]==list[0]+1)&&(list[0]>=3)&&(list[0]<=397)){
+        true -> true
+        false -> false
     }
-    return false
 }
 
 //calculate2에서 구한 왼쪽, 오른쪽 값 비교하기
 fun calculate(list : List<Int>):Int{
     val left = calculate2(list[0])
     val right = calculate2(list[1])
-    if(left>right){
-        return left
-    }else{
-        return right
+    return when(left>right){
+        true -> left
+        false -> right
     }
 }
 
@@ -45,9 +40,8 @@ fun calculate2(par_num : Int) : Int{
         product *=num%10
         num /= 10
     }while(num>0)
-    if(sum > product){
-        return sum
-    }else{
-        return product
+    return when(sum > product) {
+        true -> sum
+        false -> product
     }
 }
