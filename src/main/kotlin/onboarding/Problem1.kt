@@ -5,10 +5,18 @@ fun solution1(pobi: List<Int>, crong: List<Int>): Int {
 }
 
 // 기능 목록
+
 /**
- * 각자리 숫자를 모두 더하거나 곱해 큰수를 구하는 기능
+ * 각자리 숫자를 모두 더하거나 곱해 큰 수를 반환하는 기능
  */
-fun getBiggerNum() {
+fun compareAddAndMul(num: Int): Int {
+
+}
+
+/**
+ * 왼쪽 페이지, 오른쪽 페이지 중 큰 수를 구하는 기능
+ */
+fun getBiggerPageNum(leftNum: Int, rightNum: Int): Int {
 
 }
 
@@ -19,6 +27,6 @@ fun getBiggerNum() {
  * 무승부는 0
  * 예외사항은 -1
  */
-fun validateWinner() {
+fun validateWinner(pobiNum: Int, crongNumb: Int): Int {
 
 }
