@@ -29,6 +29,16 @@ fun checkPageSequential(pobi: List<Int>, crong: List<Int>): Boolean {
     return abs(pobi[0] - pobi[1]) == 1 && abs(crong[0] - crong[1]) == 1
 }
 
+fun play(pobi: List<Int>, crong: List<Int>): Int {
+    val pobiScore = getMaxScore(pobi)
+    val crongScore = getMaxScore(crong)
+    return when{
+        pobiScore > crongScore -> 1
+        pobiScore == crongScore -> 0
+        else -> 2
+    }
+}
+
 fun getMaxScore(pages: List<Int>): Int {
     var maxScore = 0
     for (page in pages) {
@@ -62,5 +72,5 @@ fun solution1(pobi: List<Int>, crong: List<Int>): Int {
     if (!isCorrectInput(pobi, crong)) {
         return -1
     }
-    return 0
+    return play(pobi, crong)
 }
