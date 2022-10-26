@@ -6,6 +6,7 @@ fun solution3(number: Int): Int {
     for (i in 1..number){
         cnt += countClap(i)
     }
+    return cnt
 }
 
 fun countClap(x: Int): Int {
@@ -14,8 +15,8 @@ fun countClap(x: Int): Int {
 
     while(numX > 0){
         if (numX%10 == 3 || numX%10 == 6 || numX%10 == 9)
-            return 1
+            cnt++
         numX /= 10
     }
-    return 0
+    return cnt
 }
