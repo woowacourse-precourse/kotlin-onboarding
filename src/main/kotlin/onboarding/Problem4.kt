@@ -18,13 +18,13 @@ private fun upperBoard(): Map<Char, Char> {
     return map
 }
 
-//private fun lowerBoard(): Map<Char, Char> {
-//    var alphaCount = 25
-//    val map = mutableMapOf<Char, Char>()
-//    for (i in 'A'..'Z') {
-//        map[i] = i + alphaCount
-//        alphaCount--
-//    }
-//    return map
-//}
+private fun lowerBoard(): Map<Char, Char> {
+    var alphaCount = 25
+    val map = mutableMapOf<Char, Char>()
+    for (i in 'a'..'z') {
+        map[i] = i + alphaCount
+        alphaCount--
+    }
+    return map
+}
 
