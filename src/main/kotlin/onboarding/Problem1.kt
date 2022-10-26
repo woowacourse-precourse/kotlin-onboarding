@@ -14,8 +14,17 @@ fun getMultipliedSum(number: Int): Int =
     number.toString()
         .fold(1) { total, digit -> total * Character.getNumericValue(digit) }
 
-fun validatePage(leftNumber: Int, rightNumber: Int) =
-    (rightNumber - leftNumber) == 1
+fun validatePage(leftNumber: Int, rightNumber: Int): Boolean {
+    val zero = 0; val one = 1; val two = 2
+    val minimumPage = 1; val maximumPage = 400
+    when {
+        leftNumber !in (minimumPage..maximumPage) -> return false
+        rightNumber !in (minimumPage..maximumPage) -> return false
+        leftNumber % two == zero -> return false
+        rightNumber % two == one -> return false
+    }
+    return (leftNumber + one) == rightNumber
+}
 
 fun getBiggerNumber(number1: Int, number2: Int): Int =
     max(number1, number2)
