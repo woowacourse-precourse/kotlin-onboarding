@@ -3,9 +3,13 @@ package onboarding
 import kotlin.math.max
 
 fun solution1(pobi: List<Int>, crong: List<Int>): Int {
-    TODO("프로그램 구현")
+    if (validatePage(pobi[0], pobi[1]) && validatePage(crong[0], crong[1])) {
+        val pobiMaxNumber = calcMaxPages(pobi)
+        val crongMaxNumber = calcMaxPages(crong)
+        return compareNumber(pobiMaxNumber, crongMaxNumber)
+    }
+    return -1
 }
-
 fun getAddedDigitSum(number: Int): Int =
     number.toString()
         .fold(0) { total, digit -> total + Character.getNumericValue(digit) }
