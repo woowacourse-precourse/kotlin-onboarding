@@ -28,7 +28,6 @@ fun checkException(list : List<Int>): Boolean {
 
 //calculate2에서 구한 왼쪽, 오른쪽 값 비교하기
 fun calculate(list : List<Int>):Int{
-    //왼쪽 페이지 계산
     val left = calculate2(list[0])
     val right = calculate2(list[1])
     if(left>right){
