@@ -33,8 +33,15 @@ fun checkException(pobi: List<Int>, crong: List<Int>) {
 /**
  * 각자리 숫자를 모두 더하거나 곱해 큰 수를 반환하는 기능
  */
-fun compareAddAndMul(num: Int): Int {
-
+fun compareAddAndMul(var num: Int): Int {
+    var addNum = 0
+    var mulNum = 1
+    while (num > 0) {
+        addNum += num % 10
+        mulNum *= num % 10
+        num /= 10
+    }
+    return if (addNum > mulNum) addNum else mulNum
 }
 
 /**
