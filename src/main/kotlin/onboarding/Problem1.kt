@@ -38,11 +38,10 @@ fun getMaxPages(value: Int): Int {
     val sip = (value - (baek * 100)) / 10
     val il = value % 10
 
-    var res: Int
-    if(value >= 100) {
-        res = integer_max((baek + sip + il), (baek * sip * il))
+    val res: Int = if(value >= 100) {
+        integer_max((baek + sip + il), (baek * sip * il))
     }else {
-        res = integer_max((sip + il),  (sip * il))
+        integer_max((sip + il),  (sip * il))
     }
     return res
 }
