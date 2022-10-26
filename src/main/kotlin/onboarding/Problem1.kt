@@ -3,7 +3,7 @@ package onboarding
 import kotlin.math.max
 
 fun solution1(pobi: List<Int>, crong: List<Int>): Int {
-    if (validatePage(pobi[0], pobi[1]) && validatePage(crong[0], crong[1])) {
+    if (validateTwoPages(pobi[0], pobi[1]) && validateTwoPages(crong[0], crong[1])) {
         val pobiMaxNumber = calcMaxPages(pobi)
         val crongMaxNumber = calcMaxPages(crong)
         return compareNumber(pobiMaxNumber, crongMaxNumber)
@@ -11,7 +11,7 @@ fun solution1(pobi: List<Int>, crong: List<Int>): Int {
     return -1
 }
 
-private fun validatePage(leftNumber: Int, rightNumber: Int): Boolean {
+private fun validateTwoPages(leftNumber: Int, rightNumber: Int): Boolean {
     val zero = 0; val one = 1; val two = 2
     val minimumPage = 1; val maximumPage = 400
     when {
