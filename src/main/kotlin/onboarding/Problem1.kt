@@ -18,6 +18,18 @@ fun getSum(x:Int) : Int {
     return sum
 }
 
+fun getMultiply(x:Int) : Int{
+    var multiply:Int = 1
+    var numX:Int = x
+
+    while (numX > 0){
+        multiply *= numX%10
+        numX /= 10
+    }
+
+    return multiply
+}
+
 fun main()
 {
     val list1 = listOf(134, 2)
