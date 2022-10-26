@@ -24,11 +24,35 @@ private fun checkItsLetter(list: List<String>) {
     var concat = mutableListOf<Char>() // 변환 후 새롭게 변경되는 문자들이 담겨질 배열
     for (i in list) {
         if (convertToChar(i).code == EMPTY_CODE) {
-            //공백일 경우
+            convertEmptyLetter(convertToChar(i).code)
         } else if (convertToChar(i).code in CAPITAL_START..CAPITAL_END) {
-            //대문자일 경우
+            convertPrimeLetter(convertToChar(i).code)
         } else if (convertToChar(i).code in SMALL_START..SMALL_END) {
-            //소문자일 경우
+            convertSmallLetter(convertToChar(i).code)
         }
     }
+}
+
+/**
+ * 공백일 경우 변환 과정이 필요없으므로 그대로 다시 공백 문자를 반환한다.
+ */
+private fun convertEmptyLetter (code : Int) : Char {
+    return code.toChar()
+}
+
+/**
+ * 대문자의 경우 반대로 뒤집게 되면 현재 코드 - 시작 코드 값을 끝 코드에서 빼면, 반대로 뒤집어 놓은 문자열을 얻을 수 있다.
+ * 그래서 끝 코드에서 현재 코드 - 시작 코드를 뺀 아스키 코드를 가진 문자를 반환한다.
+ */
+private fun convertPrimeLetter(code: Int): Char {
+    val diff = code - CAPITAL_START
+    return (CAPITAL_END - diff).toChar()
+}
+/**
+ * 소문자의 경우 반대로 뒤집게 되면 현재 코드 - 시작 코드 값을 끝 코드에서 빼면, 반대로 뒤집어 놓은 문자열을 얻을 수 있다.
+ * 그래서 끝 코드에서 현재 코드 - 시작 코드를 뺀 아스키 코드를 가진 문자를 반환한다.
+ */
+private fun convertSmallLetter(code : Int) : Char {
+    val diff = code - SMALL_START
+    return (SMALL_END - diff).toChar()
 }
