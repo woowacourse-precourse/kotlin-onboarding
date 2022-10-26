@@ -1,7 +1,11 @@
 package onboarding
 
 fun solution1(pobi: List<Int>, crong: List<Int>): Int {
-    TODO()
+    return if (isPass(pobi) && isPass(crong)) {
+        TODO()
+    } else {
+        -1
+    }
 }
 
 //예외상황 판단하는 함수들
