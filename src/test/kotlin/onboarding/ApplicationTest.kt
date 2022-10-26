@@ -5,50 +5,50 @@ import org.junit.jupiter.api.Nested
 import org.junit.jupiter.api.Test
 
 class ApplicationTest {
-    @Nested
-    inner class Problem1Test {
-        @Test
-        fun case1() {
-            val pobi = listOf(97, 98)
-            val crong = listOf(197, 198)
-            val result = 0
-            assertThat(solution1(pobi, crong)).isEqualTo(result)
-        }
-
-        @Test
-        fun case2() {
-            val pobi = listOf(131, 132)
-            val crong = listOf(211, 212)
-            val result = 1
-            assertThat(solution1(pobi, crong)).isEqualTo(result)
-        }
-
-        @Test
-        fun case3() {
-            val pobi = listOf(99, 102)
-            val crong = listOf(211, 212)
-            val result = -1
-            assertThat(solution1(pobi, crong)).isEqualTo(result)
-        }
-    }
-
 //    @Nested
-//    inner class Problem2Test {
+//    inner class Problem1Test {
 //        @Test
 //        fun case1() {
-//            val cryptogram = "browoanoommnaon"
-//            val result = "brown"
-//            assertThat(solution2(cryptogram)).isEqualTo(result)
+//            val pobi = listOf(97, 98)
+//            val crong = listOf(197, 198)
+//            val result = 0
+//            assertThat(solution1(pobi, crong)).isEqualTo(result)
 //        }
 //
 //        @Test
 //        fun case2() {
-//            val cryptogram = "zyelleyz"
-//            val result = ""
-//            assertThat(solution2(cryptogram)).isEqualTo(result)
+//            val pobi = listOf(131, 132)
+//            val crong = listOf(211, 212)
+//            val result = 1
+//            assertThat(solution1(pobi, crong)).isEqualTo(result)
+//        }
+//
+//        @Test
+//        fun case3() {
+//            val pobi = listOf(99, 102)
+//            val crong = listOf(211, 212)
+//            val result = -1
+//            assertThat(solution1(pobi, crong)).isEqualTo(result)
 //        }
 //    }
-//
+
+    @Nested
+    inner class Problem2Test {
+        @Test
+        fun case1() {
+            val cryptogram = "browoanoommnaon"
+            val result = "brown"
+            assertThat(solution2(cryptogram)).isEqualTo(result)
+        }
+
+        @Test
+        fun case2() {
+            val cryptogram = "zyelleyz"
+            val result = ""
+            assertThat(solution2(cryptogram)).isEqualTo(result)
+        }
+    }
+
 //    @Nested
 //    inner class Problem3Test {
 //        @Test
