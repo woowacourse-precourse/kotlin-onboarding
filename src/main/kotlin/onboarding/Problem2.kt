@@ -2,7 +2,10 @@ package onboarding
 
 fun solution2(cryptogram: String): String {
     var mList = cryptogram.split("").filter { it != "" } //String을 개별 문자별로 비교하기 편하도록 List로 변환하며, 맨 앞 뒤 항목들 역시 공백의 배열로 추가되므로, filter 사용하여 제거했다.
-    checkSame(mList)
+    while (!checkSame(mList)) { //연달아서 있는 중복값이 있는 동안 실행
+        mList = reduceSame(mList) //연달아서 있는 중복값 제거하는 함수
+    }
+    return mList.joinToString().replace(",", "").replace(" ", "") //배열값으로 변환했으므로, 다시 String으로 변환하고, 그 과정에서 생기는 , 그리고 " " 값을 제거한다.
 }
 
 /**
