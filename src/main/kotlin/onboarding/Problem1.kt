@@ -33,6 +33,20 @@ fun integer_max(a: Int, b: Int): Int {
         return b
 }
 
+fun getMaxPages(value: Int): Int {
+    val baek = value / 100
+    val sip = (value - (baek * 100)) / 10
+    val il = value % 10
+
+    var res: Int
+    if(value >= 100) {
+        res = integer_max((baek + sip + il), (baek * sip * il))
+    }else {
+        res = integer_max((sip + il),  (sip * il))
+    }
+    return res
+}
+
 fun solution1(pobi: List<Int>, crong: List<Int>): Int {
     if(checkOddEvenContinue(pobi, crong) && checkNormalPage(pobi, crong)) {
 
