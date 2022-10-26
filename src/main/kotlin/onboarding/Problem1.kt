@@ -2,7 +2,9 @@ package onboarding
 
 fun solution1(pobi: List<Int>, crong: List<Int>): Int {
     return if (isPass(pobi) && isPass(crong)) {
-        TODO()
+        val pobiScore = getScore(pobi)
+        val crongScore = getScore(crong)
+        if (pobiScore > crongScore) 1 else if (pobiScore == crongScore) 0 else 1
     } else {
         -1
     }
