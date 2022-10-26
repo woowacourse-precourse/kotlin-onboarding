@@ -9,3 +9,9 @@ fun getAddedDigitSum(number: Int): Int =
         .fold(0) { total, digit ->
             total + Character.getNumericValue(digit)
         }
+
+fun getMultipliedSum(number: Int): Int =
+    number.toString()
+        .fold(1) { total, digit ->
+            total * Character.getNumericValue(digit)
+        }
