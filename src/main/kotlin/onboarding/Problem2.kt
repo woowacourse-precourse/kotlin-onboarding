@@ -4,16 +4,13 @@ import java.util.Stack
 
 fun solution2(cryptogram: String): String {
 
-    val sb = StringBuilder()
     // 스택에 문자를 push한다.
     val decode = decode(cryptogram)
 
     // 스택을 StringBulider에 넣고 String으로 형변환하여 반환한다
-    decode.forEach {
-        sb.append(it)
-    }
+    val answer = decode.toStringBuilder()
 
-    return sb.toString()
+    return answer.toString()
 }
 
 private fun decode(cryptogram: String): Stack<Char> {
@@ -40,3 +37,10 @@ private fun Stack<Char>.containsLast(char: Char): Boolean {
     return peek() == char
 }
 
+private fun Stack<Char>.toStringBuilder(): StringBuilder {
+    val sb = StringBuilder()
+    forEach {
+        sb.append(it)
+    }
+    return sb
+}
