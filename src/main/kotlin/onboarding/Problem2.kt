@@ -9,7 +9,6 @@ fun solution2(cryptogram: String): String {
     var lastChar='-'
     var needPop=false
     charStack.addFirst(lastChar)
-
     cryptogram.forEach { c->
         when(lastChar){
             c -> needPop=true
