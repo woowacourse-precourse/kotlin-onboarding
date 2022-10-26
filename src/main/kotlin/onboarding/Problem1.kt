@@ -42,10 +42,14 @@ private fun getMultipliedSum(number: Int): Int =
 
 private fun compareNumber(number1: Int, number2: Int): Int {
     val diff = number1 - number2
+    val exceptedNumber = -1
+    val drawNumber = 0
+    val pobiWinningNumber = 1
+    val crongWinningNumber = 2
     when {
-        diff > 0 -> return 1
-        diff < 0 -> return 2
-        diff == 0 -> return 0
+        diff > 0 -> return pobiWinningNumber
+        diff < 0 -> return crongWinningNumber
+        diff == 0 -> return drawNumber
     }
-    return -1
+    return exceptedNumber
 }
