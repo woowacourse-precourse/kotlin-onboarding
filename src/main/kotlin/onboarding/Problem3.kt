@@ -18,3 +18,10 @@ private fun checkContain(num : Int, standard : Int) : Int {
     }
     return count
 }
+
+/**
+ * 파라미터로 받아오는 수 안에 원하는 수 (3,6,9) 가 몇 개 포함되어 있는지 반환하는 함수
+ */
+private fun checkHowMuch(param : String, num : Int) : Int{
+    return param.split("").count {it.contains(num.toString())} //숫자 각 자리별 비교를 위해 split() 사용하여 분할 후, 각 아이템을 원하는 숫자 (3,6,9)와 비교했다. ex) 33 -> 3, 3
+}
