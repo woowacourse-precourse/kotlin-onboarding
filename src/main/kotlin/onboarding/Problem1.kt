@@ -26,6 +26,15 @@ fun validatePage(leftNumber: Int, rightNumber: Int): Boolean {
     return (leftNumber + one) == rightNumber
 }
 
+fun calcMaxPages(pages: List<Int>): Int {
+    var maxValue = 0
+    pages.forEach { pageNumber ->
+        maxValue = max(maxValue, getAddedDigitSum(pageNumber))
+        maxValue = max(maxValue, getMultipliedSum(pageNumber))
+    }
+    return maxValue
+}
+
 fun compareNumber(number1: Int, number2: Int): Int {
     val diff = number1 - number2
     when {
