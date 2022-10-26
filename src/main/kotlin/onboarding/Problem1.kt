@@ -26,9 +26,6 @@ fun validatePage(leftNumber: Int, rightNumber: Int): Boolean {
     return (leftNumber + one) == rightNumber
 }
 
-fun getBiggerNumber(number1: Int, number2: Int): Int =
-    max(number1, number2)
-
 fun compareNumber(number1: Int, number2: Int): Int {
     val diff = number1 - number2
     when {
