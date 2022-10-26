@@ -29,7 +29,11 @@ fun solution1(pobi: List<Int>, crong: List<Int>): Int {
     val scorOfPobi = max(maxSumOfPobi, maxMultipliOfPobi)
     val scoreOfCrong = max(maxSumOfCrong, maxMultipliOfCrong)
 
-    return 0
+    return when {
+        scorOfPobi < scoreOfCrong -> 2
+        scorOfPobi > scoreOfCrong -> 1
+        else -> 0
+    }
 }
 
 private fun sum(list: List<String>): List<Int> {
