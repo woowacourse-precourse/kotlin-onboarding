@@ -8,7 +8,7 @@ fun solution1(pobi: List<Int>, crong: List<Int>): Int {
         return -1
     if (crong[0]+1 != crong[1])
         return -1
-    if (pobi[0] == 1 || crong[1] == 400)
+    if (pobi[0] <= 1 || crong[1] >= 400)
         return -1
 
     pobiNum = getMax(getSum(pobi[0]), getMultiply(pobi[0]), getSum(pobi[1]), getMultiply(pobi[1]))
