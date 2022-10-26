@@ -1,5 +1,7 @@
 package onboarding
 
+import kotlin.math.max
+
 fun solution1(pobi: List<Int>, crong: List<Int>): Int {
     TODO("프로그램 구현")
 }
@@ -18,3 +20,6 @@ fun getMultipliedSum(number: Int): Int =
 
 fun validatePage(leftNumber: Int, rightNumber: Int) =
     (rightNumber - leftNumber) == 1
+
+fun getBiggerNumber(number1: Int, number2: Int): Int =
+    max(number1, number2)
