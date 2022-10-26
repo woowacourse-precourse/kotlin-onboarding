@@ -9,10 +9,16 @@ fun solution1(pobi: List<Int>, crong: List<Int>): Int {
     if (crong[0]+1 != crong[1])
         return -1
 
+
     pobiNum = getMax(getSum(pobi[0]), getMultiply(pobi[0]), getSum(pobi[1]), getMultiply(pobi[1]))
     crongNum = getMax(getSum(crong[0]), getMultiply(crong[0]), getSum(crong[1]), getMultiply(crong[1]))
 
-
+    if (pobiNum == crongNum)
+        return 0
+    else if (pobiNum > crongNum)
+        return 1
+    else
+        return 2
 }
 
 fun getSum(x:Int) : Int {
