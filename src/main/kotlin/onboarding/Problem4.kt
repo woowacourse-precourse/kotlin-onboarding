@@ -8,6 +8,7 @@ const val SMALL_START = 97
 const val SMALL_END = 122
 fun solution4(word: String): String {
     var mList = word.split("").filter { it != "" } // 문자를 각 문자들을 체크하기 용이하도록 "" 기준, 즉 한 글자마다 문자열 배열로 변환한다. 이렇게 하면 맨 앞과 뒤에 공백을 가지는 빈 배열칸이 생성되므로, filter를 통해 없애준다.
+    return checkItsLetter(mList)
 }
 
 /**
@@ -20,17 +21,18 @@ private fun convertToChar(word: String): Char {
 /**
  * 각 문자별로 공백인지, 소문자인지, 대문자인지 Validate 해주는 함수
  */
-private fun checkItsLetter(list: List<String>) {
+private fun checkItsLetter(list: List<String>) : String{
     var concat = mutableListOf<Char>() // 변환 후 새롭게 변경되는 문자들이 담겨질 배열
     for (i in list) {
         if (convertToChar(i).code == EMPTY_CODE) {
-            convertEmptyLetter(convertToChar(i).code)
+            concat.add(convertEmptyLetter(convertToChar(i).code))
         } else if (convertToChar(i).code in CAPITAL_START..CAPITAL_END) {
-            convertPrimeLetter(convertToChar(i).code)
+            concat.add(convertPrimeLetter(convertToChar(i).code))
         } else if (convertToChar(i).code in SMALL_START..SMALL_END) {
-            convertSmallLetter(convertToChar(i).code)
+            concat.add(convertSmallLetter(convertToChar(i).code))
         }
     }
+    return String(concat.toCharArray()) // char 문자열을 String으로 취합하기 위해 사용했다. joinToString 의 경우는 공백과 , 부분이 같이 붙어서 기존에 위치해있는 공백과 구분이 어렵다고 판단되어 사용하지 않았다.
 }
 
 /**
