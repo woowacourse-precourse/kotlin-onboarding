@@ -1,9 +1,13 @@
 package onboarding
 
 fun solution1(pobi: List<Int>, crong: List<Int>): Int {
-    println(getSum(pobi[0]))
-    println(crong[0])
-    return 0
+    val pobiNum:Int
+    val crongNum:Int
+
+    pobiNum = getMax(getSum(pobi[0]), getMultiply(pobi[0]), getSum(pobi[1]), getMultiply(pobi[1]))
+    crongNum = getMax(getSum(crong[0]), getMultiply(crong[0]), getSum(crong[1]), getMultiply(crong[1]))
+
+    
 }
 
 fun getSum(x:Int) : Int {
@@ -28,6 +32,13 @@ fun getMultiply(x:Int) : Int{
     }
 
     return multiply
+}
+
+fun getMax(w:Int, x:Int, y:Int, z:Int) : Int
+{
+    val list = arrayOf<Int>(w, x, y, z)
+    list.sort()
+    return list[0]
 }
 
 fun main()
