@@ -1,9 +1,7 @@
 package onboarding
 
 fun solution3(number: Int): Int {
-    checkContain(number, 3)
-    checkContain(number, 6)
-    checkContain(number, 9)
+    return checkContain(number, 3) + checkContain(number, 6) + checkContain(number, 9)
 }
 
 /**
@@ -13,7 +11,7 @@ private fun checkContain(num : Int, standard : Int) : Int {
     var count = 0
     for(i in 1..num) {
         if(i.toString().contains(standard.toString())) { //3이 포함된 숫자일 경우 동작
-            count ++
+            count += checkHowMuch(i.toString(), standard) //3이 하나만 포함되지 않았을 수도 있으므로 몇 개의 3이 있는지를 판단 후 추가한다. ex) 33, 303, 313 ...
         }
     }
     return count
