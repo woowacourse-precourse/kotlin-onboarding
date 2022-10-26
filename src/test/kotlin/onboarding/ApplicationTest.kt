@@ -31,40 +31,40 @@ class ApplicationTest {
 //            assertThat(solution1(pobi, crong)).isEqualTo(result)
 //        }
 //    }
-
-    @Nested
-    inner class Problem2Test {
-        @Test
-        fun case1() {
-            val cryptogram = "browoanoommnaon"
-            val result = "brown"
-            assertThat(solution2(cryptogram)).isEqualTo(result)
-        }
-
-        @Test
-        fun case2() {
-            val cryptogram = "zyelleyz"
-            val result = ""
-            assertThat(solution2(cryptogram)).isEqualTo(result)
-        }
-    }
-
+//
 //    @Nested
-//    inner class Problem3Test {
+//    inner class Problem2Test {
 //        @Test
 //        fun case1() {
-//            val number = 13
-//            val result = 4
-//            assertThat(solution3(number)).isEqualTo(result)
+//            val cryptogram = "browoanoommnaon"
+//            val result = "brown"
+//            assertThat(solution2(cryptogram)).isEqualTo(result)
 //        }
 //
 //        @Test
 //        fun case2() {
-//            val number = 33
-//            val result = 14
-//            assertThat(solution3(number)).isEqualTo(result)
+//            val cryptogram = "zyelleyz"
+//            val result = ""
+//            assertThat(solution2(cryptogram)).isEqualTo(result)
 //        }
 //    }
+
+    @Nested
+    inner class Problem3Test {
+        @Test
+        fun case1() {
+            val number = 13
+            val result = 4
+            assertThat(solution3(number)).isEqualTo(result)
+        }
+
+        @Test
+        fun case2() {
+            val number = 33
+            val result = 14
+            assertThat(solution3(number)).isEqualTo(result)
+        }
+    }
 //
 //    @Nested
 //    inner class Problem4Test {

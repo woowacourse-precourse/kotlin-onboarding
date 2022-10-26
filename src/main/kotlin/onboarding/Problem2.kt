@@ -4,7 +4,7 @@ fun solution2(cryptogram: String): String {
     var answer = cryptogram
     var temp = ""
     while (true) {
-        if (answer.length < 2) return answer //문자열의 길이가 1개거나 없으면 정답을 리턴
+        if (answer.length < 2) return answer //문자열의 길이가 1개인경우 정답을 리턴
         temp = answer.filterIndexed { index, c ->
             if (index == 0) c != answer[index + 1] //첫번째 문자인 경우 뒤에 문자와만 비교해서 같지 않으면 통과
             else if (index == answer.length - 1) c != answer[index - 1]//마지막 문자인 경우 앞 문자와만 비교해서 같지 않으면 통과
