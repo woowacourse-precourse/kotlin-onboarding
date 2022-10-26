@@ -4,10 +4,15 @@ fun solution1(pobi: List<Int>, crong: List<Int>): Int {
     val pobiNum:Int
     val crongNum:Int
 
+    if (pobi[0]+1 != pobi[1])
+        return -1
+    if (crong[0]+1 != crong[1])
+        return -1
+
     pobiNum = getMax(getSum(pobi[0]), getMultiply(pobi[0]), getSum(pobi[1]), getMultiply(pobi[1]))
     crongNum = getMax(getSum(crong[0]), getMultiply(crong[0]), getSum(crong[1]), getMultiply(crong[1]))
 
-    
+
 }
 
 fun getSum(x:Int) : Int {
