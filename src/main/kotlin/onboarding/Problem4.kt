@@ -13,7 +13,7 @@ private fun upperBoard(): Map<Char, Char> {
     val map = mutableMapOf<Char, Char>()
     for (i in 'A'..'Z') {
         map[i] = i + alphaCount
-        alphaCount--
+        alphaCount -= 2
     }
     return map
 }
@@ -23,7 +23,7 @@ private fun lowerBoard(): Map<Char, Char> {
     val map = mutableMapOf<Char, Char>()
     for (i in 'a'..'z') {
         map[i] = i + alphaCount
-        alphaCount--
+        alphaCount -= 2
     }
     return map
 }
