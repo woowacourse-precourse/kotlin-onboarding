@@ -7,9 +7,13 @@ fun solution1(pobi: List<Int>, crong: List<Int>): Int {
 // 기능 목록
 /**
  * 예외 사항 체크
+ * 좌우 페이지가 1차이가 나지 않으면 true를 반환한다.
  */
 fun checkException(pobi: List<Int>, crong: List<Int>) {
-
+    if (pobi[1] - pobi[0] != 1 || crong[1] - crong[0] != 1) {
+        return true
+    }
+    return false
 }
 
 /**
