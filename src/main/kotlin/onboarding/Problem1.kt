@@ -48,8 +48,8 @@ private fun checkIsStartOrEnd(list : List<Int>) : Boolean {
  *  왼쪽 페이지, 오른쪽 페이지 값 선별 후 최댓값 전달 (임시로 더하기만 구현)
  */
 private fun getUserScore(list: List<Int>): Int {
-    val left = getPlus(list[0])
-    val right = getPlus(list[1])
+    val left = max(getPlus(list[0]), getMultiplyScore(list[0]))
+    val right = max(getPlus(list[1]), getMultiplyScore(list[1]))
     return if (left > right) {
         left
     } else right
@@ -67,4 +67,15 @@ private fun getPlus(int: Int): Int {
     return result
 }
 
+/**
+ * 모든 숫자 곱하기 했을 시 값 전달
+ */
+private fun getMultiplyScore(int: Int): Int {
+    val mList = (int.toString()).split("").filter { it != "" } // int를 공백 기준으로 String으로 쪼갠 후 공백 제거 (왜 공백제거를 하느냐 하면, 맨 앞과 맨 뒤가 공백으로 구분되어 빈 값의 배열이 생김)
+    var result = 1 //result의 기본값이 0이면 곱했을 시 항상 0이므로 곱하기 값에 영향을 주지 않으면서도 0이 되지 않는 초기값을 1로 두었다.
+    for (i in mList.indices) {
+        result *= mList[i].toInt()
+    }
+    return result
+}
 
