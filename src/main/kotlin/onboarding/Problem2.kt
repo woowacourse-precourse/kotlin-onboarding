@@ -18,3 +18,20 @@ private fun checkSame(list: List<String>): Boolean {
     }
     return true //전부 돌았음에도 중복값이 없어야 도달할 수 있으므로 최종적으로 true 반환
 }
+
+/**
+ * 연달아서 있는 중복 값을 제거하는 함수
+ */
+private fun reduceSame(list: List<String>): List<String> {
+    val mList = list.toMutableList() //값의 변경이 있으므로, 새로 지정해주었고 (파라미터로 들어오는 값은 val이므로), 제거를 위해 removeAt을 사용하기 위해 mutableList로 변환해주었다.
+    var last = ""
+    for (i in mList.indices) {
+        if (mList[i] == last) {
+            mList.removeAt(i) //이 if문이 동작한다는 말은 현재 값과 이전 값이 중복이라는 말이므로, 현재 값과 이전 값을 List에서 제거 후 반환한다.
+            mList.removeAt(i - 1)
+            return mList
+        }
+        last = mList[i]
+    }
+    return mList
+}
