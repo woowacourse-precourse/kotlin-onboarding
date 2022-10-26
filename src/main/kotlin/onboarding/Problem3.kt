@@ -6,21 +6,21 @@ fun solution3(number: Int): Int {
     var count = 0
     // number 만큼 반복문을 돌린다.
     repeat(number) { i ->
-        if (isThreeSixNine(i + 1)) {
-            count++
-        }
+        // 3, 6, 9 개수 만큼 count를 증가
+        count += check(i + 1)
     }
     // 1부터 수를 세며 3이 들어가면 count를 올린다.
     // count를 반환한다.
-    return 0
+    return count
 }
 
-private fun isThreeSixNine(number: Int): Boolean {
+private fun check(number: Int): Int {
+    var count = 0
     number.toString().forEach {
         if(it == '3' || it == '6' || it == '9') {
-            return true
+            count++
         }
     }
-    return false
+    return count
 }
 
