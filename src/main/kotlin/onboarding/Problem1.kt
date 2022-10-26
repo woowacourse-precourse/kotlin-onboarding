@@ -10,7 +10,7 @@ fun solution1(pobi: List<Int>, crong: List<Int>): Int {
  *  예외사항 있는지 판별
  */
 private fun checkIsRight(list: List<Int>): Boolean {
-    return checkOddAndEven(list) && checkCorrectPageNum(list)
+    return checkOddAndEven(list) && checkCorrectPageNum(list) && checkIsStartOrEnd(list)
 }
 
 /**
@@ -25,4 +25,12 @@ private fun checkOddAndEven(list: List<Int>): Boolean {
  */
 private fun checkCorrectPageNum(list : List<Int>) : Boolean {
     return (list[0] + 1 == list[1])
+}
+
+/**
+ * 예외사항 3 : 페이지는 맨 처음, 맨 끝면이 되어서는 안 된다.
+ */
+
+private fun checkIsStartOrEnd(list : List<Int>) : Boolean {
+    return list[0] != 1 || list[1] != 400
 }
