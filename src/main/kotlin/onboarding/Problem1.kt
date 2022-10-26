@@ -26,6 +26,9 @@ fun solution1(pobi: List<Int>, crong: List<Int>): Int {
     val maxSumOfCrong = max(sumOfCrong[0], sumOfCrong[1])
     val maxMultipliOfCrong = max(multipliOfCrong[0], multipliOfCrong[1])
 
+    val scorOfPobi = max(maxSumOfPobi, maxMultipliOfPobi)
+    val scoreOfCrong = max(maxSumOfCrong, maxMultipliOfCrong)
+
     return 0
 }
 
