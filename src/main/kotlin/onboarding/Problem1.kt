@@ -1,5 +1,8 @@
 package onboarding
 
+const val POBI_WIN = 1
+const val CRONG_WIN = 2
+const val DRAW = 0
 fun solution1(pobi: List<Int>, crong: List<Int>): Int {
     if (checkException) {
         return -1
@@ -49,6 +52,5 @@ fun getBiggerPageNum(leftPage: Int, rightPage: Int): Int {
  * 크롱이 이기면 2
  * 무승부는 0
  */
-fun validateWinner(pobiNum: Int, crongNum: Int): Int {
-
-}
+fun validateWinner(pobiNum: Int, crongNum: Int): Int =
+    if (pobiNum == crongNum) DRAW else if (pobiNum > crongNum) POBI_WIN else CRONG_WIN
