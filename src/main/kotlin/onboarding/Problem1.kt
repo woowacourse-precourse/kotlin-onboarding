@@ -1,7 +1,18 @@
 package onboarding
 
 fun solution1(pobi: List<Int>, crong: List<Int>): Int {
-
+    if (checkException) {
+        return -1
+    }
+    val pobiNum = getBiggerPageNum(
+        leftPage = pobi[0],
+        rightPage = pobi[1]
+    )
+    val crongNum = getBiggerPageNum(
+        leftPage = crong[0],
+        rightPage = crong[1]
+    )
+    return validateWinner(pobiNum, crongNum)
 }
 
 // 기능 목록
