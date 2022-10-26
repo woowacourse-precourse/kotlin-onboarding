@@ -15,3 +15,6 @@ fun getMultipliedSum(number: Int): Int =
         .fold(1) { total, digit ->
             total * Character.getNumericValue(digit)
         }
+
+fun validatePage(leftNumber: Int, rightNumber: Int) =
+    (rightNumber - leftNumber) == 1
