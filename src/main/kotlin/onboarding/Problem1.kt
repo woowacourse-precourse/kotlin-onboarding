@@ -14,8 +14,10 @@ fun solution1(pobi: List<Int>, crong: List<Int>): Int {
     val crongToString = crong.map { it.toString() }
 
     val sumOfPobi = sum(pobiToString)
+    val multipliOfPobi = multiplication(pobiToString)
 
     val sumOfCrong = sum(crongToString)
+    val multipliOfCrong = multiplication(crongToString)
 
 
     return 0
@@ -26,5 +28,13 @@ private fun sum(list: List<String>): List<Int> {
         var sum = 0
         it.forEach { char -> sum += char.digitToInt() }
         sum
+    }
+}
+
+private fun multiplication(list: List<String>): List<Int> {
+    return list.map {
+        var multi = 1
+        it.forEach { char -> multi *= char.digitToInt() }
+        multi
     }
 }
