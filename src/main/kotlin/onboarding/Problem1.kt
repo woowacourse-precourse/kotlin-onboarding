@@ -22,3 +22,13 @@ fun add(n: Int): Int {
     }
     return res
 }
+
+fun multiply(n: Int): Int {
+    var num = n
+    var res = 1
+    while (num > 0) {
+        res *= num % 10
+        num /= 10
+    }
+    return res
+}
