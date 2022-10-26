@@ -48,7 +48,16 @@ fun getMaxPages(value: Int): Int {
 
 fun solution1(pobi: List<Int>, crong: List<Int>): Int {
     if(checkOddEvenContinue(pobi, crong) && checkNormalPage(pobi, crong)) {
+        val pobiScore = integer_max(getMaxPages(pobi[0]), getMaxPages(pobi[1]))
+        val crongScore = integer_max(getMaxPages(crong[0]), getMaxPages(crong[1]))
 
+        if(pobiScore > crongScore) {
+            return 1
+        } else if(pobiScore < crongScore) {
+            return 2
+        }else {
+            return 0
+        }
     }
     return -1
 }
