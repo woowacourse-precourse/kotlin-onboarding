@@ -1,5 +1,54 @@
 package onboarding
 
 fun solution1(pobi: List<Int>, crong: List<Int>): Int {
-    TODO("프로그램 구현")
+    if(!checkException(pobi)||!checkException(crong)){
+        return -1
+    }
+    val pobi_num = calculate(pobi)
+    val crong_num = calculate(crong)
+    return if(pobi_num>crong_num){
+        1
+    }else if(pobi_num < crong_num){
+        2
+    }else if(pobi_num == crong_num){
+        0
+    }else {
+        -1
+    }
+}
+
+//예외 입력값 검토
+fun checkException(list : List<Int>): Boolean {
+    //왼쪽이 홀수, //오른쪽이 왼쪽 바로 다음 페이지//왼쪽은 3 이상 397이하
+    if((list[0]%2==1)&&(list[1]==list[0]+1)&&(list[0]>=3)&&(list[0]<=397)){
+        return true
+    }
+    return false
+}
+
+//calculate2에서 구한 왼쪽, 오른쪽 값 비교하기
+fun calculate(list : List<Int>):Int{
+    //왼쪽 페이지 계산
+    val left = calculate2(list[0])
+    val right = calculate2(list[1])
+    if(left>right){
+        return left
+    }else{
+        return right
+    }
+}
+
+// 쪽 자릿수의 합, 곱을 비교하여 큰 값 구하기
+fun calculate2(par_num : Int) : Int{
+    var num = par_num; var sum=0; var product =1
+    do{
+        sum += num % 10
+        product *=num%10
+        num /= 10
+    }while(num>0)
+    if(sum > product){
+        return sum
+    }else{
+        return product
+    }
 }
