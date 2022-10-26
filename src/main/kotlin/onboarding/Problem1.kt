@@ -8,9 +8,7 @@ fun solution1(pobi: List<Int>, crong: List<Int>): Int {
 
 fun getAddedDigitSum(number: Int): Int =
     number.toString()
-        .fold(0) { total, digit ->
-            total + Character.getNumericValue(digit)
-        }
+        .fold(0) { total, digit -> total + Character.getNumericValue(digit) }
 
 fun getMultipliedSum(number: Int): Int =
     number.toString()
