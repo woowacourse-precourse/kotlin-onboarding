@@ -1,6 +1,7 @@
 package onboarding
 
 fun solution1(pobi: List<Int>, crong: List<Int>): Int {
+
 }
 
 // 기능 목록
@@ -22,7 +23,9 @@ fun compareAddAndMul(num: Int): Int {
  * 왼쪽 페이지, 오른쪽 페이지 중 큰 수를 구하는 기능
  */
 fun getBiggerPageNum(leftPage: Int, rightPage: Int): Int {
-
+    val leftNum = compareAddAndMul(leftPage)
+    val rightNum = compareAddAndMul(rightPage)
+    return if (leftNum > rightNum) leftNum else rightNum
 }
 
 /**
