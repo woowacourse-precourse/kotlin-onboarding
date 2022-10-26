@@ -2,7 +2,9 @@ package onboarding
 
 import java.lang.Math.max
 
+
 fun solution1CheckException(inputList: List<Int>): Boolean {
+    //문제에서 정의한 예외를 다음과 같은 상황이라고 해석했음
     if(inputList.contains(1)||inputList.contains(400)) return true
     if(inputList[1]-inputList[0]!=1) return true
     return false
