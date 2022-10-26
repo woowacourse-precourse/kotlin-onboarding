@@ -4,7 +4,7 @@ const val POBI_WIN = 1
 const val CRONG_WIN = 2
 const val DRAW = 0
 fun solution1(pobi: List<Int>, crong: List<Int>): Int {
-    if (checkException) {
+    if (checkException(pobi, crong)) {
         return -1
     }
     val pobiNum = getBiggerPageNum(
@@ -23,7 +23,7 @@ fun solution1(pobi: List<Int>, crong: List<Int>): Int {
  * 예외 사항 체크
  * 좌우 페이지가 1차이가 나지 않으면 true를 반환한다.
  */
-fun checkException(pobi: List<Int>, crong: List<Int>) {
+fun checkException(pobi: List<Int>, crong: List<Int>): Boolean {
     if (pobi[1] - pobi[0] != 1 || crong[1] - crong[0] != 1) {
         return true
     }
@@ -33,13 +33,14 @@ fun checkException(pobi: List<Int>, crong: List<Int>) {
 /**
  * 각자리 숫자를 모두 더하거나 곱해 큰 수를 반환하는 기능
  */
-fun compareAddAndMul(var num: Int): Int {
+fun compareAddAndMul(num: Int): Int {
+    var userNum = num
     var addNum = 0
     var mulNum = 1
-    while (num > 0) {
-        addNum += num % 10
-        mulNum *= num % 10
-        num /= 10
+    while (userNum > 0) {
+        addNum += userNum % 10
+        mulNum *= userNum % 10
+        userNum /= 10
     }
     return if (addNum > mulNum) addNum else mulNum
 }
