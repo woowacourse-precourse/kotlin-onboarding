@@ -26,6 +26,13 @@ fun checkNormalPage(pobi: List<Int>, crong: List<Int>): Boolean {
     return true
 }
 
+fun integer_max(a: Int, b: Int): Int {
+    if( a > b)
+        return a
+    else
+        return b
+}
+
 fun solution1(pobi: List<Int>, crong: List<Int>): Int {
     if(checkOddEvenContinue(pobi, crong) && checkNormalPage(pobi, crong)) {
 
