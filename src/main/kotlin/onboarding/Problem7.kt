@@ -7,10 +7,21 @@ fun solution7(
 ): List<String> {
     var friendList = listOf<String>()
     var non_friendList = mapOf<String, Int>()
+    var result = mutableListOf<String>()
+    var i:Int = 0
 
     friendList = checkFriends(user, friends)
     non_friendList = checkNonFriends(user, friends, friendList, visitors)
 
+    var sortedMap = non_friendList.toList().sortedByDescending { it.second }
+
+    while (i < 5 && i < sortedMap.size){
+        if (sortedMap[i].second == 0)
+            break
+        result.add(sortedMap[i].first)
+        i++
+    }
+    return result
 }
 
 fun checkFriends(user: String, friends: List<List<String>>) : List<String> {
@@ -29,21 +40,21 @@ fun checkNonFriends(user: String,
                     friends: List<List<String>>,
                     friendList: List<String>,
                     visitors: List<String>
-): Map<String, Int>{
+): Map<String, Int> {
     var list = mutableMapOf<String, Int>()
 
-    for (friend in friends){
-        if (friend[0]==user || friend[1]==user)
+    for (friend in friends) {
+        if (friend[0] == user || friend[1] == user)
             continue
         if (friend[0] in friendList && friend[1] in friendList)
             continue
-        if (friend[0] in friendList){
+        if (friend[0] in friendList) {
             if (list.containsKey(friend[1]))
                 list.put(friend[1], list.get(friend[1])!! + 10)
             else
                 list.put(friend[1], 10)
         }
-        if (friend[1] in friendList){
+        if (friend[1] in friendList) {
             if (list.containsKey(friend[0]))
                 list.put(friend[0], list.get(friend[0])!! + 10)
             else
@@ -51,11 +62,11 @@ fun checkNonFriends(user: String,
         }
     }
 
-    for (visitor in visitors){
+    for (visitor in visitors) {
         if (visitor in friendList)
             continue
         if (list.containsKey(visitor))
-            list.put(visitor, list.get(visitor)!!+1)
+            list.put(visitor, list.get(visitor)!! + 1)
         else
             list.put(visitor, 1)
     }
