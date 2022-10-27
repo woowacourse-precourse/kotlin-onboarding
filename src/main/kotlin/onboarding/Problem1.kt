@@ -4,6 +4,15 @@ fun solution1(pobi: List<Int>, crong: List<Int>): Int {
 
     val pobiScore = getScore(pobi)
     val crongScore = getScore(crong)
+
+    // 승자에 따라 알맞은 값 리턴
+    return if(pobiScore == crongScore){
+        0
+    } else if (pobiScore > crongScore){
+        1
+    } else {
+        2
+    }
 }
 
 // 점수를 구하는 함수
