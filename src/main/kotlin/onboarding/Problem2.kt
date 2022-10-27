@@ -8,14 +8,13 @@ fun solution2(cryptogram: String): String {
 
 private fun String.removeDuplicate(): String {
     val stackIndex = 1
-    val notDuplicatedStack = Stack<Char>().apply {
-        this.push(this[0])
-    }
+    val distinctStack = Stack<Char>()
+    distinctStack.push(this[0])
 
     this.substring(stackIndex).forEach { ch ->
-        notDuplicatedStack.filterDuplicatedLastOrAppendWith(ch)
+        distinctStack.filterDuplicatedLastOrAppendWith(ch)
     }
-    return notDuplicatedStack.convertString()
+    return distinctStack.convertString()
 }
 
 private fun Stack<Char>.filterDuplicatedLastOrAppendWith(ch: Char) {
