@@ -21,3 +21,14 @@
 | --- | --- |
 | "browoanoommnaon" | "brown" |
 | "zyelleyz" | "" |
+
+<br><hr>
+
+## 🤔 프리코스 2주차 기능 목록
+
+* 💡 O(n) 안에 해결하는 알고리즘을 구상하자!
+* 연속하는 중복 문자를 제거하는 String Extension 메서드를 구현한다.
+  + Stack 자료구조를 사용하여, 순차적으로 주어진 문자열의 character를 push한다.
+  + Stack의 top과 push할 character가 같다면 pop한다.
+* Stack의 top과 매개변수로 주어지는 character가 같으면 pop하고, 다른 경우 push하는 Stack\<Char\> Extension 메서드를 구현한다.
+* Stack\<Char\> 자료구조를 String 형태로 반환하는 Stack\<Char\> Extension 메서드를 구현한다.
