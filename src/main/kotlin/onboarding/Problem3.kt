@@ -11,12 +11,12 @@ fun Int.get369Count() = this.toString().count { it == '3' || it == '6' || it == 
 fun getResultArray(n: Int): IntArray {
     val arr = IntArray(n + 1)
     for (i in 1..n) {
-        arr[i] = i.get369Count()
+        arr[i] = arr[i-1] + i.get369Count()
     }
     return arr
 }
 
 fun solution3(number: Int): Int {
     val resultArr = getResultArray(number)
-    return 0
+    return resultArr[number]
 }
