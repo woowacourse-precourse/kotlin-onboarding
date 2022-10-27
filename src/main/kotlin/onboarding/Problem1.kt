@@ -94,3 +94,16 @@ fun isEven(value : Int) : Boolean {
     }
     return false
 }
+
+fun isValidation(pobi: List<Int>, crong: List<Int>) : Boolean {
+    if (!validatePageEvenOdd(pobi, crong)) {
+        return false
+    }
+    if (!validatePageNumber(pobi, crong)) {
+        return false
+    }
+    if (!validatePageListNumber(pobi, crong)) {
+        return false
+    }
+    return true
+}
