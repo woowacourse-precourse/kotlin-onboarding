@@ -25,10 +25,13 @@ private fun String.removeDuplicate(): String {
 
 private fun Stack<Char>.removeDuplicatedTopOrAppendWith(ch: Char) {
     val top = peek()
-
     when {
-        top == ch -> pop()
-        top != ch -> push(ch)
+        StackStatus.previousChar == ch && StackStatus.isContinuous -> return
+        top == ch -> setStackStatus(true, pop())
+        top != ch -> {
+            setStackStatus(false, ch)
+            push(ch)
+        }
     }
 }
 
