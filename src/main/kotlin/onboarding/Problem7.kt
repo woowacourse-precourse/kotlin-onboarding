@@ -23,7 +23,6 @@ fun solution7(
     visitFriends(visitors)
     // map을 value값으로 정렬하고 같으면 이름으로 정렬한다.
     // map키를 5까지 출력한다.
-    println(friendsMap)
     return getTopFive(user)
 }
 
@@ -32,16 +31,19 @@ fun findKnowFriends(friends: List<List<String>>, knowFriends: Set<String>) {
         if (knowFriends.contains(it[0])) {
             friendsMap[it[1]] = friendsMap[it[1]]?.plus(10) ?: 0
         }
-        if(knowFriends.contains(it[1])) {
+        if (knowFriends.contains(it[1])) {
             friendsMap[it[0]] = friendsMap[it[0]]?.plus(10) ?: 0
         }
     }
 }
 
 fun getTopFive(user: String): List<String> {
-    val sortRule: Comparator<Pair<String, Int>> = compareByDescending<Pair<String, Int>> { it.second }.thenBy { it.first }
-return friendsMap.filterKeys { it != user && !knowFriends.contains(it) }.filterValues { it != 0 }.map { it.toPair() }.sortedWith(sortRule)
-        .filterIndexed { index, _ -> index < 5 }.map { it.first }
+    val sortRule =
+        compareByDescending<Pair<String, Int>> { it.second }
+        .thenBy { it.first }
+    return friendsMap.filterKeys { it != user && !knowFriends.contains(it) }.filterValues { it != 0 } // 유저, 이미 친구, 점수가 0점인 사람 제거
+        .map { it.toPair() }.sortedWith(sortRule) // Pair로 형변환 후 정렬
+        .filterIndexed { index, _ -> index < 5 }.map { it.first } // 5개까지 이름만 list로 반환
 }
 
 fun visitFriends(visitors: List<String>) {
