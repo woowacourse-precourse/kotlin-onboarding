@@ -35,5 +35,10 @@ fun solution4(word: String): String {
     setDictionary()
     var result = ""
 
+    for(i in word.indices) {
+        val ch = getChangeChar(word[i])
+        result += ch
+    }
+
     return result
 }
