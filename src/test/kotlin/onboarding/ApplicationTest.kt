@@ -1,6 +1,7 @@
 package onboarding
 
 import org.assertj.core.api.Assertions.assertThat
+import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Nested
 import org.junit.jupiter.api.Test
 
@@ -64,6 +65,7 @@ class ApplicationTest {
             val result = 14
             assertThat(solution3(number)).isEqualTo(result)
         }
+
     }
 
     @Nested
