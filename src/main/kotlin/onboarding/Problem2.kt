@@ -32,6 +32,11 @@ private fun Stack<Char>.removeDuplicatedTopOrAppendWith(ch: Char) {
     }
 }
 
+private fun setStackStatus(isContinuous: Boolean, previousChar: Char) {
+    StackStatus.isContinuous = isContinuous
+    StackStatus.previousChar = previousChar
+}
+
 private fun Stack<Char>.convertString(): String {
     val emptyString = ""
 
