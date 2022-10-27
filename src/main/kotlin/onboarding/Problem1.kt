@@ -8,5 +8,24 @@ package onboarding
  */
 
 fun solution1(pobi: List<Int>, crong: List<Int>): Int {
-    TODO("프로그램 구현")
+    // 1. 예외사항 체크
+    check(pobi[0], pobi[1])
+    check(crong[0], crong[1])
+}
+
+// 1. 예외사항 체크
+// first : 왼쪽페이지
+// second : 오른쪽페이지
+// --예외
+// 페이지가 연속적이지 않음
+// 앞페이지가 큰 경우
+// 앞페이지가 짝수인 경우
+// 뒷페이지가 홀수인 경우
+// 1, 2 페이지를 펼치거나
+// 399 400 페이지를 펼친 경우
+fun check(first : Int, second : Int) : Boolean {
+    if(first % 2 == 0 || second % 2 == 1 || first + 1 != second || first <= 1 || second >= 400){
+        return false
+    }
+    return true
 }
