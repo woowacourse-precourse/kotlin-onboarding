@@ -21,6 +21,14 @@ fun solution6(forms: List<List<String>>): List<String> {
         .toList()
 }
 
+private fun isValidEmail(email: String): Boolean {
+    return EMAIL_FORMAT.matches(email)
+}
+
+private fun isValidNickName(nickname: String): Boolean {
+    return NICKNAME_FORMAT.matches(nickname)
+}
+
 private fun makeAffixes(forms: List<List<String>>): Array<HashSet<String>> {
     val affixes = Array(forms.size) { HashSet<String>() }
 
@@ -35,14 +43,6 @@ private fun makeAffixes(forms: List<List<String>>): Array<HashSet<String>> {
     }
 
     return affixes
-}
-
-private fun isValidEmail(email: String): Boolean {
-    return EMAIL_FORMAT.matches(email)
-}
-
-private fun isValidNickName(nickname: String): Boolean {
-    return NICKNAME_FORMAT.matches(nickname)
 }
 
 private fun checkDuplicatedNicknames(affixes: Array<HashSet<String>>, idx: Int): Boolean {
