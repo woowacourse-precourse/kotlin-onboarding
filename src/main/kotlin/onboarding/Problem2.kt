@@ -4,7 +4,7 @@ import java.util.*
 
 fun solution2(cryptogram: String): String {
     exception(cryptogram)
-    return ""
+    return repeat_remove_overlap(cryptogram)
 }
 
 fun exception(cryptogram: String) {
@@ -26,4 +26,22 @@ fun remove_overlap(cryptogram: String) : String{
     }
 
     return str.replace("\\s+".toRegex(), "")
+}
+
+fun repeat_remove_overlap(cryptogram: String) : String {
+    var str = cryptogram
+    var result = cryptogram
+
+    while(true) {
+        str = remove_overlap(str)
+        println(str)
+
+        if(result.length == str.length) {
+            return result
+        }
+
+        if(result.length > str.length) {
+            result = str
+        }
+    }
 }
