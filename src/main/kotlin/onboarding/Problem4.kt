@@ -1,7 +1,7 @@
 package onboarding
 
 fun solution4(word: String): String {
-    TODO("프로그램 구현")
+    return convertWord(0, word, "")
 }
 
 fun convertWord(index : Int, word: String, result : String) : String {
