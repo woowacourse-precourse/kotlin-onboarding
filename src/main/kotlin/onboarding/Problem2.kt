@@ -36,7 +36,6 @@ fun repeat_remove_overlap(cryptogram: String) : String {
 
     while(true) {
         str = remove_overlap(str)
-        println(str)
 
         if(result.length == str.length) {
             return result
