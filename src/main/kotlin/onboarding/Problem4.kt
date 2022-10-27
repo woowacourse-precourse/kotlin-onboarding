@@ -17,10 +17,15 @@ fun solution4(word: String): String {
 
     for (s in word){
         if(s.isLetter()){
-            println("${s}는 알파벳")
+            if(s.isLowerCase()){
+
+            }
+            else {
+
+            }
         }
         else {
-            println("알파벳이 아님")
+
         }
     }
     return "Hello World"
