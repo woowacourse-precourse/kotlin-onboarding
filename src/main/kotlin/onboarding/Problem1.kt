@@ -11,6 +11,13 @@ fun solution1(pobi: List<Int>, crong: List<Int>): Int {
     // 1. 예외사항 체크
     check(pobi[0], pobi[1])
     check(crong[0], crong[1])
+
+    // 2. 예외 사항 만족 시 왼쪽, 오른쪽 페이지 확인 후 최대값 만듦
+    return if(check(pobi[0], pobi[1]) && check(crong[0], crong[1])){
+        var pobiRes = make(pobi[0]).coerceAtLeast(make(pobi[1]))
+        var crongRes = make(crong[0]).coerceAtLeast(make(crong[1]))
+
+    }
 }
 
 // 1. 예외사항 체크
@@ -28,4 +35,21 @@ fun check(first : Int, second : Int) : Boolean {
         return false
     }
     return true
+}
+
+// 2. 예외 사항 만족 시 왼쪽, 오른쪽 페이지 확인 후 최대값 만듦
+fun make(pages : Int) : Int {
+    val page = pages.toString()
+    var token = page.chunked(1)
+    var sum = 0
+    var mul = 1
+    var tot = 0
+    for (i in token.indices) {
+        sum += token[i].toInt()
+        mul *= token[i].toInt()
+
+    }
+
+    tot = sum.coerceAtLeast(mul)
+    return tot
 }
