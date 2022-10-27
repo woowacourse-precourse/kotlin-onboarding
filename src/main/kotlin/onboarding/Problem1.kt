@@ -1,7 +1,6 @@
 package onboarding
 
 fun solution1(pobi: List<Int>, crong: List<Int>): Int {
-    TODO("프로그램 구현")
     /*
     [기능 목록]
     1. 최대값을 구하는 함수 구현
@@ -14,4 +13,17 @@ fun solution1(pobi: List<Int>, crong: List<Int>): Int {
         c) 두 페이지가 연속적이지 않은 경우
         d) 첫 페이지나 마지막 페이지를 펼치는 경우
      */
+    if (pobi[0] % 2 != 1 || crong[0] % 2 != 1){
+        return -1
+    }
+    else if (pobi[1] % 2 != 0 || pobi[1] % 2 != 0){
+        return -1
+    }
+    else if (pobi[1]-pobi[0] != 1 || crong[1]-crong[0] != 1){
+        return -1
+    }
+    else if (pobi[0] == 0 || crong[1] == 0){
+        return -1
+    }
+    return 1
 }
