@@ -10,6 +10,9 @@ package onboarding
 7. 최종적으로 main deque에 담긴 알파벳을 stringbuilder를 사용해 문자열로 만듦
 */
 
+import java.util.*
+
 fun solution2(cryptogram: String): String {
-    TODO("프로그램 구현")
+    var dq : Deque<String> = LinkedList()
+    var dqTmp : Deque<String> = LinkedList()
 }
