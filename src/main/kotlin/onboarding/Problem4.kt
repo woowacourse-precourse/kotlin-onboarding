@@ -16,7 +16,7 @@ fun convertWord(index : Int, word: String, result : String) : String {
 
 fun getReversedCharacter(char : Char) : Char{
     if (char.isLowerCase()) {
-        return (122 - (char.toInt()-97)).toChar()
+        return (122 - (char.code - 97)).toChar()
     }
-    return (90 - (char.toInt()-65)).toChar()
+    return (90 - (char.code - 65)).toChar()
 }
