@@ -23,17 +23,11 @@ fun addPageNum(pageNum : Int) : Int =
             it.toInt() - '0'.toInt()
         }.sum()
 
-fun multiPageNum(pageNum: Int) : Int {
-    var sum = 1
-    var page = pageNum
+fun multiPageNum(pageNum: Int) : Int =
+        pageNum.toString().map {
+            it.toInt() - '0'.toInt()
+        }.reduce { acc, i ->  acc * i}
 
-    while(page > 0) {
-        sum *= page % 10
-        page /= 10
-    }
-
-    return sum
-}
 fun compare_addPageNum_multiPageNum(pageNum: Int) : Int {
     return max(addPageNum(pageNum), multiPageNum(pageNum))
 }
