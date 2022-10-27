@@ -2,6 +2,10 @@ package onboarding
 
 import java.lang.StringBuilder
 
+/**
+ * @author onseok
+ */
+
 val lowerCaseMap = HashMap<Char, Char>()
 val upperCaseMap = HashMap<Char, Char>()
 fun solution4(word: String): String {
