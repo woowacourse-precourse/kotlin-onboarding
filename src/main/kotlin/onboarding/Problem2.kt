@@ -3,7 +3,9 @@ package onboarding
 import java.util.*
 
 fun solution2(cryptogram: String): String {
+
     exception(cryptogram)
+
     return repeat_remove_overlap(cryptogram)
 }
 
@@ -43,5 +45,6 @@ fun repeat_remove_overlap(cryptogram: String) : String {
         if(result.length > str.length) {
             result = str
         }
+
     }
 }
