@@ -13,4 +13,8 @@ fun solution4(word: String): String {
         hm['a'+i] = 'z'-i
         hm['A'+i] = 'Z'-i
     }
+
+    var token = word.toCharArray()
+
+
 }
