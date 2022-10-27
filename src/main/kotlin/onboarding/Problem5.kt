@@ -8,10 +8,17 @@ fun solution5(money: Int): List<Int> {
         a) 몫은 변환되는 개수
         b) 나머지는 다시 변환활 money
      */
+    var m = money
     val amount = listOf<Int>(50000,10000,5000,1000,500,100,50,10,1)
     var map = LinkedHashMap<Int,Int>()
 
     for (i in amount){
         map.put(i, 0)
     }
+    for (i in map.keys){
+        map[i] = m / i
+        m %= i
+    }
+
+    return map.values.toList()
 }
