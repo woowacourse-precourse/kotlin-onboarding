@@ -15,7 +15,6 @@ fun solution6(forms: List<List<String>>): List<String> {
         for (i in 0..nickname.length - 2) {
             ban_names.add(nickname.substring(i, i + 2))
         }
-        println(ban_names)
         for ((diff_email, diff_name) in forms) {
             if (diff_email == email) continue
             if (isDuple(diff_name, ban_names)) result.add(diff_email)

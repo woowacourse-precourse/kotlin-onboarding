@@ -33,7 +33,7 @@ fun exception(lst: List<Int>): Boolean { // 예외 사항, 문제 발생 시 tru
     if (lst.first() % 2 == 0 || lst.last() % 2 == 1) return true // 왼쪽 페이지가 짝수거나 오른쪽 페이지가 홀수인 경우
     if (lst.first() + 1 != lst.last()) return true // 왼쪽 페이지와 오른쪽 페이지의 순서가 다르거나 차이가 1이 아닌 경우
     if (lst[0] < 1 || lst[1] > 400) return true // 페이지가 1보다 작거나, 400보다 큰 경우와 시작면과 마지막 면인 경우
-    // 시작면과 마지막면을 책의 표지라 생각함
+    // 시작면과 마지막면을 책의 표지라 생각하
     return false
 }
 
