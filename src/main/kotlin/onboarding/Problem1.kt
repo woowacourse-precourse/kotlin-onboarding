@@ -44,3 +44,10 @@ fun multiPageNum(pageNum: Int) : Int {
 fun compare_addPageNum_multiPageNum(pageNum: Int) : Int {
     return max(addPageNum(pageNum), multiPageNum(pageNum))
 }
+
+fun compare_leftPage_rightPage(user : List<Int>) : Int {
+    val left = compare_addPageNum_multiPageNum(user[0])
+    val right = compare_addPageNum_multiPageNum(user[1])
+
+    return max(left, right)
+}
