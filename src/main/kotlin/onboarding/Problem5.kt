@@ -12,7 +12,3 @@ fun solution5(money: Int): List<Int> {
     return result
 }
 
-fun main(){
-    println(solution5(50237))
-}
-
