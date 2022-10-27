@@ -17,3 +17,15 @@ private fun checkInputException(input: List<Int>): Boolean {
     return input[0] in 3..397 && input[1] in 4.. 398 &&
             input[1] - input[0] == 1 && input[0] % 2 == 1 && input[1] % 2 == 0
 }
+
+private fun getMaxScore(page: String): Int {
+    // 각자리의 합과 곱에 대한 변수 설정
+    var sum = 0
+    var multi = 1
+    for (i in page.toCharArray()) {
+        sum += (i - '0')
+        multi *= (i - '0')
+    }
+    // 더 큰값 반환
+    return sum.coerceAtLeast(multi)
+}
