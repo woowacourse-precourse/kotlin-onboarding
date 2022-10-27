@@ -23,3 +23,10 @@ fun checkDuplicatedText(stack : Stack<Char>) : Stack<Char> {
     }
     return stack.also { stack.push(lastItem) }
 }
+
+fun deleteDuplicatedText(stack: Stack<Char>, lastItem : Char) : Stack<Char> {
+    if (stack.isNotEmpty() && lastItem == stack.last()) {
+        return deleteDuplicatedText(stack.also { stack.pop() }, lastItem)
+    }
+    return stack
+}
