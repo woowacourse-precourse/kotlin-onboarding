@@ -10,8 +10,8 @@ fun solution3(number: Int): Int {
 }
 
 fun exception(number: Int) {
-    if(number < 1 || number > 1000) {
-        throw IllegalArgumentException("number는 1이상 1000이하여야 합니다.")
+    if(number < 1 || number > 10000) {
+        throw IllegalArgumentException("number는 1이상 10000이하여야 합니다.")
     }
 }
 
