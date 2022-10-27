@@ -5,5 +5,6 @@ fun solution7(
     friends: List<List<String>>,
     visitors: List<String>
 ): List<String> {
-    TODO("프로그램 구현")
+    var friendList = mutableListOf<String>()
+    var non_friendList = mutableMapOf<Int, String>()
 }
