@@ -27,3 +27,15 @@ fun addPageNum(pageNum : Int) : Int {
 
     return sum
 }
+
+fun multiPageNum(pageNum: Int) : Int {
+    var sum = 1
+    var page = pageNum
+
+    while(page > 0) {
+        sum *= page % 10
+        page /= 10
+    }
+
+    return sum
+}
