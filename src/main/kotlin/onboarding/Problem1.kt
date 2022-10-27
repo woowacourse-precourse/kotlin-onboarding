@@ -57,3 +57,13 @@ fun comparePobiMaxPageAndCrongMaxPage(pobiPageList : List<Int>, crongPageList : 
     }
     return -1
 }
+
+fun validatePageNumber(pobi: List<Int>, crong: List<Int>) : Boolean {
+    if (pobi[0] < 1 || pobi[1] > 400) {
+        return false
+    }
+    if (crong[0] < 1 || crong[1] > 400) {
+        return false
+    }
+    return true
+}
