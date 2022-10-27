@@ -13,7 +13,7 @@ fun solution3(number: Int): Int {
         var k = n
         while(k > 0){
             if (k % 10 in gameNum){
-                println("${gameNum}중 ${k}에 속함")
+                clap += 1
             }
             k /= 10
         }
