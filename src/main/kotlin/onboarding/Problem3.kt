@@ -1,7 +1,7 @@
 package onboarding
 
 fun solution3(number: Int): Int {
-    TODO("프로그램 구현")
+    return countThreeSixNineInRange(end = number)
 }
 
 fun countThreeSixNineInRange(start: Int = 1, end: Int): Int {
