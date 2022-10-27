@@ -77,3 +77,20 @@ fun validatePageListNumber(pobi: List<Int>, crong: List<Int>) : Boolean {
     }
     return true
 }
+
+fun validatePageEvenOdd(pobi: List<Int>, crong: List<Int>) : Boolean {
+    if (!isEven(pobi[0]) || isEven(pobi[1])) {
+        return false
+    }
+    if (!isEven(crong[0]) || isEven(crong[1])) {
+        return false
+    }
+    return true
+}
+
+fun isEven(value : Int) : Boolean {
+    if (value % 2 == 0) {
+        return true
+    }
+    return false
+}
