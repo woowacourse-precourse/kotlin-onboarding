@@ -1,5 +1,18 @@
 package onboarding
 
+var _frogDictionary: MutableMap<Char, Char> = mutableMapOf()
+
+fun setDictionary() {
+    var ch = 'Z'
+    for(alpha in 'A' .. 'Z') {
+        _frogDictionary[alpha] = ch
+        ch -= 1
+    }
+}
+
 fun solution4(word: String): String {
-    TODO("프로그램 구현")
+    setDictionary()
+    var result = ""
+
+    return result
 }
