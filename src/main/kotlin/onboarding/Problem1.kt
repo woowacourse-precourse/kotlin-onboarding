@@ -18,17 +18,10 @@ fun exception(user: List<Int>) : Boolean {
     return true
 }
 
-fun addPageNum(pageNum : Int) : Int {
-    var sum = 0
-    var page = pageNum
-
-    while(page > 0) {
-        sum += page % 10
-        page /= 10
-    }
-
-    return sum
-}
+fun addPageNum(pageNum : Int) : Int =
+        pageNum.toString().map {
+            it.toInt() - '0'.toInt()
+        }.sum()
 
 fun multiPageNum(pageNum: Int) : Int {
     var sum = 1
