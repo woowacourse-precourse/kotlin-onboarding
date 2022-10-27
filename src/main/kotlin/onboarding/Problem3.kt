@@ -4,12 +4,12 @@ fun solution3(number: Int): Int {
     TODO("프로그램 구현")
 }
 
-fun String.countOfThreeSixNine(): Int {
+fun countThreeSixNineOf(numberString: String): Int {
     val initialCount = 0
     val numberChars = listOf('3', '6', '9')
 
     return numberChars.fold(initialCount) { count, numberChar ->
-        count + this.countOf(numberChar)
+        count + numberString.countOf(numberChar)
     }
 }
 
