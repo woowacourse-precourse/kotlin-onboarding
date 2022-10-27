@@ -16,8 +16,8 @@ fun solution3(number: Int): Int {
 }
 
 fun String.isKeyNumsContained(): Boolean {
-    return this.contains("3") or
-            this.contains("6") or
+    return this.contains("3") ||
+            this.contains("6") ||
             this.contains("9")
 }
 
