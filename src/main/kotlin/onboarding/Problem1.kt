@@ -21,5 +21,12 @@ fun findMaxValue(num: Int): Int{
 }
 
 fun solution1(pobi: List<Int>, crong: List<Int>): Int {
-    TODO("프로그램 구현")
+    if(isException(pobi)|| isException(crong)) return -1
+    val pobiScore = max(findMaxValue(pobi[0]), findMaxValue(pobi[1]))
+    val crongScore = max(findMaxValue(crong[0]), findMaxValue(crong[1]))
+    return when {
+        pobiScore == crongScore -> 0
+        pobiScore > crongScore -> 1
+        else -> 2
+    }
 }
