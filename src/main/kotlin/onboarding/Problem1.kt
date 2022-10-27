@@ -10,3 +10,10 @@ fun addPageNumber(pageNumber : Int) : Int {
     }
     return (pageNumber % 10) + addPageNumber(pageNumber / 10)
 }
+
+fun mulPageNumber(pageNumber : Int) : Int {
+    if (pageNumber < 10) {
+        return pageNumber
+    }
+    return (pageNumber % 10) * mulPageNumber(pageNumber / 10)
+}
