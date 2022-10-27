@@ -1,5 +1,7 @@
 package onboarding
 
+import kotlin.math.max
+
 fun solution1(pobi: List<Int>, crong: List<Int>): Int {
 
     if(!(exception(pobi) && exception(crong))) return -1
@@ -38,4 +40,7 @@ fun multiPageNum(pageNum: Int) : Int {
     }
 
     return sum
+}
+fun compare_addPageNum_multiPageNum(pageNum: Int) : Int {
+    return max(addPageNum(pageNum), multiPageNum(pageNum))
 }
