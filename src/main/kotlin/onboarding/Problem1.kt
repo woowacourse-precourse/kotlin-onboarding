@@ -1,7 +1,10 @@
 package onboarding
 
 fun solution1(pobi: List<Int>, crong: List<Int>): Int {
-    TODO("프로그램 구현")
+    if (!isValidation(pobi, crong)) {
+        return -1
+    }
+    return comparePobiMaxPageAndCrongMaxPage(pobi, crong)
 }
 
 fun addPageNumber(pageNumber : Int) : Int {
