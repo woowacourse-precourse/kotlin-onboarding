@@ -76,38 +76,38 @@ class ApplicationTest {
 //        }
 //    }
 
-    @Nested
-    inner class Problem5Test {
-        @Test
-        fun case1() {
-            val money = 50_237
-            val result = listOf(1, 0, 0, 0, 0, 2, 0, 3, 7)
-            assertThat(solution5(money)).isEqualTo(result)
-        }
-
-        @Test
-        fun case2() {
-            val money = 15_000
-            val result = listOf(0, 1, 1, 0, 0, 0, 0, 0, 0)
-            assertThat(solution5(money)).isEqualTo(result)
-        }
-    }
-//
 //    @Nested
-//    inner class Problem6Test {
+//    inner class Problem5Test {
 //        @Test
 //        fun case1() {
-//            val forms = listOf(
-//                listOf("jm@email.com", "제이엠"),
-//                listOf("jason@email.com", "제이슨"),
-//                listOf("woniee@email.com", "워니"),
-//                listOf("mj@email.com", "엠제이"),
-//                listOf("nowm@email.com", "이제엠")
-//            )
-//            val result = listOf("jason@email.com", "jm@email.com", "mj@email.com")
-//            assertThat(solution6(forms)).isEqualTo(result)
+//            val money = 50_237
+//            val result = listOf(1, 0, 0, 0, 0, 2, 0, 3, 7)
+//            assertThat(solution5(money)).isEqualTo(result)
+//        }
+//
+//        @Test
+//        fun case2() {
+//            val money = 15_000
+//            val result = listOf(0, 1, 1, 0, 0, 0, 0, 0, 0)
+//            assertThat(solution5(money)).isEqualTo(result)
 //        }
 //    }
+//
+    @Nested
+    inner class Problem6Test {
+        @Test
+        fun case1() {
+            val forms = listOf(
+                listOf("jm@email.com", "제이엠"),
+                listOf("jason@email.com", "제이슨"),
+                listOf("woniee@email.com", "워니"),
+                listOf("mj@email.com", "엠제이"),
+                listOf("nowm@email.com", "이제엠")
+            )
+            val result = listOf("jason@email.com", "jm@email.com", "mj@email.com")
+            assertThat(solution6(forms)).isEqualTo(result)
+        }
+    }
 //
 //    @Nested
 //    inner class Problem7Test {
