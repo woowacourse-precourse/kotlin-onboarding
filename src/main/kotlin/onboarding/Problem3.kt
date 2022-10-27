@@ -8,7 +8,7 @@ fun startGame(start : Int, end: Int, count: Int) : Int {
     if (start == end + 1) {
         return count
     }
-    return startGame(start + 1, end, clapCounter(start, count))
+    return startGame(start + 1, end, clap(start, count))
 }
 
 fun clap(number: Int, count : Int) : Int {
