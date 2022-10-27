@@ -1,5 +1,9 @@
 package onboarding
 
 fun solution3(number: Int): Int {
-    TODO("프로그램 구현")
+    val list = listOf(3, 6, 9)
+
+    return (1..number).fold(0) { acc, num ->
+        acc + num.toString().count { it.digitToInt() in list }
+    }
 }
