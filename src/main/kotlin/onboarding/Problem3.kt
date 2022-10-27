@@ -4,8 +4,7 @@ fun solution3(number: Int): Int {
     TODO("프로그램 구현")
 }
 
-fun String.getCountOf(_ch: Char): Int {
-    return this.count { ch ->
-        _ch == ch
+fun String.countOf(ch: Char): Int =
+    this.count { _ch ->
+        ch == _ch
     }
-}
