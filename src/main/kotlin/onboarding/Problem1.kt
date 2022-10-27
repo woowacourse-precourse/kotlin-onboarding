@@ -67,3 +67,13 @@ fun validatePageNumber(pobi: List<Int>, crong: List<Int>) : Boolean {
     }
     return true
 }
+
+fun validatePageListNumber(pobi: List<Int>, crong: List<Int>) : Boolean {
+    if (pobi[1] - pobi[0] != 1) {
+        return false
+    }
+    if (crong[1] - crong[0] != 1) {
+        return false
+    }
+    return true
+}
