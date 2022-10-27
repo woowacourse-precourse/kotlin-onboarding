@@ -37,5 +37,5 @@ fun solution1(pobi: List<Int>, crong: List<Int>): Int {
     val pobiScore = scoreCalculator.calculate(pobi[0], pobi[1])
     val crongScore = scoreCalculator.calculate(crong[0], crong[1])
 
-    return -1
+    return WinnerCalculator().calculate(pobiScore, crongScore)
 }
