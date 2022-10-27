@@ -29,3 +29,15 @@ private fun getMaxScore(page: String): Int {
     // 더 큰값 반환
     return sum.coerceAtLeast(multi)
 }
+
+private fun winner(pobiScore: Int, crongScore: Int): Int {
+    // pobi win : 1
+    // crong win : 2
+    // pobi = crong : 0
+    return if (pobiScore > crongScore) {
+        1
+    } else if (pobiScore < crongScore) {
+        2
+    } else
+        0
+}
