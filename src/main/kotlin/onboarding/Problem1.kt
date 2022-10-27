@@ -17,3 +17,10 @@ fun mulPageNumber(pageNumber : Int) : Int {
     }
     return (pageNumber % 10) * mulPageNumber(pageNumber / 10)
 }
+
+fun getMaxSumPage(leftPage : Int, rightPage : Int) : Int {
+    if (addPageNumber(leftPage) > addPageNumber(rightPage)) {
+        return addPageNumber(leftPage)
+    }
+    return addPageNumber(rightPage)
+}
