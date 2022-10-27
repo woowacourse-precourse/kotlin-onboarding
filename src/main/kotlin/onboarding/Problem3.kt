@@ -7,3 +7,8 @@ package onboarding
 fun solution3(number: Int): Int {
     TODO("프로그램 구현")
 }
+
+private fun countClap(number: String): Int {
+    // 3, 6, 9 숫자에 따라 count
+    return number.count { (it - '0') == 3 || (it - '0') == 6 || (it - '0') == 9 }
+}
