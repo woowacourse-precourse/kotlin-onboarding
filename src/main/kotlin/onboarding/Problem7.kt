@@ -5,8 +5,8 @@ fun solution7(
     friends: List<List<String>>,
     visitors: List<String>
 ): List<String> {
-    var friendList = listOf<String>()
-    var non_friendList = mapOf<String, Int>()
+    var friendList: List<String>
+    var non_friendList: Map<String, Int>
     var result = mutableListOf<String>()
     var i:Int = 0
 
