@@ -15,5 +15,9 @@ fun getCount(number: Int): Int {
 fun solution3(number: Int): Int {
     var result = 0
 
+    for(i in 1 .. number) {
+        result += getCount(i)
+    }
+
     return result
 }
