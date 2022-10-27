@@ -1,5 +1,6 @@
 package onboarding
 
+import problem1.FirstPageVerifier
 import problem1.NextPageVerifier
 import problem1.OddVerifier
 import problem1.RangeVerifier
@@ -23,5 +24,11 @@ fun solution1(pobi: List<Int>, crong: List<Int>): Int {
         TODO("예외처리")
     }
 
+    val pobiFirstPageVerifier = FirstPageVerifier(pobi[0])
+    val crongFirstPageVerifier = FirstPageVerifier(crong[0])
+    if(pobiFirstPageVerifier.verify() || crongFirstPageVerifier.verify()) {
+        TODO("예외처리")
+    }
+    
     return -1
 }
