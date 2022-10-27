@@ -20,8 +20,8 @@ fun solution7(
     // 2. 추천 맵에 간접 친구 점수 추가
     for (friend in friends) {
         val indirect = when {
-            friend[0] in myFriends && user != friend[1] -> friend[1]
-            friend[1] in myFriends && user != friend[0] -> friend[0]
+            (friend[0] in myFriends) && (user != friend[1]) -> friend[1]
+            (friend[1] in myFriends) && (user != friend[0]) -> friend[0]
             else -> continue
         }
 
