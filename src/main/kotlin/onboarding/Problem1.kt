@@ -6,7 +6,7 @@ fun solution1(pobi: List<Int>, crong: List<Int>): Int {
 
     if(!(exception(pobi) && exception(crong))) return -1
 
-    return 0
+    return compare_users(pobi, crong)
 }
 
 fun exception(user: List<Int>) : Boolean {
@@ -50,4 +50,18 @@ fun compare_leftPage_rightPage(user : List<Int>) : Int {
     val right = compare_addPageNum_multiPageNum(user[1])
 
     return max(left, right)
+}
+
+fun compare_users(pobi: List<Int>, crong: List<Int>) : Int {
+
+    val pobiScore = compare_leftPage_rightPage(pobi)
+    val crongScore = compare_leftPage_rightPage(crong)
+
+    if(pobiScore > crongScore) {
+        return 1
+    }
+    if(pobiScore < crongScore) {
+        return 2
+    }
+    return 0
 }
