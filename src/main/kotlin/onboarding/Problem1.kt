@@ -10,7 +10,16 @@ package onboarding
  * 3. 점수를 비교하여 게임의 승자 결정
  */
 fun solution1(pobi: List<Int>, crong: List<Int>): Int {
-    TODO("프로그램 구현")
+    // 예외사항확인
+    if (checkInputException(pobi) && checkInputException(crong)) {
+        val pobiScore = getMaxScore(pobi[0].toString()).coerceAtLeast(getMaxScore(pobi[1].toString()))
+        val crongScore = getMaxScore(crong[0].toString()).coerceAtLeast(getMaxScore(crong[1].toString()))
+        // 가장 큰 숫자 비교를 통하여 승자 결정
+        return winner(pobiScore, crongScore)
+    } else {
+        // 예외발생
+        return -1
+    }
 }
 
 private fun checkInputException(input: List<Int>): Boolean {
