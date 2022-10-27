@@ -31,3 +31,13 @@ fun getMaxMulPage(leftPage: Int, rightPage: Int) : Int {
     }
     return mulPageNumber(rightPage)
 }
+
+fun getMaxPage(player : List<Int>) : Int {
+    val maxSumPage = getMaxSumPage(player[0], player[1])
+    val maxMulPage = getMaxMulPage(player[0], player[1])
+
+    if (maxSumPage > maxMulPage) {
+        return maxSumPage
+    }
+    return maxMulPage
+}
