@@ -15,3 +15,14 @@ fun solution3(number: Int): Int {
 
     return answer
 }
+
+private fun check(num: String): Int {
+    var clap = 0
+    for (j in num.indices) {
+        var str = num.substring(j, j + 1)
+        if (str == "3" || str == "6" || str == "9") {
+            clap++
+        }
+    }
+    return clap
+}
