@@ -44,14 +44,43 @@ fun solution1(pobi: List<Int>, crong: List<Int>): Int {
    }
 
 
+    var crong_max_sum = 0
+    var crong_max_mul = 1
+    var crong_sum = 0
+    var crong_mul = 1
+    var crong_max = 0
+
+    for(i in 0 until 2){
+        crong_sum = (crong[i] / 100) + (crong[i] % 100 / 10) + (crong[i] % 100 % 10)
+        if(crong_sum > crong_max_sum){
+            crong_max_sum = crong_sum
+        }
+
+        if( crong[i] >= 100){
+            crong_mul = (crong[i] / 100) * (crong[i] % 100 / 10) * (crong[i] % 100 % 10)
+        }
+        if( crong[i] < 100){
+            crong_mul = (crong[i] / 10) * (crong[i] % 10)
+        }
+
+        if(crong_mul > crong_max_mul){
+            crong_max_mul = crong_mul
+        }
+    }
+
+    if(crong_max_mul > crong_max_sum){
+        crong_max = crong_max_mul
+    }
+    if (crong_max_sum >= crong_max_mul){
+        crong_max = crong_max_sum
+    }
+
+
+    
 
 
 
-
-
-
-
-  return exception_point
+    return exception_point
 }
 
 
