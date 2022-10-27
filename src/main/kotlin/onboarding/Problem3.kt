@@ -9,15 +9,14 @@ private fun countThreeSixNineInRange(start: Int = 1, end: Int): Int {
 
     return (start..end).fold(initialTotal) { total, number ->
         val numberString = number.toString()
-        total + countThreeSixNineOf(numberString)
+        total + countCharactersOf(numberString)
     }
 }
 
-private fun countThreeSixNineOf(numberString: String): Int {
+private fun countCharactersOf(numberString: String, vararg characters: Char): Int {
     val initialCount = 0
-    val numberChars = listOf('3', '6', '9')
 
-    return numberChars.fold(initialCount) { count, numberChar ->
+    return characters.fold(initialCount) { count, numberChar ->
         count + numberString.countOf(numberChar)
     }
 }
