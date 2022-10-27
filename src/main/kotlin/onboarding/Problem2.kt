@@ -11,25 +11,33 @@ fun solution2(cryptogram: String): String {
     var ls = cryptogram.toMutableList()
 
     var duplication = false // 중복인 마지막 인덱스를 구하기 위해, 중복 상태 (duplication) 변수 사용
-    var prev = 0
-    var last = 0
+    var loop = true
 
-    for (i in 1 until ls.size){
-        if (ls[prev] != ls[i]) {
-            if (duplication) {
-                break
+    while(loop){
+        var prev = 0
+        var last = 0
+        for (i in 1 until ls.size){
+            if (ls[prev] != ls[i]) {
+                if (duplication) {
+                    break
+                }
+                prev = i
             }
-            prev = i
+            else if (ls[prev] == ls[i]) {
+                duplication = true
+                last = i
+            }
         }
-        else if (ls[prev] == ls[i]) {
-            duplication = true
-            last = i
+        if (!duplication){
+            loop = false
+        }
+        else{
+            for (i in last downTo prev){
+                ls.removeAt(i)
+            }
+            duplication = false
         }
     }
 
-    for (i in last downTo prev) {
-        ls.removeAt(i)
-    }
-    println("${ls.joinToString("")}")
     return ls.joinToString("")
 }
