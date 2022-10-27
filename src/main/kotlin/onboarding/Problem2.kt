@@ -6,10 +6,16 @@ fun solution2(cryptogram: String): String {
     return cryptogram.removeDuplicate()
 }
 
+private object StackStatus {
+    var isContinuous = false
+    var previousChar = ' '
+}
+
 private fun String.removeDuplicate(): String {
     val stackIndex = 1
     val distinctStack = Stack<Char>()
-    distinctStack.push(this[0])
+    val firstChar = this[0]
+    distinctStack.push(firstChar)
 
     this.substring(stackIndex).forEach { ch ->
         distinctStack.removeDuplicatedTopOrAppendWith(ch)
