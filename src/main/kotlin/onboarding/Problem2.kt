@@ -1,5 +1,7 @@
 package onboarding
 
+import java.util.Stack
+
 fun solution2(cryptogram: String): String {
     val stack = Stack<Char>()
     if (cryptogram.length < 2) {
