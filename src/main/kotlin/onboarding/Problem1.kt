@@ -26,8 +26,16 @@ fun solution1(pobi: List<Int>, crong: List<Int>): Int {
     else if (pobi[0] == 0 || crong[1] == 0){
         return -1
     }
-    println("pobi max : ${getMax(pobi)} | crong max : ${getMax(crong)}")
-    return 1
+
+    if (getMax(pobi) > getMax(crong)){
+        return 1
+    }
+    else if (getMax(pobi) < getMax(crong)){
+        return 2
+    }
+    else{
+        return 0
+    }
 }
 
 fun getMax(ls: List<Int>): Int {
