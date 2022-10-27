@@ -9,24 +9,26 @@ fun solution4(word: String): String {
         c) 문자 변환
      */
     val alphabet = mutableListOf<String>()
-    var result: String = ""
+    var result = ""
 
     for (i in 'a'..'z'){
         alphabet.add(i.toString())
     }
 
     for (s in word){
+        var transWord = ""
+        var lower = s.lowercase()
         if(s.isLetter()){
-            if(s.isLowerCase()){
-
+            var index = alphabet.indexOf(lower)
+            transWord = alphabet[(alphabet.size-1)-index]
+            if(s.isUpperCase()){
+                transWord = transWord.uppercase()
             }
-            else {
-
-            }
+            result += transWord
         }
         else {
-
+            result += s
         }
     }
-    return "Hello World"
+    return result
 }
