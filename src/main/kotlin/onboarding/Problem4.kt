@@ -10,6 +10,14 @@ fun setDictionary() {
     }
 }
 
+fun checkNull(ch: Char?): Boolean {
+    return ch == null
+}
+
+fun checkLower(ch: Char): Boolean {
+    return ch -'Z' > 0
+}
+
 fun solution4(word: String): String {
     setDictionary()
     var result = ""
