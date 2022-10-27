@@ -1,5 +1,17 @@
 package onboarding
 
+import java.lang.IllegalArgumentException
+
 fun solution3(number: Int): Int {
-    TODO("프로그램 구현")
+
+    exception(number)
+
+
+    return 0
+}
+
+fun exception(number: Int) {
+    if(number < 1 || number > 1000) {
+        throw IllegalArgumentException("number는 1이상 1000이하여야 합니다.")
+    }
 }
