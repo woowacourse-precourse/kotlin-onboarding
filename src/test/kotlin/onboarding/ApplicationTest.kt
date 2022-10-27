@@ -65,7 +65,6 @@ class ApplicationTest {
             val result = 14
             assertThat(solution3(number)).isEqualTo(result)
         }
-
     }
 
     @Nested
