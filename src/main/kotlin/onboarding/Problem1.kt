@@ -21,6 +21,14 @@ fun solution1(pobi: List<Int>, crong: List<Int>): Int {
       return exception_point
   }
 
+  if(pobi.contains(1) or pobi.contains(400)){
+      return exception_point
+  }
+
+    if(crong.contains(1) or crong.contains(400)){
+        return exception_point
+    }
+
 
   var pobi_max_sum = 0
   var pobi_max_mul = 1
