@@ -17,6 +17,9 @@ fun solution1(pobi: List<Int>, crong: List<Int>): Int {
         var pobiRes = make(pobi[0]).coerceAtLeast(make(pobi[1]))
         var crongRes = make(crong[0]).coerceAtLeast(make(crong[1]))
 
+    //3. 예외 사항 만족 실패 시 return -1
+    } else {
+        -1
     }
 }
 
