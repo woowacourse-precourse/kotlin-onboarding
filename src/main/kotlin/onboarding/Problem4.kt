@@ -7,5 +7,10 @@ package onboarding
 */
 
 fun solution4(word: String): String {
-    TODO("프로그램 구현")
+    var hm = HashMap<Char, Char>()
+
+    for(i in 0 .. 25){
+        hm['a'+i] = 'z'-i
+        hm['A'+i] = 'Z'-i
+    }
 }
