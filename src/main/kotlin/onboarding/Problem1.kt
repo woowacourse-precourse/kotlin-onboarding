@@ -17,13 +17,9 @@ fun isPass(list: List<Int>): Boolean {
 fun getScore(list: List<Int>): Int {
     var res = 0
     var tmp = 0
-    var add_value = 0
-    var multiply_value = 0
     for (x in list) {
-        add_value = add(x)
-        multiply_value = multiply(x)
-        tmp = if (add_value > multiply_value) add_value else multiply_value
-        res = if (tmp > res) tmp else res
+        tmp = returnHighScore(add(x), multiply(x))
+        res = returnHighScore(tmp, res)
     }
     return res
 }
