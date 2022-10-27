@@ -5,7 +5,12 @@ package onboarding
  * 1. 3,6,9의 숫자에 따라 박수를 세는 메소드 -> 33의 경우 3,3으로 2번 박수
  */
 fun solution3(number: Int): Int {
-    TODO("프로그램 구현")
+    // 손뼉을 치는 횟수
+    var clap = 0
+    for (num in 1..number) {
+        clap += countClap(num.toString())
+    }
+    return clap
 }
 
 private fun countClap(number: String): Int {
