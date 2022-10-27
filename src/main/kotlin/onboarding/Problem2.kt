@@ -15,5 +15,11 @@ fun eraseRepeatedChar(cryptogram: String): String {
 }
 
 fun solution2(cryptogram: String): String {
-    TODO("프로그램 구현")
+    var ans = cryptogram
+    while (true){
+        val decryptRes = eraseRepeatedChar(ans)
+        if(decryptRes==ans) break
+        ans = decryptRes
+    }
+    return ans
 }
