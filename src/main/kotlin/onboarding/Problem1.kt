@@ -41,3 +41,19 @@ fun getMaxPage(player : List<Int>) : Int {
     }
     return maxMulPage
 }
+
+fun comparePobiMaxPageAndCrongMaxPage(pobiPageList : List<Int>, crongPageList : List<Int>) : Int {
+    val pobiMaxPage = getMaxPage(pobiPageList)
+    val crongMaxPage = getMaxPage(crongPageList)
+
+    if (pobiMaxPage > crongMaxPage) {
+        return 1
+    }
+    if (pobiMaxPage < crongMaxPage) {
+        return 2
+    }
+    if (pobiMaxPage.equals(crongMaxPage)) {
+        return 0
+    }
+    return -1
+}
