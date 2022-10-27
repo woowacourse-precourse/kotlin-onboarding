@@ -31,4 +31,11 @@ fun solution2(cryptogram: String): String {
         }
         dqTmp.offer(tmp)
     }
+
+    var sb = StringBuilder();
+
+    while(!dq.isEmpty()){
+        sb.append(dq.poll())
+    }
+    return sb.toString()
 }
