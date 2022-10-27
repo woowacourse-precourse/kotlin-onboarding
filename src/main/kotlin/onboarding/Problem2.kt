@@ -9,11 +9,11 @@ fun solution2(cryptogram: String): String {
     2. 연속으로 중복된 문자가 없을 때까지 반복
      */
     var ls = cryptogram.toMutableList()
-    var duplication = false
+
+    var duplication = false // 중복인 마지막 인덱스를 구하기 위해, 중복 상태 (duplication) 변수 사용
     var prev = 0
     var last = 0
 
-    // 중복인 마지막 인덱스를 구하기 위해, 중복 상태 (duplication) 변수 사용
     for (i in 1 until ls.size){
         if (ls[prev] != ls[i]) {
             if (duplication) {
@@ -27,4 +27,9 @@ fun solution2(cryptogram: String): String {
         }
     }
 
+    for (i in last downTo prev) {
+        ls.removeAt(i)
+    }
+    println("${ls.joinToString("")}")
+    return ls.joinToString("")
 }
