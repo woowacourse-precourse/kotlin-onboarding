@@ -12,12 +12,12 @@ private fun String.removeDuplicate(): String {
     distinctStack.push(this[0])
 
     this.substring(stackIndex).forEach { ch ->
-        distinctStack.filterDuplicatedLastOrAppendWith(ch)
+        distinctStack.removeDuplicatedTopOrAppendWith(ch)
     }
     return distinctStack.convertString()
 }
 
-private fun Stack<Char>.filterDuplicatedLastOrAppendWith(ch: Char) {
+private fun Stack<Char>.removeDuplicatedTopOrAppendWith(ch: Char) {
     val top = peek()
 
     when {
