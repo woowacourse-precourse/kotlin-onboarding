@@ -6,6 +6,7 @@ fun alphaChange(alpha: Char): Char {
     for (alphabet in lower_alphabet) upper_alphabets.add(alphabet.uppercaseChar()) // 대문자로 변경뒤 추가
     val re_lower = lower_alphabet.reversed() // 소문자 뒤집기
     val re_upper = upper_alphabets.reversed() // 대문자 뒤집기
+
     if (alpha == ' ') return ' '
     if (alpha.isUpperCase()) return re_upper[upper_alphabets.indexOf(alpha)]
     if (alpha.isLowerCase()) return re_lower[lower_alphabet.indexOf(alpha)]
