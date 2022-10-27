@@ -1,9 +1,6 @@
 package onboarding
 
-import problem1.FirstPageVerifier
-import problem1.NextPageVerifier
-import problem1.OddVerifier
-import problem1.RangeVerifier
+import problem1.*
 
 fun solution1(pobi: List<Int>, crong: List<Int>): Int {
     val pobiRangeVerifier = RangeVerifier(pobi[0])
@@ -29,6 +26,12 @@ fun solution1(pobi: List<Int>, crong: List<Int>): Int {
     if(pobiFirstPageVerifier.verify() || crongFirstPageVerifier.verify()) {
         TODO("예외처리")
     }
-    
+
+    val pobiLastPageVerifier = LastPageVerifier(pobi[1])
+    val crongLastPageVerifier = LastPageVerifier(crong[1])
+    if(pobiLastPageVerifier.verify() || crongLastPageVerifier.verify()) {
+        TODO("예외처리")
+    }
+
     return -1
 }
