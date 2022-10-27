@@ -1,6 +1,6 @@
 package onboarding
 
-
+// 예외상황 체크함수
 fun checkPage(list: List<Int>): Boolean {
     if (list[0] % 2 == 0 || list[1] % 2 == 1 || list[1] - list[0] != 1)
         return false
@@ -8,12 +8,15 @@ fun checkPage(list: List<Int>): Boolean {
         return false
     return true
 }
+
+// 비교함수
 fun max(a: Int, b: Int) : Int {
     return if (a>b)
         a
     else
         b
 }
+// sum함수
 fun sum(dq: ArrayDeque<Int>):Int{
     var sum = 0
     while(!dq.isEmpty()){
@@ -23,6 +26,7 @@ fun sum(dq: ArrayDeque<Int>):Int{
     return sum
 }
 
+// mul함수
 fun mul(dq: ArrayDeque<Int>):Int{
     var mul = 1
     while(!dq.isEmpty()){
@@ -32,6 +36,7 @@ fun mul(dq: ArrayDeque<Int>):Int{
     return mul
 }
 
+// 자리수 나누기_sum
 fun s_divide(num: Int): Int{
     var dq = ArrayDeque<Int>()
 
@@ -42,6 +47,8 @@ fun s_divide(num: Int): Int{
     }
     return sum(dq)
 }
+
+// 자리수 나누기_mul
 fun m_divide(num: Int): Int{
     var dq = ArrayDeque<Int>()
 
