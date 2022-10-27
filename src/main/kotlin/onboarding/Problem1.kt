@@ -28,6 +28,8 @@ fun getScore(list: List<Int>): Int {
     return res
 }
 
+fun returnHighScore(a: Int, b: Int) = if (a > b) a else b
+
 fun add(n: Int): Int {
     var num = n
     var res = 0
