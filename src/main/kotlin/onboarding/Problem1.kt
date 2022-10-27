@@ -3,6 +3,7 @@ package onboarding
 import java.io.BufferedReader
 import java.io.InputStreamReader
 import java.util.*
+import kotlin.io.path.createTempDirectory
 
 val pobi_win = 1
 val crong_win = 2
@@ -10,6 +11,15 @@ val draw = 0
 val exception_point = -1
 
 fun solution1(pobi: List<Int>, crong: List<Int>): Int {
+
+
+  if((pobi[pobi.size-1] - pobi[pobi.size-2] != 1)  or (crong[crong.size-1] - crong[crong.size-2] != 1) ){
+      return exception_point
+  }
+
+  if((pobi.size > 2) or (crong.size > 2)){
+      return exception_point
+  }
 
 
   var pobi_max_sum = 0
@@ -76,8 +86,19 @@ fun solution1(pobi: List<Int>, crong: List<Int>): Int {
     }
 
 
-    
 
+
+    if(pobi_max > crong_max){
+        return pobi_win
+    }
+
+    if(pobi_max == crong_max){
+        return draw
+    }
+
+    if(pobi_max < crong_max){
+        return crong_win
+    }
 
 
     return exception_point
