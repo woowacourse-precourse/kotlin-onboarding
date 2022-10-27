@@ -30,3 +30,7 @@ fun deleteDuplicatedText(stack: Stack<Char>, lastItem : Char) : Stack<Char> {
     }
     return stack
 }
+
+fun convertStackToString(stack: Stack<Char>) : String{
+    return stack.joinToString("")
+}
