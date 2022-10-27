@@ -1,7 +1,16 @@
 package onboarding
 
 fun solution2(cryptogram: String): String {
-    TODO("프로그램 구현")
+    var text = cryptogram
+    var removedText = ""
+    while (true) {
+        removedText = removeDuplicate(text)
+        if (text == removedText) {  // 더 이상 중복 문자 없음
+            return text
+        } else {
+            text = removedText
+        }
+    }
 }
 
 fun removeDuplicate(text: String): String {
