@@ -8,4 +8,15 @@ package onboarding
 fun solution5(money: Int): List<Int> {
     val unit = listOf(50000, 10000, 5000, 1000, 500, 100, 50, 10, 1)
     val cost = Array(9){ 0 }
+
+    var n = money
+    var idx = 0
+    while(n > 0){
+        if(n / unit[idx] > 0){
+            cost[idx] = n / unit[idx]
+            n -= cost[idx]*unit[idx]
+        }
+        idx++
+    }
+    return cost.toList()
 }
