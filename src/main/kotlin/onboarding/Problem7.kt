@@ -50,6 +50,16 @@ fun checkNonFriends(user: String,
                 list.put(friend[0], 10)
         }
     }
+
+    for (visitor in visitors){
+        if (visitor in friendList)
+            continue
+        if (list.containsKey(visitor))
+            list.put(visitor, list.get(visitor)!!+1)
+        else
+            list.put(visitor, 1)
+    }
     return list
 }
+
 
