@@ -13,3 +13,10 @@ fun convertWord(index : Int, word: String, result : String) : String {
     }
     return convertWord(index + 1, word, result + getReversedCharacter(word[index]))
 }
+
+fun getReversedCharacter(char : Char) : Char{
+    if (char.isLowerCase()) {
+        return (122 - (char.toInt()-97)).toChar()
+    }
+    return (90 - (char.toInt()-65)).toChar()
+}
