@@ -11,6 +11,7 @@ fun solution3(number: Int): Int {
 
     for(i in 1 .. number){
         var num = i.toString()
+        answer += check(num)
     }
 
     return answer
