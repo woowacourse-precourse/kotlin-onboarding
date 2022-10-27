@@ -10,3 +10,9 @@ fun exception4(word : String) {
         throw IllegalArgumentException("word의 길이는 1이상 1000이하여야 합니다.")
     }
 }
+
+fun changeChar(char: Char) : Char = when(char) {
+    in 'A'..'Z' -> ('A'.toInt() + 'Z'.toInt() - char.toInt()).toChar()
+    in 'a'..'z' -> ('a'.toInt() + 'z'.toInt() - char.toInt()).toChar()
+    else -> char
+}
