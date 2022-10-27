@@ -1,7 +1,12 @@
 package onboarding
 
 fun solution2(cryptogram: String): String {
-    TODO("프로그램 구현")
+    val stack = Stack<Char>()
+    if (cryptogram.length < 2) {
+        return cryptogram
+    }
+    stack.push(cryptogram[0])
+    return convertStackToString(decodeCryptogram(1, cryptogram, stack))
 }
 
 fun decodeCryptogram(index : Int, cryptogram: String, stack : Stack<Char>) : Stack<Char> {
