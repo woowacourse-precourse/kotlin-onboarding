@@ -24,3 +24,10 @@ fun getMaxSumPage(leftPage : Int, rightPage : Int) : Int {
     }
     return addPageNumber(rightPage)
 }
+
+fun getMaxMulPage(leftPage: Int, rightPage: Int) : Int {
+    if (mulPageNumber(leftPage) > mulPageNumber(rightPage)) {
+        return mulPageNumber(leftPage)
+    }
+    return mulPageNumber(rightPage)
+}
