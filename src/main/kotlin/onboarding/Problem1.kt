@@ -12,8 +12,12 @@ fun solution1(pobi: List<Int>, crong: List<Int>): Int {
 }
 
 private fun validateTwoPages(leftNumber: Int, rightNumber: Int): Boolean {
-    val zero = 0; val one = 1; val two = 2
-    val minimumPage = 1; val maximumPage = 400
+    val zero = 0
+    val one = 1
+    val two = 2
+    val minimumPage = 1
+    val maximumPage = 400
+
     when {
         leftNumber !in (minimumPage..maximumPage) -> return false
         rightNumber !in (minimumPage..maximumPage) -> return false
@@ -25,6 +29,7 @@ private fun validateTwoPages(leftNumber: Int, rightNumber: Int): Boolean {
 
 private fun calcMaxPages(pages: List<Int>): Int {
     var maxValue = 0
+
     pages.forEach { pageNumber ->
         maxValue = max(maxValue, getAddedDigitSum(pageNumber))
         maxValue = max(maxValue, getMultipliedSum(pageNumber))
@@ -46,6 +51,7 @@ private fun compareNumber(number1: Int, number2: Int): Int {
     val drawNumber = 0
     val pobiWinningNumber = 1
     val crongWinningNumber = 2
+
     when {
         diff > 0 -> return pobiWinningNumber
         diff < 0 -> return crongWinningNumber
