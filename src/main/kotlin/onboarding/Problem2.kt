@@ -39,5 +39,8 @@ fun getRemoveContinuousString(cryptogram: String): String {
 fun solution2(cryptogram: String): String {
     var result = cryptogram
 
+    while(!checkContinuousString(result)) {
+        result = getRemoveContinuousString(result)
+    }
     return result
 }
