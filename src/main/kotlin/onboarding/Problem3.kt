@@ -4,7 +4,7 @@ fun solution3(number: Int): Int {
     return countThreeSixNineInRange(end = number)
 }
 
-fun countThreeSixNineInRange(start: Int = 1, end: Int): Int {
+private fun countThreeSixNineInRange(start: Int = 1, end: Int): Int {
     val initialTotal = 0
 
     return (start..end).fold(initialTotal) { total, number ->
@@ -13,7 +13,7 @@ fun countThreeSixNineInRange(start: Int = 1, end: Int): Int {
     }
 }
 
-fun countThreeSixNineOf(numberString: String): Int {
+private fun countThreeSixNineOf(numberString: String): Int {
     val initialCount = 0
     val numberChars = listOf('3', '6', '9')
 
@@ -22,7 +22,7 @@ fun countThreeSixNineOf(numberString: String): Int {
     }
 }
 
-fun String.countOf(ch: Char): Int =
+private fun String.countOf(ch: Char): Int =
     this.count { _ch ->
         ch == _ch
     }
