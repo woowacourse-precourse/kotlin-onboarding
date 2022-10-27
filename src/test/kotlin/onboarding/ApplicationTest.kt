@@ -66,32 +66,32 @@ class ApplicationTest {
 //        }
 //    }
 
-    @Nested
-    inner class Problem4Test {
-        @Test
-        fun case1() {
-            val word = "I love you"
-            val result = "R olev blf"
-            assertThat(solution4(word)).isEqualTo(result)
-        }
-    }
-
 //    @Nested
-//    inner class Problem5Test {
+//    inner class Problem4Test {
 //        @Test
 //        fun case1() {
-//            val money = 50_237
-//            val result = listOf(1, 0, 0, 0, 0, 2, 0, 3, 7)
-//            assertThat(solution5(money)).isEqualTo(result)
-//        }
-//
-//        @Test
-//        fun case2() {
-//            val money = 15_000
-//            val result = listOf(0, 1, 1, 0, 0, 0, 0, 0, 0)
-//            assertThat(solution5(money)).isEqualTo(result)
+//            val word = "I love you"
+//            val result = "R olev blf"
+//            assertThat(solution4(word)).isEqualTo(result)
 //        }
 //    }
+
+    @Nested
+    inner class Problem5Test {
+        @Test
+        fun case1() {
+            val money = 50_237
+            val result = listOf(1, 0, 0, 0, 0, 2, 0, 3, 7)
+            assertThat(solution5(money)).isEqualTo(result)
+        }
+
+        @Test
+        fun case2() {
+            val money = 15_000
+            val result = listOf(0, 1, 1, 0, 0, 0, 0, 0, 0)
+            assertThat(solution5(money)).isEqualTo(result)
+        }
+    }
 //
 //    @Nested
 //    inner class Problem6Test {
