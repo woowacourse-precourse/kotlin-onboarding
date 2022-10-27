@@ -2,7 +2,7 @@ package onboarding
 
 fun solution4(word: String): String {
     exception4(word)
-    return ""
+    return changeWord(word)
 }
 
 fun exception4(word : String) {
@@ -15,4 +15,14 @@ fun changeChar(char: Char) : Char = when(char) {
     in 'A'..'Z' -> ('A'.toInt() + 'Z'.toInt() - char.toInt()).toChar()
     in 'a'..'z' -> ('a'.toInt() + 'z'.toInt() - char.toInt()).toChar()
     else -> char
+}
+
+fun changeWord(word : String) : String {
+    var result = ""
+
+    result += word.map {
+        changeChar(it)
+    }
+
+    return result
 }
