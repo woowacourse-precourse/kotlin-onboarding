@@ -1,7 +1,7 @@
 package onboarding
 
 fun solution3(number: Int): Int {
-    TODO("프로그램 구현")
+    return startGame(1, number, 0)
 }
 
 fun startGame(start : Int, end: Int, count: Int) : Int {
