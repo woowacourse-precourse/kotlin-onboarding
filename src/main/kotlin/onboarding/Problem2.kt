@@ -15,4 +15,20 @@ import java.util.*
 fun solution2(cryptogram: String): String {
     var dq : Deque<String> = LinkedList()
     var dqTmp : Deque<String> = LinkedList()
+
+    var token = cryptogram.chunked(1)
+    dq.offer(token[0])
+    dqTmp.offer(token[0])
+    for(i in 1 until token.size){
+        val tmp = token[i]
+
+        if(dq.peekLast() == tmp){
+            dq.pollLast()
+        } else if(dqTmp.peekLast() == tmp){
+            continue
+        } else {
+            dq.offer(tmp)
+        }
+        dqTmp.offer(tmp)
+    }
 }
