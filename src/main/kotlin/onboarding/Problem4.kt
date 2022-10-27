@@ -6,6 +6,8 @@ package onboarding
 3. for문을 순회하며 각 알파벳별로 map에서 찾아 변환하고 새로운 문자열 만들기
 */
 
+import java.lang.StringBuilder
+
 fun solution4(word: String): String {
     var hm = HashMap<Char, Char>()
 
@@ -16,5 +18,14 @@ fun solution4(word: String): String {
 
     var token = word.toCharArray()
 
+    var sb = StringBuilder()
+    for(i in token.indices){
+        if((token[i] in 'a'..'z') || (token[i] in 'A'..'Z')){
+            sb.append(hm.get(token[i]))
+        } else {
+            sb.append(token[i])
+        }
+    }
 
+    return sb.toString()
 }
