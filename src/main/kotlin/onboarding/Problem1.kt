@@ -7,44 +7,39 @@ fun solution1(pobi: List<Int>, crong: List<Int>): Int {
     if (checkException(pobi) or checkException(crong))
         return -1
 
-    val pobi_score = calculation(pobi)
-    val crong_score = calculation(crong)
+    val pobiScore = scoreCalculate(pobi)
+    val crongScore = scoreCalculate(crong)
 
-//    println(pobi_score)
-//    println(crong_score)
-//    println()
-
-    if (pobi_score > crong_score)
+    if (pobiScore > crongScore)
         return 1
-    else if (crong_score > pobi_score)
+    if (crongScore > pobiScore)
         return 2
-    else
-        return 0
+
+    return 0
 }
-fun calculation(name: List<Int>): Int {
-    var answer = arrayListOf<Int>()
-    for (index in name.indices) {
+fun scoreCalculate(name: List<Int>): Int {
+    var values = arrayListOf<Int>()
+
+    for (i in name.indices) {
         var plus = 0
         var mul = 1
-        var i = name[index]
+        var page = name[i]
 
-        while (i != 0){
-            plus += index % 10
-            mul *= index % 10
-            i /= 10
+        while (page != 0){
+            plus += page % 10
+            mul *= page % 10
+            page /= 10
         }
-        println(plus)
-        answer.add(plus)
-        answer.add(mul)
-
+        values.add(plus)
+        values.add(mul)
     }
-    return max(answer)
+    return max(values)
 }
 
 fun checkException(name: List<Int>): Boolean {
-    var answer = false
-    if (name[1]!= 1+name[0])
-        answer = true
-    return answer
+    // 바로 다음 페이지인지 확인
+    if (name[1] != (name[0]+1))
+        return true
+    return false
 }
 
