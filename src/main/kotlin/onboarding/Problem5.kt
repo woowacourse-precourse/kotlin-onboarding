@@ -7,7 +7,7 @@ package onboarding
 
 const val MAX_CURRENCY = 50000
 
-fun getCurrencyCountArray(maxCurrency: Int): IntArray{
+fun getCurrencyCountArray(maxCurrency: Int): ArrayList<Int>{
     var currency = maxCurrency
     val arrayList = ArrayList<Int>()
     while (currency>0){
@@ -17,13 +17,12 @@ fun getCurrencyCountArray(maxCurrency: Int): IntArray{
         }else{
             if(currency==10) {
                 currency = 1
-                break
             }else{
                 currency/=2
             }
         }
     }
-    return arrayList.toIntArray()
+    return arrayList
 }
 
 
