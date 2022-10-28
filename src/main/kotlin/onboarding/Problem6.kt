@@ -6,7 +6,10 @@ val letterList = arrayListOf<String>()
 val duplicatedLetterList = mutableSetOf<String>()
 
 fun solution6(forms: List<List<String>>): List<String> {
-    TODO("프로그램 구현")
+    separateNickname(0, forms)
+    splitLetters(0)
+
+    return getResult(0, arrayListOf())
 }
 
 fun separateNickname(index : Int, forms: List<List<String>>) : Map<String, String> {
@@ -53,4 +56,12 @@ fun getEmailList(index : Int, duplicatedLetter : String, email : ArrayList<Strin
         form[nickname]?.let { email.add(it) }
     }
     return getEmailList(index + 1, duplicatedLetter, email)
+}
+
+fun getResult(index : Int, result: ArrayList<String>) : List<String> {
+    if (index == duplicatedLetterList.size) {
+        return result.sorted().toList()
+    }
+    getEmailList(0, duplicatedLetterList.elementAt(0), result)
+    return getResult(index + 1, result)
 }
