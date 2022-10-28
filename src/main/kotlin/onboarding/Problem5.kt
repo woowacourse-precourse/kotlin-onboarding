@@ -15,4 +15,8 @@ fun change(change_money : Int, money: Int) : Int {
     return money / change_money
 }
 
+fun remain_money(change_money: Int, money: Int) : Int {
+    return money % change_money
+}
+
 
