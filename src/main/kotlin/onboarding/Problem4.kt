@@ -42,16 +42,16 @@ private fun createReversedUpperAlphaMap(): Map<Char, Char> {
 }
 
 private fun createReversedLowerAlphaMap(): Map<Char, Char> {
-    val reversedUpperAlphaMap = mutableMapOf<Char, Char>()
-    val upperA = 97
-    val upperZ = 122
+    val reversedLowerAlphaMap = mutableMapOf<Char, Char>()
+    val lowerA = 97
+    val lowerZ = 122
     val alphaStart = 0
     val alphaEnd = 13
 
     for (i in alphaStart until alphaEnd) {
-        reversedUpperAlphaMap[Char(upperA + i)] = Char(upperZ - i)
-        reversedUpperAlphaMap[Char(upperZ - i)] = Char(upperA + i)
+        reversedLowerAlphaMap[Char(lowerA + i)] = Char(lowerZ - i)
+        reversedLowerAlphaMap[Char(lowerZ - i)] = Char(lowerA + i)
     }
 
-    return reversedUpperAlphaMap
+    return reversedLowerAlphaMap
 }
