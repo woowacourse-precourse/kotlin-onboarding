@@ -1,11 +1,11 @@
 package onboarding
 
 fun solution6(forms: List<List<String>>): List<String> {
-    val list = forms.toMutableList()
     val set = mutableSetOf<String>()
 
     for (listIndex in forms.indices) {
         val name = forms[listIndex][1]
+
         for (idx in 0..name.length - 2) {
             val str = name.substring(idx, idx + 2)
 
