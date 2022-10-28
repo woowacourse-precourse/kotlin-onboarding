@@ -30,7 +30,7 @@
 * 연속하는 중복 문자를 제거하는 String Extension 메서드를 구현한다.
   + Stack 자료구조를 사용하여, 순차적으로 주어진 문자열의 character를 push한다.
   + Stack의 top과 push할 character가 같다면 pop한다.
-* Stack의 상태를 지니고 있는 Stack가 Status object를 구현한다.
+* Stack의 상태를 지니고 있는 Stack가 필드(isContinuous, prevChar)를 선언한다.
   + Stack의 상태(isContinuous, prevChar)를 변경하는 메서드를 구현한다
 * Stack의 top과 매개변수로 주어지는 character가 같으면 pop하고, 다른 경우 push하는 Stack\<Char\> Extension 메서드를 구현한다.
 * Stack\<Char\> 자료구조를 String 형태로 반환하는 Stack\<Char\> Extension 메서드를 구현한다.
