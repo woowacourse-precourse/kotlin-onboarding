@@ -2,21 +2,26 @@ package onboarding
 
 import java.util.*
 import java.util.regex.Pattern
+import kotlin.collections.HashMap
 
 
 fun solution6(forms: List<List<String>>): List<String> {
-    val ex = ArrayList<String>()
-    val usedCharList = ArrayList<Char>()
+    val nicknameSequence = HashMap<Char, MutableSet<Char>>()
     forms.forEach { eachForm ->
-        eachForm[1].forEach { eachChar ->
-            usedCharList.add(eachChar)
+        var beforeChar = ' '
+        eachForm[1].forEach { curChar ->
+            if (beforeChar == ' ')
+                beforeChar = curChar
+            else {
+                if (nicknameSequence[beforeChar] == null)
+                    nicknameSequence[beforeChar] = mutableSetOf()
+
+                nicknameSequence[beforeChar]!!.add(curChar)
+                beforeChar=curChar
+            }
         }
     }
 
-    forms.forEach { eachForm ->
-        eachForm[1].forEachIndexed { index, eachChar ->
-            usedCharList.find{it==eachChar}
-        }
-    }
-    return ex.toList()
+
+    return listOf(" ")
 }
