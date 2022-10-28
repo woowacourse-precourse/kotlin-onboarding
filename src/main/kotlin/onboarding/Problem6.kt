@@ -8,6 +8,9 @@ package onboarding
 */
 fun solution6(forms: List<List<String>>): List<String> {
     val hm = makeDictionary(forms)
+
+    val visit = check(forms, hm)
+
 }
 
 private fun makeDictionary(forms: List<List<String>>): HashMap<String, Int> {
@@ -28,4 +31,19 @@ private fun makeDictionary(forms: List<List<String>>): HashMap<String, Int> {
     }
 
     return hm
+}
+
+private fun check(forms: List<List<String>>, hm: HashMap<String, Int>): BooleanArray {
+    val visit = BooleanArray(forms.size)
+
+    for (i in forms.indices) {
+        val name = forms[i][1]
+        for (key in hm.keys) {
+            if (hm[key]!! >= 2 && name.contains(key)) {
+                visit[i] = true
+                break
+            }
+        }
+    }
+    return visit
 }
