@@ -29,6 +29,12 @@ fun determineScore(page: List<Int>): Int {
     )
 }
 
+fun compareScore(pobiScore: Int, crongScore: Int): Int {
+    return if (pobiScore > crongScore) 1
+    else if (pobiScore < crongScore) 2
+    else 0
+}
+
 fun solution1(pobi: List<Int>, crong: List<Int>): Int {
 
 }
