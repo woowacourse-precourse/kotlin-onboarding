@@ -16,6 +16,10 @@ fun solution1(pobi: List<Int>, crong: List<Int>): Int {
         return -1
     }
 
+    if ((pobi.size != 2) or (crong.size != 2)){
+        return -1
+    }
+
     var pobiLeft = pobi[0]
     var pobiRight = pobi[1]
     var crongLeft = crong[0]
