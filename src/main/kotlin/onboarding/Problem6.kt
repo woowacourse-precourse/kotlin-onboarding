@@ -33,3 +33,33 @@ fun exception_email(email : String) {
         throw IllegalArgumentException("이메일의 도메인은 @email.com이어야 합니다.")
     }
 }
+
+fun find_subset(nickName: String) : Set<String> {
+
+    val result = mutableSetOf<String>()
+
+    for(i in 0 until nickName.length) {
+        add_subset(nickName, i, result)
+    }
+    return result
+}
+
+fun add_subset(nickName: String, num : Int, set: MutableSet<String>) {
+    for(i in 0 until nickName.length - num) {
+        set.add(nickName.substring(i, i + num + 1))
+    }
+}
+
+fun find_intersect_str(str1 : String, str2 : String) : Set<String> {
+
+    val result = mutableSetOf<String>()
+    val set1 = find_subset(str1)
+    val set2 = find_subset(str2)
+
+    for(element in set1) {
+        if(set2.contains(element)) {
+            result.add(element)
+        }
+    }
+    return result
+}
