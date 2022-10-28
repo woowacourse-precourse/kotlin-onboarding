@@ -32,6 +32,12 @@ fun solution2(cryptogram: String): String {
     }
 
 
-    
+    for(i in 0 until st.size){
+        answer = st.pop() + answer
+    }
+
+    return answer
+
+
 
 }
