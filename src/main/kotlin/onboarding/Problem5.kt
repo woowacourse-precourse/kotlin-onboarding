@@ -1,7 +1,8 @@
 package onboarding
 
 fun solution5(money: Int): List<Int> {
-    TODO("프로그램 구현")
+    exception5(money)
+    return money_list(money)
 }
 
 fun exception5(money: Int) {
@@ -17,6 +18,19 @@ fun change(change_money : Int, money: Int) : Int {
 
 fun remain_money(change_money: Int, money: Int) : Int {
     return money % change_money
+}
+
+fun money_list(money: Int) : List<Int> {
+    var money = money
+    val moneyList = listOf(50000, 10000, 5000, 1000, 500, 100, 50, 10, 1)
+    var result = ArrayList<Int>()
+
+    for(i in moneyList) {
+        result.add(change(i, money))
+        money = remain_money(i, money)
+    }
+
+    return result
 }
 
 
