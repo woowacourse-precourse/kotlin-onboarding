@@ -15,8 +15,27 @@ fun solution7(
     friends: List<List<String>>,
     visitors: List<String>
 ): List<String> {
-    var idx = 0
+
+    mappingPersonToNum(friends, visitors)
+
+    initCollections()
+
+    setFriendsRelations(friends)
+
+    doAcquaintanceCase(user)
+
+    doVisitorsCase(visitors)
+
+    return getResult()
+}
+
+private fun mappingPersonToNum(
+    friends: List<List<String>>,
+    visitors: List<String>
+) {
     map = HashMap()
+    var idx = 0
+
     friends.forEach {
         if (!map.containsKey(it.first())) {
             map[it.first()] = idx++
@@ -25,32 +44,47 @@ fun solution7(
             map[it.last()] = idx++
         }
     }
+
     visitors.forEach {
         if (!map.containsKey(it)) {
             map[it] = idx++
         }
     }
+}
+
+private fun initCollections() {
     score = IntArray(map.size) { 0 }
     adj = Array(map.size) { ArrayList() }
     visited = BooleanArray(map.size + 1)
+
+    candidate = mutableSetOf()
+    bannedList = mutableSetOf()
+}
+
+private fun setFriendsRelations(friends: List<List<String>>) {
     friends.forEach {
         adj[map[it.first()]!!].add(map[it.last()]!!)
         adj[map[it.last()]!!].add(map[it.first()]!!)
     }
+}
 
-    candidate = mutableSetOf()
-    bannedList = mutableSetOf()
+private fun doAcquaintanceCase(user: String) {
     bannedList.add(user)
+    visited[map[user]!!] = true
     dfs(map[user]!!, 0)
+}
 
+private fun doVisitorsCase(visitors: List<String>) {
     visitors.forEach {
         score[map[it]!!]++
     }
+}
+
+private fun getResult(): List<String> {
     val scoreDetail = ArrayList<Pair<String, Int>>()
     score.forEachIndexed { index, i ->
         scoreDetail.add(Pair(find(index), i))
     }
-
     val res = scoreDetail.filter { !bannedList.contains(it.first) }
     val result = mutableListOf<String>()
     res.forEach {
@@ -60,7 +94,6 @@ fun solution7(
 }
 
 private fun dfs(num: Int, depth: Int) {
-    visited[num] = true
     if (depth == 1) {
         bannedList.add(find(num))
     }
@@ -71,6 +104,7 @@ private fun dfs(num: Int, depth: Int) {
     }
     for (child in adj[num]) {
         if (!visited[child]) {
+            visited[child] = true
             dfs(child, depth + 1)
             visited[child] = false
         }
