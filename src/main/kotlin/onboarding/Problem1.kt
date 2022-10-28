@@ -34,6 +34,13 @@ fun makeBigNumber(pageNumber: Int) : Int {
     return max(pageSum, pageMultiply)
 }
 
+/**
+ * Returns the score which can be obtained by [page]
+ */
+fun calculateScore(page: List<Int>) : Int {
+    return max(makeBigNumber(page[0]), makeBigNumber(page[1]))
+}
+
 /*----------------------------*/
 
 
