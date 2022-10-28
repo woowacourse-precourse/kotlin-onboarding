@@ -4,6 +4,10 @@ fun solution4(word: String): String {
     TODO("프로그램 구현")
 }
 
+private fun Char.isAlpha(): Boolean {
+    return this in 'A' .. 'Z' || this in 'a' .. 'z'
+}
+
 private fun createReversedAlphaMap(): Map<Char, Char> {
     return createReversedLowerAlphaMap() + createReversedUpperAlphaMap()
 }
