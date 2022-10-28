@@ -8,10 +8,12 @@ fun solution1(pobi: List<Int>, crong: List<Int>): Int {
 
     val Exception = 0 .. 400
 
-    if (pobi[0] in Exception && crong[0] in Exception && pobi[1] in Exception && crong[1] in Exception)
-        if (pobi[0] +1 == pobi[1] && pobi[0] %2 == 1 && pobi[1] %2 == 0)
-            if (crong[0] +1 == crong[1] && crong[0] %2 == 1 && crong[1] %2 == 0)
-                return -1
+    if (pobi[0].toInt() in Exception && crong[0].toInt() in Exception && pobi[1].toInt() in Exception && crong[1].toInt() in Exception)
+        return -1
+    else if (pobi[0].toInt() +1 == pobi[1].toInt() && pobi[0].toInt() %2 == 1 && pobi[1].toInt() %2 == 0)
+        return -1
+    else if (crong[0].toInt() +1 == crong[1].toInt() && crong[0].toInt() %2 == 1 && crong[1].toInt() %2 == 0)
+        return -1
 
     val Pobi_Result = Return_max(pobi)
     val Crong_Result = Return_max(crong)
@@ -24,7 +26,7 @@ fun solution1(pobi: List<Int>, crong: List<Int>): Int {
 
 }
 
-fun Return_max(list: List<Int>): Int{
+private fun Return_max(list: List<Int>): Int{
     var Left_page = list[0]
     var Right_page = list[1]
 
@@ -37,14 +39,14 @@ fun Return_max(list: List<Int>): Int{
     while (Left_page != 0){
         Left_plus += Left_page %10
         Left_mul *= Left_page %10
-        Left_page /10
+        Left_page /=10
     }
     var Left_max = max(Left_plus, Left_mul)
 
     while (Right_plus != 0){
         Right_plus += Right_page %10
         Right_mul *= Right_page %10
-        Right_plus /10
+        Right_page /=10
     }
     var Right_max = max(Right_plus, Right_mul)
 

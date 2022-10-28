@@ -8,7 +8,6 @@ fun solution7(
     friends: List<List<String>>,
     visitors: List<String>
 ): List<String> {
-    TODO("프로그램 구현")
     val Result : List<String>
     val R_Map = mutableMapOf<String, Int>()
     val F_Map = mutableMapOf<String, MutableList<String>>()

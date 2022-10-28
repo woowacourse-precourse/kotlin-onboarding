@@ -1,7 +1,6 @@
 package onboarding
 
 fun solution4(word: String): String {
-    TODO("프로그램 구현")
     var Result = ""
 
     var Upper = 65+90
