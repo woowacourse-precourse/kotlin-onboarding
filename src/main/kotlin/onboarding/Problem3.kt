@@ -5,8 +5,11 @@ fun game(number: Int): Int{
     var count : Int = 0
     for(i in 0..number){
         current = i
-        if(current % 10 == 3 || current % 10 == 6 || current % 10 == 9){
-            count += 1
+        while(current != 0){
+            if(current % 10 == 3 || current % 10 == 6 || current % 10 == 9){
+                count += 1
+            }
+            current /= 10
         }
     }
     return count
