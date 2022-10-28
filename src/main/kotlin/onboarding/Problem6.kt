@@ -4,7 +4,10 @@ fun solution6(forms: List<List<String>>): List<String> {
 
     val affixes = Array(forms.size){ hashSetOf<String>() }
     val affixesList = findAffixes(forms, affixes)
-    
+    val answer = findNickname(forms, affixesList)
+
+
+
     return listOf()
 }
 
@@ -20,4 +23,21 @@ fun findAffixes(forms: List<List<String>>, affixes : Array<HashSet<String>>) : A
 
     return affixes
 
+}
+
+// 신청받은 닉네임과 중복되는 닉네임을 찾는 기능
+fun findNickname(forms: List<List<String>>, affixesList : Array<HashSet<String>>) : MutableList<String>{
+    val nicknameList  = mutableListOf<String>()
+
+    for ((i, form) in forms.withIndex()){
+        for ( j in affixesList.indices){
+            if (i == j) continue
+            if (affixesList[i].any{ affixesList[j].contains(it)}){
+                println(form)
+                nicknameList.add(form[0])
+                break
+            }
+        }
+    }
+    return nicknameList
 }
