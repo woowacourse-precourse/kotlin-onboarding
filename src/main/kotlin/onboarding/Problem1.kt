@@ -7,6 +7,9 @@ fun solution1(pobi: List<Int>, crong: List<Int>): Int {
   val pobiRightAdd = addEachPageNum(pobiRightPage)
   val pobiLeftMultiply = multiplyEachPageNum(pobiLeftPage)
   val pobiRightMultiply = multiplyEachPageNum(pobiRightPage)
+  val pobiLeftMax = getMaxNum(pobiLeftAdd, pobiLeftMultiply)
+  val pobiRightMax = getMaxNum(pobiRightAdd, pobiRightMultiply)
+  val pobiMax = getMaxNum(pobiLeftMax, pobiRightMax)
 
   val crongLeftPage = crong[0]
   val crongRightPage = crong[1]
@@ -14,6 +17,9 @@ fun solution1(pobi: List<Int>, crong: List<Int>): Int {
   val crongRightAdd = addEachPageNum(crongRightPage)
   val crongLeftMultiply = multiplyEachPageNum(crongLeftPage)
   val crongRightMultiply = multiplyEachPageNum(crongRightPage)
+  val crongLeftMax = getMaxNum(crongLeftAdd, crongLeftMultiply)
+  val crongRightMax = getMaxNum(crongRightAdd, crongRightMultiply)
+  val crongMax = getMaxNum(crongLeftMax, crongRightMax)
 
   return 0
 }
@@ -38,4 +44,8 @@ fun multiplyEachPageNum(page: Int): Int {
     page /= 10
   }
   return pageMultiply
+}
+
+fun getMaxNum(num1: Int, num2: Int): Int {
+  return if (num1 > num2) num1 else num2
 }
