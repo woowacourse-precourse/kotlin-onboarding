@@ -13,7 +13,10 @@ import java.lang.StringBuilder
  */
 
 fun solution4(word: String): String {
-    TODO("프로그램 구현")
+    // 청개구리 사전 초기화
+    val alphabetDictionary = initDictionary()
+    // 청개구리 사전으로 반대로 변환
+    return convertWord(word, alphabetDictionary)
 }
 
 private fun initDictionary(): HashMap<Char, Char> {
