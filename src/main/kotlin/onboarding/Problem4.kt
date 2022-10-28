@@ -19,7 +19,7 @@ private fun Char.reversedAlpha(): Char {
 }
 
 private fun Char.isAlpha(): Boolean {
-    return this in 'A' .. 'Z' || this in 'a' .. 'z'
+    return this in 'A'..'Z' || this in 'a'..'z'
 }
 
 private fun createReversedAlphaMap(): Map<Char, Char> {
