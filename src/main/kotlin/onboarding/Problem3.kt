@@ -1,7 +1,13 @@
 package onboarding
 
 fun solution3(number: Int): Int {
-    TODO("프로그램 구현")
+    var answer = 0
+    for (i in 1..number) {
+        if (isContained(i)) {
+            answer += count(i)
+        }
+    }
+    return answer
 }
 
 fun isContained(x: Int): Boolean {
