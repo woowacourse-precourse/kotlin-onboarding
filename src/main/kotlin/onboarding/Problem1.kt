@@ -36,5 +36,11 @@ fun compareScore(pobiScore: Int, crongScore: Int): Int {
 }
 
 fun solution1(pobi: List<Int>, crong: List<Int>): Int {
-
+    return try {
+        val pobiScore = determineScore(pobi)
+        val crongScore = determineScore(crong)
+        compareScore(pobiScore, crongScore)
+    } catch (e: Exception) {
+        -1
+    }
 }
