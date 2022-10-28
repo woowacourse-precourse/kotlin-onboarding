@@ -30,5 +30,14 @@ fun solution6(forms: List<List<String>>): List<String> {
 
     val row = setUserNickname(forms)
 
+    for(i in forms.indices) {
+        if(checkDuplicateString(row, forms[i][1])) {
+            result.add(forms[i][0])
+        }
+    }
+    result = result.distinct().toMutableList()
+
+    result.sort()
+
     return result.toList()
 }
