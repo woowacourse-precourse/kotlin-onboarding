@@ -13,3 +13,15 @@ package onboarding
 fun solution4(word: String): String {
     TODO("프로그램 구현")
 }
+
+private fun initDictionary(): HashMap<Char, Char> {
+    val alphabetDictionary = hashMapOf<Char, Char>().apply {
+        for (i in 0 until 26) {
+            // 대문자에 대한 청개구리 사전
+            put('A' + i, 'Z' - i)
+            // 소문자에 대한 청개구리 사전
+            put('a' + i, 'z' - i)
+        }
+    }
+    return alphabetDictionary
+}
