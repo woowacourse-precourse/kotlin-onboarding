@@ -21,3 +21,9 @@
 | --- | --- |
 | "browoanoommnaon" | "brown" |
 | "zyelleyz" | "" |
+
+### 기능 구현 목록
+1. 리스트가 비어있지않고 마지막 문자와 cryptogram[i] 같으면 pop 한다.
+2. 리스트가 비어있거나 마지막 문자와 cryptogram[i] 같지않으면 push 한다.
+3. mutableList를 answer에 저장 joinToString으로 출력값 조건에 맞게 바꾼다.
+4. 3개 이상 중복일때 제거
