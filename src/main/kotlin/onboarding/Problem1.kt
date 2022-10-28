@@ -16,7 +16,10 @@ fun solution1(pobi: List<Int>, crong: List<Int>): Int {
 //예외 입력값 검토
 fun checkException(list : List<Int>): Boolean {
     //왼쪽이 홀수, //오른쪽이 왼쪽 바로 다음 페이지//왼쪽은 3 이상 397이하
-    return when((list[0]%2==1)&&(list[1]==list[0]+1)&&(list[0]>=3)&&(list[0]<=397)){
+    return when((list[0]%2==1)&&
+            (list[1]==list[0]+1)&&
+            (list[0]>=3)&&
+            (list[0]<=397)){
         true -> true
         false -> false
     }

@@ -5,11 +5,11 @@ fun solution7(
     friends: List<List<String>>,
     visitors: List<String>
 ): List<String> {
-    var Myfriend = makeMyFriend(user,friends)
+    val Myfriend = makeMyFriend(user,friends)
     addFriend(user,friends,Myfriend)
     addVisitor(visitors,Myfriend)
 
-    var result = sortAsc(ScoreCalculate.Scores)
+    val result = sortAsc(ScoreCalculate.Scores)
 
     return makeRank(result)
 }
@@ -25,7 +25,7 @@ object ScoreCalculate{
     }
 
     fun addNew(name :String, score : Int){
-        var new = Score(name, score)
+        val new = Score(name, score)
         Scores.add(new)
     }
 
@@ -33,7 +33,7 @@ object ScoreCalculate{
         for(i in Scores){
             if(i.name==name){
                 i.score+=score
-                break;
+                break
             }
         }
     }
@@ -42,7 +42,7 @@ object ScoreCalculate{
 data class Score(val name:String, var score:Int)
 
 fun makeMyFriend(user : String ,friends : List<List<String>>): List<String>{
-    var Myfriend : MutableList<String> = mutableListOf()
+    val Myfriend : MutableList<String> = mutableListOf()
     for(relation in friends){
         if(relation.contains(user)){
             Myfriend.add(when(relation[0]==user){
@@ -69,11 +69,11 @@ fun addFriend( user: String ,
 }
 
 fun addVisitor(visitors : List<String>, Myfriend: List<String>){
-    var visitors  = visitors.toMutableList()
+    val visitorList  = visitors.toMutableList()
     for(i in Myfriend){
-        visitors.remove(i)
+        visitorList.remove(i)
     }
-    for(i in visitors){
+    for(i in visitorList){
         ScoreCalculate.Calculate(i,1)
     }
 }
@@ -89,8 +89,8 @@ fun sortAsc(scores : MutableList<Score>): MutableList<Score>{
 }
 
 fun makeRank(scores : MutableList<Score>) : List<String>{
-    var rank = mutableListOf<String>()
-    var count = 0;
+    val rank = mutableListOf<String>()
+    var count = 0
     for(i in scores){
         rank.add(i.name)
         count++
