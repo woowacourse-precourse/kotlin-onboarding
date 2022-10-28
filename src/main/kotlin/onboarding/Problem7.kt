@@ -1,6 +1,18 @@
 package onboarding
 
-fun solution7(
+fun solution7(user: String, friends: List<List<String>>, visitors: List<String>): List<String> {
+
+    val score: HashMap<String, Int> = hashMapOf() // key: 아이디, value: 추천 점수 의 형태로 HashMap 에 저장
+    val usersFriend: List<String> = findFriend(user, friends)  // user 의 친구 저장
+
+    countScore(user, friends, visitors, usersFriend, score)
+
+    val sortedScore = sortScore(score).keys.toMutableList()
+    val result = if (sortedScore.size > 5) sortedScore.subList(0, 5) else sortedScore  //상위 5명만 출력
+
+    return result
+}
+
 //추천 점수 계산
 fun countScore( user: String, friends: List<List<String>>, visitors: List<String>, usersFriend: List<String>, score: HashMap<String, Int>) {
     countFriendScore(user, usersFriend, friends, score)
