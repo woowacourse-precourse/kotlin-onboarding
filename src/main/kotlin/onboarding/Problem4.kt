@@ -11,6 +11,11 @@ fun Char.reversed(): Char {
     else this
 }
 
-fun solution4(word: String): String {
-    TODO("프로그램 구현")
+fun String.eachCharReversed(): String {
+    return this.map {
+        it.reversed()
+    }.joinToString("")
 }
+
+
+fun solution4(word: String): String = word.eachCharReversed()
