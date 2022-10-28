@@ -3,8 +3,8 @@ package onboarding
 import problem1.*
 
 fun solution1(pobi: List<Int>, crong: List<Int>): Int {
-    val pobiRangeVerifier = RangeVerifier(pobi[0])
-    val crongRangeVerifier = RangeVerifier(crong[0])
+    val pobiRangeVerifier = RangeVerifier(pobi[0], 1, 400)
+    val crongRangeVerifier = RangeVerifier(crong[0], 1, 400)
     if(!pobiRangeVerifier.verify() || !crongRangeVerifier.verify()) {
         return Exception().printError()
     }
