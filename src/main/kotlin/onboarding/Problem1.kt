@@ -9,8 +9,8 @@ fun solution1(pobi: List<Int>, crong: List<Int>): Int {
     if (isException(pobi, crong))
         return -1
 
-    pobiNum = max(max(getSum(pobi[0]), getMultiply(pobi[0])), max(getSum(pobi[1]), getMultiply(pobi[1])))
-    crongNum = max(max(getSum(crong[0]), getMultiply(crong[0])), max(getSum(crong[1]), getMultiply(crong[1])))
+    pobiNum = getMax(pobi)
+    crongNum = getMax(crong)
 
     return answer(pobiNum, crongNum)
 }
@@ -27,6 +27,15 @@ fun isException(pobi: List<Int>, crong:List<Int>): Boolean{
     if(crong[0]%2 == 0 || pobi[1]%2 == 1)
         return true
     return false
+}
+
+fun getMax(pages: List<Int>): Int{
+    var page0:Int
+    var page1:Int
+
+    page0 = max(getSum(pages[0]), getMultiply(pages[0]))
+    page1 = max(getSum(pages[1]), getMultiply(pages[1]))
+    return max(page0, page1)
 }
 
 fun getSum(x:Int) : Int {
