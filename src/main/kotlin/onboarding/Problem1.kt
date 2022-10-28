@@ -4,7 +4,8 @@ package onboarding
 fun solution1(pobi: List<Int>, crong: List<Int>): Int {
 
     // TODO: 예외 상황 조건 만들기
-    if (pobi[1] - pobi[0] != 1 && crong[1] - crong[0] != 1) return -1
+    val invalidPage = pobi[1] - pobi[0] > 1 || crong[1]- crong[0] > 1
+    if (invalidPage) return -1
 
 
 
