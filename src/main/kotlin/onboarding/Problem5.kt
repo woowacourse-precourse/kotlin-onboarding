@@ -1,6 +1,6 @@
 package onboarding
 
-val currency = arrayListOf<Int>(50000, 10000, 5000, 1000, 500, 100, 10, 1)
+val currency = arrayListOf<Int>(50000, 10000, 5000, 1000, 500, 100, 50, 10, 1)
 
 fun getCountMoney(idx: Int, money: Int):Int {
     return money / currency[idx]
@@ -19,5 +19,5 @@ fun solution5(money: Int): List<Int> {
         now_money = getNowMoney(i, now_money)
     }
 
-    return result
+    return result.toList()
 }
