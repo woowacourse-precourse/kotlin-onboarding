@@ -7,10 +7,13 @@ package onboarding
 3. 조건에 맞는 것들을 answer에 담아준 후 sort한다.
 */
 fun solution6(forms: List<List<String>>): List<String> {
+    // 1. 이름에서 2글자로 조합할 수 있는 연속된 문자열들을 사전으로 만든다
     val hm = makeDictionary(forms)
 
+    // 2. 등장횟수가 2 이상인 것들만 사전에서 가져와 forms에 있는 이름들과 비교한다
     val visit = check(forms, hm)
 
+    // 3. 조건에 맞는 것들을 answer에 담아준 후 sort한다.
     val answer = ArrayList<String>()
     for (i in forms.indices) {
         if (visit[i]) {
@@ -23,6 +26,7 @@ fun solution6(forms: List<List<String>>): List<String> {
     return answer.toList()
 }
 
+// 1. 이름에서 2글자로 조합할 수 있는 연속된 문자열들을 사전으로 만든다
 private fun makeDictionary(forms: List<List<String>>): HashMap<String, Int> {
     val hm = HashMap<String, Int>()
 
@@ -43,6 +47,7 @@ private fun makeDictionary(forms: List<List<String>>): HashMap<String, Int> {
     return hm
 }
 
+// 2. 등장횟수가 2 이상인 것들만 사전에서 가져와 forms에 있는 이름들과 비교한다
 private fun check(forms: List<List<String>>, hm: HashMap<String, Int>): BooleanArray {
     val visit = BooleanArray(forms.size)
 
