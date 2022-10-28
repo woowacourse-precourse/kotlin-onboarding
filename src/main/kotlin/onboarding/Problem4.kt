@@ -2,10 +2,7 @@ package onboarding
 
 fun solution4(word: String): String {
 
-    word.forEach {
-        changeChar(it)
-    }
-    return ""
+    return changeString(word)
 }
 fun changeChar(char: Char) : Char = when(char) {
     in 'A'..'Z' -> ('A'.code + 'Z'.code - char.code).toChar()
@@ -13,3 +10,10 @@ fun changeChar(char: Char) : Char = when(char) {
     else -> char
 }
 
+fun changeString(str : String) : String {
+    var word = ""
+    str.forEach {
+        word += changeChar(it)
+    }
+    return word
+}
