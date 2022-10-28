@@ -21,6 +21,8 @@ fun solution7(
     var score: MutableMap<String, Int> = calcFreindPoint(hm, user)
 
     calcVisitorsPoint(visitors, hm, user, score)
+
+    return makeResult(score)
 }
 
 private fun makeRelations(friends: List<List<String>>): HashMap<String, ArrayList<String>> {
@@ -59,4 +61,21 @@ private fun calcVisitorsPoint(visitors: List<String>, hm: HashMap<String, ArrayL
             score[visitors[i]] = score.getOrDefault(visitors[i], 0) + 1
         }
     }
+}
+
+private fun makeResult(score: MutableMap<String, Int>): List<String> {
+    var score1 = score
+    score1 = score1.toList().sortedByDescending { it.second }.toMap() as MutableMap
+
+    val res = ArrayList<String>()
+    var idx = 0
+    for (key in score1.keys) {
+        if(idx == 5){
+            break
+        }
+        res.add(key)
+        idx++
+    }
+
+    return res.toList()
 }
