@@ -94,8 +94,6 @@ fun solution1(pobi: List<Int>, crong: List<Int>): Int {
     }
 
 
-
-
     if(pobi_max > crong_max){
         return pobi_win
     }
