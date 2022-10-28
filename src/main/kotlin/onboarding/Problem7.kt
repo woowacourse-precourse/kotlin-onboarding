@@ -31,6 +31,7 @@ fun solution7(
         hashMapPoint[visitor] = hashMapPoint.getOrDefault(visitor, 0) + 1
     }
 
-    return listOf()
+    // 사용자를 추천점수로 정렬 후 최대 5개의 이름을 출력해주는 기능
+    return hashMapPoint.toList().sortedByDescending { it.second }.map{ it.first }.take(5).toList()
 
 }
