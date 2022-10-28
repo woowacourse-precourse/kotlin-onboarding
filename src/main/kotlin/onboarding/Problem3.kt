@@ -11,5 +11,9 @@ fun count369(num: Int): Int {
 }
 
 fun solution3(number: Int): Int {
-    TODO("프로그램 구현")
+    var totalCnt = 0
+    for (i in 1 until number + 1) {
+        totalCnt += count369(i)
+    }
+    return totalCnt
 }
