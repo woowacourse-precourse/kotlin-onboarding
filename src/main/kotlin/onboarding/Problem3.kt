@@ -7,3 +7,7 @@ fun solution3(number: Int): Int {
 fun isContained(x: Int): Boolean {
     return x.toString().contains(Regex("[369]"))
 }
+
+fun count(x: Int): Int {
+    return Regex("[369]").findAll(x.toString()).count()
+}
