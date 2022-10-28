@@ -3,9 +3,6 @@ package onboarding
 
 fun solution1(pobi: List<Int>, crong: List<Int>): Int {
 
-    // TODO: 예외 상황 조건 만들기
-    val invalidPage = pobi[1] - pobi[0] > 1 || crong[1]- crong[0] > 1
-    if (invalidPage) return -1
 
 
 
@@ -30,10 +27,12 @@ fun solution1(pobi: List<Int>, crong: List<Int>): Int {
     val maxCrongPagePoint = ascendCrongPagePointList[3]
 
 
+    val invalidPage = pobi[1] - pobi[0] > 1 || crong[1]- crong[0] > 1
+    if (invalidPage) return -1
+
     if (maxPobiPagePoint == maxCrongPagePoint) return 0
     if (maxPobiPagePoint > maxCrongPagePoint) return 1
     if (maxPobiPagePoint < maxCrongPagePoint) return 2
-
 
     return -1
 }
