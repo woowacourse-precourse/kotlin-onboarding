@@ -5,9 +5,17 @@ import java.lang.Math.*
 fun solution1(pobi: List<Int>, crong: List<Int>): Int {
 
     /**
+     * 기능목록
+     * 1. 예외처리
+     * 2. pobi, crong List 내 값들을 지역 변수에 저장
+     * 3. pobi 좌우, crong 좌우 숫자 연산 후 비교
+     * 4. pobi, crong 비교 후 결과 리턴
+     * */
+
+    /**
      * 예외처리
      * */
-    if (pobi.get(0) != pobi.get(1) - 1){
+    if (pobi[0] != pobi[1] - 1){
         return -1
     }
     if (crong.get(0) != crong.get(1) - 1){
@@ -16,7 +24,7 @@ fun solution1(pobi: List<Int>, crong: List<Int>): Int {
     if (pobi.get(0) >= 400){
         return -1
     }
-    if (crong.get(0) >= 400){
+    if (crong.get(0) >= 400) {
         return -1
     }
 
