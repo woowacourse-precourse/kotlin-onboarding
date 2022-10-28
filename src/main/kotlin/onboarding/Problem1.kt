@@ -24,12 +24,12 @@ fun solution1(pobi: List<Int>, crong: List<Int>): Int {
     }
 
     for (item in pobi) {
-        var num = getMax(item)
+        val num = getMax(item)
         pobiMax = if(num > pobiMax) num else pobiMax
     }
 
     for (item in crong) {
-        var num = getMax(item)
+        val num = getMax(item)
         crongMax = if(num > crongMax) num else crongMax
     }
 
