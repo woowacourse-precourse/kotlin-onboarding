@@ -3,6 +3,7 @@ package onboarding
 import problem1.RangeVerifier
 import problem2.AlphabetVerifier
 import problem2.LowerCaseVerifier
+import problem2.StringParser
 import java.lang.RuntimeException
 
 fun solution2(cryptogram: String): String {
@@ -22,6 +23,9 @@ fun solution2(cryptogram: String): String {
     if(!lowerCaseVerifier.verify()) {
         throw RuntimeException("Input is not lowercase only")
     }
+
+    var str = cryptogram
+    val stringParser = StringParser(str)
 
     return ""
 }
