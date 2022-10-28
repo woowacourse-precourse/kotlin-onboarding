@@ -6,6 +6,10 @@ fun getCountMoney(idx: Int, money: Int):Int {
     return money / currency[idx]
 }
 
+fun getNowMoney(idx: Int, money: Int):Int {
+    return money - (getCountMoney(idx, money) * currency[idx])
+}
+
 fun solution5(money: Int): List<Int> {
     var result = mutableListOf<Int>()
 
