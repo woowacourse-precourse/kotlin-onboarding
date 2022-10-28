@@ -42,3 +42,15 @@ fun getDulicatedLetters(index : Int, nickName : String) : Set<String> {
     letterList.add(letter)
     return getDulicatedLetters(index + 1, nickName)
 }
+
+fun getEmailList(index : Int, duplicatedLetter : String, email : ArrayList<String>) {
+    if (index == nicknameList.size) {
+        return
+    }
+    val nickname = nicknameList[index]
+
+    if (nickname.contains(duplicatedLetter)) {
+        form[nickname]?.let { email.add(it) }
+    }
+    return getEmailList(index + 1, duplicatedLetter, email)
+}
