@@ -6,25 +6,12 @@ fun solution7(
     visitors: List<String>
 ): List<String> {
     var Myfriend = makeMyFriend(user,friends)
-    for(i in friends){
-        if(!i.contains(user) &&
-            (Myfriend.any{ it == i[0] } xor Myfriend.any{it == i[1]} )){ //둘 다 친구인 경우는 제외
-            when(Myfriend.any{ it == i[0] }){
-                true -> ScoreCalculate.Calculate(i[1],10)
-                false ->ScoreCalculate.Calculate(i[0],10)
-            }
-        }
-    }
-    var visitors  = visitors.toMutableList()
-    for(i in Myfriend){
-        visitors.remove(i)
-    }
-    for(i in visitors){
-        ScoreCalculate.Calculate(i,1)
-    }
-    ScoreCalculate.Scores = sortAsc(ScoreCalculate.Scores)
+    addFriend(user,friends,Myfriend)
+    addVisitor(visitors,Myfriend)
 
-    return makeRank(ScoreCalculate.Scores)
+    var result = sortAsc(ScoreCalculate.Scores)
+
+    return makeRank(result)
 }
 
 object ScoreCalculate{
@@ -65,6 +52,30 @@ fun makeMyFriend(user : String ,friends : List<List<String>>): List<String>{
         }
     }
     return Myfriend
+}
+
+fun addFriend( user: String ,
+               friends: List<List<String>>,
+               Myfriend :List<String>){
+    for(i in friends){
+        if(!i.contains(user) &&
+            (Myfriend.any{ it == i[0] } xor Myfriend.any{it == i[1]} )){ //둘 다 친구인 경우는 제외
+            when(Myfriend.any{ it == i[0] }){
+                true -> ScoreCalculate.Calculate(i[1],10)
+                false ->ScoreCalculate.Calculate(i[0],10)
+            }
+        }
+    }
+}
+
+fun addVisitor(visitors : List<String>, Myfriend: List<String>){
+    var visitors  = visitors.toMutableList()
+    for(i in Myfriend){
+        visitors.remove(i)
+    }
+    for(i in visitors){
+        ScoreCalculate.Calculate(i,1)
+    }
 }
 
 fun sortAsc(scores : MutableList<Score>): MutableList<Score>{
