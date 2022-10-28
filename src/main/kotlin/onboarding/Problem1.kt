@@ -2,6 +2,15 @@ package onboarding
 
 fun solution1(pobi: List<Int>, crong: List<Int>): Int {
 
+    // 예외사항 처리
+    val Exception1 = isValid(pobi)
+    val Exception2 = isValid(crong)
+
+    if(!Exception1 || !Exception2){
+        return -1
+    }
+
+    // 점수 구하기
     val pobiScore = getScore(pobi)
     val crongScore = getScore(crong)
 
@@ -13,6 +22,14 @@ fun solution1(pobi: List<Int>, crong: List<Int>): Int {
     } else {
         2
     }
+}
+
+// 예외사항 처리 함수
+fun isValid(page: List<Int>): Boolean{
+    if(1 <= page[0] && page[1] <= 400 && page[0] + 1 == page[1] && page[0] % 2 == 1){
+        return true
+    }
+    return false
 }
 
 // 점수를 구하는 함수
