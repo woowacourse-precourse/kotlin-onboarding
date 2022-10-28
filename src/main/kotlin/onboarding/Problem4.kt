@@ -1,7 +1,12 @@
 package onboarding
 
 fun solution4(word: String): String {
-    TODO("프로그램 구현")
+    val chars = word.toCharArray()
+
+    chars.forEachIndexed { index, ch ->
+        chars[index] = ch.reversedAlpha()
+    }
+    return String(chars)
 }
 
 private fun Char.reversedAlpha(): Char {
