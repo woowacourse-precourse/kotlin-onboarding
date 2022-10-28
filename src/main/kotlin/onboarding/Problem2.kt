@@ -1,5 +1,15 @@
 package onboarding
 
+import problem1.RangeVerifier
+import java.lang.RuntimeException
+
 fun solution2(cryptogram: String): String {
-    TODO("프로그램 구현")
+    val minLength = 1
+    val maxLength = 1000
+    val rangeVerifier = RangeVerifier(cryptogram.length, minLength, maxLength)
+    if(!rangeVerifier.verify()) {
+        throw RuntimeException("Input length is not between range $minLength and $maxLength")
+    }
+
+    return ""
 }
