@@ -1,7 +1,10 @@
 package onboarding
 
 fun solution5(money: Int): List<Int> {
-    TODO("프로그램 구현")
+    val moneyList = listOf<Int>(50000, 10000, 5000, 1000, 500, 100, 50, 10, 1)
+    return convertMoney(money, moneyList)
+}
+
 fun convertMoney(x: Int, moneyList: List<Int>): List<Int> {
 
     val result = MutableList<Int>(9) { 0 }
