@@ -45,5 +45,11 @@ fun calculateScore(page: List<Int>) : Int {
 
 
 fun solution1(pobi: List<Int>, crong: List<Int>): Int {
-    TODO("프로그램 구현")
+    if(!isValidPages(pobi) || !isValidPages(crong)) return -1
+
+    val pobiScore: Int = calculateScore(pobi)
+    val crongScore: Int = calculateScore(crong)
+    if(pobiScore > crongScore) return 1
+    if(pobiScore < crongScore) return 2
+    return 0
 }
