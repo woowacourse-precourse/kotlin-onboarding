@@ -12,7 +12,9 @@ fun solution1(pobi: List<Int>, crong: List<Int>): Int {
     val pobiNum = pobi.toMaxNum()
     val crongNum = crong.toMaxNum()
 
-    return 0
+    // 점수 비교
+    return compareScore(pobiNum, crongNum)
+
 }
 
 // 페이지 예외 처리 기능
@@ -35,4 +37,11 @@ fun List<Int>.toMaxNum() : Int{
             target.fold(1){ acc, i -> acc * i.digitToInt()}
         )
     }
+}
+
+//pobi와 crong의 점수를 비교하는 기능
+fun compareScore(pobiScore : Int, crongScore : Int) : Int{
+    return if (pobiScore > crongScore) 1
+    else if (pobiScore < crongScore) 2
+    else 0
 }
