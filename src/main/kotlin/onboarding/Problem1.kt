@@ -21,7 +21,10 @@ fun solution1(pobi: List<Int>, crong: List<Int>): Int {
   val crongRightMax = getMaxNum(crongRightAdd, crongRightMultiply)
   val crongMax = getMaxNum(crongLeftMax, crongRightMax)
 
-  return 0
+  return if (pobiMax > crongMax) 1
+  else if (pobiMax < crongMax) 2
+  else if (pobiMax == crongMax) 0
+  else -1
 }
 
 fun addEachPageNum(page: Int): Int {
