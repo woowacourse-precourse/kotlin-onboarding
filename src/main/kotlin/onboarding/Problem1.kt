@@ -4,11 +4,31 @@ import kotlin.math.max
 
 
 fun solution1(pobi: List<Int>, crong: List<Int>): Int {
-
     val pobiScore = max(digitPlus(pobi), digitMultiple(pobi))
     val crongScore = max(digitPlus(crong), digitMultiple(crong))
 
+
+    if ((checkListLength(pobi,crong) == -1) or (checkSerialPage(pobi, crong)== -1)){
+        return -1
+    }
+
+
 }
+
+fun checkListLength(pobi: List<Int>, crong: List<Int>): Int {
+    if ((pobi.size != 2) or (crong.size != 2)) {
+        return -1
+    }
+    return 0
+}
+
+fun checkSerialPage(pobi: List<Int>, crong: List<Int>): Int {
+    if (((pobi[1] - pobi[0]) != 1) or ((crong[1] - crong[0]) != 1)) {
+        return -1
+    }
+    return 0
+}
+
 
 fun digitPlus(list: List<Int>): Int {
     var leftPage = list[0]
