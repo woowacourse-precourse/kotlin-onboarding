@@ -37,14 +37,15 @@ fun calculate(list : List<Int>):Int{
 
 // 쪽 자릿수의 합, 곱을 비교하여 큰 값 구하기
 fun calculate2(par_num : Int) : Int{
-    var num = par_num; var sum=0; var product =1
+    var num = par_num
+    var sumAndProduct = mutableListOf<Int>(0,1)
     do{
-        sum += num % 10
-        product *=num%10
+        sumAndProduct[0] += num % 10
+        sumAndProduct[1] *=num%10
         num /= 10
     }while(num>0)
-    return when(sum > product) {
-        true -> sum
-        false -> product
+    return when(sumAndProduct[0] > sumAndProduct[1]) {
+        true -> sumAndProduct[0]
+        false -> sumAndProduct[1]
     }
 }
