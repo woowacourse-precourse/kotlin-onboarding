@@ -1,5 +1,9 @@
 package onboarding
 
 fun solution1(pobi: List<Int>, crong: List<Int>): Int {
-    TODO("프로그램 구현")
+    if (pobi[1] - pobi[0] != 1 || crong[1] - crong[0] != 1)
+        return -1
+
+    return 0
+
 }
