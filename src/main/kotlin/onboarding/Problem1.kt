@@ -27,8 +27,8 @@ fun makeBigNumber(pageNumber: Int) : Int {
     var pageMultiply: Int = 1
     var remainder: Int = pageNumber
     while(remainder != 0) {
-        pageSum += pageNumber % 10
-        pageMultiply *= pageNumber % 10
+        pageSum += remainder % 10
+        pageMultiply *= remainder % 10
         remainder /= 10
     }
     return max(pageSum, pageMultiply)
