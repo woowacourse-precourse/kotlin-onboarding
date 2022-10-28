@@ -1,12 +1,6 @@
 package onboarding
 
 fun solution3(number: Int): Int {
-    var answer : String = ""
-
-    answer = oneToNumSum(number)
-
-    return 0
-
     val answer = oneToNumSum(number)
     return stringCount(answer)
 }
