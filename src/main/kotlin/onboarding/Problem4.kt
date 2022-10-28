@@ -3,24 +3,22 @@ package onboarding
 fun solution4(word: String): String {
     var Result = ""
 
-    var Upper = 65+90
-    var Lower = 97+122
+    var Upper = 65 + 90
+    var Lower = 97 + 122
 
     // A = 65, Z = 90
     // a = 97 , z= 122
-    //toInt()
+    //toInt() -> code로 변경 가능...?
 
-    for (i in 0..word.length){
-        word.forEach {
-            if (65 <= it.toInt() || it.toInt() <=90)
-                Result += (Upper - it.toInt()).toChar()
+    word.forEach {
+        if (it.code in 65..90)
+            Result += (Upper - it.code).toChar()
 
-            if (97 <= it.toInt() || it.toInt() <=122)
-                Result += (Lower - it.toInt()).toChar()
+         else if (it.code in 97..122)
+             Result += (Lower - it.code).toChar()
 
-            else
-                Result += it
+         else
+             Result += it
         }
-    }
     return Result
 }
