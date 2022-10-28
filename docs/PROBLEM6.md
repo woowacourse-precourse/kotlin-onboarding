@@ -21,3 +21,8 @@
 | forms | result |
 | --- | --- |
 | [ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ] | ["jason@email.com", "jm@email.com", "mj@email.com"] |
+
+## 기능 목록
+1. 신청받은 닉네임 중 중복이 가능한 모든 접사를 찾는 기능
+2. 신청받은 닉네임과 중복되는 닉네임을 찾는 기능
+3. 중복된 닉네임의 이메일을 오름차순으로 정렬하는 기능
