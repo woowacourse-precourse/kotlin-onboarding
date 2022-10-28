@@ -19,6 +19,8 @@ fun solution7(
     val hm = makeRelations(friends)
 
     var score: MutableMap<String, Int> = calcFreindPoint(hm, user)
+
+    calcVisitorsPoint(visitors, hm, user, score)
 }
 
 private fun makeRelations(friends: List<List<String>>): HashMap<String, ArrayList<String>> {
@@ -49,4 +51,12 @@ private fun calcFreindPoint(hm: HashMap<String, ArrayList<String>>, user: String
         }
     }
     return score
+}
+
+private fun calcVisitorsPoint(visitors: List<String>, hm: HashMap<String, ArrayList<String>>, user: String, score: MutableMap<String, Int>) {
+    for (i in visitors.indices) {
+        if (!hm[user]!!.contains(visitors[i])) {
+            score[visitors[i]] = score.getOrDefault(visitors[i], 0) + 1
+        }
+    }
 }
