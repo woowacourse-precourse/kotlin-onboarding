@@ -3,8 +3,8 @@ package onboarding
 import kotlin.math.max
 
 /*------Custom Variables------*/
-val FIRST_PAGE = 0
-val LAST_PAGE = 400
+const val FIRST_PAGE = 0
+const val LAST_PAGE = 400
 /*----------------------------*/
 
 /*------Custom Functions------*/
@@ -20,7 +20,7 @@ fun isValidPages(page: List<Int>) : Boolean {
 }
 
 /**
- * Returns a biggest Number which can be made from [pageNumber]
+ * Returns the biggest Number which can be made from [pageNumber]
  */
 fun makeBigNumber(pageNumber: Int) : Int {
     var pageSum: Int = 0
