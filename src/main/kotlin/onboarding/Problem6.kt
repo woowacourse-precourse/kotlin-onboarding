@@ -2,20 +2,26 @@ package onboarding
 
 import java.util.*
 import kotlin.collections.HashMap
+fun solution6plusPatternCnt(nicknamePatternCnt: HashMap<String, Int>, pattern:String){
+    nicknamePatternCnt[pattern]?.let{patternCnt ->
+        nicknamePatternCnt[pattern]=patternCnt+1
+    }?:run{
+        nicknamePatternCnt[pattern] = 1
+    }
+}
 
-fun solution6CalcPatternCount(forms : List<List<String>>) : HashMap<String, Int>{
+fun solution6calcPatternCnt(forms : List<List<String>>) : HashMap<String, Int>{
     val nicknamePatternCnt = HashMap<String, Int>()
 
     forms.forEach { eachForm ->
         val nickname = eachForm[1]
         var pattern = ""
+
         nickname.forEach { eachChar ->
             pattern += eachChar
+
             if (pattern.length == 2) {
-                if (nicknamePatternCnt.containsKey(pattern))
-                    nicknamePatternCnt[pattern] = nicknamePatternCnt[pattern]!! + 1
-                else
-                    nicknamePatternCnt[pattern] = 1
+                solution6plusPatternCnt(nicknamePatternCnt, pattern)
                 pattern = ""
                 pattern += eachChar
             }
@@ -25,7 +31,8 @@ fun solution6CalcPatternCount(forms : List<List<String>>) : HashMap<String, Int>
     return nicknamePatternCnt
 }
 
-fun solution6AlertEmailDecide(forms:List<List<String>>, nicknamePatternCnt:HashMap<String, Int>) : List<String>{
+
+fun solution6alertEmailDecide(forms:List<List<String>>, nicknamePatternCnt:HashMap<String, Int>) : List<String>{
     val alertEmailList=ArrayList<String>()
 
     forms.forEach {eachForm ->
@@ -48,8 +55,8 @@ fun solution6AlertEmailDecide(forms:List<List<String>>, nicknamePatternCnt:HashM
 }
 
 fun solution6(forms: List<List<String>>): List<String> {
-    val nicknamePatternCount = solution6CalcPatternCount(forms)
-    val alertEmailList=solution6AlertEmailDecide(forms, nicknamePatternCount)
+    val nicknamePatternCount = solution6calcPatternCnt(forms)
+    val alertEmailList=solution6alertEmailDecide(forms, nicknamePatternCount)
 
     return alertEmailList.toList().sorted()
 }
