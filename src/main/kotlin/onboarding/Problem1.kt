@@ -11,15 +11,18 @@ import kotlin.math.*
 // 4-2. 왼쪽 페이지는 홀수 , 오른쪽 페이지는 짝수가 나와야 한다.
 // 4-3. 왼쪽 페이지와 오른쪽 페이지는 1페이지가 차이나야 한다.
 fun solution1(pobi: List<Int>, crong: List<Int>): Int {
-
+    // 기능 목록 4번
     if (isException(pobi[0], pobi[1]) || isException(crong[0], crong[1])) {
         return -1
     }
-
     // 기능 목록 2번
-    val pobiScore = max(calculatePageNumber(pobi[0]), calculatePageNumber(pobi[1]))
-    val crongScore = max(calculatePageNumber(crong[0]), calculatePageNumber(crong[1]))
+    val pobiLeftPageScore = calculatePageNumber(pobi[0])
+    val pobiRightPageScore = calculatePageNumber(pobi[1])
+    val pobiScore = max(pobiLeftPageScore, pobiRightPageScore)
 
+    val crongLeftPageScore = calculatePageNumber(crong[0])
+    val crongRightPageScore = calculatePageNumber(crong[1])
+    val crongScore = max(crongLeftPageScore, crongRightPageScore)
     // 기능 목록 3번
     return if (pobiScore > crongScore) {
         1
@@ -30,7 +33,7 @@ fun solution1(pobi: List<Int>, crong: List<Int>): Int {
     }
 }
 
-// 기능목록 1번
+// 기능 목록 1번
 fun calculatePageNumber(pageNumber: Int): Int {
     val pageNumberString = pageNumber.toString()
     var resultAdd = 0
@@ -44,7 +47,7 @@ fun calculatePageNumber(pageNumber: Int): Int {
     return max(resultAdd, resultMultiply)
 }
 
-// 기능목록 4번
+// 기능 목록 4번
 fun isException(leftPage: Int, rightPage: Int): Boolean {
     // 4-1
     if (leftPage < 1 || leftPage > 400) {
