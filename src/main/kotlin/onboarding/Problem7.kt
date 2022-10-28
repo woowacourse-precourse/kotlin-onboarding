@@ -22,9 +22,33 @@ fun findFriend(user: String, friends: List<List<String>>): List<String> {
     return usersFriend
 }
 
+//함께아는 사람 점수 계산
+fun countFriendScore(
     user: String,
+    usersFriend: List<String>,
     friends: List<List<String>>,
-    visitors: List<String>
-): List<String> {
-    TODO("프로그램 구현")
+    result: HashMap<String, Int>
+) {
+    for (i in usersFriend) {
+        for (j in friends) {
+            if (j.contains(i) && !j.contains(user)) {
+                if (j.indexOf(i) == 0) {
+                    if (result.containsKey(j[1])) {
+                        result[j[1]] = result[j[1]]!! + 10
+                    } else {
+                        result[j[1]] = 10
+                    }
+                } else {
+                    if (result.containsKey(j[0])) {
+                        result[j[0]] = result[j[0]]!! + 10
+                    } else {
+                        result[j[0]] = 10
+                    }
+                }
+            }
+        }
+    }
+
+}
+
 }
