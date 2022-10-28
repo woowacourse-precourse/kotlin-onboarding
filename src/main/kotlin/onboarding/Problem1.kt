@@ -2,7 +2,10 @@ package onboarding
 
 import java.lang.Integer.max
 
+const val EXCPTION_PAGE_SIZE = 2
 const val EXECPTION = -1
+const val CONTINOUS = 1
+
 const val POBI_WIN = 1
 const val CRONG_WIN = 2
 const val DRAW = 0
@@ -20,29 +23,30 @@ fun maxPageNumber(number : Int) : Int{
     return max(plus, multiple)
 }
 fun continuous(pages : List<Int>) : Boolean{
-    return pages[1] - pages[0] == 0
+    return pages[1] - pages[0] == CONTINOUS
 }
 fun checkLength(pages : List<Int>) : Boolean{
-    return pages.size == 2
+    return pages.size == EXCPTION_PAGE_SIZE
 }
 
 fun solution1(pobi: List<Int>, crong: List<Int>): Int {
-    val pobiLeft : Int = pobi[0]
-    val pobiRight : Int = pobi[1]
-    val crongLeft : Int = crong[0]
-    val crongRight : Int = crong[1]
-
-    if(!continuous(pobi) || !continuous(crong) ||  !checkLength(pobi) || !checkLength(crong)){
+    if(!continuous(pobi) || !continuous(crong))
         return EXECPTION
-    }
 
-    val pobiResult = max(maxPageNumber(pobiLeft), maxPageNumber(pobiRight))
-    val crongResult = max(maxPageNumber(crongLeft), maxPageNumber(crongRight))
+    if(!checkLength(pobi) || !checkLength(crong))
+        return EXECPTION
+
+    val pobiLeftPage : Int = pobi[0]
+    val pobiRightPage : Int = pobi[1]
+    val crongLeftPage : Int = crong[0]
+    val crongRightPage : Int = crong[1]
+
+    val pobiResult = max(maxPageNumber(pobiLeftPage), maxPageNumber(pobiRightPage))
+    val crongResult = max(maxPageNumber(crongLeftPage), maxPageNumber(crongRightPage))
 
     return when {
         crongResult > pobiResult -> CRONG_WIN
         crongResult < pobiResult -> POBI_WIN
         else -> DRAW
     }
-
 }

@@ -1,9 +1,5 @@
 package onboarding
 
-import org.assertj.core.api.Assertions
-import org.junit.jupiter.api.Test
-
-
 fun checkDuplicate(word: String, start: Int): Int {
     var nextIndex = start + 1
     var result = -1
@@ -11,7 +7,6 @@ fun checkDuplicate(word: String, start: Int): Int {
     while (nextIndex < word.length && word[start] == word[nextIndex]){
         result = nextIndex++
     }
-
     return result
 }
 
@@ -33,6 +28,5 @@ fun solution2(cryptogram: String): String {
             index = 0
         }
     }
-
     return word
 }
