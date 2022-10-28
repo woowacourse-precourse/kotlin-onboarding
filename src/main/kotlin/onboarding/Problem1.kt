@@ -14,10 +14,11 @@ fun solution1(pobi: List<Int>, crong: List<Int>): Int {
 
     if (pobiNum == crongNum)
         return 0
-    else if (pobiNum > crongNum)
+    if (pobiNum > crongNum)
         return 1
-    else
+    if (pobiNum < crongNum)
         return 2
+    return -1
 }
 
 fun isException(pobi: List<Int>, crong:List<Int>): Boolean{
