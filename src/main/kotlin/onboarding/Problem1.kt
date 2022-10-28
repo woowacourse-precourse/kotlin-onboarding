@@ -16,6 +16,39 @@ fun solution1(pobi: List<Int>, crong: List<Int>): Int {
         return -1
     }
 
+    var pobiLeft = pobi[0]
+    var pobiRight = pobi[1]
+    var crongLeft = crong[0]
+    var crongRight = crong[1]
+    var pobiLeftsum = 0
+    var pobiLeftmul = 1
+    var pobiRightsum = 0
+    var pobiRightmul = 1
+    var crongLeftsum = 0
+    var crongLeftmul = 1
+    var crongRightsum = 0
+    var crongRightmul = 1
+
+    while(pobiLeft>=1){
+        pobiLeftsum += pobiLeft % 10
+        pobiLeftmul *= pobiLeft % 10
+        pobiLeft /= 10
+    }
+    while(pobiRight>=1){
+        pobiRightsum += pobiRight % 10
+        pobiRightmul *= pobiRight % 10
+        pobiRight /= 10
+    }
+    while(crongLeft>=1){
+        crongLeftsum += crongLeft % 10
+        crongLeftmul *= crongLeft % 10
+        crongLeft /= 10
+    }
+    while(crongRight>=1){
+        crongRightsum += crongRight % 10
+        crongRightmul *= crongRight % 10
+        crongRight /= 10
+    }
 
 
     return 1
