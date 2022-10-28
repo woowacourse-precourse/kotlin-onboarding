@@ -2,13 +2,11 @@ package onboarding
 
 import java.util.*
 
+private var isContinuous = false
+private var previousChar = ' '
+
 fun solution2(cryptogram: String): String {
     return cryptogram.removeDuplicate()
-}
-
-private object StackStatus {
-    var isContinuous = false
-    var previousChar = ' '
 }
 
 private fun String.removeDuplicate(): String {
@@ -26,7 +24,7 @@ private fun String.removeDuplicate(): String {
 private fun Stack<Char>.removeDuplicatedTopOrAppendWith(ch: Char) {
     val top = peek()
     when {
-        StackStatus.previousChar == ch && StackStatus.isContinuous -> return
+        previousChar == ch && isContinuous -> return
         top == ch -> setStackStatus(true, pop())
         top != ch -> {
             setStackStatus(false, ch)
@@ -35,9 +33,9 @@ private fun Stack<Char>.removeDuplicatedTopOrAppendWith(ch: Char) {
     }
 }
 
-private fun setStackStatus(isContinuous: Boolean, previousChar: Char) {
-    StackStatus.isContinuous = isContinuous
-    StackStatus.previousChar = previousChar
+private fun setStackStatus(_isContinuous: Boolean, _previousChar: Char) {
+    isContinuous = _isContinuous
+    previousChar = _previousChar
 }
 
 private fun Stack<Char>.convertString(): String {
