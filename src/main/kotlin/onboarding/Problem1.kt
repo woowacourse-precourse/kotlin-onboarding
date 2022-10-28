@@ -6,13 +6,7 @@ fun solution1(pobi: List<Int>, crong: List<Int>): Int {
     val pobiNum:Int
     val crongNum:Int
 
-    if (pobi[0]+1 != pobi[1])
-        return -1
-    if (crong[0]+1 != crong[1])
-        return -1
-    if (pobi[0] <= 1 || crong[1] >= 400)
-        return -1
-    if (pobi[0]%2 == 0 || pobi[1]%2==1 || crong[0]%2 == 0 || pobi[1]%2 == 1)
+    if (isException(pobi, crong))
         return -1
 
     pobiNum = max(max(getSum(pobi[0]), getMultiply(pobi[0])), max(getSum(pobi[1]), getMultiply(pobi[1])))
@@ -24,6 +18,20 @@ fun solution1(pobi: List<Int>, crong: List<Int>): Int {
         return 1
     else
         return 2
+}
+
+fun isException(pobi: List<Int>, crong:List<Int>): Boolean{
+    if (pobi[0]+1 != pobi[1])
+        return true
+    if (crong[0]+1 != crong[1])
+        return true
+    if (pobi[0] <= 1 || crong[1] >= 400)
+        return true
+    if (pobi[0]%2 == 0 || pobi[1]%2==1)
+        return true
+    if(crong[0]%2 == 0 || pobi[1]%2 == 1)
+        return true
+    return false
 }
 
 fun getSum(x:Int) : Int {
