@@ -25,7 +25,7 @@ fun solution2(cryptogram: String): String {
     }
 
     val consecutiveDeduplicator = ConsecutiveDeduplicator()
-    consecutiveDeduplicator.deduplicate(cryptogram)
+    val result = consecutiveDeduplicator.deduplicate(cryptogram)
 
     return ""
 }

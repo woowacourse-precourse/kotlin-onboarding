@@ -25,7 +25,13 @@ class ConsecutiveDeduplicator {
         }
     }
 
-    fun deduplicate(str:String) {
+    private fun getResult() : String {
+        var result = ""
+        stack.map { result += it }
+        return result
+    }
+
+    fun deduplicate(str:String) : String {
         val stringParser = StringParser(str)
         var c:Char? = stringParser.getNext()
 
@@ -33,5 +39,7 @@ class ConsecutiveDeduplicator {
             insert(c)
             c = stringParser.getNext()
         }
+
+        return getResult()
     }
 }
