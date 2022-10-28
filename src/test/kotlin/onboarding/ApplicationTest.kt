@@ -133,5 +133,21 @@ class ApplicationTest {
             val result = listOf("andole", "jun", "bedi")
             assertThat(solution7(user, friends, visitors)).isEqualTo(result)
         }
+
+        @Test
+        fun case2() {
+            val user = "mrko"
+            val friends = listOf(
+                    listOf("donut", "andole"),
+                    listOf("donut", "jun"),
+                    listOf("donut", "mrko"),
+                    listOf("shakevan", "andole"),
+                    listOf("shakevan", "jun"),
+                    listOf("shakevan", "mrko")
+            )
+            val visitors = listOf("bedi", "bedi", "donut", "bedi", "shakevan", "tom", "chris", "kevin")
+            val result = listOf("andole", "jun", "bedi", "chris", "kevin")
+            assertThat(solution7(user, friends, visitors)).isEqualTo(result)
+        }
     }
 }
