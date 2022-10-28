@@ -40,7 +40,8 @@ fun solution1(pobi: List<Int>, crong: List<Int>): Int {
         return numlist.maxOrNull() // 최신버전에서 max가 안된다.
     }
 
-    if (pobi.get(1)-pobi.get(0) != crong.get(1)-crong.get(0)) // 예외처리
+    if (pobi.get(0) == 1 || crong.get(0) == 1 || pobi.get(1) == 400 || crong.get(1) == 400 || // 예외처리
+        pobi.get(1)-pobi.get(0) != crong.get(1)-crong.get(0))
         return -1
 
     if (high(pobi)!! > high(crong)!!) // 비교후 결과출력 // !! null이 아님을 강제한다.
