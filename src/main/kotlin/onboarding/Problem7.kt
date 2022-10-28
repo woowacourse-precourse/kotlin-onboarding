@@ -51,4 +51,16 @@ fun countFriendScore(
 
 }
 
+//방문한 사람 점수 계산
+fun countVisitScore(visitors: List<String>, result: HashMap<String, Int>, usersFriend: List<String>) {
+    for (i in visitors) {
+        if (!usersFriend.contains(i)) {
+            if (result.containsKey(i)) {
+                result[i] = result[i]!! + 1
+            } else {
+                result[i] = 1
+            }
+        }
+    }
+}
 }
