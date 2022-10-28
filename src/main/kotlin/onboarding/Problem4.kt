@@ -1,9 +1,11 @@
 package onboarding
 
+import java.util.*
+
 fun solution4(word: String): String {
     var ascii = 'Z'
     val mappingRecord = Array(26) { ascii-- }
-    val upperWord = word.toUpperCase()
+    val upperWord = word.uppercase(Locale.getDefault())
     var resultString = ""
     for (index in word.indices) {
         if(word[index]==' '){
@@ -15,9 +17,8 @@ fun solution4(word: String): String {
         resultString += if (word[index].isUpperCase())
             appendChar
         else
-            appendChar.toLowerCase()
+            appendChar.lowercaseChar()
     }
-
 
     return resultString
 }

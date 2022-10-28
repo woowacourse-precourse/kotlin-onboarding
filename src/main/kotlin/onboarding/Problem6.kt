@@ -1,8 +1,6 @@
 package onboarding
 
 import java.util.*
-import java.util.regex.Pattern
-import java.util.stream.Collectors
 import kotlin.collections.HashMap
 
 fun solution6CalcPatternCount(forms : List<List<String>>) : HashMap<String, Int>{
@@ -27,7 +25,6 @@ fun solution6CalcPatternCount(forms : List<List<String>>) : HashMap<String, Int>
     return nicknamePatternCnt
 }
 
-
 fun solution6AlertEmailDecide(forms:List<List<String>>, nicknamePatternCnt:HashMap<String, Int>) : List<String>{
     val alertEmailList=ArrayList<String>()
 
@@ -49,8 +46,6 @@ fun solution6AlertEmailDecide(forms:List<List<String>>, nicknamePatternCnt:HashM
 
     return alertEmailList.toList()
 }
-
-
 
 fun solution6(forms: List<List<String>>): List<String> {
     val nicknamePatternCount = solution6CalcPatternCount(forms)
