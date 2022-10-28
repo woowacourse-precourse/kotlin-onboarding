@@ -12,21 +12,26 @@ fun solution1(pobi: List<Int>, crong: List<Int>): Int {
      * 4. pobi, crong 비교 후 결과 리턴
      * */
 
-    /**
-     * 예외처리
-     * */
-    if (pobi[0] != pobi[1] - 1){
+    /** 1. 예외처리 */
+    if (pobi[0] % 2 != 1) {
         return -1
     }
-    if (crong.get(0) != crong.get(1) - 1){
+    if (crong[0] % 2 != 1) {
         return -1
     }
-    if (pobi.get(0) >= 400){
+    if (pobi[0] != pobi[1] - 1) {
         return -1
     }
-    if (crong.get(0) >= 400) {
+    if (crong[0] != crong[1] - 1) {
         return -1
     }
+    if (pobi[0] >= 400) {
+        return -1
+    }
+    if (crong[0] >= 400) {
+        return -1
+    }
+
 
     var temp = 0
     var cnt = 0
