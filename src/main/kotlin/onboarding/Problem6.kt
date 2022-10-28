@@ -28,11 +28,33 @@ fun solution6CalcPatternCount(forms : List<List<String>>) : HashMap<String, Int>
 }
 
 
+fun solution6AlertEmailDecide(forms:List<List<String>>, nicknamePatternCnt:HashMap<String, Int>) : List<String>{
+    val alertEmailList=ArrayList<String>()
+
+    forms.forEach {eachForm ->
+        val (email, nickname) = arrayOf(eachForm[0], eachForm[1])
+        var pattern = ""
+        for(eachChar in nickname){
+            pattern += eachChar
+            if (pattern.length == 2 ){
+                if(nicknamePatternCnt[pattern]!!>=2){
+                    alertEmailList.add(email)
+                    break
+                }
+                pattern=""
+                pattern+=eachChar
+            }
+        }
+    }
+
+    return alertEmailList.toList()
+}
+
+
 
 fun solution6(forms: List<List<String>>): List<String> {
     val nicknamePatternCount = solution6CalcPatternCount(forms)
-    val alertEmailList=ArrayList<String>()
-
+    val alertEmailList=solution6AlertEmailDecide(forms, nicknamePatternCount)
 
     return alertEmailList.toList().sorted()
 }
