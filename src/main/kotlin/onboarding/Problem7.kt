@@ -25,6 +25,12 @@ fun solution7(
             hashMapPoint[it[0]] = hashMapPoint.getOrDefault(it[1], 0) + 10
     }
 
-   return listOf()
+    // user 타임라인에 방문한 시용자에게 1점을 주는 기능
+    for (visitor in visitors){
+        if (visitor in userFriends) continue
+        hashMapPoint[visitor] = hashMapPoint.getOrDefault(visitor, 0) + 1
+    }
+
+    return listOf()
 
 }
