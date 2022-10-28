@@ -4,6 +4,10 @@ fun solution4(word: String): String {
     TODO("프로그램 구현")
 }
 
+private fun createReversedAlphaMap(): Map<Char, Char> {
+    return createReversedLowerAlphaMap() + createReversedUpperAlphaMap()
+}
+
 private fun createReversedUpperAlphaMap(): Map<Char, Char> {
     val reversedUpperAlphaMap = mutableMapOf<Char, Char>()
     val upperA = 65
