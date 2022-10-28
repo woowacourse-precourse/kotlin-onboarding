@@ -12,6 +12,8 @@ fun solution1(pobi: List<Int>, crong: List<Int>): Int {
         return -1
     if (pobi[0] <= 1 || crong[1] >= 400)
         return -1
+    if (pobi[0]%2 == 0 || pobi[1]%2==1 || crong[0]%2 == 0 || pobi[1]%2 == 1)
+        return -1
 
     pobiNum = max(max(getSum(pobi[0]), getMultiply(pobi[0])), max(getSum(pobi[1]), getMultiply(pobi[1])))
     crongNum = max(max(getSum(crong[0]), getMultiply(crong[0])), max(getSum(crong[1]), getMultiply(crong[1])))
