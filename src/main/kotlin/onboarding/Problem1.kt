@@ -21,6 +21,14 @@ fun processDigit(num: Int, operator: Int): Int {
     return r
 }
 
+fun determineScore(page: List<Int>): Int {
+    if (page[1] - page[0] != 1) throw Exception()
+    return max(
+        max(processDigit(page[0], 0), processDigit(page[0], 1)),
+        max(processDigit(page[1], 0), processDigit(page[1], 1))
+    )
+}
+
 fun solution1(pobi: List<Int>, crong: List<Int>): Int {
 
 }
