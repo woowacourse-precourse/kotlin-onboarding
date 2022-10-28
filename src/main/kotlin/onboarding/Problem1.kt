@@ -7,12 +7,6 @@ fun solution1(pobi: List<Int>, crong: List<Int>): Int {
     val pobiScore = max(digitPlus(pobi), digitMultiple(pobi))
     val crongScore = max(digitPlus(crong), digitMultiple(crong))
 
-
-    if ((checkListLength(pobi,crong) == -1) or (checkSerialPage(pobi, crong)== -1)){
-        return -1
-    }
-
-
 }
 
 fun checkListLength(pobi: List<Int>, crong: List<Int>): Int {
@@ -28,7 +22,6 @@ fun checkSerialPage(pobi: List<Int>, crong: List<Int>): Int {
     }
     return 0
 }
-
 
 fun digitPlus(list: List<Int>): Int {
     var leftPage = list[0]
