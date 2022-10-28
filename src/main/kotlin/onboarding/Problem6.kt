@@ -13,5 +13,6 @@ fun solution6(forms: List<List<String>>): List<String> {
             else twoLetterCnt[twoLetter] = 1
         }
     }
+    val duplication = twoLetterCnt.filter { it.value > 1 }.keys
     TODO()
 }
