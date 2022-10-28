@@ -56,36 +56,76 @@ fun solution1(pobi: List<Int>, crong: List<Int>): Int {
 
     if (pobiLeftsum >= pobiLeftmul){
         if (pobiRightsum >= pobiRightmul){
-            pobiBigger = (pobiLeftsum * pobiRightsum)
+            if (pobiLeftsum >= pobiRightsum){
+                pobiBigger = pobiLeftsum
+            } else {
+                pobiBigger = pobiRightsum
+            }
         }
         else {
-            pobiBigger = (pobiLeftsum * pobiRightmul)
+            if (pobiLeftsum >= pobiRightmul){
+                pobiBigger = pobiLeftsum
+            } else {
+                pobiBigger = pobiRightmul
+            }
         }
     } else{
         if (pobiRightsum >= pobiRightmul){
-            pobiBigger = (pobiLeftsum * pobiRightsum)
+            if (pobiLeftmul >= pobiRightsum){
+                pobiBigger = pobiLeftmul
+            } else {
+                pobiBigger = pobiRightsum
+            }
         }
         else {
-            pobiBigger = (pobiLeftsum * pobiRightmul)
+            if (pobiLeftmul >= pobiRightmul){
+                pobiBigger = pobiLeftmul
+            } else {
+                pobiBigger = pobiRightmul
+            }
         }
     }
 
     if (crongLeftsum >= crongLeftmul){
         if (crongRightsum >= crongRightmul){
-            crongBigger = (crongLeftsum * crongRightsum)
+            if (crongLeftsum >= crongRightsum){
+                crongBigger = crongLeftsum
+            } else {
+                crongBigger = crongRightsum
+            }
         }
         else {
-            crongBigger = (crongLeftsum * crongRightmul)
+            if (crongLeftsum >= crongRightmul){
+                crongBigger = crongLeftsum
+            } else {
+                crongBigger = crongRightmul
+            }
         }
     } else{
         if (crongRightsum >= crongRightmul){
-            crongBigger = (crongLeftsum * crongRightsum)
+            if (crongLeftmul >= crongRightsum){
+                crongBigger = crongLeftmul
+            } else {
+                crongBigger = crongRightsum
+            }
         }
         else {
-            crongBigger = (crongLeftsum * crongRightmul)
+            if (crongLeftmul >= crongRightmul){
+                crongBigger = crongLeftmul
+            } else {
+                crongBigger = crongRightmul
+            }
         }
     }
 
-    return 1
+    if (pobiBigger > crongBigger){
+        answer = 1
+    } else if (pobiBigger < crongBigger){
+        answer = 2
+    } else {
+        answer = 0
+    }
+
+    return answer
 
 }
