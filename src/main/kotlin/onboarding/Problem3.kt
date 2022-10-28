@@ -13,7 +13,6 @@ fun solution3(number: Int): Int {
     }
 
     val game369 = Game369()
-    game369.count369(1, number)
 
-    return 0
+    return game369.count369(1, number)
 }

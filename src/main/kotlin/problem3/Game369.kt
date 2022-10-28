@@ -5,9 +5,13 @@ class Game369 {
         return num.count { it == '3' || it == '6' || it == '9' }
     }
 
-    fun count369(start:Int, end:Int) {
+    fun count369(start:Int, end:Int) : Int {
+        var clap = 0
+
         for(i in start..end) {
-            count369(i.toString())
+            clap += count369(i.toString())
         }
+
+        return clap
     }
 }
