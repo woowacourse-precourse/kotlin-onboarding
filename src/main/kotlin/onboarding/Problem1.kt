@@ -13,7 +13,7 @@ const val LAST_PAGE = 400
  */
 fun isValidPages(page: List<Int>) : Boolean {
     if(page.size != 2) return false
-    if(page[0] - page[1] != 1) return false
+    if(page[1] - page[0] != 1) return false
     if(page[0] % 2 == 0) return false
     if(page[0] == FIRST_PAGE || page[1] == LAST_PAGE) return false
     return true
