@@ -1,7 +1,6 @@
 package onboarding
 
 fun solution2(cryptogram: String): String {
-
     var Result = cryptogram
 
     var Start_idx = -1
