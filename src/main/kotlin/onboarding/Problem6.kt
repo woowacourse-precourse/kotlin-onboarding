@@ -3,6 +3,7 @@ package onboarding
 val nicknameList = arrayListOf<String>()
 val form = mutableMapOf<String, String>()
 val letterList = arrayListOf<String>()
+val duplicatedLetterList = mutableSetOf<String>()
 
 fun solution6(forms: List<List<String>>): List<String> {
     TODO("프로그램 구현")
@@ -29,3 +30,15 @@ fun splitLetters(index : Int) {
     return splitLetters(index + 1)
 }
 
+fun getDulicatedLetters(index : Int, nickName : String) : Set<String> {
+    if (index == nickName.length - 1) {
+        return duplicatedLetterList
+    }
+    val letter = nickName.substring(index, index + 2)
+
+    if (letterList.contains(letter)) {
+        duplicatedLetterList.add(letter)
+    }
+    letterList.add(letter)
+    return getDulicatedLetters(index + 1, nickName)
+}
