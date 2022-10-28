@@ -1,7 +1,11 @@
 package onboarding
 
 fun solution4(word: String): String {
-    TODO("프로그램 구현")
+    var answer = ""
+    for (i in word) {
+        answer += change(i)
+    }
+    return answer
 }
 
 fun change(x: Char): Char {
