@@ -38,13 +38,16 @@ fun solution6alertEmailDecide(forms:List<List<String>>, nicknamePatternCnt:HashM
     forms.forEach {eachForm ->
         val (email, nickname) = arrayOf(eachForm[0], eachForm[1])
         var pattern = ""
+
         for(eachChar in nickname){
             pattern += eachChar
+
             if (pattern.length == 2 ){
                 if(nicknamePatternCnt[pattern]!!>=2){
                     alertEmailList.add(email)
                     break
                 }
+
                 pattern=""
                 pattern+=eachChar
             }
