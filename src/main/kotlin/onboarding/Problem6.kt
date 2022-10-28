@@ -14,5 +14,15 @@ fun solution6(forms: List<List<String>>): List<String> {
         }
     }
     val duplication = twoLetterCnt.filter { it.value > 1 }.keys
-    TODO()
+    val ans = arrayListOf<String>()
+    for (form in forms) {
+        for (dupli in duplication) {
+            if (form[1].contains(dupli)) {
+                ans.add(form[0])
+                break
+            }
+        }
+    }
+    ans.sort()
+    return ans
 }
