@@ -63,4 +63,12 @@ fun countVisitScore(visitors: List<String>, result: HashMap<String, Int>, usersF
         }
     }
 }
+
+//score 정렬하기
+fun sortScore(result: HashMap<String, Int>): HashMap<String, Int> {
+    return result.toList().sortedWith(
+        compareBy(
+            { -(it.second) }, { it.first }
+        )
+    ).toMap() as HashMap
 }
