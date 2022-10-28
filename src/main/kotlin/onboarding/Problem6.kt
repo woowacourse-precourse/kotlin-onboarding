@@ -6,9 +6,10 @@ fun solution6(forms: List<List<String>>): List<String> {
     val affixesList = findAffixes(forms, affixes)
     val answer = findNickname(forms, affixesList)
 
+    // 중복된 닉네임의 이메일을 오름차순으로 정렬하는 기능
+    answer.sort()
 
-
-    return listOf()
+    return answer
 }
 
 
