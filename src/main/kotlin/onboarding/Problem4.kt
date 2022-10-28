@@ -1,5 +1,7 @@
 package onboarding
 
+import java.lang.StringBuilder
+
 /*
  * 기능 요구 사항
  * 1. 알파벳 대문자 -> 대문자, 소문자 -> 소문자
@@ -24,4 +26,17 @@ private fun initDictionary(): HashMap<Char, Char> {
         }
     }
     return alphabetDictionary
+}
+
+private fun convertWord(word: String, dictionary: HashMap<Char, Char>): String {
+    val convert = StringBuilder()
+    // 청개구리 사전에 맞게 문자 변환
+    word.forEach {alphabet ->
+        if (alphabet != ' ') {
+            convert.append(dictionary[alphabet])
+        } else {
+            convert.append(alphabet)
+        }
+    }
+    return convert.toString()
 }
