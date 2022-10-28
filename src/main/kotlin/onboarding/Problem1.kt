@@ -2,19 +2,19 @@ package onboarding
 
 import java.lang.Integer.max
 
+fun Exception_check(pobi: List<Int>, crong: List<Int>): Boolean {
+    return !(pobi[0] in 1..400 && pobi[1] in 1..400 && crong[0] in 1..400 && crong[1] in 1..400 && Exception_Page(pobi[0], pobi[1]) && Exception_Page(crong[0], crong[1]))
+}
 
+fun Exception_Page(Left_page : Int, Right_page : Int): Boolean {
+    return Left_page + 1 == Right_page && Left_page % 2 == 1 && Right_page % 2 == 0
+}
 
 fun solution1(pobi: List<Int>, crong: List<Int>): Int {
 
-    val Exception = 0 .. 400
-
-    if (pobi[0].toInt() in Exception && crong[0].toInt() in Exception && pobi[1].toInt() in Exception && crong[1].toInt() in Exception)
+    if (Exception_check(pobi, crong)){
         return -1
-    else if (pobi[0].toInt() +1 == pobi[1].toInt() && pobi[0].toInt() %2 == 1 && pobi[1].toInt() %2 == 0)
-        return -1
-    else if (crong[0].toInt() +1 == crong[1].toInt() && crong[0].toInt() %2 == 1 && crong[1].toInt() %2 == 0)
-        return -1
-
+    }
     val Pobi_Result = Return_max(pobi)
     val Crong_Result = Return_max(crong)
 
