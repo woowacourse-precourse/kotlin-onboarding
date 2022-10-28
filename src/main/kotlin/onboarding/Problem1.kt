@@ -73,7 +73,13 @@ fun findMaxNumber(pobi: List<Int>, crong: List<Int>): Int {
         }
         //곱한 수와 더한 수 비교 후 저장
     }
-    return 0
+    if(pobiMaxValue > crongMaxValue){//포비가 이기면
+        return 1
+    } else if(pobiMaxValue < crongMaxValue){//크롱이 이기면
+        return 2
+    } else{//무승부
+        return 0
+    }
 }
 fun solution1(pobi: List<Int>, crong: List<Int>): Int {
     exceptions(pobi, crong)
