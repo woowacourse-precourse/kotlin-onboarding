@@ -10,6 +10,6 @@ fun solution2(cryptogram: String): String {
             mutableList.add(cryptogram[i])//push
         }
     }
-    answer = mutableList.toString()
+    answer = mutableList.joinToString(separator = "")//"b, r, o, w, n" -> "brown"
     return answer
 }
