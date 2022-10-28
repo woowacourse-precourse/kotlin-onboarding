@@ -10,10 +10,16 @@ fun solution1(pobi: List<Int>, crong: List<Int>): Int {
     val pobiMax:Int = calculateMax(pobi)
     val crongMax:Int = calculateMax(crong)
 
-
-    return 0
+    if (pobiMax > crongMax){
+        return 1
+    }else if(pobiMax < crongMax){
+        return 2
+    }else{
+        return 0
+    }
 
 }
+
 fun calculateMax(pageList:List<Int>): Int{
 
     val resultList:ArrayList<Int> = arrayListOf()
