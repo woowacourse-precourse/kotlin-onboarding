@@ -9,3 +9,10 @@ fun exception5(money: Int) {
         throw IllegalArgumentException("money는 1이상 10000000이하인 자연수여야 합니다.")
     }
 }
+
+
+fun change(change_money : Int, money: Int) : Int {
+    return money / change_money
+}
+
+
