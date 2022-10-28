@@ -2,9 +2,8 @@ package onboarding
 
 fun solution2(cryptogram: String): String {
     var text = cryptogram
-    var removedText = ""
     while (true) {
-        removedText = removeDuplicate(text)
+        val removedText = removeDuplicate(text)
         if (text == removedText) {  // 더 이상 중복 문자 없음
             return text
         } else {
