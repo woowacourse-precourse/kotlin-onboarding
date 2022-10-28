@@ -11,14 +11,13 @@ fun solution1(pobi: List<Int>, crong: List<Int>): Int {
 }
 
 fun isPass(list: List<Int>): Boolean {
-    return (list[0] % 2 == 1) && (list[1] % 2 == 0) && (list[0] + 1 == list[1])
+    return (list[0] + 1) == list[1]
 }
 
 fun getScore(list: List<Int>): Int {
     var res = 0
-    var tmp = 0
     for (x in list) {
-        tmp = returnHighScore(add(x), multiply(x))
+        val tmp = returnHighScore(add(x), multiply(x))
         res = returnHighScore(tmp, res)
     }
     return res
