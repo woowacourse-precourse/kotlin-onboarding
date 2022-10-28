@@ -11,6 +11,16 @@ fun solution6(forms: List<List<String>>): List<String> {
 
     val visit = check(forms, hm)
 
+    val answer = ArrayList<String>()
+    for (i in forms.indices) {
+        if (visit[i]) {
+            answer.add(forms[i][0])
+        }
+    }
+
+    answer.sort()
+
+    return answer.toList()
 }
 
 private fun makeDictionary(forms: List<List<String>>): HashMap<String, Int> {
