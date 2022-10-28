@@ -5,7 +5,7 @@ package onboarding
 * 오만 원 ~ 일원 카운트 함수
 * */
 
-const val MAX_CURRENCY = 50000
+const val MAX_CURRENCY = 50_000
 
 fun getCurrencyCountArray(maxCurrency: Int): ArrayList<Int>{
     var currency = maxCurrency
@@ -25,7 +25,15 @@ fun getCurrencyCountArray(maxCurrency: Int): ArrayList<Int>{
     return arrayList
 }
 
+fun countEachCurrency(money: Int, currencyArray: ArrayList<Int>): List<Int>{
+    var tempMoney = money
+    return List(currencyArray.size){ idx ->
+        (tempMoney/currencyArray[idx]).also {
+            tempMoney -= it * currencyArray[idx]
+        }
+    }
+}
 
 fun solution5(money: Int): List<Int> {
-    TODO("프로그램 구현")
+    return countEachCurrency(money, getCurrencyCountArray(MAX_CURRENCY))
 }
