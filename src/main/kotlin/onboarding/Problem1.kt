@@ -2,82 +2,51 @@ package onboarding
 
 import java.lang.Integer.max
 
-fun solution1(pobi: List<Int>, crong: List<Int>) {
 
-    var Pobi_Result = 0
-    var Crong_Result = 0
 
-    if (pobi[0] == crong[0]) {
-        print(-1)
+fun solution1(pobi: List<Int>, crong: List<Int>): Int {
+
+    val Exception = 0 .. 400
+
+    if (pobi[0] in Exception && crong[0] in Exception && pobi[1] in Exception && crong[1] in Exception)
+        if (pobi[0] +1 == pobi[1] && pobi[0] %2 == 1 && pobi[1] %2 == 0)
+            if (crong[0] +1 == crong[1] && crong[0] %2 == 1 && crong[1] %2 == 0)
+                return -1
+
+    val Pobi_Result = Return_max(pobi)
+    val Crong_Result = Return_max(crong)
+
+    return when {
+        Pobi_Result > Crong_Result -> 1
+        Pobi_Result == Crong_Result -> 0
+        else -> -2
     }
 
-    if (pobi[0] > 99)
-        Pobi_Result = over_100(pobi)
-    else if(pobi[0] < 100)
-        Pobi_Result = under_100(pobi)
-
-    if (crong[0] > 99)
-        Crong_Result = over_100(crong)
-    else if (crong[0] < 100)
-        Crong_Result = under_100(crong)
-
-
-    print(pobi)
-    print(crong)
-    print(Pobi_Result)
-    print(Crong_Result)
-
-    if (Pobi_Result > Crong_Result)
-        print(1)
-    else if (Pobi_Result < Crong_Result)
-        print(2)
-    else if (Pobi_Result == Crong_Result)
-        print(0)
-
-}
-fun over_100(Target: List<Int>): Int {
-    //(2)왼쪽 각자리 숫자를 모두 더하거나 곱한 수 중 큰 수를 구하기
-    val left_pobi_100 = Target[0] / 100 % 10
-    val left_pobi_10 = Target[0] / 10 % 10
-    val left_pobi_1 = Target[0] % 10
-
-    val Lpobi = max(left_pobi_100 + left_pobi_10 + left_pobi_1, left_pobi_100 * left_pobi_10 * left_pobi_1)
-
-    //(3)오른쪽 각자리 숫자를 모두 더하거나 곱한 수 중 큰 수를 구하기
-    val right_pobi_100 = Target[0] / 100 % 10
-    val right_pobi_10 = Target[0] / 10 % 10
-    val right_pobi_1 = Target[0] % 10 + 1
-
-    val Rpobi = max(right_pobi_100 + right_pobi_10 + right_pobi_1, right_pobi_100 * right_pobi_10 * right_pobi_1)
-
-    //(4)둘중 가장 큰수가 점수
-    var fun_Result = max(Lpobi, Rpobi)
-    return fun_Result
 }
 
-fun under_100(Target: List<Int>): Int {
-    //(2)왼쪽 각자리 숫자를 모두 더하거나 곱한 수 중 큰 수를 구하기
-    val left_pobi_10 = Target[0] / 10 % 10
-    val left_pobi_1 = Target[0] % 10
+fun Return_max(list: List<Int>): Int{
+    var Left_page = list[0]
+    var Right_page = list[1]
 
-    val Lpobi = max(left_pobi_10 + left_pobi_1,  left_pobi_10 * left_pobi_1)
+    var Left_plus = 0
+    var Left_mul = 1
 
-    //(3)오른쪽 각자리 숫자를 모두 더하거나 곱한 수 중 큰 수를 구하기
-    val right_pobi_10 = Target[0] / 10 % 10
-    val right_pobi_1 = Target[0] % 10 + 1
+    var Right_plus = 0
+    var Right_mul = 1
 
-    val Rpobi = max(right_pobi_10 + right_pobi_1, right_pobi_10 * right_pobi_1)
+    while (Left_page != 0){
+        Left_plus += Left_page %10
+        Left_mul *= Left_page %10
+        Left_page /10
+    }
+    var Left_max = max(Left_plus, Left_mul)
 
-    //(4)둘중 가장 큰수가 점수
-    var Pobi_Result = max(Lpobi, Rpobi)
-    return Pobi_Result
-}
-fun main()= with(System.`in`.bufferedReader()){
+    while (Right_plus != 0){
+        Right_plus += Right_page %10
+        Right_mul *= Right_page %10
+        Right_plus /10
+    }
+    var Right_max = max(Right_plus, Right_mul)
 
-    //(1)임의의 변수 리스트에 삽입
-    val range = (1..399)
-    var pobi:List<Int> = listOf(range.random())
-    var crong:List<Int> = listOf(range.random())
-
-    solution1(pobi, crong)
+    return max(Left_max, Right_max)
 }
