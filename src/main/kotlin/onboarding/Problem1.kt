@@ -10,16 +10,17 @@ fun checkPage(list: List<Int>): Boolean {
 }
 
 // 비교함수
-fun max(a: Int, b: Int) : Int {
-    return if (a>b)
+fun max(a: Int, b: Int): Int {
+    return if (a > b)
         a
     else
         b
 }
+
 // sum함수
-fun sum(dq: ArrayDeque<Int>):Int{
+fun sum(dq: ArrayDeque<Int>): Int {
     var sum = 0
-    while(!dq.isEmpty()){
+    while (!dq.isEmpty()) {
         sum += dq.first()
         dq.removeFirst()
     }
@@ -27,9 +28,9 @@ fun sum(dq: ArrayDeque<Int>):Int{
 }
 
 // mul함수
-fun mul(dq: ArrayDeque<Int>):Int{
+fun mul(dq: ArrayDeque<Int>): Int {
     var mul = 1
-    while(!dq.isEmpty()){
+    while (!dq.isEmpty()) {
         mul *= dq.first()
         dq.removeFirst()
     }
@@ -37,7 +38,7 @@ fun mul(dq: ArrayDeque<Int>):Int{
 }
 
 // 자리수 나누기_sum
-fun s_divide(num: Int): Int{
+fun s_divide(num: Int): Int {
     var dq = ArrayDeque<Int>()
 
     var a: Int = num
@@ -49,7 +50,7 @@ fun s_divide(num: Int): Int{
 }
 
 // 자리수 나누기_mul
-fun m_divide(num: Int): Int{
+fun m_divide(num: Int): Int {
     var dq = ArrayDeque<Int>()
 
     var a: Int = num
@@ -59,6 +60,7 @@ fun m_divide(num: Int): Int{
     }
     return mul(dq)
 }
+
 fun solution1(pobi: List<Int>, crong: List<Int>): Int {
     var check = true
 
@@ -66,12 +68,16 @@ fun solution1(pobi: List<Int>, crong: List<Int>): Int {
     if (!check)
         return -1
 
-    var p: Int = max(max(s_divide(pobi[0]), m_divide(pobi[0])), max(s_divide(pobi[1]), m_divide(pobi[1])))
-    var c: Int = max(max(s_divide(crong[0]), m_divide(crong[0])), max(s_divide(crong[1]), m_divide(crong[1])))
+    var p: Int =
+        max(max(s_divide(pobi[0]), m_divide(pobi[0])), max(s_divide(pobi[1]), m_divide(pobi[1])))
+    var c: Int = max(
+        max(s_divide(crong[0]), m_divide(crong[0])),
+        max(s_divide(crong[1]), m_divide(crong[1]))
+    )
 
-    if(p>c)
+    if (p > c)
         return 1
-    else if(c>p)
+    else if (c > p)
         return 2
     else
         return 0
