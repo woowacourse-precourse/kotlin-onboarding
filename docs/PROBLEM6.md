@@ -21,3 +21,11 @@
 | forms | result |
 | --- | --- |
 | [ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ] | ["jason@email.com", "jm@email.com", "mj@email.com"] |
+
+### 기능
+
+- 도메인인지 확인하는 기능
+- 길이가 11이상 20자 미만인지 확인하는 기능
+- 닉네임이 전부 한글인지 확인하는 기능
+- 결과값을 오름차순으로 정렬하고 중복을 제거하는 기능
+- 
