@@ -7,6 +7,25 @@ package onboarding
 3. 조건에 맞는 것들을 answer에 담아준 후 sort한다.
 */
 fun solution6(forms: List<List<String>>): List<String> {
-    TODO("프로그램 구현")
+    val hm = makeDictionary(forms)
 }
 
+private fun makeDictionary(forms: List<List<String>>): HashMap<String, Int> {
+    val hm = HashMap<String, Int>()
+
+    for (i in forms.indices) {
+        val name = forms[i][1]
+        val set = HashSet<String>()
+        for (a in 0 until name.length - 1) {
+            val tmp = name.substring(a, a + 2)
+            if(set.contains(tmp)){
+                continue
+            } else {
+                set.add(tmp)
+                hm[tmp] = hm.getOrDefault(tmp, 0) + 1
+            }
+        }
+    }
+
+    return hm
+}
