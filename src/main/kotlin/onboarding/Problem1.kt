@@ -12,13 +12,7 @@ fun solution1(pobi: List<Int>, crong: List<Int>): Int {
     pobiNum = max(max(getSum(pobi[0]), getMultiply(pobi[0])), max(getSum(pobi[1]), getMultiply(pobi[1])))
     crongNum = max(max(getSum(crong[0]), getMultiply(crong[0])), max(getSum(crong[1]), getMultiply(crong[1])))
 
-    if (pobiNum == crongNum)
-        return 0
-    if (pobiNum > crongNum)
-        return 1
-    if (pobiNum < crongNum)
-        return 2
-    return -1
+    return answer(pobiNum, crongNum)
 }
 
 fun isException(pobi: List<Int>, crong:List<Int>): Boolean{
@@ -57,4 +51,12 @@ fun getMultiply(x:Int) : Int{
     }
 
     return multiply
+}
+
+fun answer(pobiNum:Int, crongNum:Int): Int {
+    if (pobiNum > crongNum)
+        return 1
+    if (pobiNum < crongNum)
+        return 2
+    return 0
 }
