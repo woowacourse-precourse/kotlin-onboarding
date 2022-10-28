@@ -4,6 +4,15 @@ fun solution4(word: String): String {
     TODO("프로그램 구현")
 }
 
+private fun Char.reversedAlpha(): Char {
+    val reversedAlphaMap = createReversedAlphaMap()
+
+    if (this.isAlpha()) {
+        return reversedAlphaMap[this] ?: this
+    }
+    return this
+}
+
 private fun Char.isAlpha(): Boolean {
     return this in 'A' .. 'Z' || this in 'a' .. 'z'
 }
