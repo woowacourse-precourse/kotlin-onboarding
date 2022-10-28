@@ -11,6 +11,20 @@ fun setUserNickname(forms: List<List<String>>): String {
     return result
 }
 
+fun checkDuplicateString(row: String, now_str: String): Boolean {
+    var nowSubRow = row.replace(now_str, "")
+    var checked = false
+
+    for(i in 0 until now_str.length - 1) {
+        val subStr = now_str.substring(i, i + 2)
+        if(nowSubRow.contains(subStr)) {
+            checked = true
+            break
+        }
+    }
+    return checked
+}
+
 fun solution6(forms: List<List<String>>): List<String> {
     var result = mutableListOf<String>()
 
