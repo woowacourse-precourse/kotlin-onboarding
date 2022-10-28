@@ -6,6 +6,7 @@ fun solution7(
     visitors: List<String>
 ): List<String> {
 
+    val hashMapPoint = hashMapOf<String, Int>()
     val userFriends = mutableListOf<String>()
 
     // user와 친구인 사용자를 찾는 기능
@@ -16,6 +17,14 @@ fun solution7(
         }
     }
 
-    return listOf()
+    // user와 함께 아는 사용자에게 10점을 주는 기능
+    friends.forEach {
+        if (it[0] in userFriends && user != it[1])
+            hashMapPoint[it[1]] = hashMapPoint.getOrDefault(it[0], 0) + 10
+        else if ( it[1] in userFriends && user != it[0])
+            hashMapPoint[it[0]] = hashMapPoint.getOrDefault(it[1], 0) + 10
+    }
+
+   return listOf()
 
 }
