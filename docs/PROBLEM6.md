@@ -21,3 +21,9 @@
 | forms | result |
 | --- | --- |
 | [ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ] | ["jason@email.com", "jm@email.com", "mj@email.com"] |
+
+## 기능 목록
+1. 예외 사항 처리 기능 구현
+2. 문자열 두 개가 서로 두 글자 이상의 공통된 문자를 포함하고 있는지 확인하는 기능 구현
+3. 리스트를 돌며 2번 기능을 수행하여 참이면 result에 이메일을 넣는 기능 구현
+4. result에서 중복을 제거하고 오름차순으로 정렬하여 return하도록 하는 기능 구현
