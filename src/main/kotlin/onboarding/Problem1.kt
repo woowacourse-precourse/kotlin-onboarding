@@ -50,6 +50,42 @@ fun solution1(pobi: List<Int>, crong: List<Int>): Int {
         crongRight /= 10
     }
 
+    var answer = 0
+    var pobiBigger = 0
+    var crongBigger = 0
+
+    if (pobiLeftsum >= pobiLeftmul){
+        if (pobiRightsum >= pobiRightmul){
+            pobiBigger = (pobiLeftsum * pobiRightsum)
+        }
+        else {
+            pobiBigger = (pobiLeftsum * pobiRightmul)
+        }
+    } else{
+        if (pobiRightsum >= pobiRightmul){
+            pobiBigger = (pobiLeftsum * pobiRightsum)
+        }
+        else {
+            pobiBigger = (pobiLeftsum * pobiRightmul)
+        }
+    }
+
+    if (crongLeftsum >= crongLeftmul){
+        if (crongRightsum >= crongRightmul){
+            crongBigger = (crongLeftsum * crongRightsum)
+        }
+        else {
+            crongBigger = (crongLeftsum * crongRightmul)
+        }
+    } else{
+        if (crongRightsum >= crongRightmul){
+            crongBigger = (crongLeftsum * crongRightsum)
+        }
+        else {
+            crongBigger = (crongLeftsum * crongRightmul)
+        }
+    }
 
     return 1
+
 }
