@@ -11,7 +11,17 @@ fun solution4(word: String): String {
             list.add(('A' + 25 - a).toString())
             continue
         }
+        if(word[i].isLowerCase()){
+            var b = word[i] - 'a'
+            list.add(('a' + 25 - b).toString())
+            continue
+        }
+
+        list.add(word[i].toString())
+
+
     }
+
 
 
 }
