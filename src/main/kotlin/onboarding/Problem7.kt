@@ -1,12 +1,14 @@
 package onboarding
 
+import java.util.*
+
 fun solution7(
         user: String,
         friends: List<List<String>>,
         visitors: List<String>
 ): List<String> {
     var scoreMap = mutableMapOf<String, Int>() // 유저 목록 + 점수를 담을 Map 객체
-
+    var resultFriends = mutableListOf<String>() // 최종적으로 리턴될 유저 닉네임을 담을 배열
     for (i in returnAllUser(friends, visitors)) { // 현재 존재하는 유저명을 담는 Map에 초기 데이터 주입하기
         scoreMap[i] = 0
     }
@@ -15,8 +17,13 @@ fun solution7(
     //scoreMap = visitors(visitors, scoreMap) // 점수를 추가한 후 map 객체를 반환하므로 기존에 선언해둔 map 에 덮어씌운다.
 
     /* 위의 2줄의 재선언이 비효율적이라고 생각되어, 하나의 코드로 합친 후, value 값을 기준으로 정렬했다.
-    * List로 변환 후 value (it.second) 로 정렬 한 후, 다시 map으로 재변환했다. */
-    scoreMap = visitors(visitors, commonFriends(user, friends, scoreMap)).toList().sortedByDescending { it.second }.toMap() as MutableMap
+    * List로 변환 후 value (it.second) 로 정렬했다. */
+    val sortList = visitors(visitors, commonFriends(user, friends, scoreMap)).toList().sortedByDescending { it.second }
+
+
+    scoreMap = sortSameValue(sortList).toMap() as MutableMap //같은 value를 가질 경우에는 이름순으로 정렬해줘야 한다.
+
+
 }
 
 /**
@@ -98,4 +105,20 @@ private fun visitors(visitors : List<String>, scoreMap: MutableMap<String, Int>)
 private fun addVisitorScore (friend : String, map : MutableMap<String, Int>) : MutableMap<String, Int>{
     map[friend] = map[friend]!! + 1
     return map
+}
+
+/**
+ * 같은 점수를 가진 경우에는 이름 순으로 재정렬해주는 함수.
+ */
+private fun sortSameValue(list : List<Pair<String, Int>>) : List<Pair<String, Int>>{
+    var lastKey = ""
+    var lastValue = 0
+    for(i in list.indices) {
+        if(list[i].second == lastValue && list[i].first < lastKey) {
+            Collections.swap(list, i, i-1)
+        }
+        lastKey = list[i].first
+        lastValue = list[i].second
+    }
+    return list
 }
