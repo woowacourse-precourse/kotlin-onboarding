@@ -14,7 +14,9 @@ fun solution1(pobi: List<Int>, crong: List<Int>): Int {
 
         var sum_number = 0
         var multiply_number = 1
+
         var tmp = pobi[0]
+
         while (tmp != 0) {
             sum_number += firstDigitCal(tmp)
             multiply_number *= firstDigitCal(tmp)
@@ -76,15 +78,9 @@ fun solution1(pobi: List<Int>, crong: List<Int>): Int {
 //
 
 
-    var answer = 0
+
 //    점수를 비교해 가장 높은 사람이 게임의 승자가 된다.
-        if (maxPobi > maxCrong) {
-            answer = 1
-        } else if (maxCrong > maxPobi){
-            answer =  2
-        } else if (maxPobi == maxCrong) {
-            answer =  0
-        }
+        var answer = scoreCompare(maxPobi, maxCrong)
 
     //    시작 면이나 마지막 면이 나오도록 책을 펼치지 않는다.
     if (pobi[1] - pobi[0] != 1 || crong[1] - crong[0] != 1 )
@@ -101,4 +97,17 @@ fun firstDigitCal ( a : Int) : Int {
 
 fun divideBy10 (a : Int) : Int {
     return a/10
+}
+
+fun scoreCompare(a:Int, b:Int) : Int{
+    var answer = 0
+
+    if (a > b) {
+        answer = 1
+    } else if (a < b){
+        answer =  2
+    } else if (a == b) {
+        answer =  0
+    }
+   return answer
 }
