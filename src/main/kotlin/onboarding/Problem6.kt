@@ -5,7 +5,13 @@ import java.util.SortedSet
 private const val subNameMinimumLength = 2
 
 fun solution6(forms: List<List<String>>): List<String> {
-    TODO("프로그램 구현")
+    val resultSet = sortedSetOf<String>()
+
+    createSubNames(forms).onEach { (_, emails) ->
+        resultSet.putAllIfLongerThan(subNameMinimumLength, emails)
+    }
+
+    return resultSet.toList()
 }
 
 private fun createSubNames(forms: List<List<String>>): Map<String, MutableSet<String>> {
