@@ -1,40 +1,28 @@
 package onboarding
 
-import java.util.*
-
 fun solution2(cryptogram: String): String {
-    val stack = ArrayDeque<Char>()
-    val list = LinkedList(cryptogram.toList().drop(1))
-    val it = list.listIterator()
+    return decode(cryptogram)
+}
 
-    stack.push(cryptogram[0])
+private fun decode(cryptogram: String): String {
+    var prev = cryptogram
+    var next = removeConsecutiveChars(cryptogram)
 
-    while (it.hasNext()) {
-        val curr = it.next()
-
-        if (curr == stack.peek()) {
-            do {
-                it.remove()
-            } while (it.hasNext() && stack.peek() == it.next())
-
-            stack.pop()
-
-            if (it.hasPrevious())
-                it.previous()
-        } else {
-            stack.push(curr)
-            it.remove()
-        }
-
+    while (prev.length != next.length) {
+        prev = next
+        next = removeConsecutiveChars(next)
     }
 
-    return stack.reversed().joinToString("")
+    return next
 }
 
-private fun <T> ArrayDeque<T>.print(tab: String = "") {
-    println("${tab}stack=${reversed()}")
-}
+private fun removeConsecutiveChars(text: String): String {
+    return buildString {
+        for (i in text.indices) {
+            if (text.getOrNull(i - 1) == text[i] || text[i] == text.getOrNull(i + 1))
+                continue
 
-private fun <T> LinkedList<T>.print(tab: String = "") {
-    println("${tab}list =$this")
+            append(text[i])
+        }
+    }
 }
