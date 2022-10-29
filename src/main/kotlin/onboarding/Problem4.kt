@@ -1,7 +1,6 @@
 package onboarding
 
 fun solution4(word: String): String {
-
     /**
      * 기능목록
      * 1. 청개구리 사전에 대응하는 wordMap 선언
@@ -9,9 +8,7 @@ fun solution4(word: String): String {
      *    wordMap에 없는 경우 원래 문자를 append
      * */
 
-    /**
-     * 1. 빠른 문자 변환을 위한 Map 선언
-     * */
+    /** 1. 청개구리 사전에 대응하는 wordMap 선언 */
     val wordMap = mapOf<String, String>(
         "A" to "Z", "B" to "Y", "C" to "X", "D" to "W", "E" to "V", "F" to "U", "G" to "T", "H" to "S", "I" to "R",
         "J" to "Q", "K" to "P", "L" to "O", "M" to "N", "N" to "M", "O" to "L", "P" to "K", "Q" to "J", "R" to "I",
@@ -22,15 +19,16 @@ fun solution4(word: String): String {
     )
 
     /**
-     * 2. answer를 StringBuilder로 선언하여 index 단위로 접근 및 수정
+     * 2. word의 char를 하나씩 점검하여 wordMap에 있는 알파벳일 경우 대응하는 문자를 answer에 append
+     *    wordMap에 없는 경우 원래 문자를 append
      * */
     val answer = StringBuilder()
     for (char in word){
         if (wordMap[char.toString()].isNullOrEmpty()){
             answer.append(char)
-        }else{
-            answer.append(wordMap[char.toString()])
+            continue
         }
+        answer.append(wordMap[char.toString()])
     }
     return answer.toString()
 }
