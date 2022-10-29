@@ -30,5 +30,10 @@ fun FindContinuity(CryptogramList:MutableList<Char>): MutableList<Char> {
 
 //연속되는 문자 지워주는 함수
 fun Removelement(location:MutableList<Int>, CryptogramList:MutableList<Char>){
+    location.sortDescending()
+    for(i in location){
+        CryptogramList.removeAt(i)
+        CryptogramList.removeAt(i)
+    }
 
 }
