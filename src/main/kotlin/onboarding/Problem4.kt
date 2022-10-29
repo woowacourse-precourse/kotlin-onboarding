@@ -18,6 +18,17 @@ fun conversionChar(char: Char): Char {
     }
 }
 
+fun conversionWord(word: String): String {
+    val builder = StringBuilder()
+    for (i in word) {
+        if (i.isLetter())
+            builder.append(conversionChar(i))
+        else
+            builder.append(i)
+    }
+    return builder.toString()
+}
+
 fun solution4(word: String): String {
-    TODO("프로그램 구현")
+    return conversionWord(word)
 }
