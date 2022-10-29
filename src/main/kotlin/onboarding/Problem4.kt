@@ -1,25 +1,34 @@
 package onboarding
 
 fun main(args: Array<String>) {
-    createDictionary()
+    println(solution4("I love you"))
 }
 
 fun solution4(word: String): String {
-    TODO("프로그램 구현")
+    return changeWord(word = word)
 }
 
-//fun changeWord(word: String): String {
-//
-//}
+fun changeWord(word: String): String {
+    val dictionary = createDictionary()
+    var newWord = ""
 
-fun createDictionary(): List<Pair<Char, Char>> {
-    val dictionary = mutableListOf<Pair<Char, Char>>()
+    word.forEach { w ->
+        newWord += if (isAlpha(w)) {
+            dictionary[w]
+        } else w
+    }
+
+    return newWord
+}
+
+fun createDictionary(): HashMap<Char, Char> {
+    val dictionary = hashMapOf<Char, Char>()
 
     repeat(NUMBER_OF_ALPHA) {
-        dictionary.add((START_UPPER_ALPHA_CODE + it).toChar() to (END_UPPER_ALPHA_CODE - it).toChar())
-        dictionary.add((START_LOWER_ALPHA_CODE + it).toChar() to (END_LOWER_ALPHA_CODE - it).toChar())
+        dictionary[(START_UPPER_ALPHA_CODE + it).toChar()] = (END_UPPER_ALPHA_CODE - it).toChar()
+        dictionary[(START_LOWER_ALPHA_CODE + it).toChar()] = (END_LOWER_ALPHA_CODE - it).toChar()
     }
-    println(dictionary)
+
     return dictionary
 }
 
