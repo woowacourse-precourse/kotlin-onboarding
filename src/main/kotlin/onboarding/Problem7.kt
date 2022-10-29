@@ -7,3 +7,9 @@ fun solution7(
 ): List<String> {
     TODO("프로그램 구현")
 }
+
+private fun addFriend(friends: MutableList<String>?, newFriend: String): MutableList<String> {
+    return (friends ?: mutableListOf()).apply {
+        add(newFriend)
+    }
+}
