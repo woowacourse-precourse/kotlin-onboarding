@@ -18,6 +18,7 @@ fun solution6(forms: List<List<String>>): List<String> {
             }
         }
     }
+    return returnProcessing(mEmailList)
 }
 
 /**
@@ -55,4 +56,11 @@ private fun getWord(index : Int, name : String) : String? {
  */
 private fun checkAvailable(word : String?, crewInfo : String) : Boolean{
     return word != null && crewInfo.contains(word)
+}
+
+/**
+ * 리턴할 이메일 배열의 중복 제거 및 정렬하는 함수
+ */
+private fun returnProcessing(list : List<String>) : List<String> {
+    return list.distinct().sorted()
 }
