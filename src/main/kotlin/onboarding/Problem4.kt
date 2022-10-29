@@ -1,5 +1,10 @@
 package onboarding
 
+val UPPER_CASE_A_NUMBER = 65
+val UPPER_CASE_Z_NUMBER = 90
+val LOWER_CASE_A_NUMBER = 97
+val LOWER_CASE_Z_NUMBER = 122
+
 fun solution4(word: String): String {
     return convertWord(0, word, "")
 }
@@ -16,7 +21,7 @@ fun convertWord(index : Int, word: String, result : String) : String {
 
 fun getReversedCharacter(char : Char) : Char{
     if (char.isLowerCase()) {
-        return (122 - (char.code - 97)).toChar()
+        return (LOWER_CASE_Z_NUMBER - (char.code - LOWER_CASE_A_NUMBER)).toChar()
     }
-    return (90 - (char.code - 65)).toChar()
+    return (UPPER_CASE_Z_NUMBER - (char.code - UPPER_CASE_A_NUMBER)).toChar()
 }
