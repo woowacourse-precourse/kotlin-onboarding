@@ -18,14 +18,17 @@ fun solution7filteringResult(
     friendRelation: HashMap<String, MutableSet<String>>,
 ): List<String> {
     val resultRecommendation = ArrayList<String>()
+    //user는 추천 친구목록에서 제외
     friendScore.remove(user)
+
+    //점수 기준 내림차순 (같은 경우 이름 기준 오름차순)
     friendScore.toList().sortedWith(compareBy({ -it.second }, { it.first })).forEach { eachFriend ->
-        if (friendRelation[user]?.contains(eachFriend.first)==false) {
+        if (friendRelation[user]?.contains(eachFriend.first) == false) {
             resultRecommendation.add(eachFriend.first)
         }
     }
 
-    return resultRecommendation.toList()
+    return resultRecommendation.toList().take(5)
 }
 
 fun solution7calcConnectedFriendScore(
@@ -36,6 +39,9 @@ fun solution7calcConnectedFriendScore(
 ) {
     friendRelation[curFriend]?.forEach { nextFriend ->
         if (!usedPath.contains(Pair(curFriend, nextFriend))) {
+            //특정 간선을 기준으로 연결된 두 노드의 점수를 증가시킨다
+            //B가 A를 알고있다(A의 score+10) <- A와 B가 친구이다 -> A가 B를 알고있다(B의 score+10)
+            //user를 기준으로 탐색을 시작하기 때문에 user와 연관성이 전혀 없는 친구에 대한 점수는 증가하지 않음.
             solution7addScore(friendScore, curFriend)
             solution7addScore(friendScore, nextFriend)
             solution7recordPath(curFriend, nextFriend, usedPath)
@@ -58,11 +64,11 @@ fun solution7recordPath(curFriend: String, nextFriend: String, usedPath: Mutable
 }
 
 fun solution7addVisitorsScore(friendScore: HashMap<String, Int>, visitors: List<String>) {
-    visitors.forEach { eachVisitor->
-        friendScore[eachVisitor]?.let{score->
-            friendScore[eachVisitor]=score+1
-        }?:run{
-            friendScore[eachVisitor]=1
+    visitors.forEach { eachVisitor ->
+        friendScore[eachVisitor]?.let { score ->
+            friendScore[eachVisitor] = score + 1
+        } ?: run {
+            friendScore[eachVisitor] = 1
         }
     }
 }

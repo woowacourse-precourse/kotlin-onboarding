@@ -18,6 +18,7 @@ fun solution6calcPatternCnt(forms: List<List<String>>): HashMap<String, Int> {
         val nickname = eachForm[1]
         var pattern = ""
 
+        //모든 닉네임 패턴의 개수를 count (닉네임 패턴 : 연속되는 char)
         nickname.forEach { eachChar ->
             pattern += eachChar
 
@@ -44,6 +45,7 @@ fun solution6alertEmailDecide(forms: List<List<String>>, nicknamePatternCnt: Has
             pattern += eachChar
 
             if (pattern.length == 2) {
+                //2회 이상 나온 닉네임 패턴을 가지고 있는 이메일을 선택한다.
                 if (nicknamePatternCnt[pattern]!! >= 2) {
                     alertEmailList.add(email)
                     break
