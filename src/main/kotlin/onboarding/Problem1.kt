@@ -34,13 +34,9 @@ fun isWrongPage(pages: List<Int>): Boolean {
     return false
 }
 
-fun calculateMaxNumber(pages: List<Int>): Int {
-    var leftPageNum = pages[0]
-    var rightPageNum = pages[1]
-
-
-    val leftMaxNum = 0
-    val rightMaxNum = 0
+fun compareMaxNumber(pages: List<Int>): Int {
+    val leftMaxNum = calculateMaxNumber(pageNumber = pages[0])
+    val rightMaxNum = calculateMaxNumber(pageNumber = pages[1])
 
     return max(leftMaxNum, rightMaxNum)
 }
@@ -51,7 +47,6 @@ fun calculateMaxNumber(pageNumber: Int): Int {
     var multiplyNum = 1
 
     while(pageNum > 0) {
-
         val curNum = pageNum % 10
 
         plusNum += curNum
