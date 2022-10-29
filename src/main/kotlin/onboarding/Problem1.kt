@@ -3,7 +3,19 @@ package onboarding
 import java.lang.Integer.max
 
 fun solution1(pobi: List<Int>, crong: List<Int>): Int {
+    if (isWrongPage(pobi) || isWrongPage(crong))
+        return EXCEPTION_RESULT
 
+    val pobiMaxNum = calculateMaxNumber(pobi)
+    val crongMaxNum = calculateMaxNumber(crong)
+
+    if (pobiMaxNum > crongMaxNum)
+        return POBI_WIN_RESULT
+
+    if (crongMaxNum > pobiMaxNum)
+        return CRONG_WIN_RESULT
+
+    return TIE_RESULT
 }
 
 fun isWrongPage(pages: List<Int>): Boolean {
