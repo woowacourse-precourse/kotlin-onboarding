@@ -2,19 +2,24 @@ package onboarding
 
 fun solution6(forms: List<List<String>>): List<String> {
 
-    var answer = arrayListOf<String>()
+    val answer = arrayListOf<String>()
 
-    for(index in forms.indices) {
-        for (word in 0 until forms[index][1].length-1){
-            for (j in index+1 until forms.size){
-                if (forms[j][1].contains(forms[index][1].substring(word,word+2))){
-                    answer.add(forms[index][0])
-                    answer.add(forms[j][0])
+    for(member in forms.indices) {
+        for (alphabet in 0 until forms[member][1].length-1){
+            for (compare in member+1 until forms.size){
+                val nickname = forms[member][1]
+                val email = forms[member][0]
+                val compareNickname = forms[compare][1]
+                val compareEmail = forms[compare][0]
+
+                if (compareNickname.contains(nickname.substring(alphabet,alphabet+2))){
+                    answer.add(email)
+                    answer.add(compareEmail)
                 }
             }
         }
     }
 
-    val setFromList = answer.toSet()
-    return setFromList.sorted()
+    val removeRepeat = answer.toSet()
+    return removeRepeat.sorted()
 }
