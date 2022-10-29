@@ -29,3 +29,7 @@ private fun addFriend(friends: MutableList<String>?, user: String, newFriend: St
         }
     }
 }
+
+private fun getFriendCountOf(friendsMap: Map<String, List<String>>, user: String): Int {
+    return (friendsMap[user] ?: mutableListOf()).size
+}
