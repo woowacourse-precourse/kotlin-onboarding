@@ -8,7 +8,9 @@ fun solution3(number: Int): Int {
     for (i in 1..number) {
         var currentNumber: Int = i
         while (currentNumber != 0) {
-            if (currentNumber % 10 == 3 || currentNumber % 10 == 6 || currentNumber % 10 == 9) clapCount++
+            val meetCriteriaClap = currentNumber % 10 == 3 || currentNumber % 10 == 6 || currentNumber % 10 == 9
+
+            if (meetCriteriaClap) clapCount++
             currentNumber /= 10
         }
     }
