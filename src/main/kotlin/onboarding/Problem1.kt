@@ -4,8 +4,8 @@ fun calculation(a: List<Int>): Int {
 
     val leftStirng = a[0].toString()    //왼쪽과 오른쪽 페이지의 숫자를 stirng으로 바꿔서 저장해준다
     val rightStirng = a[1].toString()
-
-    if(a[0]+1==a[1] && a[0]%2 == 1){       //왼쪽 페이지 번호는 홀수이고 오른쪽 페이지보다 1 작아야 한다
+                                                                        //입력 받은 두 페이지는 1~400 페이지 사이이며
+    if(a[0]+1==a[1] && a[0]%2 == 1 && a[0] >= 1 && a[1] <= 400){       //왼쪽 페이지 번호는 홀수이고 오른쪽 페이지보다 1 작아야 한다
 
         var tempSum1 = 0
         var tempMul1 = 1
