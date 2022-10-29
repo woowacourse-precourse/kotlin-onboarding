@@ -4,32 +4,32 @@ fun solution1(pobi: List<Int>, crong: List<Int>): Int {
     if (!checkException(pobi) || !checkException(crong)) {
         return -1
     }
-    val pobi_num = calculate(pobi)
-    val crong_num = calculate(crong)
+    val pobi_num = compareLeftRight(pobi)
+    val crong_num = compareLeftRight(crong)
     return match(pobi_num, crong_num)
 }
 
-fun checkException(list: List<Int>): Boolean {
-    return when ((list[0] % 2 == 1) &&
-            (list[1] == list[0] + 1) &&
-            (list[0] >= 3) &&
-            (list[0] <= 397)) {
+fun checkException(pageNum: List<Int>): Boolean {
+    return when ((pageNum[0] % 2 == 1) &&
+            (pageNum[1] == pageNum[0] + 1) &&
+            (pageNum[0] >= 3) &&
+            (pageNum[0] <= 397)) {
         true -> true
         false -> false
     }
 }
 
-fun calculate(list: List<Int>): Int {
-    val left = calculate2(list[0])
-    val right = calculate2(list[1])
+fun compareLeftRight(pageNum: List<Int>): Int {
+    val left = calculateMax(pageNum[0])
+    val right = calculateMax(pageNum[1])
     return when (left > right) {
         true -> left
         false -> right
     }
 }
 
-fun calculate2(par_num: Int): Int {
-    var num = par_num
+fun calculateMax(page: Int): Int {
+    var num = page
     var sumAndProduct = mutableListOf<Int>(0, 1)
     do {
         sumAndProduct[0] += num % 10
