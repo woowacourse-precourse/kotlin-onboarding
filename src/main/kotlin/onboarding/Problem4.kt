@@ -13,8 +13,8 @@ fun solution4(word: String): String {
     var resultString = ""
 
     for (index in word.indices) {
-        if(word[index]==' '){
-            resultString+=' '
+        if (word[index] == ' ') {
+            resultString += ' '
             continue
         }
 

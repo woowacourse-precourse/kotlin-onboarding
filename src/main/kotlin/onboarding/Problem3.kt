@@ -13,5 +13,4 @@ fun solution3(number: Int): Int {
     }
 
     return totalClapCount
-
 }
