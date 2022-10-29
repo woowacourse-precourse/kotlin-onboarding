@@ -11,5 +11,7 @@ fun getClap(number: Int): Int {
 }
 
 fun solution3(number: Int): Int {
-    TODO("프로그램 구현")
+    var answer = 0
+    for(num in 1..number) answer += getClap(num)
+    return answer
 }
