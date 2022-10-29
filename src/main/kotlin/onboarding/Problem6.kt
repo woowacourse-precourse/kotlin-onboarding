@@ -3,7 +3,10 @@ package onboarding
 import kotlin.math.max
 
 fun solution6(forms: List<List<String>>): List<String> {
-    TODO("프로그램 구현")
+
+    exception6(forms)
+
+    return listOf()
 }
 
 fun exception6(forms: List<List<String>>) {
@@ -63,4 +66,14 @@ fun find_intersect_str(str1 : String, str2 : String) : Boolean {
         }
     }
     return false
+}
+
+fun compare_intersect(num : Int, forms: List<List<String>>, result : MutableSet<String>) {
+
+    for(j in num+1 until forms.size ) {
+        if(find_intersect_str(forms[num][1], forms[j][1])) {
+            result.add(forms[num][0])
+            result.add(forms[j][0])
+        }
+    }
 }
