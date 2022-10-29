@@ -27,10 +27,20 @@ fun solution7(
             }
         }
     }
-    for(v in visitors){
+    for (v in visitors) {
         if (userFriendList.contains(v)) continue
         if (!strangersScore.contains(v)) strangersScore[v] = 1
         else strangersScore[v] = strangersScore[v]!!.plus(1)
     }
-    TODO("프로그램 구현")
+    val ans = arrayListOf<String>()
+    val strangerList = strangersScore.toList()
+    val scoreComparator = compareByDescending<Pair<String, Int>> { it.second }
+    val scoreAndNameComparator = scoreComparator.thenBy { it.first }
+    val sortedList = strangerList.sortedWith(scoreAndNameComparator)
+    for (s in sortedList) {
+        if (ans.size >= 5) break
+        if (s.second == 0) break
+        ans.add(s.first)
+    }
+    return ans
 }
