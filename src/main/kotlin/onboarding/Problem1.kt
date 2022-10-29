@@ -18,7 +18,7 @@ fun solution1(pobi: List<Int>, crong: List<Int>): Int {
         while (tmp != 0) {
             sum_number += firstDigitCal(tmp)
             multiply_number *= firstDigitCal(tmp)
-            tmp /= 10
+            tmp = divideBy10(tmp)
         }
 
         if (sum_number > maxPobi) {
@@ -34,7 +34,7 @@ fun solution1(pobi: List<Int>, crong: List<Int>): Int {
         while (tmp != 0) {
             sum_number += firstDigitCal(tmp)
             multiply_number *= firstDigitCal(tmp)
-            tmp /= 10
+            tmp = divideBy10(tmp)
         }
         if (sum_number > maxPobi) {
             maxPobi = sum_number
@@ -49,7 +49,7 @@ fun solution1(pobi: List<Int>, crong: List<Int>): Int {
         while (tmp != 0) {
             sum_number += tmp % 10
             multiply_number *= tmp % 10
-            tmp /= 10
+            tmp = divideBy10(tmp)
         }
         if (sum_number > maxCrong) {
             maxCrong = sum_number
@@ -63,7 +63,7 @@ fun solution1(pobi: List<Int>, crong: List<Int>): Int {
         while (tmp != 0) {
             sum_number += firstDigitCal(tmp)
             multiply_number *= firstDigitCal(tmp)
-            tmp /= 10
+            tmp = divideBy10(tmp)
         }
         if (sum_number > maxCrong) {
             maxCrong = sum_number
@@ -98,7 +98,7 @@ return answer
 fun firstDigitCal ( a : Int) : Int {
     return a%10
 }
-//
-//fun divideBy10 (a : Int) : Int {
-//    return a/10
-//}
+
+fun divideBy10 (a : Int) : Int {
+    return a/10
+}
