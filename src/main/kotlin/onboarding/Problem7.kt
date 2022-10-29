@@ -1,8 +1,6 @@
 package onboarding
 
-import java.util.*
 import kotlin.collections.HashMap
-import kotlin.collections.LinkedHashMap
 
 fun solution7(
     user: String,
@@ -10,49 +8,43 @@ fun solution7(
     visitors: List<String>
 ): List<String> {
 
-    // user의 친구 찾기
-    var user_friends = arrayListOf<String>()
+    // 사용자의 친구 찾기
+    val userFriends = arrayListOf<String>()
 
-    for (index in friends.indices) {
-        if (friends[index].contains(user)) {
-            if (friends[index][0].equals(user))
-                user_friends.add(friends[index][1])
+    for (i in friends.indices) {
+        if (friends[i].contains(user)) {
+            if (friends[i][0] == user)
+                userFriends.add(friends[i][1])
             else
-                user_friends.add(friends[index][0])
+                userFriends.add(friends[i][0])
         }
     }
 
     // 사용자와 함께 아는 친구에 따라 점수 주기
-    var friend_score : HashMap<String, Int> = hashMapOf()
+    val friendScore : HashMap<String, Int> = hashMapOf()
 
-    for (user_friend in user_friends.indices){
-        val friend_name = user_friends[user_friend]
-        for (index in friends.indices) {
-            if (friends[index].contains(friend_name)){
-                if (!friends[index].contains(user)){
-                    var name = friends[index][1]
-                    if (friends[index][1].equals(friend_name))
-                        name = friends[index][0]
-                    friend_score.put(name, friend_score.get(name)?.plus(10) ?: 10)
-//                    if (friend_score.containsKey(name))
-//                        friend_score.replace(name, friend_score.get(name)!! +10)
-//                    else
-//                        friend_score.put(name,10)
+    for (user_friend in userFriends.indices){
+        val friendName = userFriends[user_friend]
+        for (i in friends.indices) {
+            if (friends[i].contains(friendName)){
+                if (!friends[i].contains(user)){
+                    var name = friends[i][1]
+                    if (friends[i][1] == friendName)
+                        name = friends[i][0]
+                    friendScore[name] = friendScore[name]?.plus(10) ?: 10
                 }
             }
         }
     }
 
+    // 방문 횟수따라 점수 주기
     for (visitor in visitors.indices){
         val name = visitors[visitor]
-        friend_score.put(name, friend_score.get(name)?.plus(1) ?: 1)
-//        if (friend_score.containsKey(name))
-//            friend_score.replace(name, friend_score.get(name)!! +1)
-//        else
-//            friend_score.put(name,10)
+        friendScore[name] = friendScore[name]?.plus(1) ?: 1
     }
-    // 정렬
-    val newList = friend_score.toList().sortedWith(
+
+    // 점수와 이름 순으로 정렬
+    val newList = friendScore.toList().sortedWith(
             compareBy(
                     { -(it.second) },
                     { it.first }
@@ -61,12 +53,12 @@ fun solution7(
 
     // 답 선정
     val answer = mutableListOf<String>()
-    for ((key, value) in newList){
-        if ((answer.size == 5) or (value == 0))
+    for ((name, score) in newList){
+        if ((answer.size == 5) or (score == 0))
             break
-        if (user_friends.contains(key))
+        if (userFriends.contains(name))
             continue
-        answer.add(key)
+        answer.add(name)
     }
     return answer
 }
