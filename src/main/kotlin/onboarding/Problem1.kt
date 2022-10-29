@@ -6,6 +6,14 @@ fun solution1(pobi: List<Int>, crong: List<Int>): Int {
 
 }
 
+fun isWrongPage(pages: List<Int>): Boolean {
+    val leftPageNum = pages[0]
+    val rightPageNum = pages[1]
+
+    if (rightPageNum - leftPageNum != 1 || leftPageNum == START_PAGE_NUM || rightPageNum == LAST_PAGE_NUM)
+        return true
+    return false
+}
 
 fun calculateMaxNumber(pages: List<Int>): Int {
     val leftPageNum = pages[0]
