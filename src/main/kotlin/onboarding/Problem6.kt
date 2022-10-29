@@ -46,20 +46,7 @@ fun find_subset(nickName: String) : Set<String> {
 
 fun add_subset(nickName: String, num : Int, set: MutableSet<String>) {
     for(i in 0 until nickName.length - num) {
-        set.add(nickName.substring(i, i + num + 1))
+        val name = nickName.substring(i, i + num + 1)
+        if(name.length >= 2) set.add(name)
     }
-}
-
-fun find_intersect_str(str1 : String, str2 : String) : Set<String> {
-
-    val result = mutableSetOf<String>()
-    val set1 = find_subset(str1)
-    val set2 = find_subset(str2)
-
-    for(element in set1) {
-        if(set2.contains(element)) {
-            result.add(element)
-        }
-    }
-    return result
 }
