@@ -8,7 +8,13 @@ fun solution7(
     friends: List<List<String>>,
     visitors: List<String>
 ): List<String> {
-    TODO("프로그램 구현")
+    findFriends(0, friends)
+    val userFriendList = friendList.remove(user) ?: mutableSetOf()
+
+    findUserFriend(0, userFriendList)
+    containVisitors(0, userFriendList, visitors)
+
+    return sortScore()
 }
 
 fun findUserFriend(index: Int, userFriendList: MutableSet<String>) {
@@ -69,4 +75,13 @@ fun getVisitorPoint(visitor: String) {
     }
     score.put(visitor, 1)
     return
+}
+
+fun sortScore(): List<String> {
+    val sortedScore = score.toList().sortedByDescending { it.second }.map { it.first }
+
+    if (score.size > 5) {
+        return sortedScore.subList(0, 5)
+    }
+    return sortedScore
 }
