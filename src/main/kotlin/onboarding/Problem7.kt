@@ -30,6 +30,6 @@ private fun addFriend(friends: MutableList<String>?, user: String, newFriend: St
     }
 }
 
-private fun getFriendCountOf(friendsMap: Map<String, List<String>>, user: String): Int {
-    return (friendsMap[user] ?: mutableListOf()).size
+private fun String.getFriendsOf(friendsMap: Map<String, List<String>>): List<String> {
+    return friendsMap[this] ?: mutableListOf()
 }
