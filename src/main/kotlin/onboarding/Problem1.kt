@@ -57,6 +57,15 @@ fun solution1(pobi: List<Int>, crong: List<Int>): Int {
     val pobiMax = findMax(pobi)
     val crongMax = findMax(crong)
 
-    return 1
-
+    if(pobiMax == null || crongMax == null)
+        return -1
+    // 최댓값 비교를 통해 승부 결정
+    // pobi 승리
+    if(pobiMax > crongMax)
+        return 1
+    // crong 승리
+    if(crongMax > pobiMax)
+        return 2
+    // 무승부
+    return 0
 }
