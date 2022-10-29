@@ -1,7 +1,8 @@
 package onboarding
 
 fun solution2(cryptogram: String): String {
-    var result: String = ""
+    var result: String = cryptogram
+    var emptyString = ""
 
     fun removeDuplication(originString: String): String {
         var resultString: String = ""
@@ -17,6 +18,15 @@ fun solution2(cryptogram: String): String {
         resultString.plus(originString[originString.length - 1]).also { resultString = it }
 
         return resultString
+    }
+
+    while (emptyString != result) {
+        emptyString = result
+        result = removeDuplication(result)
+    }
+
+    if ((result.length == 2) && (result[0] == result[result.length - 1])) {
+        result = ""
     }
 
     return result
