@@ -1,8 +1,13 @@
 package onboarding
 
+val POBI_WIN = 1
+val CRONG_WIN = 2
+val DRAW = 0
+val EXCEPTION = -1
+
 fun solution1(pobi: List<Int>, crong: List<Int>): Int {
     if (!isValidation(pobi, crong)) {
-        return -1
+        return EXCEPTION
     }
     return comparePobiMaxPageAndCrongMaxPage(pobi, crong)
 }
@@ -50,15 +55,15 @@ fun comparePobiMaxPageAndCrongMaxPage(pobiPageList : List<Int>, crongPageList : 
     val crongMaxPage = getMaxPage(crongPageList)
 
     if (pobiMaxPage > crongMaxPage) {
-        return 1
+        return POBI_WIN
     }
     if (pobiMaxPage < crongMaxPage) {
-        return 2
+        return CRONG_WIN
     }
     if (pobiMaxPage.equals(crongMaxPage)) {
-        return 0
+        return DRAW
     }
-    return -1
+    return EXCEPTION
 }
 
 fun validatePageNumber(pobi: List<Int>, crong: List<Int>) : Boolean {
