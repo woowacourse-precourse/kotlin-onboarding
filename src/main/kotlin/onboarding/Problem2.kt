@@ -1,5 +1,13 @@
 package onboarding
 
 fun solution2(cryptogram: String): String {
-    TODO("프로그램 구현")
+    val plainText = StringBuilder("")
+    cryptogram.forEach {
+        if (plainText.isNotEmpty() && plainText.last() == it) {
+            plainText.deleteCharAt(plainText.length - 1)
+        } else {
+            plainText.append(it)
+        }
+    }
+    return plainText.toString()
 }
