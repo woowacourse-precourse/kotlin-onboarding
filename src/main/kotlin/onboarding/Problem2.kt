@@ -1,26 +1,27 @@
 package onboarding
 
-fun main(args: Array<String>) {
-    print(solution2(cryptogram = "browoanoommnaon"))
-}
-
 fun solution2(cryptogram: String): String {
-
+    return decrypt(cryptogram = cryptogram)
 }
 
-
-fun decryption(cryptogram: String): String {
+fun decrypt(cryptogram: String): String {
+    val repetitionReg = Regex(pattern = REPETITION_PATTERN)
     var targetStr = cryptogram
 
     do {
-        targetStr = targetStr.toCharArray().distinct().joinToString("")
-    } while (hasDuplicates(cryptogram = cryptogram))
+        targetStr = removeRepetition(cryptogram = targetStr, regex = repetitionReg)
+    } while (hasDuplicates(cryptogram = targetStr, regex = repetitionReg))
 
     return targetStr
 }
 
-fun hasDuplicates(cryptogram: String): Boolean {
-    if (cryptogram.length != cryptogram.toCharArray().distinct().size) return true
-    return false
+fun hasDuplicates(cryptogram: String, regex: Regex): Boolean {
+    return regex.containsMatchIn(cryptogram)
 }
+
+fun removeRepetition(cryptogram: String, regex: Regex): String {
+    return cryptogram.replace(regex, "")
+}
+
+const val REPETITION_PATTERN = """(([a-z])\2+)"""
 
