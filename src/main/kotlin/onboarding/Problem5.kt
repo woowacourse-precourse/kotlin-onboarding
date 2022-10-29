@@ -13,6 +13,21 @@ fun withdrawMoney(money: Int, unit: Int): Int {
         -1
 }
 
+fun processMoney(money: Int): List<Int> {
+    val units = listOf(50000, 10000, 5000, 1000, 500, 100, 50, 10, 1)
+    val r = MutableList(9) { 0 }
+    var temporalMoney = money
+    for (i in units.indices) {
+        println(temporalMoney)
+        var balance = withdrawMoney(temporalMoney, units[i])
+        if (balance == -1)
+            continue
+        r[i] = temporalMoney / units[i]
+        temporalMoney = balance
+    }
+    return r
+}
+
 fun solution5(money: Int): List<Int> {
-    TODO("프로그램 구현")
+    return processMoney(money)
 }
