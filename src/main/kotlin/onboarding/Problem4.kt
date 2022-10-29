@@ -1,5 +1,12 @@
 package onboarding
 
 fun solution4(word: String): String {
-    TODO("프로그램 구현")
+    var result = ""
+
+    word.forEach {
+        if (it.code in 65..90)
+            result += (155 - it.code).toChar()
+    }
+
+    return result
 }
