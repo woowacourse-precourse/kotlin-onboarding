@@ -21,10 +21,12 @@ fun solution4(word: String): String {
         val appendChar = mappingRecord[upperWord[index].code - 'A'.code]
 
         //확인하면서 input에서 주어진 문자가 소문자인 경우는 다시 소문자로 바꾸기
-        resultString += if (word[index].isUpperCase())
+        resultString += if (word[index].isUpperCase()){
             appendChar
-        else
+        }
+        else{
             appendChar.lowercaseChar()
+        }
     }
 
     return resultString
