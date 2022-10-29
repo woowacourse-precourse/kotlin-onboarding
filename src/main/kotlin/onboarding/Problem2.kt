@@ -5,11 +5,7 @@ package onboarding
 //3.같은 문자가 있을 시 삭제
 //4.같은 문자가 없을 때 까지 반복
 fun solution2(cryptogram: String): String {
+    var CharList:MutableList<Char> = cryptogram.toMutableList() //문자열 쪼개서 리스트로 변환
 
-
-    var list:MutableList<String> = mutableListOf()
-    list = cryptogram.split("").toMutableList()
-    //문자열 쪼개서 리스트로 변환
-
-    TODO("프로그램 구현")
+    return CharList.joinToString("")
 }
