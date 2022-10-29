@@ -20,8 +20,8 @@ fun changeChar(char: Char) : Char = when(char) {
 fun changeWord(word : String) : String {
     var result = ""
 
-    result += word.map {
-        changeChar(it)
+     word.map {
+        result += changeChar(it)
     }
 
     return result
