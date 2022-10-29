@@ -4,12 +4,18 @@ import java.util.regex.Pattern
 
 fun solution6(forms: List<List<String>>): List<String> {
     val mCrewList = forms.toMutableList()
+    val mEmailList = mutableListOf<String>() // 리턴해줄 이메일을 담을 배열
     for(i in mCrewList.indices) {
         if(!checkException(mCrewList[i])) { //예외사항에 부합될 시에만 실행됨
             mCrewList.removeAt(i)
         }
         for(o in mCrewList[i][1].indices -1) { // 맨 뒤에 -1을 붙인 이유는 맨 마지막 닉네임은 이미 앞의 모든 닉네임에 의해 검증이 완료된 상태이므로
-            val targetWord = getWord(o, mCrewList[i][1]) //여기서 o는 현재 닉네임 안에서 몇번째 글자부터 시작할지 (3글자일 경우 (0,1), (1,2)를 모두 판별해야 하므로) 를 리턴해주기 위해 사용
+            val targetWord = getWord(o, mCrewList[i][1]) //여기서 o는 현재 닉네임 안에서 몇번째 글자부터 시작할지 (3글자일 경우 (0,1), (1,2)를 모두 판별해야 하므로) 를 리턴해주기 위해 사ㅍ미
+            for(u in mCrewList.indices) {
+                if(checkAvailable(targetWord, mCrewList[u][1]) && i != u) { // i != u 는 2중 for문을 활용하므로, 본인의 닉네임을 중복이라고 인식하는 경우를 배제하기 위해 추가
+                    mEmailList.add(mCrewList[u][0])
+                }
+            }
         }
     }
 }
@@ -44,3 +50,9 @@ private fun getWord(index : Int, name : String) : String? {
     } else null
 }
 
+/**
+ * 크루들 닉네임을 돌면서 중복 판단할 문자열이 존재하는지 여부 T/F 반환
+ */
+private fun checkAvailable(word : String?, crewInfo : String) : Boolean{
+    return word != null && crewInfo.contains(word)
+}
