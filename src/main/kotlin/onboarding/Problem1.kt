@@ -22,5 +22,16 @@ fun solution1(pobi: List<Int>, crong: List<Int>): Int {
             return plusSum
     }
 
+    fun getLeftRightMax(left: Int, right: Int): Int {
+        var max: Int
+
+        if (left < right) {
+            max = right
+        } else
+            max = left
+
+        return max
+    }
+
     return 0
 }
