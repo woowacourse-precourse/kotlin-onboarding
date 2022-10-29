@@ -1,23 +1,22 @@
 package onboarding
 
-fun main(args: Array<String>) {
-    println(solution3(33))
-}
-
 fun solution3(number: Int): Int {
     return countClabNumber(number = number)
 }
 
 fun countClabNumber(number: Int): Int {
-    val targetNumbers = listOf('3', '6', '9')
+    val gameNumbers = listOf(THREE, SIX, NINE)
     var clabNumber = 0
 
-    repeat(number) { curNumber ->
-        clabNumber += curNumber.toString().count {
-            targetNumbers.contains(it)
+    for (currentNum in 1..number) {
+        clabNumber += currentNum.toString().count { eachNum ->
+            gameNumbers.contains(eachNum)
         }
     }
-
     return clabNumber
 }
+
+const val THREE = '3'
+const val SIX = '6'
+const val NINE = '9'
 
