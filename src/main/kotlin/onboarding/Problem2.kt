@@ -1,5 +1,15 @@
 package onboarding
 
-fun solution2(cryptogram: String): String {
-    TODO("프로그램 구현")
+fun main(args: Array<String>) {
+    print(solution2(cryptogram = "browoanoommnaon"))
 }
+
+fun solution2(cryptogram: String): String {
+}
+
+
+fun hasDuplicates(cryptogram: String): Boolean {
+    if (cryptogram.length != cryptogram.toCharArray().distinct().size) return true
+    return false
+}
+
