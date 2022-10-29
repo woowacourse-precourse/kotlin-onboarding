@@ -6,7 +6,7 @@ fun solution6(forms: List<List<String>>): List<String> {
 
     exception6(forms)
 
-    return listOf()
+    return find_intesect_list(forms)
 }
 
 fun exception6(forms: List<List<String>>) {
@@ -76,4 +76,14 @@ fun compare_intersect(num : Int, forms: List<List<String>>, result : MutableSet<
             result.add(forms[j][0])
         }
     }
+}
+
+fun find_intesect_list(forms: List<List<String>>) : List<String> {
+
+    val result = mutableSetOf<String>()
+
+    for(i in 0 until forms.size) {
+        compare_intersect(i, forms, result)
+    }
+    return result.toList().sorted()
 }
