@@ -11,7 +11,7 @@ fun solution2(cryptogram: String): String {
 
 // 기능 목록 1번
 fun shouldDecode(cryptogram: String): Boolean {
-    if (cryptogram.length == 1) {
+    if (cryptogram.length <= 1) {
         return false
     }
 
@@ -24,4 +24,15 @@ fun shouldDecode(cryptogram: String): Boolean {
     }
 
     return false
+}
+// 기능 목록 2번
+fun removeDuplication(cryptogram: String): String {
+    for (i in 1 until cryptogram.length) {
+        if (cryptogram[i-1] == cryptogram[i]) {
+            val removeString = cryptogram.substring(i-1 , i)
+            return cryptogram.replace(removeString , "")
+        }
+    }
+
+    return cryptogram
 }
