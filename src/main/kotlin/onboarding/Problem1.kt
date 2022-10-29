@@ -2,36 +2,29 @@ package onboarding
 
 import java.lang.Integer.max
 
-fun main(args: Array<String>){
-    val pobi = listOf<Int>(97, 98)
-    val crong = listOf<Int>(197, 198)
-
-    println(solution1(pobi, crong))
+fun solution1(pobi: List<Int>, crong: List<Int>): Int {
+    if (isWrongPage(pages = pobi) || isWrongPage(pages = crong)) return EXCEPTION_RESULT
+    return decideWinner(pobiMaxNum = compareMaxNumber(pobi), crongMaxNum = compareMaxNumber(crong))
 }
 
-fun solution1(pobi: List<Int>, crong: List<Int>): Int {
-    if (isWrongPage(pobi) || isWrongPage(crong))
-        return EXCEPTION_RESULT
-
-    val pobiMaxNum = calculateMaxNumber(pobi)
-    val crongMaxNum = calculateMaxNumber(crong)
-
-    if (pobiMaxNum > crongMaxNum)
-        return POBI_WIN_RESULT
-
-    if (crongMaxNum > pobiMaxNum)
-        return CRONG_WIN_RESULT
-
-    return TIE_RESULT
+fun decideWinner(pobiMaxNum: Int, crongMaxNum: Int): Int {
+    return when {
+        pobiMaxNum > crongMaxNum -> POBI_WIN_RESULT
+        crongMaxNum > pobiMaxNum -> CRONG_WIN_RESULT
+        else -> TIE_RESULT
+    }
 }
 
 fun isWrongPage(pages: List<Int>): Boolean {
     val leftPageNum = pages[0]
     val rightPageNum = pages[1]
 
-    if (rightPageNum - leftPageNum != 1 || leftPageNum == START_PAGE_NUM || rightPageNum == LAST_PAGE_NUM)
-        return true
-    return false
+    return when {
+        leftPageNum % 2 != 1 || rightPageNum % 2 != 0 -> true
+        rightPageNum - leftPageNum != 1 -> true
+        leftPageNum == START_PAGE_NUM || rightPageNum == LAST_PAGE_NUM -> true
+        else -> false
+    }
 }
 
 fun compareMaxNumber(pages: List<Int>): Int {
@@ -46,14 +39,14 @@ fun calculateMaxNumber(pageNumber: Int): Int {
     var plusNum = 0
     var multiplyNum = 1
 
-    while(pageNum > 0) {
+    do {
         val curNum = pageNum % 10
 
         plusNum += curNum
         multiplyNum *= curNum
 
         pageNum /= 10
-    }
+    } while (pageNum > 0)
     return max(plusNum, multiplyNum)
 }
 
