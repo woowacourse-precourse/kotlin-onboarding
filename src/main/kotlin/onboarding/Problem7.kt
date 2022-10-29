@@ -5,7 +5,37 @@ fun solution7(
     friends: List<List<String>>,
     visitors: List<String>
 ): List<String> {
-    TODO("프로그램 구현")
+    val scoreMap = mutableMapOf<String, Int>()
+    val friendsMap = createFriendsMap(friends, user)
+    val userFriends = user.getFriendsOf(friendsMap)
+    val scoreWeight = 10
+
+    visitors.toSet()
+        .forEach { visitor ->
+            scoreMap[visitor] = getVisitCount(visitors, userFriends, visitor)
+        }
+
+    userFriends.forEach { friend ->
+        friendsMap[friend]?.forEach { friendOfFriend ->
+            if (friendOfFriend !in userFriends) {
+                val currentScore = scoreMap[friendOfFriend] ?: 0
+                scoreMap[friendOfFriend] = currentScore + scoreWeight
+            }
+        }
+    }
+
+    return scoreMap.filterNot { (_, score) ->
+            score == 0
+        }.toList()
+        .sortedWith(
+            compareByDescending<Pair<String, Int>> { (_, score) ->
+                score
+            }.thenBy { (name, _) ->
+                name
+            }
+        ).toMap()
+        .keys
+        .toList()
 }
 
 private fun createFriendsMap(friendRelations: List<List<String>>, user: String): Map<String, List<String>> {
