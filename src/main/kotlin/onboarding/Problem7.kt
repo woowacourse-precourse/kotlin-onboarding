@@ -85,19 +85,24 @@ private fun getResult(): List<String> {
     score.forEachIndexed { index, i ->
         scoreDetail.add(Pair(find(index), i))
     }
-    val res = scoreDetail.filter { !bannedList.contains(it.first) }
-    val result = mutableListOf<String>()
-    res.forEach {
+    // 아이디와 점수가 함께 있는 리스트
+    val resultWithId = scoreDetail
+        .sortedBy { it.first } // 이름순 정렬
+        .filter { !bannedList.contains(it.first) } // 친구 혹은 user 제외
+        .sortedByDescending { it.second } // 점수 높은 순으로 정렬
+        .take(5) // 상위 5개만 뽑기
+    val result = mutableListOf<String>() // 아이디만 있는 리스트
+    resultWithId.forEach {
         result.add(it.first)
     }
     return result.toList()
 }
 
 private fun dfs(num: Int, depth: Int) {
-    if (depth == 1) {
+    if (depth == 1) { // depth가 1인 경우는 친구인 경우이므로 제외시키기
         bannedList.add(find(num))
     }
-    if (depth == 2) {
+    if (depth == 2) { // depth가 2인 경우는 함꼐아는 친구이고 그 이상은 함께아는 친구가 아니므로 여기서 return
         score[num] += 10
         candidate.add(find(num))
         return
