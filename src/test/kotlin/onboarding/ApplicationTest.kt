@@ -13,9 +13,7 @@ class ApplicationTest {
             val crong = listOf(197, 198)
             val result = 0
             assertThat(solution1(pobi, crong)).isEqualTo(result)
-        }
-
-        @Test
+        }@Test
         fun case2() {
             val pobi = listOf(131, 132)
             val crong = listOf(211, 212)
