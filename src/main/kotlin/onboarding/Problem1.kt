@@ -2,8 +2,8 @@ package onboarding
 
 // Page 번호가 정상인지 확인. 1. 왼쪽 페이지와 오른쪽 페이지가 1차이가 나는지 확인 2.왼쪽 오른쪽이 1~400 범위 인지 3.왼쪽 페이지번호가 홀수인지 확인
 fun checkPage(pages: List<Int>): Boolean{
-    var left:Int = pages[0]
-    var right:Int = pages[1]
+    val left:Int = pages[0]
+    val right:Int = pages[1]
     // 1. 왼쪽 페이지와 오른쪽 페이지가 1차이가 나는지 확인
     if(left+1 != right)
         return false
@@ -40,7 +40,7 @@ fun mulNum(data: Int) : Int{
 fun findMax(pages: List<Int>): Int? {
     val left: Int = pages[0]
     val right: Int = pages[1]
-    var dataArr = ArrayList<Int>()
+    val dataArr = ArrayList<Int>()
     dataArr.add(sumNum(left))
     dataArr.add(mulNum(left))
     dataArr.add(sumNum(right))
@@ -54,8 +54,8 @@ fun solution1(pobi: List<Int>, crong: List<Int>): Int {
         return -1
     }
     // 페이지 번호를 통해 최댓값 구하는 기능
-    var pobiMax = findMax(pobi)
-    var crongMax = findMax(crong)
+    val pobiMax = findMax(pobi)
+    val crongMax = findMax(crong)
 
     return 1
 
