@@ -48,7 +48,17 @@ fun createNickNames(forms: List<List<String>>): Map<String, Set<String>> {
     return nicknames
 }
 
+fun compareNicknames(nicknames: Map<String, Set<String>>): List<String> {
+    val result: MutableList<String> = mutableListOf()
+    for (nickname in nicknames) {
+        if (nickname.value.size > 2)
+            for (value in nickname.value) {
+                result.add(value)
+            }
+    }
+    return result.sorted()
+}
 
 fun solution6(forms: List<List<String>>): List<String> {
-    createNickNames(forms)
+    return compareNicknames(createNickNames(forms))
 }
