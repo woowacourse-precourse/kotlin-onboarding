@@ -13,6 +13,14 @@ fun exception6(forms: List<List<String>>) {
     if(forms.size < 1 || forms.size > 10000) {
         throw IllegalArgumentException("크루는 1명이상 10000명 이하여야 합니다.")
     }
+
+    for(list in forms) {
+        val email = list[0]
+        val nickName = list[1]
+
+        exception_email(email)
+        exception_name(nickName)
+    }
 }
 
 fun exception_name(nickName : String) {
