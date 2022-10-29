@@ -10,6 +10,9 @@ fun solution7(
     for (i in returnAllUser(friends, visitors)) { // 현재 존재하는 유저명을 담는 Map에 초기 데이터 주입하기
         scoreMap[i] = 0
     }
+
+    commonFriends(user, friends)
+
 }
 
 /**
@@ -17,4 +20,28 @@ fun solution7(
  */
 private fun returnAllUser(friends: List<List<String>>, visitors: List<String>): List<String> {
     return (friends.flatten() + visitors).distinct()
+}
+
+/**
+ * 현재 유저의 친구가 아는 친구를 추려내기 위한 함수 (예정)
+ */
+private fun commonFriends(user : String, friends : List<List<String>>){
+    for (i in friends) {
+        val friend = checkUserFriends(user, i) // 현재 유저와 친구인 유저의 닉네임이 담기는 변수
+    }
+
+}
+/**
+ * 파라미터로 들어오는 user 와 친구인 유저명을 반환해주는 함수
+ */
+private fun checkUserFriends(user: String, friends: List<String>): String? {
+    return when (user) {
+        friends[0] -> {
+            friends[1]
+        }
+        friends[1] -> {
+            friends[0]
+        }
+        else -> null
+    }
 }
