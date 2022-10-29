@@ -49,3 +49,15 @@ fun getFriendPoint(key: String) {
     score.put(key, 10)
     return
 }
+
+fun containVisitors(index: Int, userList: Set<String>, visitors: List<String>) {
+    if (index == visitors.size) {
+        return
+    }
+    val visitor = visitors[index]
+
+    if (!userList.contains(visitor)) {
+        getVisitorPoint(visitor)
+    }
+    return containVisitors(index + 1, userList, visitors)
+}
