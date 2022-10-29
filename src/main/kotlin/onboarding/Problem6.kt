@@ -50,3 +50,17 @@ fun add_subset(nickName: String, num : Int, set: MutableSet<String>) {
         if(name.length >= 2) set.add(name)
     }
 }
+
+
+fun find_intersect_str(str1 : String, str2 : String) : Boolean {
+
+    val set1 = find_subset(str1)
+    val set2 = find_subset(str2)
+
+    for(element in set1) {
+        if(set2.contains(element)) {
+            return true
+        }
+    }
+    return false
+}
