@@ -9,7 +9,8 @@ package onboarding
  */
 
 fun solution5(money: Int): List<Int> {
-    TODO("프로그램 구현")
+    val dollars = listOf(50000, 10000, 5000, 1000, 500, 100, 50, 10, 1)
+    return moneyToEachDollarsList(money, dollars)
 }
 
 private fun moneyToEachDollarsList(money: Int, dollars: List<Int>): List<Int> {
