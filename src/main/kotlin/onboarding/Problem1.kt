@@ -1,7 +1,5 @@
 package onboarding
 
-import kotlin.math.max
-
 fun solution1(pobi: List<Int>, crong: List<Int>): Int {
     val pobiNum: Int
     val crongNum: Int
@@ -13,7 +11,7 @@ fun solution1(pobi: List<Int>, crong: List<Int>): Int {
     pobiNum = getMax(pobi)
     crongNum = getMax(crong)
 
-    return answer(pobiNum, crongNum)
+    return getWinner(pobiNum, crongNum)
 }
 
 fun isException(list: List<Int>): Boolean{
@@ -63,7 +61,7 @@ fun getMultiply(x: Int): Int{
     return multiply
 }
 
-fun answer(pobiNum: Int, crongNum: Int): Int {
+fun getWinner(pobiNum: Int, crongNum: Int): Int {
     if (pobiNum > crongNum)
         return 1
     if (pobiNum < crongNum)
