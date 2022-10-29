@@ -33,3 +33,9 @@ fun checkUserFriends(index: Int, userList: Set<String>, userFriend: String) {
     containsUserFriend(userList.elementAt(index), userFriend)
     return checkUserFriends(index + 1, userList, userFriend)
 }
+
+fun containsUserFriend(key: String, userFriend: String) {
+    if (friendList[key]?.contains(userFriend) ?: false) {
+        getFriendPoint(key)
+    }
+}
