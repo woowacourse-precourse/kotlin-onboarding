@@ -5,15 +5,19 @@ fun main(args: Array<String>) {
 }
 
 fun solution3(number: Int): Int {
-
+    return countClabNumber(number = number)
 }
 
-fun isTargetNumber(num: Int): Boolean {
-    val targetNumbers = intArrayOf(3, 6, 9)
+fun countClabNumber(number: Int): Int {
+    val targetNumbers = listOf('3', '6', '9')
+    var clabNumber = 0
 
-    targetNumbers.forEach { targetNum ->
-        if (num.toString().contains(targetNum.toString())) return true
+    repeat(number) { curNumber ->
+        clabNumber += curNumber.toString().count {
+            targetNumbers.contains(it)
+        }
     }
-    return false
+
+    return clabNumber
 }
 
