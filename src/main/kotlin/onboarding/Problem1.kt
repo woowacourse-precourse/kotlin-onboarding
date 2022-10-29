@@ -16,8 +16,8 @@ fun solution1(pobi: List<Int>, crong: List<Int>): Int {
         var multiply_number = 1
         var tmp = pobi[0]
         while (tmp != 0) {
-            sum_number += tmp % 10
-            multiply_number *= tmp % 10
+            sum_number += firstDigitCal(tmp)
+            multiply_number *= firstDigitCal(tmp)
             tmp /= 10
         }
 
@@ -32,8 +32,8 @@ fun solution1(pobi: List<Int>, crong: List<Int>): Int {
 
         tmp = pobi[1]
         while (tmp != 0) {
-            sum_number += tmp % 10
-            multiply_number *= tmp % 10
+            sum_number += firstDigitCal(tmp)
+            multiply_number *= firstDigitCal(tmp)
             tmp /= 10
         }
         if (sum_number > maxPobi) {
@@ -61,8 +61,8 @@ fun solution1(pobi: List<Int>, crong: List<Int>): Int {
         }
         tmp = crong[1]
         while (tmp != 0) {
-            sum_number += tmp % 10
-            multiply_number *= tmp % 10
+            sum_number += firstDigitCal(tmp)
+            multiply_number *= firstDigitCal(tmp)
             tmp /= 10
         }
         if (sum_number > maxCrong) {
@@ -94,3 +94,11 @@ fun solution1(pobi: List<Int>, crong: List<Int>): Int {
 return answer
 
 }
+
+fun firstDigitCal ( a : Int) : Int {
+    return a%10
+}
+//
+//fun divideBy10 (a : Int) : Int {
+//    return a/10
+//}
