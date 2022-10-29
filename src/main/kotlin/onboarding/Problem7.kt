@@ -33,11 +33,11 @@ fun solution7(
                     var name = friends[index][1]
                     if (friends[index][1].equals(friend_name))
                         name = friends[index][0]
-
-                    if (friend_score.containsKey(name))
-                        friend_score.replace(name, friend_score.get(name)!! +10)
-                    else
-                        friend_score.put(name,10)
+                    friend_score.put(name, friend_score.get(name)?.plus(10) ?: 10)
+//                    if (friend_score.containsKey(name))
+//                        friend_score.replace(name, friend_score.get(name)!! +10)
+//                    else
+//                        friend_score.put(name,10)
                 }
             }
         }
@@ -45,10 +45,11 @@ fun solution7(
 
     for (visitor in visitors.indices){
         val name = visitors[visitor]
-        if (friend_score.containsKey(name))
-            friend_score.replace(name, friend_score.get(name)!! +1)
-        else
-            friend_score.put(name,10)
+        friend_score.put(name, friend_score.get(name)?.plus(1) ?: 1)
+//        if (friend_score.containsKey(name))
+//            friend_score.replace(name, friend_score.get(name)!! +1)
+//        else
+//            friend_score.put(name,10)
     }
     // 정렬
     val newList = friend_score.toList().sortedWith(

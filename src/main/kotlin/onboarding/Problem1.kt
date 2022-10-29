@@ -18,7 +18,7 @@ fun solution1(pobi: List<Int>, crong: List<Int>): Int {
     return 0
 }
 fun scoreCalculate(name: List<Int>): Int {
-    var values = arrayListOf<Int>()
+    val values = arrayListOf<Int>()
 
     for (i in name.indices) {
         var plus = 0
