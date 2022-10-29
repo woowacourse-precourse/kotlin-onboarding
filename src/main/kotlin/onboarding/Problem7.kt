@@ -11,9 +11,12 @@ fun solution7(
         scoreMap[i] = 0
     }
 
-    scoreMap = commonFriends(user, friends, scoreMap) // 점수를 추가한 후 map 객체를 반환하므로 기존에 선언해둔 map 에 덮어씌운다.
-    scoreMap = visitors(visitors, scoreMap) // 점수를 추가한 후 map 객체를 반환하므로 기존에 선언해둔 map 에 덮어씌운다.
+    //scoreMap = commonFriends(user, friends, scoreMap) // 점수를 추가한 후 map 객체를 반환하므로 기존에 선언해둔 map 에 덮어씌운다.
+    //scoreMap = visitors(visitors, scoreMap) // 점수를 추가한 후 map 객체를 반환하므로 기존에 선언해둔 map 에 덮어씌운다.
 
+    /* 위의 2줄의 재선언이 비효율적이라고 생각되어, 하나의 코드로 합친 후, value 값을 기준으로 정렬했다.
+    * List로 변환 후 value (it.second) 로 정렬 한 후, 다시 map으로 재변환했다. */
+    scoreMap = visitors(visitors, commonFriends(user, friends, scoreMap)).toList().sortedByDescending { it.second }.toMap() as MutableMap
 }
 
 /**
