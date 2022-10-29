@@ -4,25 +4,21 @@ var answer = 0
 
 fun solution3(number: Int): Int {
 
-    var answer = 0
+    for(i in 1..number){
 
-    for(i in 0..number){
+        var current = i
 
-        if(i.toString().contains("3")){
-            print(i)
-            answer++
-        }
+        while( current != 0){
 
-        if(i.toString().contains("6")){
-            print(i)
-            answer++
-        }
-
-        if(i.toString().contains("")){
-            print(i)
-            answer++
+            if(  (current % 10 == 3 || current % 10 == 6 || current % 10 == 9) ){
+                println("answer" + ": $i")
+                answer++
+            }
+            current /= 10
         }
     }
 
     return answer
+
+
 }
