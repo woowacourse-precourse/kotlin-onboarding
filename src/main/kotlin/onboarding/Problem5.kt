@@ -13,9 +13,3 @@ fun solution5(money: Int): List<Int> {
 
     return change
 }
-
-fun main() {
-    println(solution5(50237))
-    println(solution5(15000))
-
-}

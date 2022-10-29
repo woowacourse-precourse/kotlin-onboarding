@@ -1,7 +1,5 @@
 package onboarding
 
-import kotlin.math.abs
-
 
 /**
     대문자
@@ -11,24 +9,21 @@ import kotlin.math.abs
     공백 = 32
  */
 fun solution4(word: String): String {
-    var result = ""
+    var convertedWord = ""
 
-    for (i in word.indices) {
-        val c = word[i]
-        // 소문자
-        if (c == ' ')
-            result += " "
-        else if (c.code >= 97) {
-            result += abs(219 - word[i].code).toChar()
-        }else {
-            result += abs(155 - word[i].code).toChar()
+    val lowerCaseRange = 'a'.code + 'z'.code
+    val upperCaseRange = 'A'.code + 'Z'.code
+
+    word.forEach {
+        convertedWord += when(it) {
+            in 'a' .. 'z' -> (lowerCaseRange - it.code).toChar()
+            in 'A' .. 'Z' -> (upperCaseRange - it.code).toChar()
+            else -> it
         }
     }
 
-    return result
+    return convertedWord
 }
 
-fun main() {
-    println(solution4("I love you"))
-}
+
 

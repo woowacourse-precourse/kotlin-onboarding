@@ -1,52 +1,48 @@
 package onboarding
 
-private var nicknameList = mutableSetOf<String>()
-private var result = mutableSetOf<String>()
 fun solution6(forms: List<List<String>>): List<String> {
-    var curEmail : String
     var order = 1
-    forms.forEach { crewInfo ->
-        curEmail = crewInfo[0]
-        createDuplicateNicknames(crewInfo[1])
+    var result = mutableSetOf<String>()
 
-        if (checkDuplication(forms, order++)) {
-            result.add(curEmail)
+    forms.forEach { crewInfo ->
+        val nicknameList = createDuplicateNicknames(crewInfo[1])
+        val duplicatedWord = checkDuplication(forms, order++, nicknameList)
+
+        if (duplicatedWord.isNotEmpty()) {
+            result.add(crewInfo[0])
+            result.add(duplicatedWord)
         }
     }
+
     return result.sorted().toList()
 }
 
-fun checkDuplication(forms: List<List<String>>, order: Int) : Boolean {
-    for (i in order until  forms.size) {
-        nicknameList.forEach { nn ->
-            if (forms[i][1].contains(nn)) {
-                result.add(forms[i][0])
-                return true
-            }
-        }
-    }
-    return false
-}
+fun createDuplicateNicknames(nickname: String) : MutableSet<String> {
+    val nicknameList = mutableSetOf<String>()
 
-fun createDuplicateNicknames(nickname: String) {
-    nicknameList.clear()
     for (j in 2 until nickname.length + 1) {
         for (i in nickname.indices) {
-            if (j+i <= nickname.length) {
+            if (j + i <= nickname.length) {
                 nicknameList.add(nickname.substring(i, i + j))
             }
         }
     }
+
+    return nicknameList
 }
 
 
-fun main() {
-    val test1 = mutableListOf<MutableList<String>>()
-    test1.add(mutableListOf("jm@email.com", "제이엠"))
-    test1.add(mutableListOf("jason@email.com", "제이슨"))
-    test1.add(mutableListOf("woniee@email.com", "워니"))
-    test1.add(mutableListOf("mj@email.com", "엠제이"))
-    test1.add(mutableListOf("nowm@email.com", "이제엠"))
-
-    println(solution6(test1))
+fun checkDuplication(
+    forms: List<List<String>>,
+    order: Int,
+    nicknameList: MutableSet<String>)
+: String {
+    for (i in order until forms.size) {
+        nicknameList.forEach { nn ->
+            if (forms[i][1].contains(nn)) {
+                return forms[i][0]
+            }
+        }
+    }
+    return ""
 }

@@ -1,22 +1,17 @@
 package onboarding
 
 fun solution3(number: Int): Int {
-    var result = 0
+    var count = 0
 
     for (i in 1 .. number) {
-        var temp = i
+        var curNum = i
 
-        while (temp != 0) {
-            if (temp % 10 == 3 || temp % 10 == 6 || temp % 10 == 9) {
-                result++
+        while (curNum != 0) {
+            if (curNum % 10 == 3 || curNum % 10 == 6 || curNum % 10 == 9) {
+                count++
             }
-            temp /= 10
+            curNum /= 10
         }
     }
-    return result
-}
-
-fun main() {
-    println(solution3(13))
-    println(solution3(33))
+    return count
 }

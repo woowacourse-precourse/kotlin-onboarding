@@ -1,17 +1,18 @@
 package onboarding
 
-private val friendsRelation = mutableMapOf<String, MutableSet<String>>()
-private var usersScore = mutableMapOf<String, Int>()
 fun solution7(
     user: String,
     friends: List<List<String>>,
     visitors: List<String>
 ): List<String> {
 
-    initializeFriendsRelation(user, friends)
-    scoreMutualfriends(user)
-    scoreVisitedUser(visitors)
-    deleteOneBridgeAndMe(user)
+    val friendsRelation = initializeFriendsRelation(friends)
+    var usersScore = mutableMapOf<String, Int>()
+    if (friendsRelation[user].isNullOrEmpty()) return listOf("")
+
+    usersScore = scoreMutualfriends(user, friendsRelation, usersScore)
+    usersScore = scoreVisitedUser(visitors, usersScore)
+    usersScore = deleteOneBridgeAndMe(user, usersScore, friendsRelation)
 
     return usersScore.asSequence()
         .sortedWith { a1, a2 ->
@@ -25,18 +26,26 @@ fun solution7(
         .toList()
 }
 
-fun deleteOneBridgeAndMe(user: String) {
-    val userRelation = friendsRelation[user]
-    if (userRelation.isNullOrEmpty()) return
+fun deleteOneBridgeAndMe(
+    user: String,
+    usersScore: MutableMap<String, Int>,
+    friendsRelation: MutableMap<String, MutableSet<String>>
 
-    userRelation.forEach { friend ->
+): MutableMap<String, Int> {
+    friendsRelation[user]!!.forEach { friend ->
         usersScore.remove(friend)
     }
     usersScore.remove(user)
+
+    return usersScore
 }
 
 
-fun initializeFriendsRelation(user : String, friends: List<List<String>>) {
+fun initializeFriendsRelation (
+    friends: List<List<String>>,
+): MutableMap<String, MutableSet<String>> {
+    val friendsRelation = mutableMapOf<String, MutableSet<String>>()
+
     friends.forEach { relation ->
         var user1 = friendsRelation[relation[0]]
         var user2 = friendsRelation[relation[1]]
@@ -53,14 +62,19 @@ fun initializeFriendsRelation(user : String, friends: List<List<String>>) {
             user2.add(relation[0])
         }
     }
+
+    return friendsRelation
 }
 
 
-fun scoreMutualfriends(user: String) {
+fun scoreMutualfriends(
+    user: String,
+    friendsRelation : MutableMap<String, MutableSet<String>>,
+    usersScore : MutableMap<String, Int>,
+): MutableMap<String, Int> {
     val userRelation = friendsRelation[user]
-    if (userRelation.isNullOrEmpty()) return
 
-    for (friend in userRelation) {
+    for (friend in userRelation!!) {
         val userFriendRelation = friendsRelation[friend]
         if (userFriendRelation.isNullOrEmpty()) continue
 
@@ -68,27 +82,17 @@ fun scoreMutualfriends(user: String) {
             usersScore[fr] = usersScore.getOrDefault(fr, 0) + 10
         }
     }
+
+    return usersScore
 }
 
-fun scoreVisitedUser(visitors: List<String>) {
+fun scoreVisitedUser(
+    visitors: List<String>,
+    usersScore : MutableMap<String, Int>,
+): MutableMap<String, Int> {
     visitors.forEach { visitor ->
         usersScore[visitor] = usersScore.getOrDefault(visitor, 0) + 1
     }
-}
 
-fun main() {
-
-    val user = "mrko"
-
-    val friends = mutableListOf<MutableList<String>>()
-    friends.add(mutableListOf("donut", "andole"))
-    friends.add(mutableListOf("donut", "jun"))
-    friends.add(mutableListOf("donut", "mrko"))
-    friends.add(mutableListOf("shakevan", "andole"))
-    friends.add(mutableListOf("shakevan", "jun"))
-    friends.add(mutableListOf("shakevan", "mrko"))
-
-    val visitors = mutableListOf("bedi", "bedi", "donut", "bedi", "shakevan")
-
-    println(solution7(user, friends, visitors))
+    return usersScore
 }
