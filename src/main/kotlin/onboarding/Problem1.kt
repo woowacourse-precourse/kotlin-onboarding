@@ -20,7 +20,9 @@ fun isException(pobi: List<Int>, crong:List<Int>): Boolean{
         return true
     if (crong[0]+1 != crong[1])
         return true
-    if (pobi[0] <= 1 || crong[1] >= 400)
+    if (pobi[0] <= 1 || pobi[1] >= 400)
+        return true
+    if (crong[0] <= 1 || crong[1] >= 400)
         return true
     if (pobi[0]%2 == 0 || pobi[1]%2==1)
         return true
