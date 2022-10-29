@@ -5,8 +5,11 @@ fun solution7(
     friends: List<List<String>>,
     visitors: List<String>
 ): List<String> {
+    var scoreMap = mutableMapOf<String, Int>() // 유저 목록 + 점수를 담을 Map 객체
 
-    returnAllUser(friends, visitors)
+    for (i in returnAllUser(friends, visitors)) { // 현재 존재하는 유저명을 담는 Map에 초기 데이터 주입하기
+        scoreMap[i] = 0
+    }
 }
 
 /**
