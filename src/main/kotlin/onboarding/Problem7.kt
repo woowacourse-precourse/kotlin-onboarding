@@ -12,6 +12,7 @@ fun solution7(
     }
 
     scoreMap = commonFriends(user, friends, scoreMap) // 점수를 추가한 후 map 객체를 반환하므로 기존에 선언해둔 map 에 덮어씌운다.
+    scoreMap = visitors(visitors, scoreMap) // 점수를 추가한 후 map 객체를 반환하므로 기존에 선언해둔 map 에 덮어씌운다.
 
 }
 
@@ -74,5 +75,24 @@ private fun getCommonFriend(user: String, curFriend: String, friendList: List<St
  */
 private fun addCommonFriendScore(friend: String, map: MutableMap<String, Int>): MutableMap<String, Int> {
     map[friend] = map[friend]!! + 10
+    return map
+}
+
+/**
+ * 방문자에게도 점수를 추가해줘야하므로, 각 방문자에게 점수를 추가하도록 하는 함수
+ */
+private fun visitors(visitors : List<String>, scoreMap: MutableMap<String, Int>) : MutableMap<String, Int> {
+    var mScoreMap = scoreMap
+    for(i in visitors) {
+        mScoreMap = addVisitorScore(i, scoreMap)
+    }
+    return mScoreMap
+}
+
+/**
+ * visitors() 에서 받아온 방문한 유저에게 실질적으로 점수를 map에 담아서 반환해주는 함수
+ */
+private fun addVisitorScore (friend : String, map : MutableMap<String, Int>) : MutableMap<String, Int>{
+    map[friend] = map[friend]!! + 1
     return map
 }
