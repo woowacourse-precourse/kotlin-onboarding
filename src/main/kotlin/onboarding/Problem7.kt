@@ -30,6 +30,11 @@ private fun addFriend(friends: MutableList<String>?, user: String, newFriend: St
     }
 }
 
+private fun getVisitCount(visitors: List<String>, user: String): Int =
+    visitors.count { visitor ->
+        visitor == user
+    }
+
 private fun String.getFriendsCount(friendsMap: Map<String, List<String>>): Int =
     (friendsMap[this] ?: mutableListOf()).size
 
