@@ -24,3 +24,21 @@
 | user | friends | visitors | result |
 | --- | --- | --- | --- |
 | "mrko" | [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ] | ["bedi", "bedi", "donut", "bedi", "shakevan"] | ["andole", "jun", "bedi"] |
+
+---
+
+## 기능 목록
+`Problem7.kt`는 아래의 기능들을 제공한다.
+
+### 전역 변수
+`target : Account`는 해당 target에 대한 Account의 score를 비교하기 위해 설정된다.
+### 클래스
+`Account` 클래스는 `userName`, `friendList`, `scoreMap` 맴버 변수를 갖는다.  
+`Comparable` 인터페이스를 상속 받아 `compareTo` 함수를 제공한다.
+
+### 함수
+|함수| 파라미터                                  | 반환 값                     |설명|
+|---|---------------------------------------|--------------------------|---|
+|`solution7`| `String`, `List<List<String>>>`, `List<String>` | `List<String>`             |매개변수를 통해 친구 관계를 만들고 추천 친구 목록을 반환한다.|
+|`initRelation`| `List<List<String>>>`                 | `HashMap<String, Account>` |매개변수를 통해 친구 관계를 만들고 이름과 `Account`를 `key`, `value`로 갖는 `HashMap`을 반환한다.|
+|`updateScoreByVisit`| `List<String>`, `String `               |`Unit`|`List`를 통해 `String` 매개변수를 이름으로 가지는 `Account`에게 방문한 `Account`들의 `scoreMap`을 갱신한다.| 
