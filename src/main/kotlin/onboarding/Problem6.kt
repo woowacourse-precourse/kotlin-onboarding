@@ -21,6 +21,18 @@ fun getWordMap(forms: List<List<String>>): Map<String,Set<String>>{
     return wordMap
 }
 
+fun getResultList(wordMap: Map<String,Set<String>>): List<String>{
+    val resultSet = mutableSetOf<String>()
+    wordMap.forEach { (_, value) ->
+        if(value.size>=2){
+            resultSet.addAll(value)
+        }
+    }
+    return resultSet.sorted()
+}
+
 fun solution6(forms: List<List<String>>): List<String> {
-    TODO("프로그램 구현")
+    return getResultList(
+        getWordMap(forms)
+    )
 }
