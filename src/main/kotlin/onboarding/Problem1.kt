@@ -41,6 +41,7 @@ fun getSum(x: Int): Int {
         sum += (numX % 10)
         numX /= 10
     }
+
     return sum
 }
 
@@ -52,6 +53,7 @@ fun getMultiply(x: Int): Int{
         multiply *= (numX % 10)
         numX /= 10
     }
+
     return multiply
 }
 
@@ -60,5 +62,6 @@ fun getWinner(pobiNum: Int, crongNum: Int): Int {
         return 1
     if (pobiNum < crongNum)
         return 2
+
     return 0
 }
