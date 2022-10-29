@@ -2,6 +2,13 @@ package onboarding
 
 import java.lang.Integer.max
 
+fun main(args: Array<String>){
+    val pobi = listOf<Int>(97, 98)
+    val crong = listOf<Int>(197, 198)
+
+    println(solution1(pobi, crong))
+}
+
 fun solution1(pobi: List<Int>, crong: List<Int>): Int {
     if (isWrongPage(pobi) || isWrongPage(crong))
         return EXCEPTION_RESULT
@@ -28,10 +35,31 @@ fun isWrongPage(pages: List<Int>): Boolean {
 }
 
 fun calculateMaxNumber(pages: List<Int>): Int {
-    val leftPageNum = pages[0]
-    val rightPageNum = pages[1]
+    var leftPageNum = pages[0]
+    var rightPageNum = pages[1]
 
-    return max(leftPageNum + rightPageNum, leftPageNum * rightPageNum)
+
+    val leftMaxNum = 0
+    val rightMaxNum = 0
+
+    return max(leftMaxNum, rightMaxNum)
+}
+
+fun calculateMaxNumber(pageNumber: Int): Int {
+    var pageNum = pageNumber
+    var plusNum = 0
+    var multiplyNum = 1
+
+    while(pageNum > 0) {
+
+        val curNum = pageNum % 10
+
+        plusNum += curNum
+        multiplyNum *= curNum
+
+        pageNum /= 10
+    }
+    return max(plusNum, multiplyNum)
 }
 
 const val START_PAGE_NUM = 1
