@@ -8,3 +8,20 @@ package onboarding
 fun solution2(cryptogram: String): String {
     TODO("프로그램 구현")
 }
+
+// 기능 목록 1번
+fun shouldDecode(cryptogram: String): Boolean {
+    if (cryptogram.length == 1) {
+        return false
+    }
+
+    var tempChar = cryptogram[0]
+    for (i in 1 until cryptogram.length) {
+        if (tempChar == cryptogram[i]) {
+            return true
+        }
+        tempChar = cryptogram[i]
+    }
+
+    return false
+}
