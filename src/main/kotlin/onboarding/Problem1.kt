@@ -1,17 +1,11 @@
 package onboarding
 
 fun solution1(pobi: List<Int>, crong: List<Int>): Int {
-    val pobiNum: Int
-    val crongNum: Int
-
     if (isException(pobi) || isException(crong)) {
         return -1
     }
 
-    pobiNum = getMax(pobi)
-    crongNum = getMax(crong)
-
-    return getWinner(pobiNum, crongNum)
+    return getWinner(getMax(pobi), getMax(crong))
 }
 
 fun isException(list: List<Int>): Boolean{
