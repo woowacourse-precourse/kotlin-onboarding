@@ -3,7 +3,9 @@ package onboarding
 import java.lang.Math.max
 
 fun solution1CheckException(inputList: List<Int>): Boolean {
-    //문제에서 정의한 예외를 다음과 같은 상황이라고 해석했음
+    //예외 상황
+    //1. 첫페이지나 마지막 페이지 펼치기
+    //2. 오른쪽 페이지와 왼쪽 페이지 수의 차이가 1이 아닌 경우
     if (inputList.contains(1) || inputList.contains(400)) return true
     if (inputList[1] - inputList[0] != 1) return true
     return false
@@ -14,6 +16,7 @@ fun solution1calcMultipleScore(inputList: List<Int>): Int {
 
     inputList.forEach { page ->
         var tmpMultipleScore = 1
+        //각 페이지의 숫자 하나씩 곱하기
         page.toString().forEach { eachNum ->
             tmpMultipleScore *= Character.getNumericValue(eachNum)
         }
@@ -28,6 +31,7 @@ fun solution1calcAddScore(inputList: List<Int>): Int {
 
     inputList.forEach { page ->
         var tmpAddScore = 0
+        //각 페이지의 숫자 하나씩 더하기
         page.toString().forEach { eachNum ->
             tmpAddScore += Character.getNumericValue(eachNum)
         }
