@@ -6,8 +6,9 @@ fun solution1(pobi: List<Int>, crong: List<Int>): Int {
     val pobiNum: Int
     val crongNum: Int
 
-    if (isException(pobi, crong))
+    if (isException(pobi) || isException(crong)) {
         return -1
+    }
 
     pobiNum = getMax(pobi)
     crongNum = getMax(crong)
@@ -15,19 +16,20 @@ fun solution1(pobi: List<Int>, crong: List<Int>): Int {
     return answer(pobiNum, crongNum)
 }
 
-fun isException(pobi: List<Int>, crong:List<Int>): Boolean{
-    if (pobi[0]+1 != pobi[1])
+fun isException(list: List<Int>): Boolean{
+    if (list[0]+1 != list[1]) {
         return true
-    if (crong[0]+1 != crong[1])
+    }
+    if (list.size != 2) {
         return true
-    if (pobi[0] <= 1 || pobi[1] >= 400)
+    }
+    if (list[0] <= 1 || list[1] >= 400) {
         return true
-    if (crong[0] <= 1 || crong[1] >= 400)
+    }
+    if (list[0]%2 == 0 || list[1]%2 == 1) {
         return true
-    if (pobi[0]%2 == 0 || pobi[1]%2==1)
-        return true
-    if(crong[0]%2 == 0 || pobi[1]%2 == 1)
-        return true
+    }
+
     return false
 }
 
