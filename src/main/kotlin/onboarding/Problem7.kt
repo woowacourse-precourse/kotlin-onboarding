@@ -17,23 +17,24 @@ fun solution7(
 
     userFriends.forEach { friend ->
         friendsMap[friend]?.forEach { friendOfFriend ->
-            if (friendOfFriend !in userFriends) {
-                val currentScore = scoreMap[friendOfFriend] ?: 0
-                scoreMap[friendOfFriend] = currentScore + scoreWeight
+            if (friendOfFriend in userFriends) {
+                return@forEach
             }
+            val currentScore = scoreMap[friendOfFriend] ?: 0
+            scoreMap[friendOfFriend] = currentScore + scoreWeight
         }
     }
 
     return scoreMap.filterNot { (_, score) ->
-            score == 0
-        }.toList()
-        .sortedWith(
-            compareByDescending<Pair<String, Int>> { (_, score) ->
-                score
-            }.thenBy { (name, _) ->
-                name
-            }
-        ).toMap()
+        score == 0
+    }
+        .toList()
+        .sortedWith(compareByDescending<Pair<String, Int>> { (_, score) ->
+            score
+        }.thenBy { (name, _) ->
+            name
+        })
+        .toMap()
         .keys
         .toList()
 }
