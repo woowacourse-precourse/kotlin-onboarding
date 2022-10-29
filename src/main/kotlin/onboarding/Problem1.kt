@@ -20,9 +20,6 @@ fun isException(list: List<Int>): Boolean{
     if (list[0]+1 != list[1]) {
         return true
     }
-    if (list.size != 2) {
-        return true
-    }
     if (list[0] <= 1 || list[1] >= 400) {
         return true
     }
@@ -34,12 +31,14 @@ fun isException(list: List<Int>): Boolean{
 }
 
 fun getMax(pages: List<Int>): Int{
-    var page0: Int
-    var page1: Int
+    var list = mutableListOf<Int>()
 
-    page0 = max(getSum(pages[0]), getMultiply(pages[0]))
-    page1 = max(getSum(pages[1]), getMultiply(pages[1]))
-    return max(page0, page1)
+    for (page in pages) {
+        list.add(getSum(page))
+        list.add(getMultiply(page))
+    }
+
+    return list.maxOf { it }
 }
 
 fun getSum(x: Int): Int {
