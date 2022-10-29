@@ -1,5 +1,12 @@
 package onboarding
 
 fun solution2(cryptogram: String): String {
-    TODO("프로그램 구현")
+    var temp = cryptogram
+    var check = 1
+
+    while(check != 1){
+
+    }
+
+    return temp
 }
