@@ -21,3 +21,17 @@
 | --- | --- |
 | "browoanoommnaon" | "brown" |
 | "zyelleyz" | "" |
+
+---
+
+## 기능 목록
+
+### Problem2.kt
+Problem2.kt는 removeNowSequentialChar, setNoSequentialString 함수를 가지며
+연속하는 중복 문자들을 삭제한 결과를 반환하는 solution2 함수를 제공한다.
+
+| 함수 | 파라미터          | 반환 값  | 설명                                                       |
+|---|---------------|-------|----------------------------------------------------------|
+| solution2 | String        | String | 임의의 문자열을 파라미터로 받아 기능 요구사항을 해결한 결과를 반환                    |
+| removeNowSequentialChar | StringBuilder | Unit | StringBuilder 객체의 현재 연속된 문자를 제거                          |
+| getNoSequentialString | String        | String | 임의의 문자열을 파라미터로 받아 연속하는 중복 문자들이 없을 때까지 문자를 제거하고 그 문자열을 반환 |
