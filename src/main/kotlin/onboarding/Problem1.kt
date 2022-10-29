@@ -44,14 +44,19 @@ fun solution1calcAddScore(inputList: List<Int>): Int {
 }
 
 fun solution1whoWin(pobiScore:Int, crongScore:Int):Int{
-    return if (pobiScore > crongScore) 1
-    else if (pobiScore < crongScore) 2
-    else 0
+    return if (pobiScore > crongScore){
+        1
+    } else if (pobiScore < crongScore) {
+        2
+    } else{
+        0
+    }
 }
 
 fun solution1(pobi: List<Int>, crong: List<Int>): Int {
-    if (solution1CheckException(pobi) || solution1CheckException(crong))
+    if (solution1CheckException(pobi) || solution1CheckException(crong)){
         return -1
+    }
     var (pobiScore, crongScore) = arrayOf(0, 0);
 
     pobiScore = solution1calcMultipleScore(pobi).coerceAtLeast(solution1calcAddScore(pobi))
