@@ -126,5 +126,65 @@ class ApplicationTest {
             val result = listOf("andole", "jun", "bedi")
             assertThat(solution7(user, friends, visitors)).isEqualTo(result)
         }
+
+        @Test
+        fun case3() {
+            val user = "mrko"
+            val friends = listOf(
+                listOf("donut", "woogie"),
+                listOf("donut", "andole"),
+                listOf("donut", "jun"),
+                listOf("donut", "mrko"),
+                listOf("shakevan", "andole"),
+                listOf("shakevan", "jun"),
+                listOf("shakevan", "mrko")
+            )
+            val visitors = listOf("bedi", "bedi", "donut", "bedi", "shakevan")
+            val result = listOf("andole", "jun", "woogie", "bedi")
+            assertThat(solution7(user, friends, visitors)).isEqualTo(result)
+        }
+
+
+        @Test
+        fun case4() {
+            val user = "mrko"
+            val friends = listOf(
+                listOf("donut", "woogie"),
+                listOf("donut", "andole"),
+                listOf("donut", "jun"),
+                listOf("donut", "mrko"),
+                listOf("shakevan", "andole"),
+                listOf("shakevan", "jun"),
+                listOf("shakevan", "mrko"),
+                listOf("jun", "mrko"),
+                listOf("bedi", "mrko"),
+                listOf("andole", "mrko")
+            )
+            val visitors = listOf("bedi", "bedi", "donut", "bedi", "shakevan")
+            val result = listOf("woogie")
+            assertThat(solution7(user, friends, visitors)).isEqualTo(result)
+        }
+
+        @Test
+        fun case5() {
+            val user = "mrko"
+            val friends = listOf(
+                listOf("amy", "woogie"),
+                listOf("donut", "woogie"),
+                listOf("donut", "andole"),
+                listOf("donut", "jun"),
+                listOf("woogie", "jun"),
+                listOf("woogie", "shakevan"),
+                listOf("donut", "mrko"),
+                listOf("shakevan", "andole"),
+                listOf("shakevan", "jun"),
+                listOf("shakevan", "mrko"),
+                listOf("shakevan", "hyeok"),
+                listOf("shakevan", "hoon")
+            )
+            val visitors = listOf("bedi", "bedi", "donut", "bedi", "shakevan", "hoon")
+            val result = listOf("andole", "jun", "woogie", "hoon", "hyeok")
+            assertThat(solution7(user, friends, visitors)).isEqualTo(result)
+        }
     }
 }
