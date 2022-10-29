@@ -33,25 +33,25 @@ fun getMax(pages: List<Int>): Int{
     return list.maxOf { it }
 }
 
-fun getSum(x: Int): Int {
+fun getSum(_num: Int): Int {
     var sum: Int = 0
-    var numX: Int = x
+    var num: Int = _num
 
-    while (numX > 0){
-        sum += (numX % 10)
-        numX /= 10
+    while (num > 0){
+        sum += (num % 10)
+        num /= 10
     }
 
     return sum
 }
 
-fun getMultiply(x: Int): Int{
+fun getMultiply(_num: Int): Int{
     var multiply: Int = 1
-    var numX: Int = x
+    var num: Int = _num
 
-    while (numX > 0){
-        multiply *= (numX % 10)
-        numX /= 10
+    while (num > 0){
+        multiply *= (num % 10)
+        num /= 10
     }
 
     return multiply
