@@ -26,6 +26,6 @@ fun frog(number:Int):Int{
     if (number in 97..122)
         return 219 - number 	//양 끝 값의 합 - number
 
-    //space
-    return 32
+    //다른 문자
+    return number
 }
