@@ -12,6 +12,20 @@ fun solution7(
         if (!friendList.contains(f[1])) friendList[f[1]] = arrayListOf(f[0])
         else friendList[f[1]]?.add(f[0])
     }
-    val userFriendList = friendList[user]
+    val userFriendList = friendList[user] ?: arrayListOf()
+    val strangersScore = mutableMapOf<String, Int>()
+    for (f in friendList) {
+        if (f.key == user || userFriendList.contains(f.key)) continue
+        else strangersScore[f.key] = 0
+    }
+    for (stranger in strangersScore) {
+        val strangerName = stranger.key
+        val strangerFriendList = friendList[strangerName] ?: arrayListOf()
+        for (sf in strangerFriendList) {
+            if (userFriendList.contains(sf)) {
+                strangersScore[strangerName] = strangersScore[strangerName]!!.plus(10)
+            }
+        }
+    }
     TODO("프로그램 구현")
 }
