@@ -23,11 +23,17 @@ private fun returnAllUser(friends: List<List<String>>, visitors: List<String>): 
 }
 
 /**
- * 현재 유저의 친구가 아는 친구를 추려내기 위한 함수 (예정)
+ * 현재 유저의 친구가 아는 친구를 추려내기 위한 함수
  */
 private fun commonFriends(user : String, friends : List<List<String>>){
+
     for (i in friends) {
         val friend = checkUserFriends(user, i) // 현재 유저와 친구인 유저의 닉네임이 담기는 변수
+        for (o in friends) {
+            if (friend != null) {
+                val commonFriend = getCommonFriend(user, friend, o) // 현재 유자와 친구인 유저의 친구인 유저명 (다만 null도 들어올 수 있으므로 체크 해야함)
+            }
+        }
     }
 
 }
@@ -44,4 +50,15 @@ private fun checkUserFriends(user: String, friends: List<String>): String? {
         }
         else -> null
     }
+}
+
+/**
+ * 현재 유저의 친구인 유저와 친구인 다른 유저를 찾아내는 함수
+ */
+private fun getCommonFriend(user : String, curFriend : String, friendList : List<String>) : String? {
+    val mFriend = checkUserFriends(curFriend, friendList)
+
+    if(mFriend != null && mFriend != user) { // != user를 넣은 이유는, 현재 유저 역시도 친구이므로 이를 배제하기 위해서이다.
+        return mFriend
+    } else return null
 }
