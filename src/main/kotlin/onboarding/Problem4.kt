@@ -23,6 +23,15 @@ fun solution4(word: String): String {
     }
 
 
+    var a =""
+
+    list.forEach {
+        a += it
+    }
+
+    return a
+
+
 
 }
 
