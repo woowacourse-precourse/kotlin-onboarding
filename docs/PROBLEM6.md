@@ -21,3 +21,12 @@
 | forms | result |
 | --- | --- |
 | [ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ] | ["jason@email.com", "jm@email.com", "mj@email.com"] |
+
+<br><hr>
+
+## 🤔 프리코스 1주차 Problem6 기능 목록
+
+* 주어진 닉네임에 대해 닉네임의 부분 문자열을 Key로 가지고, 부분 문자열을 포함하는 유저의 이메일 집합을 Value로 가지는 Map 반환 메서드를 구현한다.
+  + Ex) “제이” : { “jm@email.com” , “jason@email.com”, “mj@email.com” } 
+  + 주어진 [이메일, 닉네임] 리스트에 대해 위에서 { 부분 닉네임 to 이메일 집합 } 으로 구성된 Map을 반환하는 Extension 메서드를 구현한다.
+* 주어진 길이보다 크거나 같으면 주어진 email 집합을 result 집합에 모두 추가하는 Extension 메서드를 구현한다. 
