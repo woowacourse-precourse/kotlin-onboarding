@@ -1,6 +1,6 @@
 package onboarding
 
-val moneyList = listOf(50000, 10000, 5000, 1000, 500, 100, 50, 10, 1)
+val MONEY = listOf(50000, 10000, 5000, 1000, 500, 100, 50, 10, 1)
 
 fun solution5(money: Int): List<Int> {
     val result = mutableListOf(0, 0, 0, 0, 0, 0, 0, 0, 0)
@@ -11,9 +11,9 @@ fun calculateMoney(index : Int, money : Int, result : MutableList<Int>) : List<I
     if (money == 0) {
         return result
     }
-    if (money / moneyList[index] != 0) {
-        result[index] = (money / moneyList[index])
-        return calculateMoney(index + 1, money % moneyList[index], result)
+    if (money / MONEY[index] != 0) {
+        result[index] = (money / MONEY[index])
+        return calculateMoney(index + 1, money % MONEY[index], result)
     }
     return  calculateMoney(index + 1, money, result)
 }
