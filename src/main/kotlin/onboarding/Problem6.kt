@@ -29,7 +29,7 @@ fun exception_name(nickName : String) {
         throw IllegalArgumentException("닉네임은 1자 이상 20자 미만이어야 합니다.")
     }
 
-    if(!nickName.matches("^[가-]*$".toRegex())) {
+    if(!nickName.matches("^[가-힣]*$".toRegex())) {
         throw IllegalArgumentException("닉네임은 한글만 가능합니다.")
     }
 }
