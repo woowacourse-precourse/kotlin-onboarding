@@ -11,3 +11,16 @@ package onboarding
 fun solution5(money: Int): List<Int> {
     TODO("프로그램 구현")
 }
+
+private fun moneyToEachDollarsList(money: Int, dollars: List<Int>): List<Int> {
+    var totalMoney = money
+    // 변환하려는 돈의 크기만큼 리스트 초기화
+    val dollarCount = IntArray(dollars.size) { 0 }
+    // 금액 변환
+    for (i in dollars.indices) {
+        dollarCount[i] = totalMoney / dollars[i]
+        // 계좌에 남은 돈
+        totalMoney %= dollars[i]
+    }
+    return dollarCount.toList()
+}
