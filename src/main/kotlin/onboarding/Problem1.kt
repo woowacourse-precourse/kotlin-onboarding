@@ -1,8 +1,6 @@
 package onboarding
 
 fun solution1(pobi: List<Int>, crong: List<Int>): Int {
-    var pobiMax: Int = 0
-    var crongMax: Int = 0
 
     fun getPageMax(page: Int): Int {
         var plusSum: Int = 0
@@ -33,5 +31,21 @@ fun solution1(pobi: List<Int>, crong: List<Int>): Int {
         return max
     }
 
-    return 0
+    var pobiMax = getLeftRightMax(getPageMax(pobi[0]), getPageMax(pobi[1]))
+    var crongMax = getLeftRightMax(getPageMax(crong[0]), getPageMax(crong[1]))
+
+    if ((pobi[0] + 1 == pobi[1]) && (crong[0] + 1 == crong[1])) {
+        if (pobiMax == crongMax) {
+            return 0
+        } else {
+            if (pobiMax > crongMax) {
+                return 1
+            } else if (pobiMax < crongMax) {
+                return 2
+            } else
+                return -1
+        }
+    } else
+        return -1
+
 }
