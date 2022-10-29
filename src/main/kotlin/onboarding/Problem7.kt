@@ -1,6 +1,7 @@
 package onboarding
 
 val friendList = mutableMapOf<String, MutableSet<String>>()
+val score = mutableMapOf<String, Int>()
 
 fun solution7(
     user: String,
@@ -38,4 +39,13 @@ fun containsUserFriend(key: String, userFriend: String) {
     if (friendList[key]?.contains(userFriend) ?: false) {
         getFriendPoint(key)
     }
+}
+
+fun getFriendPoint(key: String) {
+    if (score.containsKey(key)) {
+        score[key] = score[key]?.plus(10) ?: 0
+        return
+    }
+    score.put(key, 10)
+    return
 }
