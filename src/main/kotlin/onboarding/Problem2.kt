@@ -1,18 +1,21 @@
 package onboarding
 
 fun solution2(cryptogram: String): String {
-    var flag:Int = 1
-    var str:String = cryptogram
+    var result:String = cryptogram
 
-    while(flag > 0){
-        flag = 0
-        for (i in 1..str.length-1) {
-            if (str[i - 1] == str[i]) {
-                flag++
-                str = str.replaceRange(i-1..i, "  ")
-            }
-        }
-        str = str.replace(" ", "")
+    while(isCryptogram(result)){
+        result = getSolve(result)
     }
-    return str
+
+    return result
+}
+
+fun isCryptogram(str: String): Boolean {
+    for (i in 1..str.length-1) {
+        if (str[i - 1] == str[i]) {
+            return true
+        }
+    }
+
+    return false
 }
