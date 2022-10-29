@@ -30,8 +30,10 @@ private fun addFriend(friends: MutableList<String>?, user: String, newFriend: St
     }
 }
 
-private fun getVisitCount(visitors: List<String>, user: String): Int =
-    visitors.count { visitor ->
+private fun getVisitCount(visitors: List<String>, userFriends: List<String>, user: String): Int =
+    visitors.filterNot { visitor ->
+        visitor in userFriends
+    }.count { visitor ->
         visitor == user
     }
 
