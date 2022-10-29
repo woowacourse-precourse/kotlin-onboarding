@@ -23,7 +23,12 @@ fun solution7(
 
     scoreMap = sortSameValue(sortList).toMap() as MutableMap //같은 value를 가질 경우에는 이름순으로 정렬해줘야 한다.
 
-
+    for((key, value) in scoreMap) {
+        if(value != 0) { // 예외사항! -> 추천 점수가 0점인 경우 추천하지 않으므로, 제외했다.
+            resultFriends.add(key) // 실질적으로 반환해줄 리스트에 key값, 즉 유저명을 저장한다.
+        }
+    }
+    return resultFriends.subList(0, 3) // 유저명이 모두 정렬 후 저장되어있는 상태이므로, 0번에서 2번까지 총 3개만 반환하도록 한다.
 }
 
 /**
