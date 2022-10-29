@@ -13,19 +13,37 @@ const val UPPERCASE = 3
 fun solution4(word: String): String {
     TODO("프로그램 구현")
 }
+
 // 기능 목록 1번
-fun checkChar(target : Char) : Int {
-    if (target == ' '){
+fun checkChar(target: Char): Int {
+    if (target == ' ') {
         return SPACE
     }
 
-    if (target in 'a'..'z'){
+    if (target in 'a'..'z') {
         return LOWERCASE
     }
 
-    if (target in 'A'..'Z'){
+    if (target in 'A'..'Z') {
         return UPPERCASE
     }
 
     return NOT_ALPHABET_SPACE
+}
+
+// 기능 목록 2번
+fun translateFrogLanguage(targetChar: Char, typeCode: Int): Char {
+    if (typeCode == SPACE) {
+        return ' '
+    }
+
+    if (typeCode == LOWERCASE) {
+        return targetChar + 25 - (targetChar - 'a')
+    }
+
+    if (typeCode == UPPERCASE) {
+        return targetChar + 25 - (targetChar - 'A')
+    }
+
+    return targetChar
 }
