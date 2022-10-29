@@ -61,3 +61,12 @@ fun containVisitors(index: Int, userList: Set<String>, visitors: List<String>) {
     }
     return containVisitors(index + 1, userList, visitors)
 }
+
+fun getVisitorPoint(visitor: String) {
+    if (score.containsKey(visitor)) {
+        score[visitor] = score[visitor]?.plus(1) ?: 0
+        return
+    }
+    score.put(visitor, 1)
+    return
+}
