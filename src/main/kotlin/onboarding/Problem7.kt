@@ -17,12 +17,18 @@ fun solution7(
     return sortScore()
 }
 
-fun findUserFriend(index: Int, userFriendList: MutableSet<String>) {
-    if (index == userFriendList.size) {
+fun findFriends(index: Int, friends: List<List<String>>) {
+    if (index == friends.size) {
         return
     }
-    checkUserFriends(0, friendList.keys, userFriendList.elementAt(index))
-    return findUserFriend(index + 1, userFriendList)
+    val (first, second) = friends[index]
+    val firstList = friendList[first] ?: mutableSetOf()
+    val secondList = friendList[second] ?: mutableSetOf()
+
+    friendList.put(first, firstList.also { firstList.add(second) })
+    friendList.put(second, secondList.also { secondList.add(first) })
+
+    return findFriends(index + 1, friends)
 }
 
 fun findUserFriend(index: Int, userFriendList: MutableSet<String>) {
@@ -77,7 +83,7 @@ fun getVisitorPoint(visitor: String) {
     return
 }
 
-fun sortScore(): List<String> {
+fun sortScore() : List<String> {
     val sortedScore = score.toList().sortedByDescending { it.second }.map { it.first }
 
     if (score.size > 5) {
