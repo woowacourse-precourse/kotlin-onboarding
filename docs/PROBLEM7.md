@@ -24,3 +24,10 @@
 | user | friends | visitors | result |
 | --- | --- | --- | --- |
 | "mrko" | [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ] | ["bedi", "bedi", "donut", "bedi", "shakevan"] | ["andole", "jun", "bedi"] |
+
+## 기능 목록
+1. 예외 사항 처리 기능 구현
+2. friends 리스트를 통해 user와 친구인 아는 친구인지 구분하는 기능 구현
+3. 아는 친구인 경우에만 10점 부여하는 기능 구현
+4. visitors 리스트를 통해 친구가 아닌 경우에만 1점을 부여하는 기능 구현
+5. 점수가 가장 높은 순으로 정렬하고 추천 점수가 같은 경우 이름 순으로 정렬히여 최대 5명 리턴하는 기능 구현
