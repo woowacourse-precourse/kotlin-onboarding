@@ -9,24 +9,35 @@ package onboarding
     - 처리 완료된 문자열 반환
 */
 
-fun searchDuplicatedString(cryptogram: String): Pair<Int, Int> {
+fun searchDuplicatedString(cryptogram: String): IntRange {
     var len = 0
     var idx = 0
     for (i: Int in 0 until cryptogram.length - 1) {
         var j = i
         if (cryptogram[j] != cryptogram[j + 1]) continue
-        while (j < cryptogram.length) {
-            if (cryptogram[j] != cryptogram[j + 1]) {
-                len = j - i + 1
-                idx = i
-                return Pair(idx, len)
+        while (true) {
+            len = j - i
+            idx = i
+            if (j >= cryptogram.length - 1 || cryptogram[j] != cryptogram[j + 1]) {
+                return IntRange(idx, idx + len)
             }
             j++
         }
     }
-    return Pair(-1, -1)
+    return IntRange(-1, -1)
+}
+
+fun processString(cryptogram: String): String {
+    var target = cryptogram
+    while (true) {
+        var range = searchDuplicatedString(target)
+        if (range.first == -1)
+            break
+        target = target.removeRange(range)
+    }
+    return target
 }
 
 fun solution2(cryptogram: String): String {
-    TODO("프로그램 구현")
+    return processString(cryptogram)
 }
