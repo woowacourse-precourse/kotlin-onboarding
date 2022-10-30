@@ -25,7 +25,20 @@ fun solution7(
             userFriends.remove("$i")
         }
     }
-    TODO("프로그램 구현")
+
+    userFriends.toList().sortedWith(compareByDescending { it.second })
+
+    val result = mutableListOf<String>()
+
+    for (i in 0 until 5) {
+        if (userFriends.isEmpty()) {
+            break
+        }
+        result.add(userFriends.keys.first())
+        userFriends.remove(userFriends.keys.first())
+    }
+
+    return result
 }
 
 fun updateVisitUser(visitors: List<String>, result: HashMap<String, Int>): HashMap<String, Int> {
