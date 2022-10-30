@@ -61,10 +61,8 @@ fun connectEdge(friends: List<List<String>>) : LinkedHashMap<String, LinkedList<
     return graph
 }
 
-fun get_friend(user : String , graph : LinkedHashMap<String, LinkedList<String>>) : Set<String>? {
+fun get_friend(user : String , graph : LinkedHashMap<String, LinkedList<String>>) : Set<String>? = graph.get(user)?.toSet()
 
-    return graph.get(user)?.toSet()
-}
 
 fun get_nearFriend(user : String , friendList : Set<String>?, graph : LinkedHashMap<String, LinkedList<String>>) : List<String>? {
 
