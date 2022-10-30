@@ -57,12 +57,16 @@ fun solution7(
             continue
         score_dic[visitors[i]] = 1+ score_dic[visitors[i]]!!
     }
+
+    score_dic.entries.removeIf{it.value==0}
+    val result = score_dic.toList().sortedByDescending{it.second}.toMap().keys.toList()
     println(score_dic)
+    println(result)
     //return result;
-    return friends[0]
+    return result
 }
 
-fun main() {
+/*fun main() {
     val user = "mrko"
     val friends = listOf(
         listOf("donut", "andole"),
@@ -70,8 +74,10 @@ fun main() {
         listOf("donut", "mrko"),
         listOf("shakevan", "andole"),
         listOf("shakevan", "jun"),
-        listOf("shakevan", "mrko")
+        listOf("shakevan", "mrko"),
+        listOf("shakevan", "jun")
     )
-    val visitors = listOf("bedi", "bedi", "donut", "bedi", "shakevan")
+    val visitors = listOf("bedi", "bedi", "donut", "bedi", "shakevan","mmim")
     val result = solution7(user,friends,visitors)
 }
+*/
