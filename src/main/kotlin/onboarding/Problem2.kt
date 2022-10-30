@@ -1,6 +1,6 @@
 package onboarding
 // 중복 문자 위치 찾는 기능
-fun findIndex(data : String): MutableSet<Int>{
+fun findIndex(data : MutableList<String>): MutableSet<Int>{
     val letters = data.zipWithNext()
     val index = mutableSetOf<Int>()
     for(i in letters.indices){
@@ -11,12 +11,23 @@ fun findIndex(data : String): MutableSet<Int>{
     }
     return index
 }
-fun solution2(cryptogram: String): String {
-    val data = cryptogram
-    while(true){
-        if (data.length<=1)
-            break
-        var index = findIndex(data)
+// 중복 부분 삭제
+fun deleteString(data : MutableList<String> , index : MutableSet<Int>): MutableList<String>{
+    for (i in index.reversed()){
+        data.removeAt(i)
     }
-    return ""
+    return data
+}
+fun solution2(cryptogram: String): String {
+    var data = cryptogram.chunked(1).toMutableList()
+    // 중복문자 있을 때가지 반복
+    while(true){
+        if (data.size<=1)
+            break
+        val index = findIndex(data)
+        if (index.size == 0)
+            break
+        data = deleteString(data,index)
+    }
+    return data.joinToString("")
 }
