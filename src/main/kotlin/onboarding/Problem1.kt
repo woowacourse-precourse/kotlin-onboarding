@@ -13,8 +13,8 @@ class Const {
 }
 
 fun solution1(pobi: List<Int>, crong: List<Int>): Int {
-    var scoreOfPobi = 0
-    var scoreOfCrong = 0
+    var scoreOfPobi = getScore(pobi)
+    var scoreOfCrong = getScore(crong)
 
     return getWinner(scoreOfPobi, scoreOfCrong)
 }
@@ -28,6 +28,17 @@ fun getWinner(poby:Int, crong:Int) : Int {
     else {
         return Const.DRAW
     }
+}
+
+fun getScore(pages:List<Int>): Int {
+    var score = 0
+
+    for(page in pages) {
+        score = Math.max(getSumOfDigits(page), score)
+        score = Math.max(getMultipleOfDigits(page), score)
+    }
+
+    return score
 }
 
 fun getSumOfDigits(p:Int): Int {
