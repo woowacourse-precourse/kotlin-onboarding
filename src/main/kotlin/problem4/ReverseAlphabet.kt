@@ -10,7 +10,8 @@ class ReverseAlphabet(private val word:String) {
     }
 
     private fun reverseUpperCaseAlphabet(upperCaseAlphabet:Char) : Char {
-        return upperCaseAlphabet
+        val reversedCharCode = 155 - upperCaseAlphabet.code
+        return reversedCharCode.toChar()
     }
 
     private fun reverseLowerCaseAlphabet(lowerCaseAlphabet:Char) : Char {
