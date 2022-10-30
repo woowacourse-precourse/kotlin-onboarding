@@ -10,3 +10,12 @@ private fun checkReduplication(nickname1: String, nickname2: String): Boolean {
     }
     return false
 }
+
+private fun getReduplicatedEmail(forms: List<List<String>>, nickname: String): String{
+    var email = ""
+
+    for(i in 0..forms.lastIndex){
+        if(forms[i][1] == nickname) email = forms[i][0]
+    }
+    return email
+}
