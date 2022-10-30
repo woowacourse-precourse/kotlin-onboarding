@@ -13,10 +13,16 @@ fun count369(number: Int): Int {
     return count
 }
 
-fun countNumberOfClaps() {
+fun countNumberOfClaps(number: Int): Int {
+    var count = 0
 
+    for (num in 1..number) {
+        count += count369(num)
+    }
+
+    return count
 }
 
 fun solution3(number: Int): Int {
-    TODO("프로그램 구현")
+    return countNumberOfClaps(number)
 }
