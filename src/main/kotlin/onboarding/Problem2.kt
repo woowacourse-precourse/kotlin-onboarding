@@ -23,7 +23,7 @@ private fun findOverlapString(){
         if (findStopPoint()){
             break
         }
-        else if(findRepeatPoint()){
+        else if(findRepeatFirstPoint()){
             repeatFirstChar()
         }
         else if(result.length-1>index){
@@ -41,7 +41,7 @@ private fun findStopPoint() : Boolean{
 
 }
 
-private fun findRepeatPoint() : Boolean{
+private fun findRepeatFirstPoint() : Boolean{
     var flag = false
     if(result.length-1<=index && restartFlag){
         flag=true
@@ -52,8 +52,6 @@ private fun findRepeatPoint() : Boolean{
 private fun findRemoveIndex(){
     if(result[index]==result[index+1]){
         getRemoveIndex()
-        removeOverlapString()
-        restart()
     }
     else if(result[index]!=result[index+1]){
         index++
@@ -70,10 +68,12 @@ private fun getRemoveIndex(){
             break
         }
     }
+    removeOverlapString()
 }
 
 private fun removeOverlapString(){
     result = result.removeRange(index,removeIndex+1)
+    restart()
 }
 
 private fun restart(){
