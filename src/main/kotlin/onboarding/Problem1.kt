@@ -26,7 +26,7 @@ fun solution1(pobi: List<Int>, crong: List<Int>): Int {
             val crongMulValue = if(crongMul1Value>crongMul2Value) crongMul1Value else crongMul2Value
             val crongValue = if(crongSumValue>crongMulValue) crongSumValue else crongMulValue
 
-            return 0
+            return if(pobiValue>crongValue) 1 else if(pobiValue<crongValue) 2 else 0
         }else{
             return -1
         }
