@@ -36,7 +36,7 @@ fun exception_id(id : String) {
         throw IllegalArgumentException("아이디의 길이는 1이상 30이하여야 합니다.")
     }
 
-    if(!id.matches("^[a-z]*S".toRegex())) {
+    if(!id.matches("^[a-z]*$".toRegex())) {
         throw IllegalArgumentException("아이디는 소문자여야 합니다.")
     }
 }
@@ -54,7 +54,7 @@ fun connectEdge(friends: List<List<String>>) : LinkedHashMap<String, LinkedList<
         }
     }
 
-    friends.forEach {
+    friends.forEach{
         graph.get(it[0])?.add(it[1])
         graph.get(it[1])?.add(it[0])
     }
