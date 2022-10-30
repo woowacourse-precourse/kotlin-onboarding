@@ -15,3 +15,14 @@ fun mappingLowerCase(): MutableMap<Char, Char> {
     }
     return lowerCase
 }
+fun mappingUpperCase(): MutableMap<Char, Char> {
+    var temp = 0
+    val upperCase = mutableMapOf<Char, Char>()
+    for (i in 'A'..'Z') {
+        temp++
+        val reverseUpperCase = (91 - temp).toChar()
+        upperCase[i] = reverseUpperCase
+
+    }
+    return upperCase
+}
