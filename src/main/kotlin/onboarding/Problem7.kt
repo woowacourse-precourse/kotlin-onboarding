@@ -15,7 +15,7 @@ fun solution7(
      * */
 
     /** 1. 아이디와 점수를 담을 MutableMap 선언, user의 친구들을 담을 ArrayList 선언 */
-    var idScoreMap: MutableMap<String, Int>
+    var idScoreMap: MutableMap<String, Int> = mutableMapOf()
     var listOfFriends: ArrayList<String> = ArrayList()
 
     /** 2. friends에서 user 친구들을 ArrayList에 할당(for) */
@@ -30,5 +30,17 @@ fun solution7(
         }
     }
 
-
+    /** 3. ArrayList의 요소들과 friends 요소들을 체크하여 MutableMap에 담고 10점 추가(for) */
+    for (friend in listOfFriends) {
+        for (coFriend in friends) {
+            if (coFriend.contains(friend)) {
+                if (coFriend[0] == friend) {
+                    idScoreMap[coFriend[1]] = idScoreMap[coFriend[1]]?.plus(10) ?: 10
+                }
+                if (coFriend[1] == friend) {
+                    idScoreMap[coFriend[0]] = idScoreMap[coFriend[0]]?.plus(10) ?: 10
+                }
+            }
+        }
+    }
 }
