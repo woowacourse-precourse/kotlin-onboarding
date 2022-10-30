@@ -1,19 +1,5 @@
 package onboarding
 
-fun main(args: Array<String>) {
-    val user = "mrko"
-    val friends = listOf(
-        listOf("donut", "andole"),
-        listOf("donut", "jun"),
-        listOf("donut", "mrko"),
-        listOf("shakevan", "andole"),
-        listOf("shakevan", "jun"),
-        listOf("shakevan", "mrko")
-    )
-    val visitors = listOf("bedi", "bedi", "donut", "bedi", "shakevan")
-    println(solution7(user, friends, visitors))
-}
-
 fun solution7(
     user: String,
     friends: List<List<String>>,
@@ -24,6 +10,7 @@ fun solution7(
     val recommendScores = hashMapOf<String, Int>()
     val result = mutableListOf<String>()
 
+    // 추천 점수 정보 초기화
     initScores(
         recommendScores = recommendScores,
         user = user,
@@ -31,6 +18,7 @@ fun solution7(
         visitors = visitors
     )
 
+    // 추천 점수 계산
     recommendScores.keys.forEach { friend ->
         recommendScores[friend] = calcRecommendScore(
             friend = friend,
@@ -40,17 +28,21 @@ fun solution7(
         )
     }
 
+    // 추천 대상 결정 및 정렬
     recommendFriend(recommendScores = recommendScores, result = result)
+
     return result.toList().take(MAX_RECOMMEND_NUM)
 }
 
 fun recommendFriend(recommendScores: HashMap<String, Int>, result: MutableList<String>) {
+
+    // 점수 기준 내림차순, 이름 기준 오름차순
     recommendScores.toList().sortedWith(
         compareBy(
             { -it.second },
             { it.first }
         )
-    ).forEach { (name, score) ->
+    ).forEach { (name, _) ->
         result.add(name)
     }
 }
@@ -96,7 +88,11 @@ fun calcRecommendScore(
     friendRelation: HashMap<String, MutableSet<String>>,
     userFriends: MutableSet<String>,
     visitors: List<String>
-): Int = calcAcquaintanceScore(friend = friend, friendRelation = friendRelation, userFriends = userFriends) + calcVisitorScore(friend = friend, visitors = visitors)
+): Int = calcAcquaintanceScore(
+    friend = friend,
+    friendRelation = friendRelation,
+    userFriends = userFriends
+) + calcVisitorScore(friend = friend, visitors = visitors)
 
 fun calcAcquaintanceScore(
     friend: String,
