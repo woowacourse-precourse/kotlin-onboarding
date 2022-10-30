@@ -8,21 +8,10 @@ fun solution7(
     visitors: List<String>
 ): List<String> {
 
-    // 사용자의 친구 찾기
-    val userFriends = arrayListOf<String>()
-
-    for (i in friends.indices) {
-        if (friends[i].contains(user)) {
-            if (friends[i][0] == user)
-                userFriends.add(friends[i][1])
-            else
-                userFriends.add(friends[i][0])
-        }
-    }
-
-    // 사용자와 함께 아는 친구에 따라 점수 주기
+    val userFriends = findUserFriends(user, friends)
     val friendScore : HashMap<String, Int> = hashMapOf()
 
+    // 사용자와 함께 아는 친구에 따라 점수 주기
     for (user_friend in userFriends.indices){
         val friendName = userFriends[user_friend]
         for (i in friends.indices) {
@@ -37,29 +26,53 @@ fun solution7(
         }
     }
 
-    // 방문 횟수따라 점수 주기
+
+    countVisitorScore(visitors, friendScore)
+
+    val sortedList = sortList(friendScore.toList())
+
+    return chooseRecommendationList(sortedList, userFriends)
+}
+fun findUserFriends(user: String,
+                    friends: List<List<String>>): ArrayList<String> {
+    val userFriends = arrayListOf<String>()
+    for (i in friends.indices) {
+        if (friends[i].contains(user)) {
+            if (friends[i][0] == user)
+                userFriends.add(friends[i][1])
+            if (friends[i][1] == user)
+                userFriends.add(friends[i][0])
+        }
+    }
+    return userFriends
+}
+fun countVisitorScore(visitors: List<String>,
+                      friendScore: HashMap<String, Int>){
     for (visitor in visitors.indices){
         val name = visitors[visitor]
         friendScore[name] = friendScore[name]?.plus(1) ?: 1
     }
+}
+fun sortList(friendScore: List<Pair<String, Int>>): List<Pair<String, Int>> {
 
-    // 점수와 이름 순으로 정렬
-    val newList = friendScore.toList().sortedWith(
+    return friendScore.sortedWith(
             compareBy(
                     { -(it.second) },
                     { it.first }
             )
     )
-
-    // 답 선정
+}
+fun chooseRecommendationList(sortedList: List<Pair<String, Int>>,
+                             userFriends: ArrayList<String>): MutableList<String> {
     val answer = mutableListOf<String>()
-    for ((name, score) in newList){
+
+    for ((name, score) in sortedList){
         if ((answer.size == 5) or (score == 0))
             break
         if (userFriends.contains(name))
             continue
         answer.add(name)
     }
+
     return answer
 }
-
