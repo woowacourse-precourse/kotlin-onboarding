@@ -9,7 +9,8 @@ package onboarding
 fun solution6(forms: List<List<String>>): List<String> {
     val nicknamelist = onlynickname(forms)  //닉네임 추출
     val consecutivelist = findconsecutive(nicknamelist) //중복 가능 단어 추출
-    return consecutivelist
+    val wordlist = findword(consecutivelist)    //중복되는 단어 추출
+    return wordlist
 }
 
 //닉네임 추출 함수
@@ -32,3 +33,13 @@ fun findconsecutive(nicknamelist:List<String>):List<String>{
     println(consecutivelist)
     return consecutivelist
 }
+
+//중복되는 단어 추출 함수
+fun findword(consecutivelist: List<String>):List<String>{
+    var nums = consecutivelist
+    nums=nums.filter { item -> nums.count { it == item } > 1 }.toList()
+    nums=nums.distinct()
+    println(nums)
+    return nums
+}
+
