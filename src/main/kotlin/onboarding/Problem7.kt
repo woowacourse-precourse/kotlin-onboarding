@@ -18,6 +18,24 @@ fun getFriendList(user: String, friends: List<List<String>>) {
     }
 }
 
+fun determineScore(user: String, friends: List<List<String>>, visitors: List<String>) {
+    for (i in visitors) {
+        if (usersFriends.contains(i))
+            continue
+        friendsRecommendScore[i] = (friendsRecommendScore[i] ?: 0) + 1
+    }
+    for (i in friends) {
+        for (j in i.indices) {
+            if (usersFriends.contains(i[j])) {
+                val friend = i[1 - j]
+                if (friend == user || usersFriends.contains(friend))
+                    break
+                friendsRecommendScore[friend] = (friendsRecommendScore[friend] ?: 0) + 10
+            }
+        }
+    }
+}
+
 fun solution7(
     user: String,
     friends: List<List<String>>,
