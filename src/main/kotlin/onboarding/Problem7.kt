@@ -48,15 +48,15 @@ fun checkSNS(
       "user 아이디는 길이가 1 이상 30 이하인 문자열이어야 합니다."
     )
   }
-  for (i in friends.indices) {
-    if (friends[i][0].length !in 1..30 && friends[i][1].length !in 1..30) {
+  friends.forEach { friend ->
+    if (friend[0].length !in 1..30 && friend[1].length !in 1..30) {
       throw IllegalArgumentException(
         "friends 리스트의 아이디는 길이가 1 이상 30 이하인 문자열이어야 합니다."
       )
     }
   }
-  for (i in visitors.indices) {
-    if (visitors[i].length !in 1..30) {
+  visitors.forEach { visitor ->
+    if (visitor.length !in 1..30) {
       throw IllegalArgumentException(
         "visitors 리스트의 아이디는 길이가 1 이상 30 이하인 문자열이어야 합니다."
       )
@@ -79,15 +79,15 @@ fun checkSNS(
       "user 아이디는 알파벳 소문자만 가능합니다."
     )
   }
-  for (i in friends.indices) {
-    if (!friends[i][0].matches(regex) && !friends[i][1].matches(regex)) {
+  friends.forEach { friend ->
+    if (!friend[0].matches(regex) && !friend[1].matches(regex)) {
       throw IllegalArgumentException(
         "friends 리스트의 아이디는 알파벳 소문자만 가능합니다."
       )
     }
   }
-  for (i in visitors.indices) {
-    if (!visitors[i].matches(regex)) {
+  visitors.forEach { visitor ->
+    if (!visitor.matches(regex)) {
       throw IllegalArgumentException(
         "visitors 리스트의 아이디는 알파벳 소문자만 가능합니다."
       )
