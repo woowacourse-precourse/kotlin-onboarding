@@ -7,6 +7,7 @@ package onboarding
 * */
 
 const val WITH_FRIEND_SCORE = 10
+const val VISITOR_SCORE = 1
 
 fun getFriendshipMap(friends: List<List<String>>): MutableMap<String, MutableSet<String>> {
     val friendshipMap = mutableMapOf<String, MutableSet<String>>()
@@ -40,6 +41,20 @@ fun calculateFriendScore(
     }
 }
 
+fun calculateVisitorScore(
+    friendshipMap: MutableMap<String, MutableSet<String>>,
+    scoreMap: MutableMap<String, Int>,
+    visitors: List<String>,
+    user: String,
+    visitorScore: Int,
+) {
+    visitors.forEach { visitor ->
+        if (friendshipMap[user]?.contains(visitor) == false) {
+            scoreMap[visitor] = scoreMap.getOrDefault(visitor, 0) + visitorScore
+        }
+    }
+}
+
 fun solution7(
     user: String,
     friends: List<List<String>>,
@@ -49,8 +64,10 @@ fun solution7(
     val scoreMap = mutableMapOf<String, Int>()
 
     calculateFriendScore(friendshipMap, scoreMap, user, WITH_FRIEND_SCORE)
-
+    calculateVisitorScore(friendshipMap, scoreMap, visitors, user, VISITOR_SCORE)
     TODO("프로그램 구현")
 }
+
+
 
 
