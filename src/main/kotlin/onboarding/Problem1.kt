@@ -5,24 +5,24 @@ import java.lang.NumberFormatException
 fun solution1(pobi: List<Int>, crong: List<Int>): Int {
     try{
         if(checkInputValue(pobi,crong)){
-            val pobiSum1 = calculateEachDigitSum(pobi[0])
-            val pobiSum2 = calculateEachDigitSum(pobi[1])
+            val pobiSumLeft = calculateEachDigitSum(pobi[0])
+            val pobiSumRight = calculateEachDigitSum(pobi[1])
 
-            val pobiSumValue = if(pobiSum1>pobiSum2) pobiSum1 else pobiSum2
-            var pobiMul1Value = calculateEachDigitMul(pobi[0])
-            var pobiMul2Value = calculateEachDigitMul(pobi[1])
+            val pobiSumValue = if(pobiSumLeft>pobiSumRight) pobiSumLeft else pobiSumRight
+            var pobiMulLeft = calculateEachDigitMul(pobi[0])
+            var pobiMulRight = calculateEachDigitMul(pobi[1])
 
-            val pobiMulValue = if(pobiMul1Value>pobiMul2Value) pobiMul1Value else pobiMul2Value
+            val pobiMulValue = if(pobiMulLeft>pobiMulRight) pobiMulLeft else pobiMulRight
             val pobiValue = if(pobiSumValue>pobiMulValue) pobiSumValue else pobiMulValue
 
-            val crongSum1 = calculateEachDigitSum(crong[0])
-            val crongSum2 = calculateEachDigitSum(crong[1])
+            val crongSumLeft = calculateEachDigitSum(crong[0])
+            val crongSumRight = calculateEachDigitSum(crong[1])
 
-            val crongSumValue = if(crongSum1>crongSum2) crongSum1 else crongSum2
-            var crongMul1Value = calculateEachDigitMul(crong[0])
-            var crongMul2Value = calculateEachDigitMul(crong[1])
+            val crongSumValue = if(crongSumLeft>crongSumLeft) crongSumRight else crongSumRight
+            var crongMulLeft = calculateEachDigitMul(crong[0])
+            var crongMulRight = calculateEachDigitMul(crong[1])
 
-            val crongMulValue = if(crongMul1Value>crongMul2Value) crongMul1Value else crongMul2Value
+            val crongMulValue = if(crongMulLeft>crongMulRight) crongMulLeft else crongMulRight
             val crongValue = if(crongSumValue>crongMulValue) crongSumValue else crongMulValue
 
             return if(pobiValue>crongValue) 1 else if(pobiValue<crongValue) 2 else 0
