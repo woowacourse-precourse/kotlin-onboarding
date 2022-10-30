@@ -4,9 +4,9 @@ fun solution1(pobi: List<Int>, crong: List<Int>): Int {
     if (!checkException(pobi) || !checkException(crong)) {
         return -1
     }
-    val pobi_num = compareLeftRight(pobi)
-    val crong_num = compareLeftRight(crong)
-    return match(pobi_num, crong_num)
+    val pobiNum = compareLeftRight(pobi)
+    val crongNum = compareLeftRight(crong)
+    return match(pobiNum, crongNum)
 }
 
 fun checkException(pageNum: List<Int>): Boolean {
@@ -30,7 +30,7 @@ fun compareLeftRight(pageNum: List<Int>): Int {
 
 fun calculateMax(page: Int): Int {
     var num = page
-    var sumAndProduct = mutableListOf<Int>(0, 1)
+    val sumAndProduct = mutableListOf(0, 1)
     do {
         sumAndProduct[0] += num % 10
         sumAndProduct[1] *= num % 10
