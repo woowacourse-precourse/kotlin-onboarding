@@ -92,7 +92,6 @@ fun solution7(
     val visited = BooleanArray(friendsId.size) { false }
     val alreadyFriend = mutableSetOf<Int>()
 
-
     visited[friendsId[user]!!] = true
     calcConnectedScore(friendsId[user]!!, 0, friendsRelation, alreadyFriend, visited, friendsScore)
     calcVisitorsScore(visitors, friendsId, friendsScore)
