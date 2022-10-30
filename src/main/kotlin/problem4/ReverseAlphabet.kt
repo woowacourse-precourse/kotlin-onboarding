@@ -9,8 +9,15 @@ class ReverseAlphabet(private val word:String) {
     private fun plusReversedChar(reversedChar:Char) {
     }
 
+    private fun reverseAlphabet(alphabet:Char) : Char {
+        return alphabet
+    }
+
     private fun reverseIfAlphabet(nextChar:Char) : Char {
-        return ' '
+        if(nextChar in 'a'..'z' || nextChar in 'A'..'Z') {
+            return reverseAlphabet(nextChar)
+        }
+        return nextChar
     }
 
     fun reverse() : String {
