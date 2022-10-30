@@ -1,5 +1,13 @@
 package onboarding
 
 fun solution2(cryptogram: String): String {
-    TODO("프로그램 구현")
+    //문자열을 단어 별로 쪼개 리스트화
+    var cryList = cryptogram.split("").toMutableList()
+    var listSize = cryList.size
+
+    //split시 나타나는 앞뒤 공백 원소 제거
+    cryList.removeAt(listSize-1)
+    cryList.removeAt(0)
+
+
 }
