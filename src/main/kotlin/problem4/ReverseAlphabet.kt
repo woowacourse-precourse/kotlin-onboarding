@@ -7,6 +7,7 @@ class ReverseAlphabet(private val word:String) {
     private val stringParser = StringParser(word)
 
     private fun plusReversedChar(reversedChar:Char) {
+        reversedWord += reversedChar
     }
 
     private fun reverseUpperCaseAlphabet(upperCaseAlphabet:Char) : Char {
