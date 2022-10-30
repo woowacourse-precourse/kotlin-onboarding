@@ -1,22 +1,25 @@
 package onboarding
 
 fun solution3(number: Int): Int {
-    var cnt:Int = 0
+    var cnt: Int = 0
 
     for (i in 1..number){
-        cnt += countClap(i)
+        cnt += countClaps(i)
     }
+
     return cnt
 }
 
-fun countClap(x: Int): Int {
-    var numX:Int = x
-    var cnt:Int = 0
+fun countClaps(_num: Int): Int {
+    var num: Int = _num
+    var cnt: Int = 0
 
-    while(numX > 0){
-        if (numX%10 == 3 || numX%10 == 6 || numX%10 == 9)
+    while(num > 0){
+        if (num % 10 == 3 || num % 10 == 6 || num % 10 == 9) {
             cnt++
-        numX /= 10
+        }
+        num /= 10
     }
+
     return cnt
 }
