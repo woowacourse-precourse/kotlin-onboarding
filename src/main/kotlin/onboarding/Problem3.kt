@@ -1,5 +1,10 @@
 package onboarding
 
 fun solution3(number: Int): Int {
-    TODO("프로그램 구현")
+    var result = 0
+    //예외상황 처리
+    if (number < 1 || number > 10000){
+        return 0
+    }
+
 }
