@@ -14,5 +14,21 @@ fun solution7(
      * 5. MutableMap의 Value를 기준으로 정렬 후 리턴
      * */
 
+    /** 1. 아이디와 점수를 담을 MutableMap 선언, user의 친구들을 담을 ArrayList 선언 */
+    var idScoreMap: MutableMap<String, Int>
+    var listOfFriends: ArrayList<String> = ArrayList()
+
+    /** 2. friends에서 user 친구들을 ArrayList에 할당(for) */
+    for (friend in friends) {
+        if (friend.contains(user)) {
+            if (friend[0] == user) {
+                listOfFriends.add(friend[1])
+            }
+            if (friend[1] == user) {
+                listOfFriends.add(friend[0])
+            }
+        }
+    }
+
 
 }
