@@ -15,6 +15,14 @@ fun isWrongEmail(email: String): Boolean {
     }
 }
 
+fun isWrongNickname(nickname: String): Boolean {
+    return when {
+        nickname.length !in NICKNAME_MIN_LEN..NICKNAME_MAX_LEN -> true
+        !NICKNAME_PATTERN.toRegex().matches(nickname) -> true
+        else -> false
+    }
+}
+
 const val EMAIL_DOMAIN = "email.com"
 const val EMAIL_PATTERN = """^[a-zA-Z]+@[a-zA-Z]+\\.[a-z]+${'$'}"""
 const val EMAIL_MIN_LEN = 11
