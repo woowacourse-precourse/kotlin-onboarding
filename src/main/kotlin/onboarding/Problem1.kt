@@ -5,8 +5,17 @@ import java.lang.NumberFormatException
 fun solution1(pobi: List<Int>, crong: List<Int>): Int {
     try{
         if(checkInputValue(pobi,crong)){
-            // 포비 값
+            val pobiSum1 = calculateEachDigitSum(pobi[0])
+            val pobiSum2 = calculateEachDigitSum(pobi[1])
 
+            val pobiSumValue = if(pobiSum1>pobiSum2) pobiSum1 else pobiSum2
+            var pobiMul1Value = calculateEachDigitMul(pobi[0])
+            var pobiMul2Value = calculateEachDigitMul(pobi[1])
+
+            val pobiMulValue = if(pobiMul1Value>pobiMul2Value) pobiMul1Value else pobiMul2Value
+            val pobiValue = if(pobiSumValue>pobiMulValue) pobiSumValue else pobiMulValue
+
+            //크롱값
             return 0
         }else{
             return -1
