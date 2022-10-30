@@ -120,5 +120,13 @@ fun solution1(pobi: List<Int>, crong: List<Int>): Int {
         crongRight = crongRightMul
     }
 
+    //왼쪽 오른쪽 값 비교
+    var crongFinal = 0
+    if (crongLeft > crongRight){
+        crongFinal = crongLeft
+    }else{
+        crongFinal = crongRight
+    }
+
 
 }
