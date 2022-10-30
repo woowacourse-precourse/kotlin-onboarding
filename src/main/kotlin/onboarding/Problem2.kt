@@ -3,7 +3,14 @@ package onboarding
 import java.util.*
 
 fun solution2(cryptogram: String): String {
-    TODO("프로그램 구현")
+    var result = deleteDuplication(cryptogram)
+    while (result != deleteDuplication(result)) {
+        result = deleteDuplication(result)
+        if(result == ""){
+            return ""
+        }
+    }
+    return result
 }
 
 fun deleteDuplication(cryptogram: String): String {
