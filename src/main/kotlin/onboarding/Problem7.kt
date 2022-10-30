@@ -24,5 +24,10 @@ fun solution7(
     }
   }
 
+  visitors.filter { idMap[user]?.contains(it) == false }.forEach { visitor ->
+    if (scoreMap[visitor] != null) scoreMap[visitor] = scoreMap.getValue(visitor) + 1
+    else scoreMap[visitor] = 1
+  }
+
   return recommendFriends
 }
