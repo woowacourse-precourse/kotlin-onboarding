@@ -4,19 +4,18 @@ fun solution4(word: String): String {
 
     var alphabet = listOf<Char>('A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'N', 'M', 'O', 'P'
         ,'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z')
-    alphabet = alphabet.reversed()
+    alphabet.reversed()
 
-    val s = "I love you"
     var ans = ""
-    for (i in s.indices) {
-        if (s[i].isUpperCase()) {
-            ans += ('A' + ('Z' - s[i]))
-        } else if (s[i].isLowerCase()) {
-            ans += ('a' + ('z' - s[i]))
-        } else if (s[i] == ' ') {
-            ans += (' ')
+    for (i in word.indices) {
+        ans += if (word[i].isUpperCase()) {
+            ('A' + ('Z' - word[i]))
+        } else if (word[i].isLowerCase()) {
+            ('a' + ('z' - word[i]))
+        } else if (word[i] == ' ') {
+            (' ')
         } else {
-            ans += (s[i])
+            (word[i])
         }
     }
 
