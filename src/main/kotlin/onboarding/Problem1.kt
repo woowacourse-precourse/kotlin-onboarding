@@ -37,5 +37,17 @@ fun solution1(pobi: List<Int>, crong: List<Int>): Int {
         pobiLeft = pobiLeftMul
     }
 
+    //pobi의 오른쪽 페이지 숫자
+    //더했을 때
+    var pobiRightSum = pobi[1].toString().map {
+        it.toInt() - '0'.toInt()
+    }.sum()
+    //곱했을 때
+    var pobiRightMul = 1
+    var prN = pobi[1]
+    while (prN != 0){
+        pobiRightMul *= prN % 10
+        prN /= 10
+    }
 
 }
