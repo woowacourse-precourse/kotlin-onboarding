@@ -4,9 +4,6 @@ private var result = mutableListOf<String>()
 private var content = HashMap<String, MutableSet<String>>()
 fun solution6(forms: List<List<String>>): List<String> {
     repeatAllNickName(forms)
-    repeatAllNickNameForFilter(forms)
-    result = result.distinct().toMutableList()
-    result.sort()
     return result
 }
 private fun repeatAllNickName(forms : List<List<String>>){
@@ -15,6 +12,7 @@ private fun repeatAllNickName(forms : List<List<String>>){
             addSplitNickName(forms,i,nickNameIndex)
         }
     }
+    repeatAllNickNameForFilter(forms)
 }
 private fun addSplitNickName(forms : List<List<String>>, i : Int, nickNameIndex:Int){
     if(content.containsKey(forms[i][1].substring(nickNameIndex,nickNameIndex+2))){
@@ -30,6 +28,7 @@ private fun repeatAllNickNameForFilter(forms : List<List<String>>){
     for (i in 0 until forms.size) {
         filterEmail(forms,i)
     }
+    forResult()
 }
 private fun filterEmail(forms : List<List<String>>,i : Int){
     var checkPoint = content.filter {
@@ -39,4 +38,8 @@ private fun filterEmail(forms : List<List<String>>,i : Int){
     for(j in checkPoint.toList()){
         result.addAll(j)
     }
+}
+private fun forResult(){
+    result = result.distinct().toMutableList()
+    result.sort()
 }
