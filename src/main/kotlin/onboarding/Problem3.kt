@@ -9,12 +9,13 @@ fun solution3(number: Int): Int {
  */
 fun count369InNum(num: Int): Int {
     val numList = listOf(3, 6, 9)
-    val cnt = 0
-    while (num > 0) {
-        if (num % 10 in numList) {
+    var number = num
+    var cnt = 0
+    while (number > 0) {
+        if (number % 10 in numList) {
             cnt += 1
         }
-        num /= 10
+        number /= 10
     }
     return cnt
 }
