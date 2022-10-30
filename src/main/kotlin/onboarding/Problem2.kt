@@ -43,7 +43,10 @@ fun solution2(cryptogram: String): String {
                 break
             }
         }
-
+        //더 이상 중복된 문자가 없을 때
+        if (check == 0){
+            break
+        }
     }
 
 }
