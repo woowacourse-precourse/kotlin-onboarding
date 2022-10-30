@@ -1,6 +1,6 @@
 package onboarding
 
-fun solution7mappingToInt(friends: List<List<String>>, visitors: List<String>, user:String): HashMap<String, Int> {
+fun mapToInt(friends: List<List<String>>, visitors: List<String>, user:String): HashMap<String, Int> {
     val friendsId = HashMap<String, Int>()
     var id = 0
 
@@ -26,7 +26,7 @@ fun solution7mappingToInt(friends: List<List<String>>, visitors: List<String>, u
     return friendsId
 }
 
-fun solution7makeFriendsRelation(friends: List<List<String>>, friendsId: HashMap<String, Int>): Array<ArrayList<Int>> {
+fun makeFriendsRelation(friends: List<List<String>>, friendsId: HashMap<String, Int>): Array<ArrayList<Int>> {
     val friendsRelation = Array(friendsId.size) { ArrayList<Int>() }
 
     friends.forEach { eachRelation ->
@@ -39,7 +39,7 @@ fun solution7makeFriendsRelation(friends: List<List<String>>, friendsId: HashMap
     return friendsRelation
 }
 
-fun solution7dfs(
+fun calcConnectedScore(
     cur: Int,
     depth: Int,
     friendsRelation: Array<ArrayList<Int>>,
@@ -55,13 +55,13 @@ fun solution7dfs(
             if (depth + 1 == 2) {
                 friendsScore[next] += 10
             }
-            solution7dfs(next, depth + 1, friendsRelation, alreadyFriend, visited, friendsScore)
+            calcConnectedScore(next, depth + 1, friendsRelation, alreadyFriend, visited, friendsScore)
             visited[next] = false
         }
     }
 }
 
-fun solution7calcVisitorsScore(visitors: List<String>, friendsId: HashMap<String, Int>, friendsScore: IntArray) {
+fun calcVisitorsScore(visitors: List<String>, friendsId: HashMap<String, Int>, friendsScore: IntArray) {
     visitors.forEach { friend ->
         friendsScore[friendsId[friend]!!]++
     }
@@ -86,16 +86,16 @@ fun solution7(
     friends: List<List<String>>,
     visitors: List<String>,
 ): List<String> {
-    val friendsId = solution7mappingToInt(friends, visitors, user)
-    val friendsRelation = solution7makeFriendsRelation(friends, friendsId)
+    val friendsId = mapToInt(friends, visitors, user)
+    val friendsRelation = makeFriendsRelation(friends, friendsId)
     val friendsScore = IntArray(friendsId.size) { 0 }
     val visited = BooleanArray(friendsId.size) { false }
     val alreadyFriend = mutableSetOf<Int>()
 
 
     visited[friendsId[user]!!] = true
-    solution7dfs(friendsId[user]!!, 0, friendsRelation, alreadyFriend, visited, friendsScore)
-    solution7calcVisitorsScore(visitors, friendsId, friendsScore)
+    calcConnectedScore(friendsId[user]!!, 0, friendsRelation, alreadyFriend, visited, friendsScore)
+    calcVisitorsScore(visitors, friendsId, friendsScore)
 
     return friendsScore.getResultRecommendation(friendsId, alreadyFriend)
 }
