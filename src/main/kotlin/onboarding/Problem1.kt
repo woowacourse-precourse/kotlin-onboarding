@@ -56,5 +56,13 @@ fun solution1(pobi: List<Int>, crong: List<Int>): Int {
     }else{
         pobiRight = pobiRightMul
     }
+    //왼쪽 오른쪽 값 비교
+    var pobiFinal = 0
+    if (pobiLeft > pobiRight){
+        pobiFinal = pobiLeft
+    }else{
+        pobiFinal = pobiRight
+    }
+
 
 }
