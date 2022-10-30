@@ -2,30 +2,23 @@ package onboarding
 
 fun solution4(word: String): String {
     val wordToCharList: List<Char> = word.toList()
-    var wordReverse = ""
+    var wordReverseResult = ""
 
-    for ( i in 0..wordToCharList.size - 1){
-
-        wordReverse += frogDictionary(wordToCharList[i])
-
+    for ( letter in wordToCharList){
+        wordReverseResult += frogDictionary(letter)
     }
-
-    return wordReverse
+    return wordReverseResult
 }
 
 fun frogDictionary(letter:Char):Char{
 
     if(letter.isUpperCase()){
-
         return (90 - (letter.code - 65)).toChar()
 
     }else if(letter.isLowerCase()) {
-
         return (122 - (letter.code - 97)).toChar()
 
     }else{
-
         return 32.toChar()
     }
-
 }

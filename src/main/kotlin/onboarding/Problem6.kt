@@ -33,7 +33,6 @@ fun compareNickname(nickname:String,crewNicknameList: ArrayList<String>) : Strin
         val substringWord = nickname.substring(i, i + 2)
 
         for (crewNickname in crewNicknameList) {
-
             if( nickname != crewNickname && crewNickname.contains(substringWord)){
                 return nickname
             }

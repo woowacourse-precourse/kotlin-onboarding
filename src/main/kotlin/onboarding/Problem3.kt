@@ -3,6 +3,7 @@ package onboarding
 fun solution3(number: Int): Int {
     var count=0
     val clapList: List<Int> = listOf(3,6,9)
+
     for( i in 0..number step(1)){
         var numberCalculate=  i
 
@@ -12,8 +13,6 @@ fun solution3(number: Int): Int {
             }
             numberCalculate /= 10
         }
-
     }
-
     return count
 }
