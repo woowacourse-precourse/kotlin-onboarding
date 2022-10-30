@@ -11,6 +11,12 @@ fun solution6(forms: List<List<String>>): List<String> {
             }
         }
     }
+    val crewMail = mutableListOf<String>()
+    for (i in check.indices) {
+        if (check[i] != 0) {
+            crewMail.add(crewInfo[i][0])
+        }
+    }
     TODO("프로그램 구현")
 }
 
