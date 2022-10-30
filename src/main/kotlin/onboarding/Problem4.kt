@@ -9,8 +9,8 @@ fun solution4(word: String): String {
 }
 fun convertAlphabet(alphabet: Char): Char{
     if (alphabet.isUpperCase())
-        return (155-alphabet.toInt()).toChar()
+        return (155-alphabet.code).toChar()
     if (alphabet.isLowerCase())
-        return (219-alphabet.toInt()).toChar()
+        return (219-alphabet.code).toChar()
     return alphabet
 }
