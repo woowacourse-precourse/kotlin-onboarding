@@ -57,21 +57,20 @@ fun connectEdge(friends: List<List<String>>) : LinkedHashMap<String, LinkedList<
     return graph
 }
 
-fun get_friend(user : String ,friends: List<List<String>>) : Set<String> {
+fun get_friend(user : String ,friends: List<List<String>>) : Set<String>? {
 
     val graph = connectEdge(friends)
-    println(graph.toString())
 
-    return graph.get(user)!!.toSet()
+    return graph.get(user)?.toSet()
 }
 
-fun get_nearFriend(user : String , friends: List<List<String>>, friendList : Set<String>) : List<String> {
+fun get_nearFriend(user : String , friends: List<List<String>>, friendList : Set<String>?) : List<String>? {
 
     val near_friend = mutableListOf<String>()
 
     val graph = connectEdge(friends)
 
-    friendList.forEach {
+    friendList?.forEach {
         val list = graph.get(it)
 
         list!!.forEach {
@@ -88,35 +87,35 @@ fun score_friends(user: String, friends: List<List<String>>, visitors: List<Stri
 
     val scoreMap = HashMap<String, Int>()
     val friendList = get_friend(user, friends)
-    val near_friendList = get_nearFriend(user, friends, friendList)
+    val near_friendList = friendList?.let { get_nearFriend(user, friends, it) }
 
-    near_friendList.forEach {
-        if(!friendList.contains(it)) {
-            scoreMap.put(it, scoreMap.getOrDefault(it, 0) + 10)
-        }
+    near_friendList?.forEach {
+        scoreMap.put(it, scoreMap.getOrDefault(it, 0) + 10)
     }
 
     visitors.forEach {
-        if(!friendList.contains(it)) {
-            scoreMap.put(it, scoreMap.getOrDefault(it, 0) + 1)
-        }
+         scoreMap.put(it, scoreMap.getOrDefault(it, 0) + 1)
     }
 
-    println(scoreMap)
+    friendList?.forEach {
+        scoreMap.remove(it)
+    }
+
     return scoreMap
 }
 
 fun sorted_score_friends(user: String, friends: List<List<String>>, visitors: List<String>) : List<String> {
 
-    val entries = LinkedList(score_friends(user, friends, visitors).entries)
+    val entries = score_friends(user, friends, visitors).toList().sortedWith(compareByDescending<Pair<String, Int>> { it.second }.thenBy { it.first }).toMap()
     val result = mutableListOf<String>()
+    
 
-    entries.sortedBy { it.value }
+    entries.forEach { t, u ->
+        result.add(t)
+    }
 
-    entries.forEachIndexed { index, mutableEntry ->
-        if(index < 5) {
-            result.add(mutableEntry.key)
-        }
+    if(result.size > 5) {
+        return result.subList(0,5)
     }
     return result
 }
