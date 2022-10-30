@@ -128,5 +128,16 @@ fun solution1(pobi: List<Int>, crong: List<Int>): Int {
         crongFinal = crongRight
     }
 
+    //pobi와 crong 값 비교
+    if (pobiFinal > crongFinal){
+        return 1
+    }
+    else if(pobiFinal == crongFinal)
+    {
+        return 0
+    }
+    else{
+        return 2
+    }
 
 }
