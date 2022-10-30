@@ -2,6 +2,7 @@ package onboarding
 
 fun solution2(cryptogram: String): String {
     return checkDuplication(cryptogram)
+
 }
 
 fun checkDuplication(cryptogram: String): String {
@@ -29,13 +30,10 @@ fun checkDuplication(cryptogram: String): String {
             }
         }
 
-
         word = resultCrypto
         checkDuplication = false
         resultCrypto = ""
 
     }
-
     return word
-
 }
