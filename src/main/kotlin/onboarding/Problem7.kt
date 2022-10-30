@@ -1,5 +1,7 @@
 package onboarding
 
+import kotlin.time.Duration.Companion.seconds
+
 /*
 기능 목록
 - 사용자 친구 목록 구하기
@@ -36,10 +38,19 @@ fun determineScore(user: String, friends: List<List<String>>, visitors: List<Str
     }
 }
 
+fun determineRecommendList(): List<String> {
+    var tempScore = friendsRecommendScore.toList()
+    val comparator = compareByDescending<Pair<String, Int>> { it.second } . thenBy { it.first }
+    tempScore = tempScore.sortedWith(comparator)
+    return tempScore.map { it.first }
+}
+
 fun solution7(
     user: String,
     friends: List<List<String>>,
     visitors: List<String>
 ): List<String> {
-    TODO("프로그램 구현")
+    getFriendList(user, friends)
+    determineScore(user, friends, visitors)
+    return determineRecommendList()
 }
