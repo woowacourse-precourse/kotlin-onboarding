@@ -47,6 +47,8 @@ fun connectEdge(friends: List<List<String>>) : LinkedHashMap<String, LinkedList<
 
     friends.forEach {
         graph.run {
+            exception_id(it[0])
+            exception_id(it[1])
             set(it[0], LinkedList())
             set(it[1], LinkedList())
         }
