@@ -29,4 +29,9 @@ fun solution6(forms: List<List<String>>): List<String> {
         }
     }
 
+    //email 리스트 정렬
+    var emailList = emailSet.toMutableList()
+    emailList.sort()
+
+    return emailList
 }
