@@ -4,6 +4,9 @@ fun solution1(pobi: List<Int>, crong: List<Int>): Int {
     if (pobi[1] - pobi[0] != 1 || crong[1] - crong[0] != 1) {
         return -1
     }
+    if (pobi[0] % 2 != 1 || pobi[1] % 2 != 0 || crong[0] % 2 != 1 || crong[1] % 2 != 0) {
+        return -1
+    }
 }
 
 fun max(a: Int, b: Int): Int {
