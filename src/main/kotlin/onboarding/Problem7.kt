@@ -6,8 +6,17 @@ package onboarding
 - 친구 추천 점수 결정
 - 추천 친구 목록 출력
 */
-var usersFriends = mutableListOf<String>()
-var friendsRecommendScore = mutableMapOf<String, Int>()
+val usersFriends = mutableListOf<String>()
+val friendsRecommendScore = mutableMapOf<String, Int>()
+
+fun getFriendList(user: String, friends: List<List<String>>) {
+    for (i in friends) {
+        if (i.contains(user)) {
+            val friendIdx = 1 - i.indexOf(user)
+            usersFriends.add(i[friendIdx])
+        }
+    }
+}
 
 fun solution7(
     user: String,
