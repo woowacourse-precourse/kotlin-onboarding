@@ -55,6 +55,14 @@ fun calculateVisitorScore(
     }
 }
 
+fun getScoreResultList(scoreMap: MutableMap<String, Int>): List<String> {
+    return scoreMap
+        .toList()
+        .sortedWith(
+            compareByDescending<Pair<String, Int>> { it.second }.thenBy { it.first }
+        ).map { it.first }
+}
+
 fun solution7(
     user: String,
     friends: List<List<String>>,
@@ -62,10 +70,9 @@ fun solution7(
 ): List<String> {
     val friendshipMap = getFriendshipMap(friends)
     val scoreMap = mutableMapOf<String, Int>()
-
     calculateFriendScore(friendshipMap, scoreMap, user, WITH_FRIEND_SCORE)
     calculateVisitorScore(friendshipMap, scoreMap, visitors, user, VISITOR_SCORE)
-    TODO("프로그램 구현")
+    return getScoreResultList(scoreMap)
 }
 
 
