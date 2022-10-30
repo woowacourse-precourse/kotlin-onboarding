@@ -43,4 +43,9 @@ fun solution7(
             }
         }
     }
+
+    /** 4. visitors 목록을 MutableMap에 할당하고 횟수 당 1점 추가 */
+    for (visitor in visitors) {
+        idScoreMap[visitor] = idScoreMap[visitor]?.plus(1) ?: 1
+    }
 }
