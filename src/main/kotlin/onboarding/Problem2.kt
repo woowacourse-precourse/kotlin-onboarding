@@ -1,10 +1,10 @@
 package onboarding
 
-fun checkDuplicate(word: String, start: Int): Int {
-    var nextIndex = start + 1
+fun findDuplicate(word: String, startIndex: Int): Int {
+    var nextIndex = startIndex + 1
     var result = -1
 
-    while (nextIndex < word.length && word[start] == word[nextIndex]){
+    while (nextIndex < word.length && word[startIndex] == word[nextIndex]){
         result = nextIndex++
     }
     return result
@@ -15,17 +15,17 @@ fun deleteDuplicate(word: String, start: Int, end: Int): String {
 }
 
 fun solution2(cryptogram: String): String {
-    var index = 0
+    var currentIndex = 0
     var word = cryptogram
     var endIndex: Int
 
-    while (index < word.length) {
-        endIndex = checkDuplicate(word, index)
+    while (currentIndex < word.length) {
+        endIndex = findDuplicate(word, currentIndex)
         if (endIndex == -1) {
-            index++
+            currentIndex++
         } else {
-            word = deleteDuplicate(word, index, endIndex)
-            index = 0
+            word = deleteDuplicate(word, currentIndex, endIndex)
+            currentIndex = 0
         }
     }
     return word
