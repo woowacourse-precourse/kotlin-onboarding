@@ -15,7 +15,15 @@ fun solution6(forms: List<List<String>>): List<String> {
         var nickName = forms[i][1]
         var newForms = forms.toMutableList()
         newForms.removeAt(i)
-        println(newForms)
+
+        for (j in 0 until newForms.size){
+            var comparisionEmail = newForms[j][0]
+            var comparisonName = newForms[j][1]
+
+            for (s in 0 until nickName.length-1){
+                println(nickName[s])
+            }
+        }
     }
     return listOf("Hello World")
 }
