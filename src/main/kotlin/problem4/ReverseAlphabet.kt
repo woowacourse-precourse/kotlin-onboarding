@@ -15,7 +15,8 @@ class ReverseAlphabet(private val word:String) {
     }
 
     private fun reverseLowerCaseAlphabet(lowerCaseAlphabet:Char) : Char {
-        return lowerCaseAlphabet
+        val reversedCharCode = 219 - lowerCaseAlphabet.code
+        return reversedCharCode.toChar()
     }
 
     private fun reverseAlphabet(alphabet:Char) : Char {
