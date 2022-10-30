@@ -13,15 +13,11 @@ class Const {
 }
 
 fun solution1(pobi: List<Int>, crong: List<Int>): Int {
-
     if(isException(pobi) || isException(crong)) {
         return Const.EXCEPTION;
     }
 
-    var scoreOfPobi = getScore(pobi)
-    var scoreOfCrong = getScore(crong)
-
-    return getWinner(scoreOfPobi, scoreOfCrong)
+    return getWinner(getScore(pobi), getScore(crong))
 }
 
 fun isException(pages: List<Int>): Boolean {
