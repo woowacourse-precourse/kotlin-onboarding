@@ -1,5 +1,11 @@
 package onboarding
 
 fun solution4(word: String): String {
-    TODO("프로그램 구현")
+    var result = ""
+    //word 리스트로 변환
+    var wordList = word.split("").toMutableList()
+    wordList.removeAt(wordList.size-1)
+    wordList.removeAt(0)
+
+
 }
