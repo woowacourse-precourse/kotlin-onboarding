@@ -48,5 +48,11 @@ fun solution2(cryptogram: String): String {
             break
         }
     }
+    //리스트 문자열로 변환
+    var result = ""
+    for (i in (0..cryList.size - 1)) {
+        result += cryList[i]
+    }
 
+    return result
 }
