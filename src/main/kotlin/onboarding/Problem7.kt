@@ -21,3 +21,17 @@ fun solution7(
 ): List<String> {
     TODO("프로그램 구현")
 }
+
+// 친구관계에 있어서 HashMap 을 통한 Relation 설정
+private fun initFriendRelation(friends: List<List<String>>): HashMap<String, ArrayList<String>> {
+    val friendRelation = HashMap<String, ArrayList<String>>()
+    for (i in friends.indices) {
+        val from = friendRelation.getOrDefault(friends[i][0], arrayListOf())
+        val to = friendRelation.getOrDefault(friends[i][1], arrayListOf())
+        from.add(friends[i][1])
+        to.add(friends[i][0])
+        friendRelation[friends[i][0]] = from
+        friendRelation[friends[i][1]] = to
+    }
+    return friendRelation
+}
