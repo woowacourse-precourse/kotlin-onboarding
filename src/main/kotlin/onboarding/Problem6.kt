@@ -1,18 +1,5 @@
 package onboarding
 
-//fun main(args: Array<String>) {
-//    val forms = listOf(
-//        listOf("jm@email.com", "제이엠"),
-//        listOf("jason@email.com", "제이슨"),
-//        listOf("woniee@email.com", "워니"),
-//        listOf("mj@email.com", "엠제이"),
-//        listOf("nowm@email.com", "이제엠"),
-//        listOf("jm@email.com", "dhfㄱ"),
-//        listOf("jmemail.com", "제이"),
-//    )
-//    println(solution6(forms))
-//}
-
 fun solution6(forms: List<List<String>>): List<String> {
     val rightForms = forms.filter { (email, nickname) ->
         isRightEmail(email = email) && isRightNickname(nickname = nickname)
@@ -26,10 +13,8 @@ fun checkDuplication(forms: List<List<String>>): List<String> {
 
     forms.forEachIndexed { fidx, (targetEmail, targetNickname) ->
 
-        for (i in fidx until forms.size) {
+        for (i in fidx + 1 until forms.size) {
             val (compareEmail, compareNickname) = forms[i]
-
-            if (targetNickname == compareNickname) continue
 
             if (isDuplicated(targetNickname = targetNickname, compareNickname = compareNickname)) {
                 resultEmails.add(targetEmail)
