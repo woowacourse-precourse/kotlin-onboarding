@@ -112,5 +112,13 @@ fun solution1(pobi: List<Int>, crong: List<Int>): Int {
         crongRightMul *= crN % 10
         crN /= 10
     }
+    //더하기 혹은 곱셉 둘 중 큰 값 고르기
+    var crongRight = 0
+    if (crongRightSum > crongRightMul){
+        crongRight = crongRightSum
+    }else{
+        crongRight = crongRightMul
+    }
+
 
 }
