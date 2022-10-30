@@ -6,16 +6,17 @@ package onboarding
 2. 큰 지페 순서대로 리스트에 담기
  */
 fun solution5(money: Int): List<Int> {
-    var moneyVar=money //variance 로 바꾸기
+    var currentAmount = money
     var count: Int
-    var moneyKindList= arrayOf(50000,10000,5000,1000,500,100,50,10,1) //지페 종류 리스트
-    var moneyList= arrayListOf<Int>() //지페 개수 담을 어레이리스트
+    val currencyTypeList = arrayOf(50000, 10000, 5000, 1000, 500, 100, 50, 10, 1)
+    val currencyCountList = arrayListOf<Int>()
 
-    moneyKindList.forEach { moneyKind->
-        count=moneyVar/moneyKind
-        moneyList.add(count)
-        moneyVar -= moneyKind * count
+    currencyTypeList.forEach { currencyType ->
+        count = currentAmount / currencyType
+        currencyCountList.add(count)
+        currentAmount -= currencyType * count
     }
 
-    return moneyList.toList()
+    return currencyCountList.toList()
 }
+
