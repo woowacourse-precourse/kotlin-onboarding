@@ -2,27 +2,27 @@ package onboarding
 
 fun solution6(forms: List<List<String>>): List<String> {
   var emails = mutableListOf<String>()
-  val hashMap = HashMap<String, String>()
+  val map = mutableMapOf<String, String>()
 
   checkForms(forms)
 
-  for (i in forms.indices) {
+  forms.indices.forEach { i ->
     val email = forms[i][0]
     val nickname = forms[i][1]
+
     for (j in 0..nickname.length - 2) {
       val key = nickname.substring(j, j + 2)
-      if (hashMap.containsKey(key)) {
-        val emailFromKey = hashMap[key]
+      if (map.containsKey(key)) {
+        val emailFromKey = map[key]
         if (emailFromKey != email) {
           emails.add(emailFromKey.toString())
           emails.add(email)
         }
       }
-      hashMap[key] = email
+      map[key] = email
     }
   }
-  emails = emails.sorted().toMutableList()
-  emails = emails.distinct().toMutableList()
+  emails = emails.sorted().distinct().toMutableList()
 
   return emails
 }
