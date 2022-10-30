@@ -92,8 +92,10 @@ fun solution7(
     val visited = BooleanArray(friendsId.size) { false }
     val alreadyFriend = mutableSetOf<Int>()
 
+    alreadyFriend.add(friendsId[user]!!)
     visited[friendsId[user]!!] = true
     calcConnectedScore(friendsId[user]!!, 0, friendsRelation, alreadyFriend, visited, friendsScore)
+
     calcVisitorsScore(visitors, friendsId, friendsScore)
 
     return friendsScore.getResultRecommendation(friendsId, alreadyFriend)
