@@ -1,11 +1,5 @@
 package onboarding
 
-import java.lang.Integer.min
-
-fun main(args: Array<String>) {
-    println(solution5(money = 50237))
-}
-
 fun solution5(money: Int): List<Int> {
     val coins = intArrayOf(
         ONE,
@@ -23,21 +17,25 @@ fun solution5(money: Int): List<Int> {
     return calculateCoinCnt(money = money, coins = coins, coinCnt = coinCnt)
 }
 
-// 반환 할 동전 개수를 계산하는 함수
+/**
+ * 필요한 coin의 최소 개수를 계산하는 함수
+ */
 fun calculateCoinCnt(
     money: Int,
     coins: IntArray,
     coinCnt: Array<IntArray>
 ): List<Int> {
-    /* dp[i] -> {i}원을 거슬러 주는데 사용된 최소 화폐의 개수
-    dp[j] = min(dp[j], dp[j - coin[i]] + 1) */
-    val coinsMinCnt = IntArray(size = money + 1) { Int.MAX_VALUE }
-    coinsMinCnt[0] = 0
+    /**
+    * coinMinCntOfMoney[i] -> {i}원을 거슬러 주는데 사용된 최소 화폐의 개수
+    * coinMinCntOfMoney[j] = min(coinMinCntOfMoney[j], coinMinCntOfMoney[j - coin[i]] + 1)
+    */
+    val coinMinCntOfMoney = IntArray(size = money + 1) { Int.MAX_VALUE }
+    coinMinCntOfMoney[0] = 0
 
     coins.forEachIndexed { cidx, coin ->
-        for (curMoney in coin .. money) {
-            if (coinsMinCnt[curMoney] > coinsMinCnt[curMoney - coin] + 1) {
-                coinsMinCnt[curMoney] = coinsMinCnt[curMoney - coin] + 1
+        for (curMoney in coin..money) {
+            if (coinMinCntOfMoney[curMoney] > coinMinCntOfMoney[curMoney - coin] + 1) {
+                coinMinCntOfMoney[curMoney] = coinMinCntOfMoney[curMoney - coin] + 1
                 coinCnt[curMoney] = coinCnt[curMoney - coin].copyOf()
                 coinCnt[curMoney][cidx]++
             }

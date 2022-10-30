@@ -15,9 +15,11 @@ fun decrypt(cryptogram: String): String {
     return targetStr
 }
 
-fun hasDuplicates(cryptogram: String, regex: Regex): Boolean = regex.containsMatchIn(cryptogram)
+fun hasDuplicates(cryptogram: String, regex: Regex): Boolean =
+    regex.containsMatchIn(cryptogram)
 
-fun removeRepetition(cryptogram: String, regex: Regex): String = cryptogram.replace(regex, "")
+fun removeRepetition(cryptogram: String, regex: Regex): String =
+    cryptogram.replace(regex, "")
 
 const val REPETITION_PATTERN = """(([a-z])\2+)"""
 
