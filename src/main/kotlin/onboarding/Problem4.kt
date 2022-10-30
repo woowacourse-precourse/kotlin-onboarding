@@ -35,11 +35,8 @@ private fun convertWord(word: String, dictionary: HashMap<Char, Char>): String {
     val convert = StringBuilder()
     // 청개구리 사전에 맞게 문자 변환
     word.forEach {alphabet ->
-        if (alphabet != ' ') {
-            convert.append(dictionary[alphabet])
-        } else {
-            convert.append(alphabet)
-        }
+        // 청개구리 사전에 없으면 현재 char append
+        convert.append(dictionary.getOrDefault(alphabet, alphabet))
     }
     return convert.toString()
 }
