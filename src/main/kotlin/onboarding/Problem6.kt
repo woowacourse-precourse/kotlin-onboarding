@@ -10,7 +10,7 @@ fun solution6(forms: List<List<String>>): List<String> {
     val nicknamelist = onlynickname(forms)  //닉네임 추출
     val consecutivelist = findconsecutive(nicknamelist) //중복 가능 단어 추출
     val wordlist = findword(consecutivelist)    //중복되는 단어 추출
-    return wordlist
+    return confirmcontains(wordlist, forms) //단어가 포함되어 있는 사용자 이메일 추출
 }
 
 //닉네임 추출 함수
@@ -41,5 +41,20 @@ fun findword(consecutivelist: List<String>):List<String>{
     nums=nums.distinct()
     println(nums)
     return nums
+}
+
+//단어가 포함되어 있는 사용자 이메일 추출 함수
+fun confirmcontains(consecutivelist: List<String>, forms: List<List<String>>): List<String> {
+    val result: MutableList<String> = mutableListOf()
+    for (i: Int in forms.indices) {
+        for (j: Int in consecutivelist.indices) {
+            if (forms[i][1].contains(consecutivelist[j])) {
+                result.add(forms[i][0])
+            }
+
+        }
+    }
+    result.sort()
+    return result.distinct()
 }
 
