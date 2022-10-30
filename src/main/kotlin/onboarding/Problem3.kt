@@ -13,6 +13,7 @@ fun countClabNumber(number: Int): Int {
             gameNumbers.contains(eachNum)
         }
     }
+
     return clabNumber
 }
 

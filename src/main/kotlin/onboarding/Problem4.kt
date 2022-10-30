@@ -30,7 +30,7 @@ fun createDictionary(): HashMap<Char, Char> {
 
 
 fun isAlpha(ch: Char): Boolean {
-    if (ch.code in ALPHABET_CODE_RANGE) return true
+    if (ch.code in START_UPPER_ALPHA_CODE..END_LOWER_ALPHA_CODE) return true
     return false
 }
 
@@ -38,5 +38,4 @@ const val START_UPPER_ALPHA_CODE = 65
 const val END_UPPER_ALPHA_CODE = 90
 const val START_LOWER_ALPHA_CODE = 97
 const val END_LOWER_ALPHA_CODE = 122
-const val ALPHABET_CODE_RANGE = START_UPPER_ALPHA_CODE .. END_LOWER_ALPHA_CODE
 const val NUMBER_OF_ALPHA = 26

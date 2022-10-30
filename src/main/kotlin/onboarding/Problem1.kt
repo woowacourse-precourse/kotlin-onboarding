@@ -47,6 +47,7 @@ fun calculateMaxNumber(pageNumber: Int): Int {
 
         pageNum /= 10
     } while (pageNum > 0)
+
     return max(plusNum, multiplyNum)
 }
 
