@@ -49,6 +49,18 @@ fun calculateVisitorScore(
     }
 }
 
+fun sortResult(score: MutableMap<String, Int>): List<String> {
+    val toList = score.toList()
+    val sortedWith = toList.sortedWith(compareByDescending<Pair<String, Int>> { it.second }.thenBy { it.first })
+    val toMap = sortedWith.toMap().toMutableMap()
+    val result: MutableList<String> = mutableListOf()
+    for (key in toMap.keys) {
+        if (result.size < 5)
+            result.add(key)
+    }
+    return result
+}
+
 fun solution7(
     user: String,
     friends: List<List<String>>,
@@ -57,6 +69,7 @@ fun solution7(
     val follower = getFollower(friends)
     val score = mutableMapOf<String, Int>()
     calculateFollowerScore(user, follower, score)
+    calculateVisitorScore(user, follower, score, visitors)
 
-    return listOf()
+    return sortResult(score)
 }
