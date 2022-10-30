@@ -24,3 +24,10 @@
 | user | friends | visitors | result |
 | --- | --- | --- | --- |
 | "mrko" | [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ] | ["bedi", "bedi", "donut", "bedi", "shakevan"] | ["andole", "jun", "bedi"] |
+
+### 기능
+
+- 친구 관계 정보 리스트를 만드는 기능
+- 사용자와 함께 아는 친구의 수 만큼 점수를 올려주는 기능
+- 사용자의 타임 라인에 방문한 사람의 점수를 올려주는 기능
+- 추천 점수를 정렬하는 기능
