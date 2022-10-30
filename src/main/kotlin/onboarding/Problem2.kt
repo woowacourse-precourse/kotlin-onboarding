@@ -5,15 +5,15 @@ package onboarding
 //3.같은 문자가 있을 시 삭제
 //4.같은 문자가 없을 때 까지 반복
 fun solution2(cryptogram: String): String {
-    var CharList:MutableList<Char> = cryptogram.toMutableList()
+    var charlist:MutableList<Char> = cryptogram.toMutableList()
     //문자열 쪼개서 리스트로 변환
-    CharList=FindContinuity(CharList)   //연속되는 문자 찾고 지워준다.
+    charlist=FindContinuity(charlist)   //연속되는 문자 찾고 지워준다.
 
-    return CharList.joinToString("")    //리스트를 스트링으로 바꿔 리턴한다.
+    return charlist.joinToString("")    //리스트를 스트링으로 바꿔 리턴한다.
 }
 //연속되는 문자 찾는 함수
 fun FindContinuity(CryptogramList:MutableList<Char>): MutableList<Char> {
-    var location:MutableList<Int> = mutableListOf(0)     //연속으로 같은 문자 있는지 확인 후 리스트 위치를 저장할 리스트
+    val location:MutableList<Int> = mutableListOf(0)     //연속으로 같은 문자 있는지 확인 후 리스트 위치를 저장할 리스트
     while(location.isNotEmpty()){   //리스트 위치를 저장한 리스트가 빌 때 까지 실행
         location.clear()
         for(i:Int in 0..CryptogramList.size){
