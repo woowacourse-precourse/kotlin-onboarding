@@ -16,6 +16,16 @@ fun solution1(pobi: List<Int>, crong: List<Int>): Int {
             val pobiValue = if(pobiSumValue>pobiMulValue) pobiSumValue else pobiMulValue
 
             //크롱값
+            val crongSum1 = calculateEachDigitSum(crong[0])
+            val crongSum2 = calculateEachDigitSum(crong[1])
+
+            val crongSumValue = if(crongSum1>crongSum2) crongSum1 else crongSum2
+            var crongMul1Value = calculateEachDigitMul(crong[0])
+            var crongMul2Value = calculateEachDigitMul(crong[1])
+
+            val crongMulValue = if(crongMul1Value>crongMul2Value) crongMul1Value else crongMul2Value
+            val crongValue = if(crongSumValue>crongMulValue) crongSumValue else crongMulValue
+
             return 0
         }else{
             return -1
