@@ -1,32 +1,22 @@
 package onboarding
 
 fun solution3(number: Int): Int {
+
+}
+
+fun loopCheck(number: Int) {
+
     var count = 0
-    var temp = 8888
-    var result = 0
 
-    while (temp != 0){
-        result
-    }
+    for (i in 1..number) {
+        var tempNumber = i
 
-
-    for (i in 1..10000) {
-        val a = i / 10
-        val b = i % 10
-
-
-        if ((a == 3) or (a == 6) or (a == 9)) {
-            count++
-            if ((b == 3) or (b == 6) or (b == 9)) {
+        while (tempNumber > 0) {
+            if ((i % 10 == 3) or (i % 10 == 6) or (i % 10 == 9)) {
                 count++
-                continue
             }
-        } else if ((b == 3) or (b == 6) or (b == 9)) {
-            count++
+            tempNumber /= 10
         }
-
     }
 
-
-   return count
 }
