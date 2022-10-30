@@ -1,5 +1,10 @@
 package onboarding
 
 fun solution3(number: Int): Int {
-    TODO("프로그램 구현")
+    val clapNumber = listOf<Char>('3','6','9')
+    var clap =0
+    for(i in 1 until number+1) {
+        i.toString().map { if (clapNumber.contains(it)) clap++ }
+    }
+   return clap
 }
