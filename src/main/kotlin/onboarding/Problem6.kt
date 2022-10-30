@@ -16,7 +16,16 @@ fun solution6(forms: List<List<String>>): List<String> {
             if (i == j){
                 continue
             }
+            //두 글자씩 잘라서 비교
+            for (k in (0..wordList.size-2)){
+                var word = wordList[k] + wordList[k+1]
 
+                //포함되면 email 리스트에 추가
+                if (forms[j][1].contains(word)){
+                    emailSet.add(forms[j][0])
+                    emailSet.add(forms[i][0])
+                }
+            }
         }
     }
 
