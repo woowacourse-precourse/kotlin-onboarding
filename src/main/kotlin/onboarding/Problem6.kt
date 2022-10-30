@@ -17,7 +17,8 @@ fun solution6(forms: List<List<String>>): List<String> {
             crewMail.add(crewInfo[i][0])
         }
     }
-    TODO("프로그램 구현")
+    crewMail.sort()
+    return crewMail
 }
 
 fun duplication(nickname1: String, nickname2: String): Boolean {
