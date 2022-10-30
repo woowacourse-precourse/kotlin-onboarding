@@ -2,8 +2,8 @@ package onboarding
 
 fun solution2(cryptogram: String): String {
     var answer = cryptogram
-    while (duplicatedStr(answer) != -1) {
-        answer = deleteCryptogram(answer, duplicatedStr(answer))
+    while (duplicatedStrIdx(answer) != -1) {
+        answer = deleteCryptogram(answer, duplicatedStrIdx(answer))
     }
     return answer
 }
