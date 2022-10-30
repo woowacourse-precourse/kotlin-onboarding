@@ -31,13 +31,13 @@ fun calculateCoinCnt(
 ): List<Int> {
     /* dp[i] -> {i}원을 거슬러 주는데 사용된 최소 화폐의 개수
     dp[j] = min(dp[j], dp[j - coin[i]] + 1) */
-    val dp = IntArray(size = money + 1) { Int.MAX_VALUE }
-    dp[0] = 0
+    val coinsMinCnt = IntArray(size = money + 1) { Int.MAX_VALUE }
+    coinsMinCnt[0] = 0
 
     coins.forEachIndexed { cidx, coin ->
         for (curMoney in coin .. money) {
-            if (dp[curMoney] > dp[curMoney - coin] + 1) {
-                dp[curMoney] = dp[curMoney - coin] + 1
+            if (coinsMinCnt[curMoney] > coinsMinCnt[curMoney - coin] + 1) {
+                coinsMinCnt[curMoney] = coinsMinCnt[curMoney - coin] + 1
                 coinCnt[curMoney] = coinCnt[curMoney - coin].copyOf()
                 coinCnt[curMoney][cidx]++
             }
