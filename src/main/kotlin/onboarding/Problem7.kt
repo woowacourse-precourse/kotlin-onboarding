@@ -19,7 +19,8 @@ fun solution7(
     friends: List<List<String>>,
     visitors: List<String>
 ): List<String> {
-    val friendRelation = createFriendRelation(friends = friends)
+    val friendRelation: HashMap<String, MutableSet<String>> = createFriendRelation(friends = friends)
+    val recommendScores = hashMapOf<String, Int>()
 }
 
 fun createFriendRelation(friends: List<List<String>>): HashMap<String, MutableSet<String>> {
@@ -36,6 +37,14 @@ fun createFriendRelation(friends: List<List<String>>): HashMap<String, MutableSe
     }
 
     return friendRelation
+}
+
+fun calculatorVisitorScore(friend: String, visitors: List<String>): Int {
+    val visitNum = visitors.count {
+        it == friend
+    }
+
+    return visitNum * VISITOR_SCORE
 }
 
 const val MAX_RECOMMEND_NUM = 5
