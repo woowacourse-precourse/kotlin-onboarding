@@ -23,7 +23,7 @@ fun solution6(forms: List<List<String>>): List<String> {
 
     answer.sort()
 
-    return answer.toList()
+    return answer.distinct()
 }
 
 // 1. 이름에서 2글자로 조합할 수 있는 연속된 문자열들을 사전으로 만든다
