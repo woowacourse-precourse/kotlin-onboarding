@@ -6,16 +6,16 @@ package onboarding
 * 정렬 및 출력
 * */
 
+const val WITH_FRIEND_SCORE = 10
 
-
-fun getFriendshipMap(friends: List<List<String>>): MutableMap<String,MutableSet<String>> {
-    val friendshipMap = mutableMapOf<String,MutableSet<String>>()
+fun getFriendshipMap(friends: List<List<String>>): MutableMap<String, MutableSet<String>> {
+    val friendshipMap = mutableMapOf<String, MutableSet<String>>()
     friends.forEach {
-        val (f1,f2) = it
-        if(friendshipMap[f1] == null){
+        val (f1, f2) = it
+        if (friendshipMap[f1] == null) {
             friendshipMap[f1] = mutableSetOf()
         }
-        if(friendshipMap[f2] == null){
+        if (friendshipMap[f2] == null) {
             friendshipMap[f2] = mutableSetOf()
         }
         friendshipMap[f1]!!.add(f2)
@@ -24,12 +24,33 @@ fun getFriendshipMap(friends: List<List<String>>): MutableMap<String,MutableSet<
     return friendshipMap
 }
 
+
+fun calculateFriendScore(
+    friendshipMap: MutableMap<String, MutableSet<String>>,
+    scoreMap: MutableMap<String, Int>,
+    user: String,
+    withFriendScore: Int,
+) {
+    friendshipMap[user]?.forEach { friend ->
+        friendshipMap[friend]?.forEach { withFriend ->
+            if (withFriend != user) {
+                scoreMap[withFriend] = scoreMap.getOrDefault(withFriend, 0) + withFriendScore
+            }
+        }
+    }
+}
+
 fun solution7(
     user: String,
     friends: List<List<String>>,
-    visitors: List<String>
+    visitors: List<String>,
 ): List<String> {
     val friendshipMap = getFriendshipMap(friends)
+    val scoreMap = mutableMapOf<String, Int>()
+
+    calculateFriendScore(friendshipMap, scoreMap, user, WITH_FRIEND_SCORE)
+
     TODO("프로그램 구현")
 }
+
 
