@@ -23,13 +23,13 @@ fun solution4(word: String): String {
     }
 
 
-    var a =""
+    var result =""
 
     list.forEach {
-        a += it
+        result += it
     }
 
-    return a
+    return result
 
 
 
