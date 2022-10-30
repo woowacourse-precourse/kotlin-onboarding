@@ -51,9 +51,10 @@ private fun getScoreByFriends(
     if (friendsRelation[user] != null) {
         val userFriends = friendsRelation[user]
         for (key in friendsRelation.keys) {
-            if (key != user && friendsRelation[key] != null) {
+            // user 와 이미 친구관계면 친구 추천을 하지 않는다
+            if (key != user && friendsRelation[key] != null && !userFriends!!.contains(key)) {
                 // 같이 알고 있는 친구들의 수
-                val knowTogether = (userFriends!! + friendsRelation[key]!!).groupBy { it }
+                val knowTogether = (userFriends + friendsRelation[key]!!).groupBy { it }
                     .filter { it.value.size > 1 }
                     .flatMap { it.value }
                     .distinct()
@@ -93,5 +94,20 @@ private fun sortedByScoreAndName(score: HashMap<String, Int>): List<String> {
         .map { it.key }
         .toList()
         .take(5)
+}
+
+fun main() {
+    val user = "mrko"
+    val friends = listOf(
+        listOf("mrko", "jun"),
+        listOf("donut", "jun"),
+        listOf("donut", "mrko"),
+        listOf("shakevan", "andole"),
+        listOf("shakevan", "jun"),
+        listOf("shakevan", "mrko")
+    )
+    val visitors = listOf("bedi", "bedi", "donut", "bedi", "shakevan")
+    val result = listOf("andole", "bedi")
+    println(solution7(user, friends, visitors))
 }
 
