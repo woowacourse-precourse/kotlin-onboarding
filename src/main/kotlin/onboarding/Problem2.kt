@@ -31,5 +31,9 @@ fun deleteDuplication(cryptogram: String): String {
             }
         }
     }
-    TODO()
+    var str = ""
+    for (i in 0 until st.size) {
+        str += st[i].toString()
+    }
+    return str
 }
