@@ -9,8 +9,19 @@ class ReverseAlphabet(private val word:String) {
     private fun plusReversedChar(reversedChar:Char) {
     }
 
+    private fun reverseUpperCaseAlphabet(upperCaseAlphabet:Char) : Char {
+        return upperCaseAlphabet
+    }
+
+    private fun reverseLowerCaseAlphabet(lowerCaseAlphabet:Char) : Char {
+        return lowerCaseAlphabet
+    }
+
     private fun reverseAlphabet(alphabet:Char) : Char {
-        return alphabet
+        if(alphabet.isLowerCase()) {
+            return reverseLowerCaseAlphabet(alphabet)
+        }
+        return reverseUpperCaseAlphabet(alphabet)
     }
 
     private fun reverseIfAlphabet(nextChar:Char) : Char {
