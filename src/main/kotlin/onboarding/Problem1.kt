@@ -1,5 +1,7 @@
 package onboarding
 
+import kotlin.math.max
+
 fun solution1(pobi: List<Int>, crong: List<Int>): Int {
 
     var ans = 0
@@ -26,15 +28,7 @@ fun maxPage(list: List<Int>): Int {
     var leftPage = list[0]
     var rightPage = list[1]
 
-    return compare(cmpAddMul(leftPage), cmpAddMul(rightPage))
-}
-
-// 두 개의 Int 값 중 더 큰 값 반환
-fun compare(first: Int, second: Int): Int {
-    var ans = 0
-    if (first >= second) ans = first
-    else if (first < second) ans = second
-    return ans
+    return max(cmpAddMul(leftPage), cmpAddMul(rightPage))
 }
 
 // 덧셈과 곱셈 중 더 큰 값 반환
@@ -49,5 +43,5 @@ fun cmpAddMul(num: Int): Int {
         add += remain
         mul *= remain
     }
-    return compare(add, mul)
+    return max(add, mul)
 }
