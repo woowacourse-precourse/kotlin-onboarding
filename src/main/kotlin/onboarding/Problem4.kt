@@ -1,7 +1,9 @@
 package onboarding
 
 fun solution4(word: String): String {
-    TODO("프로그램 구현")
+    val sb = StringBuilder()
+    word.forEach { sb.append(it.reverseAlpha()) }
+    return sb.toString()
 }
 
 private fun Char.reverseAlpha(): Char {
