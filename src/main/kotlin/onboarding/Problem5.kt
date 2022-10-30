@@ -12,3 +12,7 @@ fun solution5(money: Int): List<Int> {
 fun pay_money(i : Int , money: Int) : Int{
     return money / unit[i]
 }
+
+fun change_money(i : Int , now_money: Int) : Int{
+    return now_money - (pay_money(i , now_money) * unit[i])
+}
