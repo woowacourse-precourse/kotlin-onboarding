@@ -58,3 +58,22 @@ private fun getScoreByFriends(
         }
     }
 }
+
+private fun getScoreByVisitors(
+    visitors: List<String>,
+    userFriends: ArrayList<String>?,
+    score: HashMap<String, Int>
+) {
+    val setOfVisitors = visitors.toSet()
+    // 방문 휫수에 따라 1점 추가
+    for (visitor in setOfVisitors) {
+        if (userFriends != null) {
+            if (userFriends.contains(visitor)) {
+                continue
+            }
+        }
+        // 이미 친구 관계라면
+        val count = visitors.count { it == visitor }
+        score[visitor] = score.getOrDefault(visitor, 0) + count
+    }
+}
