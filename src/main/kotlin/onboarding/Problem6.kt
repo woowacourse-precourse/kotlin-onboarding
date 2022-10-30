@@ -8,8 +8,8 @@ package onboarding
 
 fun solution6(forms: List<List<String>>): List<String> {
     val nicknamelist = onlynickname(forms)  //닉네임 추출
-
-    return nicknamelist
+    val consecutivelist = findconsecutive(nicknamelist) //중복 가능 단어 추출
+    return consecutivelist
 }
 
 //닉네임 추출 함수
@@ -22,3 +22,13 @@ fun onlynickname(forms: List<List<String>>): List<String>{
     return nicknamelist
 }
 
+//연속될 수 있는 단어 추출 함수
+fun findconsecutive(nicknamelist:List<String>):List<String>{
+    val consecutivelist:MutableList<String> = mutableListOf()
+    for(i:Int in nicknamelist.indices){
+        for(j:Int in 0.. nicknamelist[i].length-2)
+            consecutivelist.add(nicknamelist[i].substring(j until j+2))
+    }
+    println(consecutivelist)
+    return consecutivelist
+}
