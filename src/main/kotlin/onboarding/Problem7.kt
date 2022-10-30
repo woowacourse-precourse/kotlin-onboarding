@@ -52,10 +52,16 @@ fun initScores(
     visitors: List<String>
 ) {
     friendRelation.keys.forEach { name ->
-        if (name != user) recommendScores[name] = 0
+        recommendScores[name] = 0
     }
     visitors.forEach { name ->
         recommendScores[name] = 0
+    }
+
+    recommendScores.remove(user) // 자기 자신은 제거한다.
+
+    friendRelation[user]?.forEach { directFriend ->
+        recommendScores.remove(directFriend) // 자신과 직접 아는 친구는 추천할 필요가 없으므로 제거한다.
     }
 }
 
@@ -89,8 +95,8 @@ fun calcAcquaintanceScore(
 ): Int {
     var acquaintanceNum = 0
     friendRelation[friend]?.forEach { name ->
-        acquaintanceNum = userFriends.count { acquaintance ->
-            acquaintance == name
+        acquaintanceNum += userFriends.count { directFriend ->
+            directFriend == name
         }
     }
 
