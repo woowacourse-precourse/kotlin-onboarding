@@ -13,10 +13,24 @@ class Const {
 }
 
 fun solution1(pobi: List<Int>, crong: List<Int>): Int {
+
+    if(isException(pobi) || isException(crong)) {
+        return Const.EXCEPTION;
+    }
+
     var scoreOfPobi = getScore(pobi)
     var scoreOfCrong = getScore(crong)
 
     return getWinner(scoreOfPobi, scoreOfCrong)
+}
+
+fun isException(pages: List<Int>): Boolean {
+    if(pages[0]+1 != pages[1]) return true
+    if(pages[0] % 2 != 1) return true
+    if(pages[1] % 2 != 0) return true
+    if(pages[0] <= Const.MIN_PAGE || pages[1] >= Const.MAX_PAGE) return true
+
+    return false
 }
 
 fun getWinner(poby:Int, crong:Int) : Int {
