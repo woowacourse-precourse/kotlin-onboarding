@@ -1,6 +1,8 @@
 package onboarding
 
 fun solution1(pobi: List<Int>, crong: List<Int>): Int {
+  if (checkPage(pobi, crong)) return -1
+
   val pobiResult = getResult(pobi)
   val crongResult = getResult(crong)
 
@@ -43,3 +45,15 @@ fun calculatePage(_page: Int, _sum: Int, _multiply: Int): Int {
 fun getMaxNum(num1: Int, num2: Int): Int {
   return if (num1 > num2) num1 else num2
 }
+
+/**
+ * 예외 처리
+ */
+fun checkPage(pobi: List<Int>, crong: List<Int>): Boolean {
+  return !(exceptionPage(pobi[0], pobi[1]) && exceptionPage(crong[0], crong[1]))
+}
+
+fun exceptionPage(leftPage: Int, rightPage: Int): Boolean {
+  return (leftPage in 1..400 && rightPage in 1..400) && (leftPage + 1 == rightPage) && (leftPage % 2 == 1) && (rightPage % 2 == 0)
+}
+
