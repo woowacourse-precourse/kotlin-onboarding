@@ -2,7 +2,7 @@ package onboarding
 
 import java.lang.Math.max
 
-fun solution1CheckException(inputList: List<Int>): Boolean {
+fun checkException(inputList: List<Int>): Boolean {
     //예외 상황
     //0. 오른쪽 페이지가 홀수가 아니거나 왼쪽 페이지가 짝수가 아닌 경우
     //1. 첫페이지나 마지막 페이지 펼치기
@@ -13,7 +13,7 @@ fun solution1CheckException(inputList: List<Int>): Boolean {
     return false
 }
 
-fun solution1calcMultipleScore(inputList: List<Int>): Int {
+fun calcMultipleScore(inputList: List<Int>): Int {
     var multipleScore = 1
 
     inputList.forEach { page ->
@@ -28,7 +28,7 @@ fun solution1calcMultipleScore(inputList: List<Int>): Int {
     return multipleScore
 }
 
-fun solution1calcAddScore(inputList: List<Int>): Int {
+fun calcAddScore(inputList: List<Int>): Int {
     var addScore = 0
 
     inputList.forEach { page ->
@@ -43,7 +43,7 @@ fun solution1calcAddScore(inputList: List<Int>): Int {
     return addScore
 }
 
-fun solution1whoWin(pobiScore:Int, crongScore:Int):Int{
+fun whoWin(pobiScore:Int, crongScore:Int):Int{
     return if (pobiScore > crongScore){
         1
     } else if (pobiScore < crongScore) {
@@ -54,13 +54,13 @@ fun solution1whoWin(pobiScore:Int, crongScore:Int):Int{
 }
 
 fun solution1(pobi: List<Int>, crong: List<Int>): Int {
-    if (solution1CheckException(pobi) || solution1CheckException(crong)){
+    if (checkException(pobi) || checkException(crong)){
         return -1
     }
     var (pobiScore, crongScore) = arrayOf(0, 0);
 
-    pobiScore = solution1calcMultipleScore(pobi).coerceAtLeast(solution1calcAddScore(pobi))
-    crongScore = solution1calcMultipleScore(crong).coerceAtLeast(solution1calcAddScore(crong))
+    pobiScore = calcMultipleScore(pobi).coerceAtLeast(calcAddScore(pobi))
+    crongScore = calcMultipleScore(crong).coerceAtLeast(calcAddScore(crong))
 
-    return solution1whoWin(pobiScore, crongScore)
+    return whoWin(pobiScore, crongScore)
 }
