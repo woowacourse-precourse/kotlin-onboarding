@@ -1,13 +1,13 @@
 package onboarding
 
+
 fun solution6(forms: List<List<String>>): List<String> {
     var result = emptyList<String>().toMutableList()
     var checked= emptyList<String>().toMutableList()
 
     for(i in 0 until forms.size) {
         for (j in 0 until(forms[i][1].length - 1)) {
-            var comp = ""
-            comp = forms[i][1][j].toString() + forms[i][1][j + 1].toString()
+            var comp: String = forms[i][1][j].toString() + forms[i][1][j + 1].toString()
             if(comp in checked)
                 continue
             checked.add(comp)
@@ -22,6 +22,7 @@ fun solution6(forms: List<List<String>>): List<String> {
     return result
 }
 
+/*
 fun main()
 {
     var forms = listOf(
@@ -39,3 +40,5 @@ fun main()
         listOf("nowm@email.com", "이제엠이슨"))
     println(solution6(forms2))
 }
+
+ */
