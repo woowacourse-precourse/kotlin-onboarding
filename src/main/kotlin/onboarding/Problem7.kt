@@ -9,9 +9,11 @@ fun solution7(
     friends: List<List<String>>,
     visitors: List<String>
 ): List<String> {
-    exception7(user, friends, visitors)
 
-    return sorted_score_friends(user, friends, visitors)
+    exception7(user, friends, visitors)
+    val graph = connectEdge(friends)
+
+    return sorted_score_friends(user, friends, visitors, graph)
 }
 
 fun exception7(user : String, friends: List<List<String>>, visitors: List<String>) {
@@ -57,37 +59,34 @@ fun connectEdge(friends: List<List<String>>) : LinkedHashMap<String, LinkedList<
     return graph
 }
 
-fun get_friend(user : String ,friends: List<List<String>>) : Set<String>? {
-
-    val graph = connectEdge(friends)
+fun get_friend(user : String , graph : LinkedHashMap<String, LinkedList<String>>) : Set<String>? {
 
     return graph.get(user)?.toSet()
 }
 
-fun get_nearFriend(user : String , friends: List<List<String>>, friendList : Set<String>?) : List<String>? {
+fun get_nearFriend(user : String , friendList : Set<String>?, graph : LinkedHashMap<String, LinkedList<String>>) : List<String>? {
 
     val near_friend = mutableListOf<String>()
+    var list = LinkedList<String>()
 
-    val graph = connectEdge(friends)
 
     friendList?.forEach {
-        val list = graph.get(it)
+        list = graph.get(it)!!
+    }
 
-        list!!.forEach {
-
+    list!!.forEach {
         if(!it.equals(user))
             near_friend.add(it)
-        }
     }
 
     return near_friend
 }
 
-fun score_friends(user: String, friends: List<List<String>>, visitors: List<String>) : HashMap<String, Int> {
+fun score_friends(user: String, friends: List<List<String>>, visitors: List<String>, graph: LinkedHashMap<String, LinkedList<String>>) : HashMap<String, Int> {
 
     val scoreMap = HashMap<String, Int>()
-    val friendList = get_friend(user, friends)
-    val near_friendList = friendList?.let { get_nearFriend(user, friends, it) }
+    val friendList = get_friend(user, graph)
+    val near_friendList = friendList?.let { get_nearFriend(user, it, graph) }
 
     near_friendList?.forEach {
         scoreMap.put(it, scoreMap.getOrDefault(it, 0) + 10)
@@ -104,9 +103,9 @@ fun score_friends(user: String, friends: List<List<String>>, visitors: List<Stri
     return scoreMap
 }
 
-fun sorted_score_friends(user: String, friends: List<List<String>>, visitors: List<String>) : List<String> {
+fun sorted_score_friends(user: String, friends: List<List<String>>, visitors: List<String>, graph: LinkedHashMap<String, LinkedList<String>>) : List<String> {
 
-    val entries = score_friends(user, friends, visitors).toList().sortedWith(compareByDescending<Pair<String, Int>> { it.second }.thenBy { it.first }).toMap()
+    val entries = score_friends(user, friends, visitors, graph).toList().sortedWith(compareByDescending<Pair<String, Int>> { it.second }.thenBy { it.first }).toMap()
     val result = mutableListOf<String>()
     
 
