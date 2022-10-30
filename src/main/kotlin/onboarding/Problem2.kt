@@ -28,5 +28,21 @@ fun duplicatedStrIdx(cryptogram: String): Int {
 fun String.isEmpty(): Boolean = this.length == 0
 
 /**
+ * 0부터 n번 인덱스까지의 String값을 반환한다.
+ */
+fun String.dropLast(n: Int): String {
+    require(n >= 0 && n <= this.length) { "0이상 또는 문자열의 길이만큼의 n값이 필이 필요합니다." }
+    return this.subSequence(0, n).toString()
+}
+
+/**
+ * 0부터 n번 인덱스까지의 String값을 버린 후 결과 값을 반환한다.
+ */
+fun String.dropFirst(n: Int): String {
+    require(n >= 0 && n <= this.length) { "0이상 또는 문자열의 길이만큼의 n값이 필이 필요합니다." }
+    return this.subSequence(n, this.length).toString()
+}
+
+/**
  * 중복된 문자열을 제거하는 함수
  */
