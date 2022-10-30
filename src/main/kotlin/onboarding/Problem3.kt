@@ -15,11 +15,16 @@ fun countClaps(_num: Int): Int {
     var cnt: Int = 0
 
     while(num > 0){
-        if (num % 10 == 3 || num % 10 == 6 || num % 10 == 9) {
-            cnt++
-        }
+        cnt += is369(num % 10)
         num /= 10
     }
 
     return cnt
+}
+
+fun is369(num: Int): Int {
+    if (num == 3 || num == 6 || num == 9)
+        return 1
+
+    return 0
 }
