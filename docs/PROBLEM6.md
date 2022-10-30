@@ -21,3 +21,12 @@
 | forms | result |
 | --- | --- |
 | [ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ] | ["jason@email.com", "jm@email.com", "mj@email.com"] |
+
+---
+
+## 기능 정리
+1. 중복되는 닉네임이 있는지 확인하는 기능
+      - 2글자 이상 겹치는 것을 확인하면 되므로 2글자만 확인해주면 된다.
+2. 중복되는 닉네임을 사용하는 크루를 체크해주는 기능
+3. 체크된 크루의 이메일을 저장해주는 list 생성
+4. 오름차순으로 정렬해준 뒤 이메일을 담은 list를 반환해준다.
