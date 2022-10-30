@@ -9,8 +9,9 @@ fun solution7(
     friends: List<List<String>>,
     visitors: List<String>
 ): List<String> {
-    TODO("프로그램 구현")
-    val friend = HashSet<String>()
+    exception7(user, friends, visitors)
+
+    return sorted_score_friends(user, friends, visitors)
 }
 
 fun exception7(user : String, friends: List<List<String>>, visitors: List<String>) {
@@ -90,7 +91,9 @@ fun score_friends(user: String, friends: List<List<String>>, visitors: List<Stri
     val near_friendList = get_nearFriend(user, friends, friendList)
 
     near_friendList.forEach {
-        scoreMap.put(it, scoreMap.getOrDefault(it, 0) + 10)
+        if(!friendList.contains(it)) {
+            scoreMap.put(it, scoreMap.getOrDefault(it, 0) + 10)
+        }
     }
 
     visitors.forEach {
@@ -98,5 +101,22 @@ fun score_friends(user: String, friends: List<List<String>>, visitors: List<Stri
             scoreMap.put(it, scoreMap.getOrDefault(it, 0) + 1)
         }
     }
+
+    println(scoreMap)
     return scoreMap
+}
+
+fun sorted_score_friends(user: String, friends: List<List<String>>, visitors: List<String>) : List<String> {
+
+    val entries = LinkedList(score_friends(user, friends, visitors).entries)
+    val result = mutableListOf<String>()
+
+    entries.sortedBy { it.value }
+
+    entries.forEachIndexed { index, mutableEntry ->
+        if(index < 5) {
+            result.add(mutableEntry.key)
+        }
+    }
+    return result
 }
