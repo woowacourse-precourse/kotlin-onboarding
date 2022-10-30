@@ -20,7 +20,43 @@ fun solution7(
     visitors: List<String>
 ): List<String> {
     val friendRelation: HashMap<String, MutableSet<String>> = createFriendRelation(friends = friends)
+    val userFriends = friendRelation[user] ?: mutableSetOf()
     val recommendScores = hashMapOf<String, Int>()
+    val result = mutableListOf<String>()
+
+    initScores(
+        recommendScores = recommendScores,
+        user = user,
+        friendRelation = friendRelation,
+        visitors = visitors
+    )
+    println(recommendScores)
+
+    recommendScores.keys.forEach { friend ->
+        recommendScores[friend] = calcRecommendScore(
+            friend = friend,
+            friendRelation = friendRelation,
+            userFriends = userFriends,
+            visitors = visitors
+        )
+    }
+
+    println(recommendScores)
+    return result.toList()
+}
+
+fun initScores(
+    recommendScores: HashMap<String, Int>,
+    user: String,
+    friendRelation: HashMap<String, MutableSet<String>>,
+    visitors: List<String>
+) {
+    friendRelation.keys.forEach { name ->
+        if (name != user) recommendScores[name] = 0
+    }
+    visitors.forEach { name ->
+        recommendScores[name] = 0
+    }
 }
 
 fun createFriendRelation(friends: List<List<String>>): HashMap<String, MutableSet<String>> {
@@ -39,9 +75,31 @@ fun createFriendRelation(friends: List<List<String>>): HashMap<String, MutableSe
     return friendRelation
 }
 
-fun calculatorVisitorScore(friend: String, visitors: List<String>): Int {
-    val visitNum = visitors.count {
-        it == friend
+fun calcRecommendScore(
+    friend: String,
+    friendRelation: HashMap<String, MutableSet<String>>,
+    userFriends: MutableSet<String>,
+    visitors: List<String>
+): Int = calcAcquaintanceScore(friend = friend, friendRelation = friendRelation, userFriends = userFriends) + calcVisitorScore(friend = friend, visitors = visitors)
+
+fun calcAcquaintanceScore(
+    friend: String,
+    friendRelation: HashMap<String, MutableSet<String>>,
+    userFriends: MutableSet<String>
+): Int {
+    var acquaintanceNum = 0
+    friendRelation[friend]?.forEach { name ->
+        acquaintanceNum = userFriends.count { acquaintance ->
+            acquaintance == name
+        }
+    }
+
+    return acquaintanceNum * ACQUAINTANCE_SCORE
+}
+
+fun calcVisitorScore(friend: String, visitors: List<String>): Int {
+    val visitNum = visitors.count { visitor ->
+        visitor == friend
     }
 
     return visitNum * VISITOR_SCORE
