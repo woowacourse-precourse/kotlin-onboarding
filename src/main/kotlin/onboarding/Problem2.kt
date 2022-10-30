@@ -19,5 +19,27 @@ fun solution2(cryptogram: String): String {
         }
     }
 
+    //반복문 제어 변수 선언
+    var check = 0
+
+    //중복 문자 제거 반복문
+    while (true) {
+        check = 0
+
+        for (i in (0..listSize - 4)) {
+
+            //연속하는 중복 문자 삭제
+            if (cryList[i] == cryList[i + 1]) {
+                cryList.removeAt(i + 1)
+                cryList.removeAt(i)
+
+                check = 1
+
+                listSize -= 2
+                break
+            }
+        }
+
+    }
 
 }
