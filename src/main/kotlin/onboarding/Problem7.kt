@@ -1,4 +1,8 @@
 package onboarding
+
+const val FOLLOWER_SCORE = 10
+const val DEFAULT_SCORE = 0
+
 fun getFollower(friends: List<List<String>>) : MutableMap<String, MutableSet<String>>{
     val follower = mutableMapOf<String, MutableSet<String>>()
 
@@ -16,6 +20,15 @@ fun getFollower(friends: List<List<String>>) : MutableMap<String, MutableSet<Str
     }
     return follower
 }
+fun calculateFollowerScore(user : String, follower : MutableMap<String, MutableSet<String>>, score: MutableMap<String, Int>){
+    for (friends in follower[user]!!) {
+        for (friend in follower[friends]!!) {
+            if (friend != user && !follower[user]?.contains(friend)!!) {
+                score[friend] = score.getOrDefault(friend, DEFAULT_SCORE) + FOLLOWER_SCORE
+            }
+        }
+    }
+}
 
 fun solution7(
     user: String,
@@ -23,6 +36,8 @@ fun solution7(
     visitors: List<String>
 ): List<String> {
     val follower = getFollower(friends)
+    val score = mutableMapOf<String,Int>()
+    calculateFollowerScore(user, follower, score)
 
     return listOf()
 }
