@@ -42,7 +42,7 @@ fun cmpAddMul(num: Int): Int {
     var mul = 1
 
     while (page > 0) {
-        var remain = page % 10
+        val remain = page % 10
         page = page / 10
         add += remain
         mul *= remain
