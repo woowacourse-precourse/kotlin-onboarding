@@ -19,6 +19,16 @@ fun getFriendList(user: String, friends: List<List<String>>) {
     }
 }
 
+fun getRecommendableList(user: String, friends: List<List<String>>) {
+    for (i in friends) {
+        for (j in i) {
+            if (j != user) {
+                friendsRecommendScore[j] = 0
+            }
+        }
+    }
+}
+
 fun solution7(
     user: String,
     friends: List<List<String>>,
