@@ -20,24 +20,43 @@ fun solution2(cryptogram: String): String {
 
 private fun findOverlapString(){
     while(true){
-        if(result.length-1<=index){
-            if(restartFlag){
-                repeatFirstChar()
-            }
-            else{
-                break
-            }
+        if (findStopPoint()){
+            break
         }
-        else{
-            if(result[index]==result[index+1]){
-                getRemoveIndex()
-                removeOverlapString()
-                restart()
-            }
-            else{
-                index++
-            }
+        else if(findRepeatPoint()){
+            repeatFirstChar()
         }
+        else if(result.length-1>index){
+            findRemoveIndex()
+        }
+    }
+}
+
+private fun findStopPoint() : Boolean{
+    var flag = false
+    if(result.length-1<=index && !restartFlag){
+        flag= true
+    }
+    return  flag
+
+}
+
+private fun findRepeatPoint() : Boolean{
+    var flag = false
+    if(result.length-1<=index && restartFlag){
+        flag=true
+    }
+    return flag
+}
+
+private fun findRemoveIndex(){
+    if(result[index]==result[index+1]){
+        getRemoveIndex()
+        removeOverlapString()
+        restart()
+    }
+    else if(result[index]!=result[index+1]){
+        index++
     }
 }
 
