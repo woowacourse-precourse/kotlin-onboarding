@@ -2,15 +2,15 @@ package onboarding
 
 fun solution4(word: String): String {
     val wordToCharList: List<Char> = word.toList()
-    var result = ""
+    var wordReverse = ""
 
     for ( i in 0..wordToCharList.size - 1){
 
-        result += frogDictionary(wordToCharList[i])
+        wordReverse += frogDictionary(wordToCharList[i])
 
     }
 
-    return result
+    return wordReverse
 }
 
 fun frogDictionary(letter:Char):Char{
