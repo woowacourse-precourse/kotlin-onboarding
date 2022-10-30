@@ -17,5 +17,12 @@ fun solution7(
     if (idMap.containsKey(idB)) idMap[idB]?.add(idA) else idMap[idB] = mutableListOf(idA)
   }
 
+  idMap[user]?.forEach {
+    idMap[it]?.filter { it != user }?.forEach { friend ->
+      if (scoreMap.containsKey(friend)) scoreMap[friend] = scoreMap.getValue(friend) + 10
+      else scoreMap[friend] = 10
+    }
+  }
+
   return recommendFriends
 }
