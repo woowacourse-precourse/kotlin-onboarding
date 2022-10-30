@@ -5,9 +5,11 @@ fun solution7(
   friends: List<List<String>>,
   visitors: List<String>
 ): List<String> {
-  val recommendFriends: List<String> = listOf("")
+  val recommendFriends: List<String>
   val idMap = mutableMapOf<String, MutableList<String>>()
   val scoreMap = mutableMapOf<String, Int>()
+
+  checkSNS(user, friends, visitors)
 
   friends.forEach { friend ->
     val idA = friend[0]
@@ -29,5 +31,66 @@ fun solution7(
     else scoreMap[visitor] = 1
   }
 
+  recommendFriends = scoreMap.toList().sortedByDescending { it.second }.map { it.first }.take(5)
+
   return recommendFriends
+}
+
+fun checkSNS(
+  user: String,
+  friends: List<List<String>>,
+  visitors: List<String>
+) {
+  val regex = "^[a-z]*\$".toRegex()
+
+  if (user.length !in 1..30) {
+    throw IllegalArgumentException(
+      "user 아이디는 길이가 1 이상 30 이하인 문자열이어야 합니다."
+    )
+  }
+  for (i in friends.indices) {
+    if (friends[i][0].length !in 1..30 && friends[i][1].length !in 1..30) {
+      throw IllegalArgumentException(
+        "friends 리스트의 아이디는 길이가 1 이상 30 이하인 문자열이어야 합니다."
+      )
+    }
+  }
+  for (i in visitors.indices) {
+    if (visitors[i].length !in 1..30) {
+      throw IllegalArgumentException(
+        "visitors 리스트의 아이디는 길이가 1 이상 30 이하인 문자열이어야 합니다."
+      )
+    }
+  }
+
+  if (friends.size !in 1..10000) {
+    throw IllegalArgumentException(
+      "friends는 길이가 1 이상 10,000 이하인 리스트/배열이어야 합니다."
+    )
+  }
+  if (visitors.size !in 0..10000) {
+    throw IllegalArgumentException(
+      "visitors는 길이가 0 이상 10,000 이하인 리스트/배열이어야 합니다."
+    )
+  }
+
+  if (!user.matches(regex)) {
+    throw IllegalArgumentException(
+      "user 아이디는 알파벳 소문자만 가능합니다."
+    )
+  }
+  for (i in friends.indices) {
+    if (!friends[i][0].matches(regex) && !friends[i][1].matches(regex)) {
+      throw IllegalArgumentException(
+        "friends 리스트의 아이디는 알파벳 소문자만 가능합니다."
+      )
+    }
+  }
+  for (i in visitors.indices) {
+    if (!visitors[i].matches(regex)) {
+      throw IllegalArgumentException(
+        "visitors 리스트의 아이디는 알파벳 소문자만 가능합니다."
+      )
+    }
+  }
 }
