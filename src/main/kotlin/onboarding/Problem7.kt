@@ -12,14 +12,28 @@ fun solution7(
 
     friendsWithScore = friendsWith10Points(user,userFriendList,friends)
 
+
     friendsWithScore = friendsWith3Points(visitors, userFriendList, friendsWithScore)
 
-    return friendsWithScore.toList().sortedWith(compareBy({-it.second}, {it.first})).toMap().keys.toList()
+    var friendsWithScoreList = friendsWithScore.toList()
+        .sortedWith(compareBy({-it.second}, {it.first}))
+        .toMap()
+        .keys
+        .toList()
+
+    if(friendsWithScoreList.size > 5){
+        friendsWithScoreList = friendsWithScoreList.slice(0..4)
+        return friendsWithScoreList
+
+    }else{
+
+        return friendsWithScoreList
+    }
 }
 
 fun userFriendExtract(user: String, friends: List<List<String>>): ArrayList<String>{
     val userFriendList = ArrayList<String>()
-    //user의 친구목록 만들기
+
     for ((i, _) in friends.withIndex()) {
         if (friends[i].contains(user)) {
             if (friends[i].indexOf(user) == 1) {
@@ -42,20 +56,17 @@ fun friendsWith10Points(user : String, userFriends : ArrayList<String>, friends:
                 if (friends[i][abs(j - 1)] != user) {
                     if (friendsWithScore.containsKey(friends[i][abs(j - 1)])) {
                         val score = friendsWithScore.get(friends[i][abs(j - 1)])?.plus(10)
-
                         if (score != null) {
                             friendsWithScore[friends[i][abs(j - 1)]] = score
-
-                        } else {
-                            friendsWithScore.put(friends[i][abs(j - 1)], 10)
                         }
+                    } else {
+                        friendsWithScore.put(friends[i][abs(j - 1)], 10)
                     }
                 }
             }
         }
     }
     return friendsWithScore
-
 }
 
 fun friendsWith3Points(visitors: List<String>,userFriendList: ArrayList<String>,friendsWithScore : HashMap<String, Int>): HashMap<String, Int>{
