@@ -1,7 +1,11 @@
 package onboarding
 
 fun solution3(number: Int): Int {
-    TODO("프로그램 구현")
+    var sum = 0
+    for (i in 1..number) {
+        sum += count(i)
+    }
+    return sum
 }
 
 fun count(num: Int): Int {
