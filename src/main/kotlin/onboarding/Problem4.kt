@@ -13,10 +13,10 @@ fun convert(character: Char): Char {
     }
 }
 
-fun translate(word: String) {
-
+fun translate(word: String): String {
+    return word.map { char -> convert(char) }.joinToString(separator = "")
 }
 
 fun solution4(word: String): String {
-    TODO("프로그램 구현")
+    return translate(word)
 }
