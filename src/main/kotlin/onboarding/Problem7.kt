@@ -64,12 +64,11 @@ fun get_friend(user : String ,friends: List<List<String>>) : Set<String> {
     return graph.get(user)!!.toSet()
 }
 
-fun get_nearFriend(user : String , friends: List<List<String>>) : Set<String> {
+fun get_nearFriend(user : String , friends: List<List<String>>, friendList : Set<String>) : Set<String> {
 
     val near_friend = HashSet<String>()
 
     val graph = connectEdge(friends)
-    val friendList = get_friend(user, friends)
 
     friendList.forEach {
         val list = graph.get(it)
@@ -82,4 +81,15 @@ fun get_nearFriend(user : String , friends: List<List<String>>) : Set<String> {
     }
 
     return near_friend
+}
+
+fun score_friends(user: String, friends: List<List<String>>, visitors: List<String>) {
+
+    val scoreMap = HashMap<String, Int>()
+    val friendList = get_friend(user, friends)
+    val near_friendList = get_nearFriend(user, friends, friendList)
+
+    near_friendList.forEach {
+        scoreMap.put(it, scoreMap.getOrDefault(it, 0) + 10)
+    }
 }
