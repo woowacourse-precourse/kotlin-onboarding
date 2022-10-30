@@ -15,5 +15,5 @@ private fun filterMoney(){
     }
 }
 private fun getCurrentMoney(index : Int){
-
+    currentMoney%=moneyUnits[index]
 }
