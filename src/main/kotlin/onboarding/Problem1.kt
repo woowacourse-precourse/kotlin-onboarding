@@ -18,30 +18,6 @@
 */
 package onboarding
 
-fun solution1(pobi: List<Int>, crong: List<Int>): Int {
-    // TODO: ("프로그램 구현")
-    //예외 상황
-    if(pobi[0] == 1 || pobi[0] == 400 || pobi[0] == 400 || pobi[1] == 400 || crong[0] == 1 || crong[0] == 400 || crong[0] == 400 || crong[1] == 400) {
-        return -1
-    }
-
-    if(pobi[0] + 1 != pobi[1] || crong[0] + 1 != crong[1]) {
-        return -1
-    }
-
-    if(pobi[0] % 2 == 0 || pobi[1] % 2 != 0 || crong[0] % 2 == 0 || crong[1] % 2 != 0) {
-        return -1
-    }
-    //정상 상황
-    val pobiVal = findMax(pobi)
-    val crongVal = findMax(crong)
-
-    return when {
-        pobiVal > crongVal -> 1
-        pobiVal < crongVal -> 2
-        else -> 0
-    }
-}
 
 fun max(a : Int, b : Int) : Int = if(a > b) a else b
 
@@ -70,4 +46,27 @@ fun findMax(list: List<Int>) : Int {
 
     return max(leftMax, rightMax)
 }
+fun solution1(pobi: List<Int>, crong: List<Int>): Int {
+    // TODO: ("프로그램 구현")
+    //예외 상황
+    if(pobi[0] == 1 || pobi[0] == 400 || pobi[0] == 400 || pobi[1] == 400 || crong[0] == 1 || crong[0] == 400 || crong[0] == 400 || crong[1] == 400) {
+        return -1
+    }
 
+    if(pobi[0] + 1 != pobi[1] || crong[0] + 1 != crong[1]) {
+        return -1
+    }
+
+    if(pobi[0] % 2 == 0 || pobi[1] % 2 != 0 || crong[0] % 2 == 0 || crong[1] % 2 != 0) {
+        return -1
+    }
+    //정상 상황
+    val pobiVal = findMax(pobi)
+    val crongVal = findMax(crong)
+
+    return when {
+        pobiVal > crongVal -> 1
+        pobiVal < crongVal -> 2
+        else -> 0
+    }
+}
