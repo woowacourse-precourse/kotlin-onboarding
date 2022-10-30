@@ -9,6 +9,13 @@ fun solution1(pobi: List<Int>, crong: List<Int>): Int {
     }
     val pobiMax = max(bigNumber(pobi[0]), bigNumber(pobi[1]))
     val crongMax = max(bigNumber(crong[0]), bigNumber(crong[1]))
+    if (pobiMax > crongMax) {
+        return 1
+    }
+    if (pobiMax < crongMax) {
+        return 2
+    }
+    return 0
 }
 
 fun max(a: Int, b: Int): Int {
