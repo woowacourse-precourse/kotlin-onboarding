@@ -12,4 +12,5 @@ fun solution5(money: Int): List<Int> {
     }
 
     return change
+
 }
