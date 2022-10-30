@@ -1,6 +1,5 @@
 package onboarding
 
-/* TODO 기능 목록   */
 private var result = ""
 private var restartFlag = false
 private var removeIndex = 0
