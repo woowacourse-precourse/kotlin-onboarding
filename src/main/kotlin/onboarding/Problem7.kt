@@ -77,3 +77,15 @@ private fun getScoreByVisitors(
         score[visitor] = score.getOrDefault(visitor, 0) + count
     }
 }
+
+private fun sortedByScoreAndName(score: HashMap<String, Int>): List<String> {
+    // 점수에 따라 높은 순으로 정렬, 같은 경우 이름순으로 정렬
+    // 추천 점수가 0점일 경우 추천에서 제외
+    // 정렬후 순서대로 5명까지만 추천
+    return score.toSortedMap(compareByDescending<String> { score[it] }.thenBy { it })
+        .filterValues { it != 0 }
+        .map { it.key }
+        .toList()
+        .take(5)
+}
+
