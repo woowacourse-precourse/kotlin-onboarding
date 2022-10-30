@@ -40,7 +40,28 @@ private fun validate(pages: List<Int>): Boolean {
 }
 
 private fun score(pages: List<Int>): Int {
-    TODO("점수계산")
+    val leftDigits = getDigits(pages[0])
+    val rightDigits = getDigits(pages[1])
+
+    val leftSum = leftDigits.sum()
+    val rightSum = rightDigits.sum()
+
+    val leftMul = leftDigits.fold(1) { acc, num -> acc * num }
+    val rightMul = rightDigits.fold(1) { acc, num -> acc * num }
+
+    return maxOf(leftSum, leftMul, rightSum, rightMul)
+}
+
+private fun getDigits(num: Int): List<Int> {
+    val digits = mutableListOf<Int>()
+
+    var digit = num
+    while (digit > 0) {
+        digits.add(digit % 10)
+        digit /= 10
+    }
+
+    return digits
 }
 
 
