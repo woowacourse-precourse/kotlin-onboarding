@@ -21,3 +21,11 @@
 | --- | --- |
 | "browoanoommnaon" | "brown" |
 | "zyelleyz" | "" |
+
+</br>
+
+## ✅ 기능 목록
+1. 연속 중복 문자 삭제하는 메인 함수
+> - [ ] 문자열에서 중복되는 substring을 찾는다.
+> - [ ] 해당 substring을 제거한다.
+> - [ ] 결과를 return 한다.
