@@ -1,5 +1,11 @@
 package onboarding
 
+/* TODO 기능 목록   */
 fun solution2(cryptogram: String): String {
-    TODO("프로그램 구현")
+    var result = cryptogram
+    if(cryptogram.length==1){
+        return cryptogram
+    }
+
+    return result
 }
