@@ -35,3 +35,26 @@ private fun initFriendRelation(friends: List<List<String>>): HashMap<String, Arr
     }
     return friendRelation
 }
+
+private fun getScoreByFriends(
+    user: String,
+    friendsRelation: HashMap<String, ArrayList<String>>,
+    score: HashMap<String, Int>
+) {
+    // user 와 친구관계가 있다면 다른 친구들과 함께 아는 친구를 확인해 본다
+    if (friendsRelation[user] != null) {
+        val userFriends = friendsRelation[user]
+        for (key in friendsRelation.keys) {
+            if (key != user && friendsRelation[key] != null) {
+                // 같이 알고 있는 친구들의 수
+                val knowTogether = (userFriends!! + friendsRelation[key]!!).groupBy { it }
+                    .filter { it.value.size > 1 }
+                    .flatMap { it.value }
+                    .distinct()
+                    .count()
+                // user 와 같이 아는 친구의 수 만큼 10점 추가
+                score[key] = knowTogether * 10
+            }
+        }
+    }
+}
