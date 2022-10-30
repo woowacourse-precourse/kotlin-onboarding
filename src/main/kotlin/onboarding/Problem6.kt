@@ -11,12 +11,14 @@ fun solution6(forms: List<List<String>>): List<String> {
 
         for (k in 0 until nickName.length - 1) {
             val nickNameSliceKey: String = nickName.substring(k, k + 2)
+            val formsMapContainsNickNameSliceKey = formsMap.containsKey(nickNameSliceKey)
 
-            if (formsMap.containsKey(nickNameSliceKey)) {
-                val email = formsMap[nickNameSliceKey]!!
+            if (formsMapContainsNickNameSliceKey) {
+                val duplicateKeyEmail = formsMap[nickNameSliceKey]!!
+                val emailIsNotSame = duplicateKeyEmail != forms[i][0]
 
-                if (email != forms[i][0]) {
-                    emails.add(email)
+                if (emailIsNotSame) {
+                    emails.add(duplicateKeyEmail)
                     emails.add(forms[i][0])
                 }
             }
