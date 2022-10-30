@@ -14,8 +14,8 @@ fun solution1(pobi: List<Int>, crong: List<Int>): Int {
     }
 
     //포비와 크롱값을 함수를 통해 계산하고 요구조건에 맞는 결과를 리턴한다.
-    pobiresult = Calculation(pobi)
-    crongresult = Calculation(crong)
+    pobiresult = calculation(pobi)
+    crongresult = calculation(crong)
     if(pobiresult > crongresult){   //포비가 크롱보다 클 때
         return 1
     }
@@ -36,7 +36,7 @@ fun exception(member: List<Int>): Boolean{
 }
 
 //포비와 크롱값을 계산해 최대값을 리턴하는 함수
-fun Calculation(number: List<Int>): Int {
+fun calculation(number: List<Int>): Int {
     var leftnumber: Int = number[0]
     var rightnumber: Int = number[1]
     var answer: ArrayList<Int> = arrayListOf(leftnumber,rightnumber,1,1)    //각 결과 값을 저장하는 리스트 생성
