@@ -8,9 +8,11 @@ fun solution7(
     visitors: List<String>
 ): List<String> {
     val userFriendList : ArrayList<String> = userFriendExtract(user,friends)
-    val friendsWithScore : HashMap<String, Int>
+    var friendsWithScore : HashMap<String, Int>
 
     friendsWithScore = friendsWith10Points(user,userFriendList,friends)
+
+    friendsWithScore = friendsWith3Points(visitors, userFriendList, friendsWithScore)
 
     return friendsWithScore.toList().sortedWith(compareBy({-it.second}, {it.first})).toMap().keys.toList()
 }
@@ -56,5 +58,23 @@ fun friendsWith10Points(user : String, userFriends : ArrayList<String>, friends:
 
 }
 
+fun friendsWith3Points(visitors: List<String>,userFriendList: ArrayList<String>,friendsWithScore : HashMap<String, Int>): HashMap<String, Int>{
+    val friendsWithScoreUpdate = friendsWithScore
 
+    for (visitor in visitors) {
+
+        if(userFriendList.contains(visitor)) {
+            continue
+        }
+        if (friendsWithScore.containsKey(visitor)) {
+            val score = friendsWithScore.get(visitor)?.plus(3)
+            if (score != null) {
+                friendsWithScore[visitor] = score
+            }
+        } else {
+            friendsWithScore.put(visitor, 3)
+        }
+    }
+    return friendsWithScoreUpdate
+}
 
