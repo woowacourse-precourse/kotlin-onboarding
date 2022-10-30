@@ -1,6 +1,6 @@
 package onboarding
 
-fun solution5dynamicProgramming(coinToUse: Array<Int>, coinCnt: Array<Array<Int>>, cache: Array<Int>, money: Int) {
+fun dp(coinToUse: Array<Int>, coinCnt: Array<Array<Int>>, cache: Array<Int>, money: Int) {
     cache[0] = 0
     coinToUse.forEachIndexed { coinIndex, curCoin ->
         for (paidMoney in curCoin..money) {
@@ -18,7 +18,7 @@ fun solution5(money: Int): List<Int> {
     val coinCnt = Array(money + 1) { Array(9) { 0 } }
     val cache = Array(money + 1) { Int.MAX_VALUE }
 
-    solution5dynamicProgramming(coinToUse, coinCnt, cache, money)
+    dp(coinToUse, coinCnt, cache, money)
 
     return coinCnt[money].reversed().toList()
 }
