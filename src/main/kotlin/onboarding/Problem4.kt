@@ -1,7 +1,15 @@
 package onboarding
 
 fun solution4(word: String): String {
-    TODO("프로그램 구현")
+    var str = ""
+    for (i in word.indices) {
+        if ((word[i] in 'A'..'Z') || (word[i] in 'a'..'z')) {
+            str += transform(word[i]).toChar()
+        } else {
+            str += word[i]
+        }
+    }
+    return str
 }
 
 fun transform(ch: Char): Int {
