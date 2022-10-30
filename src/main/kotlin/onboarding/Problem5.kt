@@ -2,18 +2,19 @@ package onboarding
 
 fun solution5(money: Int): List<Int> {
   val withdrawalList = List(9) { 0 }.toMutableList()
+  val currencyList = mutableListOf(50000, 10000, 5000, 1000, 500, 100, 50, 10, 1)
+  var idx = 0
+  var _money = money
 
   checkMoney(money)
 
-  withdrawalList[0] = money / 50000
-  withdrawalList[1] = money % 50000 / 10000
-  withdrawalList[2] = money % 50000 % 10000 / 5000
-  withdrawalList[3] = money % 50000 % 10000 % 5000 / 1000
-  withdrawalList[4] = money % 50000 % 10000 % 5000 % 1000 / 500
-  withdrawalList[5] = money % 50000 % 10000 % 5000 % 1000 % 500 / 100
-  withdrawalList[6] = money % 50000 % 10000 % 5000 % 1000 % 500 % 100 / 50
-  withdrawalList[7] = money % 50000 % 10000 % 5000 % 1000 % 500 % 100 % 50 / 10
-  withdrawalList[8] = money % 50000 % 10000 % 5000 % 1000 % 500 % 100 % 50 % 10 / 1
+  currencyList.forEach { currency ->
+    while (_money / currency > 0) {
+      withdrawalList[idx] += 1
+      _money -= currency
+    }
+    idx += 1
+  }
 
   return withdrawalList
 }
