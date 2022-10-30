@@ -27,6 +27,9 @@ fun solution6(forms: List<List<String>>): List<String> {
                     nameIndex = comparisonName.indexOf(nickName[s])
                     println("${comparisonName} 안에 ${nickName[s]} 가 있습니다. 위치는 ${nameIndex}")
                 }
+                if (comparisonName[nameIndex+1] == nickName[s+1]){
+                    println("${nickName[s]}${nickName[s+1]} 은 중복된 이름입니다.")
+                }
             }
         }
     }
