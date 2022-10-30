@@ -30,7 +30,6 @@ fun solution7(
         friendRelation = friendRelation,
         visitors = visitors
     )
-    println(recommendScores)
 
     recommendScores.keys.forEach { friend ->
         recommendScores[friend] = calcRecommendScore(
@@ -41,8 +40,19 @@ fun solution7(
         )
     }
 
-    println(recommendScores)
-    return result.toList()
+    recommendFriend(recommendScores = recommendScores, result = result)
+    return result.toList().take(MAX_RECOMMEND_NUM)
+}
+
+fun recommendFriend(recommendScores: HashMap<String, Int>, result: MutableList<String>) {
+    recommendScores.toList().sortedWith(
+        compareBy(
+            { -it.second },
+            { it.first }
+        )
+    ).forEach { (name, score) ->
+        result.add(name)
+    }
 }
 
 fun initScores(
