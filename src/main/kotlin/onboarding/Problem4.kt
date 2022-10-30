@@ -5,23 +5,27 @@ fun solution4(word: String): String {
     var result = ""
 
     for ( i in 0..wordToCharList.size - 1){
-        var frogDictionaryResult: Int
 
-        if(wordToCharList[i].isUpperCase()){
+        result += frogDictionary(wordToCharList[i])
 
-            frogDictionaryResult = 90 - (wordToCharList[i].code - 65)
-            result += frogDictionaryResult.toChar()
-
-        }else if(wordToCharList[i].isLowerCase()) {
-
-            frogDictionaryResult = 122 - (wordToCharList[i].code - 97)
-            result += frogDictionaryResult.toChar()
-
-        }else{
-
-            result += " "
-        }
     }
 
     return result
+}
+
+fun frogDictionary(letter:Char):Char{
+
+    if(letter.isUpperCase()){
+
+        return (90 - (letter.code - 65)).toChar()
+
+    }else if(letter.isLowerCase()) {
+
+        return (122 - (letter.code - 97)).toChar()
+
+    }else{
+
+        return 32.toChar()
+    }
+
 }
