@@ -1,7 +1,13 @@
 package onboarding
 
+val START_NUMBER = 1
+val THREE = 3
+val SIX = 6
+val NINE = 9
+val TEN = 10
+
 fun solution3(number: Int): Int {
-    return startGame(1, number, 0)
+    return startGame(START_NUMBER, number, 0)
 }
 
 fun startGame(start : Int, end: Int, count: Int) : Int {
@@ -15,8 +21,8 @@ fun clap(number: Int, count : Int) : Int {
     if (number == 0) {
         return count
     }
-    if (number % 10 == 3 || number % 10 == 6 || number % 10 == 9) {
-        return clap(number / 10, count + 1)
+    if (number % TEN == THREE || number % TEN == SIX || number % TEN == NINE) {
+        return clap(number / TEN, count + 1)
     }
-    return clap(number / 10, count)
+    return clap(number / TEN, count)
 }
