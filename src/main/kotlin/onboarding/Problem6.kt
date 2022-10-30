@@ -12,6 +12,10 @@ fun solution6(forms: List<List<String>>): List<String> {
 
         //비교 대상 닉네임
         for (j in (0..forms.size-1)){
+            //동일 회원은 서로 비교 안함
+            if (i == j){
+                continue
+            }
 
         }
     }
