@@ -20,7 +20,11 @@ fun solution7(
     }
 
     updateVisitUser(visitors, userFriends)
-
+    for (i in graph[map[user]!!]) {
+        if (userFriends.containsKey("$i")) {
+            userFriends.remove("$i")
+        }
+    }
     TODO("프로그램 구현")
 }
 
