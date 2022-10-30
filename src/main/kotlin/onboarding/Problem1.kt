@@ -29,3 +29,15 @@ fun getWinner(poby:Int, crong:Int) : Int {
         return Const.DRAW;
     }
 }
+
+fun getSumOfDigits(p:Int): Int {
+    var sum = 0
+    var page = p
+
+    while(page > 0) {
+        sum += page % 10
+        page /= 10
+    }
+
+    return sum
+}
