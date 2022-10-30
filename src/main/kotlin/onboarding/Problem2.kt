@@ -9,5 +9,15 @@ fun solution2(cryptogram: String): String {
     cryList.removeAt(listSize-1)
     cryList.removeAt(0)
 
+    //예외상황
+    if (cryptogram == "" || listSize >= 1001) {
+        return "예외상황"
+    }
+    for (i in (cryptogram.indices)){
+        if (cryptogram[i].isUpperCase()) {
+            return "예외상황"
+        }
+    }
+
 
 }
