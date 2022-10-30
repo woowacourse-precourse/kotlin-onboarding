@@ -9,22 +9,16 @@ fun solution4(word: String): String {
 
   checkWordLength(word)
 
-  for (i in word.indices) {
+  word.indices.forEach { i ->
     if (word[i].isUpperCase()) {
-      for (j in upperAlphabets.indices) {
-        if (word[i] == upperAlphabets[j]) {
-          reversedWord += reversedUpperAlphabets[j]
-        }
+      upperAlphabets.indices.forEach { j ->
+        if (word[i] == upperAlphabets[j]) reversedWord += reversedUpperAlphabets[j]
       }
     } else if (word[i].isLowerCase()) {
-      for (j in lowerAlphabets.indices) {
-        if (word[i] == lowerAlphabets[j]) {
-          reversedWord += reversedLowerAlphabets[j]
-        }
+      lowerAlphabets.indices.forEach { j ->
+        if (word[i] == lowerAlphabets[j]) reversedWord += reversedLowerAlphabets[j]
       }
-    } else {
-      reversedWord += word[i]
-    }
+    } else reversedWord += word[i]
   }
   return reversedWord
 }
