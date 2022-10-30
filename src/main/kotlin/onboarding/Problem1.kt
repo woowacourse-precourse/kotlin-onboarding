@@ -1,7 +1,19 @@
 package onboarding
 
+import java.lang.NumberFormatException
+
 fun solution1(pobi: List<Int>, crong: List<Int>): Int {
-    return 0
+    try{
+        if(checkInputValue(pobi,crong)){
+            // 포비 값
+
+            return 0
+        }else{
+            return -1
+        }
+    }catch (e : NumberFormatException){
+        return -1
+    }
 }
 
 private fun checkStraightNum(list : List<Int>) : Boolean{
