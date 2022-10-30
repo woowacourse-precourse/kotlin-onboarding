@@ -28,7 +28,7 @@ fun checkPage(openedPage: List<Int>): Int {
 }
 
 fun isValid(leftPage: Int, rightPage: Int): Boolean {
-    if (abs(leftPage - rightPage) > 1 || leftPage == 1 || leftPage == 400 || leftPage%2 == 1 || rightPage%2 == 0) {
+    if (abs(leftPage - rightPage) > 1 || leftPage == 1 || leftPage == 400 || leftPage%2 == 0 || rightPage%2 == 1) {
         return false
     }
     return true
