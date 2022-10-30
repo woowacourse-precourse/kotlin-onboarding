@@ -26,8 +26,7 @@ fun calculateCoinCnt(
     coinCnt: Array<IntArray>
 ): List<Int> {
     /**
-    * coinMinCntOfMoney[i] -> {i}원을 거슬러 주는데 사용된 최소 화폐의 개수
-    * coinMinCntOfMoney[j] = min(coinMinCntOfMoney[j], coinMinCntOfMoney[j - coin[i]] + 1)
+    * coinMinCntOfMoney[i]: {i}원을 거슬러 주는데 사용된 최소 화폐의 개수
     */
     val coinMinCntOfMoney = IntArray(size = money + 1) { Int.MAX_VALUE }
     coinMinCntOfMoney[0] = 0

@@ -31,7 +31,6 @@ fun isDuplicated(targetNickname: String, compareNickname: String): Boolean {
 
     targetNickname.forEach { targetChar ->
         pattern += targetChar
-        println("target:$targetNickname, compare:$compareNickname, pattern:$pattern")
 
         if (pattern !in compareNickname) {
             pattern = ""
