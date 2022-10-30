@@ -54,7 +54,7 @@ private fun getRemoveIndex(){
 }
 
 private fun removeOverlapString(){
-
+    result = result.removeRange(index,removeIndex+1)
 }
 
 private fun restart(){
