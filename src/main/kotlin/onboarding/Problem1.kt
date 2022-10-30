@@ -5,7 +5,7 @@ fun solution1(pobi: List<Int>, crong: List<Int>): Int {
         return -1
     }
 
-    return getWinner(getMax(pobi), getMax(crong))
+    return getWinner(getScore(pobi), getScore(crong))
 }
 
 fun isException(list: List<Int>): Boolean{
@@ -22,7 +22,7 @@ fun isException(list: List<Int>): Boolean{
     return false
 }
 
-fun getMax(pages: List<Int>): Int{
+fun getScore(pages: List<Int>): Int{
     var list = mutableListOf<Int>()
 
     for (page in pages) {
@@ -57,10 +57,11 @@ fun getMultiply(_num: Int): Int{
     return multiply
 }
 
-fun getWinner(pobiNum: Int, crongNum: Int): Int {
-    if (pobiNum > crongNum)
+fun getWinner(pobiScore: Int, crongScore: Int): Int {
+
+    if (pobiScore > crongScore)
         return 1
-    if (pobiNum < crongNum)
+    if (pobiScore < crongScore)
         return 2
 
     return 0
