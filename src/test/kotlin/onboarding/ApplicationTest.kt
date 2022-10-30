@@ -205,7 +205,7 @@ class ApplicationTest {
                 listOf("shakevan", "hoon")
             )
             val visitors = listOf("bedi", "bedi", "donut", "bedi", "shakevan", "hoon")
-            val result = listOf("woogie", "jun", "andole", "hoon", "amy")
+            val result = listOf("andole", "jun", "woogie", "hoon", "hyeok")
             assertThat(solution7(user, friends, visitors)).isEqualTo(result)
         }
     }
