@@ -12,17 +12,6 @@
 
 package onboarding
 
-fun solution2(cryptogram: String): String {
-//    TODO("프로그램 구현")
-    var ans = cryptogram
-
-    while(checkString(ans)) {
-        ans = removeString(ans)
-    }
-
-    return ans
-}
-
 fun checkString(str : String) : Boolean {
     if(str.isEmpty()) {
         return false
@@ -58,3 +47,13 @@ fun removeString(str: String) : String {
 
 }
 
+fun solution2(cryptogram: String): String {
+//    TODO("프로그램 구현")
+    var ans = cryptogram
+
+    while(checkString(ans)) {
+        ans = removeString(ans)
+    }
+
+    return ans
+}
