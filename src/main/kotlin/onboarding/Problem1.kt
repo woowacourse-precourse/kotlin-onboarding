@@ -4,6 +4,8 @@ val POBI_WIN = 1
 val CRONG_WIN = 2
 val DRAW = 0
 val EXCEPTION = -1
+val MIN_PAGE = 1
+val MAX_PAGE = 400
 
 fun solution1(pobi: List<Int>, crong: List<Int>): Int {
     if (!isValidation(pobi, crong)) {
@@ -13,17 +15,17 @@ fun solution1(pobi: List<Int>, crong: List<Int>): Int {
 }
 
 fun addPageNumber(pageNumber : Int) : Int {
-    if (pageNumber < 10) {
+    if (pageNumber < TEN) {
         return pageNumber
     }
-    return (pageNumber % 10) + addPageNumber(pageNumber / 10)
+    return (pageNumber % TEN) + addPageNumber(pageNumber / TEN)
 }
 
 fun mulPageNumber(pageNumber : Int) : Int {
-    if (pageNumber < 10) {
+    if (pageNumber < TEN) {
         return pageNumber
     }
-    return (pageNumber % 10) * mulPageNumber(pageNumber / 10)
+    return (pageNumber % TEN) * mulPageNumber(pageNumber / TEN)
 }
 
 fun getMaxSumPage(leftPage : Int, rightPage : Int) : Int {
@@ -67,10 +69,10 @@ fun comparePobiMaxPageAndCrongMaxPage(pobiPageList : List<Int>, crongPageList : 
 }
 
 fun validatePageNumber(pobi: List<Int>, crong: List<Int>) : Boolean {
-    if (pobi[0] < 1 || pobi[1] > 400) {
+    if (pobi[0] < MIN_PAGE || pobi[1] > MAX_PAGE) {
         return false
     }
-    if (crong[0] < 1 || crong[1] > 400) {
+    if (crong[0] < MIN_PAGE || crong[1] > MAX_PAGE) {
         return false
     }
     return true
