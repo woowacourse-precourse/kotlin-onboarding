@@ -60,10 +60,12 @@ fun initScores(
         recommendScores[name] = 0
     }
 
-    recommendScores.remove(user) // 자기 자신은 제거한다.
+    // 자기 자신은 제거한다.
+    recommendScores.remove(user)
 
+    // 자신과 직접 아는 친구는 추천할 필요가 없으므로 제거한다.
     friendRelation[user]?.forEach { directFriend ->
-        recommendScores.remove(directFriend) // 자신과 직접 아는 친구는 추천할 필요가 없으므로 제거한다.
+        recommendScores.remove(directFriend)
     }
 }
 
@@ -88,11 +90,12 @@ fun calcRecommendScore(
     friendRelation: HashMap<String, MutableSet<String>>,
     userFriends: MutableSet<String>,
     visitors: List<String>
-): Int = calcAcquaintanceScore(
-    friend = friend,
-    friendRelation = friendRelation,
-    userFriends = userFriends
-) + calcVisitorScore(friend = friend, visitors = visitors)
+): Int =
+    calcAcquaintanceScore(
+        friend = friend,
+        friendRelation = friendRelation,
+        userFriends = userFriends
+    ) + calcVisitorScore(friend = friend, visitors = visitors)
 
 fun calcAcquaintanceScore(
     friend: String,
