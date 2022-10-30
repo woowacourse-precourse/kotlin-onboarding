@@ -13,6 +13,10 @@ fun solution4(word: String): String {
             result += " "
             continue
         }
+        //소문자일 때 변환
+        if (wordList[i][0].isLowerCase()){
+            result += (90 - (wordList[i][0].toUpperCase().toInt() - 65)).toChar().toString().toLowerCase()
+        }
 
     }
 
