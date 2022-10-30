@@ -19,19 +19,23 @@ fun solution6(forms: List<List<String>>): List<String> {
         for (j in 0 until newForms.size){
             var comparisionEmail = newForms[j][0]
             var comparisonName = newForms[j][1]
-            println("기준 이름 : ${nickName} || 비교할 이름 : ${comparisonName}")
 
             for (s in 0 until nickName.length-1){
                 var nameIndex: Int = -1
                 if (comparisonName.contains(nickName[s])){
                     nameIndex = comparisonName.indexOf(nickName[s])
-                    println("${comparisonName} 안에 ${nickName[s]} 가 있습니다. 위치는 ${nameIndex}")
                 }
-                if (comparisonName[nameIndex+1] == nickName[s+1]){
-                    println("${nickName[s]}${nickName[s+1]} 은 중복된 이름입니다.")
+
+                if (nameIndex == comparisonName.lastIndex){
+                    continue
+                }
+                else if (comparisonName[nameIndex+1] == nickName[s+1]){
+                    if(!result.contains(comparisionEmail)){
+                        result.add(comparisionEmail)
+                    }
                 }
             }
         }
     }
-    return listOf("Hello World")
+    return result.sorted()
 }
