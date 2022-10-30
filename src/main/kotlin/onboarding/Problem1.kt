@@ -41,3 +41,15 @@ fun getSumOfDigits(p:Int): Int {
 
     return sum
 }
+
+fun getMultipleOfDigits(p:Int): Int {
+    var mul = 1
+    var page = p
+
+    while(page > 0) {
+        mul *= page % 10
+        page /= 10
+    }
+
+    return mul
+}
