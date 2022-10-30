@@ -12,9 +12,9 @@ import java.lang.StringBuilder
 
 fun conversionChar(char: Char): Char {
     return if (char.isUpperCase()) {
-        return (90 + 65 - char.code).toChar()
+        (90 + 65 - char.code).toChar()
     } else {
-        return (122 + 97 - char.code).toChar()
+        (122 + 97 - char.code).toChar()
     }
 }
 

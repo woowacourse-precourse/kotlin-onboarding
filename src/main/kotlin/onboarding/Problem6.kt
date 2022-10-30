@@ -7,7 +7,7 @@ package onboarding
 */
 
 fun findDuplicatedSubstring(string1: String, string2: String): Boolean {
-    var isCharEqual = false
+    var isCharEqual: Boolean
 
     for (i in string1.indices) {
         var tempIdx = i

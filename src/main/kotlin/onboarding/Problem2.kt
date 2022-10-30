@@ -10,8 +10,8 @@ package onboarding
 */
 
 fun searchDuplicatedString(cryptogram: String): IntRange {
-    var len = 0
-    var idx = 0
+    var len: Int
+    var idx: Int
     for (i: Int in 0 until cryptogram.length - 1) {
         var j = i
         if (cryptogram[j] != cryptogram[j + 1]) continue
@@ -30,7 +30,7 @@ fun searchDuplicatedString(cryptogram: String): IntRange {
 fun processString(cryptogram: String): String {
     var target = cryptogram
     while (true) {
-        var range = searchDuplicatedString(target)
+        val range = searchDuplicatedString(target)
         if (range.first == -1)
             break
         target = target.removeRange(range)
