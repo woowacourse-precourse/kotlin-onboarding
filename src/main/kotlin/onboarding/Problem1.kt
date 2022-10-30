@@ -49,5 +49,12 @@ fun solution1(pobi: List<Int>, crong: List<Int>): Int {
         pobiRightMul *= prN % 10
         prN /= 10
     }
+    //더하기 혹은 곱셉 둘 중 큰 값 고르기
+    var pobiRight = 0
+    if (pobiRightSum > pobiRightMul){
+        pobiRight = pobiRightSum
+    }else{
+        pobiRight = pobiRightMul
+    }
 
 }
