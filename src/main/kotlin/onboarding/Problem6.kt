@@ -11,5 +11,32 @@ package onboarding
  * 4.
  */
 fun solution6(forms: List<List<String>>): List<String> {
-    TODO("프로그램 구현")
+    val similarNickNameList = HashSet<String>()
+    val email = forms.map { it[0] }
+    val name = forms.map { it[1] }
+    val duplicateCheck = BooleanArray(forms.size)
+    // 같은 글자 연속적으로 포함되는 닉네임 확인
+    for (i in 0 until forms.size - 1) {
+        if (!duplicateCheck[i]) {
+            val nickName = name[i]
+            if (1 < nickName.length) {
+                // 이름 확인
+                for (j in 0 until nickName.length - 1) {
+                    val splitNickName = nickName.substring(j, j + 2)
+                    // 해당 닉네임이 아닌 다른 forms 에 닉네임들 확인
+                    for (k in i + 1 until forms.size) {
+                        if (!duplicateCheck[k]) {
+                            if (name[k].contains(splitNickName)) {
+                                duplicateCheck[k] = true
+                                similarNickNameList.add(email[i])
+                                similarNickNameList.add(email[k])
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    // 오름차순으로 정렬
+    return similarNickNameList.sorted()
 }
