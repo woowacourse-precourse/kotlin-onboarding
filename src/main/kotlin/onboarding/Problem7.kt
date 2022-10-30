@@ -19,7 +19,13 @@ fun solution7(
     friends: List<List<String>>,
     visitors: List<String>
 ): List<String> {
-    TODO("프로그램 구현")
+    // 친구 관계
+    val friendsRelation = initFriendRelation(friends)
+    // 추천할 친구의 점수
+    val score = HashMap<String, Int>()
+    getScoreByFriends(user, friendsRelation, score)
+    getScoreByVisitors(visitors, friendsRelation[user], score)
+    return sortedByScoreAndName(score)
 }
 
 // 친구관계에 있어서 HashMap 을 통한 Relation 설정
