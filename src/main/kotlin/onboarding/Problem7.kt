@@ -3,7 +3,6 @@ package onboarding
 /*
 기능 목록
 - 사용자 친구 목록 구하기
-- 모든 추천 친구 목록 구하기
 - 친구 추천 점수 결정
 - 추천 친구 목록 출력
 */
@@ -15,16 +14,6 @@ fun getFriendList(user: String, friends: List<List<String>>) {
         if (i.contains(user)) {
             val friendIdx = 1 - i.indexOf(user)
             usersFriends.add(i[friendIdx])
-        }
-    }
-}
-
-fun getRecommendableList(user: String, friends: List<List<String>>) {
-    for (i in friends) {
-        for (j in i) {
-            if (j != user) {
-                friendsRecommendScore[j] = 0
-            }
         }
     }
 }
