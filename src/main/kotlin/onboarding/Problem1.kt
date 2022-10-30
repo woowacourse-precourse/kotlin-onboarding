@@ -21,3 +21,11 @@ private fun calculateEachDigitSum(value : Int) : Int{
         it.code - '0'.code
     }.sum()
 }
+
+private fun calculateEachDigitMul(value : Int) : Int{
+    var result = 1
+    for(element in value.toString().toCharArray()){
+        result *= (element - '0'.code).code
+    }
+    return result
+}
