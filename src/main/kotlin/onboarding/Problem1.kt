@@ -64,5 +64,33 @@ fun solution1(pobi: List<Int>, crong: List<Int>): Int {
         pobiFinal = pobiRight
     }
 
+    //crong case
+    //예외처리1 : 페이지 범위를 벗어난 경우
+    for (i in crong){
+        if ( i <= 2 || i >= 399){
+            return -1
+        }
+    }
+    //예외처리2 : 연이은 페이지 번호가 아닌 경우
+    if (crong[1]-crong[0] != 1){
+        return -1
+    }
+    //예외처리3 : 리스트의 크기가 2가 아닌 경우
+    if (crong.size != 2){
+        return -1
+    }
+
+    //crong의 왼쪽 페이지
+    //더했을 때
+    var crongLeftSum = crong[0].toString().map {
+        it.toInt() - '0'.toInt()
+    }.sum()
+    //곱했을 때
+    var crongLeftMul = 1
+    var clN = crong[0]
+    while (clN != 0){
+        crongLeftMul *= clN % 10
+        clN /= 10
+    }
 
 }
