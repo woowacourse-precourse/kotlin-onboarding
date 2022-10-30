@@ -65,9 +65,9 @@ fun get_friend(user : String ,friends: List<List<String>>) : Set<String> {
     return graph.get(user)!!.toSet()
 }
 
-fun get_nearFriend(user : String , friends: List<List<String>>, friendList : Set<String>) : Set<String> {
+fun get_nearFriend(user : String , friends: List<List<String>>, friendList : Set<String>) : List<String> {
 
-    val near_friend = HashSet<String>()
+    val near_friend = mutableListOf<String>()
 
     val graph = connectEdge(friends)
 
