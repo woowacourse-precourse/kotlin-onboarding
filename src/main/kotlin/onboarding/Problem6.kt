@@ -8,24 +8,25 @@ package onboarding
  */
 fun solution6(forms: List<List<String>>): List<String> {
 
-    var map =
-        mutableMapOf<String, String>() //key에는 닉네임에서 순서대로 두개의 문자열을 담고 value에는 email을 담을 mutableMap Collection (key 중복허용 x)
-    var emailSet = mutableSetOf<String>() //중복을 허용하지 않게 email을 담을 set Collection
+    val substringEmailMap = mutableMapOf<String, String>()
+    val emailSet = mutableSetOf<String>()
 
-    for (i in forms.indices) {
-        var nickName = forms[i][1]
+    forms.forEach { form ->
+        val email = form[0]
+        val nickName = form[1]
         for (k in 0..nickName.length - 2) {
-            var key = nickName.substring(k, k + 2) //순서대로 두개의 문자열을 담는다
-            var value = forms[i][0] //닉네임에 해당하는 이메일을 담는다
-            if (map.containsKey(key)) { //map에 해당하는 문자열이 있는 경우
-                if (map[key] != value) {
-                    map[key]?.let { emailSet.add(it) } //emailset에 포함하는 email 두개를 담는다.
-                    emailSet.add(value)
+            val key = nickName.substring(k, k + 2)
+            if (substringEmailMap.containsKey(key)) {
+                if (substringEmailMap[key] != email) {
+                    substringEmailMap[key]?.let { value ->
+                        emailSet.add(value)
+                    }
+                    emailSet.add(email)
                 }
             }
-            map[key] = value //map에 문자열을 담는다
+            substringEmailMap[key] = email
         }
     }
-    var emailSetSorted = emailSet.sorted()
-    return emailSetSorted.toList()
+    return emailSet.sorted().toList()
 }
+
