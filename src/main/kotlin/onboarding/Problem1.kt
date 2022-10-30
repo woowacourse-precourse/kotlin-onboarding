@@ -26,7 +26,17 @@ fun solution1(pobi: List<Int>, crong: List<Int>): Int {
 }
 
 private fun validate(pages: List<Int>): Boolean {
-    TODO("유효성 검사")
+    // 2개의 페이지를 가져야 한다.
+    if (pages.size != 2) return false
+
+    // 2개의 페이지는 모두 2 ~ 399 사이의 자연수이다.
+    if (pages.any { it !in 2..399 }) return false
+
+    // 2개의 페이지는 [홀수, 짝수] 이며 짝수는 홀수 + 1 이어야 한다.
+    if (pages[0] % 2 == 0 ||
+        pages[0] + 1 != pages[1]) return false
+
+    return true
 }
 
 private fun score(pages: List<Int>): Int {
