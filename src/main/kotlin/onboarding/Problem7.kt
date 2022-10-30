@@ -9,6 +9,16 @@ fun solution7(
 
     map = setUniqueNumber(friends)
     var graph: Array<MutableList<String>> = addFriends(friends, user, map)
+    var userFriends = HashMap<String, Int>()
+
+    for (i in graph[map[user]!!]) {
+        for (j in graph[map["$i"]!!]) {
+            if (userFriends.containsKey("$j")) {
+                continue
+            }
+            userFriends["$j"] = 10
+        }
+    }
 
     TODO("프로그램 구현")
 }
