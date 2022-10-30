@@ -58,9 +58,10 @@ private fun removeOverlapString(){
 }
 
 private fun restart(){
-
+    restartFlag=true
 }
 
 private fun repeatFirstChar(){
-
+    restartFlag=false
+    index=0
 }
