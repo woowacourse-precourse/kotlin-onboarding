@@ -48,4 +48,10 @@ fun solution7(
     for (visitor in visitors) {
         idScoreMap[visitor] = idScoreMap[visitor]?.plus(1) ?: 1
     }
+
+    /** 5. MutableMap의 Value를 기준으로 정렬 후 리턴 */
+    val idScoreList = idScoreMap.toList()
+    val sortedIdScoreList = idScoreList.sortedBy { it.second }
+
+    return listOf(sortedIdScoreList[0].first, sortedIdScoreList[1].first, sortedIdScoreList[2].first)
 }
