@@ -1,52 +1,43 @@
 package onboarding
 
 fun solution1(pobi: List<Int>, crong: List<Int>): Int {
-  val pobiLeftPage = pobi[0]
-  val pobiRightPage = pobi[1]
-  val pobiLeftAdd = addEachPageNum(pobiLeftPage)
-  val pobiRightAdd = addEachPageNum(pobiRightPage)
-  val pobiLeftMultiply = multiplyEachPageNum(pobiLeftPage)
-  val pobiRightMultiply = multiplyEachPageNum(pobiRightPage)
-  val pobiLeftMax = getMaxNum(pobiLeftAdd, pobiLeftMultiply)
-  val pobiRightMax = getMaxNum(pobiRightAdd, pobiRightMultiply)
-  val pobiMax = getMaxNum(pobiLeftMax, pobiRightMax)
+  val pobiResult = getResult(pobi)
+  val crongResult = getResult(crong)
 
-  val crongLeftPage = crong[0]
-  val crongRightPage = crong[1]
-  val crongLeftAdd = addEachPageNum(crongLeftPage)
-  val crongRightAdd = addEachPageNum(crongRightPage)
-  val crongLeftMultiply = multiplyEachPageNum(crongLeftPage)
-  val crongRightMultiply = multiplyEachPageNum(crongRightPage)
-  val crongLeftMax = getMaxNum(crongLeftAdd, crongLeftMultiply)
-  val crongRightMax = getMaxNum(crongRightAdd, crongRightMultiply)
-  val crongMax = getMaxNum(crongLeftMax, crongRightMax)
-
-  return if (pobiMax > crongMax) 1
-  else if (pobiMax < crongMax) 2
-  else if (pobiMax == crongMax) 0
-  else -1
+  return when {
+    pobiResult > crongResult -> 1
+    pobiResult < crongResult -> 2
+    else -> 0
+  }
 }
 
-fun addEachPageNum(page: Int): Int {
-  var page = page
-  var pageSum = 0
+fun getResult(person: List<Int>): Int {
+  val leftPage = person[0]
+  val rightPage = person[1]
 
-  while (page > 0) {
-    pageSum += page % 10
-    page /= 10
-  }
-  return pageSum
+  val leftPageSum = 0
+  val leftPageMultiply = 1
+
+  val rightPageSum = 0
+  val rightPageMultiply = 1
+
+  val leftPageMax = calculatePage(leftPage, leftPageSum, leftPageMultiply)
+  val rightPageMax = calculatePage(rightPage, rightPageSum, rightPageMultiply)
+
+  return getMaxNum(leftPageMax, rightPageMax)
 }
 
-fun multiplyEachPageNum(page: Int): Int {
-  var page = page
-  var pageMultiply = 1
+fun calculatePage(_page: Int, _sum: Int, _multiply: Int): Int {
+  var page = _page
+  var sum = _sum
+  var multiply = _multiply
 
   while (page > 0) {
-    pageMultiply *= page % 10
+    sum += page % 10
+    multiply *= page % 10
     page /= 10
   }
-  return pageMultiply
+  return getMaxNum(sum, multiply)
 }
 
 fun getMaxNum(num1: Int, num2: Int): Int {
