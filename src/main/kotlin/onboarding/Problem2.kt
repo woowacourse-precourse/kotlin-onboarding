@@ -27,7 +27,11 @@ fun solution2(cryptogram: String): String {
         check = 0
 
         for (i in (0..listSize - 4)) {
-
+            //암호문 리스트에 아무것도 없을 때
+            if (cryList.size == 0){
+                check = 0
+                break
+            }
             //연속하는 중복 문자 삭제
             if (cryList[i] == cryList[i + 1]) {
                 cryList.removeAt(i + 1)
