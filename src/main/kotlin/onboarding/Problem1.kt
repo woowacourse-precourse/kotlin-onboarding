@@ -6,7 +6,16 @@ fun solution1(pobi: List<Int>, crong: List<Int>): Int {
     if(!checkNoException(pobi, crong)) {
         return -1
     }
-    return 0
+
+    return when {
+        calculatePoint(pobi) > calculatePoint(crong) -> {
+            1
+        }
+        calculatePoint(pobi) < calculatePoint(crong) -> {
+            2
+        }
+        else -> 0
+    }
 }
 
 private fun checkNoException(pobi: List<Int>, crong: List<Int>): Boolean {
