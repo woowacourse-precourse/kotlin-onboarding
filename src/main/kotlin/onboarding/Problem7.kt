@@ -83,7 +83,7 @@ fun get_nearFriend(user : String , friends: List<List<String>>, friendList : Set
     return near_friend
 }
 
-fun score_friends(user: String, friends: List<List<String>>, visitors: List<String>) {
+fun score_friends(user: String, friends: List<List<String>>, visitors: List<String>) : HashMap<String, Int> {
 
     val scoreMap = HashMap<String, Int>()
     val friendList = get_friend(user, friends)
@@ -92,4 +92,11 @@ fun score_friends(user: String, friends: List<List<String>>, visitors: List<Stri
     near_friendList.forEach {
         scoreMap.put(it, scoreMap.getOrDefault(it, 0) + 10)
     }
+
+    visitors.forEach {
+        if(!friendList.contains(it)) {
+            scoreMap.put(it, scoreMap.getOrDefault(it, 0) + 1)
+        }
+    }
+    return scoreMap
 }
