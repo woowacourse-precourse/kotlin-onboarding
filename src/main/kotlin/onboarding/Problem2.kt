@@ -1,7 +1,19 @@
 package onboarding
 
 fun solution2(cryptogram: String): String {
-    return removeDuplicates(cryptogram)
+    return decode(cryptogram)
+}
+
+fun decode(str: String): String {
+    var encodedStr = str
+    var decodedStr = str
+
+    do {
+        encodedStr = decodedStr
+        decodedStr = removeDuplicates(decodedStr)
+    } while(encodedStr.length != decodedStr.length)
+
+    return decodedStr
 }
 
 fun removeDuplicates(str: String): String {
