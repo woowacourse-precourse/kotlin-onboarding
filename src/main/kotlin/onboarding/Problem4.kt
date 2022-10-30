@@ -12,16 +12,13 @@ fun solution4(word: String): String {
     return WordList.joinToString("")    //리스트를 문자로 변환
 
 }
-
+//아스키 코드값을 이용한 문자 변환
 fun frogDictionary(WordList:MutableList<Char>): MutableList<Char> {
     for(i:Int in 0..WordList.size-1){
-        if(WordList[i]==' '){
-            WordList[i]=' '
-        }
-        else if(WordList[i].code <97){  //대문자 일 때 아스키 코드값을 이용한 변경
+        if(WordList[i].code in 65..96){  //대문자 일 때 아스키 코드값을 이용한 변경
             WordList[i]=(WordList[i].code+((90-(WordList[i].code-65))-WordList[i].code)).toChar()
         }
-        else if(WordList[i].code >=97){ //소문자 일 때 아스키 코드값을 이용한 변경
+        else if(WordList[i].code in 97..122){ //소문자 일 때 아스키 코드값을 이용한 변경
             WordList[i]=(WordList[i].code+((122-(WordList[i].code-97))-WordList[i].code)).toChar()
         }
     }
