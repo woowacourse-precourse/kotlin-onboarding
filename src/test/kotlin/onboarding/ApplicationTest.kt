@@ -146,7 +146,24 @@ class ApplicationTest {
             val result = "R olev blf"
             assertThat(solution4(word)).isEqualTo(result)
         }
+
+        @Test
+        fun case2() {
+            val word = "Hello  Everyone"
+            val result = "Svool  Veviblmv"
+            assertThat(solution4(word)).isEqualTo(result)
+        }
+
+        @Test
+        fun case3() {
+            val word = "abcdefghijklmnopqrstuvwxyz"
+            val result = "zyxwvutsrqponmlkjihgfedcba"
+            assertThat(solution4(word)).isEqualTo(result)
+        }
+
+
     }
+
 
     @Nested
     inner class Problem5Test {
