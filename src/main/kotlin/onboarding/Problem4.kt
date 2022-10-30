@@ -14,7 +14,7 @@ fun solution4(word: String): String {
 }
 //아스키 코드값을 이용한 문자 변환
 fun frogDictionary(WordList:MutableList<Char>): MutableList<Char> {
-    for(i:Int in 0..WordList.size-1){
+    for(i:Int in 0 until WordList.size){
         if(WordList[i].code in 65..96){  //대문자 일 때 아스키 코드값을 이용한 변경
             WordList[i]=(WordList[i].code+((90-(WordList[i].code-65))-WordList[i].code)).toChar()
         }
