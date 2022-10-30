@@ -1,7 +1,11 @@
 package onboarding
 
 fun solution2(cryptogram: String): String {
-    TODO("프로그램 구현")
+    var answer = cryptogram
+    while (duplicatedStr(answer) != -1) {
+        answer = deleteCryptogram(answer, duplicatedStr(answer))
+    }
+    return answer
 }
 
 /**
