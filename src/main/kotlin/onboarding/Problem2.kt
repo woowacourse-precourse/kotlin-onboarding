@@ -42,7 +42,15 @@ private fun findOverlapString(){
 }
 
 private fun getRemoveIndex(){
-
+    removeIndex = index
+    for(i in index until result.length){
+        if(result[i]==result[index]){
+            removeIndex=i
+        }
+        else{
+            break
+        }
+    }
 }
 
 private fun removeOverlapString(){
@@ -50,6 +58,7 @@ private fun removeOverlapString(){
 }
 
 private fun restart(){
+
 }
 
 private fun repeatFirstChar(){
