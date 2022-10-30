@@ -44,5 +44,9 @@ fun String.dropFirst(n: Int): String {
 }
 
 /**
- * 중복된 문자열을 제거하는 함수
+ * 암호문 및 idx를 입력받아
+ * 암호문에서 idx, idx+1번 인덱스를 제외한 값을 반환한다.
  */
+fun deleteCryptogram(cryptogram: String, idx: Int): String {
+    return cryptogram.dropLast(idx - 1) + cryptogram.dropFirst(idx + 1)
+}
