@@ -21,12 +21,12 @@ fun solution1(pobi: List<Int>, crong: List<Int>): Int {
 
 fun getWinner(poby:Int, crong:Int) : Int {
     if(poby > crong) {
-        return Const.WIN_POBI;
+        return Const.WIN_POBI
     } else if(poby < crong) {
-        return Const.WIN_CRONG;
+        return Const.WIN_CRONG
     }
     else {
-        return Const.DRAW;
+        return Const.DRAW
     }
 }
 
