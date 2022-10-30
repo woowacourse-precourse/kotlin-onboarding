@@ -2,15 +2,19 @@ package onboarding
 
 import kotlin.math.max
 
+const val ERROR = -1
+const val SAME = 0
+const val POBI_WIN = 1
+const val CRONG_WIN = 2
+
 fun solution1(pobi: List<Int>, crong: List<Int>): Int {
 
-    var ans = 0
     if (!isRightPage(pobi, crong) || !isContinuousPage(pobi, crong)) {
-        return -1
+        return ERROR
     }
-    if (maxPage(pobi) > maxPage(crong)) ans = 1
-    else if (maxPage(pobi) < maxPage(crong)) ans = 2
-    return ans
+    return if (maxPage(pobi) > maxPage(crong)) POBI_WIN
+    else if (maxPage(pobi) < maxPage(crong)) CRONG_WIN
+    else SAME
 }
 
 // 1 ~ 400 페이지 안에 있는지 판별
