@@ -2,13 +2,25 @@ package problem4
 
 import problem2.StringParser
 
-class ReverseAlphabet {
-    fun reverse(word:String) : String {
-        val reversedWord = ""
-        val stringParser = StringParser(word)
-        do {
-            val c = stringParser.getNext()
-        }while(c != null)
+class ReverseAlphabet(private val word:String) {
+    private var reversedWord = ""
+    private val stringParser = StringParser(word)
+
+    private fun plusReversedChar(reversedChar:Char) {
+    }
+
+    private fun reverseIfAlphabet(nextChar:Char) : Char {
+        return ' '
+    }
+
+    fun reverse() : String {
+        var nextChar = stringParser.getNext()
+
+        while(nextChar != null) {
+            val reversedChar = reverseIfAlphabet(nextChar)
+            plusReversedChar(reversedChar)
+            nextChar = stringParser.getNext()
+        }
 
         return reversedWord
     }

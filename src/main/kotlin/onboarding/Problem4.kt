@@ -12,8 +12,7 @@ fun solution4(word: String): String {
         throw RuntimeException("Input length is not between range $minRange and $maxRange")
     }
 
-    val reverseAlphabet = ReverseAlphabet()
-    reverseAlphabet.reverse(word)
+    val reverseAlphabet = ReverseAlphabet(word)
 
-    return ""
+    return reverseAlphabet.reverse()
 }
