@@ -17,7 +17,10 @@ fun solution4(word: String): String {
         if (wordList[i][0].isLowerCase()){
             result += (90 - (wordList[i][0].toUpperCase().toInt() - 65)).toChar().toString().toLowerCase()
         }
-
+        //대문자일 때 변환
+        else{
+            result += (90 - (wordList[i].single().toInt() - 65)).toChar().toString()
+        }
     }
 
     return result
