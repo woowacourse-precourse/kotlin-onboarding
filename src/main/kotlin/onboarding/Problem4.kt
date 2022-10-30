@@ -7,5 +7,14 @@ fun solution4(word: String): String {
     wordList.removeAt(wordList.size-1)
     wordList.removeAt(0)
 
+    for (i in (0 until wordList.size)){
+        //빈칸일 때
+        if (wordList[i] == " "){
+            result += " "
+            continue
+        }
 
+    }
+
+    return result
 }
