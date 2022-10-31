@@ -14,7 +14,15 @@ class NicknameManager(private val forms:List<List<String>>) {
         }
     }
 
-    private fun validateNicknameSet(email:String) {}
+    private fun addEmailToReporter(email:String) {}
+
+    private fun validateNicknameSet(email:String) {
+        val intersection = storage.getIntersection(nicknameSet)
+
+        if(intersection.isNotEmpty()) {
+            addEmailToReporter(email)
+        }
+    }
 
     private fun manage() {
         for((email, nickname) in forms) {
