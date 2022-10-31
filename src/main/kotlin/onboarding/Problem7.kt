@@ -19,10 +19,12 @@ fun solution7(
 
 private fun makeRelationMap(friends: List<List<String>>, relation: MutableMap<String, MutableSet<String>>) {
     for (i in friends) {
-        if (relation.containsKey(i[0])) relation[i[0]]!!.add(i[1])
-        else relation[i[0]] = mutableSetOf(i[1])
-        if (relation.containsKey(i[1])) relation[i[1]]!!.add(i[0])
-        else relation[i[1]] = mutableSetOf(i[0])
+        relation[i[0]]?.add(i[1]) ?: run {
+            relation[i[0]] = mutableSetOf(i[1])
+        }
+        relation[i[1]]?.add(i[0]) ?: run {
+            relation[i[1]] = mutableSetOf(i[0])
+        }
     }
 }
 
@@ -33,8 +35,7 @@ private fun makeScoreMapByFriendsList(
 ) {
     relation[user]?.forEach { userFriend ->
         relation[userFriend]?.forEach { friend ->
-            if (score.containsKey(friend)) score[friend] = score[friend]!!.plus(10)
-            else score[friend] = 10
+            score[friend] = score[friend]?.plus(10) ?: 10
         }
     }
 }
@@ -47,9 +48,7 @@ private fun makeScoreMapByVisitorsList(
 ) {
     for (i in visitors) {
         if (!relation.containsKey(user) || relation[user]?.contains(i) == false) {
-            if (score.containsKey(i)) {
-                score[i] = score[i]!!.plus(1)
-            } else score[i] = 1
+            score[i] = score[i]?.plus(1) ?: 1
         }
     }
 }
