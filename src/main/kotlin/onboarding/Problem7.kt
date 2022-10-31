@@ -20,3 +20,19 @@ private fun getUserFriendsList(userId: String, friends: List<List<String>>): Mut
     }
     return userFriendsList
 }
+
+private fun getMutualFriendsList(
+    friends: List<List<String>>,
+    userFriendsList: MutableList<String>
+): MutableList<String> {
+    val mutualFriendsList: MutableList<String> = mutableListOf()
+
+    for (i in friends.indices) {
+        if (userFriendsList.contains(friends[i][0])) {
+            mutualFriendsList.add(friends[i][1])
+        } else if (userFriendsList.contains(friends[i][1])) {
+            mutualFriendsList.add(friends[i][0])
+        }
+    }
+    return mutualFriendsList
+}
