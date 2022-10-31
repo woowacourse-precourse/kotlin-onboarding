@@ -130,6 +130,31 @@ class ApplicationTest {
     }
 
     // 직접 추가
+    // Prob 4
+    @Nested
+    inner class ChangeCharByFrogTest() {
+        @Test
+        fun case1() {
+            val word = 'A'
+            val result = 'Z'
+            assertThat(changeCharByFrog(word)).isEqualTo(result)
+        }
+        @Test
+        fun case2() {
+            val word = 'g'
+            val result = 't'
+            assertThat(changeCharByFrog(word)).isEqualTo(result)
+        }
+
+        @Test
+        fun case3() {
+            val word = 'Q'
+            val result = 'J'
+            assertThat(changeCharByFrog(word)).isEqualTo(result)
+        }
+    }
+
+    // Prob 6
     @Nested
     inner class GetSubWordsOfNameTest() {
         @Test
