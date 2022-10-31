@@ -2,12 +2,8 @@ package onboarding
 
 import java.util.*
 
-fun solution2(cryptogram: String): String {
+fun solution2(cryptogram: String): String = repeat_remove_overlap(cryptogram)
 
-    exception(cryptogram)
-
-    return repeat_remove_overlap(cryptogram)
-}
 
 fun exception(cryptogram: String) {
     if(cryptogram.length < 1 || cryptogram.length > 1000) {
@@ -31,6 +27,9 @@ fun remove_overlap(cryptogram: String) : String{
 }
 
 fun repeat_remove_overlap(cryptogram: String) : String {
+
+    exception(cryptogram)
+
     var str = cryptogram
     var result = cryptogram
 
