@@ -14,29 +14,29 @@ fun solution6(forms: List<List<String>>): List<String> {
 }
 
 //닉네임 추출 함수
-fun onlynickname(forms: List<List<String>>): List<String>{
-    val nicknamelist:MutableList<String> = mutableListOf()
-    for(i:Int in forms.indices){
+fun onlynickname(forms: List<List<String>>): List<String> {
+    val nicknamelist: MutableList<String> = mutableListOf()
+    for (i: Int in forms.indices) {
         nicknamelist.add(forms[i][1])
     }
     return nicknamelist
 }
 
 //연속될 수 있는 단어 추출 함수
-fun findconsecutive(nicknamelist:List<String>):List<String>{
-    val consecutivelist:MutableList<String> = mutableListOf()
-    for(i:Int in nicknamelist.indices){
-        for(j:Int in 0.. nicknamelist[i].length-2)
-            consecutivelist.add(nicknamelist[i].substring(j until j+2))
+fun findconsecutive(nicknamelist: List<String>): List<String> {
+    val consecutivelist: MutableList<String> = mutableListOf()
+    for (i: Int in nicknamelist.indices) {
+        for (j: Int in 0..nicknamelist[i].length - 2)
+            consecutivelist.add(nicknamelist[i].substring(j until j + 2))
     }
     return consecutivelist
 }
 
 //중복되는 단어 추출 함수
-fun findword(consecutivelist: List<String>):List<String>{
+fun findword(consecutivelist: List<String>): List<String> {
     var nums = consecutivelist
-    nums=nums.filter { item -> nums.count { it == item } > 1 }.toList()
-    nums=nums.distinct()
+    nums = nums.filter { item -> nums.count { it == item } > 1 }.toList()
+    nums = nums.distinct()
     return nums
 }
 
