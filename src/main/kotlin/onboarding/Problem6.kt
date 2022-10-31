@@ -1,7 +1,7 @@
 package onboarding
 
 val nicknameList = arrayListOf<String>()
-val form = mutableMapOf<String, String>()
+val emailList = arrayListOf<String>()
 val letterList = arrayListOf<String>()
 val duplicatedLetterList = mutableSetOf<String>()
 
@@ -12,13 +12,13 @@ fun solution6(forms: List<List<String>>): List<String> {
     return getResult(0, arrayListOf())
 }
 
-fun separateNickname(index : Int, forms: List<List<String>>) : Map<String, String> {
+fun separateNickname(index : Int, forms: List<List<String>>) {
     if (index == forms.size) {
-        return form
+        return
     }
     val (email, nickname) = forms[index]
 
-    form.put(nickname, email)
+    emailList.add(email)
     nicknameList.add(nickname)
     return separateNickname(index + 1, forms)
 }
@@ -53,7 +53,7 @@ fun getEmailList(index : Int, duplicatedLetter : String, email : ArrayList<Strin
     val nickname = nicknameList[index]
 
     if (nickname.contains(duplicatedLetter)) {
-        form[nickname]?.let { email.add(it) }
+        email.add(emailList[index])
     }
     return getEmailList(index + 1, duplicatedLetter, email)
 }
