@@ -5,8 +5,25 @@ import kotlin.math.max
 // 1. 페이지를 파라미터로 받아 각 자리수를 더한값과 더한값중 큰 반환하는 함수를 만든다.
 // 2. 포비와 크롱의 값을 비교하여 조건에 맞게 출력한다.
 fun solution1(pobi: List<Int>, crong: List<Int>): Int {
+    if(!checkError(pobi, crong)){
+        println(-1)
+        return -1
+    }
+    var pobiNumer = max(getMaxNumber(pobi[0]), getMaxNumber(pobi[1]))
+    var crongNumber = max(getMaxNumber(crong[0]), getMaxNumber(crong[1]))
 
-    return 1
+    if(pobiNumer > crongNumber){
+        return 1
+    }
+    else if(pobiNumer < crongNumber){
+        return 2
+    }
+    else if(pobiNumer == crongNumber){
+        return 0
+    }
+    else{
+        return -1
+    }
 }
 
 /**
@@ -28,6 +45,18 @@ fun getMaxNumber(x: Int): Int{
         dividend %= divisor
         divisor /= 10
     }
-
     return max(addRes, multiRes)
+}
+
+/**
+ * 제한사항을 지켰는지 확인하는 함수
+ */
+fun checkError(pobi: List<Int>, crong: List<Int>): Boolean{
+    if(pobi.size != 2 || crong.size != 2){
+        return false
+    }
+    if(pobi[1]-pobi[0] != 1 || crong[1]-crong[0] != 1){
+        return false
+    }
+    return true
 }
