@@ -20,11 +20,19 @@ fun solution1(pobi: List<Int>, crong: List<Int>): Int {
     return if (pobiScore > crongScore) 1 else 2
 }
 
- fun score(score:List<Int>): Int {
+fun score(score: List<Int>): Int {
     val left = score[0].toString()
         .map { it.digitToInt() }
     val right = score[1].toString()
         .map { it.digitToInt() }
 
     return (listOf(left.sumOf { it }, right.sumOf { it }, multiply(left), multiply(right)).maxOf { it })
+}
+
+fun multiply(list: List<Int>): Int {
+    var mul = 1
+    for (i in list) {
+        mul *= i
+    }
+    return mul
 }
