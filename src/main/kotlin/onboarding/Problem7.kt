@@ -14,15 +14,7 @@ fun solution7(
     makeScoreMapByVisitorsList(visitors, relation, user, score)
     exceptUserAndFriendsOfUser(score, relation, user)
 
-    return score.toList()
-        .sortedBy { it.first }
-        .sortedByDescending { it.second }
-        .filter { it.second > 0 }
-        .map { it.first }
-        .let {
-            if (it.size > 5) it.subList(0, 5)
-            else it
-        }
+    return refineScore(score)
 }
 
 private fun makeRelationMap(friends: List<List<String>>, relation: MutableMap<String, MutableSet<String>>) {
@@ -72,4 +64,16 @@ private fun exceptUserAndFriendsOfUser(
             score[key] = 0
         }
     }
+}
+
+private fun refineScore(map: MutableMap<String, Int>): List<String> {
+    return map.toList()
+        .sortedBy { it.first }
+        .sortedByDescending { it.second }
+        .filter { it.second > 0 }
+        .map { it.first }
+        .let {
+            if (it.size > 5) it.subList(0, 5)
+            else it
+        }
 }
