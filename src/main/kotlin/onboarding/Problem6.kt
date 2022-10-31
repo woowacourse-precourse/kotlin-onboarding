@@ -5,6 +5,7 @@ fun solution6(forms: List<List<String>>): List<String> {
     makeEmailDictionary(emailDictionary, forms)
 
     val resultSet = gatherOverlappedEmailSet(emailDictionary)
+    return resultSet.sorted().toList()
 }
 
 private fun makeEmailDictionary(emailDictionary: MutableMap<String, MutableSet<String>>, forms: List<List<String>>) {
