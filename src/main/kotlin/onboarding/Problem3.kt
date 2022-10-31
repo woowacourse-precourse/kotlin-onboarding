@@ -9,7 +9,7 @@ fun solution3(number: Int): Int {
 
 //1부터 주어진 숫자까지 자리수를 쪼개 리스트로 바꾸고 countclap 실행하는 함수
 fun castlist(number: Int): Int {
-    var numberlist: List<Int> = listOf()
+    var numberlist: List<Int>
     var clap = 0
     for (i: Int in 1..number) {
         numberlist = i.toString().map { it.digitToInt() }
