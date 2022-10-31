@@ -70,5 +70,25 @@ fun solution7(
         }
     }
     visitorScore()
+    //점수순으로 리턴값 저장
+    fun sortHighScore(): Unit {
+        for (i in 0..score.size - 1) {
+            var maxfriend: String = ""
+            var maxScore: Int = 0
+            for (mutableEntry in score) {
+                if (mutableEntry.value > maxScore) {
+                    maxfriend = mutableEntry.key
+                    maxScore = mutableEntry.value
+                }
+            }
+            if (!maxfriend.equals("")) {
+                if (maxScore != 0) {
+                    result.add(maxfriend)
+                }
+                score.remove(maxfriend)
+            }
+        }
+    }
+    sortHighScore()
     return result
 }
