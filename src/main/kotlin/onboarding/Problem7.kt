@@ -14,7 +14,7 @@ fun solution7(
 
     // 나랑 친구인 경우 추천필요 X, 따로 빼서 보관
     //1. friends작업
-    //친구인 사람 분리 작업
+    //친구인 사람 분리 작업과정
     for (i in 0 until friends.size) {
         if (user in friends[i]) {
             if (friends[i][0] != user) {
