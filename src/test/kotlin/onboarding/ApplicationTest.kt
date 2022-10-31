@@ -1,5 +1,6 @@
 package onboarding
 
+import org.assertj.core.api.Assertions
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Nested
 import org.junit.jupiter.api.Test
@@ -125,6 +126,23 @@ class ApplicationTest {
             val visitors = listOf("bedi", "bedi", "donut", "bedi", "shakevan")
             val result = listOf("andole", "jun", "bedi")
             assertThat(solution7(user, friends, visitors)).isEqualTo(result)
+        }
+    }
+
+    // 직접 추가
+    @Nested
+    inner class GetSubWordsOfNameTest() {
+        @Test
+        fun case1() {
+            val name = "제이엠"
+            val result = listOf("제이", "이엠")
+            assertThat(getSubWordsOfName(name)).isEqualTo(result)
+        }
+        @Test
+        fun case2() {
+            val name = "아이엠쑤"
+            val result = listOf("아이", "이엠", "엠쑤")
+            assertThat(getSubWordsOfName(name)).isEqualTo(result)
         }
     }
 }
