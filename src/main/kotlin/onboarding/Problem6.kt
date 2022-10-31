@@ -13,27 +13,27 @@ fun nickNameLength(nickname: String): Boolean {
     return nickname.length in 1 until 20
 }
 
-fun correctLength(email: String, nickname: String): Boolean {
+fun isLength(email: String, nickname: String): Boolean {
     return emailLength(email) && nickNameLength(nickname)
 }
 
-fun correctDomain(email: String): Boolean {
+fun isDomain(email: String): Boolean {
     return email.contains(DOMAIN)
 }
 
-fun correctNickName(nickname: String): Boolean {
+fun isNickName(nickname: String): Boolean {
     val pattern = Pattern.compile("^[ㄱ-ㅣ가-힣]+$")
     return pattern.matcher(nickname).matches()
 }
 
-fun correctException(email: String, nickname: String): Boolean {
-    return correctDomain(email) && correctLength(email, nickname) && correctNickName(nickname)
+fun isException(email: String, nickname: String): Boolean {
+    return isDomain(email) && isLength(email, nickname) && isNickName(nickname)
 }
 
 fun createNickNames(forms: List<List<String>>): Map<String, Set<String>> {
     val nicknames = mutableMapOf<String, MutableSet<String>>()
     for ((email, nickname) in forms) {
-        if (!correctException(email, nickname)) {
+        if (!isException(email, nickname)) {
             continue
         }
         for (i in 0..nickname.length - 2) {

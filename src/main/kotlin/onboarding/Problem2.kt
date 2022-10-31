@@ -4,7 +4,7 @@ fun findDuplicate(word: String, startIndex: Int): Int {
     var nextIndex = startIndex + 1
     var result = -1
 
-    while (nextIndex < word.length && word[startIndex] == word[nextIndex]){
+    while (nextIndex < word.length && word[startIndex] == word[nextIndex]) {
         result = nextIndex++
     }
     return result
