@@ -36,3 +36,19 @@ private fun getMutualFriendsList(
     }
     return mutualFriendsList
 }
+
+private fun calculateFriendsPoint(
+    mutualFriendsList: MutableList<String>
+): MutableMap<String, Int> {
+    val friendsMapWithMutual: MutableMap<String, Int> = mutableMapOf()
+
+    for (i in mutualFriendsList.indices) {
+        if (friendsMapWithMutual.contains(mutualFriendsList[i])) {
+            friendsMapWithMutual[mutualFriendsList[i]] =
+                friendsMapWithMutual.getValue(mutualFriendsList[i]) + 10
+        } else {
+            friendsMapWithMutual[mutualFriendsList[i]] = 0
+        }
+    }
+    return friendsMapWithMutual
+}
