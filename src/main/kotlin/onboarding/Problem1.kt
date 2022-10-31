@@ -6,7 +6,6 @@ import kotlin.math.max
 // 2. 포비와 크롱의 값을 비교하여 조건에 맞게 출력한다.
 fun solution1(pobi: List<Int>, crong: List<Int>): Int {
     if(!checkError(pobi, crong)){
-        println(-1)
         return -1
     }
     var pobiNumer = max(getMaxNumber(pobi[0]), getMaxNumber(pobi[1]))
@@ -18,11 +17,8 @@ fun solution1(pobi: List<Int>, crong: List<Int>): Int {
     else if(pobiNumer < crongNumber){
         return 2
     }
-    else if(pobiNumer == crongNumber){
+    else {
         return 0
-    }
-    else{
-        return -1
     }
 }
 
@@ -52,10 +48,11 @@ fun getMaxNumber(x: Int): Int{
  * 제한사항을 지켰는지 확인하는 함수
  */
 fun checkError(pobi: List<Int>, crong: List<Int>): Boolean{
-    if(pobi.size != 2 || crong.size != 2){
+    if(pobi[1]-pobi[0] != 1 || crong[1]-crong[0] != 1){
         return false
     }
-    if(pobi[1]-pobi[0] != 1 || crong[1]-crong[0] != 1){
+    if(pobi[0] < 1 || pobi[0] > 400 || pobi[1] < 1 || pobi[1] > 400
+            || crong[0] < 1 || crong[0] > 400 || crong[1] < 0 || crong[1] > 400){
         return false
     }
     return true
