@@ -1,6 +1,7 @@
 package onboarding
 
 import kotlin.math.abs
+import kotlin.math.max
 
 fun solution1(pobi: List<Int>, crong: List<Int>): Int {
     if(isErrorExist(pobi, crong))
@@ -36,4 +37,15 @@ fun getMul(number: Int): Int {
         result *= Character.getNumericValue(num)
     }
     return result
+}
+
+fun getMaxNumber(list: List<Int>): Int {
+    var maxNum = -1
+    for (number in list) {
+        val calculateCurrentNum = max(getAdd(number), getMul(number))
+        if (maxNum < calculateCurrentNum) {
+            maxNum = calculateCurrentNum
+        }
+    }
+    return maxNum
 }
