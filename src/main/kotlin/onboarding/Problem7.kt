@@ -10,7 +10,7 @@ fun solution7(
     var i:Int = 0
     var friendsList: List<String> = checkFriends(user, friends)
     var nonFriendsList: Map<String, Int> = checkNonFriends(user, friends, friendsList, visitors)
-    var sortedMap: List<Pair<String, Int>> = nonFriendsList.toList().sortedByDescending { it.second }
+    var sortedMap: List<Pair<String, Int>> = nonFriendsList.toList().sortedBy { it.first }.sortedByDescending { it.second }
     var result: MutableList<String> = mutableListOf()
 
     while (i < 5 && i < sortedMap.size){
