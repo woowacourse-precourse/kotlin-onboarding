@@ -16,7 +16,7 @@ fun countThreeMultiple(number: Int): Int{
     while (currNum > 0){
         val remainder = currNum % 10
         currNum /= 10
-        if(remainder%3 == 0)
+        if(remainder%3 == 0 && remainder != 0)
             count++
     }
 
