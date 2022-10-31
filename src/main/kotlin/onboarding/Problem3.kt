@@ -1,13 +1,16 @@
 package onboarding
 
 fun solution3(number: Int): Int {
-    //TODO
-    return 0
+    return getTotalClaps(number)
 }
 
 fun getTotalClaps(number: Int): Int{
-    // TODO: 2022-10-31
-    return 0
+    var totalClaps = 0
+    var currNum = number
+    for(i in 1 .. number)
+        totalClaps += countThreeMultiple(i)
+
+    return totalClaps
 }
 
 fun countThreeMultiple(number: Int): Int{
