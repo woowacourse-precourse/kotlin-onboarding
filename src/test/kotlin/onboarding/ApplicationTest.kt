@@ -196,6 +196,60 @@ class ApplicationTest {
             val result = listOf("jason@email.com", "jm@email.com", "mj@email.com")
             assertThat(solution6(forms)).isEqualTo(result)
         }
+
+        @Test
+        fun case2() {
+            val forms = listOf(
+                listOf("onepiece@email.com", "원피수"),
+                listOf("jason@email.com", "제이슨"),
+                listOf("onepisu@email.com", "원피수"),
+                listOf("mj@email.com", "엠제이"),
+                listOf("suonepi@email.com", "수원피")
+            )
+            val result = listOf(
+                "jason@email.com",
+                "mj@email.com",
+                "onepiece@email.com",
+                "onepisu@email.com",
+                "suonepi@email.com"
+            )
+            assertThat(solution6(forms)).isEqualTo(result)
+        }
+
+        @Test
+        fun case3() {
+            val forms = listOf(
+                listOf("jm@email.com", "제이엠"),
+                listOf("jason@email.com", "제이슨"),
+                listOf("woniee@email.com", "워니"),
+                listOf("mj@email.com", "엠제이"),
+                listOf("nowm@email.com", "이제엠"),
+                listOf("jasp@email.com", "박이김"),
+                listOf("jp@email.com", "김이박"),
+                listOf("qpw@email.com", "김이순"),
+                listOf("teemo@email.com", "티모"),
+                listOf("banana@email.com", "대위티모"),
+                listOf("secondJm@email.com", "제이엠"),
+                listOf("apple@email.com", "땷횱봵"),
+                listOf("stran@email.com", "횱봵으"),
+                listOf("zebra@email.com", "두글자이상의문자가연속적으로이제맞티모")
+            )
+            val result = listOf(
+                "apple@email.com",
+                "banana@email.com",
+                "jason@email.com",
+                "jm@email.com",
+                "jp@email.com",
+                "mj@email.com",
+                "nowm@email.com",
+                "qpw@email.com",
+                "secondJm@email.com",
+                "stran@email.com",
+                "teemo@email.com",
+                "zebra@email.com"
+            )
+            assertThat(solution6(forms)).isEqualTo(result)
+        }
     }
 
     @Nested
@@ -216,4 +270,5 @@ class ApplicationTest {
             assertThat(solution7(user, friends, visitors)).isEqualTo(result)
         }
     }
+
 }
