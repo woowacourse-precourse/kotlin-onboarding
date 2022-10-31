@@ -3,9 +3,6 @@ package onboarding
 fun solution1(pobi: List<Int>, crong: List<Int>): Int {
 //    입력 : 포비랑 크롱이가 책을 펼친 값 [x1,x2] [y1,y2]
 
-//    TODO("프로그램 구현")
-
-
 //    최대값을 넣을 변수를 지정
         var maxPobi = 0
         var maxCrong = 0
@@ -23,14 +20,9 @@ fun solution1(pobi: List<Int>, crong: List<Int>): Int {
             tmp = divideBy10(tmp)
         }
 
-        if (sum_number > maxPobi) {
-            maxPobi = sum_number
-            sum_number = 0
-        }
-        if (multiply_number > maxPobi) {
-            maxPobi = multiply_number
-            multiply_number = 1
-        }
+        maxPobi = max(sum_number, multiply_number, maxPobi)
+        multiply_number = 1
+        sum_number = 0
 
         tmp = pobi[1]
         while (tmp != 0) {
@@ -38,14 +30,11 @@ fun solution1(pobi: List<Int>, crong: List<Int>): Int {
             multiply_number *= firstDigitCal(tmp)
             tmp = divideBy10(tmp)
         }
-        if (sum_number > maxPobi) {
-            maxPobi = sum_number
-            sum_number = 0
-        }
-        if (multiply_number > maxPobi) {
-            maxPobi = multiply_number
-            multiply_number = 1
-        }
+
+        maxPobi = max(sum_number, multiply_number, maxPobi)
+        multiply_number = 1
+        sum_number = 0
+
 
         tmp = crong[0]
         while (tmp != 0) {
@@ -53,31 +42,20 @@ fun solution1(pobi: List<Int>, crong: List<Int>): Int {
             multiply_number *= tmp % 10
             tmp = divideBy10(tmp)
         }
-        if (sum_number > maxCrong) {
-            maxCrong = sum_number
-            sum_number = 0
-        }
-        if (multiply_number > maxCrong) {
-            maxCrong = multiply_number
-            multiply_number = 1
-        }
+
+        maxCrong = max(sum_number, multiply_number, maxCrong)
+        multiply_number = 1
+        sum_number = 0
+
+
         tmp = crong[1]
         while (tmp != 0) {
             sum_number += firstDigitCal(tmp)
             multiply_number *= firstDigitCal(tmp)
             tmp = divideBy10(tmp)
         }
-        if (sum_number > maxCrong) {
-            maxCrong = sum_number
-            sum_number = 0
-        }
-        if (multiply_number > maxCrong) {
-            maxCrong = multiply_number
-            multiply_number = 1
-        }
+        maxCrong = max(sum_number, multiply_number, maxCrong)
 //
-
-
 
 //    점수를 비교해 가장 높은 사람이 게임의 승자가 된다.
         var answer = scoreCompare(maxPobi, maxCrong)
@@ -88,9 +66,9 @@ fun solution1(pobi: List<Int>, crong: List<Int>): Int {
 
 //    포비가 이긴다면 1, 크롱이 이긴다면 2, 무승부는 0, 예외사항은 -1로 return 하도록 solution 함수를 완성하라.
 return answer
-
 }
 
+//명칭을 동사로 바꾸고, 좀 더 자세하게 적어주기
 fun firstDigitCal ( a : Int) : Int {
     return a%10
 }
@@ -104,10 +82,31 @@ fun scoreCompare(a:Int, b:Int) : Int{
 
     if (a > b) {
         answer = 1
-    } else if (a < b){
+    }
+
+    if (a < b){
         answer =  2
-    } else if (a == b) {
+    }
+
+    if (a == b) {
         answer =  0
     }
+
    return answer
+}
+
+fun max( a: Int, b:Int, c:Int):Int{
+
+    var number = 0
+
+    if (a >= b && a >= c){
+        number = a
+    }
+    if (b >= c && b >= a){
+        number = b
+    }
+    if (c >= a && c >= b){
+        number = c
+    }
+    return number
 }

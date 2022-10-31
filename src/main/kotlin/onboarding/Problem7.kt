@@ -36,7 +36,8 @@ fun solution7(
             if (relation[0] in myFriends){
                 people.add(relation[1])
                 scores.add(10)
-            } else if (relation[1] in myFriends){
+            }
+            if (relation[1] in myFriends){
                 people.add(relation[0])
                 scores.add(10)
             }
@@ -51,10 +52,10 @@ fun solution7(
     for (i in 0..people.size-1){
         if (people[i] in scoreBoard.keys){
             scoreBoard[people[i]] = scores[i] + scoreBoard[people[i]]!!
-        }else{
+        }
+        if (people[i] !in scoreBoard.keys){
             scoreBoard.put(people[i],scores[i])
         }
-
     }
 
 //  오름차순 순서 변경
@@ -65,6 +66,16 @@ fun solution7(
 
 //  최대 5명만 추가
     return result.take(5)
+
+}
+
+fun scoreAddtoMap(a : Int){
+
+}
+
+fun isIncludedMap(people : String, scoreBoard : Map<String, Int>){
+    if (people in scoreBoard.keys)
+        return
 
 }
 
