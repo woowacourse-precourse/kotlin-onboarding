@@ -8,7 +8,7 @@ fun solution2(cryptogram: String): String {
     var letters = ArrayList<String>(cryptogram.chunked(1))
 
 //    반복문을 통해서 뒤에서부터 연속되는 두 문자를 없애준다.
-    while (letters.count() != letters.distinct().count()){
+    while (checkDuplication(letters)){
         var tmp = letters.count() - 1
         for(i in tmp downTo 1){
             if (letters[i] == letters[i-1])
@@ -20,4 +20,13 @@ fun solution2(cryptogram: String): String {
 //  남은 배열 속 알파벳을 합쳐서 출력
     var answer = letters.joinToString("")
     return answer
+}
+
+// 조건문 함수로 분리
+fun checkDuplication( letters : ArrayList<String> ) : Boolean {
+    var tmp = false
+    if(letters.count() != letters.distinct().count()) {
+        tmp = true
+    }
+    return tmp
 }
