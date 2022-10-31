@@ -1,7 +1,38 @@
 package onboarding
 
 fun solution6(forms: List<List<String>>): List<String> {
-    TODO("프로그램 구현")
+    val answer = mutableListOf<String>()
+    for (i in 0 until forms.size) {
+        val email = forms[i][0]
+        val nickname = forms[i][1]
+
+        check(divideEmail(email = email).second.isDomainEmail()) {
+            "$email email.com 도메인 형식을 지켜주세요."
+        }
+        check(email.length in 11..19) {
+            "$email 이메일의 길이를 지켜주세요."
+        }
+        check(nickname.length in 1..19 && checkNicknameIsKr(nickname = nickname)) {
+            "$nickname 이름의 형식을 지켜주세요."
+        }
+
+        // 닉네임이 1글자 이하라면 패스
+        if (nickname.length <= 1) continue
+
+        // 리스트의 다음 닉네임 부터 순회
+        val exportStrList = exportStrList(nickname)
+        for (j in i + 1 until forms.size) {
+            exportStrList.forEach { findStr ->
+                if (forms[j][1].contains(findStr)) {
+                    answer.add(forms[i][0])
+                    answer.add(forms[j][0])
+                }
+            }
+        }
+    }
+
+    // 중복제거 및 정렬
+    return sortEmailByAesc(emailDuplicateCheck(answer))
 }
 
 /**
