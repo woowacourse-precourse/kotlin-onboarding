@@ -1,3 +1,5 @@
+package onboarding
+
 fun digit_sum(num: Int): Int { // 각 자리수 합 return
     var sum = 0
     var n = num
