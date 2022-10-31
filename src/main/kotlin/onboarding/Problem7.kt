@@ -9,39 +9,46 @@ fun solution7(
     visitors: List<String>
 ): List<String> {
 
-    val Result : List<String>
-    val R_Map = mutableMapOf<String, Int>()
-    val F_Map = mutableMapOf<String, MutableList<String>>()
+    val result : List<String>
+    val resultMap = mutableMapOf<String, Int>()
+    val friendMap = mutableMapOf<String, MutableList<String>>()
 
     friends.forEach{
-        if (F_Map.containsKey(it[0]))
-            requireNotNull(F_Map[it[0]]).add(it[1])
-        else
-            F_Map[it[0]] = mutableListOf(it[1])
+        if (friendMap.containsKey(it[0])) {
+            requireNotNull(friendMap[it[0]]).add(it[1])
+        }
+        else{
+            friendMap[it[0]] = mutableListOf(it[1])
+        }
 
-        if (F_Map.containsKey(it[1]))
-            requireNotNull(F_Map[it[1]]).add(it[0])
-        else
-            F_Map[it[1]] = mutableListOf(it[0])
-    }
-
-    F_Map[user]?.forEach {
-        requireNotNull(F_Map[it]).filterNot { it == user }.forEach{it ->
-            if (R_Map.containsKey(it))
-                R_Map[it] = R_Map.getValue(it) +10
-
-            else
-                R_Map[it] = 10
+        if (friendMap.containsKey(it[1])) {
+            requireNotNull(friendMap[it[1]]).add(it[0])
+        }
+        else {
+            friendMap[it[1]] = mutableListOf(it[0])
         }
     }
-    visitors.filterNot { F_Map[user]?.contains(it) ?: false }.forEach{
-        if (R_Map[it] == null)
-            R_Map[it] = 1
-        else
-            R_Map[it] = R_Map.getValue(it) +1
+
+    friendMap[user]?.forEach { friend ->
+        requireNotNull(friendMap[friend]).filterNot { it == user }.forEach{ friendOfFriend ->
+            if (resultMap.containsKey(friendOfFriend)) {
+                resultMap[friendOfFriend] = resultMap.getValue(friendOfFriend) + 10
+            }
+            else {
+                resultMap[friendOfFriend] = 10
+            }
+        }
+    }
+    visitors.filterNot { friendMap[user]?.contains(it) ?: false }.forEach{
+        if (resultMap[it] == null) {
+            resultMap[it] = 1
+        }
+        else {
+            resultMap[it] = resultMap.getValue(it) + 1
+        }
     }
 
-    Result = R_Map.toList().sortedBy { it.second }.map { it.first } .take(10)
+    result = resultMap.toList().sortedByDescending { it.second }.map { it.first } .take(5)
 
-    return Result
+    return result
 }

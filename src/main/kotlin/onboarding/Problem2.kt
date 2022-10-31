@@ -6,7 +6,7 @@ fun solution2(cryptogram: String): String {
     return CheckDuplicate(cryptogram)
 }
 
-fun CheckDuplicate(str : String): String{
+private fun CheckDuplicate(str : String): String{
 
     var result = ""
     var stack = Stack<Char>()

@@ -3,73 +3,78 @@ package onboarding
 import java.util.regex.Pattern
 
 fun solution6(forms: List<List<String>>): List<String> {
-    if (!validCheck(forms))
-        return (listOf("Is not valid"))
 
-    var emails = mutableListOf<String>()
-    var crew = 0
-    while (crew < forms.size) {
-        val nickLen = forms[crew][1].length
-        var i = 0
-        while (i < nickLen - 1) {
-            val overlaps = checkOverlap(crew, i, forms)
-            emails.addAll(overlaps)
-            i++
+    if (!validCheck(forms)){
+        return (listOf("Invalid"))
+    }
+    val result = mutableListOf<String>()
+    val crewInfoMap = mutableMapOf<String, String>()
+    val nicknameSet = mutableSetOf<String>()
+
+    forms.forEach { crewInfo ->
+        crewInfoMap.keys.forEach { nickname ->
+            if (checkDuplicateNickname(crewInfo[1], nickname)) {
+                nicknameSet.add(nickname)
+                nicknameSet.add(crewInfo[1])
+            }
         }
-        crew++
+        crewInfoMap[crewInfo[1]] = crewInfo[0]
     }
 
-    // emails 중복제거, 오름차순
-    emails = emails.distinct().toMutableList()
-    emails.sort()
-    return emails
+    result.run {
+        addAll(nicknameSet.mapNotNull { nickname -> crewInfoMap[nickname] })
+        sort()
+    }
+
+    return result.toList()
 }
 
-fun validCheck(forms: List<List<String>>): Boolean {
-    if (forms.size !in 1..10000)
-        return false
-    else if (!emailCheck(forms))
-        return false
-    else if (!nickCheck(forms))
-        return false
-    else
-        return true
+private fun validCheck(forms: List<List<String>>): Boolean {
+
+    var result = true
+
+    if (forms.size !in 1..10000) {
+        result = false
+    }
+
+    else if (!checkValiedEmail(forms)) {
+        result = false
+    }
+
+    else if (!checkValidNickname(forms)) {
+        result = false
+    }
+
+    return result
 }
 
-fun nickCheck(forms: List<List<String>>): Boolean {
+private fun checkValidNickname(forms: List<List<String>>): Boolean {
+
     for (crew in forms) {
         if (!Pattern.matches("^[ㄱ-ㅎㅏ-ㅣ가-힣]{1,19}$", crew[1]))
             return false
     }
+
     return true
 }
 
-fun emailCheck(forms: List<List<String>>): Boolean {
+private fun checkValiedEmail(forms: List<List<String>>): Boolean {
+
     for (crew in forms) {
+
         if (!Pattern.matches("^[a-zA-Z0-9]{1,9}+@email.com$", crew[0]))
             return false
+
     }
+
     return true
 }
 
-fun checkOverlap(crew: Int, i: Int, forms: List<List<String>>): List<String> {
-    var emails = mutableListOf<String>()
-    val word = forms[crew][1].substring(i, i + 2)
-    var idx = 0
-    while (idx < forms.size) {
-        if (idx != crew) {
-//			본인이 아닌 경우만 중복체크
-            val checkCrew = forms[idx]
-            var j = 0
-            while (j < checkCrew[1].length - 1) {
-                if (forms[idx][1].substring(j, j + 2) == word) {
-                    emails.add(checkCrew[0])
-                    break
-                }
-                j++
-            }
+private fun checkDuplicateNickname(nickname_1: String, nickname_2: String): Boolean {
+    for (i in 0 until nickname_1.length - 1) {
+        if (nickname_2.contains(nickname_1.substring(i, i + 2))) {
+            return true
         }
-        idx++
     }
-    return emails
+    return false
 }
