@@ -40,6 +40,15 @@ fun solution7(
     if(friendRelations.containsKey(user)) {
         score = checkFriend(friendRelations, user) as MutableMap<String, Int>
     }
+    // 3. 사용자 타임라인 방문 횟수만큼 점수 부여
+    for(visitor in visitors){
+        if(!score.containsKey(visitor)){
+            score[visitor] = 0
+            score[visitor] = score[visitor]!! + 1
+            continue
+        }
+        score[visitor] = score[visitor]!! + 1
+    }
     print(score)
     return answer
 }
