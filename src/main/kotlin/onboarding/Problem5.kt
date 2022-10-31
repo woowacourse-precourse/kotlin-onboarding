@@ -1,6 +1,7 @@
 package onboarding
 
 import problem1.RangeVerifier
+import problem5.Bank
 import java.lang.RuntimeException
 
 fun solution5(money: Int): List<Int> {
@@ -11,5 +12,6 @@ fun solution5(money: Int): List<Int> {
         throw RuntimeException("Input is not between range $minRange and $maxRange")
     }
 
-    return listOf()
+    val bank = Bank(money)
+    return bank.withdraw()
 }
