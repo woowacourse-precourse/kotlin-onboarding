@@ -1,7 +1,5 @@
 package onboarding
 
-import kotlin.math.max
-
 fun solution1(pobi: List<Int>, crong: List<Int>): Int {
 
     fun gameResult(pages: List<Int>): Int {
@@ -33,7 +31,16 @@ fun solution1(pobi: List<Int>, crong: List<Int>): Int {
         else {
             return max_right
         }
+    }
 
+    if(gameResult(pobi) > gameResult(crong)) {
+        return 1
+    }
+    else if(gameResult(pobi) == gameResult(crong)) {
+        return 0
+    }
+    else if(gameResult(pobi) < gameResult(crong)) {
+        return 2
     }
 
     return TODO("Provide the return value")
