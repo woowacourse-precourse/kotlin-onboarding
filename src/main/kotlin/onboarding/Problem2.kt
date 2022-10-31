@@ -13,7 +13,7 @@ fun solution2(cryptogram: String): String {
         for(i in tmp downTo 1){
             if (letters[i] == letters[i-1])
                 letters.removeAt(i)
-            letters.removeAt(i-1)
+                letters.removeAt(i-1)
             break
         }
     }
