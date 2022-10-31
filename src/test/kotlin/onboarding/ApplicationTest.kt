@@ -131,6 +131,20 @@ class ApplicationTest {
             val result = 14
             assertThat(solution3(number)).isEqualTo(result)
         }
+
+        @Test
+        fun case3() {
+            val number = 333
+            val result = 228
+            assertThat(solution3(number)).isEqualTo(result)
+        }
+
+        @Test
+        fun case4() {
+            val number = 2
+            val result = 0
+            assertThat(solution3(number)).isEqualTo(result)
+        }
     }
 
     @Nested
