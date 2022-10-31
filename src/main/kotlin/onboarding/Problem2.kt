@@ -6,9 +6,7 @@ fun solution2(cryptogram: String): String {
     var char = arrayOfNulls<Char>(cryptogram.length)
     for( i in cryptogram.indices)
         char[i] = cryptogram[i]
-    var length : Int = char.size
     var check : Boolean = false
-    var cLeng : Int = 0
     var howmanytimes : Int = char.size-2
 
     while(!check){
