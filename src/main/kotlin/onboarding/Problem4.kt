@@ -1,7 +1,11 @@
 package onboarding
 
 fun solution4(word: String): String {
-    TODO("프로그램 구현")
+    var answer = ""
+    for (i in word) {
+        answer += translateFroglang(i)
+    }
+    return answer
 }
 
 /**
@@ -50,7 +54,12 @@ fun translateFroglang(s: Char): Char {
 /**
  * Char형 문자를 소문자로 바꾸어주는 함수
  */
-fun Char.toLowerrcase(): Char = (this.code + 32).toChar()
+fun Char.toLowerrcase(): Char {
+    require(this.code >= 'a' && this.code <= 'z') {
+        "$this 소문자 알파벳이 입력되지 않았습니다."
+    }
+    (this.code + 32).toChar()
+}
 
 /**
  * Pair<Char,Char>형을 지닌 리스트에서 해당 값을 찾는 함수
