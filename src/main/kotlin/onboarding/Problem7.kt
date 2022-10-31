@@ -41,4 +41,45 @@ private fun addMyFriend(user : String, friends : List<List<String>>){
         }
     }
 }
-//
+private fun setPoint(user: String,
+                     friends: List<List<String>>,
+                     visitors: List<String>){
+    for(i in friendsCopy){
+        if((myFriends.contains(i[0]) && myFriends.contains(i[1])) || (!myFriends.contains(i[0]) && !myFriends.contains(i[1]))){
+            continue
+        }
+        else{
+            checkMyfriendContain(i)
+        }
+    }
+    for(i in visitors){
+        if(!myFriends.contains(i) && user!=i){
+            if(recommmedPoint.containsKey(i)){
+                var currentPoint = recommmedPoint.getValue(i)
+                recommmedPoint.put(i,currentPoint+10)
+            }
+            else{
+                recommmedPoint.put(i,10)
+            }
+        }
+    }
+}
+private fun checkMyfriendContain(myFriend : MutableList<String>){
+    if(myFriends.contains(myFriend[0])){
+        addPointByFriends(myFriend,1)
+    }
+    if(myFriends.contains(myFriend[1])){
+        addPointByFriends(myFriend,0)
+    }
+}
+
+
+private fun addPointByFriends(user : List<String>, number : Int){
+    if(recommmedPoint.containsKey(user[number])){
+        var currentPoint = recommmedPoint.getValue(user[number])
+        recommmedPoint.put(user[number],currentPoint+10)
+    }
+    else{
+        recommmedPoint.put(user[number],10)
+    }
+}
