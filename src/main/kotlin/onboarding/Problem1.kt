@@ -18,6 +18,11 @@ fun solution1(pobi: List<Int>, crong: List<Int>): Int {
     crongsNumbers.add(multiplyPageNum(crong[0]))
     crongsNumbers.add(multiplyPageNum(crong[1]))
 
+    val maxPobi = getMax(pobisNumbers)
+    val maxCrong = getMax(crongsNumbers)
+
+
+
     return 0
 }
 
@@ -55,9 +60,8 @@ fun multiplyPageNum(pageNum: Int): Int{
     return mutiply
 }
 
-fun getMax(numbers: List<Int>): Int{
-    // TODO: 2022-10-31
-    return 0
+fun getMax(numbers: ArrayList<Int>): Int{
+    return numbers.maxOrNull()!!
 }
 
 fun getWinner(pobiMax:Int, crongMax:Int): Int{
