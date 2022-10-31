@@ -12,6 +12,8 @@ fun solution7(
 
     candidateScoreMap = calcMutualFriendScore(user, candidateScoreMap, friendSet, friends)
     candidateScoreMap = calcVisitorScore(candidateScoreMap, friendSet, visitors)
+
+    return getSortedResult(candidateScoreMap)
 }
 
 private fun getPeopleSet(user: String, friends: List<List<String>>, visitors: List<String>): MutableSet<String> {
@@ -62,7 +64,8 @@ private fun calcMutualFriendScore(
             if (j in friendSet) {
                 val candidatePerson = i.toMutableList()
                 candidatePerson.remove(j)
-                if (candidatePerson[0] != user && candidatePerson[0] !in friendSet) candidateScoreMap[candidatePerson[0]] = candidateScoreMap[candidatePerson[0]]!! + 10
+                if (candidatePerson[0] != user && candidatePerson[0] !in friendSet) candidateScoreMap[candidatePerson[0]] =
+                    candidateScoreMap[candidatePerson[0]]!! + 10
             }
         }
     }
@@ -78,4 +81,24 @@ private fun calcVisitorScore(
     for (i in visitors) if (i !in friendSet) candidateScoreMap[i] = candidateScoreMap[i]!! + 1
 
     return candidateScoreMap
+}
+
+private fun getSortedResult(candidateScoreMap: MutableMap<String, Int>): MutableList<String> {
+    val candidateScoreList = candidateScoreMap.toList()
+    var sortedCandidateScoreList = candidateScoreList.sortedWith(compareBy({ -it.second }, { it.first }))
+    sortedCandidateScoreList = if (sortedCandidateScoreList.size < 5) {
+        sortedCandidateScoreList.subList(0, sortedCandidateScoreList.size)
+    } else {
+        sortedCandidateScoreList.subList(0, 5)
+    }
+
+    val processedSortedCandidateScoreList = sortedCandidateScoreList.toMutableList()
+
+    for (i in sortedCandidateScoreList) if (i.second == 0) processedSortedCandidateScoreList.remove(i)
+
+    val resultList = mutableListOf<String>()
+
+    for (i in processedSortedCandidateScoreList) resultList.add(i.first)
+
+    return resultList
 }
