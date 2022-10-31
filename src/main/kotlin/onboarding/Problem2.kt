@@ -23,16 +23,32 @@ fun solution2(cryptogram: String): String {
 }
 
 private fun decodeCryptogram(cryptogram: String): String {
-    val stack = Stack<Char>()
-    for (char in cryptogram) {
-        if (stack.isNotEmpty()) {
-            if (stack.peek() == char) {
-                stack.pop()
-            } else {
-                stack.push(char)
+    val stack = Stack<Char>().apply {
+        push(cryptogram[0])
+    }
+    val len = cryptogram.length
+    var index = 1
+    var buffer = stack.peek()
+    while (index < len) {
+        // 문자가 같을때
+        if (cryptogram[index] == buffer) {
+            stack.pop()
+            // 같은 문자들 패스
+            while (cryptogram[index] == buffer) {
+                // 마지막 문자
+                if (index == len - 1) {
+                    index++
+                    break
+                }
+                index++
+            }
+            if (stack.isNotEmpty()) {
+                buffer = stack.peek()
             }
         } else {
-            stack.push(char)
+            stack.push(cryptogram[index])
+            buffer = stack.peek()
+            index++
         }
     }
     // Stack 의 내부 그대로 문자열로 리턴
