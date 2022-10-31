@@ -5,30 +5,26 @@ import java.io.InputStreamReader
 import java.util.*
 import kotlin.io.path.createTempDirectory
 
-val pobi_win = 1
-val crong_win = 2
-val draw = 0
-val exception_point = -1
+var win = 1
 
 fun solution1(pobi: List<Int>, crong: List<Int>): Int {
 
 
   if((pobi[pobi.size-1] - pobi[pobi.size-2] != 1)  or (crong[crong.size-1] - crong[crong.size-2] != 1) ){
-      return exception_point
+      return win
   }
 
   if((pobi.size > 2) or (crong.size > 2)){
-      return exception_point
+      return win
   }
 
   if(pobi.contains(1) or pobi.contains(400)){
-      return exception_point
+      return win
   }
 
-    if(crong.contains(1) or crong.contains(400)){
-        return exception_point
-    }
-
+  if(crong.contains(1) or crong.contains(400)){
+        return win
+  }
 
   var pobi_max_sum = 0
   var pobi_max_mul = 1
@@ -36,23 +32,23 @@ fun solution1(pobi: List<Int>, crong: List<Int>): Int {
   var pobi_mul = 1
   var pobi_max = 0
 
-  for(i in 0 until 2){
-     pobi_sum = (pobi[i] / 100) + (pobi[i] % 100 / 10) + (pobi[i] % 100 % 10)
-     if(pobi_sum > pobi_max_sum){
-        pobi_max_sum = pobi_sum
-     }
+    for(i in 0 until 2){
+        pobi_sum = (pobi[i] / 100) + (pobi[i] % 100 / 10) + (pobi[i] % 100 % 10)
+        if(pobi_sum > pobi_max_sum){
+            pobi_max_sum = pobi_sum
+        }
 
-     if( pobi[i] >= 100){
-        pobi_mul = (pobi[i] / 100) * (pobi[i] % 100 / 10) * (pobi[i] % 100 % 10)
-     }
-     if( pobi[i] < 100){
-        pobi_mul = (pobi[i] / 10) * (pobi[i] % 10)
-     }
+        if( pobi[i] >= 100){
+            pobi_mul = (pobi[i] / 100) * (pobi[i] % 100 / 10) * (pobi[i] % 100 % 10)
+        }
+        if( pobi[i] < 100){
+            pobi_mul = (pobi[i] / 10) * (pobi[i] % 10)
+        }
 
-     if(pobi_mul > pobi_max_mul){
-        pobi_max_mul = pobi_mul
-     }
-  }
+        if(pobi_mul > pobi_max_mul){
+            pobi_max_mul = pobi_mul
+        }
+    }
 
    if(pobi_max_mul > pobi_max_sum){
       pobi_max = pobi_max_mul
@@ -95,20 +91,20 @@ fun solution1(pobi: List<Int>, crong: List<Int>): Int {
 
 
     if(pobi_max > crong_max){
-        return pobi_win
+        win = 1
     }
 
     if(pobi_max == crong_max){
-        return draw
+        win = 0
     }
 
     if(pobi_max < crong_max){
-        return crong_win
+        win = 2
     }
 
-
-    return exception_point
+    return win
 }
+
 
 
 
