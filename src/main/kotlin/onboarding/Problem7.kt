@@ -9,21 +9,28 @@ fun solution7(
     visitors: List<String>
 ): List<String> {
     val result = listOf<String>()
-    val friendInformation = getFriendInformation(friends)
+    val friendInformation = getFriendInformation(friends,visitors)
 
-    
+
 
     return result
 }
 
-fun getFriendInformation(friends: List<List<String>>): Map<String, LinkedList<String>> {
-    val friendInformation  = LinkedHashMap<String, LinkedList<String>>()
+fun getFriendInformation(friends: List<List<String>>, visitors: List<String>): Map<String, LinkedList<String>> {
+    val friendInformation = LinkedHashMap<String, LinkedList<String>>()
+
     for (element in friends) {
         friendInformation[element[0]] = friendInformation[element[0]] ?: LinkedList<String>()
         friendInformation[element[1]] = friendInformation[element[1]] ?: LinkedList<String>()
         friendInformation[element[0]]?.add(element[1])
         friendInformation[element[1]]?.add(element[0])
     }
+    for (visitor in visitors) {
+        if (!friendInformation.containsKey(visitor)) {
+            friendInformation[visitor] = LinkedList<String>()
+        }
+    }
+
     return friendInformation
 }
 
@@ -37,11 +44,14 @@ fun getScore(user: String, friendInformation: Map<String, LinkedList<String>>, v
 
         if (user == anotherUser) {
             continue
-        } else {
-            var score = 0
-            score += countAcquaintance(userFriends, anotherUserFriends) * 10
         }
+        var score = 0
+        score += countAcquaintance(userFriends, anotherUserFriends) * 10
+        score += countNumberOfVisits(anotherUser, visitors)
 
+        if (score > 0) {
+
+        }
     }
 }
 
@@ -52,6 +62,17 @@ fun countAcquaintance(userFriends: LinkedList<String>, anotherUserFriends: Linke
             if (userFriend == anotherUserFriend) {
                 count += 1
             }
+        }
+    }
+
+    return count
+}
+
+fun countNumberOfVisits(anotherUser: String, visitors: List<String>): Int {
+    var count = 0
+    for (visitor in visitors) {
+        if (anotherUser == visitor) {
+            count += 1
         }
     }
 
