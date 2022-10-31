@@ -1,5 +1,51 @@
 package onboarding
 
 fun solution1(pobi: List<Int>, crong: List<Int>): Int {
-    TODO("프로그램 구현")
+    if (!checkException(pobi) || !checkException(crong)) {
+        return -1
+    }
+    val pobiNum = compareLeftRight(pobi)
+    val crongNum = compareLeftRight(crong)
+    return match(pobiNum, crongNum)
+}
+
+fun checkException(pageNum: List<Int>): Boolean {
+    return when ((pageNum[0] % 2 == 1) &&
+            (pageNum[1] == pageNum[0] + 1) &&
+            (pageNum[0] >= 3) &&
+            (pageNum[0] <= 397)) {
+        true -> true
+        false -> false
+    }
+}
+
+fun compareLeftRight(pageNum: List<Int>): Int {
+    val left = calculateMax(pageNum[0])
+    val right = calculateMax(pageNum[1])
+    return when (left > right) {
+        true -> left
+        false -> right
+    }
+}
+
+fun calculateMax(page: Int): Int {
+    var num = page
+    val sumAndProduct = mutableListOf(0, 1)
+    do {
+        sumAndProduct[0] += num % 10
+        sumAndProduct[1] *= num % 10
+        num /= 10
+    } while (num > 0)
+    return when (sumAndProduct[0] > sumAndProduct[1]) {
+        true -> sumAndProduct[0]
+        false -> sumAndProduct[1]
+    }
+}
+
+fun match(pobi_num: Int, crong_num: Int): Int {
+    return when (pobi_num - crong_num) {
+        in 1..300 -> 1
+        0 -> 0
+        else -> 2
+    }
 }
