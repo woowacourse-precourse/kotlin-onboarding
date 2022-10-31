@@ -2,9 +2,12 @@ package onboarding
 
 class User(val email: String, val nickname: String)
 
-val nickNameMap = HashMap<String, ArrayList<User>>()
-val resultKey = ArrayList<String>()
+lateinit var nickNameMap: HashMap<String, ArrayList<User>>
+lateinit var resultKey: ArrayList<String>
 fun solution6(forms: List<List<String>>): List<String> {
+
+    initGlobal()
+
     for(elem in forms) {
         val divList = dividedList(elem[1])
         updateNicknameMap(User(email = elem[0], nickname = elem[1]), divList)
@@ -12,6 +15,11 @@ fun solution6(forms: List<List<String>>): List<String> {
 
     var result = resultHashSet().toSortedSet()
     return result.toList()
+}
+
+fun initGlobal() {
+    nickNameMap = HashMap()
+    resultKey = ArrayList()
 }
 
 fun dividedList(string: String): List<String> {
