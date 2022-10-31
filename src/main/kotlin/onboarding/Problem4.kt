@@ -17,12 +17,4 @@ fun changeChar(char: Char) : Char = when(char) {
     else -> char
 }
 
-fun changeWord(word : String) : String {
-    var result = ""
-
-     word.map {
-        result += changeChar(it)
-    }
-
-    return result
-}
+fun changeWord(word : String) : String = word.map{ changeChar(it) }.fold("", { total, next -> total + next})
