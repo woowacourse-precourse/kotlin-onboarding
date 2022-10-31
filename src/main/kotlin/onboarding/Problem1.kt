@@ -13,6 +13,10 @@ fun solution1(pobi: List<Int>, crong: List<Int>): Int {
 
     val pobiMax = calculatePageMax(pobi)
     val crongMax = calculatePageMax(crong)
+
+    return if (pobiMax > crongMax) POBI_WIN
+    else if (crongMax > pobiMax) CRONG_WIN
+    else DRAW
 }
 
 private fun isException(pages: List<Int>): Boolean {
