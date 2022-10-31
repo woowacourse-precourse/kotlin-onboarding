@@ -24,12 +24,12 @@ fun solution6(forms: List<List<String>>): List<String> {
         // 리스트의 다음 닉네임 부터 순회
         val exportStrList = exportStrList(nickname)
         for (j in i + 1 until forms.size) {
-            val nextEmail = forms[i][0]
+            val nextEmail = forms[j][0]
             val nextNickname = forms[j][1]
             exportStrList.forEach { findStr ->
                 if (nextNickname.contains(findStr)) {
                     answer.add(nextEmail)
-                    answer.add(nextEmail)
+                    answer.add(email)
                 }
             }
         }
