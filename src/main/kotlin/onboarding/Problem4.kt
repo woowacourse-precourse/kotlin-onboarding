@@ -7,7 +7,7 @@ fun solution4(word: String): String {
     if(!checkValidInput(word))
         throw IllegalArgumentException("invalid input found!")
 
-    return ""
+    return getConvertedWord(word)
 }
 fun checkValidInput(word: String): Boolean{
     return Pattern.matches("^[a-zA-Z\\s]*\$",word )
@@ -21,7 +21,14 @@ fun getConvertedWord(word: String): String{
 }
 
 fun convertChar(originalChar: Char): Char {
-    // TODO: 2022-11-01
-    return 'a'
+    var key = 0
+    key = if (originalChar.isUpperCase())
+        'N'.code
+    else if (originalChar.isLowerCase())
+        'n'.code
+    else
+        return originalChar
+
+    return (originalChar.code + 2 * (key - originalChar.code) - 1).toChar()
 }
 
