@@ -16,6 +16,18 @@ private fun checkNicknameIsKr(nickname: String): Boolean {
     return true
 }
 
+/**
+ * 닉네임에서 2개의 연속된 글자로 이루어진 리스트를 반환한다.
+ * @param nickname
+ * @return 예시) "평창보리" -> "평창", "창보", "보리"
+ */
+fun exportStrList(nickname: String): List<String> {
+    val list = mutableListOf<String>()
+    for (i in 0 until nickname.length - 1) {
+        list.add(nickname[i].toString() + nickname[i + 1].toString())
+    }
+    return list.toList()
+}
 
 /**
  * @를 기준으로 도메인과 이메일로 나누어 반환하는 함수
