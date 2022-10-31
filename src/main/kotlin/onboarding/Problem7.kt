@@ -22,3 +22,15 @@ fun solution7(
     // 점수에 따른 정렬
     return sortedByScore(friendMap)
 }
+
+private fun searchFriends(
+    friends: List<List<String>>,
+    user: String,
+    friendSet: MutableSet<String>
+) {
+    friends.forEach { friend ->
+        if (friend[1] == user || friend[0] == user) {
+            friendSet += friend[0]
+        }
+    }
+}
