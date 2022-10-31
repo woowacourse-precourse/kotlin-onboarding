@@ -7,6 +7,7 @@ fun solution7(
 ): List<String> {
     val peopleSet = getPeopleSet(user, friends, visitors)
     val friendCandidateSet = excludeAlreadyFriendAndUser(peopleSet, user, friends)
+    val friendSet = getFriendSet(user, friends)
     val candidateScoreMap = getCandidateScoreMap(friendCandidateSet)
 }
 
@@ -36,4 +37,13 @@ private fun getCandidateScoreMap(friendCandidateSet: MutableSet<String>): Mutabl
     for (i in friendCandidateSet) candidateScoreMap[i] = 0
 
     return candidateScoreMap
+}
+
+private fun getFriendSet(user: String, friends: List<List<String>>): MutableSet<String> {
+    val friendSet = mutableSetOf<String>()
+
+    for (i in friends) if (user in i) friendSet.addAll(i)
+    friendSet.remove(user)
+
+    return friendSet
 }
