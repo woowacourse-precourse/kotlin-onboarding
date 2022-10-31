@@ -1,8 +1,25 @@
 package onboarding
+
 import kotlin.math.max
 
+fun solution1(pobi: List<Int>, crong: List<Int>): Int {
+    try {
+        val pobiScore = getScore(pobi)
+        val crongScore = getScore(crong)
 
-fun getScroe(pageList: List<Int>): Int {
+        if (pobiScore > crongScore) {
+            return 1
+        } else if (pobiScore == crongScore) {
+            return 0
+        } else {
+            return 2
+        }
+    } catch (error: IllegalArgumentException) {
+        return -1
+    }
+}
+
+fun getScore(pageList: List<Int>): Int {
     val leftPage = pageList[0]
     val rightPage = pageList[1]
 
@@ -25,7 +42,8 @@ fun getScroe(pageList: List<Int>): Int {
 fun addDigit(num: Int): Int {
     var tempNum = num
     var result = 0
-    while(tempNum > 0) {
+
+    while (tempNum > 0) {
         result += (tempNum % 10)
         tempNum /= 10
     }
@@ -37,27 +55,11 @@ fun addDigit(num: Int): Int {
 fun multiplyDigit(num: Int): Int {
     var tempNum = num
     var result = 1
-    while(tempNum > 0) {
+
+    while (tempNum > 0) {
         result *= (tempNum % 10)
         tempNum /= 10
     }
 
     return result
-}
-
-fun solution1(pobi: List<Int>, crong: List<Int>): Int {
-    try {
-        val pobiScore = getScroe(pobi)
-        val crongScore = getScroe(crong)
-
-        if (pobiScore > crongScore) {
-            return 1
-        } else if (pobiScore == crongScore) {
-            return 0
-        } else {
-            return 2
-        }
-    } catch (error: IllegalArgumentException) {
-        return -1
-    }
 }
