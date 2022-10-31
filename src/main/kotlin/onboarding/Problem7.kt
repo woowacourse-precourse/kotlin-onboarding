@@ -34,6 +34,7 @@ fun solution7(
         }.thenBy { (name, _) ->
             name
         })
+        .take(5)
         .toMap()
         .keys
         .toList()
