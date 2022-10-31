@@ -9,7 +9,7 @@ class NicknameManager(private val forms:List<List<String>>) {
         nicknameSet = mutableSetOf()
 
         for(i in 0 until (nickname.length - 1)) {
-            val nicknameElement = nickname.substring(i, i + 1)
+            val nicknameElement = nickname.substring(i, i + 2)
             nicknameSet.add(nicknameElement)
         }
     }
