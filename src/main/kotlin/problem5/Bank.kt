@@ -5,7 +5,9 @@ class Bank(private var account:Int) {
     private val moneyManager = mutableListOf<Int>()
     private val unit = listOf(50_000, 10_000, 5_000, 1_000, 500, 100, 50, 10, 1)
 
-    private fun noticeMoneyManager() {}
+    private fun noticeMoneyManager() {
+        moneyManager.add(count)
+    }
 
     private fun withdrawByAllUnit() {
         for(monetaryUnit in unit) {
