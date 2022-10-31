@@ -10,7 +10,12 @@ fun solution6(forms: List<List<String>>): List<String> {
  * first요소에 이메일, second요소에 도메인을 반환한다.
  */
 fun divideEmail(email: String): Pair<String, String> {
-
+    var idx = 0
+    for (i in 0 until email.length) {
+        if (email[i] == '@') break
+        idx += 1
+    }
+    return email.subSequence(0, idx).toString() to email.subSequence(idx + 1, email.length).toString()
 }
 
 /**
