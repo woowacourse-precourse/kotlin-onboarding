@@ -14,7 +14,7 @@ fun solution7(
     }
 
     addMyFriend(user,friends)
-//    setPoint(user, friends, visitors)
+    setPoint(user, friends, visitors)
 
     var resultSort = mutableListOf<Pair<String,Int>>()
     for(i in recommmedPoint){
