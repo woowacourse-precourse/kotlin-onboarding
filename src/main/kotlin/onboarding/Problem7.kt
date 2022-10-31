@@ -11,6 +11,7 @@ fun solution7(
     var candidateScoreMap = getCandidateScoreMap(friendCandidateSet)
 
     candidateScoreMap = calcMutualFriendScore(user, candidateScoreMap, friendSet, friends)
+    candidateScoreMap = calcVisitorScore(candidateScoreMap, friendSet, visitors)
 }
 
 private fun getPeopleSet(user: String, friends: List<List<String>>, visitors: List<String>): MutableSet<String> {
@@ -60,10 +61,20 @@ private fun calcMutualFriendScore(
         for (j in i) {
             if (j in friendSet) {
                 i.toMutableList().remove(j)
-                if (i[0] != user) candidateScoreMap[i[0]] = candidateScoreMap[i[0]]!! + 1
+                if (i[0] != user && i[0] !in friendSet) candidateScoreMap[i[0]] = candidateScoreMap[i[0]]!! + 10
             }
         }
     }
+
+    return candidateScoreMap
+}
+
+private fun calcVisitorScore(
+    candidateScoreMap: MutableMap<String, Int>,
+    friendSet: MutableSet<String>,
+    visitors: List<String>
+): MutableMap<String, Int> {
+    for (i in visitors) if (i !in friendSet) candidateScoreMap[i] = candidateScoreMap[i]!! + 1
 
     return candidateScoreMap
 }
