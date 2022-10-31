@@ -16,7 +16,7 @@ fun solution7(
     val friendsfriendlist = friendsfriend(friends, friendslist)
     val possiblefriendslist = possiblerecommend(friends, visitors, friendslist, user)
     val countscoremap = countscore(possiblefriendslist, friendsfriendlist, visitors)
-    return possiblefriendslist
+    return finalrecommendlist(countscoremap)
 }
 
 //이미 친구인 목록 추출 함수
@@ -82,4 +82,15 @@ fun countscore(possiblefriends: List<String>, friendsfriendlist: List<String>, v
         }
     }
     return countvalue.toList().sortedByDescending { it.second }.toMap().toMutableMap()
+}
+
+//map에서 key를 추출하는 함수
+fun finalrecommendlist(countvalue: MutableMap<String, Int>): List<String> {
+    val finallyremcommend: MutableList<String> = mutableListOf()
+
+    for (key in countvalue.keys) {
+        if (countvalue[key] != 0)
+            finallyremcommend.add(key)
+    }
+    return finallyremcommend
 }
