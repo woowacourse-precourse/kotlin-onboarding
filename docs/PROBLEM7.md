@@ -24,3 +24,9 @@
 | user | friends | visitors | result |
 | --- | --- | --- | --- |
 | "mrko" | [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ] | ["bedi", "bedi", "donut", "bedi", "shakevan"] | ["andole", "jun", "bedi"] |
+
+## 기능 목록
+1. user와 친구인 사용자를 찾는 기능
+2. user와 함께 아는 사용자에게 10점을 주는 기능
+3. user 타임라인에 방문한 시용자에게 1점을 주는 기능
+4. 사용자를 추천점수로 정렬 후 최대 5개의 이름을 출력해주는 기능
