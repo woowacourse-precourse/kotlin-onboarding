@@ -43,8 +43,8 @@ class ApplicationTest {
 
         @Test
         fun case2() {
-            val cryptogram = "zyelleyz"
-            val result = ""
+            val cryptogram = "abbaa"
+            val result = "a"
             assertThat(solution2(cryptogram)).isEqualTo(result)
         }
     }
