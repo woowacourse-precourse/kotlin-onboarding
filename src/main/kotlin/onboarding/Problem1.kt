@@ -2,10 +2,6 @@ package onboarding
 
 fun solution1(pobi: List<Int>, crong: List<Int>): Int {
     TODO("프로그램 구현")
-    return pro1(pobi, crong)
-}
-fun pro1(pobi: List<Int>, crong: List<Int>) : Int {
-    // pobi 수 구하기
     var pobi_mul: Int
     var pobi_num: Array<Int> = arrayOf(0,0,0,0)
     pobi_num[0] = ( (pobi[0] / 100) + (pobi[0]/10)%10 + (pobi[0] % 10) )
@@ -23,7 +19,7 @@ fun pro1(pobi: List<Int>, crong: List<Int>) : Int {
     }
     pobi_num[3] = pobi_mul
     // pobi 가장 큰 수
-    var result_pobi = pobi_num.maxOrNull()
+    val result_pobi = pobi_num.maxOrNull()
 
     // crong 수 구하기
     var crong_mul: Int
@@ -52,5 +48,5 @@ fun pro1(pobi: List<Int>, crong: List<Int>) : Int {
     else if(result_pobi < result_crong) result = 2
     else result = -1
 
-    return result;
+    return result
 }
