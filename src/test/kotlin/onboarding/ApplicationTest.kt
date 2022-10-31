@@ -9,7 +9,7 @@ class ApplicationTest {
     inner class Problem1Test {
         @Test
         fun case1() {
-            val pobi = listOf(97, 98)
+            val pobi = listOf(97, 98) //
             val crong = listOf(197, 198)
             val result = 0
             assertThat(solution1(pobi, crong)).isEqualTo(result)
