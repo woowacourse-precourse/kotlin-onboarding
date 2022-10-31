@@ -85,6 +85,9 @@ fun createFriendRelation(friends: List<List<String>>): HashMap<String, MutableSe
     return friendRelation
 }
 
+/**
+ * 해당 유저의 추천 점수를 계산하는 함수
+ */
 fun calcRecommendScore(
     friend: String,
     friendRelation: HashMap<String, MutableSet<String>>,
