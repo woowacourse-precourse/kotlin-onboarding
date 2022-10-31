@@ -55,6 +55,12 @@ fun setVisitor(score: Map<String, Int>, visitors: List<String>, userFriends: Lis
     return result.toMap()
 }
 
+fun setMapSort(score: Map<String, Int>): Map<String, Int> {
+    var scoreList = score.toList()
+
+    return scoreList.sortedWith(compareBy<Pair<String, Int>> { it.second }.reversed().thenBy { it.first }).toMap()
+}
+
 fun solution7(
     user: String,
     friends: List<List<String>>,
