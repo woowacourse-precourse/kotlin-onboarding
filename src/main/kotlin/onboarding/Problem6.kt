@@ -1,9 +1,8 @@
 package onboarding
 
-import java.util.TreeSet
 
 fun solution6(forms: List<List<String>>): List<String> {
-    var result = TreeSet<String>()
+    var result = mutableSetOf<String>()
     val twoLetterMap = mutableMapOf<String, Set<String>>()
     val emailList = mutableListOf<String>()
 
@@ -20,7 +19,8 @@ fun solution6(forms: List<List<String>>): List<String> {
         }
     }
 
-    return result.toList()
+
+    return result.toList().sorted()
 }
 
 fun convertNickNameToTwoLetterSet(nickNmae: String): Set<String> {
