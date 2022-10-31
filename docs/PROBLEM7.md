@@ -24,3 +24,9 @@
 | user | friends | visitors | result |
 | --- | --- | --- | --- |
 | "mrko" | [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ] | ["bedi", "bedi", "donut", "bedi", "shakevan"] | ["andole", "jun", "bedi"] |
+
+### 구현 기능 목록
+
+1. 인물 관계 정리 (이름 - 친구 목록 과 같은 형식)
+2. 사용자와 함께 아는 친구의 수만큼 점수 부여
+3. 사용자 타임라인 방문 횟수만큼 점수 부여
