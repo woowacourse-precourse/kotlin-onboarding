@@ -40,6 +40,8 @@ fun getMaxPage(pageNum: Int = 0): Int{
 
 fun isValid(pageList: List<Int>): Boolean{
     // check if the page is valid
-    val diff = pageList[1] - pageList[0] // should be 1
-    return (diff == 1)
+    val diffCheck = (pageList[1] - pageList[0] == 1)
+    var pageCheck = (pageList[0]%2 == 1 && pageList[1]%2 == 0)
+    var rangeCheck = (pageList[0] in 1..400 && pageList[1] in 1..400)
+    return (diffCheck && pageCheck && rangeCheck)
 }
