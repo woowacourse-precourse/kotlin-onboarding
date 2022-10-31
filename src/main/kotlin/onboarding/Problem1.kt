@@ -1,11 +1,13 @@
 package onboarding
 
+import kotlin.math.max
+
 fun solution1(pobi: List<Int>, crong: List<Int>): Int {
     if (checkForExceptions(pobi) || checkForExceptions(crong))
         return -1
 
-    val largestNumOfPobi = findTheLargestNumber(pobi)
-    val largestNumOfCrong = findTheLargestNumber(crong)
+    val largestNumOfPobi = pobi.getMaxNumber()
+    val largestNumOfCrong = crong.getMaxNumber()
 
     return when {
         largestNumOfPobi > largestNumOfCrong -> 1
@@ -13,26 +15,20 @@ fun solution1(pobi: List<Int>, crong: List<Int>): Int {
         else -> 0
     }
 }
+fun List<Int>.getMaxNumber(): Int {
+    return maxOf {
+        val page = it.toString()
 
-fun findTheLargestNumber(pageList: List<Int>) : Int {
-    val calculatedNum = mutableListOf<Int>()
-    calculatedNum.add(addValue(pageList[0]))
-    calculatedNum.add(multiValue(pageList[0]))
-    calculatedNum.add(addValue(pageList[1]))
-    calculatedNum.add(multiValue(pageList[1]))
-    return calculatedNum.maxOf { it }
-}
+        max(
+            page.fold(0) { total, num ->
+                total + num.digitToInt()
+            },
 
-fun multiValue(page: Int) : Int {
-    var result = 1
-    page.toString().forEach { c -> result *= (c - '0') }
-    return result
-}
-
-fun addValue(page: Int) : Int {
-    var result = 0
-    page.toString().forEach { c -> result += (c - '0') }
-    return result
+            page.fold(1) { total, num ->
+                total * num.digitToInt()
+            },
+        )
+    }
 }
 
 fun checkForExceptions(page: List<Int>) : Boolean {
