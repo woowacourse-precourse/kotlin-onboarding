@@ -28,8 +28,8 @@ fun solution7(
         }
     }
 
-    idMap[user]?.forEach { id ->
-        idMap[id]?.filter { id != user }?.forEach { friend ->
+    idMap[user]?.forEach {
+        idMap[it]?.filter { it != user }?.forEach { friend ->
             if (scoreMap.containsKey(friend)) {
                 scoreMap[friend] = scoreMap.getValue(friend) + 10
             } else {
