@@ -52,3 +52,10 @@ fun findMaxNum(palyer: List<Int>): Int { //첫페이지 점수와  두번째 페
 
     return maxNum
 }
+fun isComparePage(page: List<Int>): Boolean { //페이지가 연속되는지 확인하는 함수
+    if (page[0] == page[1] - 1) {
+        return true
+    }
+
+    return false
+}
