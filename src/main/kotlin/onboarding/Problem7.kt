@@ -47,6 +47,24 @@ fun getFriendsList(friends: List<List<String>>, user: String): List<String> {
 }
 
 /**
+ * 친구와 친구인 리스트를 반환한다.
+ */
+fun getFriendsListOfFriends(friends: List<List<String>>, friendsList: List<String>, user: String): List<String> {
+    val friendsOfFriendsList = mutableListOf<String>()
+    for (i in friends) {
+        if (friendsList.contains(i[0]) && i[1] != user) {
+            friendsOfFriendsList.add(i[1])
+            continue
+        }
+        if (friendsList.contains(i[1]) && i[0] != user) {
+            friendsOfFriendsList.add(i[0])
+        }
+    }
+    return friendsOfFriendsList.toList()
+}
+
+
+/**
  * 리스트에서 특정 문자열의 인덱스를 반환한다.
  */
 
