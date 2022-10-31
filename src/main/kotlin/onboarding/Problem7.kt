@@ -5,7 +5,23 @@ fun solution7(
     friends: List<List<String>>,
     visitors: List<String>
 ): List<String> {
-    TODO("프로그램 구현")
+    val userFriendsList = getUserFriendsList(user, friends)
+    val mutualFriendsList = getMutualFriendsList(friends, userFriendsList)
+    val friendsMapWithMutual = calculateFriendsPoint(mutualFriendsList)
+    val friendsListWithVisit = calculateVisitPoint(friendsMapWithMutual, visitors)
+    var result: List<String>
+
+    if (friendsListWithVisit.contains(user)) {
+        friendsListWithVisit.remove(user)
+    }
+
+    result = friendsListWithVisit
+
+    if(result.size>4){
+        result = result.subList(0,4)
+    }
+
+    return result
 }
 
 private fun getUserFriendsList(userId: String, friends: List<List<String>>): MutableList<String> {
