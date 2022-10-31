@@ -1,6 +1,7 @@
 package onboarding
 
 import java.util.LinkedList
+import java.util.TreeMap
 
 fun solution7(
     user: String,
@@ -8,7 +9,8 @@ fun solution7(
     visitors: List<String>
 ): List<String> {
     val result = listOf<String>()
-    
+    val friendInformation = getFriendInformation(friends)
+
     
 
     return result
@@ -23,4 +25,35 @@ fun getFriendInformation(friends: List<List<String>>): Map<String, LinkedList<St
         friendInformation[element[1]]?.add(element[0])
     }
     return friendInformation
+}
+
+fun getScore(user: String, friendInformation: Map<String, LinkedList<String>>, visitors: List<String>) {
+    val scoreMap = TreeMap<String, Int>()
+    val userFriends = friendInformation[user] ?: LinkedList<String>()
+
+    for (relationship in friendInformation) {
+        val anotherUser = relationship.component1()
+        val anotherUserFriends = relationship.component2()
+
+        if (user == anotherUser) {
+            continue
+        } else {
+            var score = 0
+            score += countAcquaintance(userFriends, anotherUserFriends) * 10
+        }
+
+    }
+}
+
+fun countAcquaintance(userFriends: LinkedList<String>, anotherUserFriends: LinkedList<String>): Int {
+    var count = 0
+    for (userFriend in userFriends) {
+        for (anotherUserFriend in anotherUserFriends) {
+            if (userFriend == anotherUserFriend) {
+                count += 1
+            }
+        }
+    }
+
+    return count
 }
