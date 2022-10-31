@@ -19,5 +19,6 @@ fun solution7(
         }
     }
     visitors.filter { !userFriends.contains(it) }.forEach { recommendFriendMap[it] = (recommendFriendMap[it] ?: 0) + 1 }
-    return recommendFriendMap.filter { it.value > 0 }.toList().sortedByDescending { it.second }.map { it.first }.let { it.slice(0 until min(5,it.size)) }
+    return recommendFriendMap.filter { it.value > 0 }.toList().sortedWith(compareBy({ -(it.second) }, { it.first })).map { it.first }.getElement(5)
 }
+fun List<String>.getElement(number: Int) = slice(0 until min(number, size))
