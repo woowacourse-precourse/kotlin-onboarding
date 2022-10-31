@@ -30,6 +30,38 @@ class ApplicationTest {
             val result = -1
             assertThat(solution1(pobi, crong)).isEqualTo(result)
         }
+
+        @Test
+        fun case4() {
+            val pobi = listOf(99, 103)
+            val crong = listOf(211, 212)
+            val result = -1
+            assertThat(solution1(pobi, crong)).isEqualTo(result)
+        }
+
+        @Test
+        fun case5() {
+            val pobi = listOf(399, 400)
+            val crong = listOf(211, 212)
+            val result = 1
+            assertThat(solution1(pobi, crong)).isEqualTo(result)
+        }
+
+        @Test
+        fun case6() {
+            val pobi = listOf(401, 402)
+            val crong = listOf(211, 212)
+            val result = -1
+            assertThat(solution1(pobi, crong)).isEqualTo(result)
+        }
+
+        @Test
+        fun case7() {
+            val pobi = listOf(99, 100)
+            val crong = listOf(-1, 0)
+            val result = -1
+            assertThat(solution1(pobi, crong)).isEqualTo(result)
+        }
     }
 
     @Nested
