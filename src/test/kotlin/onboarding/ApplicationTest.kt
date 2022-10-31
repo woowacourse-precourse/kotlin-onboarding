@@ -202,6 +202,33 @@ class ApplicationTest {
             val result = listOf("jason@email.com", "jm@email.com", "mj@email.com")
             assertThat(solution6(forms)).isEqualTo(result)
         }
+
+        @Test
+        fun case2() {
+            val forms = listOf(
+                listOf("jm@email.com", "제이엠제이워니"),
+                listOf("jason@email.com", "제이슨"),
+                listOf("woniee@email.com", "워니"),
+                listOf("mj@email.com", "엠제이"),
+                listOf("nowm@email.com", "이워니")
+            )
+            val result = listOf("jason@email.com", "jm@email.com", "mj@email.com", "nowm@email.com", "woniee@email.com")
+            assertThat(solution6(forms)).isEqualTo(result)
+        }
+
+        @Test
+        fun case3() {
+            val forms = listOf(
+                listOf("kim@email.com", "김ㅡ이"),
+                listOf("nam@email.com", "ㅡ이야"),
+                listOf("choi@email.com", "최강"),
+                listOf("lee@email.com", "강합니다"),
+                listOf("jun@email.com", "왜ㅇㅡ이야")
+            )
+            val result = listOf("jun@email.com", "kim@email.com", "nam@email.com")
+            assertThat(solution6(forms)).isEqualTo(result)
+
+        }
     }
 
     @Nested
