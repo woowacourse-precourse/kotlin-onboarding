@@ -1,23 +1,21 @@
 package onboarding
 import kotlin.math.round
-import kotlin.math.roundToInt
 fun pointsum(pages: List<Int>): Int{
     var temp0 = pages[0]
-    var sum0 = 0;
-    var check0 = temp0 % 10
+    var sum0 = 0
+
     while (temp0 != 0){
+        var check0 = temp0 % 10
         sum0 += check0
         temp0 = round((temp0 / 10).toDouble()).toInt()
-        check0 %= 10
     }
 
     var temp1 = pages[1]
-    var sum1 = 0;
-    var check1 = temp1 % 10
+    var sum1 = 0
     while (temp1 != 0) {
-        sum1 += temp1 % 10
+        var check1 = temp1 % 10
+        sum1 += check1
         temp1 = round((temp1 / 10).toDouble()).toInt()
-        check1
     }
 
     return if (sum0 >= sum1){
@@ -30,11 +28,11 @@ fun pointsum(pages: List<Int>): Int{
 fun pointmult(pages: List<Int>): Int{
     var temp0 = pages[0]
     var res0 = 1
-    var check = temp0 % 10
+
     while (temp0 != 0){
-        res0 *= check
+        var check0 = temp0 % 10
+        res0 *= check0
         temp0 = round((temp0 / 10).toDouble()).toInt()
-        check %= 10
     }
 
     var temp1 = pages[1]
