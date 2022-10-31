@@ -43,9 +43,7 @@ fun getScoreList(
         }
         var score = 0
         score += countAcquaintance(userFriends, anotherUserFriends) * 10
-        print(anotherUser + countAcquaintance(userFriends, anotherUserFriends))
         score += countNumberOfVisits(anotherUser, visitors)
-        print(anotherUser + countNumberOfVisits(anotherUser, visitors))
 
         if (score > 0) {
             scoreMap[anotherUser] = score
@@ -57,6 +55,7 @@ fun getScoreList(
 
 fun countAcquaintance(userFriends: LinkedList<String>, anotherUserFriends: LinkedList<String>): Int {
     var count = 0
+
     for (userFriend in userFriends) {
         for (anotherUserFriend in anotherUserFriends) {
             if (userFriend == anotherUserFriend) {
@@ -70,6 +69,7 @@ fun countAcquaintance(userFriends: LinkedList<String>, anotherUserFriends: Linke
 
 fun countNumberOfVisits(anotherUser: String, visitors: List<String>): Int {
     var count = 0
+
     for (visitor in visitors) {
         if (anotherUser == visitor) {
             count += 1
