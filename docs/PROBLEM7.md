@@ -24,3 +24,18 @@
 | user | friends | visitors | result |
 | --- | --- | --- | --- |
 | "mrko" | [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ] | ["bedi", "bedi", "donut", "bedi", "shakevan"] | ["andole", "jun", "bedi"] |
+
+---------------------------------------------------------------------------------------
+### ✅ 기능 목록
+- [x] friends 리스트에서 idA, idB로 나누고, 새로운 리스트에 추가
+- [x] user와 함께 아는 친구의 수대로 10점씩 증가
+- [x] user와 이미 친구이면 추천 친구에 뜨지 않음
+- [x] user의 타임 라인에 방문했으면 1점씩 증가
+- [x] 점수가 가장 높은 순으로 정렬 후, 추천 점수가 같으면 이름 순으로 정렬하여 최대 5명 리턴
+- [x] 예외 처리
+
+### ☑️ 예외 처리
+- user, friends, visitors 아이디 길이가 1~30이 아닐 경우
+- friends 리스트 길이가 1~10000이 아닐 경우
+- visitors 리스트 길이가 0~10000이 아닐 경우
+- user, friends, visitors 아이디가 알파벳 소문자로만 이루어지지 않을 경우
