@@ -8,5 +8,9 @@ package onboarding
  * (4) 포비의 숫자와 크롱의 숫자를 비교하여 결과 산출
  * **/
 fun solution1(pobi: List<Int>, crong: List<Int>): Int {
-    TODO("프로그램 구현")
+    if(pobi[0]+1!=pobi[1] || crong[0]+1!=crong[1]){ //예외사항 검증
+        return -1 //종료
+    }
+
+    return 0
 }
