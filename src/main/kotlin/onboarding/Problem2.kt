@@ -1,7 +1,9 @@
 package onboarding
 
-var charCnt: Array<Int> = Array('z'.code + 1) { 0 }
+lateinit var charCnt: Array<Int>
 fun solution2(cryptogram: String): String {
+    charCnt = Array('z'.code + 1) { 0 }
+
     return getNoSequentialString(cryptogram)
 }
 
@@ -18,10 +20,14 @@ fun removeNowSequentialChar(sb: StringBuilder) {
         if(last != sb[i]) {
             if(charCnt[last.code] == 1)
                 sb.append(last)
-
+            //lll zyeeyz
+            //zyeeyz
+            //zyyz
+            //zz
+            //
             charCnt[last.code] = 0
-            last = sb[i]
         }
+        last = sb[i]
     }
     if(charCnt[last.code] == 1){
         sb.append(last)
