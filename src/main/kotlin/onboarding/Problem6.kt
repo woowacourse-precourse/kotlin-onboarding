@@ -39,6 +39,23 @@ fun countFrequency(forms: List<List<String>>, length: Int) : Map<String, Int> {
     }
     return result
 }
+/**
+ * Returns the list of emails in [forms] whose nickName is duplicated by length [length], with distinct elements.
+ */
+fun findEmail(forms: List<List<String>>, length: Int) : List<String> {
+    val result: MutableList<String> = mutableListOf()
+    val frequencyMap = countFrequency(forms, length)
+    for(form in forms) {
+        if(form.size != 2) continue
+        val email: String = form[0]
+        val nickName: String = form[1]
+        val subStrings = makeSubstring(length, nickName)
+        for(subString in subStrings) {
+            if(frequencyMap[subString] != null && frequencyMap[subString]!! > 1) result.add(email)
+        }
+    }
+    return result.distinct()
+}
 
 fun solution6(forms: List<List<String>>): List<String> {
     TODO("프로그램 구현")
