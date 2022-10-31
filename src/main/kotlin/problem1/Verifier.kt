@@ -1,5 +1,5 @@
 package problem1
 
-interface Verifier {
-    fun verify(): Boolean
+abstract class Verifier<T> {
+    abstract fun verify(input:T)
 }

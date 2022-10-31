@@ -1,7 +1,9 @@
 package problem1
 
-class OddVerifier(private val left:Int) : Verifier {
-    override fun verify(): Boolean {
-        return left % 2 != 0
+class OddVerifier : Verifier<Int>(){
+    override fun verify(input:Int) {
+        if(input % 2 == 0) {
+            throw RuntimeException("Input is even number")
+        }
     }
 }
