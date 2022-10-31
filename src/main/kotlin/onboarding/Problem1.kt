@@ -35,14 +35,14 @@ fun findMax(list: List<Int>) : Int {
         leftMul *= left % 10
         left /= 10
     }
-    var leftMax = max(leftSum, leftMul)
+    val leftMax = max(leftSum, leftMul)
 
     while(right != 0) {
         rightSum += right % 10
         rightMul *= right % 10
         right /= 10
     }
-    var rightMax = max(rightSum, rightMul)
+    val rightMax = max(rightSum, rightMul)
 
     return max(leftMax, rightMax)
 }
