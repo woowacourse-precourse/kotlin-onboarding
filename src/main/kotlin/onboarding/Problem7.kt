@@ -42,5 +42,24 @@ fun solution7(
     }
     myFriends = findMyFriends(friends)
     score = scoreSet()
+
+    //친구의 친구 점수 증가
+    fun acquaintance(friends: List<List<String>>): Unit {
+        for (i in 0..friends.size - 1) {
+            for (j in 0..myFriends.size - 1) {
+                if (friends[i][0].equals(myFriends[j])) {
+                    if (score.containsKey(friends[i][1])) {
+                        score.replace(friends[i][1], score.get(friends[i][1]) as Int + 10)
+                    }
+                }
+                if (score.containsKey(friends[i][1])) {
+                    if (friends[i][1].equals(myFriends[j])) {
+                        score.replace(friends[i][0], score.get(friends[i][0]) as Int + 10)
+                    }
+                }
+            }
+        }
+    }
+    acquaintance(friends)
     return result
 }
