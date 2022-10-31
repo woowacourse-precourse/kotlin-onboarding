@@ -18,15 +18,6 @@ fun exception(number: Int) {
 fun clapNum(num : Int): Int = num.toString().count { c -> (c == '3' || c == '6' || c == '9')}
 
 
-fun all_clapNum(number: Int) : Int {
-
-    var sum = 0
-
-    for(i in 1..number) {
-        sum += clapNum(i)
-    }
-
-    return sum
-}
+fun all_clapNum(number: Int) : Int = (1..number).fold(0) { acc, i -> acc + clapNum(i) }
 
 
