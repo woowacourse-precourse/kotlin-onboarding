@@ -12,5 +12,33 @@ fun solution1(pobi: List<Int>, crong: List<Int>): Int {
         return -1 //종료
     }
 
+    val pobiNumberList= mutableListOf<Int>()
+    val crongNumberList= mutableListOf<Int>()
+
+    pobiNumberList.addAll(getCalculatedNumbers(pobi[0])) //포비 - 왼쪽페이지
+    pobiNumberList.addAll(getCalculatedNumbers(pobi[1])) //포비 - 오른쪽페이지
+    crongNumberList.addAll(getCalculatedNumbers(crong[0])) //크롱 - 왼쪽페이지
+    crongNumberList.addAll(getCalculatedNumbers(crong[1])) //크롱 - 오른쪽페이지
+
     return 0
+}
+private fun getCalculatedNumbers(pageNumber: Int) :List<Int>{
+    var target = pageNumber
+    val numList= mutableListOf<Int>()
+
+    while (target>99){ //두자리수가 될 때까지 수를 10으로 나눠 한 자리씩 구한다
+        numList.add(target%10)
+        target/=10
+    }
+    numList.add(target%10)
+    numList.add(target/10)
+
+    var targetAdded = 0
+    var targetMultiplied = 1
+    for(i in 0 until numList.size){
+        targetAdded += numList[i]
+        targetMultiplied *= numList[i]
+    }
+
+    return listOf(targetAdded,targetMultiplied)
 }
