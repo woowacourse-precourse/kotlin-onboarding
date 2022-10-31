@@ -2,8 +2,12 @@ package onboarding
 
 fun solution1(pobi: List<Int>, crong: List<Int>): Int {
 
-    fun gameResult(pages: List<Int>): Int {
+    if (pobi[1]-pobi[0] != 1 || crong[1]-crong[0] != 1 || pobi[1] == 1 || crong[1] == 1 || pobi[0] == 400 || crong[0] == 400) {
+        return -1
+    }
 
+    fun gameResult(pages: List<Int>): Int {
+        
         val left = pages[0].toString().chunked(1)
         val right = pages[1].toString().chunked(1)
 
@@ -31,6 +35,7 @@ fun solution1(pobi: List<Int>, crong: List<Int>): Int {
         else {
             return max_right
         }
+
     }
 
     if(gameResult(pobi) > gameResult(crong)) {
