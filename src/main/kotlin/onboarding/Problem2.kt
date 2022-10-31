@@ -8,7 +8,6 @@ fun solution2(cryptogram: String): String {
     while(data0 != data1){
         data0 = data1
         data1 = deleteDuplication(data0)
-        println(data0)
 
     }
 
