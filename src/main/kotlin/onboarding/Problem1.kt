@@ -21,7 +21,8 @@ fun digit_multiple(num: Int): Int { // 각 자리수 곱 return
 }
 
 fun max(a: Int, b: Int): Int { // a와 b중 큰 값 return
-    return if (a > b) a else b
+    if (a > b) return a
+    return b
 }
 
 fun exception(lst: List<Int>): Boolean { // 예외 사항, 문제 발생 시 true return
