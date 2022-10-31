@@ -1,32 +1,40 @@
 package onboarding
 
 fun solution1(pobi: List<Int>, crong: List<Int>): Int {
-    return if (isPass(pobi) && isPass(crong)) {
+    if (checkException(pobi) && checkException(crong)) {
         val pobiScore = getScore(pobi)
         val crongScore = getScore(crong)
-        if (pobiScore > crongScore) 1 else if (pobiScore == crongScore) 0 else 1
-    } else {
-        -1
+
+        if (pobiScore > crongScore)
+            return 1
+        if (pobiScore < crongScore)
+            return 2
+        return 0
+
     }
+    return -1
 }
 
-fun isPass(list: List<Int>): Boolean {
-    return (list[0] + 1) == list[1]
+fun checkException(pages: List<Int>): Boolean {
+    return (pages[0] + 1) == pages[1]
 }
 
-fun getScore(list: List<Int>): Int {
+fun getScore(pages: List<Int>): Int {
     var res = 0
-    for (x in list) {
-        val tmp = returnHighScore(add(x), multiply(x))
-        res = returnHighScore(tmp, res)
+    for (page in pages) {
+        res = getMaxScore(getMaxScore(addPage(page), multiplyPage(page)), res)
     }
     return res
 }
 
-fun returnHighScore(a: Int, b: Int) = if (a > b) a else b
+fun getMaxScore(a: Int, b: Int): Int {
+    if (a > b)
+        return a
+    return b
+}
 
-fun add(n: Int): Int {
-    var num = n
+fun addPage(page: Int): Int {
+    var num = page
     var res = 0
     while (num > 0) {
         res += num % 10
@@ -35,8 +43,8 @@ fun add(n: Int): Int {
     return res
 }
 
-fun multiply(n: Int): Int {
-    var num = n
+fun multiplyPage(page: Int): Int {
+    var num = page
     var res = 1
     while (num > 0) {
         res *= num % 10
