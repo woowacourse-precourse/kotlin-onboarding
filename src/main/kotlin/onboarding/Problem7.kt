@@ -1,58 +1,94 @@
 package onboarding
 
 
-fun findShare(friends: List<List<String>>, user_friends: List<String>, user: String): MutableMap<String, Int>{
-    // user의 friends와 함께 아는 친구가 몇명인지 구하기
-    val cnt_friend = mutableMapOf<String, Int>()
-    for ((first, last) in friends) {
-        if (first == user || last == user) continue
-        if (user_friends.contains(first) && user_friends.contains(last)) continue // 둘 다 이미 친구인 경우
-        // cnt_friend <map> 에 people 데이터 추가, 존재시 점수 +
-        if (user_friends.contains(first)) {
-            if (cnt_friend.containsKey(last)) cnt_friend[last] = cnt_friend[last]!! + 10
-            if (!cnt_friend.containsKey(last)) cnt_friend[last] = 10
-        }
-        if (user_friends.contains(last)) {
-            if (cnt_friend.containsKey(first)) cnt_friend[first] = cnt_friend[first]!! + 10
-            if (!cnt_friend.containsKey(first)) cnt_friend[first] = 10
-        }
-    }
-    return cnt_friend
-}
-
-fun findFriends(friends: List<List<String>>, user: String): List<String>{
-    // user의 friends에는 어떤 친구들이 있는지 구하기
-    val peoples = ArrayList<String>()
-    for ((first, last) in friends){
-        if (first == user) peoples.add(last)
-        if (last == user) peoples.add(first)
-    }
-    return peoples
-}
-
-fun visitPeople(share_friends: MutableMap<String, Int>, visit: String): MutableMap<String, Int>{
-    // 방문객들 +1점
-    if (share_friends.containsKey(visit)) share_friends[visit] = share_friends[visit]!! + 1
-    if (!share_friends.containsKey(visit)) share_friends[visit] = 1
-    return share_friends
-}
-
-
 fun solution7(
     user: String,
     friends: List<List<String>>,
     visitors: List<String>
 ): List<String> {
+    var result = mutableListOf<String>() // 결과값 담을 곳
+    var myfriend = mutableListOf<String>() // 나랑 등록된 친구
+    var friend2 = mutableListOf<String>() // 알 수도 있는 친구
+    var visitor_check = mutableListOf<String>() // 방문자
 
-    val user_friends = findFriends(friends, user) // user와 친구인 리스트
-    var share_friends = findShare(friends, user_friends, user) // 함께 아는 친구들
-    for (visit in visitors) {
-        if (user_friends.contains(visit)) continue          // 방문객과 이미 친구인 경우
-        share_friends = visitPeople(share_friends, visit) // 방문횟수 + 1
+
+    // 나랑 친구인 경우 추천필요 X, 따로 빼서 보관
+    //1. friends작업
+    //친구인 사람 분리 작업
+    for (i in 0 until friends.size) {
+        if (user in friends[i]) {
+            if (friends[i][0] != user) {
+                myfriend.add(friends[i][0])
+            } else if (friends[i][1] != user) {
+                myfriend.add(friends[i][1])
+            }
+        }
     }
-    share_friends = share_friends.toSortedMap()
-    share_friends = share_friends.toList().sortedByDescending { it.second }.toMap() as MutableMap // 점수 별 정렬
-    val result:MutableList<String> = share_friends.keys.toList() as MutableList<String>   // Key 즉, 이름 저장
-    while (result.size >= 6) result.removeLast()
+    //친구 분리 완료
+//    println(myfriend)
+
+    //알 수도 있는 친구인지 확인
+    for (j in 0 until friends.size) {
+        for (k in 0 until myfriend.size) {
+            //친구 이름이 있을 시 친구의 친구로 등록
+            if (myfriend[k] in friends[j]) {
+                if (friends[j][0] != myfriend[k] && friends[j][0] != user) {
+                    friend2.add(friends[j][0])
+                } else if (friends[j][1] != myfriend[k] && friends[j][1] != user) {
+                    friend2.add(friends[j][1])
+                }
+            }
+        }
+    }
+    //알 수도 있는 친구 분리 완료
+//    println(friend2)
+    //2. visitors 작업
+    for (l in 0 until visitors.size){
+        if (visitors[l] !in myfriend){
+            visitor_check.add(visitors[l])
+        }
+    }
+    //방문자 분리 완료
+//    println(visitor_check)
+
+    // 알 수도 있는 친구 점수 작업
+    var friend_push= mutableMapOf("예비" to 0) // 친구추천 목록
+
+    for (m in 0 until friend2.size){
+        if(friend2[m] !in friend_push){
+            friend_push.put(friend2[m],10)
+        }
+        if (friend2[m] in friend_push){
+            var cnt=friend2.count{ c -> c == friend2[m] }
+//            println(cnt)
+            friend_push.replace(friend2[m],10,cnt*10)
+        }
+    }
+    //visitor 점수 작업
+    for (n in 0 until visitor_check.size) {
+        if (visitor_check[n] !in friend_push) {
+            friend_push.put(visitor_check[n], 1)
+        }
+        if (visitor_check[n] in friend_push) {
+            var cnt = visitor_check.count { c -> c == visitor_check[n] }
+//            println(cnt)
+            friend_push.replace(visitor_check[n], 1, cnt * 1)
+        }
+    }
+    //점수 높은순(내림차순) 정렬
+    var friend_list= mutableListOf<Pair<String, Int>>()
+    friend_list=friend_push.toList().sortedByDescending { it.second }.toMutableList()
+
+//    println(friend_list)
+    //3. result 작업 최대 5, 0일 수 있음
+    for (o in 0 until friend_list.size){
+        if (result.size==5){
+            break
+        }
+        if(friend_list[o].second!=0){
+            result.add(friend_list[o].first)
+        }
+    }
+//    println(result)
     return result
 }
