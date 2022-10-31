@@ -1,27 +1,36 @@
 package onboarding
 
-fun dupleCheck(str: String): ArrayList<Int>{ // 처음으로 나오는 중복 문자들의 왼쪽을 index를 return
-    val duple = arrayListOf<Int>()
-    for (idx in 1 until str.length) {
-        if (str[idx - 1] == str[idx]) duple.add(idx - 1)
-        if (str[idx - 1] != str[idx] && duple.isNotEmpty()) return duple
-    }
-    return duple
-}
-fun updateStr(str: String, duple: ArrayList<Int>): String{ // 입력받은 duple을 토대로, 중복된 부분 제거
-    if (duple.isNotEmpty()){
-        return str.substring(0 until duple.first()) + str.substring(duple.last() + 2)
-    }
-    return str
-}
-
 fun solution2(cryptogram: String): String {
-    TODO("프로그램 구현")
-    var duple = arrayListOf<Int>(0)
-    var result:String = cryptogram
-    while (duple.isNotEmpty()) { // 더 이상 중복된 문자가 나오지 않으면 종료
-        duple = dupleCheck(result)
-        result = updateStr(result, duple)
+    var answer = ""
+    var flag = true
+    var char_list= mutableListOf<Char>()
+    var count=0
+    //리스트에 문자 채워주기
+    for (i in 0 until cryptogram.length){
+        char_list= char_list.plus(cryptogram[i]) as MutableList<Char>
     }
-    return result
+    // 최초 리스트 모습 확인
+//    println(char_list)
+
+    while (flag){
+        //종료조건 끝까지 돌았는데 제거할게 없다면 or 아무것도 남지 않았다면
+        if (count ==1000 || char_list.size==0){ // 문자 길이 1000이므로
+            flag=false
+        }
+        for (j in 0 until char_list.size){
+            if (j+1>=char_list.size){
+                break
+            }
+            if (char_list[j]==char_list[j+1]){
+                char_list.removeAt(j)
+                char_list.removeAt(j)
+            }
+        }
+        count+=1
+    }
+    for (k in 0 until char_list.size){
+        answer+=char_list[k]
+    }
+
+    return "\"${answer}\""
 }
