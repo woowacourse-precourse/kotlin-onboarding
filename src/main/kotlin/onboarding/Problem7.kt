@@ -5,13 +5,29 @@ fun solution7(
     friends: List<List<String>>,
     visitors: List<String>
 ): List<String> {
-    TODO("프로그램 구현")
+
 }
 
 /**
  * 전체 유저의 리스트를 반환한다.
  */
-
+fun getAllUserList(friends: List<List<String>>, visitors: List<String>): List<String> {
+    val totalUserList = mutableListOf<String>()
+    for (i in friends) {
+        if (!totalUserList.contains(i[0])) {
+            totalUserList.add(i[0])
+        }
+        if (!totalUserList.contains(i[1])) {
+            totalUserList.add(i[1])
+        }
+    }
+    for (i in visitors) {
+        if (!totalUserList.contains(i)) {
+            totalUserList.add(i)
+        }
+    }
+    return totalUserList.toList()
+}
 /**
  * 유저와 이미 친구인 리스트를 반환한다.
  */
