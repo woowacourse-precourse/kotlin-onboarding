@@ -9,9 +9,9 @@
 
 package onboarding
 
-fun ATM(m : Int) : List<Int> {
+fun moneyATM(m : Int) : List<Int> {
     val moneyList = arrayListOf<Int>(50000, 10000, 5000, 1000, 500, 100, 50, 10, 1)
-    var wallet = MutableList<Int>(9) { 0 }
+    val wallet = MutableList<Int>(9) { 0 }
 
     var currentMoney = m
 
@@ -28,5 +28,5 @@ fun ATM(m : Int) : List<Int> {
 }
 fun solution5(money: Int): List<Int> {
 //    TODO("프로그램 구현")
-    return ATM(money)
+    return moneyATM(money)
 }
