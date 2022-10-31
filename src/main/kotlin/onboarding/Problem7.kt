@@ -42,6 +42,9 @@ fun solution7(
     }
     // 3. 사용자 타임라인 방문 횟수만큼 점수 부여
     for(visitor in visitors){
+        // 이미 친구인 경우는 제외
+        if(friendRelations[user]!!.toList().contains(visitor))
+            continue
         if(!score.containsKey(visitor)){
             score[visitor] = 0
             score[visitor] = score[visitor]!! + 1
@@ -49,6 +52,18 @@ fun solution7(
         }
         score[visitor] = score[visitor]!! + 1
     }
-    print(score)
+    // 4.
+    val datas = score.toList().sortedWith(
+            compareByDescending<Pair<String,Int>> {
+                it.second
+            }.thenBy{
+                it.first
+            }
+    )
+    for(data in datas){
+        if(answer.size==5)
+            break
+        answer.add(data.first)
+    }
     return answer
 }
