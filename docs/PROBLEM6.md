@@ -21,3 +21,7 @@
 | forms | result |
 | --- | --- |
 | [ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ] | ["jason@email.com", "jm@email.com", "mj@email.com"] |
+
+### 기능 목록
+1. 문자열에서 연속된 두 글자 문자를 뽑아내어 Map에 추가하는 기능
+2. 주어진 닉네임들을 탐색하며 1번 기능을 사용해 모든 연속된 두 글자 문자를 뽑아 내고<br/>컬렉션 메서드를 사용해 같은 글자가 연속적으로 포함되는 닉네임을 작성한 지원자의 이메일 목록을 반환하는 기능
