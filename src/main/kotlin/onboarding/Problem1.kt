@@ -6,10 +6,10 @@ fun solution1(pobi: List<Int>, crong: List<Int>): Int {
     var pobiMax = 0
     var crongMax = 0
 
-    if(pobi[0] % 2 == 1 // 리스트[0]이 홀수거나
-            || crong[0] % 2 == 1
-            || pobi[1] % 2 == 0 // 리스트[1]이 짝수일 때
-            || crong[1] % 2 == 0)
+    if(pobi[1] % 2 == 1 // 리스트[1]이 홀수거나
+            || crong[1] % 2 == 1
+            || pobi[0] % 2 == 0 // 리스트[0]이 짝수일 때
+            || crong[0] % 2 == 0)
     {
         return winner
     }
