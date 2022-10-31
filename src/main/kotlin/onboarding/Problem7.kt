@@ -49,6 +49,9 @@ fun solution7(
             println("추천 친구 : ${recommendFriends}")
         }
     }
+    var recommendList = recommendFriends.toList().sortedByDescending { it.second }.toMap().keys.toList()
+
+    println("정렬 : ${recommendList}")
 
     return listOf("Hello World")
 }
