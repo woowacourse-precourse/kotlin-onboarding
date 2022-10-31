@@ -13,7 +13,7 @@ fun makeSubstring(length: Int, string: String) : List<String> {
         for (index in 0..string.length-length) {
             result.add(string.substring(index, index+length))
         }
-        return result
+        return result.distinct()
     }
 }
 
