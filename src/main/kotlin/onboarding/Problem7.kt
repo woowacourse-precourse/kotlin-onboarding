@@ -8,13 +8,8 @@ fun solution7(
     user: String,
     friends: List<List<String>>,
     visitors: List<String>
-): List<String> {
+): List<String> = sorted_score_friends(user, friends, visitors, connectEdge(friends))
 
-    exception7(user, friends, visitors)
-    val graph = connectEdge(friends)
-
-    return sorted_score_friends(user, friends, visitors, graph)
-}
 
 fun exception7(user : String, friends: List<List<String>>, visitors: List<String>) {
     if(user.length < 1 || user.length > 30) {
@@ -104,6 +99,8 @@ fun score_friends(user: String, friends: List<List<String>>, visitors: List<Stri
 }
 
 fun sorted_score_friends(user: String, friends: List<List<String>>, visitors: List<String>, graph: LinkedHashMap<String, LinkedList<String>>) : List<String> {
+
+    exception7(user, friends, visitors)
 
     val entries = score_friends(user, friends, visitors, graph).toList().sortedWith(compareByDescending<Pair<String, Int>> { it.second }.thenBy { it.first }).toMap()
     val result = mutableListOf<String>()
