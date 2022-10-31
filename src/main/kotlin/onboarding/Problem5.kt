@@ -1,9 +1,7 @@
 package onboarding
 
-fun solution5(money: Int): List<Int> {
-    exception5(money)
-    return money_list(money)
-}
+fun solution5(money: Int): List<Int> = money_list(money)
+
 
 fun exception5(money: Int) {
     if(money < 1 || money > 10000000) {
@@ -18,6 +16,8 @@ fun remain_money(change_money: Int, money: Int) : Int = money % change_money
 
 
 fun money_list(money: Int) : List<Int> {
+    exception5(money)
+
     var money = money
     val moneyList = listOf(50000, 10000, 5000, 1000, 500, 100, 50, 10, 1)
     var result = ArrayList<Int>()
