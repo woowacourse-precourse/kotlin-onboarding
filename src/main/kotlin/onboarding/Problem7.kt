@@ -22,5 +22,25 @@ fun solution7(
         }
         return MyFriends
     }
+    fun scoreSet(): HashMap<String, Int> {
+        var scoreSet = HashMap<String, Int>()
+        for (i in 0..friends.size - 1) {
+            scoreSet.put(friends[i][0], 0)
+            scoreSet.put(friends[i][1], 0)
+
+        }
+        for (i in 0..visitors.size - 1) {
+            if (!scoreSet.containsKey(visitors[i])) {
+                scoreSet.put(visitors[i], 0)
+            }
+        }
+        for (i in 0..myFriends.size - 1) {
+            scoreSet.remove(myFriends[i])
+        }
+        scoreSet.remove(user)
+        return scoreSet
+    }
+    myFriends = findMyFriends(friends)
+    score = scoreSet()
     return result
 }
