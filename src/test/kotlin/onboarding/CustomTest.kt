@@ -21,6 +21,13 @@ class Problem7CustomTest {
             val result = "a"
             Assertions.assertThat(solution2(cryptogram)).isEqualTo(result)
         }
+
+        @Test
+        fun case5() {
+            val cryptogram = "aa"
+            val result = ""
+            Assertions.assertThat(solution2(cryptogram)).isEqualTo(result)
+        }
     }
 
     @Nested
