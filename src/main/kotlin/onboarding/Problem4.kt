@@ -1,5 +1,16 @@
 package onboarding
 
 fun solution4(word: String): String {
-    TODO("프로그램 구현")
+    var answer = ""
+
+    for (i in word.indices)
+        answer += convertAlphabet(word[i])
+    return answer
+}
+fun convertAlphabet(alphabet: Char): Char{
+    if (alphabet.isUpperCase())
+        return (155-alphabet.code).toChar()
+    if (alphabet.isLowerCase())
+        return (219-alphabet.code).toChar()
+    return alphabet
 }
