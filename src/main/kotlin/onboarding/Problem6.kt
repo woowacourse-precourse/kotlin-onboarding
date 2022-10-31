@@ -37,12 +37,10 @@ fun dupleCheck(forms: List<List<String>>, email:String, bans: ArrayList<String>)
 }
 
 fun solution6(forms: List<List<String>>): List<String> {
-    var ban_names = arrayListOf<String>()
     var result = arrayListOf<String>()
-
     for ((email, nickname) in forms) {
         if (exception(email, nickname)) continue // 예외 처리
-        ban_names = banCheck(nickname)
+        val ban_names = banCheck(nickname)
         result += dupleCheck(forms, email, ban_names)
     }
     result = result.distinct() as ArrayList<String> // 똑같은 원소 제거
