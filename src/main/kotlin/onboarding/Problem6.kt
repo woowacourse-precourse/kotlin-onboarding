@@ -18,7 +18,7 @@ result는 이메일에 해당하는 부분의 문자열을 오름차순으로 �
 */
 
 fun solution6(forms: List<List<String>>): List<String> {
-    /*
+/*
 * 아이디 2~9자리
 * 닉네임 1~19자리
 * 이메일은 email.com제한
@@ -64,20 +64,22 @@ fun solution6(forms: List<List<String>>): List<String> {
                 //중복닉네임이 있는 이메일을 result에 넣어주기
                 if (forms[l][1].contains(nick_check[k])) {
 //                    println(forms[l][0])
-                    if (forms[l][0] in result) {
+                    // 중복 방지삽입
+                    if ("\"${forms[l][0]}\"" in result) {
                         continue
                     } else {
-                        result.add(forms[l][0])
+                        // "이메일" 형식으로 삽입
+                        result.add("\"${forms[l][0]}\"")
                     }
 
                 }
             }
         }
     }
-    //중복 제거(세트화)
+    //다시 한번 중복 제거(세트화)
     result.toSet()
     //정렬(오름차순)
     result.sort()
-
+//    println(result)
     return result
 }
