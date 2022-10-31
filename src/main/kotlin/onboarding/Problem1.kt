@@ -22,6 +22,7 @@ fun solution1(pobi: List<Int>, crong: List<Int>): Int {
 
 }
 
+
 fun calculateMax(pageList:List<Int>): Int{
     val resultList:ArrayList<Int> = arrayListOf()
 
@@ -50,7 +51,7 @@ fun calculateMultiply(page:Int) : Int {
     var pageResult = 1
 
     while (calculatePage != 0) {
-        pageResult += calculatePage % 10
+        pageResult *= calculatePage % 10
         calculatePage /= 10
     }
 
