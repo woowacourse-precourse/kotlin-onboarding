@@ -21,3 +21,9 @@
 | forms | result |
 | --- | --- |
 | [ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ] | ["jason@email.com", "jm@email.com", "mj@email.com"] |
+
+### 구현 기능 목록
+
+1. 이메일 형식 부합한지 확인 기능(전체길이, 이메일 주소가 email@.com 인지)
+2. 각 닉네임 두 글자씩 pair로 나누고 Map에 넣는 기능(이미 있는 경우 개수 세기)
+3. 갯수가 1개인 두글자 pair는 Map에서 제외, 각 닉네임에서 Map에 pair를 가지고 있는 경우 result에 이메일 넣는 기능
