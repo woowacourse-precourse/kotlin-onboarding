@@ -9,7 +9,7 @@ import java.util.Collections
 // 4. 만약 추천 점수가 같다면 이름순으로 정렬하여 리턴
 
 private val friendsMap: MutableMap<String, String> = HashMap()
-private val recommendedFriendsSet = HashSet<String>()
+private lateinit var recommendedFriends: MutableList<String>
 private val recommendScoreMap: MutableMap<String, Int> = HashMap()
 fun solution7(
     user: String,
@@ -17,7 +17,33 @@ fun solution7(
     visitors: List<String>
 ): List<String> {
     makeFriendsMap(friends)
-    TODO("리턴 값 미구현")
+
+    for (friend in friendsMap.keys) {
+        recommendScoreMap[friend] = calculateRecommendScore(user, friend, visitors)
+    }
+
+    for (friend in friendsMap.keys) {
+        if (recommendScoreMap[friend] == 0) {
+            recommendScoreMap.remove(friend)
+        }
+    }
+
+    for (id in visitors) {
+        if (!friendsMap.containsKey(id)) {
+            recommendScoreMap[id] = calculateRecommendScore(user, id, visitors)
+        }
+    }
+
+    recommendScoreMap.remove(user)
+
+    val sortedScoreMap = recommendScoreMap.toList().sortedByDescending { it.second }.toMap().toMutableMap()
+    recommendedFriends = sortedScoreMap.keys.toMutableList()
+
+    if (recommendedFriends.size > 5) {
+        return recommendedFriends.subList(0, 5)
+    }
+
+    return recommendedFriends
 }
 
 // 기능 목록 1번
