@@ -15,9 +15,8 @@ fun exception(number: Int) {
     }
 }
 
-fun clapNum(num : Int): Int {
-    return num.toString().count { c -> (c == '3' || c == '6' || c == '9')}
-}
+fun clapNum(num : Int): Int = num.toString().count { c -> (c == '3' || c == '6' || c == '9')}
+
 
 fun all_clapNum(number: Int) : Int {
 
