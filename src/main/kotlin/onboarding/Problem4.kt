@@ -25,6 +25,7 @@ fun solution4(word: String): String {
             solutionWord += reverseOrder.toChar()
             continue
         }
+        solutionWord += wordPiece[index] //알파벳을 제외한 숫자, 공백은 그대로 출력
     }
 
     return solutionWord
