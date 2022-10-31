@@ -19,3 +19,12 @@ fun solution1(pobi: List<Int>, crong: List<Int>): Int {
     // 점수를 비교
     return if (pobiScore > crongScore) 1 else 2
 }
+
+ fun score(score:List<Int>): Int {
+    val left = score[0].toString()
+        .map { it.digitToInt() }
+    val right = score[1].toString()
+        .map { it.digitToInt() }
+
+    return (listOf(left.sumOf { it }, right.sumOf { it }, multiply(left), multiply(right)).maxOf { it })
+}
