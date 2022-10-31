@@ -21,9 +21,7 @@ fun solution1(pobi: List<Int>, crong: List<Int>): Int {
     val maxPobi = getMax(pobisNumbers)
     val maxCrong = getMax(crongsNumbers)
 
-
-
-    return 0
+    return getWinner(maxPobi, maxCrong)
 }
 
 fun checkInputException(pageList: List<Int>): Boolean{
@@ -65,6 +63,10 @@ fun getMax(numbers: ArrayList<Int>): Int{
 }
 
 fun getWinner(pobiMax:Int, crongMax:Int): Int{
-    // TODO: 2022-10-31
-    return 0
+    return if(pobiMax > crongMax)
+        1
+    else if(pobiMax < crongMax)
+        2
+    else
+        0
 }
