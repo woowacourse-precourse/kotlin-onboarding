@@ -19,7 +19,13 @@ class NicknameManager(private val forms:List<List<String>>) {
         reporter.add(email)
     }
 
-    private fun composeRestrictedStorage() {}
+    private fun composeRestrictedStorage() {
+        val intersection = storage.getIntersection(nicknameSet)
+
+        if(intersection.isNotEmpty()) {
+            restrictedStorage.addToStorage(intersection)
+        }
+    }
 
     private fun validateNicknameSet(email:String) {
         val intersection = restrictedStorage.getIntersection(nicknameSet)
