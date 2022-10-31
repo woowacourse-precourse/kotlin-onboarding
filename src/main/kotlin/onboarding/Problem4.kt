@@ -28,7 +28,6 @@ fun createDictionary(): HashMap<Char, Char> {
     return dictionary
 }
 
-
 fun isAlpha(ch: Char): Boolean {
     if (ch.code in START_UPPER_ALPHA_CODE..END_LOWER_ALPHA_CODE) return true
     return false

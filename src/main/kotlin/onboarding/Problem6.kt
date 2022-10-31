@@ -8,6 +8,9 @@ fun solution6(forms: List<List<String>>): List<String> {
     return checkDuplication(forms = rightForms)
 }
 
+/**
+ * 중복이 있는 모든 닉네임을 체크하는 함수
+ */
 fun checkDuplication(forms: List<List<String>>): List<String> {
     val resultEmails = mutableSetOf<String>()
 
@@ -26,6 +29,9 @@ fun checkDuplication(forms: List<List<String>>): List<String> {
     return resultEmails.toList().sorted()
 }
 
+/**
+ * 두 닉네임 간에 중복이 있는지 판단하는 함수
+ */
 fun isDuplicated(targetNickname: String, compareNickname: String): Boolean {
     var pattern = ""
 
@@ -46,7 +52,6 @@ fun isDuplicated(targetNickname: String, compareNickname: String): Boolean {
 
 fun isRightEmail(email: String): Boolean =
     EMAIL_PATTERN.toRegex().matches(email) && email.length in EMAIL_MIN_LEN until EMAIL_MAX_LEN && EMAIL_DOMAIN in email
-
 
 fun isRightNickname(nickname: String): Boolean =
     nickname.length in NICKNAME_MIN_LEN until NICKNAME_MAX_LEN && NICKNAME_PATTERN.toRegex().matches(nickname)

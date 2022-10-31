@@ -12,7 +12,9 @@ fun solution5(money: Int): List<Int> {
         TEN_THOUS,
         FIFTY_THOUS
     )
-    val coinCnt = Array(size = money + 1) { IntArray(size = coins.size) { 0 } } // 화폐 개수
+
+    /** coinCnt: 필요한 각 coin의 개수 정보 **/
+    val coinCnt = Array(size = money + 1) { IntArray(size = coins.size) { 0 } }
 
     return calculateCoinCnt(money = money, coins = coins, coinCnt = coinCnt)
 }
@@ -25,9 +27,8 @@ fun calculateCoinCnt(
     coins: IntArray,
     coinCnt: Array<IntArray>
 ): List<Int> {
-    /**
-    * coinMinCntOfMoney[i]: {i}원을 거슬러 주는데 사용된 최소 화폐의 개수
-    */
+
+    /** coinMinCntOfMoney[i]: {i}원을 거슬러 주는데 사용된 최소 coin의 개수 **/
     val coinMinCntOfMoney = IntArray(size = money + 1) { Int.MAX_VALUE }
     coinMinCntOfMoney[0] = 0
 

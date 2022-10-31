@@ -16,8 +16,7 @@ fun decideWinner(pobiMaxNum: Int, crongMaxNum: Int): Int {
 }
 
 fun isWrongPage(pages: List<Int>): Boolean {
-    val leftPageNum = pages[0]
-    val rightPageNum = pages[1]
+    val (leftPageNum, rightPageNum) = pages
 
     return when {
         leftPageNum % 2 != 1 || rightPageNum % 2 != 0 -> true
@@ -27,6 +26,9 @@ fun isWrongPage(pages: List<Int>): Boolean {
     }
 }
 
+/**
+ * 왼쪽과 오른쪽 페이지를 계산 한 값을 비교해서 가장 큰 값을 반환하는 함수
+ */
 fun compareMaxNumber(pages: List<Int>): Int {
     val leftMaxNum = calculateMaxNumber(pageNumber = pages[0])
     val rightMaxNum = calculateMaxNumber(pageNumber = pages[1])
@@ -34,6 +36,9 @@ fun compareMaxNumber(pages: List<Int>): Int {
     return max(leftMaxNum, rightMaxNum)
 }
 
+/**
+ * 페이지의 각 자리수를 더하거나 곱해서 비교한 뒤 큰 수를 반환하는 함수
+ */
 fun calculateMaxNumber(pageNumber: Int): Int {
     var pageNum = pageNumber
     var plusNum = 0

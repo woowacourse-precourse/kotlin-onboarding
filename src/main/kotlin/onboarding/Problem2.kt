@@ -10,12 +10,12 @@ fun decrypt(cryptogram: String): String {
 
     do {
         targetStr = removeRepetition(cryptogram = targetStr, regex = repetitionReg)
-    } while (hasDuplicates(cryptogram = targetStr, regex = repetitionReg))
+    } while (hasRepetition(cryptogram = targetStr, regex = repetitionReg))
 
     return targetStr
 }
 
-fun hasDuplicates(cryptogram: String, regex: Regex): Boolean =
+fun hasRepetition(cryptogram: String, regex: Regex): Boolean =
     regex.containsMatchIn(cryptogram)
 
 fun removeRepetition(cryptogram: String, regex: Regex): String =
