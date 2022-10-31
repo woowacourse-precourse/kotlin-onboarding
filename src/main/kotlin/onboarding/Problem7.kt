@@ -34,3 +34,18 @@ fun getOverFriends(name: String, allFriendsList: List<List<String>>, myFriendLis
     overFriends.remove(name)
     return overFriends.subtract(myFriendList)
 }
+
+fun addScoreOverFriend(recommendFriendMap: MutableMap<String, Int>, overFriends: Set<String>) {
+    for (friend in overFriends) {
+        recommendFriendMap[friend] = 10
+    }
+}
+
+fun addScoreVisitor(recommendFriendMap: MutableMap<String, Int>, visitors: List<String>, userFriends: Set<String>) {
+    val notFriendVisitors = ArrayList<String>(visitors)
+    notFriendVisitors.removeAll(userFriends)
+
+    for (visitor in notFriendVisitors) {
+        recommendFriendMap[visitor] = recommendFriendMap.getOrPut(visitor) { 0 } + 1
+    }
+}
