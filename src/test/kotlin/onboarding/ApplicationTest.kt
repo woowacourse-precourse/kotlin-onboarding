@@ -47,6 +47,7 @@ class ApplicationTest {
             val result = ""
             assertThat(solution2(cryptogram)).isEqualTo(result)
         }
+
     }
 
     @Nested
@@ -127,4 +128,6 @@ class ApplicationTest {
             assertThat(solution7(user, friends, visitors)).isEqualTo(result)
         }
     }
+
+
 }
