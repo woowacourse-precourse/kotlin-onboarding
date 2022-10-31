@@ -39,6 +39,17 @@ fun solution7(
         }
     }
 
+    for (visitor in visitors) {
+        if (!userFriends.contains(visitor)) {
+            if (recommendFriends.containsKey(visitor)) {
+                recommendFriends[visitor] = recommendFriends[visitor]!! + 1
+            } else {
+                recommendFriends[visitor] = 1
+            }
+            println("추천 친구 : ${recommendFriends}")
+        }
+    }
+
     return listOf("Hello World")
 }
 
