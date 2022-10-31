@@ -28,22 +28,26 @@ fun convertNickNameToTwoLetterSet(nickNmae: String): Set<String> {
     for (i in 0 until nickNmae.length - 1) {
         twoLetterSet.add(nickNmae.substring(i, i + 2))
     }
+
     return twoLetterSet
 }
 
 fun checkDuplicateNickname(email: String, twoLetterMap: Map<String, Set<String>>): Boolean {
     for (form in twoLetterMap) {
-        if (form.component1() == email) {
+        val twoLetterSet = twoLetterMap[email] ?: hashSetOf<String>()
+        val anotherCrewEmail = form.component1()
+        val anotherCrewTwoLetterSet = form.component2()
+
+        if (anotherCrewEmail == email) {
             continue
-        } else {
-            for (twoLetter in twoLetterMap[email]!!) {
-                // 두 글자씩 비교했을 때 중복이 될 경우
-                if (form.component2().contains(twoLetter)) {
-                    return true
-                }
+        }
+        for (twoLetter in twoLetterSet) {
+            if (anotherCrewTwoLetterSet.contains(twoLetter)) {
+                return true
             }
         }
     }
+
     return false
 }
 
