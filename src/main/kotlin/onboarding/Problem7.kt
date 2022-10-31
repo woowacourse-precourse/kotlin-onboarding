@@ -52,5 +52,9 @@ fun solution7(
         recommend.remove(person)
     }
 
+    recommend = recommend.toList().sortedByDescending { it.second }.toMap() as MutableMap
 
+    val answer = recommend.keys
+
+    return answer.take(5)
 }
