@@ -7,7 +7,7 @@ fun solution1(pobi: List<Int>, crong: List<Int>): Int {
     if(isErrorExist(pobi, crong))
         return -1
 
-    return -1
+    return getResult(pobi, crong)
 }
 
 fun isInputError(list: List<Int>): Boolean {
@@ -48,4 +48,19 @@ fun getMaxNumber(list: List<Int>): Int {
         }
     }
     return maxNum
+}
+
+fun getResult(pobi: List<Int>, crong: List<Int>): Int {
+    val pobiMaxNumber = getMaxNumber(pobi)
+    val crongMaxNumber = getMaxNumber(crong)
+
+    return if (pobiMaxNumber == crongMaxNumber) {
+        0
+    } else if (pobiMaxNumber > crongMaxNumber) {
+        1
+    } else if (pobiMaxNumber < crongMaxNumber) {
+        2
+    } else {
+        -1
+    }
 }
