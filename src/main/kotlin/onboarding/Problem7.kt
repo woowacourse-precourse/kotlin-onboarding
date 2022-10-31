@@ -1,5 +1,19 @@
 package onboarding
 
+/**
+기능 목록
+- 친구 관계 Map
+- 친구 관계 Map으로 점수 10점씩 주기
+- visitors List로 점수 1점씩 주기
+- User와 User의 친구 점수 0점으로 초기화
+- 조건대로 정렬, 개수 조절
+- makeRelationMap: 친구 관계 Map 만드는 함수 (ex. relation["donut"] = "andole", relation["andole"] = "donut")
+- makeScoreMapByRelationMap: relation Map으로 점수 Map 만드는 함수
+- makeScoreMapByVisitorsList: visitors List로 점수 Map 만드는 함수
+- exceptUserAndFriendsOfUser: User와 User의 친구에 대한 점수를 0점으로 초기화하는 함수
+- refineScore: 점수가 0 초과이면서 점수가 높은 순, 점수가 같은 경우에는 이름순으로 정렬, 5개 이상인 경우 5개까지로 잘라서 List로 반환하는 함수
+ */
+
 fun solution7(
     user: String,
     friends: List<List<String>>,
