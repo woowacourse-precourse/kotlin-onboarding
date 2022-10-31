@@ -35,7 +35,7 @@ fun exception(lst: List<Int>): Boolean { // 예외 사항, 문제 발생 시 tru
 }
 
 fun solution1(pobi: List<Int>, crong: List<Int>): Int {
-    TODO("프로그램 구현")
+
     if (exception(pobi) || exception(crong)) return -1
 
     val pobi_score = max(max(digit_sum(pobi.first()), digit_multiple(pobi.first())), max(digit_sum(pobi.last()), digit_multiple(pobi.last())))
