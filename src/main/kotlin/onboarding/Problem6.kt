@@ -2,12 +2,8 @@ package onboarding
 
 import kotlin.math.max
 
-fun solution6(forms: List<List<String>>): List<String> {
+fun solution6(forms: List<List<String>>): List<String> = find_intesect_list(forms)
 
-    exception6(forms)
-
-    return find_intesect_list(forms)
-}
 
 fun exception6(forms: List<List<String>>) {
     if(forms.size < 1 || forms.size > 10000) {
@@ -87,6 +83,8 @@ fun compare_intersect(num : Int, forms: List<List<String>>, result : MutableSet<
 }
 
 fun find_intesect_list(forms: List<List<String>>) : List<String> {
+
+    exception6(forms)
 
     val result = mutableSetOf<String>()
 
