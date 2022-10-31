@@ -11,14 +11,14 @@ fun solution2(cryptogram: String): String {
         var result = ' '
 
         for (i in newCryptogramCharArray.indices) {
+            val consecutiveDuplicateCharactersExist = newCryptogramCharArray[i] == result
 
-            if (newCryptogramCharArray[i] == result) {
+            if (consecutiveDuplicateCharactersExist) {
                 newCryptogramCharArray[i] = '-'
                 newCryptogramCharArray[i - 1] = '-'
                 isChanged = true
             }
-
-            if (newCryptogramCharArray[i] != result) result = newCryptogramCharArray[i]
+            if (!consecutiveDuplicateCharactersExist) result = newCryptogramCharArray[i]
         }
 
         newCryptogram = String(newCryptogramCharArray)
