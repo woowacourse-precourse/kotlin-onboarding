@@ -30,6 +30,46 @@ class ApplicationTest {
             val result = -1
             assertThat(solution1(pobi, crong)).isEqualTo(result)
         }
+
+        @Test
+        fun case4() {
+            val pobi: List<Int> = listOf(99, 103)
+            val crong: List<Int> = listOf(211, 212)
+            val result = -1
+            assertThat(solution1(pobi, crong)).isEqualTo(result)
+        }
+
+        @Test
+        fun case5() {
+            val pobi: List<Int> = listOf(399, 401)
+            val crong: List<Int> = listOf(211, 212)
+            val result = -1
+            assertThat(solution1(pobi, crong)).isEqualTo(result)
+        }
+
+        @Test
+        fun case6() {
+            val pobi: List<Int> = listOf(399, 401, 300)
+            val crong: List<Int> = listOf(211, 212)
+            val result = -1
+            assertThat(solution1(pobi, crong)).isEqualTo(result)
+        }
+
+        @Test
+        fun case7() {
+            val pobi: List<Int> = listOf(400, 401)
+            val crong: List<Int> = listOf(211, 212)
+            val result = -1
+            assertThat(solution1(pobi, crong)).isEqualTo(result)
+        }
+
+        @Test
+        fun case8() {
+            val pobi: List<Int> = listOf(392, 391)
+            val crong: List<Int> = listOf(211, 212)
+            val result = -1
+            assertThat(solution1(pobi, crong)).isEqualTo(result)
+        }
     }
 
     @Nested
@@ -47,6 +87,43 @@ class ApplicationTest {
             val result = ""
             assertThat(solution2(cryptogram)).isEqualTo(result)
         }
+
+        @Test
+        fun case3() {
+            val cryptogram = "zyellleyz"
+            val result = ""
+            assertThat(solution2(cryptogram)).isEqualTo(result)
+        }
+
+        @Test
+        fun case6() {
+            val cryptogram = "aazzqweqweaaq"
+            val result = "qweqweq"
+            assertThat(solution2(cryptogram)).isEqualTo(result)
+        }
+
+        @Test
+        fun case7() {
+            val cryptogram = "Aaazzqweqweaaq"
+            val result = "소문자 이외의 문자가 포함되었습니다"
+            assertThat(solution2(cryptogram)).isEqualTo(result)
+        }
+
+        @Test
+        fun case4() {
+            val cryptogram =
+                "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+            val result = ""
+            assertThat(solution2(cryptogram)).isEqualTo(result)
+        }
+
+        @Test
+        fun case5() {
+            val cryptogram =
+                "abababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababab"
+            val result = "글자 수가 맞지 않습니다"
+            assertThat(solution2(cryptogram)).isEqualTo(result)
+        }
     }
 
     @Nested
@@ -62,6 +139,20 @@ class ApplicationTest {
         fun case2() {
             val number = 33
             val result = 14
+            assertThat(solution3(number)).isEqualTo(result)
+        }
+
+        @Test
+        fun case3() {
+            val number = 333
+            val result = 228
+            assertThat(solution3(number)).isEqualTo(result)
+        }
+
+        @Test
+        fun case4() {
+            val number = 0
+            val result = -1
             assertThat(solution3(number)).isEqualTo(result)
         }
     }
@@ -107,6 +198,19 @@ class ApplicationTest {
             val result = listOf("jason@email.com", "jm@email.com", "mj@email.com")
             assertThat(solution6(forms)).isEqualTo(result)
         }
+
+        @Test
+        fun case2() {
+            val forms = listOf(
+                listOf("jm@email.com", "제이엠"),
+                listOf("jason@email.com", "제이슨"),
+                listOf("woniee@email.com", "워니"),
+                listOf("mj@email.com", "엠제이"),
+                listOf("nowm@email.com", "이제엠")
+            )
+            val result = listOf("jason@email.com", "jm@email.com", "mj@email.com")
+            assertThat(solution6(forms)).isEqualTo(result)
+        }
     }
 
     @Nested
@@ -124,6 +228,125 @@ class ApplicationTest {
             )
             val visitors = listOf("bedi", "bedi", "donut", "bedi", "shakevan")
             val result = listOf("andole", "jun", "bedi")
+            assertThat(solution7(user, friends, visitors)).isEqualTo(result)
+        }
+
+        @Test
+        fun case2() {
+            val user = "mrko"
+            val friends: List<List<String>> = listOf(
+                listOf("mrko", "jun"),
+                listOf("donut", "jun"),
+                listOf("donut", "mrko"),
+                listOf("shakevan", "andole"),
+                listOf("shakevan", "jun"),
+                listOf("shakevan", "mrko")
+            )
+            val visitors: List<String> = listOf("bedi", "bedi", "donut", "bedi", "shakevan")
+            val result: List<String> = listOf("andole", "bedi")
+            assertThat(solution7(user, friends, visitors)).isEqualTo(result)
+        }
+
+        @Test
+        fun case3() {
+            val user = "mrko"
+            val friends: List<List<String>> = listOf(
+                listOf("mrko", "jun"),
+                listOf("donut", "jun"),
+                listOf("donut", "mrko"),
+                listOf("shakevan", "andole"),
+                listOf("jun", "andole"),
+                listOf("shakevan", "jun"),
+                listOf("shakevan", "mrko")
+            )
+            val visitors: List<String> = listOf("bedi", "bedi", "donut", "bedi", "shakevan")
+            val result: List<String> = listOf("andole", "bedi")
+            assertThat(solution7(user, friends, visitors)).isEqualTo(result)
+        }
+
+        @Test
+        fun case4() {
+            val user = "mrko"
+            val friends: List<List<String>> = listOf(
+                listOf("mrko", "jun"),
+                listOf("bedi", "jun"),
+                listOf("bedi", "donut"),
+                listOf("donut", "jun"),
+                listOf("donut", "mrko"),
+                listOf("shakevan", "andole"),
+                listOf("jun", "andole"),
+                listOf("shakevan", "jun"),
+                listOf("shakevan", "mrko")
+            )
+            val visitors: List<String> = listOf("donut", "shakevan")
+            val result: List<String> = listOf("andole", "bedi")
+            assertThat(solution7(user, friends, visitors)).isEqualTo(result)
+        }
+
+        @Test
+        fun case5() {
+            val user = "andole"
+            val friends: List<List<String>> = listOf(
+                listOf("andole", "jun"),
+                listOf("andole", "bedi"),
+                listOf("jun", "bedi"),
+                listOf("jun", "shakevan"),
+                listOf("jun", "kane"),
+                listOf("jun", "sam"),
+                listOf("bedi", "shakevan"),
+                listOf("bedi", "anne"),
+                listOf("bedi", "sam"),
+                listOf("anne", "mrko")
+            )
+            val visitors: List<String> = listOf("donut", "anne", "mrko", "mrko", "sam")
+            val result: List<String> = listOf("sam", "shakevan", "anne", "kane", "mrko")
+            assertThat(solution7(user, friends, visitors)).isEqualTo(result)
+        }
+
+        @Test
+        fun case6() {
+            val user = "hello"
+            val friends: List<List<String>> = listOf(
+                listOf("andole", "jun"),
+                listOf("andole", "bedi"),
+                listOf("jun", "shakevan"),
+                listOf("jun", "kane"),
+                listOf("jun", "sam"),
+                listOf("bedi", "shakevan"),
+                listOf("bedi", "anne"),
+                listOf("bedi", "sam"),
+                listOf("anne", "mrko")
+            )
+            val visitors: List<String> = listOf("donut", "anne", "mrko", "mrko", "sam")
+            val result: List<String> = listOf("mrko", "anne", "donut", "sam")
+            assertThat(solution7(user, friends, visitors)).isEqualTo(result)
+        }
+
+        @Test
+        fun case7() {
+            val user = "hello"
+            val friends: List<List<String>> = listOf()
+            val visitors: List<String> = listOf("donut", "anne", "mrko", "mrko", "sam")
+            val result: List<String> = listOf("friends 리스트의 크기가 이상합니다.")
+            assertThat(solution7(user, friends, visitors)).isEqualTo(result)
+        }
+
+        @Test
+        fun case8() {
+            val user = "Hello"
+            val friends: List<List<String>> = listOf(
+                listOf("andole", "jun"),
+                listOf("andole", "bedi"),
+                listOf("jun", "shakevan"),
+                listOf("jun", "kane"),
+                listOf("jun", "sam"),
+                listOf("bedi", "shakevan"),
+                listOf("bedi", "anne"),
+                listOf("bedi", "sam"),
+                listOf("anne", "mrko")
+            )
+            val visitors: List<String> = listOf("donut", "anne", "mrko", "mrko", "sam")
+            val result: List<String> = listOf("사용자의 아이디가 형식과 맞지 않습니다.")
             assertThat(solution7(user, friends, visitors)).isEqualTo(result)
         }
     }
