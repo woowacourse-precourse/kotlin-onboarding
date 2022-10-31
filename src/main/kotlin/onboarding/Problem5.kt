@@ -12,7 +12,9 @@ fun solution5(money: Int): List<Int> {
     for (i in 0..won.size-1){
         if(i == 8){
             answer[i] = number
-        }else if(number/won[i] != 0){
+        }
+
+        if(number/won[i] != 0){
             var tmp = number/won[i]
             answer[i] = tmp
             number = number % won[i]
