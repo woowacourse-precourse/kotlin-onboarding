@@ -13,7 +13,7 @@ fun solution7(
     var user_friends = HashSet<String>()
     var hashmap_result = HashMap<String,Int>()
     var friends_without_user = ArrayList<List<String>>()
-
+    var result = ArrayList<String>()
 
     for(i in 0 until friends.size){
 
@@ -48,6 +48,19 @@ fun solution7(
            }
        }
    }
+
+
+    for(i in 0 until visitors.size){
+        if(!user_friends.contains(visitors[i]) && !hashmap_result.containsKey(visitors[i]) ){
+            hashmap_result.put(visitors[i], timeline_visit)
+            continue
+        }
+
+        if(!user_friends.contains(visitors[i]) && hashmap_result.containsKey(visitors[i]) ){
+            hashmap_result.put(visitors[i], hashmap_result.getValue(visitors[i])+ timeline_visit)
+        }
+    }
+
 
 
 
