@@ -19,3 +19,6 @@ fun solution6(forms: List<List<String>>): List<String> {
 
 fun isValidEmail(email: String): Boolean = "[A-Za-z]*(@email.com)$".toRegex()
     .matches(email)
+
+fun isValidNickName(nickName: String): Boolean = "[가-힣]{1,19}".toRegex()
+    .matches(nickName)
