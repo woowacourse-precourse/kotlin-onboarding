@@ -6,6 +6,10 @@ fun solution1(pobi: List<Int>, crong: List<Int>): Int {
 
 }
 
+fun compareNum(person: List<Int>): Int {
+    return max(calMax(person[0]), calMax(person[0]))
+}
+
 fun calMax(now: Int): Int {
     var plus = 0
     var mul = 1
