@@ -8,7 +8,9 @@ fun solution7(
     val peopleSet = getPeopleSet(user, friends, visitors)
     val friendCandidateSet = excludeAlreadyFriendAndUser(peopleSet, user, friends)
     val friendSet = getFriendSet(user, friends)
-    val candidateScoreMap = getCandidateScoreMap(friendCandidateSet)
+    var candidateScoreMap = getCandidateScoreMap(friendCandidateSet)
+
+    candidateScoreMap = calcMutualFriendScore(user, candidateScoreMap, friendSet, friends)
 }
 
 private fun getPeopleSet(user: String, friends: List<List<String>>, visitors: List<String>): MutableSet<String> {
@@ -46,4 +48,22 @@ private fun getFriendSet(user: String, friends: List<List<String>>): MutableSet<
     friendSet.remove(user)
 
     return friendSet
+}
+
+private fun calcMutualFriendScore(
+    user: String,
+    candidateScoreMap: MutableMap<String, Int>,
+    friendSet: MutableSet<String>,
+    friends: List<List<String>>
+): MutableMap<String, Int> {
+    for (i in friends) {
+        for (j in i) {
+            if (j in friendSet) {
+                i.toMutableList().remove(j)
+                if (i[0] != user) candidateScoreMap[i[0]] = candidateScoreMap[i[0]]!! + 1
+            }
+        }
+    }
+
+    return candidateScoreMap
 }
