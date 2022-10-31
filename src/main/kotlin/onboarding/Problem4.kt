@@ -14,8 +14,10 @@ fun checkValidInput(word: String): Boolean{
 }
 
 fun getConvertedWord(word: String): String{
-    // TODO: 2022-11-01
-    return ""
+    val sb = StringBuilder()
+    for(i in word.indices)
+        sb.append(convertChar(word[i]))
+    return sb.toString()
 }
 
 fun convertChar(originalChar: Char): Char {
