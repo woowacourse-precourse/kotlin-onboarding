@@ -20,3 +20,21 @@ fun solution1(pobi: List<Int>, crong: List<Int>): Int {
     }
     return  result //결과 반환
 }
+
+fun findNum(numList: List<Int>): Int { //분할된 페이지에서 곱과 합중 큰값 저장하는 함수
+    var add: Int = 0
+    var mul: Int = 1
+    for (element in numList) {
+        add += element
+    }
+    for (element in numList) {
+        mul *= element
+    }
+    if (add >= mul) {
+        return add
+    }
+    if (mul >= add) {
+        return mul
+    }
+    return -1
+}
