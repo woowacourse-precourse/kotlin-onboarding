@@ -2,60 +2,50 @@ package onboarding
 
 fun solution7(user: String, friends: List<List<String>>, visitors: List<String>): List<String> {
 
-    val score: HashMap<String, Int> = hashMapOf() // key: 아이디, value: 추천 점수 의 형태로 HashMap 에 저장
-    val usersFriend: List<String> = findFriend(user, friends)  // user 의 친구 저장
+    var score: HashMap<String, Int> = hashMapOf() // key: 아이디, value: 추천 점수 의 형태로 HashMap 에 저장
+    val userFriends: List<String> = findUserFriends(user, friends)  // user 의 친구 저장
 
-    countScore(user, friends, visitors, usersFriend, score)
+    countFriendScore(user, userFriends, friends, score)
+    countVisitScore(visitors, score, userFriends)
 
-    val sortedScore = sortScore(score).keys.toMutableList()
-    val result = if (sortedScore.size > 5) sortedScore.subList(0, 5) else sortedScore  //상위 5명만 출력
-
-    return result
+    val scoreIdList = sortScore(score).keys.toList()
+    if (scoreIdList.size > 5){
+        return scoreIdList.subList(0, 5)
+    }
+    return scoreIdList
 }
 
-//추천 점수 계산
-fun countScore( user: String, friends: List<List<String>>, visitors: List<String>, usersFriend: List<String>, score: HashMap<String, Int>) {
-    countFriendScore(user, usersFriend, friends, score)
-    countVisitScore(visitors, score, usersFriend)
-}
 
 //user 의 친구 찾기
-fun findFriend(user: String, friends: List<List<String>>): List<String> {
-    val usersFriend = mutableListOf<String>()
-    for (f in friends) {
-        if (f.contains(user)) {
-            if (f.indexOf(user) == 0) {
-                usersFriend.add(f[1])
-            } else {
-                usersFriend.add(f[0])
+fun findUserFriends(user: String, friends: List<List<String>>): List<String> {
+    val userFriends = mutableListOf<String>()
+    for (relation in friends) {
+        if (relation.contains(user)) {
+            if (relation.indexOf(user) == 0) {
+                userFriends.add(relation[1])
+            }
+            if(relation.indexOf(user) == 1){
+                userFriends.add(relation[0])
             }
         }
     }
-    return usersFriend
+    return userFriends
 }
 
 //함께아는 사람 점수 계산
 fun countFriendScore(
     user: String,
-    usersFriend: List<String>,
+    userFriends: List<String>,
     friends: List<List<String>>,
-    result: HashMap<String, Int>
+    score: HashMap<String, Int>
 ) {
-    for (i in usersFriend) {
-        for (j in friends) {
-            if (j.contains(i) && !j.contains(user)) {
-                if (j.indexOf(i) == 0) {
-                    if (result.containsKey(j[1])) {
-                        result[j[1]] = result[j[1]]!! + 10
-                    } else {
-                        result[j[1]] = 10
-                    }
+    for (friend in userFriends) {
+        for (relation in friends) {
+            if (relation.contains(friend) && !relation.contains(user)) {
+                if (relation.indexOf(friend) == 0) {
+                    addScore(score, relation[1], 10)
                 } else {
-                    if (result.containsKey(j[0])) {
-                        result[j[0]] = result[j[0]]!! + 10
-                    } else {
-                        result[j[0]] = 10
-                    }
+                    addScore(score, relation[0], 10)
                 }
             }
         }
@@ -64,23 +54,29 @@ fun countFriendScore(
 }
 
 //방문한 사람 점수 계산
-fun countVisitScore(visitors: List<String>, result: HashMap<String, Int>, usersFriend: List<String>) {
-    for (i in visitors) {
-        if (!usersFriend.contains(i)) {
-            if (result.containsKey(i)) {
-                result[i] = result[i]!! + 1
-            } else {
-                result[i] = 1
-            }
+fun countVisitScore(visitors: List<String>, result: HashMap<String, Int>, userFriends: List<String>) {
+    for (visitor in visitors) {
+        if (!userFriends.contains(visitor)) {
+            addScore(result, visitor, 1)
         }
     }
 }
 
+fun addScore(score: HashMap<String, Int>, key: String, addScore:Int) {
+    if (score.containsKey(key)) {
+        score[key] = score[key]!! + addScore
+    } else {
+        score[key] = addScore
+    }
+}
+
 //score 정렬하기
-fun sortScore(result: HashMap<String, Int>): HashMap<String, Int> {
-    return result.toList().sortedWith(
+fun sortScore(score: HashMap<String, Int>): HashMap<String, Int> {
+    val hashMapList = score.toList()
+    val sortedList = hashMapList.sortedWith(
         compareBy(
             { -(it.second) }, { it.first }
         )
-    ).toMap() as HashMap
+    )
+    return sortedList.toMap() as HashMap
 }
