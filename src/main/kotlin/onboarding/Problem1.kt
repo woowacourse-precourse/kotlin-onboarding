@@ -3,7 +3,7 @@ package onboarding
 import kotlin.math.max
 
 fun solution1(pobi: List<Int>, crong: List<Int>): Int {
-    if (pobi[1] - pobi[0] != 1 || crong[1] - crong[0] != 1) {
+    if (!isValid(pobi, crong)) {
         return -1
     }
 
@@ -20,6 +20,12 @@ fun solution1(pobi: List<Int>, crong: List<Int>): Int {
         -1
     }
 
+}
+
+private fun isValid(pobi: List<Int>, crong: List<Int>): Boolean {
+    return if (pobi[1] - pobi[0] != 1 || crong[1] - crong[0] != 1) {
+        false
+    } else !(pobi[0] % 2 == 0 || crong[0] % 2 == 0) //왼쪽 페이지가 짝수이면 false, 아니면 true
 }
 
 private fun calcScore(list: List<Int>): Int {
