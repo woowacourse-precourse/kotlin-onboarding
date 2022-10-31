@@ -16,6 +16,13 @@ fun solution1(pobi: List<Int>, crong: List<Int>): Int {
         val pMultipleOfPageRight = multiplyNumberOfDigit(pPageRight)
         val cMultipleOfPageLeft = multiplyNumberOfDigit(cPageLeft)
         val cMultipleOfPageRight = multiplyNumberOfDigit(cPageRight)
+
+        val pMaxValue = max(max(pSumOfPageLeft, pMultipleOfPageLeft), max(pSumOfPageRight, pMultipleOfPageRight))
+        val cMaxValue = max(max(cSumOfPageLeft, cMultipleOfPageLeft), max(cSumOfPageRight, cMultipleOfPageRight))
+
+        return if (pMaxValue > cMaxValue) 1
+        else if (pMaxValue < cMaxValue) 2
+        else 0
     }
     else return -1
 }
@@ -48,4 +55,6 @@ fun multiplyNumberOfDigit(num: Int): Int {
     }
     return multiple
 }
+
+fun max(num1: Int, num2: Int): Int = if (num1 > num2) num1 else num2
 
