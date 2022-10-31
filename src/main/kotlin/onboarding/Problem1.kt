@@ -28,9 +28,8 @@ fun multiPageNum(pageNum: Int) : Int =
             it.toInt() - '0'.toInt()
         }.reduce { acc, i ->  acc * i}
 
-fun compare_addPageNum_multiPageNum(pageNum: Int) : Int {
-    return max(addPageNum(pageNum), multiPageNum(pageNum))
-}
+fun compare_addPageNum_multiPageNum(pageNum: Int) : Int = max(addPageNum(pageNum), multiPageNum(pageNum))
+
 
 fun compare_leftPage_rightPage(user : List<Int>) : Int {
     val left = compare_addPageNum_multiPageNum(user[0])
