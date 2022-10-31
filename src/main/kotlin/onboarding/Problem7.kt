@@ -4,19 +4,17 @@ package onboarding
 fun findShare(friends: List<List<String>>, user_friends: List<String>, user: String): MutableMap<String, Int>{
     // user의 friends와 함께 아는 친구가 몇명인지 구하기
     val cnt_friend = mutableMapOf<String, Int>()
-    for (people in user_friends) {
-        for ((first, last) in friends) {
-            if (first == user || last == user) continue
-            if (first == people) {
-                if (user_friends.contains(last)) continue
-                if (!cnt_friend.containsKey(last)) cnt_friend[last] = 10
-                else cnt_friend[last] = cnt_friend[last]!! + 10
-            }
-            if (last == people) {
-                if (user_friends.contains(first)) continue
-                if (!cnt_friend.containsKey(first)) cnt_friend[first] = 10
-                else cnt_friend[first] = cnt_friend[first]!! + 10
-            }
+    for ((first, last) in friends) {
+        if (first == user || last == user) continue
+        if (user_friends.contains(first) && user_friends.contains(last)) continue // 둘 다 이미 친구인 경우
+        // cnt_friend <map> 에 people 데이터 추가, 존재시 점수 +
+        if (user_friends.contains(first)) {
+            if (cnt_friend.containsKey(last)) cnt_friend[last] = cnt_friend[last]!! + 10
+            if (!cnt_friend.containsKey(last)) cnt_friend[last] = 10
+        }
+        if (user_friends.contains(last)) {
+            if (cnt_friend.containsKey(first)) cnt_friend[first] = cnt_friend[first]!! + 10
+            if (!cnt_friend.containsKey(first)) cnt_friend[first] = 10
         }
     }
     return cnt_friend
@@ -34,8 +32,8 @@ fun findFriends(friends: List<List<String>>, user: String): List<String>{
 
 fun visitPeople(share_friends: MutableMap<String, Int>, visit: String): MutableMap<String, Int>{
     // 방문객들 +1점
-    if (!share_friends.containsKey(visit)) share_friends[visit] = 1
     if (share_friends.containsKey(visit)) share_friends[visit] = share_friends[visit]!! + 1
+    if (!share_friends.containsKey(visit)) share_friends[visit] = 1
     return share_friends
 }
 
