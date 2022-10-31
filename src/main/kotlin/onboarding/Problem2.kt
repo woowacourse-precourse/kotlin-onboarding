@@ -1,5 +1,10 @@
 package onboarding
 
+
+fun solution2(cryptogram: String): String {
+    return removeConsecutiveDuplicateCharacters(cryptogram)
+}
+
 fun removeConsecutiveDuplicateCharacters(cryptogram: String): String {
     var decodedString = ""
     var isConsecutive = false
@@ -25,8 +30,4 @@ fun removeConsecutiveDuplicateCharacters(cryptogram: String): String {
 
     if (cryptogram.length != decodedString.length) return removeConsecutiveDuplicateCharacters(decodedString)
     return decodedString
-}
-
-fun solution2(cryptogram: String): String {
-    return removeConsecutiveDuplicateCharacters(cryptogram)
 }
