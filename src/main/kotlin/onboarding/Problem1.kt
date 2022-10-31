@@ -3,7 +3,15 @@ package onboarding
 import java.lang.Integer.max
 
 fun solution1(pobi: List<Int>, crong: List<Int>): Int {
+    val pobiMax = compareNum(pobi)
+    val crongMax = compareNum(crong)
 
+    return if(pobiMax>crongMax)
+        1
+    else if(pobiMax<crongMax)
+        2
+    else
+        0
 }
 
 fun compareNum(person: List<Int>): Int {
@@ -23,3 +31,4 @@ fun calMax(now: Int): Int {
     }
     return max(mul, plus)
 }
+
