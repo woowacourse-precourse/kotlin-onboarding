@@ -15,6 +15,7 @@ fun solution7(
     val friendslist = alredayfriends(friends, user)
     val friendsfriendlist = friendsfriend(friends, friendslist)
     val possiblefriendslist = possiblerecommend(friends, visitors, friendslist, user)
+    val countscoremap = countscore(possiblefriendslist, friendsfriendlist, visitors)
     return possiblefriendslist
 }
 
@@ -61,4 +62,24 @@ fun possiblerecommend(friends: List<List<String>>, visitors: List<String>, frien
     }
     println(possiblefriends)
     return possiblefriends
+}
+
+//map을 통해 점수를 계산하고 정렬하는 함수
+fun countscore(possiblefriends: List<String>, friendsfriendlist: List<String>, visitors: List<String>): MutableMap<String, Int> {
+    val recommendfriends = possiblefriends.distinct()
+    val countvalue = mutableMapOf<String, Int>()
+    val visitorsname = visitors.distinct()
+
+    for (i in recommendfriends) {
+        countvalue[i] = 0
+    }
+
+    for (i in possiblefriends) {
+        if (friendsfriendlist.contains(i)) {
+            countvalue[i] = countvalue[i]!! + 10
+        } else if (visitorsname.contains(i)) {
+            countvalue[i] = countvalue[i]!! + 1
+        }
+    }
+    return countvalue.toList().sortedByDescending { it.second }.toMap().toMutableMap()
 }
