@@ -10,10 +10,13 @@ fun solution1(pobi: List<Int>, crong: List<Int>): Int {
 
     pobisNumbers.add(sumPageNum(pobi[0]))
     pobisNumbers.add(sumPageNum(pobi[1]))
+    pobisNumbers.add(multiplyPageNum(pobi[0]))
+    pobisNumbers.add(multiplyPageNum(pobi[1]))
 
     crongsNumbers.add(sumPageNum(crong[0]))
     crongsNumbers.add(sumPageNum(crong[1]))
-
+    crongsNumbers.add(multiplyPageNum(crong[0]))
+    crongsNumbers.add(multiplyPageNum(crong[1]))
 
     return 0
 }
@@ -41,8 +44,15 @@ fun sumPageNum(pageNum: Int): Int{
 }
 
 fun multiplyPageNum(pageNum: Int): Int{
-    // TODO: 2022-10-31
-    return 0
+    var mutiply = 1
+    var currNum = pageNum
+
+    while(currNum > 0){
+        mutiply *= currNum % 10
+        currNum /= 10
+    }
+
+    return mutiply
 }
 
 fun getMax(numbers: List<Int>): Int{
