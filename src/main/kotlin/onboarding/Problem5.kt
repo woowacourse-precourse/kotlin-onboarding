@@ -2,7 +2,7 @@ package onboarding
 
 fun solution5(money: Int): List<Int> {
     var temp = money
-    var result =  MutableList<Int>(9,{it->0})
+    var result =  mutableListOf<Int>(0,0,0,0,0,0,0,0,0)
 
     result[0] = temp / 50000
     temp%= 50000
