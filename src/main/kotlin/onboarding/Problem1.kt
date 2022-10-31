@@ -4,6 +4,7 @@ import kotlin.math.max
 
 fun isException(pages: List<Int>): Boolean {
     if (pages[0] + 1 != pages[1]) return true
+    if (pages[0] < 1 || pages[1] < 1 || pages[0] > 400 || pages[1] > 400) return true
     return false
 }
 
