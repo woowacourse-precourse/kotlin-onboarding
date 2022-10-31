@@ -5,7 +5,6 @@ fun solution7(
     friends: List<List<String>>,
     visitors: List<String>
 ): List<String> {
-    TODO("프로그램 구현")
     /*
     [기능 목록]
     1. user와 친구 관계 파악
@@ -17,5 +16,16 @@ fun solution7(
         a) 점수가 같으면 이름의 사전 순서로 정렬
     5. 추천 친구 목록 최대 5명 반환
      */
+    var userFriends = mutableListOf<String>()
+
+    for (i in friends){
+        if (user in i){
+            userFriends.add(i[0])
+        }
+    }
+
+    println("${user}의 친구 : ${userFriends}")
+
+    return listOf("Hello World")
 }
 
