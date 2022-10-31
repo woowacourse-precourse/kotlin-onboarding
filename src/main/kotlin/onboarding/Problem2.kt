@@ -1,5 +1,10 @@
 package onboarding
 
+/*
+    기능 목록
+    1. 암호 해독 함수 decode
+ */
+
 fun solution2(cryptogram: String): String {
     var before = cryptogram
     var after = decode(before)
@@ -9,15 +14,4 @@ fun solution2(cryptogram: String): String {
         after = decode(before)
     }
     return after
-}
-
-private fun decode(cryptogram: String): String {
-    val str = cryptogram.map { it.toString() }.toMutableList()
-    for (i in 0 until str.size - 1) {
-        if (str[i] == str[i + 1]) {
-            str[i] = ""
-            str[i + 1] = ""
-        }
-    }
-    return str.joinToString("")
 }
