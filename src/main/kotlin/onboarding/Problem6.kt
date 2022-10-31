@@ -3,7 +3,7 @@ package onboarding
 import java.util.regex.Pattern
 
 fun isHangle(name: String): Boolean { // 한글 외 문자 포함되면 true return
-    if (Pattern.matches("^[가-힣]*$", name)) return false
+    if (Pattern.matches("^[가-힣ㄱ-ㅎㅏ-ㅣ]*$", name)) return false
     return true
 }
 fun isDuple(email: String, ban_lst: List<String>): Boolean { // 중복이면 true return
