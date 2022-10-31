@@ -1,4 +1,8 @@
 package onboarding
+/*
+    기능 목록
+    입력된 수를 단위에 따라 나누어 나오는 몫을 저장하는 함수
+ */
 
 fun solution5(money: Int): List<Int> {
     var change = money
