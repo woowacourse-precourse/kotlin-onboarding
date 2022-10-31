@@ -26,7 +26,7 @@ fun solution4(word: String): String {
             letter = (122 - (ascii - 97)).toChar()
             result+=letter
         }
-        // 스페이스일때 스페이스만 추가
+        // 스페이스일때 스페이스만 추가함
         if (ascii == 32) {
             result+=' '
         }
