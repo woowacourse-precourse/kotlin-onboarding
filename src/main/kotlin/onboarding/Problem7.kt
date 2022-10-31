@@ -36,7 +36,20 @@ fun solution7(
         }
     }
 
-   
+   for(i in 0 until friends_without_user.size){
+
+       for(j in 0 until friends_without_user[i].size){
+           if(!user_friends.contains(friends_without_user[i][j]) && !hashmap_result.containsKey(friends_without_user[i][j])){
+               hashmap_result.put(friends_without_user[i][j] , knowing_friends)
+           }
+
+           if(!user_friends.contains(friends_without_user[i][j]) && hashmap_result.containsKey(friends_without_user[i][j])){
+               hashmap_result.put(friends_without_user[i][j] , hashmap_result.getValue(friends_without_user[i][j])+ knowing_friends)
+           }
+       }
+   }
+
+
 
 }
 
