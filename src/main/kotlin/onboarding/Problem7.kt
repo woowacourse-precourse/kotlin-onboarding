@@ -5,14 +5,15 @@ fun solution7(
     friends: List<List<String>>,
     visitors: List<String>
 ): List<String> {
-
     val friendsRelation = initializeFriendsRelation(friends)
     var usersScore = mutableMapOf<String, Int>()
-    if (friendsRelation[user].isNullOrEmpty()) return listOf("")
 
-    usersScore = scoreMutualfriends(user, friendsRelation, usersScore)
     usersScore = scoreVisitedUser(visitors, usersScore)
-    usersScore = deleteOneBridgeAndMe(user, usersScore, friendsRelation)
+
+    if (!friendsRelation[user].isNullOrEmpty()) {
+        usersScore = scoreMutualfriends(user, friendsRelation, usersScore)
+        usersScore = deleteOneBridgeAndMe(user, friendsRelation, usersScore)
+    }
 
     return usersScore.asSequence()
         .sortedWith { a1, a2 ->
@@ -28,9 +29,8 @@ fun solution7(
 
 fun deleteOneBridgeAndMe(
     user: String,
-    usersScore: MutableMap<String, Int>,
-    friendsRelation: MutableMap<String, MutableSet<String>>
-
+    friendsRelation: MutableMap<String, MutableSet<String>>,
+    usersScore: MutableMap<String, Int>
 ): MutableMap<String, Int> {
     friendsRelation[user]!!.forEach { friend ->
         usersScore.remove(friend)
@@ -41,9 +41,7 @@ fun deleteOneBridgeAndMe(
 }
 
 
-fun initializeFriendsRelation (
-    friends: List<List<String>>,
-): MutableMap<String, MutableSet<String>> {
+fun initializeFriendsRelation (friends: List<List<String>>): MutableMap<String, MutableSet<String>> {
     val friendsRelation = mutableMapOf<String, MutableSet<String>>()
 
     friends.forEach { relation ->
@@ -78,8 +76,8 @@ fun scoreMutualfriends(
         val userFriendRelation = friendsRelation[friend]
         if (userFriendRelation.isNullOrEmpty()) continue
 
-        userFriendRelation.forEach {fr ->
-            usersScore[fr] = usersScore.getOrDefault(fr, 0) + 10
+        userFriendRelation.forEach {friend ->
+            usersScore[friend] = usersScore.getOrDefault(friend, 0) + 10
         }
     }
 
