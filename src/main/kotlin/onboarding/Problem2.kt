@@ -23,21 +23,8 @@ fun isValidString(str: String): Boolean {
 }
 
 fun deleteDuplicate(str: String): String {
-    val stack = Stack<Char>()
-    var string = ""
-    var prev = '0'
-    for (i in str.indices) {
-        if (prev != str[i]) {
-            stack.add(str[i])
-            prev = str[i]
-        } else if (stack.peek() == str[i]){
-            stack.pop()
-        }
-    }
-
-    while (!stack.isEmpty()) {
-        string += stack.pop()
-    }
-
-    return string.reversed()
+    val findDuplicate = "a{2,}|b{2,}|c{2,}|d{2,}|e{2,}|f{2,}|g{2,}|h{2,}|i{2,}|j{2,}|k{2,}|l{2,}|m{2,}|n{2,}|o{2,}|p{2,}|q{2,}|r{2,}|s{2,}|t{2,}|u{2,}|v{2,}|w{2,}|x{2,}|y{2,}|z{2,}".toRegex()
+    var answer = ""
+    answer = str.replace(findDuplicate, "")
+    return answer
 }
