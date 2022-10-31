@@ -16,7 +16,7 @@ fun solution7(
     visitors: List<String>
 ): List<String> {
 
-    mappingPersonToNum(friends, visitors)
+    mappingPersonToNum(user, friends, visitors)
 
     initCollections()
 
@@ -30,11 +30,16 @@ fun solution7(
 }
 
 private fun mappingPersonToNum(
+    user: String,
     friends: List<List<String>>,
     visitors: List<String>
 ) {
     map = HashMap()
     var idx = 0
+
+    if (!map.containsKey(user)) {
+        map[user] = idx++
+    }
 
     friends.forEach {
         if (!map.containsKey(it.first())) {
@@ -85,10 +90,12 @@ private fun getResult(): List<String> {
     score.forEachIndexed { index, i ->
         scoreDetail.add(Pair(find(index), i))
     }
+    println(scoreDetail)
     // 아이디와 점수가 함께 있는 리스트
     val resultWithId = scoreDetail
         .sortedBy { it.first } // 이름순 정렬
         .filter { !bannedList.contains(it.first) } // 친구 혹은 user 제외
+        .filter { it.second != 0 } // 점수가 0이 아닌 경우는 제외
         .sortedByDescending { it.second } // 점수 높은 순으로 정렬
         .take(5) // 상위 5개만 뽑기
     val result = mutableListOf<String>() // 아이디만 있는 리스트
