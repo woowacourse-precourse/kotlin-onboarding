@@ -9,9 +9,9 @@ fun solution7(
 
 
 //  변수값 지정
-    var myFriends = ArrayList<String>()
-    var people = ArrayList<String>()
-    var scores = ArrayList<Int>()
+    val myFriends = ArrayList<String>()
+    val people = ArrayList<String>()
+    val scores = ArrayList<Int>()
 
 //  내친구 찾기
     for (relation in friends){
@@ -49,12 +49,12 @@ fun solution7(
     var scoreBoard = mutableMapOf<String, Int>()
 
 //  중복된 점수 Map에 합치기
-    for (i in 0..people.size-1){
+    for (i in 0 until people.size){
         if (people[i] in scoreBoard.keys){
             scoreBoard[people[i]] = scores[i] + scoreBoard[people[i]]!!
         }
         if (people[i] !in scoreBoard.keys){
-            scoreBoard.put(people[i],scores[i])
+            scoreBoard[people[i]] = scores[i]
         }
     }
 
@@ -62,20 +62,11 @@ fun solution7(
     scoreBoard = scoreBoard.toList().sortedByDescending { it.second }.toMap() as MutableMap
 
 //  Key값 Return
-    var result = scoreBoard.keys
+    val result = scoreBoard.keys
 
 //  최대 5명만 추가
     return result.take(5)
 
 }
 
-fun scoreAddtoMap(a : Int){
-
-}
-
-fun isIncludedMap(people : String, scoreBoard : Map<String, Int>){
-    if (people in scoreBoard.keys)
-        return
-
-}
 
