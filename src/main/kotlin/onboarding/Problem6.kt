@@ -19,7 +19,6 @@ fun onlynickname(forms: List<List<String>>): List<String>{
     for(i:Int in forms.indices){
         nicknamelist.add(forms[i][1])
     }
-    println(nicknamelist)
     return nicknamelist
 }
 
@@ -30,7 +29,6 @@ fun findconsecutive(nicknamelist:List<String>):List<String>{
         for(j:Int in 0.. nicknamelist[i].length-2)
             consecutivelist.add(nicknamelist[i].substring(j until j+2))
     }
-    println(consecutivelist)
     return consecutivelist
 }
 
@@ -39,7 +37,6 @@ fun findword(consecutivelist: List<String>):List<String>{
     var nums = consecutivelist
     nums=nums.filter { item -> nums.count { it == item } > 1 }.toList()
     nums=nums.distinct()
-    println(nums)
     return nums
 }
 
