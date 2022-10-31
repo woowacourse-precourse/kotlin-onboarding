@@ -1,19 +1,13 @@
 package onboarding
 
 import java.util.LinkedList
-import java.util.TreeMap
 
 fun solution7(
-    user: String,
-    friends: List<List<String>>,
-    visitors: List<String>
+    user: String, friends: List<List<String>>, visitors: List<String>
 ): List<String> {
-    val result = listOf<String>()
-    val friendInformation = getFriendInformation(friends,visitors)
+    val friendInformation = getFriendInformation(friends, visitors)
 
-
-
-    return result
+    return getScoreList(user, friendInformation, visitors)
 }
 
 fun getFriendInformation(friends: List<List<String>>, visitors: List<String>): Map<String, LinkedList<String>> {
@@ -34,25 +28,31 @@ fun getFriendInformation(friends: List<List<String>>, visitors: List<String>): M
     return friendInformation
 }
 
-fun getScore(user: String, friendInformation: Map<String, LinkedList<String>>, visitors: List<String>) {
-    val scoreMap = TreeMap<String, Int>()
+fun getScoreList(
+    user: String, friendInformation: Map<String, LinkedList<String>>, visitors: List<String>
+): List<String> {
+    val scoreMap = mutableMapOf<String, Int>()
     val userFriends = friendInformation[user] ?: LinkedList<String>()
 
     for (relationship in friendInformation) {
         val anotherUser = relationship.component1()
         val anotherUserFriends = relationship.component2()
 
-        if (user == anotherUser) {
+        if (user == anotherUser || userFriends.contains(anotherUser)) {
             continue
         }
         var score = 0
         score += countAcquaintance(userFriends, anotherUserFriends) * 10
+        print(anotherUser + countAcquaintance(userFriends, anotherUserFriends))
         score += countNumberOfVisits(anotherUser, visitors)
+        print(anotherUser + countNumberOfVisits(anotherUser, visitors))
 
         if (score > 0) {
-
+            scoreMap[anotherUser] = score
         }
     }
+
+    return scoreMap.toList().sortedWith(compareBy({ -it.second }, { it.first })).map { it.first }
 }
 
 fun countAcquaintance(userFriends: LinkedList<String>, anotherUserFriends: LinkedList<String>): Int {
