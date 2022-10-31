@@ -1,5 +1,18 @@
 package onboarding
+val arr=arrayOf('3','6','9')
 
 fun solution3(number: Int): Int {
-    TODO("프로그램 구현")
+    var count=0
+
+    for(i in 3 .. number){
+        for(j in i.toString()){
+            if(arr.contains(j)){
+                count++
+            }
+        }
+    }
+
+    return count
+
 }
+
