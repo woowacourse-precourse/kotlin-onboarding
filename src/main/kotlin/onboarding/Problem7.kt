@@ -25,8 +25,6 @@ fun solution7(
         }
     }
 
-    println("${user}의 친구 : ${userFriends}")
-
     for (i in friends){
         if (i[0] in userFriends && (user != i[1]) && i[1] !in userFriends){
             if (recommendFriends.containsKey(i[1])){
@@ -35,7 +33,6 @@ fun solution7(
             else {
                 recommendFriends[i[1]] = 10
             }
-            println("추천 친구 : ${recommendFriends}")
         }
     }
 
@@ -46,13 +43,15 @@ fun solution7(
             } else {
                 recommendFriends[visitor] = 1
             }
-            println("추천 친구 : ${recommendFriends}")
         }
     }
     var recommendList = recommendFriends.toList().sortedByDescending { it.second }.toMap().keys.toList()
 
-    println("정렬 : ${recommendList}")
-
-    return listOf("Hello World")
+    if (recommendList.size < 5){
+        return recommendList
+    }
+    else{
+        return recommendList.subList(0,5)
+    }
 }
 
