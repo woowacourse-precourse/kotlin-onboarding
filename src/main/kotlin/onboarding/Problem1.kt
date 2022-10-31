@@ -20,3 +20,20 @@ fun isErrorExist(pobi: List<Int>, crong: List<Int>): Boolean {
 
     return false
 }
+
+fun getAdd(number: Int): Int {
+    var result = 0
+
+    for (num in number.toString()) {
+        result += Character.getNumericValue(num)
+    }
+    return result
+}
+
+fun getMul(number: Int): Int {
+    var result = 1
+    for (num in number.toString()) {
+        result *= Character.getNumericValue(num)
+    }
+    return result
+}
