@@ -1,7 +1,8 @@
 package onboarding
 
 fun solution4(word: String): String {
-    TODO("프로그램 구현")
+    var lookupTable = Lut()
+    return changeAlphabet(word,lookupTable)
 }
 
 fun Lut(): HashMap<Char, Char> { //룩업테이블을 만들어주는 함수
@@ -17,14 +18,14 @@ fun Lut(): HashMap<Char, Char> { //룩업테이블을 만들어주는 함수
     return lukupTable
 }
 
-fun changeAlphabet(word : String ,lukupTable :HashMap<Char,Char>): String { //문자에서 룩업테이블의 값이 있는지 확인해서 변환해주는 함수
+fun changeAlphabet(word : String ,lookupTable :HashMap<Char,Char>): String { //문자에서 룩업테이블의 값이 있는지 확인해서 변환해주는 함수
     var result = ""
     for (i in word.indices) { //문자열 길이만큼 반복
         var char: Char = word[i]
         if (char in '\u0061'..'\u007A' || char in '\u0041'..'\u005A') { //만약 알파벳이면 룩업테이블을 활용해서 변환
-            result += (lukupTable.get(char)).toString()
+            result += (lookupTable.get(char)).toString()
         }
-        if (lukupTable.get(char) == null) {//만약 알파벳이 아니면 그대로 저장
+        if (lookupTable.get(char) == null) {//만약 알파벳이 아니면 그대로 저장
             result += word[i].toString()
         }
     }
