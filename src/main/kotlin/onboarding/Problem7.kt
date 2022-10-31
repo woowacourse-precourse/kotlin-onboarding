@@ -62,3 +62,11 @@ private fun visitorScore(
         friendMap[visitor] = friendMap.getOrDefault(visitor, 0) + 1
     }
 }
+
+
+private fun sortedByScore(
+    friendMap: MutableMap<String, Int>
+) = friendMap.toList()
+    .sortedByDescending { it.second }
+    .map { it.first }
+    .take(5)
