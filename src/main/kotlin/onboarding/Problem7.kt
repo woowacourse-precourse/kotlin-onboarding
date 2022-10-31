@@ -1,18 +1,24 @@
 package onboarding
 
-val friendList = mutableMapOf<String, MutableSet<String>>()
-val score = mutableMapOf<String, Int>()
+var friendList = mutableMapOf<String, MutableSet<String>>()
+var score = mutableMapOf<String, Int>()
+var friendResult = mutableSetOf<String>()
 
 fun solution7(
     user: String,
     friends: List<List<String>>,
     visitors: List<String>
 ): List<String> {
+    friendList = mutableMapOf()
+    score = mutableMapOf()
+    friendResult = mutableSetOf()
+
     findFriends(0, friends)
     val userFriendList = friendList.remove(user) ?: mutableSetOf()
 
     findUserFriend(0, userFriendList)
     containVisitors(0, userFriendList, visitors)
+    checkFriendList(0, user, userFriendList)
 
     return sortScore()
 }
@@ -49,8 +55,32 @@ fun checkUserFriends(index: Int, userList: Set<String>, userFriend: String) {
 
 fun containsUserFriend(key: String, userFriend: String) {
     if (friendList[key]?.contains(userFriend) ?: false) {
-        getFriendPoint(key)
+        friendResult.add(userFriend)
     }
+}
+
+fun checkFriendList(index : Int, user : String, userFriendList: MutableSet<String>) {
+    if (index == friendList.size) {
+        return
+    }
+    val friend = friendList.entries
+
+    if (!friend.elementAt(index).value.contains(user)) {
+        hasFriend(0, friend.elementAt(index).key, friend.elementAt(index).value, userFriendList)
+    }
+    return checkFriendList(index + 1, user, userFriendList)
+}
+
+fun hasFriend(index : Int, userName : String, userList : Set<String>, userFriendList :  MutableSet<String>) {
+    if (index == userFriendList.size) {
+        return
+    }
+    val friendName = userFriendList.elementAt(index)
+
+    if (userList.contains(friendName)) {
+        getFriendPoint(userName)
+    }
+    return hasFriend(index + 1, userName, userList, userFriendList)
 }
 
 fun getFriendPoint(key: String) {
@@ -84,7 +114,7 @@ fun getVisitorPoint(visitor: String) {
 }
 
 fun sortScore() : List<String> {
-    val sortedScore = score.toList().sortedByDescending { it.second }.map { it.first }
+    val sortedScore = score.toList().sortedWith(compareBy ({-it.second}, {it.first})).map { it.first }
 
     if (score.size > 5) {
         return sortedScore.subList(0, 5)
