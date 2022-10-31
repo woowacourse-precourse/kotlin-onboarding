@@ -1,8 +1,22 @@
 package onboarding
 
 fun solution1(pobi: List<Int>, crong: List<Int>): Int {
-    var result: Int = -1//결과 값
-
+    var result: Int = -1//결과 값 초기값은 예외처리값
+    if (isComparePage(pobi) && isComparePage(crong)) {  //연속된 숫자인지 확인
+        return result
+    }
+    if (isOddNumber(pobi[0]) && isOddNumber(crong[0])) { //첫페이지가 홀수 인지 확인
+        return result
+    }
+    if (findMaxNum(pobi) > findMaxNum(crong)) { //포비가 이긴경우
+        result = 1
+    }
+    if (findMaxNum(pobi) < findMaxNum(crong)) { //크롱이 이긴경우
+        result = 2
+    }
+    if (findMaxNum(pobi) == findMaxNum(crong)) { //비긴경우
+        result = 0
+    }
     return result //결과 반환
 }
 
