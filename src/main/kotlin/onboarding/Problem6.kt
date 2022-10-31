@@ -7,8 +7,26 @@ package onboarding
 
 // 기능 목록 1번
 private val resultEmails = HashSet<String?>()
-private val hashMap : MutableMap<String,String> = HashMap()
+private val duplicationCheckMap: MutableMap<String, String> = HashMap()
 
 fun solution6(forms: List<List<String>>): List<String> {
     TODO("프로그램 구현")
+}
+
+// 기능 목록 2번
+fun addMapItem(forms: List<List<String>>, nickname: String) {
+    for (index in 0 until nickname.length - 1) {
+        val key = nickname.substring(index, index + 2)
+
+        if (duplicationCheckMap.containsKey(key)) {
+            val email = duplicationCheckMap[key]
+
+            if (email != forms[index][0]) {
+                resultEmails.add(email)
+                resultEmails.add(forms[index][0])
+            }
+        }
+
+        duplicationCheckMap[key] = forms[index][0]
+    }
 }
