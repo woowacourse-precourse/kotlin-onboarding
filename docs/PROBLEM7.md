@@ -24,3 +24,11 @@
 | user | friends | visitors | result |
 | --- | --- | --- | --- |
 | "mrko" | [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ] | ["bedi", "bedi", "donut", "bedi", "shakevan"] | ["andole", "jun", "bedi"] |
+
+## 기능 목록
+- [x] 각 사용자의 점수를 가진 Map 정의
+- [x] friends, visitors 의 모든 유저들의 점수 셋팅
+- [x] visitors 사용자 개수만큼 점수 +1
+- [x] 각 사용자의 친구 리스트를 가진 Map 정의
+- [x] 사용자와 함께 아는 친구 점수 +10
+- [x] 이름순으로 정렬하여 결과 출력

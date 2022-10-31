@@ -21,3 +21,6 @@
 | --- | --- |
 | "browoanoommnaon" | "brown" |
 | "zyelleyz" | "" |
+
+## 기능 목록
+- [x] 문자열 탐색 중 이전 문자열과 동일한지 판단 (stack 활용)
