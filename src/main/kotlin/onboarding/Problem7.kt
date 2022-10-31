@@ -15,6 +15,29 @@ fun setUserFriends(infoFriends: List<List<String>>, user: String): List<String> 
     return result.toList()
 }
 
+fun setWeAreFriends(userFriends: List<String>, infoFriends: List<List<String>>, user: String): Map<String, Int> {
+    var result = mutableMapOf<String, Int>()
+
+    for(i in infoFriends.indices) {
+        if(infoFriends[i][0] == user || infoFriends[i][1] == user)
+            continue
+
+        if(!userFriends.find{it == infoFriends[i][0]}.isNullOrEmpty()) {
+            if(result[infoFriends[i][1]] == null)
+                result[infoFriends[i][1]] = 10
+            else
+                result[infoFriends[i][1]] = result[infoFriends[i][1]]!! + 10
+        } else if(!userFriends.find{it == infoFriends[i][1]}.isNullOrEmpty()) {
+            if(result[infoFriends[i][0]] == null)
+                result[infoFriends[i][0]] = 10
+            else
+                result[infoFriends[i][0]] = result[infoFriends[i][0]]!! + 10
+        }
+    }
+
+    return result.toMap()
+}
+
 fun solution7(
     user: String,
     friends: List<List<String>>,
