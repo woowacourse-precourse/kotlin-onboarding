@@ -10,9 +10,6 @@ fun solution6(forms: List<List<String>>): List<String> {
 
         var name = forms[i][1]
 
-        if(name.length < 2){
-            break
-        }
 
         for(j in 0 until name.length-1){
 
