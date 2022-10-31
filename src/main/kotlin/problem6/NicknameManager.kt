@@ -2,10 +2,17 @@ package problem6
 
 class NicknameManager(private val forms:List<List<String>>) {
     private val storage = NicknameStorage()
-    private lateinit var nicknameSet:Set<String>
+    private lateinit var nicknameSet:MutableSet<String>
     private val reporter = mutableSetOf<String>()
 
-    private fun createNicknameSet(nickname:String) {}
+    private fun createNicknameSet(nickname:String) {
+        nicknameSet = mutableSetOf()
+
+        for(i in 0 until (nickname.length - 1)) {
+            val nicknameElement = nickname.substring(i, i + 1)
+            nicknameSet.add(nicknameElement)
+        }
+    }
 
     private fun validateNicknameSet(email:String) {}
 
