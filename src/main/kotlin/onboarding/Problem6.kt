@@ -22,10 +22,12 @@ fun solution6(forms: List<List<String>>): List<String> {
         // 리스트의 다음 닉네임 부터 순회
         val exportStrList = exportStrList(nickname)
         for (j in i + 1 until forms.size) {
+            val nextEmail = forms[i][0]
+            val nextNickname = forms[j][1]
             exportStrList.forEach { findStr ->
-                if (forms[j][1].contains(findStr)) {
-                    answer.add(forms[i][0])
-                    answer.add(forms[j][0])
+                if (nextNickname.contains(findStr)) {
+                    answer.add(nextEmail)
+                    answer.add(nextEmail)
                 }
             }
         }
@@ -35,11 +37,7 @@ fun solution6(forms: List<List<String>>): List<String> {
     return sortEmailByAesc(emailDuplicateCheck(answer))
 }
 
-/**
- * 닉네임이 한글인지 체크한다.
- * @param nickname 닉네임을 입력받아
- * @return 한글이라면 true 아니면 false
- */
+/** 닉네임이 한글인지 체크한다. */
 private fun checkNicknameIsKr(nickname: String): Boolean {
     for (i in nickname) {
         if (i.code < '가'.code || i.code > '힣'.code) return false
@@ -49,7 +47,6 @@ private fun checkNicknameIsKr(nickname: String): Boolean {
 
 /**
  * 닉네임에서 2개의 연속된 글자로 이루어진 리스트를 반환한다.
- * @param nickname
  * @return 예시) "평창보리" -> "평창", "창보", "보리"
  */
 fun exportStrList(nickname: String): List<String> {
@@ -61,8 +58,8 @@ fun exportStrList(nickname: String): List<String> {
 }
 
 /**
- * @를 기준으로 도메인과 이메일로 나누어 반환하는 함수
- * first요소에 이메일, second요소에 도메인을 반환한다.
+ * '@'를 기준으로 도메인과 이메일로 나누어 반환하는 함수
+ * @return first요소에 이메일, second요소에 도메인을 반환한다.
  */
 fun divideEmail(email: String): Pair<String, String> {
     var idx = 0
@@ -78,7 +75,7 @@ fun divideEmail(email: String): Pair<String, String> {
  * 2글자 이상의 파라미터 문자열 및 기본 문자열만 체크한다.
  */
 fun String.contains(findStr: String): Boolean {
-    check(this.length > 1 && findStr.length > 1) {
+    if (this.length <= 1 && findStr.length <= 1) {
         return false
     }
     for (i in 0 until this.length - 1) {
@@ -89,9 +86,7 @@ fun String.contains(findStr: String): Boolean {
     return false
 }
 
-/**
- * 이메일의 도메인이 "email.com"인지 체크하는 함수
- */
+/** 이메일의 도메인이 "email.com"인지 체크하는 함수 */
 private fun String.isDomainEmail(): Boolean = this == "email.com"
 
 /**
@@ -117,9 +112,7 @@ fun sortEmailByAesc(emailList: List<String>): List<String> {
     }.toList()
 }
 
-/**
- * 리스트에 중복된 이메일을 제거한다.
- */
+/** 리스트에 중복된 이메일을 제거한다. */
 fun emailDuplicateCheck(emailList: List<String>): List<String> {
     val pureList = mutableListOf<String>()
     for (i in 0 until emailList.size) {
