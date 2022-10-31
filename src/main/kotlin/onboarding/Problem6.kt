@@ -4,6 +4,18 @@ fun solution6(forms: List<List<String>>): List<String> {
     TODO("프로그램 구현")
 }
 
+/**
+ * 닉네임이 한글인지 체크한다.
+ * @param nickname 닉네임을 입력받아
+ * @return 한글이라면 true 아니면 false
+ */
+private fun checkNicknameIsKr(nickname: String): Boolean {
+    for (i in nickname) {
+        if (i.code < '가'.code || i.code > '힣'.code) return false
+    }
+    return true
+}
+
 
 /**
  * @를 기준으로 도메인과 이메일로 나누어 반환하는 함수
