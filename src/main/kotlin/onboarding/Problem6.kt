@@ -27,7 +27,8 @@ fun solution6(forms: List<List<String>>): List<String> {
     return emails
 }
 
-fun checkForms(forms: List<List<String>>) {
+/** 예외 처리 */
+private fun checkForms(forms: List<List<String>>) {
     val regex = "^[ㄱ-ㅎ가-힣]*\$".toRegex()
 
     if (forms.size !in 1..10000) {
