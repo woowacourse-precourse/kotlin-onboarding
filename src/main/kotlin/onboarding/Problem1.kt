@@ -27,7 +27,13 @@ fun solution1(pobi: List<Int>, crong: List<Int>): Int {
         val max_left = arrayOf(left_plus, left_multi).maxOrNull()
         val max_right = arrayOf(right_plus, right_multi).maxOrNull()
 
-        return 0
+        if(max_left!! > max_right!!) {
+            return max_left
+        }
+        else {
+            return max_right
+        }
+
     }
 
     return TODO("Provide the return value")
