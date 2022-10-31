@@ -6,6 +6,22 @@ import org.junit.jupiter.api.Test
 
 @Nested
 class Problem7CustomTest {
+    @Nested
+    inner class Problem2CustomTest {
+        @Test
+        fun case3() {
+            val cryptogram = "zyalllelyz"
+            val result = "zyaelyz"
+            Assertions.assertThat(solution2(cryptogram)).isEqualTo(result)
+        }
+
+        @Test
+        fun case4() {
+            val cryptogram = "aabba"
+            val result = "a"
+            Assertions.assertThat(solution2(cryptogram)).isEqualTo(result)
+        }
+    }
 
     @Nested
     inner class Problem3CustomTest {
@@ -15,6 +31,7 @@ class Problem7CustomTest {
             val result = 228
             Assertions.assertThat(solution3(number)).isEqualTo(result)
         }
+
     }
 
     @Nested
