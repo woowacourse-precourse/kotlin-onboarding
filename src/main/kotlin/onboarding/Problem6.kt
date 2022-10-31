@@ -7,7 +7,8 @@ fun solution6(forms: List<List<String>>): List<String> {
         val name = value[1]
         //result에 있다는 것은 이미 비교된 값이므로 비교하지 않는다.
         //길이가 1 이어도 비교 하지 않는다. 무조건 중복이 아니므로.
-        if (result.contains(email) || name.length == 1) {
+        //한글이 아니어도 비교하지 않는다.
+        if (result.contains(email) || name.length == 1 || !name.matches(Regex("^[가-힣]*\$"))) {
             return@forEachIndexed
         }
 
