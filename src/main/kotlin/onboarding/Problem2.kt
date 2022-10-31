@@ -7,7 +7,7 @@ fun solution2(cryptogram: String): String {
         var loopCheck = false
         for (left in 0 until word.length-1){
             var right = left + 1
-            while ((right != word.length) && (word[left] == word[right]))
+            while (word[left] == word.getOrNull(right))
                 right++
 
             if (right != left+1){
