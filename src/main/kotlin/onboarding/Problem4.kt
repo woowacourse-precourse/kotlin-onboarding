@@ -4,7 +4,7 @@ import java.util.*
 
 fun solution4(word: String): String {
     var ascii = 'Z'
-    //0 1 2 ..
+    //A B C ..
     //Z Y X .. 과 같이 mapping 시키기 위한 배열
     val mappingRecord = Array(26) { ascii-- }
 
@@ -17,10 +17,9 @@ fun solution4(word: String): String {
             resultString += ' '
             continue
         }
-
         val appendChar = mappingRecord[upperWord[index].code - 'A'.code]
 
-        //확인하면서 input에서 주어진 문자가 소문자인 경우는 다시 소문자로 바꾸기
+        //input에서 해당 인덱스의 문자가 소문자인 경우는 소문자로 바꾸기
         resultString += if (word[index].isUpperCase()){
             appendChar
         }

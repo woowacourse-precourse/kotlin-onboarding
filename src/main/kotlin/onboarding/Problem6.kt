@@ -45,7 +45,7 @@ fun alertEmailDecide(forms: List<List<String>>, nicknamePatternCnt: HashMap<Stri
             pattern += eachChar
 
             if (pattern.length == 2) {
-                //2회 이상 나온 닉네임 패턴을 가지고 있는 이메일을 선택한다.
+                //중복된 닉네임 패턴을 가지고 있는 이메일을 선택한다.
                 if (nicknamePatternCnt[pattern]!! >= 2) {
                     alertEmailList.add(email)
                     break
