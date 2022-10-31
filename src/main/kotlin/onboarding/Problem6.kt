@@ -2,6 +2,10 @@ package onboarding
 
 import problem6.ListSizeVerifier
 import problem6.ListSorter
+import problem2.StringLengthVerifier
+import problem6.EmailDomainVerifier
+import problem6.EmailFormatVerifier
+import problem6.KoreanVerifier
 
 private val orderedForms = mutableListOf<List<String>>()
 
@@ -31,10 +35,33 @@ private fun createOrderedForms(forms: List<List<String>>) {
     }
 }
 
+private fun validateCrewInfo() {
+    val emailValidator = InputValidator(
+        listOf(
+            EmailFormatVerifier(),
+            StringLengthVerifier(11, 19),
+            EmailDomainVerifier("email.com")
+        )
+    )
+    val nicknameValidator = InputValidator(
+        listOf(
+            KoreanVerifier(),
+            StringLengthVerifier(1, 19)
+        )
+    )
+
+    for((email, nickname) in orderedForms) {
+        emailValidator.validate(email)
+        nicknameValidator.validate(nickname)
+    }
+}
+
 fun solution6(forms: List<List<String>>): List<String> {
     validateList(forms)
 
     createOrderedForms(forms)
-    
+
+    validateCrewInfo()
+
     return listOf()
 }
