@@ -13,14 +13,14 @@ fun ATM(m : Int) : List<Int> {
     val moneyList = arrayListOf<Int>(50000, 10000, 5000, 1000, 500, 100, 50, 10, 1)
     var wallet = MutableList<Int>(9) { 0 }
 
-    var currnetMoney = m
+    var currentMoney = m
 
     for(i in 0 until moneyList.size) {
-        val value = currnetMoney / moneyList[i]
+        val value = currentMoney / moneyList[i]
 
         if(value != 0) {
             wallet[i] += value
-            currnetMoney -= value * moneyList[i]
+            currentMoney -= value * moneyList[i]
         }
     }
 
