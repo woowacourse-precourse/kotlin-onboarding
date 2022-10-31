@@ -1,5 +1,16 @@
 package onboarding
 
 fun solution2(cryptogram: String): String {
-    TODO("프로그램 구현")
+    return ""
+}
+
+fun checkDuplicateCharIdx(
+    originalList: MutableList<Boolean>,
+    currentIndex: Int,
+    cryptogram: String
+) {
+    if (cryptogram[currentIndex] == cryptogram[currentIndex + 1]) {
+        originalList[currentIndex] = true
+        originalList[currentIndex + 1] = true
+    }
 }
