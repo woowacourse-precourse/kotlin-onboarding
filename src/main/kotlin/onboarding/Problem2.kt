@@ -6,10 +6,17 @@ fun solution2(cryptogram: String): String {
 
     var string = cryptogram
 
+    while(true){
     // 중복 문자들의 인덱스 찾기
     val charIndex: MutableSet<Int> = findDuplicateChar(string)
+        // 중복 문자가 없다면 결과를 리턴하기
+        if (charIndex.isEmpty()){
+            break
+        }
     // 중복 문자들 삭제
     string = deleteDuplicateChar(string, charIndex)
+    }
+    return string
 }
 
 // 중복 문자들의 인덱스 찾는 함수
