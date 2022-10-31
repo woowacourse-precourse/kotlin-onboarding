@@ -52,3 +52,24 @@ private fun calculateFriendsPoint(
     }
     return friendsMapWithMutual
 }
+
+private fun calculateVisitPoint(
+    friendsMapWithMutual: MutableMap<String, Int>,
+    visitors: List<String>
+): MutableList<String> {
+    val friendsListWithVisit: MutableList<String> = mutableListOf()
+    for (i in visitors.indices) {
+        if (friendsMapWithMutual.contains(visitors[i])) {
+            friendsMapWithMutual[visitors[i]] = friendsMapWithMutual.getValue(visitors[i]) + 1
+        } else {
+            friendsMapWithMutual[visitors[i]] = 0
+        }
+    }
+
+    for(element in friendsMapWithMutual){
+        if(element.value != 0){
+            friendsListWithVisit.add(element.key)
+        }
+    }
+    return friendsListWithVisit
+}
