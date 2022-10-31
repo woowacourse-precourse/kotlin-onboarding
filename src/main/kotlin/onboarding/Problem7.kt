@@ -29,7 +29,6 @@ fun alredayfriends(friends: List<List<String>>, user: String): List<String> {
     }
 
     friendslist = friendslist.distinct().toMutableList()
-    println(friendslist)
     return friendslist
 }
 
@@ -42,7 +41,6 @@ fun friendsfriend(friends: List<List<String>>, friendslist: List<String>): List<
         }
     }
     friendsfriendlist = friendsfriendlist.distinct().toMutableList()
-    println(friendsfriendlist)
     return friendsfriendlist
 }
 
@@ -60,7 +58,6 @@ fun possiblerecommend(friends: List<List<String>>, visitors: List<String>, frien
         if (!friendslist.contains(i))
             possiblefriends.add(i)
     }
-    println(possiblefriends)
     return possiblefriends
 }
 
