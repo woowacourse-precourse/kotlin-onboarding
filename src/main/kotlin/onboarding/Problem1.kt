@@ -36,3 +36,19 @@ fun multiply(list: List<Int>): Int {
     }
     return mul
 }
+
+private fun exceptions(list: List<Int>): Boolean {
+    when {
+        //왼쪽페이지가 홀수,오른쪽 페이지가 짝수가 아닐 때
+        list[0] % 2 == 0 -> return false
+        list[1] % 2 != 0 -> return false
+
+        //페이지가 연속이 아닐 때
+        list[0] + 1 != list[1] -> return false
+
+        //페이지가 시작면이나 마지막이 아닐 때
+        list[0] !in 2..399 -> return false
+        list[1] !in 2..399 -> return false
+    }
+    return true
+}
