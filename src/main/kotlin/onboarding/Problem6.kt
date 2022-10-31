@@ -18,7 +18,6 @@ fun solution6(forms: List<List<String>>): List<String> {
     }
     // 중복제거
     twoMore.distinct()
-    println(twoMore)
 
 
     return result
