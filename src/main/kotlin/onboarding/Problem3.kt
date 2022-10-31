@@ -6,5 +6,12 @@ package onboarding
  * (2) 나뉘어진 숫자가 3/6/9와 일치하는지 확인하고, 일치한다면 손뼉 횟수를 추가한다.
  * **/
 fun solution3(number: Int): Int {
-    TODO("프로그램 구현")
+    var clap = 0
+    for (i in 1..number){
+        val testNumber: String = i.toString() //3,6,9 포함되어있는 지 검증할 숫자
+        for (index in testNumber.indices){
+            val piece = testNumber[index].digitToInt() //숫자를 자리수대로 분리
+        }
+    }
+    return clap
 }
