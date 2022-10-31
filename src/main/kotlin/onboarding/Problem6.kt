@@ -5,7 +5,6 @@ fun solution6(forms: List<List<String>>): List<String> {
     val emails: HashSet<String> = HashSet()
     val formsMap: HashMap<String, String> = HashMap()
 
-
     for (i in forms.indices) {
         val nickName: String = forms[i][1]
 

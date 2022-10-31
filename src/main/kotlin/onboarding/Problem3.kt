@@ -2,7 +2,6 @@ package onboarding
 
 fun solution3(number: Int): Int {
 
-
     var clapCount: Int = 0
 
     for (i in 1..number) {

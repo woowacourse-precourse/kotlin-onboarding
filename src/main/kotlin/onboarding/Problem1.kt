@@ -3,19 +3,14 @@ package onboarding
 
 fun solution1(pobi: List<Int>, crong: List<Int>): Int {
 
-
-
-
     val pobiPagePointList = listOf(
         getSumPagePlaceValue(pobi[0]),
         getSumPagePlaceValue(pobi[1]),
         getMultiplePagePlaceValue(pobi[0]),
         getMultiplePagePlaceValue(pobi[1])
     )
-
     val ascendPobiPagePointList = pobiPagePointList.sorted()
     val maxPobiPagePoint = ascendPobiPagePointList[3]
-
 
     val crongPagePointList = listOf(
         getSumPagePlaceValue(crong[0]),
@@ -25,7 +20,6 @@ fun solution1(pobi: List<Int>, crong: List<Int>): Int {
     )
     val ascendCrongPagePointList = crongPagePointList.sorted()
     val maxCrongPagePoint = ascendCrongPagePointList[3]
-
 
     val invalidPage = pobi[1] - pobi[0] > 1 || crong[1]- crong[0] > 1
     if (invalidPage) return -1
