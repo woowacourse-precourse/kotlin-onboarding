@@ -7,5 +7,9 @@ package onboarding
  * (3) 알파벳을 제외한 문자는 그대로 출력
  * **/
 fun solution4(word: String): String {
-    TODO("프로그램 구현")
+    var solutionWord = "" //return 값
+
+    val wordPiece = word.toList() //(1) 한 글자씩 분리
+
+    return solutionWord
 }
