@@ -29,7 +29,7 @@ fun solution7(
 
 fun deleteOneBridgeAndMe(
     user: String,
-    friendsRelation: MutableMap<String, MutableSet<String>>,
+    friendsRelation: MutableMap<String, MutableList<String>>,
     usersScore: MutableMap<String, Int>
 ): MutableMap<String, Int> {
     friendsRelation[user]!!.forEach { friend ->
@@ -41,23 +41,22 @@ fun deleteOneBridgeAndMe(
 }
 
 
-fun initializeFriendsRelation (friends: List<List<String>>): MutableMap<String, MutableSet<String>> {
-    val friendsRelation = mutableMapOf<String, MutableSet<String>>()
+
+fun initializeFriendsRelation (friends: List<List<String>>): MutableMap<String, MutableList<String>> {
+    val friendsRelation = mutableMapOf<String, MutableList<String>>()
 
     friends.forEach { relation ->
-        var user1 = friendsRelation[relation[0]]
-        var user2 = friendsRelation[relation[1]]
+        val userFriendsList1 = friendsRelation[relation[0]]
+        val userFriendsList2 = friendsRelation[relation[1]]
 
-        if (user1.isNullOrEmpty()) {
-            friendsRelation[relation[0]] = mutableSetOf(relation[1])
-        } else {
-            user1.add(relation[1])
+        when(userFriendsList1.isNullOrEmpty()) {
+            true -> friendsRelation[relation[0]] = mutableListOf(relation[1])
+            false -> userFriendsList1.add(relation[1])
         }
 
-        if (user2.isNullOrEmpty()) {
-            friendsRelation[relation[1]] = mutableSetOf(relation[0])
-        } else {
-            user2.add(relation[0])
+        when(userFriendsList2.isNullOrEmpty()) {
+            true -> friendsRelation[relation[1]] = mutableListOf(relation[0])
+            false -> userFriendsList2.add(relation[0])
         }
     }
 
@@ -67,7 +66,7 @@ fun initializeFriendsRelation (friends: List<List<String>>): MutableMap<String, 
 
 fun scoreMutualfriends(
     user: String,
-    friendsRelation : MutableMap<String, MutableSet<String>>,
+    friendsRelation : MutableMap<String, MutableList<String>>,
     usersScore : MutableMap<String, Int>,
 ): MutableMap<String, Int> {
     val userRelation = friendsRelation[user]
