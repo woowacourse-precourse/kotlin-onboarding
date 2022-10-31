@@ -66,5 +66,13 @@ fun solution7(
     friends: List<List<String>>,
     visitors: List<String>
 ): List<String> {
-    TODO("프로그램 구현")
+    val userFriends = setUserFriends(friends, user)
+    var scoreList = setWeAreFriends(userFriends, friends, user)
+    scoreList = setVisitor(scoreList, visitors, userFriends)
+    var result = setMapSort(scoreList)
+
+    return if(result.size > 5)
+        result.keys.toList().subList(0, 5)
+    else
+        result.keys.toList()
 }
