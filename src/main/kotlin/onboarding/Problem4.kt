@@ -44,7 +44,7 @@ fun translateFroglang(s: Char): Char {
         'O' to 'L',
     )
     if (s.code > 'a'.code) {
-        val answer = frogLang.findOrNull { it.first.toLowerrcase() == s }?.second
+        val answer = frogLang.findOrNull { it.first.toLowerCase() == s }?.second
             ?: throw IllegalArgumentException("$s 가 잘못된 입력값입니다.")
         return answer.toLowerCase()
     }
