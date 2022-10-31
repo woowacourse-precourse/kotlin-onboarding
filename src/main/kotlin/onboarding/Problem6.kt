@@ -20,3 +20,9 @@ fun isNicknameLength(nickname: String):Boolean{
     }
     return false
 }
+fun isEmailLength(email: String): Boolean {
+    if (email.length in 11..19) {
+        return true
+    }
+    return false
+}
