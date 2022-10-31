@@ -25,3 +25,27 @@ fun setTwoLetterNameSetList(forms: List<List<String>>): MutableList<MutableSet<S
 
     return twoLetterNameSetList
 }
+
+fun addDuplicateUsers(isLetterDuplicate: Boolean, currentUserName: String, otherUserName: String): MutableSet<String> {
+    if (isLetterDuplicate) {
+        return mutableSetOf(currentUserName, otherUserName)
+    }
+    return mutableSetOf()
+}
+
+fun getDuplicateUsers(
+    users: List<List<String>>,
+    userNames: MutableList<MutableSet<String>>,
+    currentUserNameIndex: Int
+): MutableSet<String> {
+    val currentDuplicateUsers = mutableSetOf<String>()
+
+    for (otherUserNameIndex in currentUserNameIndex + 1 until userNames.lastIndex) {
+        val commonWords = userNames[currentUserNameIndex].intersect(userNames[otherUserNameIndex])
+        val isLetterDuplicate = commonWords.isNotEmpty()
+        val tempDuplicateUsers = addDuplicateUsers(isLetterDuplicate, users[currentUserNameIndex][0], users[otherUserNameIndex][0])
+
+        currentDuplicateUsers.addAll(tempDuplicateUsers)
+    }
+    return currentDuplicateUsers
+}
