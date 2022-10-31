@@ -49,11 +49,11 @@ fun removeString(str: String) : String {
 
 fun solution2(cryptogram: String): String {
 //    TODO("프로그램 구현")
-    var ans = cryptogram
+    var result = cryptogram
 
-    while(checkString(ans)) {
-        ans = removeString(ans)
+    while(checkString(result)) {
+        result = removeString(result)
     }
 
-    return ans
+    return result
 }
