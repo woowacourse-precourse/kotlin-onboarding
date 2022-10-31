@@ -21,3 +21,28 @@
 | forms | result |
 | --- | --- |
 | [ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ] | ["jason@email.com", "jm@email.com", "mj@email.com"] |
+
+---
+
+## 기능 목록
+`Problem6.kt`은 아래 기능들을 제공한다.
+
+`User`클래스
+- `email`, `nickname` 멤버 변수를 갖는다
+
+`resultKey`
+- 중복되는 단어들을 담는 `ArrayList`이다.
+
+`nicknameMap`은 다음과 같이 정의한다.  
+- `val nicknameMap = HashMap<String, ArrayList<User>`  
+
+|함수| 파라미터                   | 반환 값           | 설명                                                                                                                               |
+|---|------------------------|----------------|----------------------------------------------------------------------------------------------------------------------------------|
+|`dividedList`| `String`               | `List<String>` | 닉네임을 2글자 단위로 나누어 `List`로 반환한다.                                                                                                   |
+|`updateNicknameMap`| `User`, `List<String>` | `Unit`         | `dividedList`의 반환값의 원소들을 `nicknameMap`에 추가한다.                                                                                    |
+|`resultHashSet`| `Unit`                  | `HashSet`      | `resultKey`의 원소를 `key`로 하여 `nicknameMap`을 탐색하고 `resultKey`의 `key`에 해당하는 `nicknameMap`의 `value`의 원소의 `email`을 `HashSet`에 넣어 반환한다. |
+|`solution6`| `List<List<String>>`   | `List<String>` | 신청받은 닉네임 중 같은 글자가 연속적으로 포함 되는 닉네임을 작성한 지원자의 이메일 목록을 반환한다.|
+
+### `updateNicknameMap`
+- `key`가 있을 경우 `value`에 `add`한다. 이 때 `value.size`가 1이었다면 `resultKey`에도 `add`한다
+- `key`가 없을 경우 `key`와 `MutableList<User>`를 초기화 하여 추가한다.

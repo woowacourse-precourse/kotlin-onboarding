@@ -19,3 +19,15 @@
 | word | result |
 | --- | --- |
 | "I love you" | "R olev blf" |
+
+---
+## 기능 목록
+`Problem.kt`는 청개구리 사전(`frogDocs`)을 통해 주어진 문자열 word를 반대로 변환하는 `solution4`함수를 제공한다.
+
+| 함수                |파라미터|반환 값| 설명                                                |
+|-------------------|---|---|---------------------------------------------------|
+| `solution4`       |`String`|`String`| `String` 타입 매개변수를 청개구리 사전을 참고해 반대로 변환된 문자열을 반환한다. |
+| `initDocs`        |`Unit`|`Array<Char>`| 청개구리 사전을 초기화한다.|
+| `isUppercaseChar` |`Char`|`Boolean`| `Char` 타입 매개변수가 대문자인지 참/거짓 여부를 반환한다.              |
+| `isLowercaseChar` |`Char`|`Boolean`| `Char` 타입 매개변수가 소문자인 참/거짓 여부 반환한다.                |
+| `inverseChar`     |`Char`|`Char`| `Char` 타입 매개변수를 변환한다. 이 때 알파벳 외의 문자는 변환하지 않는다.    |
