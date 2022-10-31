@@ -39,11 +39,13 @@ fun solution7(
         compareBy({ it.second }, { it.first })
     )
     // 정렬된 스코어 맵에 최대 5개 까지 결과 리스트에 넣는다.
-    scoreMap.forEach { (name, score) ->
-        if (result.size != 5) {
-            result.add(name)
-        } else {
-            return@forEach
+    run loop@{
+        scoreMap.forEach { (name, _) ->
+            if (result.size != 5) {
+                result.add(name)
+            } else {
+                return@loop
+            }
         }
     }
 
