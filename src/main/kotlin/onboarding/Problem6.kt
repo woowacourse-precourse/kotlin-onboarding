@@ -1,7 +1,9 @@
 package onboarding
 
+
 fun solution6(forms: List<List<String>>): List<String> {
     val answer = mutableListOf<String>()
+
     for (i in 0 until forms.size) {
         val email = forms[i][0]
         val nickname = forms[i][1]
@@ -99,7 +101,7 @@ fun sortEmailByAesc(emailList: List<String>): List<String> {
     })
     // 버블 정렬
     for (i in 0 until emailList.size) {
-        for (j in i until emailList.size - 1) {
+        for (j in i until emailList.size) {
             if (emailList[i] > emailList[j]) {
                 val temp = emailList[j]
                 emailList[j] = emailList[i]
