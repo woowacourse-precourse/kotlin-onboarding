@@ -37,5 +37,9 @@ fun solution6(forms: List<List<String>>): List<String> {
 
     }
 
+    var result = ArrayList<String>(email_set)
+    print(result)
+
+    return result
 
 }
