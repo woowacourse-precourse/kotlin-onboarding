@@ -3,7 +3,30 @@ package onboarding
 import java.util.regex.Pattern
 
 fun solution6(forms: List<List<String>>): List<String> {
-    TODO("프로그램 구현")
+    var regularForms = mutableListOf<List<String>>()
+    var resultForms = mutableSetOf<List<String>>()
+    var result = mutableListOf<String>()
+
+    for (i in 0..forms.size - 1) {
+        if (isEmailLength(forms[i][0])&& isKoreanNickname(forms[i][1]) && isNicknameLength(forms[i][1])) {
+            regularForms.add(forms[i])
+        }
+    }
+    for (i in 0..regularForms.size - 1) {
+        for (j in 0..regularForms.size - 1) {
+            if (i != j) {
+                if (isCompareWard(regularForms[i][1], regularForms[j][1])) {
+                    resultForms.add(regularForms[i])
+                    resultForms.add(regularForms[j])
+                }
+            }
+        }
+    }
+    for (element in resultForms) {
+        result.add(element[0])
+    }
+    result.sort()
+    return result
 }
 fun isCompareWard(name1: String, name2: String): Boolean {
     var result: Boolean = false
