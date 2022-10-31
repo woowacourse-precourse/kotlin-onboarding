@@ -51,3 +51,14 @@ private fun friendsScore(
     }
     return friendMap
 }
+
+private fun visitorScore(
+    visitors: List<String>,
+    friendSet: MutableSet<String>,
+    friendMap: MutableMap<String, Int>
+) {
+    for (visitor in visitors) {
+        if (visitor in friendSet) continue
+        friendMap[visitor] = friendMap.getOrDefault(visitor, 0) + 1
+    }
+}
