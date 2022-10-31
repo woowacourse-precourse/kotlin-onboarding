@@ -11,13 +11,13 @@ private fun getConversionMap(): MutableMap<Char, Char> {
     val reverseUpperAlphabetList = upperAlphabetList.reversed()
     val lowerAlphabetList = alphabet.lowercase().toList()
     val reverseLowerAlphabetList = lowerAlphabetList.reversed()
-    val conversionTable = mutableMapOf<Char, Char>()
+    val conversionMap = mutableMapOf<Char, Char>()
 
-    for (i in upperAlphabetList.indices) conversionTable[upperAlphabetList[i]] = reverseUpperAlphabetList[i]
-    for (i in lowerAlphabetList.indices) conversionTable[lowerAlphabetList[i]] = reverseLowerAlphabetList[i]
-    conversionTable[' '] = ' '
+    for (i in upperAlphabetList.indices) conversionMap[upperAlphabetList[i]] = reverseUpperAlphabetList[i]
+    for (i in lowerAlphabetList.indices) conversionMap[lowerAlphabetList[i]] = reverseLowerAlphabetList[i]
+    conversionMap[' '] = ' '
 
-    return conversionTable
+    return conversionMap
 }
 
 private fun getConversionWord(word: String, conversionMap: MutableMap<Char, Char>): String {
