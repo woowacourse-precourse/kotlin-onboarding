@@ -33,8 +33,17 @@ class NicknameManager(private val forms:List<List<String>>) {
         }
     }
 
+    private fun getManipulatedReporter(reporterList:List<String>) : List<String> {
+        return reporterList.sorted()
+    }
+
     fun apply() {
         manage()
         storage.addToStorage(nicknameSet)
+    }
+
+    fun getReporterAsList() : List<String> {
+        val reporterList = reporter.toList()
+        return getManipulatedReporter(reporterList)
     }
 }

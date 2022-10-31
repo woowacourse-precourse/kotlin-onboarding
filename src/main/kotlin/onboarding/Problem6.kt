@@ -62,5 +62,5 @@ fun solution6(forms: List<List<String>>): List<String> {
     val nicknameManager = NicknameManager(orderedForms)
     nicknameManager.apply()
 
-    return listOf()
+    return nicknameManager.getReporterAsList()
 }
