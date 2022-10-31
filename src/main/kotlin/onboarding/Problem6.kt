@@ -61,22 +61,44 @@ fun String.contains(findStr: String): Boolean {
 /**
  * 이메일의 도메인이 "email.com"인지 체크하는 함수
  */
-fun String.isEmailDomain(): Boolean {
-
-}
+private fun String.isDomainEmail(): Boolean = this == "email.com"
 
 /**
  * 이메일 리스트를 이메일에 해당하는 부분의 문자열 기준으로
  * 오름차순으로 정렬하여 반환한다.
  */
 fun sortEmailByAesc(emailList: List<String>): List<String> {
-
+    val emailList = ArrayList(emailList.map {
+        divideEmail(it).first
+    })
+    // 버블 정렬
+    for (i in 0 until emailList.size) {
+        for (j in i until emailList.size - 1) {
+            if (emailList[i] > emailList[j]) {
+                val temp = emailList[j]
+                emailList[j] = emailList[i]
+                emailList[i] = temp
+            }
+        }
+    }
+    return emailList.map {
+        "$it@email.com"
+    }.toList()
 }
 
 /**
- * 리스트에 중복된 이메일이 있는지 체크 및 제거
+ * 리스트에 중복된 이메일을 제거한다.
  */
 fun emailDuplicateCheck(emailList: List<String>): List<String> {
-
+    val pureList = mutableListOf<String>()
+    for (i in 0 until emailList.size) {
+        pureList.add(emailList[i])
+        for (j in i + 1 until emailList.size) {
+            if (pureList.contains(emailList[j])) {
+                pureList.removeAt(pureList.lastIndex)
+                break
+            }
+        }
+    }
+    return pureList
 }
-
