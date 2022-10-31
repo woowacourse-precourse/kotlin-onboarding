@@ -21,15 +21,17 @@ fun solution7(
     }
 
     val answer = mutableListOf<Pair<String, Int>>()
-
     // 0점이 아닌 값들을 answer리스트에 추가
     for (i in gradeTable.indices) {
         if (gradeTable[i] != 0) answer.add(userList[i] to gradeTable[i])
     }
 
-    // 이름순으로 먼저, 그다음 점수순으로 정렬
-    answer.sortedWith(compareBy({ it.first }, { it.second }))
-    return answer.map { it.first }.toList()
+    // 점수순으로 먼저, 그다음 이름순 정렬
+    return answer
+        .sortedWith(compareBy({ -it.second }, { it.first }))
+        .map { it.first }
+        .take(5)
+        .toList()
 }
 
 /**
