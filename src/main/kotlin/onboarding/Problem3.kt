@@ -1,6 +1,10 @@
 package onboarding
 
 
+fun solution3(number: Int): Int {
+    return countNumberOfClaps(number)
+}
+
 fun count369(number: Int): Int {
     var count = 0
     val numberToString = number.toString()
@@ -21,8 +25,4 @@ fun countNumberOfClaps(number: Int): Int {
     }
 
     return count
-}
-
-fun solution3(number: Int): Int {
-    return countNumberOfClaps(number)
 }
