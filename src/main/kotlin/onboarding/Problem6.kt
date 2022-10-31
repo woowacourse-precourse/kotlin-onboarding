@@ -14,3 +14,9 @@ fun isKoreanNickname(nickname : String):Boolean{
     }
     return false
 }
+fun isNicknameLength(nickname: String):Boolean{
+    if(nickname.length in 1.. 19){
+        return true
+    }
+    return false
+}
