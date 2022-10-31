@@ -38,6 +38,23 @@ fun setWeAreFriends(userFriends: List<String>, infoFriends: List<List<String>>, 
     return result.toMap()
 }
 
+fun setVisitor(score: Map<String, Int>, visitors: List<String>, userFriends: List<String>): Map<String, Int> {
+    var result = score.toMutableMap()
+
+    for(i in visitors.indices) {
+        if(!userFriends.find{it == visitors[i]}.isNullOrEmpty()) {
+            continue
+        }
+        if(result[visitors[i]] == null) {
+            result[visitors[i]] = 1
+        } else {
+            result[visitors[i]] = result[visitors[i]]!! + 1
+        }
+    }
+
+    return result.toMap()
+}
+
 fun solution7(
     user: String,
     friends: List<List<String>>,
