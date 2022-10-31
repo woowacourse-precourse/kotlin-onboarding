@@ -2,7 +2,7 @@ package onboarding
 
 fun solution6(forms: List<List<String>>): List<String> {
     val twoLetterNameSetList = setTwoLetterNameSetList(forms)
-    return emptyList()
+    return checkDuplicateTwoLetter(forms, twoLetterNameSetList).sorted()
 }
 
 // 각 유저마다 2글자씩 분리한 Set 생성
@@ -48,4 +48,16 @@ fun getDuplicateUsers(
         currentDuplicateUsers.addAll(tempDuplicateUsers)
     }
     return currentDuplicateUsers
+}
+
+fun checkDuplicateTwoLetter(
+    users: List<List<String>>,
+    userNames: MutableList<MutableSet<String>>
+): MutableSet<String> {
+    val duplicateUsers = mutableSetOf<String>()
+    for (currentUserNameIndex in userNames.indices) {
+        duplicateUsers.addAll(getDuplicateUsers(users, userNames, currentUserNameIndex))
+    }
+
+    return duplicateUsers
 }
