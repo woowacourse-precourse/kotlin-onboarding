@@ -14,11 +14,19 @@ fun divideEmail(email: String): Pair<String, String> {
 }
 
 /**
- * 문자열에서 파라미터로 온 문자열을 포함하는지 체크한다.
+ * 기존문자열에서 파라미터로 온 2글자의 문자열을 포함하는지 체크한다.
  * 2글자 이상의 파라미터 문자열 및 기본 문자열만 체크한다.
  */
 fun String.contains(findStr: String): Boolean {
-
+    check(this.length > 1 && findStr.length > 1) {
+        return false
+    }
+    for (i in 0 until this.length - 1) {
+        if ((this[i].toString() + this[i + 1].toString()) == findStr) {
+            return true
+        }
+    }
+    return false
 }
 
 /**
