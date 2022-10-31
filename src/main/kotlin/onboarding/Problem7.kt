@@ -6,7 +6,7 @@ fun solution7(
     visitors: List<String>
 ): List<String> {
 
-    var map: HashMap<String, Int> = setUniqueNumber(friends)
+    var map: HashMap<String, Int> = setUniqueNumber(friends, user)
     var graph: Array<MutableList<String>> = addFriends(friends, user, map)
     var userFriends = HashMap<String, Int>()
 
@@ -20,22 +20,21 @@ fun solution7(
     }
 
     updateVisitUser(visitors, userFriends)
+
     for (i in graph[map[user]!!]) {
         if (userFriends.containsKey("$i")) {
             userFriends.remove("$i")
         }
     }
 
-    userFriends.toList().sortedWith(compareByDescending { it.second })
-
+    var sortedList = userFriends.entries.sortedWith(compareByDescending<MutableMap.MutableEntry<String, Int>> { it.value }.thenBy { it.key })
     val result = mutableListOf<String>()
 
     for (i in 0 until 5) {
-        if (userFriends.isEmpty()) {
-            break
+        try {
+            result.add(sortedList[i].key)
+        } catch (e : IndexOutOfBoundsException) {
         }
-        result.add(userFriends.keys.first())
-        userFriends.remove(userFriends.keys.first())
     }
 
     return result
@@ -52,9 +51,10 @@ fun updateVisitUser(visitors: List<String>, result: HashMap<String, Int>): HashM
     return result
 }
 
-fun setUniqueNumber(friends: List<List<String>>): HashMap<String, Int> {
-    var index = 0
+fun setUniqueNumber(friends: List<List<String>>, user: String): HashMap<String, Int> {
+    var index = 1
     var map = HashMap<String, Int>()
+    map[user] = 0
 
     for (i in friends.indices) {
         val (a, b) = friends[i].map { it.toString() }
@@ -69,7 +69,7 @@ fun setUniqueNumber(friends: List<List<String>>): HashMap<String, Int> {
 }
 
 fun addFriends(friends: List<List<String>>, user: String, map: HashMap<String, Int>): Array<MutableList<String>> {
-    var graph = Array(friends.size){ mutableListOf<String>() }
+    var graph = Array(map.size){ mutableListOf<String>() }
     for (i in friends.indices) {
         val (a, b) = friends[i].map { it.toString() }
         if (a == user) {
