@@ -1,7 +1,14 @@
 package onboarding
 
 fun solution3(number: Int): Int {
-    TODO("프로그램 구현")
+    var result: Int = 0
+    for (i in 1..number)//1부터 number 증가
+    {
+        result += checkRule(i)
+    }
+
+
+    return result
 }
 
 fun checkRule(i: Int): Int { //369가 몇개인지 확인하는 함수
