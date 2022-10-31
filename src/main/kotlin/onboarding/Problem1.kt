@@ -28,4 +28,12 @@ fun getMaxScore(pages: List<Int>): Int {
     }
 }
 
-fun isValidPages(pages: List<Int>) = pages[0] + 1 == pages[1]
+fun isValidPages(pages: List<Int>): Boolean {
+    pages.forEach { page ->
+        if (page !in 1..400) {
+            return false
+        }
+    }
+
+    return pages[0] + 1 == pages[1]
+}
