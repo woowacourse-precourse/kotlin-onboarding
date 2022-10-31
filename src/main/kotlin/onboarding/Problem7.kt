@@ -28,9 +28,23 @@ fun getAllUserList(friends: List<List<String>>, visitors: List<String>): List<St
     }
     return totalUserList.toList()
 }
+
 /**
  * 유저와 이미 친구인 리스트를 반환한다.
  */
+fun getFriendsList(friends: List<List<String>>, user: String): List<String> {
+    val friendsList = mutableListOf<String>()
+    for (i in friends) {
+        if (i[0] == user) {
+            friendsList.add(i[1])
+            continue
+        }
+        if (i[1] == user) {
+            friendsList.add(i[0])
+        }
+    }
+    return friendsList.toList()
+}
 
 /**
  * 리스트에서 특정 문자열의 인덱스를 반환한다.
