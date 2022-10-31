@@ -1,24 +1,19 @@
 package onboarding
 
+import java.util.*
+
 fun solution2(cryptogram: String): String {
-    return removeReduplication(cryptogram)
+    
 }
 
-private fun removeReduplication(string: String): String {
-    var index = 0
-    var string= string
-
-    while (index < string.length) {
-        var compareIndex = 0
-        while (compareIndex < string.length) {
-            if (string[compareIndex] == string[compareIndex+1]) {
-                string = string.removeRange(IntRange(compareIndex, compareIndex+1))
-                break
-            } else {
-                compareIndex++
-            }
+private fun solveCryptogram(cryptogram: String): Stack<Char>{
+    val result: Stack<Char> = Stack()
+    for (i in cryptogram.indices) {
+        if (result.isNotEmpty() && result.peek() == cryptogram[i]) {
+            result.pop()
+        } else {
+            result.push(cryptogram[i])
         }
-        index++
     }
-    return string
+    return result
 }
