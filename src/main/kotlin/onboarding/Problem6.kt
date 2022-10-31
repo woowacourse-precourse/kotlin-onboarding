@@ -16,3 +16,6 @@ fun solution6(forms: List<List<String>>): List<String> {
     // 이메일 정렬
     return checkNickName(result).sortedBy { it }
 }
+
+fun isValidEmail(email: String): Boolean = "[A-Za-z]*(@email.com)$".toRegex()
+    .matches(email)
