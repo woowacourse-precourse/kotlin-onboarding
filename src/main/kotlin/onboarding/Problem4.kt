@@ -46,7 +46,7 @@ fun translateFroglang(s: Char): Char {
     if (s.code > 'a'.code) {
         val answer = frogLang.findOrNull { it.first.toLowerrcase() == s }?.second
             ?: throw IllegalArgumentException("$s 가 잘못된 입력값입니다.")
-        return answer.toLowerrcase()
+        return answer.toLowerCase()
     }
     return frogLang.findOrNull { it.first == s }?.second ?: throw IllegalArgumentException("$s 가 잘못된 입력값입니다.")
 }
@@ -54,11 +54,11 @@ fun translateFroglang(s: Char): Char {
 /**
  * Char형 문자를 소문자로 바꾸어주는 함수
  */
-fun Char.toLowerrcase(): Char {
-    require(this.code >= 'a' && this.code <= 'z') {
-        "$this 소문자 알파벳이 입력되지 않았습니다."
+fun Char.toLowerCase(): Char {
+    require(this.code >= 'A'.code && this.code <= 'Z'.code) {
+        "$this 대문자 알파벳이 입력되지 않았습니다."
     }
-    (this.code + 32).toChar()
+    return (this.code + 32).toChar()
 }
 
 /**
