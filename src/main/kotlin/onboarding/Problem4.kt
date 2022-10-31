@@ -29,7 +29,6 @@ fun convertAlpha(str : String) : String {
 }
 fun solution4(word: String): String {
 //    TODO("프로그램 구현")
-    var ans = word
 
-    return convertAlpha(ans)
+    return convertAlpha(word)
 }
