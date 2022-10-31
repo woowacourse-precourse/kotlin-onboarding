@@ -5,7 +5,31 @@ fun solution7(
     friends: List<List<String>>,
     visitors: List<String>
 ): List<String> {
+    val userList = getAllUserList(friends, visitors)
+    val gradeTable = MutableList(userList.size) { 0 }
+    val friendsList = getFriendsList(friends, user)
+    val friendsOfFriendsList = getFriendsListOfFriends(friends, friendsList, user)
 
+    friendsOfFriendsList.forEach { item ->
+        gradeTable[userList.indexOf(item)] += 10
+    }
+    visitors.forEach { item ->
+        gradeTable[userList.indexOf(item)] += 1
+    }
+    friendsList.forEach { item ->
+        gradeTable[userList.indexOf(item)] = 0
+    }
+
+    val answer = mutableListOf<Pair<String, Int>>()
+
+    // 0점이 아닌 값들을 answer리스트에 추가
+    for (i in gradeTable.indices) {
+        if (gradeTable[i] != 0) answer.add(userList[i] to gradeTable[i])
+    }
+
+    // 이름순으로 먼저, 그다음 점수순으로 정렬
+    answer.sortedWith(compareBy({ it.first }, { it.second }))
+    return answer.map { it.first }.toList()
 }
 
 /**
@@ -62,25 +86,3 @@ fun getFriendsListOfFriends(friends: List<List<String>>, friendsList: List<Strin
     }
     return friendsOfFriendsList.toList()
 }
-
-
-/**
- * 리스트에서 특정 문자열의 인덱스를 반환한다.
- */
-
-/**
- * 리스트에서 특정 문자열의 갯수를 반환한다.
- */
-
-/**
- * 함께 아는 친구 리스트를 반환한다.
- */
-
-/**
- * 점수테이블에 타임라인에 방문한 친구들의 추천 점수를 더해 반환한다.
- */
-
-/**
- * 친구리스트를 점수테이블과 비교하여 높은 순으로 정렬한 리스트를 반환한다.
- * 이 때 0점인 경우는 추가하지 않는다.
- */
