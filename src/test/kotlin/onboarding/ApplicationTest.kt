@@ -47,6 +47,27 @@ class ApplicationTest {
             val result = ""
             assertThat(solution2(cryptogram)).isEqualTo(result)
         }
+
+        @Test
+        fun case3() {
+            val cryptogram = "zyellleyz"
+            val result = ""
+            assertThat(solution2(cryptogram)).isEqualTo(result)
+        }
+
+        @Test
+        fun case4() {
+            val cryptogram = "zyalllelyz"
+            val result = "zyaelyz"
+            assertThat(solution2(cryptogram)).isEqualTo(result)
+        }
+
+        @Test
+        fun case5() {
+            val cryptogram = "aabba"
+            val result = "a"
+            assertThat(solution2(cryptogram)).isEqualTo(result)
+        }
     }
 
     @Nested
