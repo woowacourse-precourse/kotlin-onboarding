@@ -1,70 +1,85 @@
 package onboarding
 
-import java.util.regex.Pattern
+/*
+우아한테크코스에서는 교육생(이하 크루) 간 소통 시 닉네임을 사용한다.
+간혹 비슷한 닉네임을 정하는 경우가 있는데, 이러할 경우 소통할 때 혼란을 불러일으킬 수 있다.
+혼란을 막기 위해 크루들의 닉네임 중 같은 글자가 연속적으로 포함 될 경우 해당 닉네임 사용을 제한하려 한다.
+이를 위해 같은 글자가 연속적으로 포함되는 닉네임을 신청한 크루들에게 알려주는 시스템을 만들려고 한다.
+신청받은 닉네임 중 같은 글자가 연속적으로 포함 되는 닉네임을 작성한 지원자의 이메일 목록을 return 하도록 solution 함수를 완성하라.
+*/
 
-
-fun isHangle(name: String): Boolean { // 한글 외 문자 포함되면 true return
-    if (Pattern.matches("^[가-힣ㄱ-ㅎㅏ-ㅣ]*$", name)) return false
-    return true
-}
-
-fun isDuple(email: String, ban_lst: List<String>): Boolean { // 중복이면 true return
-    for (i in 0..email.length - 2) {
-        if (ban_lst.contains(email.substring(i, i + 2))) return true
-    }
-    return false
-}
-
-fun banCheck(name: String): ArrayList<String> { // name의 연속된 문자 전부 add
-    val bans = arrayListOf<String>()
-    for (i in 0..name.length - 2) bans.add(name.substring(i, i + 2))
-    return bans
-}
-
-fun exception(mail: String, name: String): Boolean {
-    if (!mail.contains("@email.com")) return true       // 만약. @email.com이 안들어 가있으면 이메일 형식 위반으로 경우의수 제외
-    if (isHangle(name)) return true                         // 만약 nickname이 한글로만 구성되어 있지 않으면 제외
-    return false
-}
-
-fun dupleCheck(
-    forms: List<List<String>>,
-    email: String,
-    bans: ArrayList<String>
-): ArrayList<String> {
-    // 입력된 메일과 다른 메일과 중복되는지 체크, 중복된 메일 return
-    val duple = ArrayList<String>()
-    for ((diff_email, diff_name) in forms) {
-        if (diff_email == email) continue                   // 비교하는 메일이 원래의 메일과 같은 경우
-        if (exception(diff_email, diff_name)) continue      // 예외 처리
-        if (isDuple(diff_name, bans)) duple.add(diff_email) // bans에 등록된 네임이 있는 경우
-    }
-    return duple
-}
+/*
+두 글자 이상의 문자가 연속적으로 순서에 맞추어 포함되어 있는 경우 중복으로 간주한다.
+크루는 1 .. 10,000명
+이메일은 이메일 형식에 부합하며, 전체 길이는 11자 이상 20자 미만이다.
+신청할 수 있는 이메일은 email.com 도메인으로만 제한한다.
+닉네임은 한글만 가능하고 전체 길이는 1자 이상 20자 미만이다.
+result는 이메일에 해당하는 부분의 문자열을 오름차순으로 정렬하고 중복은 제거한다.
+*/
 
 fun solution6(forms: List<List<String>>): List<String> {
-    var result = arrayListOf<String>()
-    for ((email, nickname) in forms) {
-        if (exception(email, nickname)) continue // 예외 처리
-        val ban_names = banCheck(nickname)
-        result += dupleCheck(forms, email, ban_names)
+/*
+* 아이디 2~9자리
+* 닉네임 1~19자리
+* 이메일은 email.com제한
+* 두 글자씩 nick_list에 넣고 count해서 2이상인 애들만 분류해서 result에 아이디 넣어줌
+* result 오름차순 정렬, 중복제거(세트화)
+* */
+    var result = mutableListOf<String>()
+    var nick_list = mutableListOf<String>() // 최초 닉네임만 받아오는 공간
+    var nick_compare = mutableListOf<String>() // 임시저장소
+    var nick = "" // 닉네임 두글자씩 저장하기
+    var nick_check = mutableListOf<String>() // 중복확인소
+
+    for (i in 0 until forms.size) {
+        nick_list.add(forms[i][1])
     }
-    result = result.distinct() as ArrayList<String> // 똑같은 원소 제거
-    result.sort()                                   // 정렬
+    //임시저장소에 값 넣어주기
+    nick_compare = nick_list
+    while (true) {
+        if (nick_compare.size == 0) {
+            break
+        }
+        for (j in 0..nick_compare[0].length) {
+            if (nick.length == 2) {
+                nick_check.add(nick)
+                nick = ""
+            }
+            if (j + 1 == nick_compare[0].length) {
+                break
+            }
+            nick = nick_compare[0][j] + (nick_compare[0][j + 1]).toString()
+//                println(nick)
+        }
+        nick_compare.removeAt(0) // 하나씩 제거되게
+    }
+    // 전체 닉네임 두글자씩 받아온 상태
+//    println(nick_check)
+
+    //중복확인소
+    for (l in 0 until forms.size) {
+        for (k in 0 until nick_check.size) {
+            // 2이상 뜬다면
+            if (nick_check.count { c -> c == nick_check[k] } >= 2) {
+                //중복닉네임이 있는 이메일을 result에 넣어주기
+                if (forms[l][1].contains(nick_check[k])) {
+//                    println(forms[l][0])
+                    // 중복 방지삽입
+                    if (forms[l][0] in result) {
+                        continue
+                    } else {
+                        // "이메일" 형식으로 삽입
+                        result.add(forms[l][0])
+                    }
+
+                }
+            }
+        }
+    }
+    //다시 한번 중복 제거(세트화)
+    result.toSet()
+    //정렬(오름차순)
+    result.sort()
+//    println(result)
     return result
-}
-
-fun main() {
-    println(
-        solution6(
-            forms = listOf(
-                listOf("jm@email.com", "제이엠"),
-                listOf("jason@email.com", "제이슨"),
-                listOf("woniee@email.com", "워니"),
-                listOf("mj@email.com", "엠제이"),
-                listOf("nowm@email.com", "이제엠")
-            )
-        )
-    )
-
 }

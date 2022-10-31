@@ -31,6 +31,5 @@ fun solution4(word: String): String {
             result+=' '
         }
     }
-    //result값에도 쌍따옴표 추가
     return result
 }
