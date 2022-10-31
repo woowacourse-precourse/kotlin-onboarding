@@ -2,6 +2,7 @@ package problem6
 
 class NicknameManager(private val forms:List<List<String>>) {
     private val storage = NicknameStorage()
+    private val restrictedStorage = NicknameStorage()
     private lateinit var nicknameSet:MutableSet<String>
     private val reporter = mutableSetOf<String>()
 
@@ -18,8 +19,10 @@ class NicknameManager(private val forms:List<List<String>>) {
         reporter.add(email)
     }
 
+    private fun composeRestrictedStorage() {}
+
     private fun validateNicknameSet(email:String) {
-        val intersection = storage.getIntersection(nicknameSet)
+        val intersection = restrictedStorage.getIntersection(nicknameSet)
 
         if(intersection.isNotEmpty()) {
             addEmailToReporter(email)
@@ -27,6 +30,12 @@ class NicknameManager(private val forms:List<List<String>>) {
     }
 
     private fun manage() {
+        for((_, nickname) in forms) {
+            createNicknameSet(nickname)
+            composeRestrictedStorage()
+            storage.addToStorage(nicknameSet)
+        }
+
         for((email, nickname) in forms) {
             createNicknameSet(nickname)
             validateNicknameSet(email)
@@ -39,7 +48,6 @@ class NicknameManager(private val forms:List<List<String>>) {
 
     fun apply() {
         manage()
-        storage.addToStorage(nicknameSet)
     }
 
     fun getReporterAsList() : List<String> {
