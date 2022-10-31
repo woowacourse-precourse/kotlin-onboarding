@@ -14,6 +14,8 @@ fun solution7(
 
     for (i in visitors.indices){
         visited.add(visitors[i])
+        person.add(visitors[i])
+        score.add(1)
     }
 
     for (group in friends){
@@ -37,6 +39,8 @@ fun solution7(
             }
         }
     }
+
+
 
 
 
