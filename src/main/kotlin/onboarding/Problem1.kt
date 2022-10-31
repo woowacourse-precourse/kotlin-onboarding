@@ -2,6 +2,9 @@ package onboarding
 
 fun solution1(pobi: List<Int>, crong: List<Int>): Int {
     TODO("프로그램 구현")
+    return pro1(pobi, crong)
+}
+fun pro1(pobi: List<Int>, crong: List<Int>) : Int {
     // pobi 수 구하기
     var pobi_mul: Int
     var pobi_num: Array<Int> = arrayOf(0,0,0,0)
