@@ -34,3 +34,20 @@ private fun searchFriends(
         }
     }
 }
+
+private fun friendsScore(
+    friends: List<List<String>>,
+    friendSet: MutableSet<String>,
+    user: String
+): MutableMap<String, Int> {
+    val friendMap = mutableMapOf<String, Int>()
+    for (friend in friends) {
+        val direction = when {
+            friendSet.contains(friend[0]) && user != friend[1] -> friend[1]
+            friendSet.contains(friend[1]) && user != friend[0] -> friend[0]
+            else -> continue
+        }
+        friendMap[direction] = friendMap.getOrDefault(direction, 0) + 10
+    }
+    return friendMap
+}
