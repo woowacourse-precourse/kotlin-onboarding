@@ -8,7 +8,7 @@ fun solution7(
     return getScoreList(user, friendInformation, visitors)
 }
 
-fun getFriendInformation(friends: List<List<String>>, visitors: List<String>): Map<String, MutableList<String>> {
+private fun getFriendInformation(friends: List<List<String>>, visitors: List<String>): Map<String, MutableList<String>> {
     val friendInformation = LinkedHashMap<String, MutableList<String>>()
 
     for (relationship in friends) {
@@ -37,7 +37,7 @@ fun getFriendInformation(friends: List<List<String>>, visitors: List<String>): M
     return friendInformation
 }
 
-fun getScoreList(
+private fun getScoreList(
     user: String, friendInformation: Map<String, MutableList<String>>, visitors: List<String>
 ): List<String> {
     val scoreMap = mutableMapOf<String, Int>()
@@ -62,7 +62,7 @@ fun getScoreList(
     return scoreMap.toList().sortedWith(compareBy({ -it.second }, { it.first })).map { it.first }
 }
 
-fun countAcquaintance(userFriends: MutableList<String>, anotherUserFriends: MutableList<String>): Int {
+private fun countAcquaintance(userFriends: MutableList<String>, anotherUserFriends: MutableList<String>): Int {
     var count = 0
 
     for (userFriend in userFriends) {
@@ -76,7 +76,7 @@ fun countAcquaintance(userFriends: MutableList<String>, anotherUserFriends: Muta
     return count
 }
 
-fun countNumberOfVisits(anotherUser: String, visitors: List<String>): Int {
+private fun countNumberOfVisits(anotherUser: String, visitors: List<String>): Int {
     var count = 0
 
     for (visitor in visitors) {

@@ -5,7 +5,7 @@ fun solution3(number: Int): Int {
     return countNumberOfClaps(number)
 }
 
-fun count369(number: Int): Int {
+private fun count369(number: Int): Int {
     var count = 0
     val numberToString = number.toString()
 
@@ -17,7 +17,7 @@ fun count369(number: Int): Int {
     return count
 }
 
-fun countNumberOfClaps(number: Int): Int {
+private fun countNumberOfClaps(number: Int): Int {
     var count = 0
 
     for (num in 1..number) {

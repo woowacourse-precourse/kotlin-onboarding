@@ -19,7 +19,7 @@ fun solution1(pobi: List<Int>, crong: List<Int>): Int {
     }
 }
 
-fun getScore(pageList: List<Int>): Int {
+private fun getScore(pageList: List<Int>): Int {
     val leftPage = pageList[0]
     val rightPage = pageList[1]
 
@@ -39,7 +39,7 @@ fun getScore(pageList: List<Int>): Int {
     return max(biggestNumInLeftPage, biggestNumInRightPage)
 }
 
-fun addDigit(num: Int): Int {
+private fun addDigit(num: Int): Int {
     var tempNum = num
     var result = 0
 
@@ -52,7 +52,7 @@ fun addDigit(num: Int): Int {
 }
 
 
-fun multiplyDigit(num: Int): Int {
+private fun multiplyDigit(num: Int): Int {
     var tempNum = num
     var result = 1
 

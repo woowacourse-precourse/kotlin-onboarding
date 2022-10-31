@@ -5,7 +5,7 @@ fun solution2(cryptogram: String): String {
     return removeConsecutiveDuplicateCharacters(cryptogram)
 }
 
-fun removeConsecutiveDuplicateCharacters(cryptogram: String): String {
+private fun removeConsecutiveDuplicateCharacters(cryptogram: String): String {
     var decodedString = ""
     var isConsecutive = false
 

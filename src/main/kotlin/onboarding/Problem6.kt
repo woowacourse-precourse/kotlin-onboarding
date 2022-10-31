@@ -23,7 +23,7 @@ fun solution6(forms: List<List<String>>): List<String> {
     return result.toList().sorted()
 }
 
-fun convertNickNameToTwoLetterSet(nickNmae: String): Set<String> {
+private fun convertNickNameToTwoLetterSet(nickNmae: String): Set<String> {
     val twoLetterSet = hashSetOf<String>()
     for (i in 0 until nickNmae.length - 1) {
         twoLetterSet.add(nickNmae.substring(i, i + 2))
@@ -32,7 +32,7 @@ fun convertNickNameToTwoLetterSet(nickNmae: String): Set<String> {
     return twoLetterSet
 }
 
-fun checkDuplicateNickname(email: String, twoLetterMap: Map<String, Set<String>>): Boolean {
+private fun checkDuplicateNickname(email: String, twoLetterMap: Map<String, Set<String>>): Boolean {
     for (form in twoLetterMap) {
         val twoLetterSet = twoLetterMap[email] ?: hashSetOf<String>()
         val anotherCrewEmail = form.component1()
