@@ -25,3 +25,12 @@ fun getUserFriends(name: String, allFriendsList: List<List<String>>): Set<String
     }
     return userFriends
 }
+
+fun getOverFriends(name: String, allFriendsList: List<List<String>>, myFriendList: Set<String>): Set<String> {
+    val overFriends = mutableSetOf<String>()
+    for (friendName in myFriendList) {
+        overFriends.addAll(getUserFriends(friendName, allFriendsList))
+    }
+    overFriends.remove(name)
+    return overFriends.subtract(myFriendList)
+}
