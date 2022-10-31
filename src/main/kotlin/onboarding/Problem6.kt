@@ -1,5 +1,7 @@
 package onboarding
 
+const val DUP_LEN = 2
+
 /**
  * Returns the list of substrings with [length] in [string]
  */
@@ -58,5 +60,5 @@ fun findEmail(forms: List<List<String>>, length: Int) : List<String> {
 }
 
 fun solution6(forms: List<List<String>>): List<String> {
-    TODO("프로그램 구현")
+    return findEmail(forms, DUP_LEN).sorted()
 }
