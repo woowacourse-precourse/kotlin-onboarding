@@ -38,13 +38,39 @@ fun findKnowFriends(friends: List<List<String>>, knowFriends: Set<String>) {
 }
 
 fun getTopFive(user: String): List<String> {
+    val onlyKnowFriend = checkUserAndFriends(friendsMap, user)
+    val onlyHasPointUser = checkZeroPointUser(onlyKnowFriend)
+    val pairList = onlyHasPointUser.toPair()
+    val sortedList = pairList.pairSorted()
+    val topFiveList = sortedList.checkMaxSize()
+    return topFiveList.toFirstList()
+}
+
+// 유저, 이미 친구 제거
+fun checkUserAndFriends(friendsMap: Map<String, Int>, user: String) =
+    friendsMap.filterKeys { it != user && !knowFriends.contains(it) }
+
+// 점수가 0점인 사람 제거
+fun checkZeroPointUser(map: Map<String, Int>) = map.filterValues { it != 0 }
+
+// Pair로 형변환
+fun Map<String, Int>.toPair() = this.map { it.toPair() }
+
+// 정렬
+fun List<Pair<String, Int>>.pairSorted(): List<Pair<String, Int>> {
     val sortRule =
         compareByDescending<Pair<String, Int>> { it.second }
-        .thenBy { it.first }
-    return friendsMap.filterKeys { it != user && !knowFriends.contains(it) }.filterValues { it != 0 } // 유저, 이미 친구, 점수가 0점인 사람 제거
-        .map { it.toPair() }.sortedWith(sortRule) // Pair로 형변환 후 정렬
-        .filterIndexed { index, _ -> index < 5 }.map { it.first } // 5개까지 이름만 list로 반환
+            .thenBy { it.first }
+    return this.sortedWith(sortRule)
 }
+
+// 최대 5개까지 반환
+fun List<Pair<String, Int>>.checkMaxSize(): List<Pair<String, Int>> {
+    return this.filterIndexed { index, _ -> index < 5 }
+}
+
+// 이름만 리스트로 반환
+fun List<Pair<String, Int>>.toFirstList() = this.map { it.first }
 
 fun visitFriends(visitors: List<String>) {
     visitors.forEach {

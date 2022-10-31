@@ -1,7 +1,5 @@
 package onboarding
 
-private val threeSixNine = listOf("3", "6", "9")
-
 fun solution3(number: Int): Int {
     var count = 0
     // number 만큼 반복문을 돌린다.
@@ -16,8 +14,9 @@ fun solution3(number: Int): Int {
 
 private fun check(number: Int): Int {
     var count = 0
-    number.toString().forEach {
-        if(it == '3' || it == '6' || it == '9') {
+    val str = number.toString()
+    str.forEach {
+        if (it == '3' || it == '6' || it == '9') {
             count++
         }
     }

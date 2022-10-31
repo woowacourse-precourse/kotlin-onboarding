@@ -10,7 +10,8 @@ fun solution6(forms: List<List<String>>): List<String> {
         }
     }
     // 출력하는 기능
-    return overlapUserEmail.toList().sorted()
+    val answer = overlapUserEmail.toList()
+    return answer.sorted()
 }
 
 // 비교해야할 문자 만드는 기능
