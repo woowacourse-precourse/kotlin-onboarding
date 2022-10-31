@@ -61,8 +61,13 @@ fun solution7(
         }
     }
 
+   hashmap_result.toSortedMap()
 
+   hashmap_result.forEach { s, i ->
+       result.add(s)
+   }
 
+    return  result
 
 }
 
