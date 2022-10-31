@@ -12,10 +12,10 @@ fun solution4(word: String): String {
 
     var retval = ""
 
-    val res = word.forEach { ch ->
-        var str: Int = ch.code;
+    word.forEach { ch ->
+        val str: Int = ch.code
         if (str in 65..90) {
-            var charval = str.toChar()
+            val charval = str.toChar()
             retval += map0.get(charval)!!
         } else if (str in 97..122) {
             val charval = str.toChar()
@@ -25,6 +25,6 @@ fun solution4(word: String): String {
         }
     }
 
-    return retval;
+    return retval
 
 }
