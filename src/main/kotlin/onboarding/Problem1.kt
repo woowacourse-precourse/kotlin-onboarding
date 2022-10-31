@@ -23,6 +23,7 @@ fun solution1(pobi: List<Int>, crong: List<Int>): Int {
 
 
 
+
     if(pobi_max > crong_max){
         win = 1
     }
@@ -56,7 +57,34 @@ fun cal_page(num : Int) : List<Int>{
 
     return listOf(sum, mul)
 }
+//왼쪽과 오른쪽의 페이지 크기 비교
+fun compare_max(left : Int, right : Int) : Int{
 
+    var list_left = cal_page(left)
+    var list_right = cal_page(right)
+
+    var left_max  =  list_left[0]
+    var right_max =  list_right[0]
+
+    if(list_left[0] < list_left[1]){
+        left_max = list_left[1]
+    }
+
+    if(list_right[0] < list_right[1]){
+        right_max = list_right[1]
+    }
+
+    var max = 0
+
+    if(left_max > right_max){
+        max = left_max
+    }
+
+    if(left_max <= right_max){
+        max = right_max
+    }
+        return max
+}
 
 
 
