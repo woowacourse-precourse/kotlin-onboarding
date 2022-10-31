@@ -21,7 +21,8 @@ fun solution1(pobi: List<Int>, crong: List<Int>): Int {
         return win
   }
 
-
+    pobi_max = compare_max(pobi[0],pobi[1])
+    crong_max = compare_max(crong[0],crong[1])
 
 
     if(pobi_max > crong_max){
