@@ -5,7 +5,7 @@ fun solution1(pobi: List<Int>, crong: List<Int>): Int {
     var crong_arr = arrayListOf<Int>()
     var answer = 0
 
-    for(i in pobi) {
+    for(i in 0..1) {
         var t = pobi[i]
         var answer1 = 0
         var answer2 = 1
@@ -18,7 +18,7 @@ fun solution1(pobi: List<Int>, crong: List<Int>): Int {
         pobi_arr.add(answer2)
     }
 
-    for(i in crong) {
+    for(i in 0..1) {
         var t = crong[i]
         var answer1 = 0
         var answer2 = 1
@@ -35,7 +35,7 @@ fun solution1(pobi: List<Int>, crong: List<Int>): Int {
     val a = pobi_arr.last()
     val b = crong_arr.last()
 
-    if (pobi[1]-pobi[0] != 1 || crong[1]-crong[0] != 1 || pobi[0]%2!=0 || crong[0]%2!=0) {answer = -1}
+    if (pobi[1]-pobi[0] != 1 || crong[1]-crong[0] != 1 || pobi[0]%2==0 || crong[0]%2==0) {answer = -1}
     else if (a>b) {answer = 1}
     else if (b>a) {answer = 2}
     else if (a==b) {answer = 0}

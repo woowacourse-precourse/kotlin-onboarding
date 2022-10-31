@@ -1,15 +1,39 @@
 package onboarding
 
 fun solution2(cryptogram: String): String {
-    var now = cryptogram
-    while (true) {
-        var new = ""
-        for (i in 0..cryptogram.length) {
-            if (new.length==0) {new += cryptogram[i]}
-            else if(new[-1]!=cryptogram[i]) {new += cryptogram[i]}
+    var answer = cryptogram
+    while (answer.length>1) {
+        var next = ""
+        for (i in 0..(answer.length)-1) {
+            if (0<i&&i<answer.length-1) {
+                if (answer[i]==answer[i-1]||answer[i]==answer[i+1]) {
+                    continue
+                } else {
+                    next = next.plus(answer[i])
+                }
+            } else if (i==0){
+                if (answer[i]==answer[i+1]) {
+                    continue
+                } else {
+                    next = next.plus(answer[i])
+                }
+            } else if (i==answer.length-1){
+                if (answer[i]==answer[i-1]) {
+                    continue
+                } else {
+                    next = next.plus(answer[i])
+                }
+            }
         }
-        if (now==new) break
-        else {now = new}
+
+        if (answer==next) {
+            break
+        }
+        else if (next.length==0) {
+            answer = ""
+            break
+        }
+        else {answer = next}
     }
-    return now
+    return answer
 }
