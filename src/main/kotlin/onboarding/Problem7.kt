@@ -10,7 +10,7 @@ fun solution7(
     val score = mutableMapOf<String, Int>()
 
     makeRelationMap(friends, relation)
-    makeScoreMapByFriendsList(relation, user, score)
+    makeScoreMapByRelationMap(relation, user, score)
     makeScoreMapByVisitorsList(visitors, relation, user, score)
     exceptUserAndFriendsOfUser(score, relation, user)
 
@@ -28,7 +28,7 @@ private fun makeRelationMap(friends: List<List<String>>, relation: MutableMap<St
     }
 }
 
-private fun makeScoreMapByFriendsList(
+private fun makeScoreMapByRelationMap(
     relation: MutableMap<String, MutableSet<String>>,
     user: String,
     score: MutableMap<String, Int>
