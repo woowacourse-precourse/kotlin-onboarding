@@ -3,7 +3,7 @@ package onboarding
 fun solution6(forms: List<List<String>>): List<String> {
     val result = mutableSetOf<String>()
 
-    forms.forEachIndexed { _, value ->
+    forms.forEachIndexed { i, value ->
         val email = value[0]
         val name = value[1]
 
@@ -12,6 +12,15 @@ fun solution6(forms: List<List<String>>): List<String> {
                 name.substring(j, j + 2)
             } else {
                 name
+            }
+
+            for (k in (i + 1) until forms.size) {
+                if (k < forms.size) {
+                    if (forms[k][1].contains(duplicateString)) {
+                        result.add(forms[k][0])
+                        result.add(email)
+                    }
+                }
             }
         }
     }
