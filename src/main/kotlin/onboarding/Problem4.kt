@@ -12,8 +12,8 @@ package onboarding
 fun convertAlpha(str : String) : String {
     var tmpString = ""
 
-    var upperAlphaRange = 'A' .. 'Z'
-    var lowerAlphaRange = 'a' .. 'z'
+    val upperAlphaRange = 'A' .. 'Z'
+    val lowerAlphaRange = 'a' .. 'z'
 
     for(c in str) {
         if(c in upperAlphaRange) {
