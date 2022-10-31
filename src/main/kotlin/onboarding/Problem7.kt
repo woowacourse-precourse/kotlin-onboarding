@@ -11,8 +11,8 @@ fun solution7(
     var unknownvisitors = visitors.toMutableList()
 
     for(i in friends.indices){
-        recom.add(friends[i][1])
         recom.add(friends[i][0])
+        recom.add(friends[i][1])
     }
     for(i in visitors.indices){
         recom.add(visitors[i])
