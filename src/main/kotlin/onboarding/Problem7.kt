@@ -96,18 +96,3 @@ private fun sortedByScoreAndName(score: HashMap<String, Int>): List<String> {
         .take(5)
 }
 
-fun main() {
-    val user = "mrko"
-    val friends = listOf(
-        listOf("mrko", "jun"),
-        listOf("donut", "jun"),
-        listOf("donut", "mrko"),
-        listOf("shakevan", "andole"),
-        listOf("shakevan", "jun"),
-        listOf("shakevan", "mrko")
-    )
-    val visitors = listOf("bedi", "bedi", "donut", "bedi", "shakevan")
-    val result = listOf("andole", "bedi")
-    println(solution7(user, friends, visitors))
-}
-
