@@ -1,5 +1,12 @@
 package onboarding
 
 fun solution2(cryptogram: String): String {
-    TODO("프로그램 구현")
+    var result: String = cryptogram
+    var regex: Regex = "(\\w)\\1+".toRegex()
+
+    while(regex.findAll(result).count() > 0){
+        result = result.replace(regex, "")
+    }
+
+    return result
 }
