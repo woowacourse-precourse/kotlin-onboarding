@@ -60,8 +60,9 @@ private fun calcMutualFriendScore(
     for (i in friends) {
         for (j in i) {
             if (j in friendSet) {
-                i.toMutableList().remove(j)
-                if (i[0] != user && i[0] !in friendSet) candidateScoreMap[i[0]] = candidateScoreMap[i[0]]!! + 10
+                val candidatePerson = i.toMutableList()
+                candidatePerson.remove(j)
+                if (candidatePerson[0] != user && candidatePerson[0] !in friendSet) candidateScoreMap[candidatePerson[0]] = candidateScoreMap[candidatePerson[0]]!! + 10
             }
         }
     }
