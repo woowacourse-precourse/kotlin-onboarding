@@ -20,6 +20,9 @@ fun solution1(pobi: List<Int>, crong: List<Int>): Int {
     crongNumberList.addAll(getCalculatedNumbers(crong[0])) //크롱 - 왼쪽페이지
     crongNumberList.addAll(getCalculatedNumbers(crong[1])) //크롱 - 오른쪽페이지
 
+    pobiNumberList.sortDescending() //포비 숫자 - 내림차순 정렬
+    crongNumberList.sortDescending() //크롱 숫자 - 내림차순 정렬
+
     return 0
 }
 private fun getCalculatedNumbers(pageNumber: Int) :List<Int>{
