@@ -5,7 +5,8 @@ fun solution7(
     friends: List<List<String>>,
     visitors: List<String>
 ): List<String> {
-    return emptyList()
+    val recommendFriendMap = getRecommendFriendList(user, friends, visitors)
+    return getRecommendFriendListName(recommendFriendMap)
 }
 
 fun checkUserFriend(relationship: List<String>, userName: String): String? {
@@ -48,4 +49,26 @@ fun addScoreVisitor(recommendFriendMap: MutableMap<String, Int>, visitors: List<
     for (visitor in notFriendVisitors) {
         recommendFriendMap[visitor] = recommendFriendMap.getOrPut(visitor) { 0 } + 1
     }
+}
+
+fun getRecommendFriendList(user: String, friends: List<List<String>>, visitors: List<String>): MutableMap<String, Int> {
+    val recommendFriendMap: MutableMap<String, Int> = mutableMapOf()
+    val userFriends: Set<String> = getUserFriends(user, friends)
+    val overFriendsList: Set<String> = getOverFriends(user, friends, userFriends)
+
+    addScoreOverFriend(recommendFriendMap, overFriendsList)
+    addScoreVisitor(recommendFriendMap, visitors, userFriends)
+
+    return recommendFriendMap
+}
+
+fun getRecommendFriendListName(recommendFriendMap: MutableMap<String, Int>): List<String> {
+    val recommendFriendList = recommendFriendMap.toList()
+    val results = recommendFriendList.sortedWith(compareBy({ -it.second }, { it.first }))
+
+    val resultNames = mutableListOf<String>()
+    for (result in results)
+        resultNames.add(result.first)
+
+    return resultNames
 }
