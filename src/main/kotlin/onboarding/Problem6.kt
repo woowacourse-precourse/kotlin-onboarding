@@ -8,16 +8,17 @@ fun solution6(forms: List<List<String>>): List<String> {
     forms.forEachIndexed { index1, list1 ->
         forms.forEachIndexed { index2, list2 ->
             if (index1 != index2){
-                val lcs = LCSubstring(list1[1], list2[1])
-                if (lcs > 1) flag = true
+                val lcs = LCSubstring(list1[1], list2[1]) // length of longest common substring
+                if (lcs > 1) flag = true // if the nickname overlapped
             }
         }
-        if (flag) result.add(list1[0])
-        flag = false
+        if (flag) result.add(list1[0]) // add wrong nickname's email
+        flag = false // reset flag
     }
-    return result.distinct().sorted()
+    return result.distinct().sorted() // remove repeat and sortedByAscending
 }
 
+// find longest commong substring
 fun LCSubstring(str1: String, str2: String): Int{
     var cnt = 0
     for (i in 0 until (str1.length)){

@@ -6,34 +6,28 @@ fun solution1(pobi: List<Int>, crong: List<Int>): Int {
     val crongMax = getMaxPageByList(crong) // crong's max page
 
     // return value
-    var result = 0 // undecided match
-    if (pobiMax > crongMax) result = 1 // pobi win
+    var result = pobiMax.compareTo(crongMax) // pobi win -> 1, pobi==crong -> 0
     if (pobiMax < crongMax) result = 2 // crong win
     if (!(isValid(pobi) && isValid(crong))) result = -1 // exception case
 
     return result
 }
-fun getMaxPageByList(mylist: List<Int>): Int{
+fun getMaxPageByList(myList: List<Int>): Int{
     // max(maxLeftPage, maxRightPage)
-    return max(getMaxPage(mylist[0]), getMaxPage(mylist[1]))
+    return max(getMaxPage(myList[0]), getMaxPage(myList[1]))
 }
 
 fun getMaxPage(pageNum: Int = 0): Int{
-    // add all digits
     var plusNum = 0
+    var multiNum = 1
     var page = pageNum
+
     while (page > 0){
-        plusNum += page%10
+        plusNum += page%10    // add all digits
+        multiNum *= page%10  // multiply all digits
         page /= 10
     }
 
-    // multiply all digits
-    var multiNum = 1
-    page = pageNum
-    while (page > 0) {
-        multiNum *= page%10
-        page /= 10
-    }
     // get max of plus and multiply of digits
     return max(plusNum, multiNum)
 }
