@@ -3,6 +3,8 @@ package onboarding
 fun solution6(forms: List<List<String>>): List<String> {
     val emailDictionary = mutableMapOf<String, MutableSet<String>>()
     makeEmailDictionary(emailDictionary, forms)
+
+    val resultSet = gatherOverlappedEmailSet(emailDictionary)
 }
 
 private fun makeEmailDictionary(emailDictionary: MutableMap<String, MutableSet<String>>, forms: List<List<String>>) {
@@ -13,4 +15,10 @@ private fun makeEmailDictionary(emailDictionary: MutableMap<String, MutableSet<S
             emailDictionary[part]?.add(forms[i][0]) ?: emailDictionary.put(part, mutableSetOf(forms[i][0]))
         }
     }
+}
+
+private fun gatherOverlappedEmailSet(emailDictionary: MutableMap<String, MutableSet<String>>): Set<String> {
+    val gatheredEmailSet = mutableSetOf<String>()
+    emailDictionary.values.groupBy { emailSet -> if (emailSet.size >= 2) gatheredEmailSet.addAll(emailSet) }
+    return gatheredEmailSet
 }
