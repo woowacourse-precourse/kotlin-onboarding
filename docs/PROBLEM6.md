@@ -21,3 +21,10 @@
 | forms | result |
 | --- | --- |
 | [ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ] | ["jason@email.com", "jm@email.com", "mj@email.com"] |
+
+## 기능 리스트
+
+### 1. 닉네임 2글자씩 분리 기능
+### 2. 같은 닉네임 서칭 기능
+### 3. 2번 기능 후 일치시 이메일을 collect
+### 4. 3번 기능 후 중복 제거 및 정렬
