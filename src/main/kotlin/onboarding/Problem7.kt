@@ -12,7 +12,7 @@ fun solution7(
 
     var user_friends = HashSet<String>()
     var hashmap_result = HashMap<String,Int>()
-    var arr = ArrayList<List<String>>()
+    var friends_without_user = ArrayList<List<String>>()
 
 
     for(i in 0 until friends.size){
@@ -25,6 +25,18 @@ fun solution7(
             }
         }
     }
+
+    for(i in 0 until friends.size){
+
+        for(j in 0 until 2){
+            if(user_friends.contains(friends[i][j]) && !friends[i].contains(user)) {
+
+                friends_without_user.add(friends[i])
+            }
+        }
+    }
+
+   
 
 }
 
