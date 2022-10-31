@@ -1,6 +1,9 @@
 package onboarding
 
 import problem6.ListSizeVerifier
+import problem6.ListSorter
+
+private val orderedForms = mutableListOf<List<String>>()
 
 private fun validateList(forms: List<List<String>>) {
     val formsSizeValidator = InputValidator(
@@ -20,8 +23,18 @@ private fun validateList(forms: List<List<String>>) {
     }
 }
 
+private fun createOrderedForms(forms: List<List<String>>) {
+    for(form in forms) {
+        val listSorter = ListSorter(form)
+        val orderedForm = listSorter.sortByEmailNicknameOrder()
+        orderedForms.add(orderedForm)
+    }
+}
+
 fun solution6(forms: List<List<String>>): List<String> {
     validateList(forms)
 
+    createOrderedForms(forms)
+    
     return listOf()
 }
