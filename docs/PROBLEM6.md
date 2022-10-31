@@ -21,3 +21,8 @@
 | forms | result |
 | --- | --- |
 | [ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ] | ["jason@email.com", "jm@email.com", "mj@email.com"] |
+
+## 기능 목록
+- [x] 닉네임의 같은 글자가 연속되는지 판단하는 함수 구현
+- [x] 각 유저들을 서로 비교하여 판단
+- [x] 결과 리스트가 중복되지 않도록 `set`으로 정의
