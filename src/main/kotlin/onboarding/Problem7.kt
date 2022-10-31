@@ -61,5 +61,14 @@ fun solution7(
         }
     }
     acquaintance(friends)
+    //방문자 점수 증가
+    fun visitorScore(): Unit {
+        for (i in 0..visitors.size - 1) {
+            if (score.containsKey(visitors[i])) {
+                score.replace(visitors[i], score.get(visitors[i]) as Int + 1)
+            }
+        }
+    }
+    visitorScore()
     return result
 }
