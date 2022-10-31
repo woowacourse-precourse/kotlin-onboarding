@@ -1,15 +1,20 @@
 package onboarding
 
-fun solution3(number: Int): Int {
-    var answer = 0
-    for (i in 1..number) {
-        var num: String = "" + i
-        for (j in 0 until num.length) {
-            var partStr = num.substring(j, j+1)
-            if (partStr.equals("3") || partStr.equals("6") || partStr.equals("9")) {
-                answer+=1
-            }
-        }
+fun find(num: Int): Int { // 해당 숫자의 3, 6, 9 개수 return
+    var many = 0
+    var n = num
+    while (n > 0){
+        if (n % 10 == 3 || n % 10 == 6 || n % 10 == 9) many += 1
+        n /= 10
     }
-    return answer
+    return many
+}
+
+fun solution3(number: Int): Int {
+
+    var result = 0
+    for(num in 1..number){
+        result += find(num)
+    }
+    return result
 }
