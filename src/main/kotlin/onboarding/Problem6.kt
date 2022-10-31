@@ -1,15 +1,20 @@
 package onboarding
 
-val nicknameList = arrayListOf<String>()
-val emailList = arrayListOf<String>()
-val letterList = arrayListOf<String>()
-val duplicatedLetterList = mutableSetOf<String>()
+var nicknameList = arrayListOf<String>()
+var emailList = arrayListOf<String>()
+var letterList = arrayListOf<String>()
+var duplicatedLetterList = mutableSetOf<String>()
 
 fun solution6(forms: List<List<String>>): List<String> {
+    nicknameList = arrayListOf()
+    emailList = arrayListOf()
+    letterList = arrayListOf()
+    duplicatedLetterList = mutableSetOf()
+
     separateNickname(0, forms)
     splitLetters(0)
-
-    return getResult(0, arrayListOf())
+    val result = getResult(0, mutableSetOf())
+    return result
 }
 
 fun separateNickname(index : Int, forms: List<List<String>>) {
@@ -46,22 +51,22 @@ fun getDulicatedLetters(index : Int, nickName : String) : Set<String> {
     return getDulicatedLetters(index + 1, nickName)
 }
 
-fun getEmailList(index : Int, duplicatedLetter : String, email : ArrayList<String>) {
+fun getEmailList(index : Int, duplicatedLetter : String, emailResult : MutableSet<String>) {
     if (index == nicknameList.size) {
         return
     }
     val nickname = nicknameList[index]
 
     if (nickname.contains(duplicatedLetter)) {
-        email.add(emailList[index])
+        emailResult.add(emailList[index])
     }
-    return getEmailList(index + 1, duplicatedLetter, email)
+    return getEmailList(index + 1, duplicatedLetter, emailResult)
 }
 
-fun getResult(index : Int, result: ArrayList<String>) : List<String> {
+fun getResult(index : Int, result: MutableSet<String>) : List<String> {
     if (index == duplicatedLetterList.size) {
         return result.sorted().toList()
     }
-    getEmailList(0, duplicatedLetterList.elementAt(0), result)
+    getEmailList(0, duplicatedLetterList.elementAt(index), result)
     return getResult(index + 1, result)
 }
