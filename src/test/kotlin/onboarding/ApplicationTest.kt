@@ -35,7 +35,7 @@ class ApplicationTest {
     @Nested
     inner class Problem2Test {
         @Test
-        fun case1() {
+        fun  case1() {
             val cryptogram = "browoanoommnaon"
             val result = "brown"
             assertThat(solution2(cryptogram)).isEqualTo(result)
