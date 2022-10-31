@@ -1,11 +1,7 @@
 package onboarding
 
-import problem6.ListSizeVerifier
-import problem6.ListSorter
 import problem2.StringLengthVerifier
-import problem6.EmailDomainVerifier
-import problem6.EmailFormatVerifier
-import problem6.KoreanVerifier
+import problem6.*
 
 private val orderedForms = mutableListOf<List<String>>()
 
@@ -62,6 +58,9 @@ fun solution6(forms: List<List<String>>): List<String> {
     createOrderedForms(forms)
 
     validateCrewInfo()
+
+    val nicknameManager = NicknameManager(orderedForms)
+    nicknameManager.apply()
 
     return listOf()
 }
