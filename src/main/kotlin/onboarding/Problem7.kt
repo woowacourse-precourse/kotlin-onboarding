@@ -4,6 +4,7 @@ import problem2.AlphabetVerifier
 import problem2.LowerCaseVerifier
 import problem2.StringLengthVerifier
 import problem6.ListSizeVerifier
+import problem7.FriendRecommendSystem
 import problem7.UserManager
 
 private fun validateUserId(id:String) {
@@ -76,5 +77,7 @@ fun solution7(
     val userManager = UserManager(user, friends, visitors)
     userManager.setUsers()
 
-    return listOf()
+    val friendRecommendSystem = FriendRecommendSystem(userManager)
+
+    return friendRecommendSystem.recommend()
 }

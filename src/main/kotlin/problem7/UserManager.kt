@@ -39,9 +39,22 @@ class UserManager(private val user: String,
         }
     }
 
+    private fun calculateScoreForFriends() {}
+
+    private fun calculateScoreForVisitors() {}
+
     fun setUsers() {
         settingForUser()
         settingForFriends()
         settingForVisitors()
+    }
+
+    fun calculateScore() {
+        calculateScoreForFriends()
+        calculateScoreForVisitors()
+    }
+
+    fun getRecommendList() : List<User> {
+        return listOf()
     }
 }
