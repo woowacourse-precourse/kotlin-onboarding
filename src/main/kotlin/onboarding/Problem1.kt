@@ -3,7 +3,6 @@ package onboarding
 
 
 fun solution1(pobi: List<Int>, crong: List<Int>): Int {
-
     if ( isException(pobi) || isException(crong) ) {
         return -1
     }
@@ -11,7 +10,7 @@ fun solution1(pobi: List<Int>, crong: List<Int>): Int {
     val pobiScore = determineMyScore( pageNumberAdd(pobi[0]), pageNumberMul(pobi[0]), pageNumberAdd(pobi[1]), pageNumberMul(pobi[1]) )
     val crongScore = determineMyScore( pageNumberAdd(crong[0]), pageNumberMul(crong[0]), pageNumberAdd(crong[1]), pageNumberMul(crong[1]) )
 
-
+    return decideWinner(pobiScore, crongScore)
 }
 
 
@@ -29,6 +28,7 @@ fun isException(numberList : List<Int>) : Boolean {
     return false
 }
 
+
 fun pageNumberAdd(num: Int) : Int {
     var input = num
     var addResult = 0
@@ -40,6 +40,7 @@ fun pageNumberAdd(num: Int) : Int {
 
     return addResult
 }
+
 
 fun pageNumberMul(num: Int) : Int {
     var input = num
@@ -53,12 +54,13 @@ fun pageNumberMul(num: Int) : Int {
     return mulResult
 }
 
+
 fun determineMyScore(addNumLeft : Int, mulNumLeft : Int, addNumRight : Int, mulNumRight : Int) : Int {
     return maxOf(addNumLeft, mulNumLeft, addNumRight, mulNumRight)
 }
 
-fun decideWinner(player1Num : Int, player2Num : Int) :Int {
 
+fun decideWinner(player1Num : Int, player2Num : Int) :Int {
     return if (player1Num > player2Num) {
         1
     } else if (player1Num < player2Num) {
