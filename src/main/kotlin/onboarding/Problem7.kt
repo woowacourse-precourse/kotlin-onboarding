@@ -6,7 +6,7 @@ fun solution7(
     visitors: List<String>
 ): List<String> {
     TODO("프로그램 구현")
-    var result = mutableListOf<String>()
+    /* var result = mutableListOf<String>()
     var score = mutableMapOf<String, Int>()
 
     for (f in friends) {
@@ -22,5 +22,5 @@ fun solution7(
 
     for (v in visitors) {
         score.put(v,score.get(v))
-    }
+    } */
 }
