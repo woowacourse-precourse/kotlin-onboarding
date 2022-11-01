@@ -13,6 +13,7 @@ package onboarding
     3. email이 이메일 형식에 부합하지 않을 경우 예외 처리
  */
 
+
 fun solution6(forms: List<List<String>>): List<String> {
     //프로그램 구현
 
@@ -29,19 +30,22 @@ fun duplicateNameList(forms: List<List<String>>): List<String> {
     var duplicateEmail = mutableListOf<String>()
     var temp = mutableMapOf<String, String>()
 
-    for(i in forms){
+    for(i in forms.indices){
         val email = forms[i][0]
         val nickname = forms[i][1]
 
-        for(j in 0 until nickname - 1){
-            val sub = forms[i][1].substring(j .. j+1)
+        for(j in 0 until nickname.length - 1){
+            val sub = nickname.substring(j, j+1)
             if(temp.containsKey(sub)){ //2. 1. 에서 연속적으로 포함되는 닉네임이 있다면, 해당 닉네임의 email을 리스트에 따로 저장
-                duplicateEmail.add(temp[sub]!!)
-                duplicateEmail.add(forms[i][0])
+                val key = temp[sub]
+                if(key != email)
+                    duplicateEmail.add(key.toString())
+                duplicateEmail.add(email)
             }
             else{
-                temp[sub] = forms[i][0]
+                temp[sub] = email
             }
         }
     }
+    return duplicateEmail
 }
