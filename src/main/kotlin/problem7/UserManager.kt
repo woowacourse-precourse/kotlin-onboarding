@@ -33,7 +33,11 @@ class UserManager(private val user: String,
         }
     }
 
-    private fun settingForVisitors() {}
+    private fun settingForVisitors() {
+        for(id in visitors) {
+            addIfNotExists(id)
+        }
+    }
 
     fun setUsers() {
         settingForUser()
