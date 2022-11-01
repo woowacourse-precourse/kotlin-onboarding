@@ -4,7 +4,7 @@ package onboarding
 fun solution1(pobi: List<Int>, crong: List<Int>): Int {
     //TODO("프로그램 구현")
     
-    if((is_not_val(pobi[0], pobi[1]) || is_not_valid(crong[0], crong[1])))
+    if((is_not_val(pobi[0], pobi[1]) || is_not_val(crong[0], crong[1])))
         return -1
     
     var pobi_r  : Int = comparepage(multipage(pobi[0]), sumpage(pobi[0]));
