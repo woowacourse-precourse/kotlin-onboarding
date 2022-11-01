@@ -1,5 +1,8 @@
 package onboarding
 
+const val UPPERCASE_SUM_CODE = 'A'.code + 'Z'.code
+const val LOWERCASE_SUM_CODE = 'a'.code + 'z'.code
+
 fun solution4(word: String): String {
     checkThrowException(word)
     return ""
