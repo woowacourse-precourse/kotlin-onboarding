@@ -13,7 +13,7 @@ fun solution2(cryptogram: String): String {
         var chka:Char? = null
         var chkb:Char? = null
         val changetext ='\t'
-        for(i: Int in 0 until cryp.length){
+        for(i: Int in 0 until cryp.length-1){
             if(chka==null){//처음(0)일 경우
                 chka=cryp[i]//0번째 문자
             }
