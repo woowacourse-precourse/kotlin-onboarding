@@ -5,6 +5,10 @@ fun solution6(forms: List<List<String>>): List<String> {
     if (isAppropriateForms(forms).isNotEmpty()) {
         return isAppropriateForms(forms)
     }
+
+    val emails = HashSet<String>()
+    val userMap: MutableMap<String, String> = HashMap()
+
     return listOf()
 }
 
