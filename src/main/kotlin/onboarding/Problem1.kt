@@ -1,5 +1,7 @@
 package onboarding
 
+//기능1 : 입력값이 올바른지 확인하는 함수 -> 왼쪽 페이지 더하기 1은 오른쪽 페이지가 성립하지 않거나 페이지가 0이하 400 이상일 때 -1 return"
+//기능2 : 자릿수를 판단하고 각 수를 더하는 동시에 곱함, 큰 수끼리 비교하여 최종 답 구한다.
 fun solution1(pobi: List<Int>, crong: List<Int>): Int {
 
 
