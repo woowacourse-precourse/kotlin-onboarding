@@ -10,6 +10,15 @@ fun solution7(
     }
 
     val friendScore = mutableMapOf<String, Int>()
+    val alreadyFriend = mutableListOf(user)
+
+    for (i in friends.indices) {
+        if (user == friends[i].first()) {
+            alreadyFriend.add(friends[i].last())
+        } else if (user == friends[i].last()) {
+            alreadyFriend.add(friends[i].first())
+        }
+    }
     return listOf()
 }
 
