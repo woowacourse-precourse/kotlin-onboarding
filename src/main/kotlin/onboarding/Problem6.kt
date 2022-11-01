@@ -1,6 +1,6 @@
 package onboarding
 
-private val EMAIL_FORMAT = "^[A-Za-z0-9._-]{1,9}@email.com\$".toRegex()
+private val EMAIL_FORMAT = "^[\\w._-]{1,9}@email.com\$".toRegex()
 private val NICKNAME_FORMAT = "^[ㄱ-힣]{1,19}\$".toRegex()
 
 fun solution6(forms: List<List<String>>): List<String> {
