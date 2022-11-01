@@ -11,6 +11,7 @@ fun solution1(pobi: List<Int>, crong: List<Int>): Int {
     if (!isAppropriateList(pobi, crong)) {
         return exception
     }
+
     return exception
 }
 fun isAppropriateList(pobi: List<Int>, crong: List<Int>): Boolean {
@@ -21,4 +22,29 @@ fun isAppropriateList(pobi: List<Int>, crong: List<Int>): Boolean {
         pobi[0] > pobi[1] || crong[0] > crong[1] -> false
         else -> true
     }
+}
+
+fun findGreatestPage(list: List<Int>): Int {
+    var left = list[0]
+    var right = list[1]
+    var plusLeft = 0
+    var mulLeft = 1
+    var plusRight = 0
+    var mulRight = 1
+
+    while (left > 0) {
+        plusLeft += left % 10
+        mulLeft *= left % 10
+        left /= 10
+    }
+
+    while (right > 0) {
+        plusRight += right % 10
+        mulRight *= right % 10
+        right /= 10
+    }
+
+    left = if (plusLeft > mulLeft) plusLeft else mulLeft
+    right = if (plusRight > mulRight) plusRight else mulRight
+    return if (left > right) left else right
 }
