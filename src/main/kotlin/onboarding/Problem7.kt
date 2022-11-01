@@ -60,6 +60,60 @@ fun calculateScore(user: String, userFriend: MutableList<String>, one: HashMap<S
     }
     return score
 }
+fun answer(score: HashMap<String, Int>, answer : MutableList<String>): List<String> {
+    //결과
+    var keyList = ArrayList(score.keys)
+    var valueList = ArrayList(score.values)
+    var sortedValue = valueList.sortedDescending()
+    var save : MutableList<String> = mutableListOf()
+    var sortedSave : List<String>
+    var temp : Int = 0
+    var saveTemp : Int = 0
+    var quit : Int = 0
+    var cnt : Int = 0
+    if(valueList.distinct().size == 1){
+        return keyList.sorted()
+    } else if(valueList.distinct().size != score.size){
+        //중복 이름순
+        var j : Int = 0
+        while(quit == 0){
+            if(sortedValue[cnt] == valueList[j]){
+                save.add(saveTemp,keyList[j])
+                saveTemp += 1
+            } else if(save.isNotEmpty()){
+                sortedSave = save.sorted()
+                for(j in 0..sortedSave.size-1){
+                    answer.add(temp,sortedSave[j])
+                    temp += 1
+                }
+                cnt = save.size
+                save = mutableListOf()
+                saveTemp = 0
+                j = 0
+                if(answer.size == score.size){
+                    quit = 1
+                }else{
+                    continue
+                }
+            }
+            if(j == valueList.size-1){
+                j = 0
+            }else{
+                j += 1
+            }
+        }
+    } else if(valueList.distinct().size == score.size){
+        //숫자순
+        for(i in 0..score.size-1){
+            for(j in 0..score.size-1){
+                if(sortedValue[i] == valueList[j]){
+                    answer.add(i,keyList[j])
+                }
+            }
+        }
+    }
+    return answer
+}
 fun solution7(
     user: String,
     friends: List<List<String>>,
@@ -69,9 +123,10 @@ fun solution7(
     var ten = HashMap<String, Int>()
     var one = HashMap<String, Int>()
     var score = HashMap<String, Int>()
+    var answer : MutableList<String> = mutableListOf()
     userFriend = findUserFriends(userFriend, friends, user)//user친구 찾기
     ten = mutualFriends(userFriend, friends, ten)//사용자와 함께 아는 친구의 수
     one = visited(visitors,one)//사용자의 타임 라인에 방문한 횟수
     score = calculateScore(user, userFriend, one, ten, score)//점수 계산
-    TODO("프로그램 구현")
+    return answer(score, answer)//결과 계산
 }
