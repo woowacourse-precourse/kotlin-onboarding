@@ -21,3 +21,13 @@
 | --- | --- |
 | "browoanoommnaon" | "brown" |
 | "zyelleyz" | "" |
+
+
+-------------
+
+### 작성한 기능 목록
+
+0. 연속하는 중복 문자의 인덱스를 찾는 함수 : findDuplicateIndex
+1. 찾은 중복된 문자를 제거하는 함수 : removeDuplicateChar
+2. 작성한 함수를 기능별로 합치고 결과를 내는 함수 : solution2 
+
