@@ -8,9 +8,11 @@ fun solution6(forms: List<List<String>>): List<String> {
 
     val duplicateEmail = checkDuplicate(regularForms)
 
+    // 이메일 오름차순 정렬
     return duplicateEmail.sorted()
 }
 
+// 이메일과 닉네임의 형식과 길이 검사하는 함수
 fun checkEmailAndNickname(forms: List<List<String>>): List<List<String>>{
     val regularForms = mutableListOf<List<String>>()
     for(i in forms.indices){
@@ -22,6 +24,7 @@ fun checkEmailAndNickname(forms: List<List<String>>): List<List<String>>{
     return regularForms
 }
 
+// 닉네임이 한국어인지 검사하는 함수
 fun isKorean(nickname: String): Boolean {
     for(i in nickname.indices){
         val char = nickname.codePointAt(i)
@@ -31,6 +34,7 @@ fun isKorean(nickname: String): Boolean {
     return true
 }
 
+// 닉네임 중복을 검사하는 함수
 fun checkDuplicate(regularForms: List<List<String>>): MutableSet<String>{
     val duplicateNickname = mutableSetOf<String>()
     for(i in regularForms.indices) {

@@ -13,6 +13,7 @@ fun solution7(
     return sortByScore(score)
 }
 
+// 사용자의 친구를 찾는 함수
 fun findUserFriends(user: String,friends: List<List<String>>): MutableSet<String>{
     val userFriends = mutableSetOf<String>()
     friends.forEach{
@@ -25,6 +26,7 @@ fun findUserFriends(user: String,friends: List<List<String>>): MutableSet<String
     return userFriends
 }
 
+// 함께 아는 친구의 수에 따라 점수를 주는 함수
 fun getUserFriendsScore(user: String, friends: List<List<String>>, userFriends: MutableSet<String>): MutableMap<String, Int>{
     val score = mutableMapOf<String, Int>()
 
@@ -39,6 +41,7 @@ fun getUserFriendsScore(user: String, friends: List<List<String>>, userFriends: 
     return score
 }
 
+// 방문한 횟수에 따라 점수를 주는 함수
 fun getVisitorsScore(visitors: List<String>, score: MutableMap<String, Int>, userFriends: MutableSet<String>): MutableMap<String, Int>{
     visitors.forEach {
         if(!userFriends.contains(it)){
@@ -48,6 +51,7 @@ fun getVisitorsScore(visitors: List<String>, score: MutableMap<String, Int>, use
     return score
 }
 
+// 점수가 가장 높은 순으로 정렬하고 동점일 경우 이름순으로 정렬하는 함수
 fun sortByScore(score: MutableMap<String, Int>): List<String>{
     val result = mutableListOf<Pair<String, Int>>()
     score.forEach {
