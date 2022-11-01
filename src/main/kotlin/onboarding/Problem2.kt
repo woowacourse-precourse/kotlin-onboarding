@@ -17,7 +17,8 @@ package onboarding
 fun solution2(cryptogram: String): String {
     //기능 구현
 
-
+    //예외 사항 2. cryptogram이 알파벳이 아닌 경우
+    if(isAlphabets(cryptogram) == false) charToAlphabet(cryptogram)
 
     //예외 사항  1. cryptogram 중 알파벳 대문자가 포함된 경우
     val stringList = cryptogram.toMutableList()
@@ -41,3 +42,19 @@ fun lowerToUpper(cryptogram: String): String{
     return lower
 }
 
+//예외 사항 2. cryptogram이 알파벳이 아닌 경우
+fun isAlphabets(cryptogram: String): Boolean{
+    for (chr in cryptogram){
+        if(chr !in 'A'..'Z' && c !in 'a'..'z') return false
+    }
+    return true
+}
+
+//예외 사항 2. cryptogram이 알파벳이 아닌 경우, 다른 문자로 대체
+fun charToAlphabet(cryptogram: String): String{
+    val replacementChar = "abcdefg"
+    val replace = cryptogram.map{
+        if(it !in !in 'A'..'Z' && it !in 'a'..'z') replacementChar else it
+    }.joinToString(separator = "")
+    return replace
+}
