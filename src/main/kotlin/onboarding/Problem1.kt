@@ -24,3 +24,28 @@ fun isValid(book: List<Int>): Boolean {
 
     return true
 }
+
+/* 각 자릿수의 덧셈과 곱셈 결과 중 큰 값을 리턴하는 메소드*/
+fun operateMax(num: Int): Int {
+    var num = num
+    var sum = 0
+    var mult = 1
+
+    while(num > 0){
+        sum += num % 10
+        mult *= num % 10
+        num /= 10
+    }
+    return max(sum, mult)
+}
+
+/* 두 수 중 큰 값 리턴하는 메소드*/
+fun max(num1: Int, num2: Int): Int{
+    if(num1 >= num2){
+        return num1
+    }
+    if(num1 < num2){
+        return num2
+    }
+    return -1
+}
