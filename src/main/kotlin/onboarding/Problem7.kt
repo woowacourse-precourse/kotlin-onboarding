@@ -5,13 +5,18 @@ fun solution7(
     friends: List<List<String>>,
     visitors: List<String>
 ): List<String> {
-    val friendOfFriendList = getFriendOfFriendList(user,friends)
+   return getRecommendedFriendsList(user,friends,visitors)
+}
+
+private fun getRecommendedFriendsList( user: String,friends: List<List<String>>,visitors: List<String>):List<String> {
+    val friendOfFriendList = mutableListOf<String>()
     val friendsNameList = mutableListOf<String>()
     val visitorNamesList = mutableListOf<String>()
     val everyoneList = mutableSetOf<String>()
     var nameAndScore = mutableMapOf<String,Int>()
     for (i in friends) {
         if (i[1] != user) {
+            friendOfFriendList.add(i[1])
             friendsNameList.add(i[0])
             everyoneList.add(i[1])
         }
@@ -34,14 +39,4 @@ fun solution7(
     nameAndScore = if(nameAndScore.size>5)  nameAndScore.toSortedMap().toList().sortedByDescending { it.second }.subList(0,5).toMap() as MutableMap
     else nameAndScore.toSortedMap().toList().sortedByDescending { it.second }.toMap() as MutableMap
     return nameAndScore.keys.toList()
-}
-
-private fun getFriendOfFriendList( user: String,friends: List<List<String>>):MutableList<String> {
-    val friendOfFriendList = mutableListOf<String>()
-    for (i in friends) {
-        if (i[1] != user) {
-            friendOfFriendList.add(i[1])
-        }
-    }
-    return friendOfFriendList
 }
