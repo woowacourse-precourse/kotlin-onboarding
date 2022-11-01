@@ -26,7 +26,7 @@ fun solution2(cryptogram: String): String {
             }
         }
     }
-    return if (cryptogramList.isEmpty()) "" else cryptogramList.joinToString("")
+    return if (cryptogramList.isEmpty()) "\"\"" else cryptogramList.joinToString("")
 }
 
 fun isAppropriateCryptogram(cryptogram: String) = when {
