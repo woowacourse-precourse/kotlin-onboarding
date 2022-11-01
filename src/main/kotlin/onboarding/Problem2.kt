@@ -2,6 +2,14 @@ package onboarding
 
 import java.util.Stack
 
+fun stackToString(stack: Stack<Char>): String {
+    val sb = StringBuilder()
+    while (!stack.empty()) {
+        sb.append(stack.pop())
+    }
+    return sb.reverse().toString()
+}
+
 fun solution2(cryptogram: String): String {
     val stack = Stack<Char>()
     for (ch in cryptogram) {
@@ -11,5 +19,5 @@ fun solution2(cryptogram: String): String {
             stack.push(ch)
         }
     }
-    TODO()
+    return stackToString(stack)
 }
