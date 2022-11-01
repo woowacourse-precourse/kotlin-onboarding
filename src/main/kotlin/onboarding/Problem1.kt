@@ -6,6 +6,13 @@ fun solution1(pobi: List<Int>, crong: List<Int>): Int {
     if (!isPageValid(pobi) || !isPageValid(crong)) {
         return -1
     }
+
+    val pobiScore = getScoreByPage(pobi)
+    val crongScore = getScoreByPage(crong)
+
+    return if (crongScore == pobiScore) 0
+    else if (crongScore < pobiScore) 1
+    else 2
 }
 
 fun isPageValid(pageNumbers: List<Int>): Boolean {
