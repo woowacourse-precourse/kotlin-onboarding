@@ -10,18 +10,18 @@ fun solution7(
     val recommendMap = hashMapOf<String, Int>()
 
     // 1. 친구 목록 추가
-    for (friend in friends) {
+    for ((user1, user2) in friends) {
         when (user) {
-            friend[0] -> myFriends.add(friend[1])
-            friend[1] -> myFriends.add(friend[0])
+            user1 -> myFriends.add(user2)
+            user2 -> myFriends.add(user1)
         }
     }
 
     // 2. 추천 맵에 간접 친구 점수 추가
-    for (friend in friends) {
+    for ((user1, user2) in friends) {
         val indirect = when {
-            (friend[0] in myFriends) && (user != friend[1]) -> friend[1]
-            (friend[1] in myFriends) && (user != friend[0]) -> friend[0]
+            (user1 in myFriends) && (user2 != user) && (user2 !in myFriends) -> user2
+            (user2 in myFriends) && (user1 != user) && (user1 !in myFriends) -> user1
             else -> continue
         }
 
@@ -30,7 +30,7 @@ fun solution7(
 
     // 3. 추천 맵에 친구가 아닌 방문자 점수 추가
     for (visitor in visitors) {
-        if (visitor in myFriends)
+        if (visitor in myFriends || visitor == user)
             continue
 
         recommendMap[visitor] = recommendMap.getOrDefault(visitor, 0) + 1
