@@ -2,10 +2,10 @@ package onboarding
 
 fun solution6(forms: List<List<String>>): List<String> {
     var formsHash = hashMapOf<Int, List<String>>()
-    var arrOfRepeat = Array(forms.size, { 0 })
+    var arrOfRepeat = Array(forms.size) { 0 }
 
     for (i in forms.indices) {
-
+        //닉네임을 두 글자씩 나누어 저장
         var mutableList = mutableListOf<String>()
         for (j in 0..forms[i][1].length - 2) {
             mutableList.add(forms[i][1].substring(j, j + 2))

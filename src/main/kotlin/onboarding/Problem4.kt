@@ -1,17 +1,14 @@
 package onboarding
 
 fun solution4(word: String): String {
-    //가변 리스트로 받아오기
     val mutableList = word.toMutableList()
 
     //각 문자를 숫자형으로 바꾸어 frog() 수행
     for(i in mutableList.indices){
-        //toInt() 대신 code 사용
         var num = mutableList[i].code
         num = frog(num)
         mutableList[i] = num.toChar()
     }
-    //문자열 변환 후 반환
     return mutableList.joinToString("")
 }
 

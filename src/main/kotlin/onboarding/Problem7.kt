@@ -7,12 +7,13 @@ fun solution7(
 ): List<String> {
 
     val foundFriendsList = findFriends(user,friends)
-    val friendsList = foundFriendsList.first
-    val knowEachFriend = foundFriendsList.second
+    val friendsList = foundFriendsList.first    //user의 친구
+    val knowEachFriend = foundFriendsList.second //user의 친구의 친구
 
     return point(friendsList,knowEachFriend,visitors)
 }
 
+//user의 친구와 user의 함께 아는 친구 찾기
 fun	findFriends(user:String ,friends: List<List<String>>,):Pair<MutableList<String>,MutableList<String>>{
 
     var friendsML = friends.toMutableList()
@@ -44,7 +45,6 @@ fun	findFriends(user:String ,friends: List<List<String>>,):Pair<MutableList<Stri
             }
 
         }
-
         if (i==0){
             friendsSet = foundFriends.toMutableList()
         }
@@ -52,6 +52,8 @@ fun	findFriends(user:String ,friends: List<List<String>>,):Pair<MutableList<Stri
     return Pair(friendsSet,foundFriends)
 }
 
+//함께 아는 친구면 10점 추가
+//visit 횟수 만큼 1점 추가
 fun point(friendsList:MutableList<String>,knowEachFriend:MutableList<String>,visitors:List<String>):List<String>{
 
     var visitorsML = mutableListOf<String>()

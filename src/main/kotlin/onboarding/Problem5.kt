@@ -6,7 +6,6 @@ fun solution5(money: Int): List<Int> {
     var moneyList = mutableListOf<Int>(0,0,0,0,0,0,0,0,0)
 
     for(i in moneyUnit.indices){
-
         if(won/moneyUnit[i]==0){
             continue
         }
