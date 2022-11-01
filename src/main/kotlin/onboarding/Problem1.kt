@@ -47,3 +47,14 @@ fun getMulScore(number: Int): Int {
 
     return result
 }
+
+fun getScoreByPage(pageNumbers: List<Int>): Int {
+    var result = 0
+
+    for (i in 0..1) {
+        result = max(result, getMulScore(pageNumbers[i]))
+        result = max(result, getSumScore(pageNumbers[i]))
+    }
+
+    return result
+}
