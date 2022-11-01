@@ -10,7 +10,8 @@ package onboarding
 
 // money 1 .. 1,000,000
 
-fun solution5(money: Int): List<Int> {
+
+fun calculate(money: Int) :List<Int> {
     var list = mutableListOf<Int>(0, 0, 0, 0, 0, 0, 0, 0, 0)
     var temp = money
     var cost = mapOf(
@@ -44,6 +45,11 @@ fun solution5(money: Int): List<Int> {
             }
         }
     }
-    //println(list) 로그 확인용
     return list
+}
+
+
+fun solution5(money: Int): List<Int> {
+    var temp = money
+    return calculate(temp)
 }
