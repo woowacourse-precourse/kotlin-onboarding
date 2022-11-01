@@ -14,7 +14,7 @@ private fun getFriendInformation(
 ): Map<String, MutableList<String>> {
     val friendInformation = LinkedHashMap<String, MutableList<String>>()
 
-    for (relationship in friends) {
+    friends.forEach { relationship ->
         val user1 = relationship[0]
         val user2 = relationship[1]
 
@@ -23,15 +23,13 @@ private fun getFriendInformation(
         }
         friendInformation[user1]?.add(user2)
 
-
         if (!friendInformation.containsKey(user2)) {
             friendInformation[user2] = mutableListOf()
         }
         friendInformation[user2]?.add(user1)
-
-
     }
-    for (visitor in visitors) {
+
+    visitors.forEach { visitor ->
         if (!friendInformation.containsKey(visitor)) {
             friendInformation[visitor] = mutableListOf()
         }
