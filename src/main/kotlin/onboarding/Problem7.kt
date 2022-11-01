@@ -36,3 +36,14 @@ fun friendOfFriend(user: String, friends: List<List<String>>): MutableMap<String
     }
     return friendOfFriend
 }
+
+fun visitedList(user: String, friends: List<List<String>>, visitors: List<String>): MutableMap<String, Int> {
+    val friend = friendList(user, friends)
+    val friendOfFriend = friendOfFriend(user, friends)
+    visitors.forEach {
+        when (it) {
+            !in friend -> friendOfFriend[it] = friendOfFriend.getOrDefault(it, 0) + 1
+        }
+    }
+    return friendOfFriend.toSortedMap()
+}
