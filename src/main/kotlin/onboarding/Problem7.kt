@@ -44,3 +44,15 @@ fun friendsFriends(user: String, userFriends : List<String>, friends: List<List<
     }
     return scoreList
 }
+
+fun checkVisitors(userFriends: List<String>, visitors: List<String>): MutableList<String, Int>{
+
+    var scoreList : mutableMapOf<String, Int>()
+//    4. visitors에서 user의 친구가 아닌 사람들을 확인한다.
+//    5. 4.에서 확인된 사람들은 1점 부여한다.
+    for(i in visitors){
+        if(!userFriends.contains(i))
+            scoreList[i] += 1
+    }
+    return scoreList
+}
