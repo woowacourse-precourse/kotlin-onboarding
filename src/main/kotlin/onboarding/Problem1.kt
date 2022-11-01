@@ -34,7 +34,7 @@ fun solution1(pobi: List<Int>, crong: List<Int>): Int {
 }
 
 // 기능 목록 1번
-fun calculatePageNumber(pageNumber: Int): Int {
+private fun calculatePageNumber(pageNumber: Int): Int {
     val pageNumberString = pageNumber.toString()
     var resultAdd = 0
     var resultMultiply = 1
@@ -48,7 +48,7 @@ fun calculatePageNumber(pageNumber: Int): Int {
 }
 
 // 기능 목록 4번
-fun isException(leftPage: Int, rightPage: Int): Boolean {
+private fun isException(leftPage: Int, rightPage: Int): Boolean {
     // 4-1
     if (leftPage < 1 || leftPage > 400) {
         return true

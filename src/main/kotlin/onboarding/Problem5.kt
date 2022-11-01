@@ -12,7 +12,7 @@ fun solution5(money: Int): List<Int> {
 }
 
 // 기능 목록 2번
-fun exchangeMoney(money: Int): List<Int> {
+private fun exchangeMoney(money: Int): List<Int> {
     var tempMoney = money
     val result = mutableListOf(0, 0, 0, 0, 0, 0, 0, 0, 0)
 

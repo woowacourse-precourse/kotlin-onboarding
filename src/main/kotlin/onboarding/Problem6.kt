@@ -25,7 +25,7 @@ fun solution6(forms: List<List<String>>): List<String> {
 }
 
 // 기능 목록 2번
-fun addMapItem(forms: List<List<String>>, nickname: String, indexOfForms: Int) {
+private fun addMapItem(forms: List<List<String>>, nickname: String, indexOfForms: Int) {
     for (index in 0 until nickname.length - 1) {
         val key = nickname.substring(index, index + 2)
 

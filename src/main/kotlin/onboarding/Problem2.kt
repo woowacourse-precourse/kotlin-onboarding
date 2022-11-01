@@ -18,7 +18,7 @@ fun solution2(cryptogram: String): String {
 
 
 // 기능 목록 1번
-fun shouldDecode(cryptogram: String): Boolean {
+private fun shouldDecode(cryptogram: String): Boolean {
     // 기능 목록 4번
     if (cryptogram.length <= 1) {
         return false
@@ -36,7 +36,7 @@ fun shouldDecode(cryptogram: String): Boolean {
 }
 
 // 기능 목록 2번
-fun removeDuplication(cryptogram: String): String {
+private fun removeDuplication(cryptogram: String): String {
     var startIndex = 0
     var endIndex: Int
     var removedString = cryptogram

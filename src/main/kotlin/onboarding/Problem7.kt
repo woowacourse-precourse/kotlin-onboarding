@@ -51,7 +51,7 @@ fun solution7(
 }
 
 // 기능 목록 1번
-fun makeFriendsMap(friends: List<List<String>>) {
+private fun makeFriendsMap(friends: List<List<String>>) {
     for (friendlyRelations in friends) {
         val friend1 = friendlyRelations[0]
         val friend2 = friendlyRelations[1]
@@ -77,7 +77,7 @@ fun makeFriendsMap(friends: List<List<String>>) {
 }
 
 // 기능 목록 2번
-fun calculateRecommendScore(user: String, checkForName: String, visitors: List<String>): Int {
+private fun calculateRecommendScore(user: String, checkForName: String, visitors: List<String>): Int {
     var score = 0
     // 친구는 아닌데 방문만 한경우
     if (!friendsMap.containsKey(checkForName)) {

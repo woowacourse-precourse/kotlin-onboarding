@@ -15,7 +15,7 @@ fun solution3(number: Int): Int {
 }
 
 // 기능 목록 1번
-fun countClap(targetNumber: Int): Int {
+private fun countClap(targetNumber: Int): Int {
     val targetNumberString = targetNumber.toString()
     var count = 0
 

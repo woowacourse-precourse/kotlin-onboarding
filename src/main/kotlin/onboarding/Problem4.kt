@@ -27,7 +27,7 @@ fun solution4(word: String): String {
 
 
 // 기능 목록 1번
-fun checkChar(target: Char): Int {
+private fun checkChar(target: Char): Int {
     if (target == ' ') {
         return SPACE
     }
@@ -44,7 +44,7 @@ fun checkChar(target: Char): Int {
 }
 
 // 기능 목록 2번
-fun translateFrogLanguage(targetChar: Char, typeCode: Int): Char {
+private fun translateFrogLanguage(targetChar: Char, typeCode: Int): Char {
     if (typeCode == SPACE) {
         return ' '
     }
