@@ -7,6 +7,9 @@ fun solution1(pobi: List<Int>, crong: List<Int>): Int {
     val pobiMaxNum = findMaxNum(pobi)
     val crongMaxNum = findMaxNum(crong)
 
+    // 제한사항 예외처리
+    if(pobi.size != 2 || crong.size != 2 || pobi[1]-pobi[0] != 1 || crong[1]-crong[0] != 1) return -1
+
     // pobi와 crong의 큰 수를 비교하고 리턴값 만들기
     if(pobiMaxNum > crongMaxNum) return 1
     else if(pobiMaxNum < crongMaxNum) return 2
