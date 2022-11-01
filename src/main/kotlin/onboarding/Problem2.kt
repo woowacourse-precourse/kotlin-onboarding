@@ -1,7 +1,5 @@
 package onboarding
 
-import org.mockito.internal.matchers.Null
-
 fun checkString(str: String): Boolean {
     var flag = 0
 
