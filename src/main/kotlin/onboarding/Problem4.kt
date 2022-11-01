@@ -7,8 +7,6 @@ fun solution4(word: String): String {
     val momAlphabet = ('A'..'Z').toMutableList()
     val childAlphabet: List<Char> = momAlphabet.reversed()
 
-    println(childAlphabet)
-
     // 결과 단어를 담을 리스트
     var reversedWord: MutableList<String> = mutableListOf()
 
