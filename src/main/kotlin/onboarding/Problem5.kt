@@ -7,7 +7,9 @@ fun solution5(money: Int): List<Int> {
         return Collections.emptyList()
     }
 
-    return Collections.emptyList()
+    val numberOfCurrencies = MutableList(9) { 0 }
+    val typeOfCurrency = arrayOf(50000, 10000, 5000, 1000, 500, 100, 50, 10, 1)
+    return numberOfCurrencies
 }
 
 fun isAppropriateMoney(money: Int): Boolean {
