@@ -19,6 +19,9 @@ fun solution6(forms: List<List<String>>): List<String> {
         }
     }
 
+    // 정렬
+    result.sort()
+    return result
 }
 
 // 닉네임에 중복되는 것이 있으면 true를 리턴하는 함수
