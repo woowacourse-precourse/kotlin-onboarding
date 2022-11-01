@@ -3,6 +3,10 @@ package onboarding
 fun solution2(cryptogram: String): String {
     val string: String = cryptogram
     var duple = arrayListOf<Char>(string.first()) /* 중복되지 않는 문자만 저장하는 arraylist */
+    for(i in 1 until string.length){
+        removeDuplicateChar(duple, string[i])
+    }
+    /* Stirng으로 변환 후 리턴*/
     return duple.joinToString("")
 }
 
