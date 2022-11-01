@@ -1,10 +1,12 @@
 package onboarding
 
-val moneyArray = arrayListOf<Int>(0, 0, 0, 0, 0, 0, 0, 0, 0)
-var result = arrayListOf<Int>()
+
+
 
 fun solution5(money: Int): List<Int> {
     var allMoney = money
+    var result = arrayListOf<Int>()
+    val moneyArray = arrayListOf<Int>(0, 0, 0, 0, 0, 0, 0, 0, 0)
 
     if (allMoney in 1..1000000) {
         while (allMoney != 0) {
