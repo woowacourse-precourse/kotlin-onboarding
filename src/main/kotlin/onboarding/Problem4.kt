@@ -13,11 +13,11 @@ private fun convert(character: Char): Char {
         return 'a' + (LAST_INDEX - (character - 'a')) % NUMBER_OF_ALPHABETS
     }
     // 대문자일 때
-    else if (character in 'A'..'Z') {
+    if (character in 'A'..'Z') {
         return 'A' + (LAST_INDEX - (character - 'A')) % NUMBER_OF_ALPHABETS
-    } else {
-        return character
     }
+
+    return character
 }
 
 private fun translate(word: String): String {
