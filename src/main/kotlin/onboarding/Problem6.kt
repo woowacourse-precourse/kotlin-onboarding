@@ -6,6 +6,8 @@ fun solution6(forms: List<List<String>>): List<String> {
 
     val regularForms = checkEmailAndNickname(forms)
 
+    val duplicateEmail = checkDuplicate(regularForms)
+
 }
 
 fun checkEmailAndNickname(forms: List<List<String>>): List<List<String>>{
@@ -26,4 +28,24 @@ fun isKorean(nickname: String): Boolean {
             return false
     }
     return true
+}
+
+fun checkDuplicate(regularForms: List<List<String>>): MutableSet<String>{
+    val duplicateNickname = mutableSetOf<String>()
+    for(i in regularForms.indices) {
+        for (char in 0 until regularForms[i][1].length-1){
+            for (compare in i+1 until regularForms.size){
+                val nickname = regularForms[i][1]
+                val email = regularForms[i][0]
+                val compareNickname = regularForms[compare][1]
+                val compareEmail = regularForms[compare][0]
+
+                if (compareNickname.contains(nickname.substring(char,char+2))){
+                    duplicateNickname.add(email)
+                    duplicateNickname.add(compareEmail)
+                }
+            }
+        }
+    }
+    return duplicateNickname
 }
