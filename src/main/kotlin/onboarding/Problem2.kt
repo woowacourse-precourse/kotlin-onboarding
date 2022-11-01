@@ -2,7 +2,6 @@ package onboarding
 
 fun solution2(cryptogram: String): String {
     var inputString = cryptogram
-
     while (true) {
         val duplicatedIndexList = findDuplicateIndex(inputString)
         if (duplicatedIndexList.isEmpty()){
@@ -12,7 +11,6 @@ fun solution2(cryptogram: String): String {
     }
 
     return inputString
-
 }
 
 
@@ -21,6 +19,7 @@ fun findDuplicateIndex(inputString : String) : ArrayList<Int> {
     for ( i in 0 until inputString.lastIndex) {
         if (inputString[i] == inputString[i+1])  {
             duplicatedCharIndex.add(i)
+            duplicatedCharIndex.add(i+1)
         }
     }
 
