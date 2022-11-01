@@ -21,3 +21,12 @@
 | --- | --- |
 | "browoanoommnaon" | "brown" |
 | "zyelleyz" | "" |
+
+### 기능 목록
+
+1. cryptogram을 MutableList에 담는 기능
+2. cryptogram 길이가 1이상 1000 이하인지 확인하는 기능
+3. 연속하는 알파벳인지 확인하는 기능
+   - 배열 인덱스 초과하지 않게
+4. 연속하는 알파벳 삭제하는 기능 
+5. String에 알파벳 소문자 이외것이 있는지 확인하는 기능
