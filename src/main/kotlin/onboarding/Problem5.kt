@@ -17,9 +17,7 @@ fun solution5(money: Int): List<Int> {
     return numberOfCurrencies
 }
 
-fun isAppropriateMoney(money: Int): Boolean {
-    if (money !in 1..1_000_000) {
-        return false
-    }
-    return true
+fun isAppropriateMoney(money: Int) = when (money) {
+    !in 1..1_000_000 -> false
+    else -> true
 }
