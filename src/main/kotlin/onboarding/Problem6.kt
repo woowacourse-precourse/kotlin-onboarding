@@ -12,17 +12,31 @@ package onboarding
  * **/
 fun solution6(forms: List<List<String>>): List<String> {
     val nameChunkList = mutableListOf<String>() //연속 문자열 목록
+    val emailList = mutableListOf<String>() //닉네임 중복된 사람들의 이메일 목록
+
+    val duplicateChar = mutableListOf<String>() //타인 닉네임과 중복되었던 연속 문자열
 
     for(index in forms.indices){
-        val nickname = forms[index][1] //이름 확인
+        val nickname = forms[index][1] //닉네임 확인
 
         if(index == 0){
             for (i in 0..nickname.length-2){
                 nameChunkList.add(nickname.substring(i,i+2))
-                break
+            }
+        }
+
+        if(index != 0){
+            for (i in 0..nickname.length-2){
+                val nameChunk = nickname.substring(i,i+2)
+                if(nameChunkList.contains(nameChunk)){  //연속문자열이 중복되는 경우
+                    emailList.add(forms[index][0])
+                    duplicateChar.add(nameChunk)
+                    continue
+                }
+                nameChunkList.add(nameChunk)
             }
         }
     }
 
-    return listOf("임시")
+    return emailList
 }
