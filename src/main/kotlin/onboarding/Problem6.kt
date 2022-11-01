@@ -23,4 +23,11 @@ fun isDuplicatedNickname(index: Int, wordsList: Array<HashSet<String>>): Boolean
     return false
 }
 
+fun getTwoLetterWordsSet(nickName: String): HashSet<String> {
+    val words = HashSet<String>()
 
+    for(i in 0 until nickName.length-1) {
+        words.add(nickName.substring(i..i+1))
+    }
+    return words
+}
