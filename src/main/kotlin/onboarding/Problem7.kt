@@ -8,7 +8,7 @@ fun checkFriend(
     for(userFriend in userFriends){
         val ufriendfriends = friendRelations[userFriend]!!.toList()
         for(friend in ufriendfriends){
-            if(friend == user)
+            if(friend == user || (friendRelations.containsKey(user) &&friendRelations[user]!!.toList().contains(friend)))
                 continue
             if(!data.containsKey(friend))
                 data[friend]=0
@@ -43,7 +43,7 @@ fun solution7(
     // 3. 사용자 타임라인 방문 횟수만큼 점수 부여
     for(visitor in visitors){
         // 이미 친구인 경우는 제외
-        if(friendRelations[user]!!.toList().contains(visitor))
+        if(friendRelations.containsKey(user) && friendRelations[user]!!.toList().contains(visitor))
             continue
         if(!score.containsKey(visitor)){
             score[visitor] = 0
