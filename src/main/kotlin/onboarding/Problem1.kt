@@ -8,8 +8,8 @@ fun solution1(pobi: List<Int>, crong: List<Int>): Int {
         return -1
     }
 
-    val p = compareLeftRight(pobi)
-    val c = compareLeftRight(crong)
+    val p = getMaxValue(pobi)
+    val c = getMaxValue(crong)
     return if(p > c){
         1
     }else if(p == c){
@@ -20,14 +20,14 @@ fun solution1(pobi: List<Int>, crong: List<Int>): Int {
 }
 
 // 왼쪽과 오른쪽 페이지 번호에 대한 결과 중에서 최댓값 반환
-fun compareLeftRight(arr: List<Int>): Int {
-    val left = getMaxValue(arr[0])
-    val right = getMaxValue(arr[1])
+fun getMaxValue(arr: List<Int>): Int {
+    val left = calcMaxNumber(arr[0])
+    val right = calcMaxNumber(arr[1])
     return max(left, right)
 }
 
 // 페이지의 각 자릿수를 모두 더하거나 모두 곱한 값 중에 큰 수를 반환
-fun getMaxValue(number: Int): Int{
+fun calcMaxNumber(number: Int): Int{
     var pageNum = number
     var plusNum = 0
     var mulNum = 1
