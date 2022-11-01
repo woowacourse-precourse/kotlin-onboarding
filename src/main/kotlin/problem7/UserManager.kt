@@ -19,7 +19,10 @@ class UserManager(private val user: String,
         return user
     }
 
-    private fun addAsFriend(user1:User, user2:User) {}
+    private fun addAsFriend(user1:User, user2:User) {
+        user1.addFriend(user2.getId())
+        user2.addFriend(user1.getId())
+    }
 
     private fun settingForFriends() {
         for((id1, id2) in friends) {
