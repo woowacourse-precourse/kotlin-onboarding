@@ -16,7 +16,6 @@ fun solution4(word: String): String {
         return ""
     }
 
-
     for(i in 0 until word.length){
         if(word[i].isUpperCase()){ //대문자일 경우
             answer+=bigLetterMap.get(word[i]) //key 값에 맞는 value

@@ -52,5 +52,5 @@ fun solution6(forms: List<List<String>>): List<String> {
     }
 
     return duplicateEmailSet.sorted().toMutableList() //정렬된 리스트 반환
-    
+
 }
