@@ -12,8 +12,6 @@ fun solution6(forms: List<List<String>>): List<String> {
     {
         for (j in 0..forms[i][1].length-2) {
             wordlist.add(forms[i][1].substring(j,j+2))
-
-            println("\n")
         }
     }
 
