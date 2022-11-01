@@ -24,3 +24,13 @@
 | user | friends | visitors | result |
 | --- | --- | --- | --- |
 | "mrko" | [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ] | ["bedi", "bedi", "donut", "bedi", "shakevan"] | ["andole", "jun", "bedi"] |
+
+## 📝 기능 목록
+
+[사용자의 친구 찾기]
+
+[함께 아는 친구의 수에 따라 10점 주기]
+
+[방문한 횟수에 따라 1점 주기]
+
+[점수가 가장 높은 순으로 정렬]
