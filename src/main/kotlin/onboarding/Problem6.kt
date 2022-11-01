@@ -1,8 +1,14 @@
 package onboarding
 
 fun solution6(forms: List<List<String>>): List<String> {
-    var formsHash = hashMapOf<Int, List<String>>()
     var arrOfRepeat = Array(forms.size) { 0 }
+    var formsHash = twoLetters(forms)
+    return checkRepeat(forms,formsHash,arrOfRepeat)
+}
+
+//두 글자 리스트로 만드는 함수
+fun twoLetters(forms:List<List<String>>):HashMap<Int, List<String>>{
+    var formsHash = hashMapOf<Int, List<String>>()
 
     for (i in forms.indices) {
         //닉네임을 두 글자씩 나누어 저장
@@ -12,6 +18,13 @@ fun solution6(forms: List<List<String>>): List<String> {
         }
         formsHash[i] = mutableList.toSet().toList()
     }
+    return formsHash
+}
+
+//닉네임 중복 검사 함수
+fun checkRepeat(forms:List<List<String>>,formsHash:HashMap<Int, List<String>>,arrOfRepeat:Array<Int>):MutableList<String>{
+    var repeatName = mutableListOf<String>()
+
     for (i in 0 until formsHash.size - 1) {
         val listI = formsHash[i]
         for (j in i + 1 until formsHash.size)
@@ -31,7 +44,6 @@ fun solution6(forms: List<List<String>>): List<String> {
         }
     }
 
-    var repeatName = mutableListOf<String>()
     for (i in forms.indices)
         if (arrOfRepeat[i] != 0)
             repeatName.add(forms[i][0])
@@ -40,4 +52,3 @@ fun solution6(forms: List<List<String>>): List<String> {
     repeatName.sort()
     return repeatName
 }
-
