@@ -12,13 +12,8 @@ fun solution7(
     val friendScore = mutableMapOf<String, Int>()
     val alreadyFriend = mutableListOf(user)
 
-    for (i in friends.indices) {
-        if (user == friends[i].first()) {
-            alreadyFriend.add(friends[i].last())
-        } else if (user == friends[i].last()) {
-            alreadyFriend.add(friends[i].first())
-        }
-    }
+    addAlreadyFriend(friends, user, alreadyFriend)
+
     for (i in friends.indices) {
         if (friendScore.contains(friends[i].first())) {
             friendScore[friends[i].first()] = friendScore[friends[i].first()]!! + 10
@@ -46,6 +41,20 @@ fun solution7(
     val friendReferralResult: Map<String, Int> =
         friendScore.toList().sortedBy { (key, _) -> key }.sortedByDescending { (_, value) -> value }.take(5).toMap()
     return friendReferralResult.keys.toList()
+}
+
+private fun addAlreadyFriend(
+    friends: List<List<String>>,
+    user: String,
+    alreadyFriend: MutableList<String>
+) {
+    for (i in friends.indices) {
+        if (user == friends[i].first()) {
+            alreadyFriend.add(friends[i].last())
+        } else if (user == friends[i].last()) {
+            alreadyFriend.add(friends[i].first())
+        }
+    }
 }
 
 fun isAppropriateInput(
