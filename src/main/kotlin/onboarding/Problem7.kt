@@ -6,6 +6,7 @@ fun solution7(user: String, friends: List<List<String>>, visitors: List<String>)
     isValidInput(user, friends, visitors)
     val usersFriendsSet = getUsersFriendsSet(user, friends)
     var recommendMap = makeRecommendMap(user, usersFriendsSet, friends)
+    recommendMap = updateRecommendMapbyVisitors(visitors, recommendMap, usersFriendsSet)
 
     // TODO: 2022-11-01  
 }
@@ -69,7 +70,15 @@ fun makeRecommendMap(user: String, usersFriendsSet: Set<String>, friends: List<L
 }
 
 fun updateRecommendMapbyVisitors(visitors: List<String>, recommendMap: MutableMap<String, Int>, usersFriendsSet: Set<String> ): MutableMap<String, Int>{
-    // TODO: 2022-11-01  
+    for(i in visitors.indices){
+        if(!recommendMap.containsKey(visitors[i])) {
+            if(!usersFriendsSet.contains(visitors[i]))
+                recommendMap[visitors[i]] = 1
+        }
+        else
+            recommendMap[visitors[i]] = recommendMap[visitors[i]]!! + 1
+    }
+    return recommendMap
 }
 
 fun getResultList(recommendMap: MutableMap<String, Int>): List<String>{
