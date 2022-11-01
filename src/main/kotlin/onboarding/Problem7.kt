@@ -5,6 +5,18 @@ import problem2.LowerCaseVerifier
 import problem2.StringLengthVerifier
 import problem6.ListSizeVerifier
 
+private fun validateUserId(id:String) {
+    val idValidator = InputValidator(
+        listOf(
+            StringLengthVerifier(1, 30),
+            AlphabetVerifier(),
+            LowerCaseVerifier()
+        )
+    )
+
+    idValidator.validate(id)
+}
+
 private fun validateUser(user:String) {
     val userValidator = InputValidator(
         listOf(
