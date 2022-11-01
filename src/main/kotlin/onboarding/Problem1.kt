@@ -5,7 +5,7 @@ import kotlin.math.max
 fun solution1(pobi: List<Int>, crong: List<Int>): Int {
     val poPoint = getMax(pobi)
     val crPoint = getMax(crong)
-
+    if(poPoint==-1 || crPoint==-1) return -1
     if(poPoint>crPoint) return 1;
     if(poPoint==crPoint) return 0;
     if(poPoint<crPoint) return 2
@@ -17,6 +17,7 @@ fun solution1(pobi: List<Int>, crong: List<Int>): Int {
 fun getMax(arr:List<Int>):Int{
     val a = arr[0]
     val b = arr[1]
+    if(a+1!=b) return -1
 
     var aSum = 0
     var aMul = 1
