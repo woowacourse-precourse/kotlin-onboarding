@@ -1,7 +1,17 @@
 package onboarding
 
 fun solution2(cryptogram: String): String {
+    var inputString = cryptogram
 
+    while (true) {
+        val duplicatedIndexList = findDuplicateIndex(inputString)
+        if (duplicatedIndexList.isEmpty()){
+            break
+        }
+        inputString = removeDuplicateChar(duplicatedIndexList, inputString )
+    }
+
+    return inputString
 
 }
 
