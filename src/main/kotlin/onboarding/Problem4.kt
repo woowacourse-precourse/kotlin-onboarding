@@ -1,9 +1,9 @@
 package onboarding
 
-val UPPER_CASE_A_NUMBER = 65
-val UPPER_CASE_Z_NUMBER = 90
-val LOWER_CASE_A_NUMBER = 97
-val LOWER_CASE_Z_NUMBER = 122
+const val UPPER_CASE_A_NUMBER = 65
+const val UPPER_CASE_Z_NUMBER = 90
+const val LOWER_CASE_A_NUMBER = 97
+const val LOWER_CASE_Z_NUMBER = 122
 
 fun solution4(word: String): String {
     return convertWord(0, word, "")
