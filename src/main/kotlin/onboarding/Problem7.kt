@@ -28,5 +28,11 @@ fun friendOfFriend(user: String, friends: List<List<String>>): MutableMap<String
             it[0] in friend && it[1] in friend -> notFriend.remove(it)
         }
     }
-    TODO()
+    notFriend.forEach {
+        when {
+            it[0] in friend && user != it[1] -> friendOfFriend[it[1]] = friendOfFriend.getOrDefault(it[1], 0) + 10
+            it[1] in friend && user != it[0] -> friendOfFriend[it[0]] = friendOfFriend.getOrDefault(it[0], 0) + 10
+        }
+    }
+    return friendOfFriend
 }
