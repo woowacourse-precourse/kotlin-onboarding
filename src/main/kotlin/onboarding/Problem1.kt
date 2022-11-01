@@ -35,6 +35,10 @@ fun solution1(pobi: List<Int>, crong: List<Int>): Int {
     val pobiRightResult = compare(pobi[1])
     val crongRightResult = compare(crong[1])
 
+    //3. 왼쪽, 오른쪽 비교
+    val pobiBiggest = max(pobiLeftResult, pobiRightResult)
+    val crongBiggest = max(crongLeftResult, crongRightResult)
+
 }
 
 fun compare(pageNum : Int):Int{
