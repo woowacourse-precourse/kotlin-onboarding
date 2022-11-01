@@ -29,4 +29,46 @@ fun isWrong(array: List<Int>): Boolean {
     if (startPageNum % 2 == 0)
         return true
 
+    // 1-400 범위 안에 있는지
+    // 시작 면이 1페이지를 말하는건가?
+    if (startPageNum <= 1 || startPageNum >= 399)
+        return true
+
+    // [0]+1 = [1] 인지.
+    if (startPageNum + 1 != lastPageNum)
+        return true
+
+    // 다 맞으면 right(true)
+    return false
+}
+
+// 1. 왼쪽, 오른쪽 페이지 중 더 큰 값을 가져온다.
+fun getMax(array: List<Int>): Int {
+    val leftMax = calculate(array[0])
+    val rightMax = calculate(array[1])
+
+    if(leftMax > rightMax)
+        return leftMax
+    else
+        return rightMax
+}
+
+// 2. 페이지의 각 수를 더하고 / 곱한 후 비교한다.
+fun calculate(pageNum: Int): Int {
+    var varPageNum = pageNum
+    var sum = 0
+    var multi = 1
+    // 1-2. %10 -> '+' and '*'\
+    while (varPageNum > 0) {
+        sum += varPageNum % 10
+        multi *= (varPageNum % 10)
+        varPageNum /= 10
+    }
+
+    // max return
+    if(sum > multi)
+        return sum
+    else
+        return multi
+
 }
