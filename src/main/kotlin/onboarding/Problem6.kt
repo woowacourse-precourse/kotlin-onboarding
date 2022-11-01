@@ -35,3 +35,20 @@ fun saveCountAndLength(forms: List<List<String>>,
         countArray.add(count) // 각 위치에 count를 넣어준다.
     }
 }
+
+/**
+ * 저장했던 글자수와 중복 횟수 배열을 비교하여 글자수가 중복된 횟수보다 적으면
+ * 그 글자는 연속된 중복 글자를 가지고 있다는 뜻이므로
+ * 그 글자에 해당하는 이메일을 결과 배열에 추가해준다.
+ */
+fun selectEmailOfDuplicatedNickname(countArray: ArrayList<Int>,
+                                    lengthArray: ArrayList<Int>,
+                                    result: ArrayList<String>,
+                                    forms: List<List<String>>){
+    for (index in countArray.indices){
+        if (lengthArray[index] <= countArray[index]){
+            result.add(forms[index][0])
+        }
+    }
+    result.sort()
+}
