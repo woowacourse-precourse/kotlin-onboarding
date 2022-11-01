@@ -14,6 +14,8 @@ fun solution7(
     searchUserFriends(user, userFriendList, friends)
     recommendedFriends.putAll(searchFriendsKnowTogether(user, userFriendList, friends))
     checkVisitor(visitors, userFriendList, recommendedFriends)
+
+    val resultList = sortRecommendedFriends(recommendedFriends)
 }
 
 private fun searchUserFriends(user: String, userFriendList: MutableList<String>, relation: List<List<String>>) {
@@ -51,4 +53,9 @@ private fun checkVisitor(
         if (it in userFriendList) return@forEach
         plusScore(recommendedFriends, it, VISITOR_SCORE)
     }
+}
+
+private fun sortRecommendedFriends(recommendedFriends: MutableMap<String, Int>): List<String> {
+    return recommendedFriends.toList()
+        .sortedWith(compareByDescending<Pair<String, Int>> { it.second }.thenBy { it.first }).map { it.first }
 }
