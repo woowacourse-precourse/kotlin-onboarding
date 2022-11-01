@@ -9,6 +9,14 @@ fun solution6(forms: List<List<String>>): List<String> {
     val emails = HashSet<String>()
     val userMap: MutableMap<String, String> = HashMap()
 
+    for (i in forms.indices) {
+        val emailCheck = forms[i].first()
+        val nicknameCheck = forms[i].last()
+
+        for (j in 0 until nicknameCheck.length - 1) {
+            val nicknameKey = nicknameCheck.substring(j, j + 2)
+        }
+    }
     return listOf()
 }
 
