@@ -1,5 +1,12 @@
 package onboarding
 
 fun solution3(number: Int): Int {
-    TODO("프로그램 구현")
+    var ans = 0
+
+    for (i in 1..number) {
+        val temp = i.toString().toCharArray()
+        
+    }
+    return ans
 }
+
