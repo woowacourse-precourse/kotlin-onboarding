@@ -1,5 +1,60 @@
 package onboarding
 
+import kotlin.math.*
+
 fun solution1(pobi: List<Int>, crong: List<Int>): Int {
-    TODO("프로그램 구현")
+
+    if(pobi[0]+1 != pobi[1] || crong[0]+1 != crong[1]) {
+        return -1
+    }
+    if(pobi[0] == 1 || crong[0] == 1 || pobi[1] == 400 || crong[1] == 400) {
+        return -1
+    }
+
+    var temp :Int = pobi[0]
+    var pobiLeft1 : Int = 0
+    var pobiLeft2 : Int = 1
+    while(temp > 0) {
+        pobiLeft1 += temp % 10
+        pobiLeft2 *= temp % 10
+        temp /= 10
+    }
+
+    var pobiRight1 : Int = 0
+    var pobiRight2 : Int = 1
+    temp = pobi[1]
+    while(temp > 0) {
+        pobiRight1 += temp % 10
+        pobiRight2 *= temp % 10
+        temp /= 10
+    }
+
+    var crongLeft1 : Int = 0
+    var crongLeft2 : Int = 1
+    temp = crong[0]
+    while(temp > 0) {
+        crongLeft1 += temp % 10
+        crongLeft2 *= temp % 10
+        temp /= 10
+    }
+
+    var crongRight1 : Int = 0
+    var crongRight2 : Int = 1
+    temp = crong[1]
+    while(temp > 0) {
+        crongRight1 += temp % 10
+        crongRight2 *= temp % 10
+        temp /= 10
+    }
+
+    var pobiMAX:Int = listOf(pobiLeft1, pobiLeft2, pobiRight1, pobiRight2).maxOrNull()?:0
+    var crongMAX:Int = listOf(crongLeft1, crongLeft2, crongRight1, crongRight2).maxOrNull()?:0
+
+    return if(pobiMAX == crongMAX) {
+        0
+    } else if(pobiMAX > crongMAX) {
+        1
+    } else {
+        2
+    }
 }
