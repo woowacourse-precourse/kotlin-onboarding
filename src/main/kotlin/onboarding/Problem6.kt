@@ -38,5 +38,14 @@ fun solution6(forms: List<List<String>>): List<String> {
         }
     }
 
+    val firstPersonNickname = forms[0][1]
+    for (index in 0..firstPersonNickname.length-2){
+        val nameChunk = firstPersonNickname.substring(index,index+2)
+        if(duplicateChar.contains(nameChunk)){
+            emailList.add(forms[index][0])
+            continue
+        }
+    }
+
     return emailList
 }
