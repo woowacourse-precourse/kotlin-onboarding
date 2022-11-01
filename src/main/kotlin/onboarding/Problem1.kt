@@ -24,7 +24,7 @@ fun is_not_val(left:Int,right:Int) : Boolean
         return true
     else if(left == 1 || right == 400)
         return true
-    else if(abs(left - right) > 2)
+    else if((left - right) > 2)
         return true
     else
         return false
@@ -43,8 +43,7 @@ fun sumpage(left:Int): Int
     sum_r += t_right % 10
     t_right /= 10
     }
-    //when
-        //좌우 비교하는게 필요하지 않을까 ...? ㅋㅋ
+    
 }
 
 fun multipage(left : Int) : Int
