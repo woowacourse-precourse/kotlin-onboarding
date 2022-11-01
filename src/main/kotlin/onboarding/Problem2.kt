@@ -11,11 +11,20 @@ package onboarding
 //예외 사항
 /*
     1. cryptogram 중 알파벳 대문자가 포함된 경우
-    2. cryptogram의 길이가 1~1000의 범위를 벗어나는 경우
+    2. cryptogram이 알파벳이 아닌 경우
  */
 
 fun solution2(cryptogram: String): String {
     //기능 구현
+
+
+
+    //예외 사항  1. cryptogram 중 알파벳 대문자가 포함된 경우
+    val stringList = cryptogram.toMutableList()
+    for(i in stringList.indices){
+        if(stringList[i].isUpperCase()) lowerToUpper(cryptogram)
+    }
+
     val builder = StringBuilder()
 
     //3. 2.에서 제거했음에도 연속 중복 문자가 있다면 제거, 4. 중복 문자가 없을 때까지 제거
@@ -24,5 +33,11 @@ fun solution2(cryptogram: String): String {
         else builder.append(alphabet)
     }
     return builder.toString()
+}
+
+//예외 사항  1. cryptogram 중 알파벳 대문자가 포함된 경우
+fun lowerToUpper(cryptogram: String): String{
+    val lower = cryptogram.toLowerCase()
+    return lower
 }
 
