@@ -1,12 +1,15 @@
 package onboarding
 
+
+
 fun solution1(pobi: List<Int>, crong: List<Int>): Int {
 
     if ( isException(pobi) || isException(crong) ) {
         return -1
     }
 
-
+    determineMyScore( pageNumberAdd(pobi[0]), pageNumberMul(pobi[0]), pageNumberAdd(pobi[1]), pageNumberMul(pobi[1]) )
+    determineMyScore( pageNumberAdd(crong[0]), pageNumberMul(crong[0]), pageNumberAdd(crong[1]), pageNumberMul(crong[1]) )
 
 }
 
@@ -47,6 +50,10 @@ fun pageNumberMul(num: Int) : Int {
     }
 
     return mulResult
+}
+
+fun determineMyScore(addNumLeft : Int, mulNumLeft : Int, addNumRight : Int, mulNumRight : Int) : Int {
+    return maxOf(addNumLeft, mulNumLeft, addNumRight, mulNumRight)
 }
 
 
