@@ -10,6 +10,10 @@ fun solution7(user: String, friends: List<List<String>>, visitors: List<String>)
     // visitor 점수 계산 함수
     calculateVisitor(friendPointMap, visitors)
 
+    // map을 list로 바꾸고 정렬해서 리턴하는 함수
+    answer = getSortedList(friendPointMap, user, userFriends)
+
+    return answer
 }
 
 // 친구의 친구 점수 계산 함수
@@ -62,4 +66,31 @@ private fun calculateVisitor(friendPointMap: HashMap<String, Int>, visitors: Lis
             friendPointMap[visitor] = 1
         }
     }
+}
+
+// map을 list로 변환 후, 정렬하고 return해주는 함수
+private fun getSortedList(
+    friendPointMap: HashMap<String, Int>,
+    user: String,
+    userFriends: MutableList<String>
+): List<String> {
+    val answer = mutableListOf<String>()
+    val friendList = friendPointMap.toList()
+    // second(value)먼저 '내림차순'으로 정렬, 같다면 first(이름)으로 '오름차순'으로 정렬
+    val sortedList = friendList.sortedWith(compareBy({ -it.second }, { it.first }))
+
+    // List<Pair<String, Int>> -> List<String>
+    for (e in sortedList) {
+        // 자기 자신, 자기 친구들은 추천 친구에서 제외
+        if (e.first == user || userFriends.contains(e.first))
+            continue
+
+        answer.add(e.first)
+
+        // 최대 5명 조건, 5명 되면 끝내기 break
+        if(answer.size == 5)
+            break
+    }
+
+    return answer
 }
