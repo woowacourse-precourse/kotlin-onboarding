@@ -6,7 +6,9 @@ class UserManager(private val user: String,
 {
     private val users = mutableMapOf<String, User>()
 
-    private fun settingForUser() {}
+    private fun settingForUser() {
+        users[user] = User(user)
+    }
 
     private fun settingForFriends() {}
 
