@@ -71,3 +71,20 @@ fun addScoreByVisit(visitors: List<String>, friendsOfUser: ArrayList<String>, re
         }
     }
 }
+
+/**
+ * 점수가 같을 때 이름 순으로 정렬해주는 함수
+ */
+fun sortWithName(result: ArrayList<String>, recommendScore: MutableMap<String, Int>){
+    val recommendScoreInList = recommendScore.toList().sortedByDescending { it.second } // 점수 순으로 정렬하여 list로 만듦
+
+    for (index in recommendScoreInList.indices) {
+        val tempArray = ArrayList<String>() //tempArray는 반복문이 돌 때마다 초기화
+        for ((key,value) in recommendScore) { // 맵의 개수만큼 반복문을 돌려
+            if (value == recommendScoreInList[index].second){ // value값이 같은 요소의 key를 tempArray에 저장
+                tempArray.add(key)
+            }
+        }
+        result += result + tempArray.sorted() //result에 오름차순으로 정렬된 배열들을 계속해서 더함
+    }
+}
