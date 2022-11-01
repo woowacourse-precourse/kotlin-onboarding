@@ -5,7 +5,13 @@ fun solution7(
     friends: List<List<String>>,
     visitors: List<String>
 ): List<String> {
-    TODO("프로그램 구현")
+    val usersFriendsList = getMyFriendsList(user, friends)
+    val recommendedFriendsSet = getRecommendedFriends(user, friends, usersFriendsList, visitors)
+
+    return recommendedFriendsSet.toList().sortedWith(
+        compareByDescending<Pair<String, Int>> { it.second }
+            .thenBy { it.first }
+    ).toMap().keys.toList()
 }
 
 fun getRecommendedFriends(
