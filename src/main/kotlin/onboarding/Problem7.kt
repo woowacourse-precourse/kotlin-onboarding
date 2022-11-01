@@ -16,6 +16,7 @@ fun solution7(
     checkVisitor(visitors, userFriendList, recommendedFriends)
 
     val resultList = sortRecommendedFriends(recommendedFriends)
+    return resultList.filterIndexed { index, _ -> index < 5 }
 }
 
 private fun searchUserFriends(user: String, userFriendList: MutableList<String>, relation: List<List<String>>) {
