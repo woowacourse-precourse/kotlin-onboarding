@@ -11,7 +11,7 @@ fun solution4(word: String): String {
         , 'y' to 'b', 'z' to 'a')
 
     for (i in wordList.indices) {
-        wordList[i] = tableOfChange[wordList[i]]!!
+        wordList[i] = if(wordList[i].isLetter() && wordList[i] in tableOfChange.keys) tableOfChange[wordList[i]]!! else wordList[i]
     }
 
     return wordList.joinToString("")
