@@ -1,5 +1,8 @@
 package onboarding
-
+/*
+* whoIsFriendWithUser : 유저와 친구인 사람을 추출하기 위한 함수
+* friendRecommendationSystem : 친구 추천 시스템
+* */
 fun solution7(
     user: String,
     friends: List<List<String>>,
@@ -20,7 +23,7 @@ fun solution7(
     }
     fun friendRecommendationSystem(friendList: List<String>, visitors: List<String>, user: String, friends: List<List<String>>,)
     : Map<String, Int> {
-        var scoreMap = HashMap<String, Int>()
+        var scoreMap = HashMap<String, Int>() // 친구와 점수를 같이 저장하기 위해 hashmap사용
         for(friend in friends){
             if(!friend.contains(user)){
                 if(friendList.contains(friend[0])){

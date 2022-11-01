@@ -1,6 +1,9 @@
 package onboarding
-
+/*
+* wallet : 들어온 돈에 따라 지갑을 가볍게 바꾸기 위한 함수
+* */
 fun solution5(money: Int): List<Int> {
+
     fun wallet(money: Int): List<Int> {
         var presentMoney = money
         var wallet = Array(9, {0})

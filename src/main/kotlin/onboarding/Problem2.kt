@@ -1,5 +1,9 @@
 package onboarding
 import java.util.*
+/*
+* 스택을 이용하여 중복된 문자가 들어올 경우 pop 하도록 구현
+* 2번째 스택의 경우 문자열의 순서를 올바르게 하기 위해 사용
+* */
 fun solution2(cryptogram: String): String {
     var decodeStack = Stack<Char>()
     var sortStack = Stack<Char>()

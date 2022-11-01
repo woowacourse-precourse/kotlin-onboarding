@@ -1,5 +1,7 @@
 package onboarding
-
+/*
+* covertWord : 입력된 문자열을 청개구리 사전의 문자열로 바꾸는 함수
+* */
 fun solution4(word: String): String {
     fun convertWord(word: String): String{
         var converted = ""

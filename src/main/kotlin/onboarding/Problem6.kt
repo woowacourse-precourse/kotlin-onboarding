@@ -1,6 +1,11 @@
 package onboarding
 import java.util.regex.Pattern
-
+/*
+* PersonnelCheck : 크루 인원수 체크
+* EmailCheck : 이메일 형식 체크
+* NickNameCheck : 닉네임 형식 체크
+* overlapCheck : 중복 닉네임 체크
+* */
 fun solution6(forms: List<List<String>>): List<String> {
     fun PersonnelCheck(num : Int): Boolean{
         return num in 1 .. 10000

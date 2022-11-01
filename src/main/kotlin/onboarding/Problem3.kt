@@ -1,5 +1,7 @@
 package onboarding
-
+/*
+* countClap : 3, 6, 9 에서 친 박수를 저장
+* */
 fun solution3(number: Int): Int {
 
     fun countClap(number: Int): Int{
