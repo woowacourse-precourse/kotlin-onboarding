@@ -1,7 +1,15 @@
 package onboarding
 
 fun solution3(number: Int): Int {
-    TODO("프로그램 구현")
+    return calculateClap(number)
+}
+
+private fun calculateClap(number: Int): Int {
+    var clapCount = 0
+    for (i in 1..number) {
+        separateDigit(i).forEach { clapCount += checkClap(it) }
+    }
+    return clapCount
 }
 
 private fun separateDigit(number: Int): List<Int> {
