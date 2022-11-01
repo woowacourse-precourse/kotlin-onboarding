@@ -3,6 +3,20 @@ package onboarding
 fun solution6(forms: List<List<String>>): List<String> {
     val history = initHistory(forms)
     val uniqueUsers = getDuplicateUsers(history)
+    val result = setToList(uniqueUsers)
+
+    result.sort()
+    return result
+}
+
+fun setToList(set: MutableSet<String>): MutableList<String> {
+    val result = mutableListOf<String>()
+
+    set.forEach {
+        result.add(it)
+    }
+
+    return result
 }
 
 fun getDuplicateUsers(history: MutableMap<String, MutableSet<String>>): MutableSet<String> {
