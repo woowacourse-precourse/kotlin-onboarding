@@ -16,5 +16,13 @@ package onboarding
 
 fun solution2(cryptogram: String): String {
     //기능 구현
+    val builder = StringBuilder()
 
+    //3. 2.에서 제거했음에도 연속 중복 문자가 있다면 제거, 4. 중복 문자가 없을 때까지 제거
+    for(alphabet in cryptogram){ //1. 처음 들어온 cryptogram에 연속된 중복 문자가 있는지 확인
+        if(builder.last() == alphabet) builder.deleteCharAt(builder.length -1) //2. 1.에서 연속 중복 문자가 있다면 제거
+        else builder.append(alphabet)
+    }
+    return builder.toString()
 }
+

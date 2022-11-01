@@ -98,7 +98,6 @@ fun comparePageNum(num : Int):Int{
 
     var pageNum = num
 
-
     while(pageNum != 0){
         sum += pageNum % 10
         mul *= pageNum % 10
