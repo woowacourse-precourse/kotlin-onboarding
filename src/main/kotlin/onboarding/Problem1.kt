@@ -1,7 +1,28 @@
 package onboarding
 
 fun solution1(pobi: List<Int>, crong: List<Int>): Int {
-    TODO("프로그램 구현")
+    var result = 0
+
+    if (!exceptionCheck(pobi, crong)){ //  만약 예외 체크에 걸렸다면 result 는 -1
+        result = -1
+    }
+    else{
+        val pobiMaxValue = comparison(plusCalculation(pobi[0]), productCalculation(pobi[0]), plusCalculation(pobi[1]),
+            productCalculation(pobi[1]))
+        val crongMaxValue = comparison(plusCalculation(crong[0]), productCalculation(crong[0]), plusCalculation(crong[1]),
+            productCalculation(crong[1]))
+        if (pobiMaxValue > crongMaxValue){ // 포비가 이기면 1
+            result = 1
+        }
+        else if (pobiMaxValue < crongMaxValue){ // 크롱이 이기면 2
+            result = 2
+        }
+        else if (pobiMaxValue == crongMaxValue){ // 무승부면 0을 설정
+            result = 0
+        }
+    }
+
+    return result
 }
 
 /**
