@@ -21,3 +21,8 @@
 | --- | --- |
 | "browoanoommnaon" | "brown" |
 | "zyelleyz" | "" |
+
+
+##기능 목록
+- 문자열의 i 번째와 i+1 번째가 같으면 remove 하기
+- index 가 옮겨지니 -2 해주고 while문이 돌때마다 index++
