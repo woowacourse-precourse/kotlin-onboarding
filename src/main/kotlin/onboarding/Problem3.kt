@@ -1,5 +1,10 @@
 package onboarding
 
 fun solution3(number: Int): Int {
-    TODO("프로그램 구현")
+
+    fun chunkNum(n: Int): IntArray {
+        return n.toString().chunked(1).map { it.toInt() }.toIntArray()
+    }
+
+    return 0
 }
