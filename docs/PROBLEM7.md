@@ -24,3 +24,15 @@
 | user | friends | visitors | result |
 | --- | --- | --- | --- |
 | "mrko" | [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ] | ["bedi", "bedi", "donut", "bedi", "shakevan"] | ["andole", "jun", "bedi"] |
+
+---
+## 기능 구현
+1. user와 친구관계인 사람 찾는 기능
+     - 친구관계정보에서 user와 친구인 사용자를 저장한다.
+2. user와 친구의 친구관계인 사람 찾는 기능
+     - 친구관계정보에서 한 원소에 두 명 다 user인 친구는 제외한다.
+     - 제외한 목록에서 user가 포함되어있지 않고 친구관계인 친구가 들어있는 원소를 저장한다.
+     - 친구의 친구관계인 사람에게는 추천점수를 +10 해준다.
+3. user와 친구관계가 아닌 방문자를 찾는 기능
+     - 방문자 중에서 친구관계가 아닌 사람을 찾고 추천점수를 +1 해준다.
+4. 추천점수가 높은 순, 점수가 같을 경우 이름순으로 정렬
