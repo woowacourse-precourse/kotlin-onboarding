@@ -25,6 +25,12 @@ fun mutualFriends(userFriend : MutableList<String>, friends: List<List<String>>,
     }
     return ten
 }
+fun visited(visitors: List<String>, one: HashMap<String, Int>): HashMap<String, Int>{
+    for(i in 0..visitors.size-1){//사용자의 타임 라인에 방문한 횟수
+        one.put(visitors[i], one.get(visitors[i])?.plus(1) ?: 1)
+    }
+    return one
+}
 fun solution7(
     user: String,
     friends: List<List<String>>,
@@ -32,7 +38,9 @@ fun solution7(
 ): List<String> {
     var userFriend : MutableList<String> = mutableListOf()
     var ten = HashMap<String, Int>()
+    var one = HashMap<String, Int>()
     userFriend = findUserFriends(userFriend, friends, user)//user친구 찾기
     ten = mutualFriends(userFriend, friends, ten)//사용자와 함께 아는 친구의 수
+    one = visited(visitors,one)//사용자의 타임 라인에 방문한 횟수
     TODO("프로그램 구현")
 }
