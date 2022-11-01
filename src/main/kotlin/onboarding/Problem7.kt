@@ -4,6 +4,7 @@ import java.util.regex.Pattern
 
 fun solution7(user: String, friends: List<List<String>>, visitors: List<String>): List<String> {
     isValidInput(user, friends, visitors)
+    val usersFriendsSet = getUsersFriendsSet(user, friends)
 
     // TODO: 2022-11-01  
 }
@@ -32,7 +33,16 @@ fun isValidInput(user: String, friends: List<List<String>>, visitors: List<Strin
 }
 
 fun getUsersFriendsSet(user: String, friends: List<List<String>>): Set<String>{
-    // TODO: 2022-11-01  
+    var usersFriendsSet = mutableSetOf<String>()
+
+    for(i in friends.indices){
+        if(friends[i][0] == user)
+            usersFriendsSet.add(friends[i][1])
+        if(friends[i][1] == user)
+            usersFriendsSet.add(friends[i][0])
+    }
+
+    return usersFriendsSet
 }
 
 fun makeRecommendMap(user: String, usersFriendsSet: Set<String>, friends: List<List<String>>): MutableMap<String, Int>{
