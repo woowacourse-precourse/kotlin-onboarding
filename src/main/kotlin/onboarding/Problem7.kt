@@ -36,6 +36,22 @@ fun calculateVisitScore(user: String, visitors: List<String>, friendGraph: Map<S
     return result
 }
 
+/**
+ * Returns recommendation score of each user for [user].
+ */
+fun calculateScore(visitorScore: Map<String, Int>, friendScore: Map<String, Int>): Map<String, Int> {
+    val result = mutableMapOf<String, Int>()
+    for(score in visitorScore) {
+        if(result[score.key] == null) result[score.key] = score.value
+        else result[score.key] = result[score.key]!! + score.value
+    }
+    for(score in friendScore) {
+        if(result[score.key] == null) result[score.key] = score.value
+        else result[score.key] = result[score.key]!! + score.value
+    }
+    return result
+}
+
 
 /**
  * Returns a graph of [friends].
