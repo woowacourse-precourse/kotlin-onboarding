@@ -17,9 +17,8 @@ fun solution7(
     addVisitorsScore(visitors, friendScore)
     deleteAlreadyFriend(alreadyFriend, friendScore)
 
-    val friendReferralResult: Map<String, Int> =
-        friendScore.toList().sortedBy { (key, _) -> key }.sortedByDescending { (_, value) -> value }.take(5).toMap()
-    return friendReferralResult.keys.toList()
+    return friendScore.toList().sortedBy { (key, _) -> key }.sortedByDescending { (_, value) -> value }.take(5)
+        .toMap().keys.toList()
 }
 
 private fun deleteAlreadyFriend(
