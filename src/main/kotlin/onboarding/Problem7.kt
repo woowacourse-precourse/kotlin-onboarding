@@ -75,7 +75,7 @@ fun makeFriendGraph(friends: List<List<String>>): Map<String, Set<String>> {
 fun sortFriends(friendList: List<String>, scores: Map<String, Int>): List<String> {
     var sortedList = listOf<String>()
     sortedList = friendList.sorted()
-    sortedList = friendList.sortedWith(compareByDescending<String> {scores[it]})
+    sortedList = sortedList.sortedWith(compareByDescending<String> {scores[it]})
     return sortedList
 }
 
