@@ -57,3 +57,12 @@ fun calculateMultiplyOfPageNumber(num: Int): Int {
     }
     return result
 }
+
+fun calculateScore(list: List<Int>): Int {
+    return maxOf(
+        calculateSumOfPageNumber(list[FIRST_PAGE]),
+        calculateMultiplyOfPageNumber(list[FIRST_PAGE]),
+        calculateSumOfPageNumber(list[SECOND_PAGE]),
+        calculateMultiplyOfPageNumber(list[SECOND_PAGE])
+    )
+}
