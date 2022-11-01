@@ -4,13 +4,13 @@ import kotlin.math.max
 
 fun solution1(pobi: List<Int>, crong: List<Int>): Int {
 
-    if(pobi[1] - pobi[0] != 1 || crong[1] - crong[0] != 1 || pobi[0] < 1 || pobi[1] > 400 || crong[0] < 1 || crong[1] > 400)
+    if(!isValidPage(pobi, crong))
         return -1
 
 
-    val pobiValue : Int = max(max(getPlusValue(pobi[0]), getPlusValue(pobi[1])), max(getMultiplyValue(pobi[0]), getMultiplyValue(pobi[1])))
+    val pobiValue : Int = getMaxValue(pobi)
 
-    val crongValue : Int = max(max(getPlusValue(crong[0]), getPlusValue(crong[1])), max(getMultiplyValue(crong[0]), getMultiplyValue(crong[1])))
+    val crongValue : Int = getMaxValue(crong)
 
 
     return if(pobiValue > crongValue)
@@ -21,26 +21,31 @@ fun solution1(pobi: List<Int>, crong: List<Int>): Int {
         0
 }
 
-fun getPlusValue(num: Int): Int {
-    var str: String = num.toString()
-    var value: Int = 0
+fun getMaxValue(page : List<Int>): Int {
+    var leftPage = page[0]
+    var rightPage = page[1]
+    var leftPlusValue: Int = 0
+    var rightPlusValue : Int = 0
+    var leftMultiValue : Int = 1
+    var rightMultiValue : Int = 1
 
-    for (element in str) {
-        value += element.digitToInt()
+    while(leftPage != 0){
+        leftPlusValue += leftPage % 10
+        leftMultiValue *= leftPage % 10
 
+        leftPage /= 10
     }
 
-    return value
+    while(rightPage != 0){
+        rightPlusValue += rightPage % 10
+        rightMultiValue *= rightPage % 10
+
+        rightPage /= 10
+    }
+
+    return max(max(leftPlusValue, leftMultiValue), max(rightPlusValue, rightMultiValue))
 }
 
-fun getMultiplyValue(num: Int): Int {
-    var str: String = num.toString()
-    var value: Int = 1
-
-    for (element in str) {
-        value *= element.digitToInt()
-    }
-
-
-    return value
+fun isValidPage(pobi : List<Int>, crong : List<Int>) : Boolean{
+    return pobi[1] - pobi[0] == 1 && crong[1] - crong[0] == 1 && pobi[0] in 1..399 && crong[0] in 1..399 && pobi[0] % 2 == 1 && crong[0] % 2 == 1
 }
