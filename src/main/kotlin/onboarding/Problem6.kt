@@ -4,7 +4,7 @@ import java.util.regex.Pattern
 
 fun solution6(forms: List<List<String>>): List<String> {
     isValidInput(forms)
-    // TODO: 2022-11-01  
+    return getDuplicatedList(forms).sorted()
 }
 fun isValidInput(forms: List<List<String>>){
     for(i in forms.indices){
@@ -18,7 +18,18 @@ fun isValidInput(forms: List<List<String>>){
 }
 
 fun getDuplicatedList(forms: List<List<String>>):List<String>{
-    // TODO: 2022-11-01  
+    var duplicatedList: ArrayList<String> = ArrayList()
+
+    for(i in 0 until forms.size -1){
+        for(j in i+1 until forms.size){
+            if(compareTwoNickname(forms[i][1], forms[j][1])){
+                duplicatedList = addToDuplicatedEmailList(duplicatedList, forms[i][0])
+                duplicatedList = addToDuplicatedEmailList(duplicatedList, forms[j][0])
+            }
+        }
+    }
+
+    return duplicatedList
 }
 
 fun compareTwoNickname(nickName1: String, nickName2: String): Boolean{
