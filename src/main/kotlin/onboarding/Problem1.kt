@@ -38,6 +38,10 @@ fun solution1(pobi: List<Int>, crong: List<Int>): Int {
     if(isOddNum(pobi[0] == false)) return -1
     if(isOddNum(crong[0] == false)) return -1
 
+//예외사항 3. 오른쪽 페이지가 짝수인지 확인
+    if(isEvenNum(pobi[1] == false)) return -1
+    if(isEvenNum(crong[1] == false)) return -1
+
     //1. 왼쪽 페이지 비교
     val pobiLeftResult = compare(pobi[0])
     val crongLeftResult = compare(crong[0])
@@ -76,6 +80,16 @@ fun isOddNum(pageNum: Int):Boolean{
     }
     if(pageNum % 2 != 0){
         return true
+    }
+}
+
+//예외사항 3. 오른쪽 페이지가 짝수인지 확인
+fun isEvenNum(pageNum: Int):Boolean{
+    if(pageNum % 2 == 0){
+        return true
+    }
+    if(pageNum % 2 != 0){
+        return false
     }
 }
 
