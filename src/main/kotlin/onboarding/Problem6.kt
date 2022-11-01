@@ -23,6 +23,15 @@ fun isDuplicatedNickname(index: Int, wordsList: Array<HashSet<String>>): Boolean
     return false
 }
 
+fun getWordsList(forms: List<List<String>>): Array<HashSet<String>> {
+    val list = Array(forms.size) { HashSet<String>() }
+
+    for(i in forms.indices) {
+        list[i] = getTwoLetterWordsSet(forms[i][1])
+    }
+    return list
+}
+
 fun getTwoLetterWordsSet(nickName: String): HashSet<String> {
     val words = HashSet<String>()
 
