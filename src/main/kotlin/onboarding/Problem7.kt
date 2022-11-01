@@ -102,3 +102,27 @@ fun vistorFriendScore(visitorFriend: MutableList<String>, recommendedScore: Hash
     return recommendedScore
 }
 
+fun sortHashMap(recommendedScore: HashMap<String, Int>): MutableList<String> {
+    val result = mutableListOf<String>()
+    val sortHashMap = LinkedList(recommendedScore.entries)
+    //점수를 기준으로 정렬
+
+
+    //5명까지만 추천친구에 띄워줄수 있다
+    //문자열로 받아 이름만 가져온다
+    sortHashMap.sortBy { it.key }
+    sortHashMap.sortByDescending { it.value }
+    if (sortHashMap.size > 5) {
+        for (i in 0..4) {
+            result.add(sortHashMap[i].toString().split("=")[0])
+        }
+    } else {
+        for (i in 0..sortHashMap.size - 1) {
+            result.add(sortHashMap[i].toString().split("=")[0])
+        }
+    }
+
+    println(result)
+    println(sortHashMap)
+    return result
+}
