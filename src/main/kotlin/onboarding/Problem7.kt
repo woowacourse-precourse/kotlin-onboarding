@@ -12,6 +12,14 @@ fun solution7(
     var indexArray = ArrayList<Int>()
     var recommendScore = mutableMapOf<String, Int>()
     var result = ArrayList<String>()
+
+    findFriendsOfUser(user, friends, friendsOfUser, indexArray)
+    addScoreByFriends(friends, friendsOfUser, indexArray, recommendScore)
+    addScoreByVisit(visitors, friendsOfUser, recommendScore)
+    sortWithName(result, recommendScore)
+
+    val finalResult = divideIntoFive(result.distinct()) //중복을 제거하고 5순위까지 자른 배열
+    return finalResult
 }
 
 /**
