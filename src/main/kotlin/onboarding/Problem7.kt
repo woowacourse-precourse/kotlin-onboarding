@@ -34,6 +34,7 @@ fun updateScore(visitors: List<String>, scores: MutableMap<String, Int>): Mutabl
     for(visitor in visitors) {
         scores[visitor] = scores[visitor]!!.plus(1)
     }
+    return scores
 }
 
 fun initScore(user: String, friends: List<List<String>>): MutableMap<String, Int> {
