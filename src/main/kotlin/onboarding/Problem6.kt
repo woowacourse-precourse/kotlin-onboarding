@@ -33,3 +33,9 @@ private fun getValidLengthNickNameForms(forms: List<List<String>>): List<List<St
     for (i in forms) if (i[1].length !in 1..19) processedForms.remove(i)
     return processedForms
 }
+
+private fun getValidLanguageNickNameForms(forms: List<List<String>>): List<List<String>> {
+    val processedForms = forms.toMutableList()
+    for (i in forms) if (!Pattern.matches("^[ㄱ-ㅣ가-힣 ]*$", i[1])) processedForms.remove(i)
+    return processedForms
+}
