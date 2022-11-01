@@ -24,14 +24,19 @@ fun solution7(
     //친구에 기반하여 추가
     for(i:Int  in 0 until friuser.size){
         for(i2:Int in 0 until friends.size){
-            if(friends[i2].contains(user))//자기자신은 패스
+            if(friends[i2].contains(user))//이미 친구는 패스
+                continue
+            //이미 추천유저리스트에 있을때
+            if(!friends[i2].contains(friuser[i]))//건너건너도 아닐때
                 continue
             if(recuser.contains(friends[i2][0])||recuser.contains(friends[i2][1])){
                 var a=recuser.indexOf(friends[i2][0])
                 if(a==-1)
                     a=recuser.indexOf(friends[i2][1])
                 scouser[a]+=10
+                continue
             }
+            //
             if(friends[i2].contains(friuser[i])){
                 if(friends[i2][0]!=friuser[i]){
                     recuser.add(friends[i2][0])
@@ -47,13 +52,13 @@ fun solution7(
 
     //방문자 기반 추가
     for(i: Int in 0 until visitors.size){
+        if(friuser.contains(visitors[i]))
+            continue
         if(recuser.contains(visitors[i])){
             var a = recuser.indexOf(visitors[i])
             scouser[a]+=1
             continue
         }
-        if(friuser.contains(visitors[i]))
-            continue
         recuser.add(visitors[i])
         scouser.add(1)
     }
