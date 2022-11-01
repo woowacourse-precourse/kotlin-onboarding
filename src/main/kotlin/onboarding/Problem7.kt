@@ -38,3 +38,20 @@ fun getFriendsList(friends: List<List<String>>, user: String): List<String> {
     }
     return friendsList.toList()
 }
+
+fun getFriendsFriendList(friends: List<List<String>>, friendsList: List<String>, user: String): List<String> {
+    val friendsFriendList: MutableList<String> = mutableListOf()
+    for (i in friends) {
+        if (friendsList.contains(i[0])) {
+            if (i[1] != user) {
+                friendsFriendList.add(i[1])
+            }
+        }
+        if (friendsList.contains(i[1])) {
+            if (i[0] != user) {
+                friendsFriendList.add(i[0])
+            }
+        }
+    }
+    return friendsFriendList
+}
