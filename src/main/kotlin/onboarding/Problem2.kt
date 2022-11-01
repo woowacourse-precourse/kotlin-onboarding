@@ -37,12 +37,29 @@ fun shouldDecode(cryptogram: String): Boolean {
 
 // 기능 목록 2번
 fun removeDuplication(cryptogram: String): String {
+    var startIndex = 0
+    var endIndex: Int
+    var removedString = cryptogram
+    var willRemove = false
     for (i in 1 until cryptogram.length) {
         if (cryptogram[i - 1] == cryptogram[i]) {
-            val removeString = cryptogram.substring(i - 1, i + 1)
-            return cryptogram.replace(removeString, "")
+            if (!willRemove) {
+                startIndex = i - 1
+                willRemove = true
+            }
+            continue
+        }
+        if (willRemove && cryptogram[i - 1] != cryptogram[i]) {
+            endIndex = i
+            willRemove = false
+            val removeForString = cryptogram.substring(startIndex, endIndex)
+            removedString = removedString.replace(removeForString, "")
         }
     }
+    if (willRemove){
+        val removeForString = cryptogram.substring(startIndex, cryptogram.length)
+        removedString = removedString.replace(removeForString, "")
+    }
 
-    return cryptogram
+    return removedString
 }
