@@ -10,7 +10,20 @@ class UserManager(private val user: String,
         users[user] = User(user)
     }
 
-    private fun settingForFriends() {}
+    private fun addIfNotExists(id:String) : User{
+        return User(id)
+    }
+
+    private fun addAsFriend(user1:User, user2:User) {}
+
+    private fun settingForFriends() {
+        for((id1, id2) in friends) {
+            val user1 = addIfNotExists(id1)
+            val user2 = addIfNotExists(id2)
+
+            addAsFriend(user1, user2)
+        }
+    }
 
     private fun settingForVisitors() {}
 
