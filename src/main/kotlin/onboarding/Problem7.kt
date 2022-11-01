@@ -8,7 +8,7 @@ fun solution7(user: String, friends: List<List<String>>, visitors: List<String>)
     var recommendMap = makeRecommendMap(user, usersFriendsSet, friends)
     recommendMap = updateRecommendMapbyVisitors(visitors, recommendMap, usersFriendsSet)
 
-    // TODO: 2022-11-01  
+    return getResultList(recommendMap)
 }
 
 fun isValidInput(user: String, friends: List<List<String>>, visitors: List<String>){
@@ -82,5 +82,14 @@ fun updateRecommendMapbyVisitors(visitors: List<String>, recommendMap: MutableMa
 }
 
 fun getResultList(recommendMap: MutableMap<String, Int>): List<String>{
-    // TODO: 2022-11-01  
+    val scoreComparator = compareByDescending<Pair<String, Int>> { it.second }
+    val nameComparator = scoreComparator.thenBy { it.first }
+    val recommendList = recommendMap.toList().sortedWith(nameComparator)
+
+    val len = if(recommendList.size < 5) recommendList.size else 5
+    val resultList = mutableListOf<String>()
+    for(i in 0 until len)
+        resultList.add(i, recommendList[i].first)
+
+    return resultList.toList()
 }
