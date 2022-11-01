@@ -15,14 +15,20 @@ fun solution7(
     addAlreadyFriend(friends, user, alreadyFriend)
     addAcquaintanceScore(friends, friendScore)
     addVisitorsScore(visitors, friendScore)
-
-    for (i in alreadyFriend.indices) {
-        friendScore.remove(alreadyFriend[i])
-    }
+    deleteAlreadyFriend(alreadyFriend, friendScore)
 
     val friendReferralResult: Map<String, Int> =
         friendScore.toList().sortedBy { (key, _) -> key }.sortedByDescending { (_, value) -> value }.take(5).toMap()
     return friendReferralResult.keys.toList()
+}
+
+private fun deleteAlreadyFriend(
+    alreadyFriend: MutableList<String>,
+    friendScore: MutableMap<String, Int>
+) {
+    for (i in alreadyFriend.indices) {
+        friendScore.remove(alreadyFriend[i])
+    }
 }
 
 private fun addVisitorsScore(
