@@ -4,6 +4,8 @@ fun solution3(number: Int): Int {
     if (!isAppropriateNumber(number)) {
         return -1
     }
+
+    var countNumberOf369 = 0
     return -1
 }
 
