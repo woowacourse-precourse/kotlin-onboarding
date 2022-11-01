@@ -27,8 +27,9 @@ package onboarding
 fun solution1(pobi: List<Int>, crong: List<Int>): Int {
     //프로그램 구현
 
-    val pobiLeftresult = compare(pobi[0])
-    val crongLeftresult = compare(crong[0])
+    val pobiLeftResult = compare(pobi[0])
+    val crongLeftResult = compare(crong[0])
+
     val pobiRightResult = compare(pobi[1])
     val crongRightResult = compare(crong[1])
 
