@@ -13,7 +13,7 @@ fun changeASCIICode(i: Int): Char{
 fun solution4(word: String): String {
     var answer: String = ""
     for(i: Int in 0..word.length-1){
-        answer += changeASCIICode(word[i].toInt())
+        answer += changeASCIICode(word[i].code)
     }
     return answer
 }
