@@ -47,5 +47,7 @@ fun solution6(forms: List<List<String>>): List<String> {
         }
     }
 
+    emailList.sort() //정렬
+
     return emailList
 }
