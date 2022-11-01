@@ -211,4 +211,22 @@ class ApplicationTest {
             assertThat(isDuplicatedName(index, list)).isEqualTo(result)
         }
     }
+
+    @Nested
+    inner class GetMyFriendsListTest {
+        @Test
+        fun case1() {
+            val user = "mrko"
+            val friends = listOf(
+                listOf("donut", "andole"),
+                listOf("donut", "jun"),
+                listOf("donut", "mrko"),
+                listOf("shakevan", "andole"),
+                listOf("shakevan", "jun"),
+                listOf("shakevan", "mrko")
+            )
+            val result = hashSetOf("donut", "shakevan")
+            assertThat(getMyFriendsList(user, friends)).isEqualTo(result)
+        }
+    }
 }
