@@ -19,4 +19,8 @@ class User(private val id:String) {
     fun addScore(score:Int) {
         this.score += score
     }
+
+    fun getScore() : Int {
+        return this.score
+    }
 }
