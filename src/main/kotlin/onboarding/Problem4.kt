@@ -14,6 +14,8 @@ fun solution4(word: String): String {
     for (i in word.indices) {
         treeFrogWord += if (word[i] in 'a'..'z') {
             (reverseOrderAlphabet[word[i] - 'a']).lowercase()
+        } else if (word[i] in 'A'..'Z') {
+            (reverseOrderAlphabet[word[i] - 'A'])
         } else {
         }
     }
