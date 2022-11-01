@@ -18,6 +18,7 @@ private fun decodeCryptogramStep(cryptogram: String): Pair<String, Boolean> {
     var duplicateRangeSet = mutableSetOf<Int>()
     for (i: Int in cryptogram.indices) {
         var duplicateCount = 0
+        if (i in duplicateRangeSet) continue
         for (j: Char in cryptogram.substring(i + 1, cryptogram.length)) {
             if (cryptogram[i] == j) duplicateCount += 1 else break
         }
@@ -27,8 +28,6 @@ private fun decodeCryptogramStep(cryptogram: String): Pair<String, Boolean> {
         }
     }
     val cryptogramList = cryptogram.toMutableList()
-    for (i in duplicateRangeSet.reversed()) {
-        cryptogramList.removeAt(i)
-    }
+    for (i in duplicateRangeSet.reversed()) cryptogramList.removeAt(i)
     return Pair(cryptogramList.joinToString(""), cryptographyState)
 }
