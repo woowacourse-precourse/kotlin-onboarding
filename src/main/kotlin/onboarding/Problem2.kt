@@ -1,7 +1,19 @@
 package onboarding
 
-fun solution2(cryptogram: String): String {
+fun solution2(_cryptogram: String): String {
+    var cryptogram = _cryptogram
+    
+    while(true) {
+        val positions = getDuplicateCharIndex(cryptogram)
 
+        if(positions.isEmpty()) {
+            break
+        }
+
+        cryptogram = removeChar(cryptogram, positions)
+    }
+
+    return cryptogram
 }
 
 fun getDuplicateCharIndex(cryptogram: String): MutableSet<Int> {
