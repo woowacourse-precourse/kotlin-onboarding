@@ -11,8 +11,10 @@ private fun getConversionMap(): MutableMap<Char, Char> {
     val lowerAlphabet = alphabet.lowercase()
     val conversionMap = mutableMapOf<Char, Char>()
 
-    for (i in upperAlphabet.indices) conversionMap[upperAlphabet[i]] = upperAlphabet[upperAlphabet.length - 1 - i]
-    for (i in lowerAlphabet.indices) conversionMap[lowerAlphabet[i]] = lowerAlphabet[lowerAlphabet.length - 1 - i]
+    for (i in alphabet.indices) {
+        conversionMap[upperAlphabet[i]] = upperAlphabet[upperAlphabet.length - 1 - i]
+        conversionMap[lowerAlphabet[i]] = lowerAlphabet[lowerAlphabet.length - 1 - i]
+    }
     conversionMap[' '] = ' '
 
     return conversionMap
