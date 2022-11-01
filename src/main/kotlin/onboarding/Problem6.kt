@@ -49,5 +49,5 @@ fun addToDuplicatedEmailList(duplicatedList: ArrayList<String>, email: String): 
 }
 
 fun isEmailDuplicated(duplicatedList: ArrayList<String>, email: String): Boolean{
-    // TODO: 2022-11-01  
+    return duplicatedList.contains(email)
 }
