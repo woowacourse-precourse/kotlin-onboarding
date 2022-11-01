@@ -1,34 +1,6 @@
 package onboarding
 
 fun solution1(pobi: List<Int>, crong: List<Int>): Int {
-
-    fun getPageMax(page: Int): Int {
-        var plusSum: Int = 0
-        var mutlipleSum: Int = 1
-        var page: Int = page
-
-        while (page != 0) {
-            plusSum += (page % 10)
-            mutlipleSum *= (page % 10)
-            page /= 10
-        }
-
-        return if (plusSum < mutlipleSum) {
-            mutlipleSum
-        } else
-            plusSum
-    }
-
-    fun getLeftRightMax(left: Int, right: Int): Int {
-
-        var max: Int = if (left < right) {
-            right
-        } else
-            left
-
-        return max
-    }
-
     var pobiMax = getLeftRightMax(getPageMax(pobi[0]), getPageMax(pobi[1]))
     var crongMax = getLeftRightMax(getPageMax(crong[0]), getPageMax(crong[1]))
 
@@ -45,5 +17,31 @@ fun solution1(pobi: List<Int>, crong: List<Int>): Int {
         }
     } else
         -1
+}
 
+fun getPageMax(page: Int): Int {
+    var plusSum: Int = 0
+    var mutlipleSum: Int = 1
+    var page: Int = page
+
+    while (page != 0) {
+        plusSum += (page % 10)
+        mutlipleSum *= (page % 10)
+        page /= 10
+    }
+
+    return if (plusSum < mutlipleSum) {
+        mutlipleSum
+    } else
+        plusSum
+}
+
+fun getLeftRightMax(left: Int, right: Int): Int {
+
+    var max: Int = if (left < right) {
+        right
+    } else
+        left
+
+    return max
 }
