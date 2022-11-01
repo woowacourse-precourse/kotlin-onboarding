@@ -10,7 +10,15 @@ const val EXCEPTION = -1
 fun solution1(pobi: List<Int>, crong: List<Int>): Int {
     if (isException(pobi, crong)) return EXCEPTION
 
-    return 0
+    val pobiScore = calculateScore(pobi)
+    val crongScore = calculateScore(crong)
+
+    return when {
+        pobiScore > crongScore -> POBI_WIN
+        pobiScore == crongScore -> DRAW
+        pobiScore < crongScore -> CRONG_WIN
+        else -> EXCEPTION
+    }
 }
 
 private fun isException(pobi: List<Int>, crong: List<Int>): Boolean {
