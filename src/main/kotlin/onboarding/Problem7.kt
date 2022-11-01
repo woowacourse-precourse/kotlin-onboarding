@@ -36,5 +36,19 @@ fun solution7(user: String, friends: List<List<String>>, visitors: List<String>)
     }
     recommend.remove(user)
 
+    //사용자의 타임 라인에 방문한 사람에겐 1점 추가
+    for (i in visitors){
+        //만약 원래 친구 추천 리스트에 있다면
+        if (recommend.contains(i)){
+            var score = recommend[i]
+            if (score != null) {
+                recommend.put(i,score + 1)
+            }
+        }
+        if (!recommend.contains(i)){
+            recommend.put(i, 1 )
+        }
+    }
+
 
 }
