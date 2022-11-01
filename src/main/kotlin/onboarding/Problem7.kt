@@ -20,6 +20,11 @@ fun solution7(
     visitorFriend = addVisitorFriend(user, visitorFriend, visitors)
     //지인친구 목록 추가 함수
     acquaintance = addAcquaintance(user, acquaintance, visitorFriend, friends, userFriends as MutableList<String>)
+    //지인친구 점수 추가 함수
+    acquaintanceScore(acquaintance, recommendedScore)
+    //방문자 점수 추가 함수
+    vistorFriendScore(visitorFriend, recommendedScore)
+    //최종 5등 보여주기
 
     return sortHashMap(recommendedScore)
 }
@@ -76,6 +81,22 @@ fun acquaintanceScore(acquaintance: MutableList<String>, recommendedScore: HashM
             //이름이 동일하지 않고 처음 나오면 10점
         } else {
             recommendedScore.put(acquaintance[i], 10)
+        }
+    }
+    return recommendedScore
+}
+
+fun vistorFriendScore(visitorFriend: MutableList<String>, recommendedScore: HashMap<String, Int>): HashMap<String, Int> {
+    for (i in 0..visitorFriend.size - 1) {
+        //HasMap의 키를 이름으로 설정하여 키값이 동일하면 점수를 추가
+        if (recommendedScore.containsKey(visitorFriend[i])) {
+            //점수가 0점에서 시작하여 키"이름"이 같을때마다 1점씩 추가
+            val count = recommendedScore.get(visitorFriend[i])?.plus(1)
+            if (count != null) {
+                recommendedScore.put(visitorFriend[i], count.toInt())
+            }
+        } else {
+            recommendedScore.put(visitorFriend[i], 1)
         }
     }
     return recommendedScore
