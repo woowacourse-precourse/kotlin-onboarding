@@ -8,7 +8,10 @@ fun solution7(
     return getRecommendList(user, friendInformation, visitors)
 }
 
-private fun getFriendInformation(friends: List<List<String>>, visitors: List<String>): Map<String, MutableList<String>> {
+private fun getFriendInformation(
+    friends: List<List<String>>,
+    visitors: List<String>
+): Map<String, MutableList<String>> {
     val friendInformation = LinkedHashMap<String, MutableList<String>>()
 
     for (relationship in friends) {
@@ -70,8 +73,8 @@ private fun getRecommendList(
 private fun countAcquaintance(userFriends: MutableList<String>, anotherUserFriends: MutableList<String>): Int {
     var count = 0
 
-    for (userFriend in userFriends) {
-        for (anotherUserFriend in anotherUserFriends) {
+    userFriends.forEach { userFriend ->
+        anotherUserFriends.forEach { anotherUserFriend ->
             if (userFriend == anotherUserFriend) {
                 count += 1
             }
@@ -84,7 +87,7 @@ private fun countAcquaintance(userFriends: MutableList<String>, anotherUserFrien
 private fun countNumberOfVisits(anotherUser: String, visitors: List<String>): Int {
     var count = 0
 
-    for (visitor in visitors) {
+    visitors.forEach { visitor ->
         if (anotherUser == visitor) {
             count += 1
         }
