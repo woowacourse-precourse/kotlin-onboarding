@@ -30,6 +30,13 @@ fun solution2(cryptogram: String): Serializable {
             }
         }
 
+        for (j in 0..lst.size-1) {
+            val bool = exceptList.contains(j)
+            if (!bool) {
+                ans.add(lst[j])
+            }
+        }
+
         return ans
     }
 
