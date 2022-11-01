@@ -2,7 +2,7 @@ package onboarding
 
 fun solution6(forms: List<List<String>>): List<String> {
     val separateNicknameList = getSeparateNicknameList(forms)
-    val duplicateNicknameList = mutableSetOf<String>()
+    val duplicateNicknameList = getDuplicateNicknameList(separateNicknameList)
     val duplicateNicknameEmailList = mutableListOf<String>()
 
     return duplicateNicknameEmailList.distinct().sorted()
@@ -17,5 +17,15 @@ private fun getSeparateNicknameList(forms: List<List<String>>):MutableList<Strin
         }
     }
     return separateNicknameList
+}
+private fun getDuplicateNicknameList(
+    separateNicknameList:MutableList<String>
+):MutableSet<String> {
+    val duplicateNicknameList = mutableSetOf<String>()
+    for(i in separateNicknameList.indices) {
+        if(separateNicknameList.indexOf(separateNicknameList[i]) !=separateNicknameList.lastIndexOf(separateNicknameList[i]))
+            duplicateNicknameList.add(separateNicknameList[i])
+    }
+    return duplicateNicknameList
 }
 
