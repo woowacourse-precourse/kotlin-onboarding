@@ -71,7 +71,13 @@ fun answer(score: HashMap<String, Int>, answer : MutableList<String>): List<Stri
     var saveTemp : Int = 0
     var quit : Int = 0
     var cnt : Int = 0
+    val max : Int = 5
     if(valueList.distinct().size == 1){
+        var sortedKeyList : List<String> = mutableListOf()
+        sortedKeyList = keyList.sorted()
+        for(i in 0..max-1){
+            answer.add(i,sortedKeyList[i])
+        }
         return keyList.sorted()
     } else if(valueList.distinct().size != score.size){
         //중복 이름순
@@ -80,13 +86,17 @@ fun answer(score: HashMap<String, Int>, answer : MutableList<String>): List<Stri
             if(sortedValue[cnt] == valueList[j]){
                 save.add(saveTemp,keyList[j])
                 saveTemp += 1
+                valueList[j] = -1
             } else if(save.isNotEmpty()){
                 sortedSave = save.sorted()
-                for(j in 0..sortedSave.size-1){
-                    answer.add(temp,sortedSave[j])
+                for(k in 0..sortedSave.size-1){
+                    if(answer.size == max){
+                        return answer
+                    }
+                    answer.add(temp,sortedSave[k])
                     temp += 1
                 }
-                cnt = save.size
+                cnt = save.size + cnt
                 save = mutableListOf()
                 saveTemp = 0
                 j = 0
@@ -107,6 +117,9 @@ fun answer(score: HashMap<String, Int>, answer : MutableList<String>): List<Stri
         for(i in 0..score.size-1){
             for(j in 0..score.size-1){
                 if(sortedValue[i] == valueList[j]){
+                    if(answer.size == max){
+                        continue
+                    }
                     answer.add(i,keyList[j])
                 }
             }
