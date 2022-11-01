@@ -8,9 +8,9 @@ fun solution6(forms: List<List<String>>): List<String> {
 }
 fun isValidInput(forms: List<List<String>>){
     for(i in forms.indices){
-        if(forms[i][0].length in 20..10)
+        if(forms[i][0].length <11 || forms[i][0].length > 19)
             throw IllegalArgumentException("email length is out of range!")
-        if(forms[i][1].length in 20..0 )
+        if(forms[i][1].isEmpty() || forms[i][1].length > 19 )
             throw IllegalArgumentException("nickname length is out of range!")
         if(!Pattern.matches("^[ㄱ-ㅎ가-힣]*\$", forms[i][1]))
             throw IllegalArgumentException("nickname must be in Korean")
@@ -51,3 +51,4 @@ fun addToDuplicatedEmailList(duplicatedList: ArrayList<String>, email: String): 
 fun isEmailDuplicated(duplicatedList: ArrayList<String>, email: String): Boolean{
     return duplicatedList.contains(email)
 }
+
