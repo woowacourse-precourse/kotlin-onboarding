@@ -50,5 +50,9 @@ fun solution7(
         recommendScore.remove(userFriends[index]) //이미 친구인 사람은 제외
     }
 
+    val listSortedByName = recommendScore.toList().sortedBy { it.first }.toMap().toMutableMap()
+    val listSortedByScore = listSortedByName.toList().sortedByDescending { it.second }
+
+
     return listOf()
 }
