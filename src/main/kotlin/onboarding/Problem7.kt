@@ -1,12 +1,32 @@
 package onboarding
 
-fun getUserFriends(
+private fun getUserFriends(
     user: String,
     friends: List<List<String>>
 ): List<String> {
     return friends.filter { it.contains(user) }
         .map { it[it.indexOf(user) xor 1] }
         .toList()
+}
+
+private fun calculateAcquaintanceScore(
+    userFriends: List<String>,
+    friends: List<List<String>>,
+    resultMap: HashMap<String, Int>
+) {
+    userFriends.flatMap { userFriend -> getUserFriends(userFriend, friends) }
+        .forEach { acquaintance ->
+            resultMap[acquaintance] = resultMap[acquaintance]?.plus(10) ?: 0
+        }
+}
+
+private fun calculateVisitorScore(
+    visitors: List<String>,
+    resultMap: HashMap<String, Int>
+) {
+    visitors.forEach { visitor ->
+        resultMap[visitor] = resultMap[visitor]?.plus(1) ?: 0
+    }
 }
 
 fun solution7(
@@ -17,20 +37,17 @@ fun solution7(
     val resultMap = hashMapOf<String, Int>()
     val userFriends = getUserFriends(user, friends)
 
-    userFriends.flatMap { userFriend -> getUserFriends(userFriend, friends) }
-        .forEach { acquaintance ->
-            if (resultMap[acquaintance] == null) resultMap[acquaintance] = 0
-            else resultMap[acquaintance]!!.plus(10)
-        }
+    calculateAcquaintanceScore(userFriends, friends, resultMap)
+    calculateVisitorScore(visitors, resultMap)
 
-    for (visitor in visitors) {
-        if (resultMap[visitor] == null) resultMap[visitor] = 0
-        else resultMap[visitor]!!.plus(1)
-    }
+    println(resultMap)
 
-    return resultMap.toList().sortedBy { mapEntry -> mapEntry.second }
+    return resultMap.toList().sortedByDescending { mapEntry -> mapEntry.second }
         .filter { mapEntry ->
             !userFriends.contains(mapEntry.first) && mapEntry.first != user
         }
         .map { mapEntry -> mapEntry.first }.take(5)
 }
+
+
+
