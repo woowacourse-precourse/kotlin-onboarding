@@ -3,14 +3,16 @@ package onboarding
 import kotlin.math.abs
 
 fun solution1(pobi: List<Int>, crong: List<Int>): Int {
+    val draw = 0
+    val pobiWin = 1
+    val crongWin = 2
     val exception = -1
 
     if (!isAppropriateList(pobi, crong)) {
         return exception
     }
-    return -1
+    return exception
 }
-
 fun isAppropriateList(pobi: List<Int>, crong: List<Int>): Boolean {
     return when {
         !(pobi[0] in 1..399 && pobi[1] in 1..399) -> false
