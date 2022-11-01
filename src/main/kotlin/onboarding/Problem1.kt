@@ -114,9 +114,3 @@ fun comparePageNum(num : Int):Int{
 
     return -1
 }
-
-fun main(){
-    val pobi = listOf<Int>(97,98)
-    val crong = listOf<Int>(197,198)
-    print(solution1(pobi, crong))
-}
