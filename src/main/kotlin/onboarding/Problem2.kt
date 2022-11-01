@@ -1,5 +1,21 @@
 package onboarding
 
+fun main() {
+    println(solution2("browoanoommnaon"))
+}
+
 fun solution2(cryptogram: String): String {
-    TODO("프로그램 구현")
+
+    var result = cryptogram
+    var index = 0
+
+    while (index < result.length - 1) {
+        if (result[index] == result[index + 1]) {
+            result = result.removeRange(index, index + 2)
+            index -= 2
+        }
+        index++
+    }
+
+    return result
 }
