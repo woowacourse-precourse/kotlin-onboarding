@@ -13,9 +13,11 @@ fun getConvertedWord(character: Char): Char {
 }
 
 fun convertUpperCase(character: Char): Char {
-
+    val diff = 'Z' - character
+    return 'A' + diff
 }
 
 fun convertLowerCase(character: Char): Char {
-
+    val diff = 'z' - character
+    return 'a' + diff
 }
