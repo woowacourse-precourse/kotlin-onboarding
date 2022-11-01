@@ -2,7 +2,7 @@ package onboarding
 
 fun solution7(user: String, friends: List<List<String>>, visitors: List<String>): List<String> {
 
-    var score: HashMap<String, Int> = hashMapOf() // key: 아이디, value: 추천 점수 의 형태로 HashMap 에 저장
+    val score: HashMap<String, Int> = hashMapOf() // key: 아이디, value: 추천 점수 의 형태로 HashMap 에 저장
     val userFriends: List<String> = findUserFriends(user, friends)  // user 의 친구 저장
 
     countFriendScore(user, userFriends, friends, score)
@@ -45,7 +45,7 @@ fun countFriendScore(
                 if (relation.indexOf(friend) == 0) {
                     score[relation[1]] = score.getOrDefault(relation[1], 0).plus(10)
                 } else {
-                    score[relation[0]] = score.getOrDefault(relation[1], 0).plus(10)
+                    score[relation[0]] = score.getOrDefault(relation[0], 0).plus(10)
                 }
             }
         }
