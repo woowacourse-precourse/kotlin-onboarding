@@ -1,5 +1,4 @@
 package onboarding
-import kotlin.math.*
 
 
 fun solution1(pobi: List<Int>, crong: List<Int>): Int {
