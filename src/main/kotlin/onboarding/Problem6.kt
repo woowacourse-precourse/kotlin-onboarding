@@ -11,5 +11,18 @@ package onboarding
  * (6) 마지막으로 이메일을 오름차순으로 정렬하여 리턴
  * **/
 fun solution6(forms: List<List<String>>): List<String> {
-    TODO("프로그램 구현")
+    val nameChunkList = mutableListOf<String>() //연속 문자열 목록
+
+    for(index in forms.indices){
+        val nickname = forms[index][1] //이름 확인
+
+        if(index == 0){
+            for (i in 0..nickname.length-2){
+                nameChunkList.add(nickname.substring(i,i+2))
+                break
+            }
+        }
+    }
+
+    return listOf("임시")
 }
