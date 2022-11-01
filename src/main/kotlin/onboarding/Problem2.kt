@@ -1,5 +1,7 @@
 package onboarding
 
+import org.mockito.internal.matchers.Null
+
 fun checkString(str: String): Boolean {
     var flag = 0
 
@@ -15,20 +17,33 @@ fun checkString(str: String): Boolean {
         true
 }
 
+fun removeDuplicate(str: String): String{
+    var check: CharArray = charArrayOf()
+
+    for (i in 0..str.length -1 ) {
+
+        if (i>=1 && i< str.length -1){
+            if (str[i-1].equals(str[i])) {
+                check = check.slice(0 until i-1).toCharArray()
+                        .plus(check.slice(i+1 ..str.length -1)
+                                .toCharArray())
+            }
+        }else if (i == 0){
+            continue
+        }else{
+            if (str[i-1].equals(str[i])) {
+                check = check.slice(0 until i-1).toCharArray()
+            }
+        }
+    }
+
+    return check.joinToString("")
+}
+
 fun solution2(cryptogram: String): String {
     var res = cryptogram
     while (checkString(res)){
-        var len = res.length -1
-        for (i in 1 .. len) {
-            if (res[i-1].equals(res[i])) {
-                var str0 = res.slice(0 until i-1)
-                var str1 = if (i+1 != len ) res.slice(i+1 .. len)
-                else res[len]
-                res = str0.plus(str1)
-
-
-            }
-        }
+        res = removeDuplicate(res)
     }
 
     return res
