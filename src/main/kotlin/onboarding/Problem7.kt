@@ -31,6 +31,13 @@ fun solution7(
             friendScore[friends[i].last()] = 10
         }
     }
+    for (i in visitors.indices) {
+        if (friendScore.contains(visitors[i])) {
+            friendScore[visitors[i]] = friendScore[visitors[i]]!! + 1
+        } else {
+            friendScore[visitors[i]] = 1
+        }
+    }
     return listOf()
 }
 
