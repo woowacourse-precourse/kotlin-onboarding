@@ -21,3 +21,9 @@ private fun getValidPatternEmailForms(forms: List<List<String>>): List<List<Stri
     ) processedForms.remove(i)
     return processedForms
 }
+
+private fun getValidEmailDomainForms(forms: List<List<String>>): List<List<String>> {
+    val processedForms = forms.toMutableList()
+    for (i in forms) if ("email.com" !in i[0]) processedForms.remove(i)
+    return processedForms
+}
