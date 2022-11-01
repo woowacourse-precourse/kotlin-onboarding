@@ -27,4 +27,23 @@ fun solution7(
     }
     //  println(myFriend)
 
+    for (i in friends) {
+        println("i = $i")
+        for (j in 0 until myFriend.size) {
+            val a = (i - myFriend[j])[0] // 키값
+            if ((!myFriend.contains(a)) and i.contains(myFriend[j])) {
+
+
+                if (a in resultScore) {
+                    resultScore[a] = resultScore.getValue(a).plus(10)
+
+                    continue
+                }
+                resultScore[a] = 10
+                resultScore.remove(user)
+
+            }
+        }
+    }
+
 }
