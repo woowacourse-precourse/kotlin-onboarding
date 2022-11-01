@@ -20,7 +20,6 @@ package onboarding
 //예외 사항 1. word가 알파벳 외의 문자인 경우를 확인
 fun isAlphabet(word: String): Boolean{
     var trimed = word.filter { !it.isWhitespace() }
-    print(trimed)
     return trimed.all{ it.isLetter() }
 }
 
