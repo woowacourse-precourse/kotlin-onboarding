@@ -36,8 +36,9 @@ fun solution1(pobi: List<Int>, crong: List<Int>): Int {
     val crongRightResult = compare(crong[1])
 
     //3. 왼쪽, 오른쪽 비교
-    val pobiBiggest = max(pobiLeftResult, pobiRightResult)
-    val crongBiggest = max(crongLeftResult, crongRightResult)
+    val pobiBiggest = if(pobiLeftResult >= pobiRightResult) pobiLeftResult if(pobiRightResult >= pobiLeftResult) pobiRightResult
+    val crongBiggest = if(crongLeftResult >= crongRightResult) crongLeftResult if(crongRightResult >= crongLeftResult) crongRightResult
+
 
 }
 
