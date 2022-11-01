@@ -1,7 +1,18 @@
 package onboarding
 
 fun solution4(word: String): String {
-    TODO("프로그램 구현")
+    var result = ""
+    val dict = makeDict()
+
+    for (w in word) {
+        if (isAlphabet(w)) {
+            result += dict[w]
+        } else {
+            result += w
+        }
+    }
+
+    return result
 }
 
 
