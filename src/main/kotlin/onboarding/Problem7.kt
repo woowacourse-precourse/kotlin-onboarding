@@ -55,4 +55,12 @@ fun solution7(user: String, friends: List<List<String>>, visitors: List<String>)
         recommend.remove(i)
     }
 
+    //점수가 큰 순서대로 정렬(같을 경우 이름순으로 정렬)
+    recommend.remove(user)
+    var recSort = recommend.toList().toMutableList()
+    recSort.sortWith(compareBy({-it.second}, {it.first}))
+    var recSortMap = recSort.toMap()
+    var recList = recSortMap.keys.toList()
+
+
 }
