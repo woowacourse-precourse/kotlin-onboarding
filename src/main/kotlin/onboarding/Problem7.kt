@@ -3,6 +3,26 @@ package onboarding
 import java.util.*
 import kotlin.collections.HashSet
 
+const val FRIEND_SCORE = 10
+const val VISITOR_SCORE = 1
+const val MAX_USER = 5
+
+/**
+ * Returns friends score of each user.
+ */
+fun calculateFriendScore(user: String, friendGraph: Map<String, Set<String>>): Map<String, Int> {
+    val result = mutableMapOf<String, Int>()
+    if(friendGraph[user] == null) return result
+    val usersFriend = friendGraph[user]!!
+    for(otherUser in friendGraph) {
+        if(otherUser.key == user || usersFriend.contains(otherUser.key)) continue
+        val otherUsersFriend = otherUser.value
+        result[otherUser.key] = usersFriend.intersect(otherUsersFriend).size * FRIEND_SCORE
+    }
+    return result
+}
+
+
 /**
  * Returns a graph of [friends].
  */
