@@ -1,5 +1,6 @@
-
 package onboarding
+
+import java.util.stream.Collectors
 
 fun solution6(forms: List<List<String>>): List<String> {
     if (isAppropriateForms(forms).isNotEmpty()) {
@@ -7,7 +8,7 @@ fun solution6(forms: List<List<String>>): List<String> {
     }
 
     val emails = HashSet<String>()
-    val userMap: MutableMap<String, String> = HashMap()
+    val crewMap: MutableMap<String, String> = HashMap()
 
     for (i in forms.indices) {
         val emailCheck = forms[i].first()
@@ -15,17 +16,27 @@ fun solution6(forms: List<List<String>>): List<String> {
 
         for (j in 0 until nicknameCheck.length - 1) {
             val nicknameKey = nicknameCheck.substring(j, j + 2)
-            if (userMap.containsKey(nicknameKey)) {
-                val email = userMap[nicknameKey]
+            if (crewMap.containsKey(nicknameKey)) {
+                val email = crewMap[nicknameKey]
                 if (email != emailCheck) {
                     emails.add(email!!)
                     emails.add(emailCheck)
                 }
             }
-            userMap[nicknameKey] = emailCheck
+            crewMap[nicknameKey] = emailCheck
         }
     }
-    return listOf()
+
+    val collect = emails.stream()
+        .sorted()
+        .collect(Collectors.toList())
+
+    val list = mutableListOf<String>()
+    for (i in collect.indices) {
+        list.add(requireNotNull(collect[i]))
+    }
+
+    return list
 }
 
 private fun isAppropriateForms(forms: List<List<String>>): List<String> {
