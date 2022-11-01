@@ -2,7 +2,7 @@ package onboarding
 
 fun solution3(number: Int): Int {
     var numList = MutableList(10001, {i->i})
-    for(i in 0..10001) {
+    for(i in 0..10000) {
         var num:Int = i
         var count:Int = 0
         while(num > 0) {
