@@ -21,7 +21,7 @@ fun solution6(forms: List<List<String>>): List<String> {
 /*
 * 아이디 2~9자리
 * 닉네임 1~19자리
-* 이메일은 email.com제한
+* 이메일은 email.com제한      이메일 형식 체크 필요할수도 있음(정규식 활용)
 * 두 글자씩 nick_list에 넣고 count해서 2이상인 애들만 분류해서 result에 아이디 넣어줌
 * result 오름차순 정렬, 중복제거(세트화)
 * */
