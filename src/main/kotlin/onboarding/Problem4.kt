@@ -12,6 +12,10 @@ fun solution4(word: String): String {
             val i_upper_index = upper.indexOf(i)
             code.append(upper[25-i_upper_index])
         }
+        else if (i in lower) {
+            val i_lower_index = lower.indexOf(i)
+            code.append(lower[25-i_lower_index])
+        }
     }
 
     return code.toString()
