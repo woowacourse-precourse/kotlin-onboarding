@@ -7,7 +7,7 @@ const val NICKNAME = 1
 
 fun solution6(forms: List<List<String>>): List<String> {
     checkThrowException(forms)
-    return listOf()
+    return findDuplicateNickname(forms)
 }
 
 private fun checkThrowException(forms: List<List<String>>) {
@@ -43,4 +43,21 @@ private fun throwNicknameFormException(nickname: String) {
 
 private fun throwNicknameLengthException(nickname: String) {
     if (nickname.length >= 20 || nickname.isEmpty()) throw error("닉네임 길이는 1자 이상 20자 미만이어야 합니다!")
+}
+
+private fun findDuplicateNickname(forms: List<List<String>>): List<String> {
+    val result = mutableListOf<String>()
+
+    for (i in 0 until forms.size - 1) {
+        for (j in 0 until forms[i][NICKNAME].length - 1) {
+            val substring = forms[i][NICKNAME].substring(j, j + 2)
+            for (k in i + 1 until forms.size) {
+                if (forms[k][NICKNAME].contains(substring)) result.addAll(listOf(forms[i][EMAIL], forms[k][EMAIL]))
+            }
+        }
+    }
+
+    return result
+        .distinct()
+        .sorted()
 }
