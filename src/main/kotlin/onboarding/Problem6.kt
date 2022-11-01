@@ -19,11 +19,12 @@ fun solution6(forms: List<List<String>>): List<String> {
 
 fun splitNicknameIntoWords(nickname: String) : MutableSet<String> {
     val nicknameList = mutableSetOf<String>()
+    val len = nickname.length
 
-    for (j in 2 until nickname.length + 1) {
-        for (i in nickname.indices) {
-            if (j + i <= nickname.length) {
-                nicknameList.add(nickname.substring(i, i + j))
+    for (i in 2 .. len) {
+        for (j in 0 .. len) {
+            if (i + j <= len) {
+                nicknameList.add(nickname.substring(j, i + j))
             }
         }
     }
