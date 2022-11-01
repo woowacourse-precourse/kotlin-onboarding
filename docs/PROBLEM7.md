@@ -24,3 +24,13 @@
 | user | friends | visitors | result |
 | --- | --- | --- | --- |
 | "mrko" | [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ] | ["bedi", "bedi", "donut", "bedi", "shakevan"] | ["andole", "jun", "bedi"] |
+
+
+
+-------------------------------
+
+### 작성한 기능 목록
+
+0. 파라미터 visitors를 가지고, 사용자의 타임 라인에 방문한 횟수를 구하는 함수 : calculateVisitor
+1. 파라미터 friends를 가지고, 각 사람들 마다 친구 관계를 MutableMap<String, List<String>> 자료구조로 산출하고 리턴하는 함수 : calFriendMap
+2. 0,1번에서 산출된 데이터를 가지고, 주어진 요구사항에 맞게 점수를 올리고, 최종적인 답을 조건에 맞게 정렬하는 함수 : solution7
