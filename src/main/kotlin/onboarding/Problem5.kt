@@ -8,5 +8,5 @@ fun solution5(money: Int): List<Int> {
         val count = changes / it
         changes %= it
         count
-    }.toList()
+    }
 }
