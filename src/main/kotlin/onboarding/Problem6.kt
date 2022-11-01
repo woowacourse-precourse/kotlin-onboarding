@@ -8,6 +8,7 @@ fun solution6(forms: List<List<String>>): List<String> {
 
     val duplicateEmail = checkDuplicate(regularForms)
 
+    return duplicateEmail.sorted()
 }
 
 fun checkEmailAndNickname(forms: List<List<String>>): List<List<String>>{
