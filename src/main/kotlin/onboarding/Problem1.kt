@@ -4,7 +4,20 @@ fun solution1(pobi: List<Int>, crong: List<Int>): Int {
     if(!isValid(pobi) || !isValid(crong)){
         return -1
     }
-    return 0;
+
+    val pt_pobi = getMax(pobi)
+    val pt_crong = getMax(crong)
+
+    if(pt_pobi == pt_crong) {
+        return 0
+    }
+    if(pt_pobi > pt_crong) {
+        return 1
+    }
+    if(pt_pobi < pt_crong) {
+        return 2
+    }
+    return -1
 }
 
 /* pobi와 crong의 범위를 검사하는 메소드 */
@@ -23,6 +36,19 @@ fun isValid(book: List<Int>): Boolean {
     }
 
     return true
+}
+
+/* 왼쪽과 오른쪽 페이지 각각 연산하여 최댓값 리턴하는 메소드*/
+fun getMax(list: List<Int>): Int {
+    var maxNum = -1
+    var sum = 0
+    var mult = 1
+
+    for(i in 0 until 2){
+        var num = list[i]
+        maxNum = max(maxNum, operateMax(num))
+    }
+    return maxNum
 }
 
 /* 각 자릿수의 덧셈과 곱셈 결과 중 큰 값을 리턴하는 메소드*/
