@@ -50,5 +50,9 @@ fun solution7(user: String, friends: List<List<String>>, visitors: List<String>)
         }
     }
 
+    //사용자와 이미 친구인 사람은 친구 추천 알고리즘에서 제외
+    for (i in userFriends){
+        recommend.remove(i)
+    }
 
 }
