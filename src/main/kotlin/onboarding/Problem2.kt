@@ -19,6 +19,11 @@ fun solution2(cryptogram: String): Serializable {
                 flag += 1
                 continue
             }
+            else if (key == lst[i]) {
+                exceptList.add(i)
+                flag += 1
+                continue
+            }
         }
 
         return ans
