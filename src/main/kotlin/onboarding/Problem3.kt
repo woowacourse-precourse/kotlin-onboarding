@@ -10,5 +10,5 @@ fun solution3(number: Int): Int {
             if (num_s[k].digitToInt() % 3 == 0 && num_s[k].digitToInt() != 0)
                 ret++
     }
-    println(ret)
+    return(ret)
 }
