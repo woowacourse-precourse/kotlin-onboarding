@@ -6,6 +6,8 @@ fun solution7(
     visitors: List<String>
 ): List<String> {
     val userFriends = findUserFriends(user, friends)
+
+    var score = getUserFriendsScore(user, friends, userFriends)
 }
 
 fun findUserFriends(user: String,friends: List<List<String>>): MutableSet<String>{
@@ -18,4 +20,18 @@ fun findUserFriends(user: String,friends: List<List<String>>): MutableSet<String
         }
     }
     return userFriends
+}
+
+fun getUserFriendsScore(user: String, friends: List<List<String>>, userFriends: MutableSet<String>): MutableMap<String, Int>{
+    val score = mutableMapOf<String, Int>()
+
+    friends.forEach {
+        if ((it[0] in userFriends) && (it[1] != user)) {
+            score[it[1]] = score[it[1]]?.plus(10) ?: 10
+        } else if ((it[1] in userFriends) && it[0] != user) {
+            score[it[0]] = score[it[0]]?.plus(10) ?: 10
+        }
+    }
+
+    return score
 }
