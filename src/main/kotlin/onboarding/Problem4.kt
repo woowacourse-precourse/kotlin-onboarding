@@ -20,6 +20,4 @@ private fun convert(character: Char): Char {
     return character
 }
 
-private fun translate(word: String): String {
-    return word.map { char -> convert(char) }.joinToString(separator = "")
-}
+private fun translate(word: String): String = word.map { char -> convert(char) }.joinToString(separator = "")
