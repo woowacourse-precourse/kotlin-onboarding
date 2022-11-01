@@ -5,6 +5,11 @@ fun solution2(cryptogram: String): String {
         return isAppropriateCryptogram(cryptogram)
     }
 
+    val cryptogramList = mutableListOf<String>()
+
+    for (i in cryptogram.indices) {
+        cryptogramList.add(cryptogram[i].toString())
+    }
     return ""
 }
 
