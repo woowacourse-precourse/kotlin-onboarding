@@ -43,6 +43,10 @@ fun initHistory(forms: List<List<String>>): MutableMap<String, MutableSet<String
         val splittedResult = splitByTwo(nickname)
 
         for (result in splittedResult) {
+            if(history[result] == null) {
+                history[result] = mutableSetOf()
+            }
+
             history[result]?.add(email)
         }
     }
@@ -54,7 +58,7 @@ fun splitByTwo(nickname: String): MutableList<String> {
     val result = mutableListOf<String>()
 
     for (i in 0 until nickname.length - 1) {
-        result.add(nickname.substring(i, i + 1))
+        result.add(nickname.substring(i, i + 2))
     }
 
     return result
