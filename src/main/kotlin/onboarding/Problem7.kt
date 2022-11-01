@@ -46,5 +46,9 @@ fun solution7(
         recommendScore[visitorName] = 1
     }
 
+    for(index in userFriends.indices){
+        recommendScore.remove(userFriends[index]) //이미 친구인 사람은 제외
+    }
+
     return listOf()
 }
