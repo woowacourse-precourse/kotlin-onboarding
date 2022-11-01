@@ -9,14 +9,38 @@ fun solution7(
     val friendMap = calFriendMap(friends)
     val userFriendList = friendMap[user]
 
+    friendMap.forEach{ (key, value) ->
+        if (key != user) {
+            var count = 0
+            for (v in value) {
+                if (userFriendList!!.contains(v)) {
+                    count += 10
+                }
+            }
+            scoreMap[key] = scoreMap.getOrDefault(key, 0) + count
+        }
+    }
 
+    val answer = arrayListOf<String>()
+    val sortedScoreList = scoreMap.toList().sortedByDescending { it.second }
+    for ((k,v) in sortedScoreList) {
+        if ( !(userFriendList!!.contains(k) || v == 0 )) {
+            answer.add(k)
+        }
+
+        if (answer.size > 5) {
+            break
+        }
+    }
+
+    return answer.toList()
 }
 
 fun calculateVisitor(visitors: List<String>) : MutableMap<String, Int> {
     val resultMap = mutableMapOf<String, Int>()
     for (v in visitors) {
         resultMap[v] = resultMap.getOrDefault(v, 0) + 1
-    }
+    }성
 
     return resultMap
 }
