@@ -1,7 +1,6 @@
 package onboarding
 
-    1. word가 알파벳 외의 문자인 경우
- */fun solution4(word: String): String {
+fun solution4(word: String): String {
     //프로그램 구현
 
     //예외 사항 1. word가 알파벳 외의 문자인 경우, 변환하지 않고 엄마 말씀 그대로 반환
