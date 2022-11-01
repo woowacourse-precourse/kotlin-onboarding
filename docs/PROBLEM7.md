@@ -24,3 +24,9 @@
 | user | friends | visitors | result |
 | --- | --- | --- | --- |
 | "mrko" | [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ] | ["bedi", "bedi", "donut", "bedi", "shakevan"] | ["andole", "jun", "bedi"] |
+
+### 기능 목록
+1. 특정 사용자의 친구 리스트를 반환하는 기능
+2. 1번 기능을 이용해 사용자와 함께 아는 친구의 수를 구해 특정 사용자에게 점수를 부여하는 기능
+3. 주어진 visitors 매개 변수를 탐색하며 사용자의 타임 라인에 방문한 횟수를 확인해 그 사용자에게 점수를 부여하는 기능
+4. 점수가 가장 높은 순으로 정렬하여 최대 5명을 반환하는 기능
