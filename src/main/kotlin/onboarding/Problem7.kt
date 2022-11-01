@@ -24,4 +24,10 @@ fun solution7(
             .getOrDefault(notFollower, 0) + 10
     }
 
+    visitors
+        .filterNot { it in userHashSet }
+        .map { userPointHashMap[it] = userPointHashMap
+            .getOrDefault(it + 1, 1) + 1
+        }
 }
+
