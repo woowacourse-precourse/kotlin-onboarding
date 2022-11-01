@@ -1,5 +1,20 @@
 package onboarding
 
 fun solution3(number: Int): Int {
-    TODO("프로그램 구현")
+    var cntRes = 0
+
+    for (i in 1 .. number){
+        var Clap = i
+
+        while (Clap != 0){
+            if ((Clap%10)%3 == 0 && (Clap%10) != 0){
+                cntRes++
+            }
+            Clap /= 10
+        }
+
+    }
+    println(cntRes)
+
+    return cntRes
 }
