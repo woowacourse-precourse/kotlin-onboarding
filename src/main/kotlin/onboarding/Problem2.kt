@@ -1,5 +1,9 @@
 package onboarding
 
 fun solution2(cryptogram: String): String {
-    TODO("프로그램 구현")
+
+}
+
+fun repeatStr(str: String): String {
+    return str.replace("(\\w)\\1+".toRegex(), "")
 }
