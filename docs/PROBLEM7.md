@@ -24,3 +24,7 @@
 | user | friends | visitors | result |
 | --- | --- | --- | --- |
 | "mrko" | [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ] | ["bedi", "bedi", "donut", "bedi", "shakevan"] | ["andole", "jun", "bedi"] |
+
+1. friends 에 따른 초기 점수 설정 기능
+2. visitors 에 따른 점수 추가 기능
+3. 정렬 후 상위 5명을 반환하는 기능
