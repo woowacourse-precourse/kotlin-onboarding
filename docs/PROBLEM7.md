@@ -24,3 +24,9 @@
 | user | friends | visitors | result |
 | --- | --- | --- | --- |
 | "mrko" | [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ] | ["bedi", "bedi", "donut", "bedi", "shakevan"] | ["andole", "jun", "bedi"] |
+
+### 기능 목록
+1. 친구 정보를 나타내는 map을 반환하는 기능
+2. 서로 아는 친구가 몇명인지 세는 기능
+3. 방문 숫자를 세는 기능
+4. 추천 리스트를 반환하는 기능
