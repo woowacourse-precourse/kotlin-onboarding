@@ -18,3 +18,15 @@ fun friendList(user: String, friends: List<List<String>>): MutableSet<String> {
     }
     return friend
 }
+
+fun friendOfFriend(user: String, friends: List<List<String>>): MutableMap<String, Int> {
+    val notFriend = friends.toMutableList()
+    val friend = friendList(user, friends)
+    val friendOfFriend = mutableMapOf<String, Int>()
+    friends.forEach {
+        when {
+            it[0] in friend && it[1] in friend -> notFriend.remove(it)
+        }
+    }
+    TODO()
+}
