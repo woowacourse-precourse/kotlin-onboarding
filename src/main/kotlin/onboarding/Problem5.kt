@@ -16,11 +16,12 @@ fun solution5(money: Int): List<Int> {
     return result
 
 }
-
+// 현재 돈에서 현재 단위로 지불하는 몫 계산 함수
 fun pay_money(i : Int , money: Int) : Int{
     return money / unit[i]
 }
 
+// 남은 돈 계산 함수
 fun change_money(i : Int , now_money: Int) : Int{
     return now_money - (pay_money(i , now_money) * unit[i])
 }
