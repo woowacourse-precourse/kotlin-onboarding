@@ -16,16 +16,16 @@ private fun getFriendInformation(friends: List<List<String>>, visitors: List<Str
         val user2 = relationship[1]
 
         if (!friendInformation.containsKey(user1)) {
-            friendInformation[user1] = mutableListOf(user2)
-        } else {
-            friendInformation[user1]?.add(user2)
+            friendInformation[user1] = mutableListOf()
         }
+        friendInformation[user1]?.add(user2)
+
 
         if (!friendInformation.containsKey(user2)) {
-            friendInformation[user2] = mutableListOf(user1)
-        } else {
-            friendInformation[user2]?.add(user1)
+            friendInformation[user2] = mutableListOf()
         }
+        friendInformation[user2]?.add(user1)
+
 
     }
     for (visitor in visitors) {
