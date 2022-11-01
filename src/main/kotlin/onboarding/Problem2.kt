@@ -3,18 +3,27 @@ package onboarding
 fun solution2(cryptogram: String): String {
     val cryptoArray = cryptogram.toMutableList()
 
-    for (i in 1 until cryptoArray.size) {
+    var result: String = ""
+    result = fixArray(cryptoArray)
+    println(result)
 
-        if (cryptoArray[i-1] == cryptoArray[i]) {
-            cryptoArray.removeAt(i)
-            cryptoArray.removeAt(i-1)
+    return result
+}
+
+fun fixArray(newcrypto: MutableList<Char>): String {
+    var result: String = ""
+    for (i in 1 until newcrypto.size) {
+        if (newcrypto[i-1] == newcrypto[i]) {
+            newcrypto.removeAt(i-1)
+            newcrypto.removeAt(i-1)
+            fixArray(newcrypto)
+            return fixArray(newcrypto)
         }
     }
 
-    val newcrypto : String = cryptoArray.toString()
-
-    return newcrypto
-
+    result = newcrypto.joinToString("")
+    println(result)
+    return result
 }
 
 
