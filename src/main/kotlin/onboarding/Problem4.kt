@@ -1,23 +1,21 @@
 package onboarding
-
+fun main()
+{
+    print(solution4("R olev blf"))
+}
 fun solution4(word: String): String {
     //리턴값
     var revese_word : String =""
-    //a to z & z to a 배열
-    val dict = mutableListOf<Char>()
-    for (c in 'a'..'z'){ dict.add(c) }
-    var revese_dict  = dict.reversed() as MutableList<Char>
+    //아스키코드
+    //for (askii in 65..90){ Dict.add(askii) }
+    //for (askii in 97..122){ dict.add(askii) }
 
     //문자열 거꾸로
     for(i in 0..word.length-1){
-        for(j in 0..dict.size-1){
-            if (word[i] == dict[j]){
-                revese_word += revese_dict[j]
-            }
-        }
+        var c : Int = word[i].toByte().toInt()
+        if(c in 65..90){ revese_word +=(155-c).toChar()} // 아스키코드 변환
+        else if(c in 97..122){ revese_word +=(219-c).toChar()}
+        else{revese_word+=c.toChar()}
     }
-
-    
-    println(revese_word)
     return revese_word
 }
