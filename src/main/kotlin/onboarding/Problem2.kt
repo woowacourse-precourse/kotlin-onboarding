@@ -24,6 +24,10 @@ fun solution2(cryptogram: String): Serializable {
                 flag += 1
                 continue
             }
+            else {
+                key = lst[i]
+                continue
+            }
         }
 
         return ans
