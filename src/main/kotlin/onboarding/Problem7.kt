@@ -9,6 +9,8 @@ fun solution7(
 
     var score = getUserFriendsScore(user, friends, userFriends)
     score = getVisitorsScore(visitors, score, userFriends)
+
+    return sortByScore(score)
 }
 
 fun findUserFriends(user: String,friends: List<List<String>>): MutableSet<String>{
@@ -44,4 +46,21 @@ fun getVisitorsScore(visitors: List<String>, score: MutableMap<String, Int>, use
         }
     }
     return score
+}
+
+fun sortByScore(score: MutableMap<String, Int>): List<String>{
+    val result = mutableListOf<Pair<String, Int>>()
+    score.forEach {
+        result.add(Pair(it.key, it.value))
+    }
+
+    result.sortWith { p1, p2 ->
+        return@sortWith if (p1.second != p2.second) {
+            -p1.second.compareTo(p2.second)
+        } else {
+            p1.first.compareTo(p2.first)
+        }
+    }
+
+    return result.chunked(5)[0].map { it.first }
 }
