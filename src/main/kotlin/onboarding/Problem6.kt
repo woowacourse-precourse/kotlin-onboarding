@@ -16,6 +16,7 @@ fun solution6(forms: List<List<String>>): List<String> {
                     m[it] = forms[i][0]
                 }
             }
+        
     }
     return emails.toMutableList().sortedBy { it }
 }
