@@ -10,14 +10,22 @@ fun solution7(
     val userHashSet: HashSet<String> = HashSet()
 
     friends.map {
-        if (it[0] == user) userHashSet.add(it[1])
-        if (it[1] == user) userHashSet.add(it[0])
+        val userInPrimaryArray: Boolean = (it[PRIMARY_ARRAY] == user)
+        val userInSecondArray: Boolean = (it[SECOND_ARRAY] == user)
+
+        if (userInPrimaryArray) userHashSet.add(it[SECOND_ARRAY])
+        if (userInSecondArray) userHashSet.add(it[PRIMARY_ARRAY])
     }
 
     friends.map {
+        val notFollowerInPrimaryArray: Boolean =
+            (it[PRIMARY_ARRAY] in userHashSet && user != it[SECOND_ARRAY])
+        val notFollowerInSecondArray: Boolean =
+            (it[SECOND_ARRAY] in userHashSet && user != it[PRIMARY_ARRAY])
+
         val notFollower: String = when {
-            it[0] in userHashSet && user != it[1] -> it[1]
-            it[1] in userHashSet && user != it[0] -> it[0]
+            notFollowerInPrimaryArray -> it[SECOND_ARRAY]
+            notFollowerInSecondArray -> it[PRIMARY_ARRAY]
             else -> return@map
         }
         userPointHashMap[notFollower] = userPointHashMap
@@ -26,8 +34,9 @@ fun solution7(
 
     visitors
         .filterNot { it in userHashSet }
-        .map { userPointHashMap[it] = userPointHashMap
-            .getOrDefault(it + 1, 1) + 1
+        .map {
+            userPointHashMap[it] = userPointHashMap
+                .getOrDefault(it + 1, 1) + 1
         }
 
     val recommendFriend = userPointHashMap.asSequence()
@@ -44,3 +53,5 @@ fun solution7(
     return recommendFriend
 }
 
+const val PRIMARY_ARRAY = 0
+const val SECOND_ARRAY = 1
