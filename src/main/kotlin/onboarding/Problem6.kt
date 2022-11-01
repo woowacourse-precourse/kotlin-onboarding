@@ -25,13 +25,13 @@ fun saveCountAndLength(forms: List<List<String>>,
                        countArray: ArrayList<Int>,
                        lengthArray: ArrayList<Int>){
     for (index3 in forms.indices){
-        var count = 0
+        var count = 0 // count
         for (index4 in twoWordsArray.indices){
-            if (forms[index3][1].contains(twoWordsArray[index4])){
-                count ++
+            if (forms[index3][1].contains(twoWordsArray[index4])){ // 전달받은 리스트에서 두 단어를 포함할 경우
+                count ++ // count 증가
             }
         }
-        lengthArray.add(forms[index3][1].length)
-        countArray.add(count)
+        lengthArray.add(forms[index3][1].length) // 각 닉네임의 길이를 넣어준다.
+        countArray.add(count) // 각 위치에 count를 넣어준다.
     }
 }
