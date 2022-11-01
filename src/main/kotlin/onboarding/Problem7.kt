@@ -1,13 +1,13 @@
 package onboarding
 
-var score = mutableMapOf<String, Int>()
+
 
 fun solution7(
     user: String,
     friends: List<List<String>>,
     visitors: List<String>
 ): List<String> {
-    score = mutableMapOf()
+
     val recommendationList = findFriends(0, friends, mutableMapOf())
     val userFriendList = recommendationList.remove(user) ?: mutableSetOf()
     val score = mutableMapOf<String, Int>()
