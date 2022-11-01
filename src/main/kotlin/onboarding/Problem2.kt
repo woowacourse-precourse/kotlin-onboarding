@@ -1,9 +1,5 @@
 package onboarding
 
-fun main() {
-    println(solution2("browoanoommnaon"))
-}
-
 fun solution2(cryptogram: String): String {
 
     var result = cryptogram
