@@ -1,5 +1,11 @@
 package onboarding
 
 fun solution3(number: Int): Int {
-    TODO("프로그램 구현")
+    var cnt=0
+    for(i in 1..number+1){
+       if (i.toString().contains('3')||i.toString().contains('6')||i.toString().contains('9')){
+           cnt++
+       }
+    }
+    return cnt
 }
