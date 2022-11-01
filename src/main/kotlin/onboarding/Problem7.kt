@@ -23,4 +23,5 @@ fun solution7(
     for (v in visitors) {
         score.put(v,score.get(v))
     } */
+    return listOf(" ")
 }
