@@ -25,9 +25,8 @@ fun solution4(word: String): String {
 
     return treeFrogWord
 }
-fun isAppropriateWord(word: String): Boolean {
-    if (word.length !in 1..1000) {
-        return false
-    }
-    return true
+
+fun isAppropriateWord(word: String) = when (word.length) {
+    !in 1..1000 -> false
+    else -> true
 }
