@@ -1,10 +1,11 @@
 package onboarding
 
 fun solution2(cryptogram: String): String {
-    return RemoveConsecutiveStrings(cryptogram)
+
+    return removeConsecutiveStrings(cryptogram)
 }
 
-private fun RemoveConsecutiveStrings(cryptogram: String):String {
+private fun removeConsecutiveStrings(cryptogram: String):String {
     var decode = cryptogram
     var loop = true
     while (loop) {

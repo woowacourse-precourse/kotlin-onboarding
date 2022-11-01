@@ -4,8 +4,8 @@ fun solution1(pobi: List<Int>,crong:List<Int>): Int {
     return try {
         when {
             pobi[1]-pobi[0] !=1 && crong[1]-pobi[0] !=1 -> -1
-            GetPlayerScore(pobi) > GetPlayerScore(crong) -> 1
-            GetPlayerScore(pobi) > GetPlayerScore(crong) -> 2
+            getPlayerScore(pobi) > getPlayerScore(crong) -> 1
+            getPlayerScore(pobi) > getPlayerScore(crong) -> 2
             else  -> 0
         }
     } catch (e:Exception) {
@@ -13,7 +13,7 @@ fun solution1(pobi: List<Int>,crong:List<Int>): Int {
     }
 }
 
-private fun GetPlayerScore(palyer:List<Int>):Int{
+private fun getPlayerScore(palyer:List<Int>):Int{
     var totalSum = 0
     var totalTimes =1
     for(i in palyer.indices) {

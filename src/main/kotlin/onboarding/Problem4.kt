@@ -1,6 +1,10 @@
 package onboarding
 
 fun solution4(word: String): String {
+
+    return flipTheAlphabet(word)
+}
+private fun flipTheAlphabet(word:String):String{
     var result = ""
     word.map {
         var count = 'z'.code - 'a'.code
