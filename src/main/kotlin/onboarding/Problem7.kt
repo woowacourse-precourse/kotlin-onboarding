@@ -43,9 +43,9 @@ fun countFriendScore(
         for (relation in friends) {
             if (relation.contains(friend) && !relation.contains(user)) {
                 if (relation.indexOf(friend) == 0) {
-                    addScore(score, relation[1], 10)
+                    score[relation[1]] = score.getOrDefault(relation[1], 0).plus(10)
                 } else {
-                    addScore(score, relation[0], 10)
+                    score[relation[0]] = score.getOrDefault(relation[1], 0).plus(10)
                 }
             }
         }
@@ -54,19 +54,11 @@ fun countFriendScore(
 }
 
 //방문한 사람 점수 계산
-fun countVisitScore(visitors: List<String>, result: HashMap<String, Int>, userFriends: List<String>) {
+fun countVisitScore(visitors: List<String>, score: HashMap<String, Int>, userFriends: List<String>) {
     for (visitor in visitors) {
         if (!userFriends.contains(visitor)) {
-            addScore(result, visitor, 1)
+            score[visitor] = score.getOrDefault(visitor, 0).plus(1)
         }
-    }
-}
-
-fun addScore(score: HashMap<String, Int>, key: String, addScore:Int) {
-    if (score.containsKey(key)) {
-        score[key] = score[key]!! + addScore
-    } else {
-        score[key] = addScore
     }
 }
 
