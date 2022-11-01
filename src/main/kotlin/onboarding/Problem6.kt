@@ -47,12 +47,10 @@ private fun isAppropriateForms(forms: List<List<String>>): List<String> {
         val emailCheck = forms[i].first()
         val nicknameCheck = forms[i].last()
 
-        if (emailCheck.length !in 11 until 20) {
-            return listOf("이메일 전체 길이가 11자 이상 20자 미만인지 체크해주세요.")
-        } else if (!emailCheck.contains("@email.com")) {
-            return listOf("email.com 도메인을 포함하는지 체크해주세요.")
-        } else if (nicknameCheck.length !in 1 until 20) {
-            return listOf("닉네임 전체 길이가 1자 이상 20자 미만인지 체크해주세요.")
+        when {
+            !emailCheck.contains("@email.com") -> return listOf("email.com 도메인을 포함하는지 체크해주세요.")
+            emailCheck.length !in 11 until 20 -> return listOf("이메일 전체 길이가 11자 이상 20자 미만인지 체크해주세요.")
+            nicknameCheck.length !in 1 until 20 -> return listOf("닉네임 전체 길이가 1자 이상 20자 미만인지 체크해주세요.")
         }
     }
     return listOf()
