@@ -46,6 +46,10 @@ fun solution1(pobi: List<Int>, crong: List<Int>): Int {
     if(isContinuous(pobi) == false) return -1
     if(isContinuous(crong) == false) return -1
 
+//예외사항 5. 오른쪽 페이지가 큰지 확인
+    if(rightisBigger(pobi) == false) return -1
+    if(rightisBigger(crong) == false) return -1
+
     //1. 왼쪽 페이지 비교
     val pobiLeftResult = compare(pobi[0])
     val crongLeftResult = compare(crong[0])
@@ -101,6 +105,12 @@ fun isEvenNum(pageNum: Int):Boolean{
 fun isContinuous(pageNums: List<Int>):Boolean{
     if(pageNums[1] == (pageNums[0]+1)) return true
     if(pageNums[1] != (pageNums[0]+1)) return false
+}
+
+//예외사항 5. 오른쪽 페이지가 큰지 확인
+fun rightisBigger(pageNums: List<Int>):Boolean{
+    if(pageNums[1] > pageNums[0]) return true
+    if(pageNums[0] > pageNums[1]) return false
 }
 
 fun comparePageNum(pageNum : Int):Int{
