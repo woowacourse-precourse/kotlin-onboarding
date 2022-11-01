@@ -51,7 +51,7 @@ fun solution2(cryptogram: String): String {
             arr[i] = q1.poll();
         }
     }
-    else return "--"
+    else return ""
 
 
     var arr1 = arr.concatToString()
