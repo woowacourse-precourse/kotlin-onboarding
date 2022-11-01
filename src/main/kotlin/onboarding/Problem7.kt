@@ -55,3 +55,30 @@ fun getFriendsFriendList(friends: List<List<String>>, friendsList: List<String>,
     }
     return friendsFriendList
 }
+
+fun getSortedScore(
+    userList: List<String>,
+    friendsFriendList: List<String>,
+    visitors: List<String>,
+    friendsList: List<String>
+): List<String> {
+    val score = MutableList(userList.size) { 0 }
+    var result = mutableListOf<Pair<String, Int>>()
+
+    friendsFriendList.forEach { it ->
+        score[userList.indexOf(it)] += 10
+    }
+    visitors.forEach { it ->
+        score[userList.indexOf(it)] += 1
+    }
+    friendsList.forEach { it ->
+        score[userList.indexOf(it)] = 0
+    }
+
+    for (i in score.indices) {
+        if (score[i] != 0) result.add(userList[i] to score[i])
+    }
+
+    result.sortedWith(compareBy({ it.first }, { it.second }))
+    return result.map { it.first }.toList()
+}
