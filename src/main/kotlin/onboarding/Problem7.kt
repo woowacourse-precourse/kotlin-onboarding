@@ -9,6 +9,7 @@ fun solution7(
         return isAppropriateInput(user, friends, visitors)
     }
 
+    val friendScore = mutableMapOf<String, Int>()
     return listOf()
 }
 
