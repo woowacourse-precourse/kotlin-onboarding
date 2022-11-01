@@ -29,5 +29,18 @@ fun solution7(
         .map { userPointHashMap[it] = userPointHashMap
             .getOrDefault(it + 1, 1) + 1
         }
+
+    val recommendFriend = userPointHashMap.asSequence()
+        .sortedWith { firstSorted, secondSorted ->
+            val sameUser = firstSorted.key.compareTo(secondSorted.key)
+            val samePoints = secondSorted.value.compareTo(firstSorted.value)
+
+            if (samePoints == 0) sameUser else samePoints
+        }
+        .map { it.key }
+        .take(5)
+        .toList()
+
+    return recommendFriend
 }
 
