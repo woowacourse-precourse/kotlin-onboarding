@@ -10,6 +10,8 @@ fun checkException(left: Int, right: Int): Boolean {
     if (left % 2 != 1 || right % 2 != 0)
         return false
     return true
+
+
 }
 
 fun getScore(number: Int): Int {
