@@ -1,6 +1,7 @@
 package onboarding
 
-
+const val ONE_POINT = 1
+const val TEN_POINT = 10
 
 fun solution7(
     user: String,
@@ -76,10 +77,10 @@ fun containFriend(
 
 fun getFriendPoint(key: String, score: MutableMap<String, Int>) {
     if (score.containsKey(key)) {
-        score[key] = score[key]?.plus(10) ?: 0
+        score[key] = score[key]?.plus(TEN_POINT) ?: 0
         return
     }
-    score.put(key, 10)
+    score.put(key, TEN_POINT)
     return
 }
 
@@ -103,10 +104,10 @@ fun containVisitors(
 
 fun getVisitorPoint(visitor: String, score: MutableMap<String, Int>) : MutableMap<String, Int> {
     if (score.containsKey(visitor)) {
-        score[visitor] = score[visitor]?.plus(1) ?: 0
+        score[visitor] = score[visitor]?.plus(ONE_POINT) ?: 0
         return score
     }
-    score.put(visitor, 1)
+    score.put(visitor, ONE_POINT)
     return score
 }
 
