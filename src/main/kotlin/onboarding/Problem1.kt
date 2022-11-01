@@ -21,3 +21,20 @@ fun exceptionCheck(pobi: List<Int>, crong: List<Int>): Boolean{ //
     // 이 각각을 제외하고 true를 리턴한다.
 }
 
+/**
+ * 페이지의 각 자리수를 더하는 함수이다.
+ */
+fun plusCalculation(num: Int): Int{
+    var num = num
+    var answer = 0
+    if (num < 10){ // 1의 자리 숫자이면 답은 숫자 값이 된다.
+        answer = num
+    }
+    else{
+        while(num >= 10){ // 숫자가 10의 자리 일 때 까지 반복문을 돌려
+            answer += num%10 // 10으로 나눈 나머지 값들을 모두 더하고
+            num /= 10 //  그때 마다 숫자를 10으로 나눈 값으로 설정한다.
+        }
+    }
+    return answer + num // 마지막 자리 숫자를 마지막으로 더한다.
+}
