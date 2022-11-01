@@ -8,9 +8,9 @@ fun solution1(pobi: List<Int>, crong: List<Int>): Int {
         return -1
 
 
-    val pobiValue : Int = getMaxValue(pobi)
+    val pobiValue : Int = compareGetMaxNum(pobi)
 
-    val crongValue : Int = getMaxValue(crong)
+    val crongValue : Int = compareGetMaxNum(crong)
 
 
     return if(pobiValue > crongValue)
@@ -21,29 +21,27 @@ fun solution1(pobi: List<Int>, crong: List<Int>): Int {
         0
 }
 
-fun getMaxValue(page : List<Int>): Int {
-    var leftPage = page[0]
-    var rightPage = page[1]
-    var leftPlusValue: Int = 0
-    var rightPlusValue : Int = 0
-    var leftMultiValue : Int = 1
-    var rightMultiValue : Int = 1
+fun getMaxValue(page : Int): Int {
+    var pageNum = page
+    var plusValue: Int = 0
+    var multiValue : Int = 1
 
-    while(leftPage != 0){
-        leftPlusValue += leftPage % 10
-        leftMultiValue *= leftPage % 10
+    while(pageNum != 0){
+        plusValue += pageNum % 10
+        multiValue *= pageNum % 10
 
-        leftPage /= 10
+        pageNum /= 10
     }
 
-    while(rightPage != 0){
-        rightPlusValue += rightPage % 10
-        rightMultiValue *= rightPage % 10
 
-        rightPage /= 10
-    }
+    return max(plusValue, multiValue)
+}
 
-    return max(max(leftPlusValue, leftMultiValue), max(rightPlusValue, rightMultiValue))
+fun compareGetMaxNum(pages : List<Int>) : Int{
+    var leftMaxValue = getMaxValue(pages[0])
+    var rightMaxValue = getMaxValue(pages[1])
+
+    return max(leftMaxValue, rightMaxValue)
 }
 
 fun isValidPage(pobi : List<Int>, crong : List<Int>) : Boolean{
