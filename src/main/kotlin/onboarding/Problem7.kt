@@ -88,3 +88,15 @@ fun sortWithName(result: ArrayList<String>, recommendScore: MutableMap<String, I
         result += result + tempArray.sorted() //result에 오름차순으로 정렬된 배열들을 계속해서 더함
     }
 }
+
+/**
+ * 5명 순으로 짜른 배열을 생성
+ */
+fun divideIntoFive(array: List<String>): ArrayList<String>{
+    val finalResult = ArrayList<String>()
+    for (index in array.indices){
+        if (index > 4) break
+        finalResult.add(array[index])
+    }
+    return finalResult
+}
