@@ -18,45 +18,44 @@ fun solution1(pobi: List<Int>, crong: List<Int>): Int {
         else -> crongWin
     }
 }
-fun isAppropriateList(pobi: List<Int>, crong: List<Int>): Boolean {
-    return when {
-        !(pobi[0] in 1..399 && pobi[1] in 1..399) -> false
-        !(crong[0] in 1..399 && crong[1] in 1..399) -> false
-        abs(pobi[0] - pobi[1]) > 1 || abs(crong[0] - crong[1]) > 1 -> false
-        pobi[0] > pobi[1] || crong[0] > crong[1] -> false
-        else -> true
-    }
+
+fun isAppropriateList(pobi: List<Int>, crong: List<Int>) = when {
+    !(pobi[0] in 1..399 && pobi[1] in 1..399) -> false
+    !(crong[0] in 1..399 && crong[1] in 1..399) -> false
+    abs(pobi[0] - pobi[1]) > 1 || abs(crong[0] - crong[1]) > 1 -> false
+    pobi[0] > pobi[1] || crong[0] > crong[1] -> false
+    else -> true
 }
 
-fun compareWhichIsBigNumber(pobysGreatestNumber: Int, crongsGreatesNumber: Int): Int {
+fun compareWhichIsBigNumber(pobysGreatestNum: Int, crongsGreatesNum: Int): Int {
     return when {
-        (pobysGreatestNumber == crongsGreatesNumber) -> 0
-        (pobysGreatestNumber > crongsGreatesNumber) -> 1
+        (pobysGreatestNum == crongsGreatesNum) -> 0
+        (pobysGreatestNum > crongsGreatesNum) -> 1
         else -> 2
     }
 }
 
-fun findGreatestPage(list: List<Int>): Int {
-    var left = list[0]
-    var right = list[1]
-    var plusLeft = 0
-    var mulLeft = 1
-    var plusRight = 0
-    var mulRight = 1
+fun findGreatestPage(pageList: List<Int>): Int {
+    var leftPage = pageList[0]
+    var rightPage = pageList[1]
+    var plusLeftPage = 0
+    var mulLeftPage = 1
+    var plusRightPage = 0
+    var mulRightPage = 1
 
-    while (left > 0) {
-        plusLeft += left % 10
-        mulLeft *= left % 10
-        left /= 10
+    while (leftPage > 0) {
+        plusLeftPage += leftPage % 10
+        mulLeftPage *= leftPage % 10
+        leftPage /= 10
     }
 
-    while (right > 0) {
-        plusRight += right % 10
-        mulRight *= right % 10
-        right /= 10
+    while (rightPage > 0) {
+        plusRightPage += rightPage % 10
+        mulRightPage *= rightPage % 10
+        rightPage /= 10
     }
 
-    left = if (plusLeft > mulLeft) plusLeft else mulLeft
-    right = if (plusRight > mulRight) plusRight else mulRight
-    return if (left > right) left else right
+    leftPage = if (plusLeftPage > mulLeftPage) plusLeftPage else mulLeftPage
+    rightPage = if (plusRightPage > mulRightPage) plusRightPage else mulRightPage
+    return if (leftPage > rightPage) leftPage else rightPage
 }
