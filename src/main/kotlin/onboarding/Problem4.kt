@@ -16,13 +16,15 @@ fun solution4(word: String): String {
             (reverseOrderAlphabet[word[i] - 'a']).lowercase()
         } else if (word[i] in 'A'..'Z') {
             (reverseOrderAlphabet[word[i] - 'A'])
+        } else if (word[i].toString() == " ") {
+            " "
         } else {
+            word[i]
         }
     }
 
     return treeFrogWord
 }
-
 fun isAppropriateWord(word: String): Boolean {
     if (word.length !in 1..1000) {
         return false
