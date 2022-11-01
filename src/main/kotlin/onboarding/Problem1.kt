@@ -27,6 +27,12 @@ package onboarding
 fun solution1(pobi: List<Int>, crong: List<Int>): Int {
     //프로그램 구현
 
+// 예외사항 1. 페이지 수의 범위가 2~399를 벗어나는 경우 -1 return
+    if(getArrangeError(pobi[0] == false)) return -1
+    if(getArrangeError(crong[0] == false)) return -1
+    if(getArrangeError(pobi[1] == false)) return -1
+    if(getArrangeError(crong[1] == false)) return -1
+
     //1. 왼쪽 페이지 비교
     val pobiLeftResult = compare(pobi[0])
     val crongLeftResult = compare(crong[0])
@@ -52,7 +58,11 @@ fun solution1(pobi: List<Int>, crong: List<Int>): Int {
 
 }
 
-
+// 예외사항 1. 페이지 수의 범위가 2~399를 벗어나는 경우
+fun getArrangeError(pageNum : Int):Boolean{
+    if(pageNum in 2..399) return true
+    else return false
+}
 
 fun comparePageNum(pageNum : Int):Int{
 
