@@ -44,19 +44,3 @@ fun solution7(
     }.mapIndexed { _, (first) -> first
     }.take(5)
 }
-
-fun main() {
-    val user = "mrko"
-    val friends = listOf(
-        listOf("donut", "andole"),
-        listOf("donut", "jun"),
-        listOf("donut", "mrko"),
-        listOf("shakevan", "andole"),
-        listOf("shakevan", "jun"),
-        listOf("shakevan", "mrko")
-    )
-    val visitors = listOf("bedi", "bedi", "donut", "bedi", "shakevan")
-
-
-    print(solution7(user,friends,visitors))
-}
