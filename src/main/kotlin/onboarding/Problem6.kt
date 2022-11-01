@@ -34,6 +34,7 @@ fun checkRepeat(forms:List<List<String>>,formsHash:HashMap<Int, List<String>>,ar
                 continue
             }
 
+            //같으면 arrOfRepeat 의 해당 index 증가
             val listJ = formsHash[j]
             for (k in listI!!.indices)
                 for (l in listJ!!.indices)

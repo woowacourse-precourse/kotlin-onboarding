@@ -65,24 +65,32 @@ fun point(friendsList:MutableList<String>,knowEachFriend:MutableList<String>,vis
     var namePointMap = mutableMapOf<String,Int>()
     for (i in knowEachFriend.indices){
         val kEF = knowEachFriend[i]
+
+        //이름을 처음 찾으면 10점 넣기
         if(!namePointMap.containsKey(kEF)){
-            namePointMap.put(kEF,10)
+            namePointMap[kEF] = 10
             continue
         }
+
+        //두번째 부턴 10 증가
         val value= namePointMap.get(kEF)!!+10
         namePointMap.replace(kEF,value)
     }
 
     for (i in visitorsML.indices){
         val vML = visitorsML[i]
+
+        //이름을 처음 찾았으면 1점 대입
         if(!namePointMap.containsKey(vML)){
             namePointMap[vML] = 1
             continue
         }
+        //두 번째 부터 1점 추가
         val value= namePointMap.get(vML)!!+1
         namePointMap.replace(vML,value)
     }
 
+    //이름에 대해 오름차순 -> 점수로 내림차순
     var sortedPoint = namePointMap.toList().sortedWith(compareBy { it.first })
     sortedPoint = sortedPoint.sortedWith(compareByDescending { it.second })
 

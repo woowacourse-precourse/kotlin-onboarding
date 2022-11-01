@@ -5,6 +5,7 @@ fun solution5(money: Int): List<Int> {
     val moneyUnit = listOf<Int>(50000,10000,5000,1000,500,100,50,10,1)
     var moneyList = mutableListOf<Int>(0,0,0,0,0,0,0,0,0)
 
+    //큰 화폐부터 나누어 몫을 리스트에 저장
     for(i in moneyUnit.indices){
         if(won/moneyUnit[i]==0){
             continue
