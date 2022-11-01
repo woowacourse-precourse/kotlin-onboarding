@@ -59,7 +59,12 @@ private fun getRecommendList(
         }
     }
 
-    return scoreMap.toList().sortedWith(compareBy({ -it.second }, { it.first })).map { it.first }
+    var recommendList = scoreMap.toList().sortedWith(compareBy({ -it.second }, { it.first })).map { it.first }
+    if (recommendList.size > 5) {
+        recommendList = recommendList.subList(0, 5)
+    }
+
+    return recommendList
 }
 
 private fun countAcquaintance(userFriends: MutableList<String>, anotherUserFriends: MutableList<String>): Int {
