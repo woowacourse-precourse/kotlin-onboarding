@@ -1,6 +1,6 @@
 package onboarding
 
-val regex = Regex(pattern ="""([a-z])\1+""");
+val regex = Regex(pattern = """([a-z])\1+""");
 
 fun solution2(cryptogram: String): String {
     return removeConsecutiveDuplicates(cryptogram)
