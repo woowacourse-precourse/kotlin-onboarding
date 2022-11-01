@@ -2,33 +2,23 @@ package onboarding
 
 fun solution6(forms: List<List<String>>): List<String> {
     val set = mutableSetOf<String>()
-
-    for (listIndex in forms.indices) {
-        val name = forms[listIndex][1]
-
+    forms.forEachIndexed { listIndex, list ->
+        val name = list[1]
         for (idx in 0..name.length - 2) {
-            val str = name.substring(idx, idx + 2)
-
-            for (index in forms.indices) {
-                if (forms[index][1].contains(str) && index != listIndex) {
-                    set.add(forms[index][0])
-                }
-            }
+            val subName = name.substring(idx, idx + 2)
+            set.addAll(containsCheckSubName(forms, listIndex, subName))
         }
     }
 
     return set.toMutableList().sorted()
 }
 
-fun main() {
-    val forms = listOf(
-        listOf("jm@email.com", "제이엠"),
-        listOf("jason@email.com", "제이슨"),
-        listOf("woniee@email.com", "워니"),
-        listOf("mj@email.com", "엠제이"),
-        listOf("nowm@email.com", "이제엠")
-    )
-    println(
-        solution6(forms)
-    )
+fun containsCheckSubName(forms: List<List<String>>, listIndex: Int, subName: String): MutableSet<String> {
+    val crewNameList = mutableSetOf<String>()
+    forms.forEachIndexed { index, info ->
+        if (info[1].contains(subName) && index != listIndex) {
+            crewNameList.add(info[0])
+        }
+    }
+    return crewNameList
 }
