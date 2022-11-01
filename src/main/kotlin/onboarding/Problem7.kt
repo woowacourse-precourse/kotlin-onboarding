@@ -50,6 +50,27 @@ private fun validateFriendInfo(friends:List<List<String>>) {
     }
 }
 
+private fun validateVisitors(visitors: List<String>) {
+    val listValidator = InputValidator(
+        listOf(
+            ListSizeVerifier(0, 10000)
+        )
+    )
+    listValidator.validate(visitors)
+
+    val visitorIdValidator = InputValidator(
+        listOf(
+            StringLengthVerifier(1, 30),
+            AlphabetVerifier(),
+            LowerCaseVerifier()
+        )
+    )
+
+    for(visitor in visitors) {
+        visitorIdValidator.validate(visitor)
+    }
+}
+
 fun solution7(
     user: String,
     friends: List<List<String>>,
@@ -60,6 +81,8 @@ fun solution7(
     validateFriends(friends)
 
     validateFriendInfo(friends)
+
+    validateVisitors(visitors)
 
     return listOf()
 }
