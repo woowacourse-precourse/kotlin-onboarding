@@ -2,6 +2,9 @@ package onboarding
 
 import java.util.regex.Pattern
 
+const val CONNECTED = 10
+const val VISITED = 1
+
 fun solution7(
     user: String,
     friends: List<List<String>>,
