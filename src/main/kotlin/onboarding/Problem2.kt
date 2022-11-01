@@ -1,7 +1,14 @@
 package onboarding
 
 fun solution2(cryptogram: String): String {
-    TODO("프로그램 구현")
+    val maxRepeatCount = cryptogram.length / 2
+    var repetitionResult = RepetitionResult(cryptogram)
+
+    for (i in 0 until maxRepeatCount) {
+        repetitionResult = checkRepetition(repetitionResult.secretCode)
+        if (repetitionResult.isFinished) break
+    }
+    return repetitionResult.secretCode
 }
 
 private fun checkRepetition(secretCode: String): RepetitionResult {
