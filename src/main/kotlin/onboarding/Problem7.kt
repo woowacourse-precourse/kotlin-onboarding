@@ -31,6 +31,35 @@ fun visited(visitors: List<String>, one: HashMap<String, Int>): HashMap<String, 
     }
     return one
 }
+fun calculateScore(user: String, userFriend: MutableList<String>, one: HashMap<String, Int>, ten: HashMap<String, Int>, score: HashMap<String, Int>): HashMap<String, Int>{
+    //10점
+    var keyList = ArrayList(ten.keys)
+    var valueList = ArrayList(ten.values)
+    for(i in 0..ten.size-1){
+        if(ten.containsKey(user)){
+            ten.remove(user)
+        }
+    }
+    for(i in 0..ten.size-1){
+        score.put(keyList[i],valueList[i]*10)
+    }
+    //1점
+    keyList = ArrayList(one.keys)
+    valueList = ArrayList(one.values)
+    for(i in 0..one.size-1){
+        if(score.containsKey(keyList[i])){
+            score[keyList[i]] = valueList[i]+ten.getValue(keyList[i])*10
+        } else {
+            score.put(keyList[i],valueList[i])
+        }
+    }
+    for(i in 0..userFriend.size-1){
+        if(score.containsKey(userFriend[i])){
+            score.remove(userFriend[i])
+        }
+    }
+    return score
+}
 fun solution7(
     user: String,
     friends: List<List<String>>,
@@ -39,8 +68,10 @@ fun solution7(
     var userFriend : MutableList<String> = mutableListOf()
     var ten = HashMap<String, Int>()
     var one = HashMap<String, Int>()
+    var score = HashMap<String, Int>()
     userFriend = findUserFriends(userFriend, friends, user)//user친구 찾기
     ten = mutualFriends(userFriend, friends, ten)//사용자와 함께 아는 친구의 수
     one = visited(visitors,one)//사용자의 타임 라인에 방문한 횟수
+    score = calculateScore(user, userFriend, one, ten, score)//점수 계산
     TODO("프로그램 구현")
 }
