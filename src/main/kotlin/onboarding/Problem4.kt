@@ -1,7 +1,13 @@
 package onboarding
 
 fun solution4(word: String): String {
+    var resultWord = ""
 
+    for(c in word) {
+        resultWord += getConvertedWord(c)
+    }
+
+    return resultWord
 }
 
 fun getConvertedWord(character: Char): Char {
