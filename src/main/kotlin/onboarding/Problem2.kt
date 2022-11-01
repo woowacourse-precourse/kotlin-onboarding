@@ -6,26 +6,24 @@ fun solution2(cryptogram: String): String {
     }
 
     val cryptogramList = mutableListOf<String>()
-    var flag = true
+    val consecutiveCharIndex = HashSet<Int>()
 
     for (i in cryptogram.indices) {
         cryptogramList.add(cryptogram[i].toString())
     }
-    while (flag) {
-        if (cryptogramList.isEmpty()) {
-            break
-        }
-
+    repeat(cryptogram.length / 2) {
         for (i in 0 until cryptogramList.size - 1) {
-            flag = false
             if (cryptogramList[i] == cryptogramList[i + 1]) {
-                cryptogramList.removeAt(i + 1)
-                cryptogramList.removeAt(i)
-                flag = true
-                break
+                consecutiveCharIndex.add(i + 1)
+                consecutiveCharIndex.add(i)
             }
         }
+        for (i in consecutiveCharIndex.sortedDescending()) {
+            cryptogramList.removeAt(i)
+        }
+        consecutiveCharIndex.clear()
     }
+
     return if (cryptogramList.isEmpty()) "" else cryptogramList.joinToString("")
 }
 
