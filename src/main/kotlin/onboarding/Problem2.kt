@@ -16,3 +16,15 @@ fun getDuplicateCharIndex(cryptogram: String): MutableSet<Int> {
 
     return result
 }
+
+fun removeChar(cryptogram: String, positions: MutableSet<Int>): String {
+    var result = ""
+
+    for(i in cryptogram.indices) {
+        if(!positions.contains(i)) {
+            result += cryptogram[i]
+        }
+    }
+
+    return result
+}
