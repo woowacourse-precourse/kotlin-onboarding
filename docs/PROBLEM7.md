@@ -24,3 +24,10 @@
 | user | friends | visitors | result |
 | --- | --- | --- | --- |
 | "mrko" | [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ] | ["bedi", "bedi", "donut", "bedi", "shakevan"] | ["andole", "jun", "bedi"] |
+
+## 📝 기능 목록
+
+- [x] 각 사용자별 친구 목록 정리
+- [x] 함께 아는 친구가 있으면 점수 +10
+- [x] 타임 라인 방문했으면 점수 +1
+- [x] 점수순, 이름순 정렬해 result 구하기
