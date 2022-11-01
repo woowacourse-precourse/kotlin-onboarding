@@ -7,8 +7,8 @@ fun solution3(number: Int): Int {
     // 기능 목록 2번
     var result = 0
 
-    for (i in 1..number) {
-        result += countClap(i)
+    for (numberToCheck in 1..number) {
+        result += countClap(numberToCheck)
     }
 
     return result
