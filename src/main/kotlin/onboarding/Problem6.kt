@@ -6,19 +6,18 @@ fun solution6(forms: List<List<String>>): List<String> {
     val twoLetterMap = mutableMapOf<String, Set<String>>()
     val emailList = mutableListOf<String>()
 
-    for (form in forms) {
+    forms.forEach{ form ->
         val email = form[0]
         val nickName = form[1]
         twoLetterMap[email] = convertNickNameToTwoLetterSet(nickName)
         emailList.add(email)
     }
 
-    for (email in emailList) {
+    emailList.forEach{ email ->
         if (checkDuplicateNickname(email, twoLetterMap)) {
             result.add(email)
         }
     }
-
 
     return result.toList().sorted()
 }
