@@ -42,6 +42,10 @@ fun solution1(pobi: List<Int>, crong: List<Int>): Int {
     if(isEvenNum(pobi[1] == false)) return -1
     if(isEvenNum(crong[1] == false)) return -1
 
+//예외사항 4. 페이지의 번호가 연속되는 수가 아닌 경우
+    if(isContinuous(pobi) == false) return -1
+    if(isContinuous(crong) == false) return -1
+
     //1. 왼쪽 페이지 비교
     val pobiLeftResult = compare(pobi[0])
     val crongLeftResult = compare(crong[0])
@@ -91,6 +95,12 @@ fun isEvenNum(pageNum: Int):Boolean{
     if(pageNum % 2 != 0){
         return false
     }
+}
+
+//예외사항 4. 페이지의 번호가 연속되는 수가 아닌 경우
+fun isContinuous(pageNums: List<Int>):Boolean{
+    if(pageNums[1] == (pageNums[0]+1)) return true
+    if(pageNums[1] != (pageNums[0]+1)) return false
 }
 
 fun comparePageNum(pageNum : Int):Int{
