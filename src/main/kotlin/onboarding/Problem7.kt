@@ -35,19 +35,39 @@ fun findFriendsOfUser(user: String, friends: List<List<String>>, friendsOfUser: 
 fun addScoreByFriends(friends: List<List<String>>,
                       friendsOfUser: ArrayList<String>,
                       indexArray: ArrayList<Int>,
-                      recommendScore: MutableMap<String, Int>){
-    for (index in friends.indices){
+                      recommendScore: MutableMap<String, Int>) {
+    for (index in friends.indices) {
         if (indexArray.contains(index)) continue // 사용자가 속한 인덱스는 continue
-        for (index2 in friendsOfUser.indices){
-            if (friends[index].indexOf(friendsOfUser[index2]) != -1){ // user의 친구를 포함할 때 ->else
-                if (recommendScore.containsKey(friends[index][1 - friends[index].indexOf(friendsOfUser[index2])])){ //이때 이미 맵에 user의 친구와 친구 상태인 사람이 있다면
+        for (index2 in friendsOfUser.indices) {
+            if (friends[index].indexOf(friendsOfUser[index2]) != -1) { // user의 친구를 포함할 때 ->else
+                if (recommendScore.containsKey(
+                        friends[index][1 - friends[index].indexOf(
+                            friendsOfUser[index2]
+                        )]
+                    )
+                ) { //이때 이미 맵에 user의 친구와 친구 상태인 사람이 있다면
                     val string = friends[index][1 - friends[index].indexOf(friendsOfUser[index2])]
                     recommendScore[string] = recommendScore[string]?.plus(10)!! // value에 10을 더해줌
-                }
-                else{ // 맵에 key로는 user의 친구와 친구 상태인 사람으로, value는 10으로 저장
-                    recommendScore[friends[index][1 - friends[index].indexOf(friendsOfUser[index2])]] = 10
+                } else { // 맵에 key로는 user의 친구와 친구 상태인 사람으로, value는 10으로 저장
+                    recommendScore[friends[index][1 - friends[index].indexOf(friendsOfUser[index2])]] =
+                        10
                 }
             }
+        }
+    }
+}
+
+/**
+ * 기존 점수에 방문자 점수도 추가하는 함수
+ */
+fun addScoreByVisit(visitors: List<String>, friendsOfUser: ArrayList<String>, recommendScore: MutableMap<String, Int>){
+    for (index in visitors.indices){ //
+        if (friendsOfUser.contains(visitors[index])) continue // 이미 친구인 사람은 제외
+        if (recommendScore.containsKey(visitors[index])){
+            recommendScore[visitors[index]] = recommendScore[visitors[index]]?.plus(1)!!
+        }
+        else{
+            recommendScore[visitors[index]] = 1
         }
     }
 }
