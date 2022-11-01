@@ -5,7 +5,7 @@ fun solution7(
     friends: List<List<String>>,
     visitors: List<String>
 ): List<String> {
-    TODO("프로그램 구현")
+    return visitedList(user, friends, visitors).toList().sortedByDescending { it.second }.map { it.first }.take(5)
 }
 
 fun friendList(user: String, friends: List<List<String>>): MutableSet<String> {
