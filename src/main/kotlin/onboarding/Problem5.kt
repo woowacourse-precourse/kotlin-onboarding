@@ -12,8 +12,3 @@ fun solution5(money: Int): List<Int> {
 
     return num
 }
-
-fun main() {
-    val result = solution5(50_237)
-    println(result)
-}
