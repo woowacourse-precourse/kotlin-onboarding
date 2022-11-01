@@ -3,9 +3,9 @@ package onboarding
 import java.io.Serializable
 
 fun solution2(cryptogram: String): Serializable {
-    var key = "hello"
+    var key = "hello" // 지워야 할 연속 문자열 알파벳
     var chunkedCryp: ArrayList<String> = cryptogram.chunked(1) as ArrayList<String>
-    var flag = 0
+    var flag = 0 // 연속 문자열을 삭제했을 경우 1씩 늘어남
     var ans = arrayListOf<String>()
 
     fun deleteRepetition(lst: ArrayList<String>): ArrayList<String> {
@@ -41,6 +41,10 @@ fun solution2(cryptogram: String): Serializable {
     }
 
     deleteRepetition(chunkedCryp)
+    while (flag != 0) {
+        flag = 0
+        deleteRepetition(ans)
+    }
 
     return 0
 }
