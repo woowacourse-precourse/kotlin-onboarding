@@ -7,6 +7,27 @@ fun solution7(
 ): List<String> {
     var scores = initScore(user, friends)
     scores = updateScore(visitors, scores)
+    return getBestFriends(scores)
+}
+
+fun getBestFriends(scores: MutableMap<String, Int>): MutableList<String> {
+    val users = mutableListOf<Pair<Int, String>>()
+
+    scores.forEach {
+        users.add(Pair(it.value, it.key))
+    }
+
+    users.sortByDescending {
+        it.first
+    }
+
+    val result = mutableListOf<String>()
+
+    for(user in users) {
+        result.add(user.second)
+    }
+
+    return result
 }
 
 fun updateScore(visitors: List<String>, scores: MutableMap<String, Int>): MutableMap<String, Int> {
