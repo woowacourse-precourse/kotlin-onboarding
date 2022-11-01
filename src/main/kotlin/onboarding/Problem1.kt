@@ -1,14 +1,19 @@
 package onboarding
 
-fun solution1(pobi: List<Int>, crong: List<Int>): Int {
-    if(pobi[0]+1 != pobi[1] || crong[0]+1 != crong[1]) {
-        return -1;
-    }
-    var temp: Int
+import kotlin.math.*
 
+fun solution1(pobi: List<Int>, crong: List<Int>): Int {
+
+    if(pobi[0]+1 != pobi[1] || crong[0]+1 != crong[1]) {
+        return -1
+    }
+    if(pobi[0] == 1 || crong[0] == 1 || pobi[1] == 400 || crong[1] == 400) {
+        return -1
+    }
+
+    var temp :Int = pobi[0]
     var pobiLeft1 : Int = 0
     var pobiLeft2 : Int = 1
-    temp = pobi[0]
     while(temp > 0) {
         pobiLeft1 += temp % 10
         pobiLeft2 *= temp % 10
@@ -45,11 +50,11 @@ fun solution1(pobi: List<Int>, crong: List<Int>): Int {
     var pobiMAX:Int = listOf(pobiLeft1, pobiLeft2, pobiRight1, pobiRight2).maxOrNull()?:0
     var crongMAX:Int = listOf(crongLeft1, crongLeft2, crongRight1, crongRight2).maxOrNull()?:0
 
-    if(pobiMAX == crongMAX) {
-        return 0
+    return if(pobiMAX == crongMAX) {
+        0
     } else if(pobiMAX > crongMAX) {
-        return 1
+        1
     } else {
-        return 2
+        2
     }
 }
