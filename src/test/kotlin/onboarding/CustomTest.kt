@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Nested
 import org.junit.jupiter.api.Test
 
 @Nested
-class Problem7CustomTest {
+class CustomTest {
     @Nested
     inner class Problem2CustomTest {
         @Test
@@ -77,13 +77,13 @@ class Problem7CustomTest {
         @Test
         fun case4() {
             val forms: List<List<String>> = listOf(
-                listOf("kim@email.com", "김ㅡ이"),
-                listOf("nam@email.com", "ㅡ이야"),
+                listOf("kim@email.com", "김이"),
+                listOf("nam@email.com", "이야"),
                 listOf("choi@email.com", "최강"),
                 listOf("lee@email.com", "강합니다"),
-                listOf("jun@email.com", "왜ㅇㅡ이야")
+                listOf("jun@email.com", "왜이야왜이야")
             )
-            val result: List<String> = listOf("jun@email.com", "kim@email.com", "nam@email.com")
+            val result: List<String> = listOf("jun@email.com", "nam@email.com")
             Assertions.assertThat(solution6(forms)).isEqualTo(result)
         }
     }
