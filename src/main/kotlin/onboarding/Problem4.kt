@@ -12,14 +12,11 @@ fun solution4(word: String): String {
     )
 
     for (i in word.indices) {
-        treeFrogWord += if (word[i] in 'a'..'z') {
-            (reverseOrderAlphabet[word[i] - 'a']).lowercase()
-        } else if (word[i] in 'A'..'Z') {
-            (reverseOrderAlphabet[word[i] - 'A'])
-        } else if (word[i].toString() == " ") {
-            " "
-        } else {
-            word[i]
+        treeFrogWord += when {
+            word[i] in 'a'..'z' -> (reverseOrderAlphabet[word[i] - 'a']).lowercase()
+            word[i] in 'A'..'Z' -> (reverseOrderAlphabet[word[i] - 'A'])
+            word[i].toString() == " " -> " "
+            else -> word[i]
         }
     }
 
