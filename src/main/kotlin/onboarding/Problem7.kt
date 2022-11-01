@@ -42,7 +42,10 @@ fun solution7(
     for (i in alreadyFriend.indices) {
         friendScore.remove(alreadyFriend[i])
     }
-    return listOf()
+
+    val friendReferralResult: Map<String, Int> =
+        friendScore.toList().sortedBy { (key, _) -> key }.sortedByDescending { (_, value) -> value }.take(5).toMap()
+    return friendReferralResult.keys.toList()
 }
 
 fun isAppropriateInput(
