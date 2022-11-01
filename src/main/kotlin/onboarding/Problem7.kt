@@ -19,6 +19,18 @@ fun solution7(
             alreadyFriend.add(friends[i].first())
         }
     }
+    for (i in friends.indices) {
+        if (friendScore.contains(friends[i].first())) {
+            friendScore[friends[i].first()] = friendScore[friends[i].first()]!! + 10
+        } else {
+            friendScore[friends[i].first()] = 10
+        }
+        if (friendScore.contains(friends[i].last())) {
+            friendScore[friends[i].last()] = friendScore[friends[i].last()]!! + 10
+        } else {
+            friendScore[friends[i].last()] = 10
+        }
+    }
     return listOf()
 }
 
