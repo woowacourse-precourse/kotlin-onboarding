@@ -56,7 +56,12 @@ class UserManager(private val userId: String,
         }
     }
 
-    private fun calculateScoreForVisitors() {}
+    private fun calculateScoreForVisitors() {
+        for(visitor in visitors) {
+            val user = users[visitor]!!
+            user.addScore(1)
+        }
+    }
 
     fun setUsers() {
         settingForUser()
