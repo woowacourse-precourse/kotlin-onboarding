@@ -8,13 +8,11 @@ fun solution4(word: String): String {
 private fun getConversionMap(): MutableMap<Char, Char> {
     val alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
     val upperAlphabet = alphabet
-    val reverseUpperAlphabet = upperAlphabet.reversed()
     val lowerAlphabet = alphabet.lowercase()
-    val reverseLowerAlphabet = lowerAlphabet.reversed()
     val conversionMap = mutableMapOf<Char, Char>()
 
-    for (i in upperAlphabet.indices) conversionMap[upperAlphabet[i]] = reverseUpperAlphabet[i]
-    for (i in lowerAlphabet.indices) conversionMap[lowerAlphabet[i]] = reverseLowerAlphabet[i]
+    for (i in upperAlphabet.indices) conversionMap[upperAlphabet[i]] = upperAlphabet[upperAlphabet.length - 1 - i]
+    for (i in lowerAlphabet.indices) conversionMap[lowerAlphabet[i]] = lowerAlphabet[lowerAlphabet.length - 1 - i]
     conversionMap[' '] = ' '
 
     return conversionMap
