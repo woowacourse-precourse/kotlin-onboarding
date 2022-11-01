@@ -16,6 +16,5 @@ private fun removeConsecutiveDuplicates(cryptogram: String): String {
     return clearText
 }
 
-private fun shouldRepeats(cryptogram: String): Boolean {
-    return regex.containsMatchIn(cryptogram)
-}
+private fun shouldRepeats(cryptogram: String): Boolean = regex.containsMatchIn(cryptogram)
+
