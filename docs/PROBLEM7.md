@@ -24,3 +24,10 @@
 | user | friends | visitors | result |
 | --- | --- | --- | --- |
 | "mrko" | [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ] | ["bedi", "bedi", "donut", "bedi", "shakevan"] | ["andole", "jun", "bedi"] |
+
+## 기능목록
+1. user의 친구만 담긴 set 생성
+2. friends 배열에서 user를 제외하고 남은 배열 저장
+3. 남은 배열에서 user의 친구를 제외하고 함께 아는 친구는 10점씩 부여
+4. visitor에서도 user의 친구를 제외하고 1점씩 부여
+5. 결과 배열 출력
