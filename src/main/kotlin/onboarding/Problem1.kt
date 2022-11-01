@@ -25,19 +25,29 @@ fun isException(numberList : List<Int>) : Boolean {
     return false
 }
 
-
 fun pageNumberAdd(num: Int) : Int {
     var input = num
-    var result = 0
+    var addResult = 0
 
     while (input != 0) {
-        result += input % 10
+        addResult += input % 10
         input /= 10
     }
 
-    return result
+    return addResult
 }
 
+fun pageNumberMul(num: Int) : Int {
+    var input = num
+    var mulResult = 1
+
+    while (input != 0) {
+        mulResult *= input % 10
+        input /= 10
+    }
+
+    return mulResult
+}
 
 
 
