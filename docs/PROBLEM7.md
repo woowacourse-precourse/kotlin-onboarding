@@ -24,3 +24,17 @@
 | user | friends | visitors | result |
 | --- | --- | --- | --- |
 | "mrko" | [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ] | ["bedi", "bedi", "donut", "bedi", "shakevan"] | ["andole", "jun", "bedi"] |
+
+
+<br/><br/>
+***
+### 기능 구현
+| 함수 | 매개변수 | 반환형 | 내용 |
+| --- | --- | --- | --- |
+| getMyFriendsList | String (user), List<List<String>> | HashSet<String> | user와 친구인 사람들 리스트 반환 |
+| getRecommendedFriends | HashSet<String>, List<String> (visitors) | HashMap<String, Int> | 추천 친구 리스트(맵) <br/> → 간접 친구 or 방문자 구해서 반환 |
+
+- friends 돌면서 user와 친구인 사람 HashSet 구함  → HashSet<ID>
+- friends 돌면서 user의 친구의 친구 구해서 HashMap에 추가 HashMap<ID, 점수>
+- visitors 돌면서 → 존재하는 사람이면 +1, 존재하지 않으면 새롭게 추가
+- 점수 순, 이름 순으로 정렬 후 아이디 리스트 (keys) 반환
