@@ -36,5 +36,15 @@ fun solution7(
         }
     }
 
+    for(index in visitors.indices){ //user 타임라인 방문자 +1점
+        val visitorName=visitors[index]
+        if(recommendScore.containsKey(visitorName)){
+            val price = recommendScore[visitorName]
+            recommendScore[visitorName] = (price?:0) + 1
+            continue
+        }
+        recommendScore[visitorName] = 1
+    }
+
     return listOf()
 }
