@@ -20,8 +20,3 @@ fun containsNumber(num: Int): Int {
     }
     return count
 }
-
-
-fun main() {
-    println(solution3(33))
-}
