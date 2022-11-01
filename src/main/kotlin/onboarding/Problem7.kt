@@ -1,6 +1,7 @@
 package onboarding
 
 private const val TOGETHER_SCORE = 10
+private const val VISITOR_SCORE = 1
 
 fun solution7(
     user: String,
@@ -12,6 +13,7 @@ fun solution7(
 
     searchUserFriends(user, userFriendList, friends)
     recommendedFriends.putAll(searchFriendsKnowTogether(user, userFriendList, friends))
+    checkVisitor(visitors, userFriendList, recommendedFriends)
 }
 
 private fun searchUserFriends(user: String, userFriendList: MutableList<String>, relation: List<List<String>>) {
@@ -38,4 +40,15 @@ private fun searchFriendsKnowTogether(
 
 private fun plusScore(recommendedFriends: MutableMap<String, Int>, name: String, score: Int) {
     recommendedFriends[name] = recommendedFriends[name]?.plus(score) ?: score
+}
+
+private fun checkVisitor(
+    visitors: List<String>,
+    userFriendList: MutableList<String>,
+    recommendedFriends: MutableMap<String, Int>
+) {
+    visitors.forEach {
+        if (it in userFriendList) return@forEach
+        plusScore(recommendedFriends, it, VISITOR_SCORE)
+    }
 }
