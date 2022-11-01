@@ -53,6 +53,15 @@ fun solution7(
     val listSortedByName = recommendScore.toList().sortedBy { it.first }.toMap().toMutableMap()
     val listSortedByScore = listSortedByName.toList().sortedByDescending { it.second }
 
+    val recommendedFriends = mutableListOf<String>() //추천친구 목록
 
-    return listOf()
+    //점수가 가장 높은 순으로 최대 5명 선정
+    for(index in 0..4){
+        recommendedFriends.add(listSortedByScore[index].first)
+        if(listSortedByScore.size-1 == index){ //추천 목록에 5명 이하 있는 경우
+            break
+        }
+    }
+
+    return recommendedFriends
 }
