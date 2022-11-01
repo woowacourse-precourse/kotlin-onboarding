@@ -15,6 +15,14 @@ fun solution6(forms: List<List<String>>): List<String> {
 
         for (j in 0 until nicknameCheck.length - 1) {
             val nicknameKey = nicknameCheck.substring(j, j + 2)
+            if (userMap.containsKey(nicknameKey)) {
+                val email = userMap[nicknameKey]
+                if (email != emailCheck) {
+                    emails.add(email!!)
+                    emails.add(emailCheck)
+                }
+            }
+            userMap[nicknameKey] = emailCheck
         }
     }
     return listOf()
