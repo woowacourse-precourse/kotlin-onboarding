@@ -13,6 +13,15 @@ fun solution5(money: Int): List<Int> {
         val fiveTens = (money % 100) / 50
         val tens = (money % 50) / 10
         val units = money % 10
+
+        val result = listOf(
+                fiveTenThousands, tenThousands,
+                fiveThousands, thousands,
+                fiveHundreds, hundreds,
+                fiveTens, tens,
+                units
+        )
+        return result
     }
     else return listOf(-1)
 }
