@@ -58,5 +58,6 @@ private fun checkVisitor(
 
 private fun sortRecommendedFriends(recommendedFriends: MutableMap<String, Int>): List<String> {
     return recommendedFriends.toList()
-        .sortedWith(compareByDescending<Pair<String, Int>> { it.second }.thenBy { it.first }).map { it.first }
+        .sortedWith(compareByDescending<Pair<String, Int>> { it.second }.thenBy { it.first })
+        .map { it.first }
 }
