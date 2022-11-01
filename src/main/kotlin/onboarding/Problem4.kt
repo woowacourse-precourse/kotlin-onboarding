@@ -1,5 +1,31 @@
 package onboarding
 
 fun solution4(word: String): String {
-    TODO("프로그램 구현")
+    var resultWord = ""
+
+    for (c in word) {
+        resultWord += getConvertedWord(c)
+    }
+
+    return resultWord
+}
+
+fun getConvertedWord(character: Char): Char {
+    return if (character.isUpperCase()) {
+        convertUpperCase(character)
+    } else if (character.isLowerCase()) {
+        convertLowerCase(character)
+    } else {
+        character
+    }
+}
+
+fun convertUpperCase(character: Char): Char {
+    val diff = 'Z' - character
+    return 'A' + diff
+}
+
+fun convertLowerCase(character: Char): Char {
+    val diff = 'z' - character
+    return 'a' + diff
 }
