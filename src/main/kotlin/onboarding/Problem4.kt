@@ -3,7 +3,7 @@ package onboarding
 fun solution4(word: String): String {
     var resultWord = ""
 
-    for(c in word) {
+    for (c in word) {
         resultWord += getConvertedWord(c)
     }
 
@@ -13,8 +13,10 @@ fun solution4(word: String): String {
 fun getConvertedWord(character: Char): Char {
     return if (character.isUpperCase()) {
         convertUpperCase(character)
-    } else {
+    } else if (character.isLowerCase()) {
         convertLowerCase(character)
+    } else {
+        character
     }
 }
 
