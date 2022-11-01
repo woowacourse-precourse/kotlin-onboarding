@@ -10,8 +10,8 @@ fun solution6(forms: List<List<String>>): List<String> {
     var patterncheck : String // string of two char from nickname for patterncheck
 
     var nicklist : List<Char>
-    var check = 0 // if email is already added
-    var check2 = 0 // is this pattern to add
+    var check :Int // if email is already added
+    var check2 :Int // is this pattern to add
 
 
     //한 닉네임에 관한 check과정
@@ -55,7 +55,8 @@ fun solution6(forms: List<List<String>>): List<String> {
 
         }
     }
+    var answer2 = answer.sorted()
 
-    return answer
+    return answer2
 
 }
