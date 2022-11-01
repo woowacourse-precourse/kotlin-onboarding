@@ -9,13 +9,13 @@ fun solution7(
     var usersScore = mutableMapOf<String, Int>()
 
     usersScore = scoreVisitedUser(visitors, usersScore)
-
-    if (!friendsRelation[user].isNullOrEmpty()) {
-        usersScore = scoreMutualfriends(user, friendsRelation, usersScore)
-        usersScore = deleteOneBridgeAndMe(user, friendsRelation, usersScore)
-    }
+    usersScore = scoreMutualfriends(user, friendsRelation, usersScore)
 
     return usersScore.asSequence()
+        .filterNot { it ->
+            it.key == user ||
+                    friendsRelation[it.key]?.any { it == user} == true
+        }
         .sortedWith { a1, a2 ->
             val sortedMaxScoreIdx = a2.value.compareTo(a1.value)
 
@@ -26,22 +26,6 @@ fun solution7(
         .take(5)
         .toList()
 }
-
-fun deleteOneBridgeAndMe(
-    user: String,
-    friendsRelation: MutableMap<String, MutableList<String>>,
-    usersScore: MutableMap<String, Int>
-): MutableMap<String, Int> {
-    friendsRelation[user]!!.forEach { friend ->
-        usersScore.remove(friend)
-    }
-    usersScore.remove(user)
-
-    return usersScore
-}
-
-
-
 fun initializeFriendsRelation (friends: List<List<String>>): MutableMap<String, MutableList<String>> {
     val friendsRelation = mutableMapOf<String, MutableList<String>>()
 
@@ -63,15 +47,15 @@ fun initializeFriendsRelation (friends: List<List<String>>): MutableMap<String, 
     return friendsRelation
 }
 
-
 fun scoreMutualfriends(
     user: String,
     friendsRelation : MutableMap<String, MutableList<String>>,
     usersScore : MutableMap<String, Int>,
 ): MutableMap<String, Int> {
     val userRelation = friendsRelation[user]
+    if (userRelation.isNullOrEmpty()) return usersScore
 
-    for (friend in userRelation!!) {
+    for (friend in userRelation) {
         val userFriendRelation = friendsRelation[friend]
         if (userFriendRelation.isNullOrEmpty()) continue
 
@@ -90,6 +74,5 @@ fun scoreVisitedUser(
     visitors.forEach { visitor ->
         usersScore[visitor] = usersScore.getOrDefault(visitor, 0) + 1
     }
-
     return usersScore
 }
