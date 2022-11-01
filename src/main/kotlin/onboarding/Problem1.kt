@@ -1,10 +1,5 @@
 package onboarding
 
-fun main() {
-    println(solution1(listOf(97, 98), listOf(197, 198)))
-    println(solution1(listOf(131, 132), listOf(211, 212)))
-    println(solution1(listOf(99, 102), listOf(211, 212)))
-}
 
 fun solution1(pobi: List<Int>, crong: List<Int>): Int {
     if (pobi[0] + 1 != pobi[1] || crong[0] + 1 != crong[1]) return -1

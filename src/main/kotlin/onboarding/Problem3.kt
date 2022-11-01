@@ -1,10 +1,5 @@
 package onboarding
 
-fun main() {
-    println(solution3(13))
-    println(solution3(33))
-}
-
 fun solution3(number: Int): Int {
     var count = 0
     for (i in 1..number) {

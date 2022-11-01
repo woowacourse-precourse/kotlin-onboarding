@@ -1,9 +1,5 @@
 package onboarding
 
-fun main() {
-    println(solution4("I love you"))
-}
-
 fun solution4(word: String): String {
     var result = ""
     word.forEach {

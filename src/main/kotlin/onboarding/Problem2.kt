@@ -2,12 +2,6 @@ package onboarding
 
 import java.util.*
 
-fun main() {
-    println(solution2("browoanoommnaon"))
-    println(solution2("zyelleyz"))
-}
-
-
 fun solution2(cryptogram: String): String {
     val charStack = Stack<Char>()
 

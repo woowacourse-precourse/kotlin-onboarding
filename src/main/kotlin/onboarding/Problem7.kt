@@ -1,20 +1,5 @@
 package onboarding
 
-fun main() {
-    solution7(
-        "mrko",
-        listOf(
-            listOf("donut", "andole"),
-            listOf("donut", "jun"),
-            listOf("donut", "mrko"),
-            listOf("shakevan", "andole"),
-            listOf("shakevan", "jun"),
-            listOf("shakevan", "mrko")
-        ),
-        listOf("bedi", "bedi", "donut", "bedi", "shakevan")
-    ).forEach { print("$it ") }
-}
-
 fun solution7(
     user: String,
     friends: List<List<String>>,
@@ -30,12 +15,10 @@ fun solution7(
 
     friendMap[user]?.forEach { friend ->
         friendMap[friend]?.forEach {
-            //println(it)
             if (it != user) {
                 if (recommendList.containsKey(it)) recommendList[it] = recommendList[it]!! + 10
                 else recommendList[it] = 10
             }
-            //println("---")
         }
     }
 
@@ -47,7 +30,6 @@ fun solution7(
     }
 
     val result = recommendList.toList().sortedWith(compareBy ({ -(it.second) }, {it.first})).take(5)
-    //result.forEach { println("${it.first} ${it.second}") }
 
     return result.map { it.first }
 }
