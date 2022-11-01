@@ -1,10 +1,17 @@
 package onboarding
 
 fun checkException(pobi: List<Int>, crong: List<Int>): Boolean {
-    if (pobi[0] + 1 == pobi[1] && crong[0] + 1 == crong[1] && pobi.size == 2 && crong.size == 2) {
-        return true
+    val allPage = mutableListOf<Int>()
+    allPage.addAll(pobi)
+    allPage.addAll(crong)
+    allPage.forEach { page ->
+        if (page < 0 || page > 400) return false
     }
-    return false
+    if (pobi[0] + 1 != pobi[1] || crong[0] + 1 != crong[1] || pobi.size != 2 || crong.size != 2) {
+        return false
+    }
+    //todo 책 페이지 0~400 준수 예외 작성
+    return true
 }
 
 fun solution1(pobi: List<Int>, crong: List<Int>): Int {
@@ -45,10 +52,3 @@ fun checkMaxValue(list: List<Int>): Int {
     val mulValue = multiplyPage(list)
     return addValue.coerceAtLeast(mulValue)
 }
-
-//fun main() {
-//    val pobi = listOf(99, 102)
-//    val crong = listOf(211, 212)
-//    val sol = solution1(pobi, crong)
-//    println(sol)
-//}
