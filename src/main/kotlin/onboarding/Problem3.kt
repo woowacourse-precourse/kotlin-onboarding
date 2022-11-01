@@ -1,9 +1,13 @@
 package onboarding
 
-fun solution3(number: Int): Int {
-    val list = listOf(3, 6, 9)
+private val numberSet = setOf(3, 6, 9)
 
+fun solution3(number: Int): Int {
     return (1..number).fold(0) { acc, num ->
-        acc + num.toString().count { it.digitToInt() in list }
+        acc + num.countOf(numberSet)
     }
+}
+
+private fun Int.countOf(numbers: Collection<Int>): Int {
+    return toString().count { it.digitToInt() in numbers }
 }
