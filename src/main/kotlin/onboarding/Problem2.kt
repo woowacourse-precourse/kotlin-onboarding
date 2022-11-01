@@ -25,11 +25,11 @@ fun shouldDecode(cryptogram: String): Boolean {
     }
 
     var tempChar = cryptogram[0]
-    for (i in 1 until cryptogram.length) {
-        if (tempChar == cryptogram[i]) {
+    for (index in 1 until cryptogram.length) {
+        if (tempChar == cryptogram[index]) {
             return true
         }
-        tempChar = cryptogram[i]
+        tempChar = cryptogram[index]
     }
 
     return false
@@ -41,16 +41,16 @@ fun removeDuplication(cryptogram: String): String {
     var endIndex: Int
     var removedString = cryptogram
     var willRemove = false
-    for (i in 1 until cryptogram.length) {
-        if (cryptogram[i - 1] == cryptogram[i]) {
+    for (index in 1 until cryptogram.length) {
+        if (cryptogram[index - 1] == cryptogram[index]) {
             if (!willRemove) {
-                startIndex = i - 1
+                startIndex = index - 1
                 willRemove = true
             }
             continue
         }
-        if (willRemove && cryptogram[i - 1] != cryptogram[i]) {
-            endIndex = i
+        if (willRemove && cryptogram[index - 1] != cryptogram[index]) {
+            endIndex = index
             willRemove = false
             val removeForString = cryptogram.substring(startIndex, endIndex)
             removedString = removedString.replace(removeForString, "")

@@ -15,9 +15,9 @@ fun solution4(word: String): String {
     // 기능 목록 3번
     val resultStringBuilder = StringBuilder()
 
-    for (i in word.indices){
-        val typeCode = checkChar(word[i])
-        val translatedChar = translateFrogLanguage(word[i] , typeCode)
+    for (index in word.indices){
+        val typeCode = checkChar(word[index])
+        val translatedChar = translateFrogLanguage(word[index] , typeCode)
 
         resultStringBuilder.append(translatedChar)
     }
