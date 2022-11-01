@@ -12,8 +12,8 @@ fun solution6(forms: List<List<String>>): List<String> {
 
         for(j in i+1 until num){
             var fk = forms[j][1].toCharArray()
-            for(k in 0 until fn.size){
-                for(z in 0 until fk.size){
+            for(k in 0 until fn.size-1){
+                for(z in 0 until fk.size-1){
                     if(fn[k] == fk[z]){
                         if(fn[k+1] == fk[z+1]){
                             list.add(forms[i][0])
@@ -23,7 +23,6 @@ fun solution6(forms: List<List<String>>): List<String> {
                     }
                 }
             }
-
         }
     }
     list.sort()
