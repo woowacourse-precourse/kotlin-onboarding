@@ -28,6 +28,9 @@ fun solution2(cryptogram: String): String {
                 answer = ""
                 break
             }
+            if (continuousCnt != 1) {
+                answer = answer.substring(0, answer.length - continuousCnt)
+            }
             // 전부 다 돈 경우 reset 시키고 다시 반복
             index = 1
             continuousCnt = 1
