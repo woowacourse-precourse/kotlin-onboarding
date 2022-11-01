@@ -1,24 +1,29 @@
 package onboarding
 
 fun solution2(cryptogram: String): String {
-    var value = cryptogram.toCharArray()
+    var pw = cryptogram.toCharArray()
     while (true) {
-        val set = mutableSetOf<Int>()
-        for (idx in 0 until value.size - 1) {
-            if (value[idx] == value[idx + 1]) {
-                set.add(idx)
-                set.add(idx + 1)
-            }
-        }
-        if (set.isEmpty()) break
-        for (item in set) {
-            value[item] = '+'
-        }
-        value = String(value).replace("+", "").toCharArray()
+        val overLapIndexList = crackPassword(pw)
+        if (overLapIndexList.isEmpty()) break
+        pw = removeOverlapIndex(overLapIndexList, pw)
     }
-    return String(value)
+    return String(pw)
 }
 
-fun main() {
-    println(solution2("zyelleyz"))
+fun removeOverlapIndex(overLapIndexList: List<Int>, pw: CharArray): CharArray {
+    for (idx in overLapIndexList) {
+        pw[idx] = '+'
+    }
+    return String(pw).replace("+", "").toCharArray()
+}
+
+fun crackPassword(pw: CharArray): List<Int> {
+    val list = mutableListOf<Int>()
+    for (idx in 0 until pw.size - 1) {
+        if (pw[idx] == pw[idx + 1]) {
+            list.add(idx)
+            list.add(idx + 1)
+        }
+    }
+    return list
 }
