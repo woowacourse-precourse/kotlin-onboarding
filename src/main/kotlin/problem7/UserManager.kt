@@ -5,6 +5,7 @@ class UserManager(private val userId: String,
                   private val visitors: List<String>)
 {
     private val users = mutableMapOf<String, User>()
+    private val recommendList = mutableListOf<User>()
 
     private fun settingForUser() {
         users[userId] = User(userId)
@@ -63,6 +64,8 @@ class UserManager(private val userId: String,
         }
     }
 
+    private fun addUserToRecommendList(user:User) {}
+
     fun setUsers() {
         settingForUser()
         settingForFriends()
@@ -75,6 +78,11 @@ class UserManager(private val userId: String,
     }
 
     fun getRecommendList() : List<User> {
-        return listOf()
+        for(user in users.values) {
+            if(user.getId() != userId) {
+                addUserToRecommendList(user)
+            }
+        }
+        return recommendList
     }
 }
