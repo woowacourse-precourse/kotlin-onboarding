@@ -9,11 +9,11 @@ fun solution1(pobi: List<Int>, crong: List<Int>): Int {
 
         if (pobiScore > crongScore) {
             return 1
-        } else if (pobiScore == crongScore) {
-            return 0
-        } else {
-            return 2
         }
+        if (pobiScore == crongScore) {
+            return 0
+        }
+        return 2
     } catch (error: IllegalArgumentException) {
         return -1
     }
@@ -25,11 +25,14 @@ private fun getScore(pageList: List<Int>): Int {
 
     if (leftPage < 0 || leftPage > 400 || rightPage < 0 || rightPage > 400) {
         throw IllegalArgumentException("책 페이지를 넘어가는 값이 입력되었습니다.")
-    } else if (rightPage - leftPage != 1) {
+    }
+    if (rightPage - leftPage != 1) {
         throw IllegalArgumentException("왼쪽 페이지와 오른쪽 페이지 값은 연속된 값이여야 합니다.")
-    } else if (rightPage % 2 == 1) {
+    }
+    if (rightPage % 2 == 1) {
         throw IllegalArgumentException("오른쪽 페이지의 값은 짝수여야 합니다.")
-    } else if (leftPage % 2 == 0) {
+    }
+    if (leftPage % 2 == 0) {
         throw IllegalArgumentException("왼쪽 페이지의 값은 홀수여야 합니다.")
     }
 
