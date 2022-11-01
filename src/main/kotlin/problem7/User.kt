@@ -11,4 +11,12 @@ class User(private val id:String) {
     fun addFriend(id:String) {
         friends.add(id)
     }
+
+    fun getFriends() : Set<String> {
+        return friends
+    }
+
+    fun addScore(score:Int) {
+        this.score += score
+    }
 }
