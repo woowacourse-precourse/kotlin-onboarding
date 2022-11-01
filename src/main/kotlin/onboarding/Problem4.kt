@@ -10,15 +10,12 @@ fun solution4(word: String): String {
     }
 
     for (i in word) {
-        ans += flog[i.toString()]
+        ans += if (flog.containsKey(i.toString()))
+            flog[i.toString()]
+        else
+            i.toString()
     }
+
     return ans
 }
 
-fun main() {
-//    val word = "I love you"
-//    val result = "R olev blf"
-    val word = "Iloveyou"
-    val result = "Rolevblf"
-    print(solution4(word).equals(result))
-}
