@@ -26,7 +26,10 @@ fun solution6(forms: List<List<String>>): List<String> {
             crewMap[nicknameKey] = emailCheck
         }
     }
+    return streamToList(emails)
+}
 
+private fun streamToList(emails: HashSet<String>): MutableList<String> {
     val collect = emails.stream()
         .sorted()
         .collect(Collectors.toList())
@@ -35,7 +38,6 @@ fun solution6(forms: List<List<String>>): List<String> {
     for (i in collect.indices) {
         list.add(requireNotNull(collect[i]))
     }
-
     return list
 }
 
