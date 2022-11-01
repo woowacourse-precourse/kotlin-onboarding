@@ -5,7 +5,7 @@ fun solution7(
 ): List<String> {
     val friendInformation = getFriendInformation(friends, visitors)
 
-    return getScoreList(user, friendInformation, visitors)
+    return getRecommendList(user, friendInformation, visitors)
 }
 
 private fun getFriendInformation(friends: List<List<String>>, visitors: List<String>): Map<String, MutableList<String>> {
@@ -37,7 +37,7 @@ private fun getFriendInformation(friends: List<List<String>>, visitors: List<Str
     return friendInformation
 }
 
-private fun getScoreList(
+private fun getRecommendList(
     user: String, friendInformation: Map<String, MutableList<String>>, visitors: List<String>
 ): List<String> {
     val scoreMap = mutableMapOf<String, Int>()
