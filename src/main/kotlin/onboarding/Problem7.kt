@@ -40,8 +40,6 @@ fun solution7(
     calculateAcquaintanceScore(userFriends, friends, resultMap)
     calculateVisitorScore(visitors, resultMap)
 
-    println(resultMap)
-
     return resultMap.toList().sortedByDescending { mapEntry -> mapEntry.second }
         .filter { mapEntry ->
             !userFriends.contains(mapEntry.first) && mapEntry.first != user
