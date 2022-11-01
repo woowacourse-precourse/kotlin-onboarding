@@ -20,15 +20,12 @@ fun solution1(pobi: List<Int>, crong: List<Int>): Int {
 }
 
 private fun checkValidation(pages: List<Int>): Boolean {
-    if (pages.size != 2 ||
+    return (pages.size != 2 ||
         pages[0] < 1 ||
         pages[1] > 400 ||
         pages[0] + 1 != pages[1] ||
         pages[1] % 2 == 1
-    ) {
-        return false
-    }
-    return true
+    ).not()
 }
 
 private fun getPageScore(pages: List<Int>): Int {
