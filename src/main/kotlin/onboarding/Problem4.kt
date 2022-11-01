@@ -1,5 +1,7 @@
 package onboarding
 
+const val NUMBER_OF_ALPHABETS = 26
+const val LAST_INDEX = 25
 
 fun solution4(word: String): String {
     return translate(word)
@@ -8,11 +10,11 @@ fun solution4(word: String): String {
 private fun convert(character: Char): Char {
     // 소문자일 때
     if (character in 'a'..'z') {
-        return 'a' + (25 - (character - 'a')) % 26
+        return 'a' + (LAST_INDEX - (character - 'a')) % NUMBER_OF_ALPHABETS
     }
     // 대문자일 때
     else if (character in 'A'..'Z') {
-        return 'A' + (25 - (character - 'A')) % 26
+        return 'A' + (LAST_INDEX - (character - 'A')) % NUMBER_OF_ALPHABETS
     } else {
         return character
     }
