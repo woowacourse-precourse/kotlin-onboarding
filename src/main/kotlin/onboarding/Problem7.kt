@@ -5,5 +5,15 @@ fun solution7(
     friends: List<List<String>>,
     visitors: List<String>
 ): List<String> {
-    TODO("프로그램 구현")
+    val scoreMap = calculateVisitor(visitors)
+
+}
+
+fun calculateVisitor(visitors: List<String>) : MutableMap<String, Int> {
+    val resultMap = mutableMapOf<String, Int>()
+    for (v in visitors) {
+        resultMap[v] = resultMap.getOrDefault(v, 0) + 1
+    }
+
+    return resultMap
 }
