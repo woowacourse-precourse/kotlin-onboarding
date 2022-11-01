@@ -27,9 +27,11 @@ package onboarding
 fun solution1(pobi: List<Int>, crong: List<Int>): Int {
     //프로그램 구현
 
+    //1. 왼쪽 페이지 비교
     val pobiLeftResult = compare(pobi[0])
     val crongLeftResult = compare(crong[0])
 
+    //2. 오른쪽 페이지 비교
     val pobiRightResult = compare(pobi[1])
     val crongRightResult = compare(crong[1])
 
