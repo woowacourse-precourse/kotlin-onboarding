@@ -1,23 +1,26 @@
 package onboarding
 
 fun solution5(money: Int): List<Int> {
-    val moneyList = listOf(50000, 10000, 5000, 1000, 500, 100, 50, 10, 1)
+    val pocket = listOf(50000, 10000, 5000, 1000, 500, 100, 50, 10, 1)
     val result = mutableListOf(0, 0, 0, 0, 0, 0, 0, 0, 0)
-    var value = money
-    for (idx in moneyList.indices) {
-        while (true) {
-            if (value - moneyList[idx] >= 0) {
-                value -= moneyList[idx]
-                ++result[idx]
-                continue
-            }
-            break
-        }
+    var nowMoney = money
+    for (idx in pocket.indices) {
+        result[idx] = categorizeForMoney(nowMoney, pocket, idx)
+        nowMoney -= pocket[idx] * result[idx]
     }
     return result
 }
 
-fun main() {
-    //오마넌 , 마넌, 오처넌, 처넌, 오백원, 백원, 오십원, 십원
-    println(solution5(15000))
+fun categorizeForMoney(money: Int, pocket: List<Int>, idx: Int): Int {
+    var cnt = 0
+    var nowMoney = money
+    while (true) {
+        if (nowMoney - pocket[idx] >= 0) {
+            nowMoney -= pocket[idx]
+            ++cnt
+            continue
+        }
+        break
+    }
+    return cnt
 }
