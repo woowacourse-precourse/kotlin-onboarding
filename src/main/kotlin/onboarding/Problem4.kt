@@ -6,7 +6,13 @@ fun solution4(cryptogram: String): String {
     val maxSumOfUpperCase = 'A'.toInt() + 'Z'.toInt()
 
     if (isCorrect4(cryptogram)) {
-
+        for (i in cryptogram)
+            when (i) {
+                in 'a'..'z' -> result += (maxSumOfLowerCase - i.toInt()).toChar()
+                in 'A'..'Z' -> result += (maxSumOfUpperCase - i.toInt()).toChar()
+                else -> result += i
+            }
+        return result
     }
     else return "wrong cryptogram"
 }
