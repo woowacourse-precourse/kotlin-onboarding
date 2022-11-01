@@ -12,6 +12,8 @@ fun solution2(cryptogram: String): String {
                 if(str.isEmpty()){      // str 비어있으면 빈 문자 바로 리턴
                     return ""
                 }
+                //str = str.substring(0,i-1) + str.substring(i+2,str.length-1)
+                println(str)
                 break
             }
             else if(i == str.length-2){     //마지막 까지 검사해도 중복 없으면 while 탈출
