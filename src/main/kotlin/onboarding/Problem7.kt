@@ -5,7 +5,18 @@ fun solution7(
     friends: List<List<String>>,
     visitors: List<String>
 ): List<String> {
-    return listOf()
+    val recommendFriendsMap = countFriendScore(user, friends, visitors)
+
+    return recommendFriendsMap.asSequence()
+        .sortedWith { e1, e2 ->
+            val value = e2.value.compareTo(e1.value)
+            val key = e1.key.compareTo(e2.key)
+
+            if (value != 0) value else key
+        }
+        .map { it.key }
+        .take(5)
+        .toList()
 }
 
 fun getFriendList(user: String, friends: List<List<String>>): HashSet<String> {
