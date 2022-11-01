@@ -11,16 +11,26 @@ fun solution4(word: String): String {
         "G", "F", "E", "D", "C", "B", "A"
     )
 
+    treeFrogWord = changeToTreeFrogLanguage(word, treeFrogWord, reverseOrderAlphabet)
+
+    return treeFrogWord
+}
+
+private fun changeToTreeFrogLanguage(
+    word: String,
+    treeFrogWord: String,
+    reverseOrderAlphabet: List<String>
+): String {
+    var treeFrogWord1 = treeFrogWord
     for (i in word.indices) {
-        treeFrogWord += when {
+        treeFrogWord1 += when {
             word[i] in 'a'..'z' -> (reverseOrderAlphabet[word[i] - 'a']).lowercase()
             word[i] in 'A'..'Z' -> (reverseOrderAlphabet[word[i] - 'A'])
             word[i].toString() == " " -> " "
             else -> word[i]
         }
     }
-
-    return treeFrogWord
+    return treeFrogWord1
 }
 
 fun isAppropriateWord(word: String) = when (word.length) {
