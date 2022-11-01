@@ -8,8 +8,9 @@ fun solution1(pobi: List<Int>, crong: List<Int>): Int {
         return -1
     }
 
-    determineMyScore( pageNumberAdd(pobi[0]), pageNumberMul(pobi[0]), pageNumberAdd(pobi[1]), pageNumberMul(pobi[1]) )
-    determineMyScore( pageNumberAdd(crong[0]), pageNumberMul(crong[0]), pageNumberAdd(crong[1]), pageNumberMul(crong[1]) )
+    val pobiScore = determineMyScore( pageNumberAdd(pobi[0]), pageNumberMul(pobi[0]), pageNumberAdd(pobi[1]), pageNumberMul(pobi[1]) )
+    val crongScore = determineMyScore( pageNumberAdd(crong[0]), pageNumberMul(crong[0]), pageNumberAdd(crong[1]), pageNumberMul(crong[1]) )
+
 
 }
 
@@ -56,6 +57,16 @@ fun determineMyScore(addNumLeft : Int, mulNumLeft : Int, addNumRight : Int, mulN
     return maxOf(addNumLeft, mulNumLeft, addNumRight, mulNumRight)
 }
 
+fun decideWinner(player1Num : Int, player2Num : Int) :Int {
 
+    return if (player1Num > player2Num) {
+        1
+    } else if (player1Num < player2Num) {
+        2
+    } else {
+        0
+    }
+
+}
 
 
