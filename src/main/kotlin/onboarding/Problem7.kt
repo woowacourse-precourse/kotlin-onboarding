@@ -16,6 +16,7 @@ fun solution7(
     friends: List<List<String>>,
     visitors: List<String>
 ): List<String> {
+
     makeFriendsMap(friends)
 
     for (friend in friendsMap.keys) {
@@ -36,7 +37,10 @@ fun solution7(
 
     recommendScoreMap.remove(user)
 
-    val sortedScoreMap = recommendScoreMap.toList().sortedByDescending { it.second }.toMap().toMutableMap()
+    // 기능 목록 4번
+    val comparator = compareByDescending<Pair<String, Int>> { it.second }.then(
+        compareBy { it.first })
+    val sortedScoreMap = recommendScoreMap.toList().sortedWith(comparator).toMap()
     recommendedFriends = sortedScoreMap.keys.toMutableList()
 
     if (recommendedFriends.size > 5) {
@@ -86,7 +90,7 @@ fun calculateRecommendScore(user: String, checkForName: String, visitors: List<S
         return 0
     }
 
-    // 친구는 아니고 추천 점수를 계산해야하는 경우 , 내친구 목록과 타겟 친구 목록을 서로 비교 같은게 있으면
+    // 친구는 아니고 추천 점수를 계산해야하는 경우 , 내친구 목록과 타겟 친구 목록을 서로 비교
     score += Collections.frequency(visitors, checkForName)
     val userFriends = friendsMap[user]!!.split(".")
     val checkForNameFriends = friendsMap[checkForName]!!.split(".")
