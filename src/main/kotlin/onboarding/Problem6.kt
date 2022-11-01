@@ -8,6 +8,15 @@ fun solution6(forms: List<List<String>>): List<String> {
         val userName = info[1]
         chunkedList.add(splitTwoLength(userName))
     }
+
+    for (i in forms.indices) {
+        val myChunkedList = chunkedList[i]
+        if (checkDuplicated(i, myChunkedList, chunkedList)) {
+            resultSet.add(forms[i][0])
+        }
+    }
+
+    return resultSet.toList().sorted()
 }
 
 
