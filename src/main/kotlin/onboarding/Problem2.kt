@@ -22,7 +22,9 @@ fun solution2(cryptogram: String): String {
 
                 // slice나 replace 이용해서 해봤지만 실패함...
 
-
+                var target = str.substring(i,i+2)
+                str = str.replace(target,"")
+                count += 1
 
             }
         }
