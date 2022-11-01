@@ -4,12 +4,12 @@ import java.io.Serializable
 
 fun solution2(cryptogram: String): Serializable {
     var key = "hello" // 지워야 할 연속 문자열 알파벳
-    var chunkedCryp: ArrayList<String> = cryptogram.chunked(1) as ArrayList<String>
+    val chunkedCryp: ArrayList<String> = cryptogram.chunked(1) as ArrayList<String>
     var flag = 0 // 연속 문자열을 삭제했을 경우 1씩 늘어남
     var ans = arrayListOf<String>()
 
     fun deleteRepetition(lst: ArrayList<String>): ArrayList<String> {
-        var exceptList = arrayListOf<Int>()
+        val exceptList = arrayListOf<Int>()
         ans = arrayListOf<String>()
         for (i in 0..lst.size-2) {
             if (lst[i] == lst[i+1]) {
@@ -46,5 +46,5 @@ fun solution2(cryptogram: String): Serializable {
         deleteRepetition(ans)
     }
 
-    return 0
+    return ans.joinToString(separator = "")
 }
