@@ -2,7 +2,7 @@ package onboarding
 //기능 1: 금액을 큰 수로부터 나눠서 0이 아니면 나눈 몫을 배열에 두고 해당 수만큼 mon에서 빼준다
 
 fun solution5(money: Int): List<Int> {
-   val list:MutableList<Int> = mutableListOf<Int>(0,0,0,0,0,0,0,0,0,0)
+   val list:MutableList<Int> = mutableListOf<Int>(0,0,0,0,0,0,0,0,0)
 
 
     var mon = money
@@ -22,30 +22,27 @@ fun solution5(money: Int): List<Int> {
         list[3] = (mon/1000)
         mon -= list[3]*1000
     }
-    if(mon /50000 != 0){
-        list[4] = (mon/50000)
-        mon -= list[4]*50000
-    }
+
     if(mon /500 != 0){
-        list[5] = (mon/500)
-        mon -= list[5]*500
+        list[4] = (mon/500)
+        mon -= list[4]*500
     }
     if(mon /100 != 0){
-        list[6] = (mon/100)
-        mon -= list[6]*100
+        list[5] = (mon/100)
+        mon -= list[5]*100
     }
     if(mon /50 != 0){
-        list[7] = (mon/50)
-        mon -= list[7]*50
+        list[6] = (mon/50)
+        mon -= list[6]*50
     }
 
     if(mon /10 != 0){
-        list[8] = (mon/10)
-        mon -= list[8]*10
+        list[7] = (mon/10)
+        mon -= list[7]*10
     }
     if(mon /1 != 0){
-        list[9] = (mon/1)
-        mon -= list[9]*1
+        list[8] = (mon/1)
+        mon -= list[8]*1
     }
 
     return list
