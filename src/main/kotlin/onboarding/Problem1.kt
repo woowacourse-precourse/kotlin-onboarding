@@ -1,70 +1,49 @@
 package onboarding
 
-
 fun solution1(pobi: List<Int>, crong: List<Int>): Int {
-    //TODO("프로그램 구현")
-    
-    if((is_not_val(pobi[0], pobi[1]) || is_not_val(crong[0], crong[1])))
-        return -1
-    
-    var pobi_r  : Int = comparepage(multipage(pobi[0]), sumpage(pobi[0]));
-    var crong_r : Int = comparepage(multipage(crong[0]), sumpage(crong[0]));
 
-    when {
-        pobi_r > crong_r -> return 1;
-        pobi_r < crong_r -> return 2;
-        pobi_r == crong_r -> return 0;
+    var pobiScore_crongScore = getScore(pobi[0], pobi[1]) - getScore(crong[0], crong[1])
+    if(IllegalInput(pobi, crong)) return -1
+    return when(pobiScore_crongScore){
+        0 -> 0
+        in 1..Int.MAX_VALUE -> 1
+        in Int.MIN_VALUE..-1 -> 2
+        else -> -1
     }
 }
 
-
-fun is_not_val(left:Int,right:Int) : Boolean
-{
-    if(left <= 1 || right <= 1 || left >= 400 || right >= 400)
+/**
+  * @Restriction
+  * 1. pobi, crong: except first,last page [1, 400]
+  * 2. pobi, crong: length = 2
+  * 3. pobi, crong: [left, right] page
+  * 4. left : odd number
+  * 5. right : even number
+  * 6. right = left + 1
+  */
+fun IllegalInput(pobi: List<Int>, crong: List<Int>): Boolean {
+    if (pobi.any { it !in 2..399 } || crong.any { it !in 2..399 })
         return true
-    else if(left == 1 || right == 400)
+    if (pobi.size != 2 || crong.size != 2)
         return true
-    else if((left - right) > 2)
+    if (pobi[0] % 2 == 0 || pobi[1] % 2 == 1)
         return true
-    else
-        return false
+    if (crong[0] % 2 == 0 || crong[1] % 2 == 1)
+        return true
+    if (pobi[0] + 1 != pobi[1] || crong[0] + 1 != crong[1])
+        return true
+    return false
 }
 
-fun sumpage(left:Int): Int
-{
-    var sum : Int = 0;
-    var sum_r : Int = 0;
-    var t_left : Int = left;
-    var t_right :Int = left + 1;
-    while(t_left != 0)
-    {
-    sum += left % 10
-    t_left /= 10
-    sum_r += t_right % 10
-    t_right /= 10
-    }
-    
+/* Returns score */
+fun getScore(a: Int, b: Int) = max(maxAddMultiply(a), maxAddMultiply(b))
+
+/* Returns max(add, multiply) [left page | right page ] */
+fun maxAddMultiply(page: Int): Int {
+    var page_list = page.toString().map {"$it".toInt()}
+    return max(page_list.sum(), page_list.reduce { mul, i -> mul * i })
 }
 
-fun multipage(left : Int) : Int
-{
-    var multi : Int = 1;
-    var multi_r : Int = 1;
-    var t_left : Int = left;
-    var t_right : Int = left + 1;
-    while( t_left !=0)
-    {
-        multi *= left % 10
-        t_left /= 10
-        multi_r *= t_right % 10
-        t_right /= 10
-    }
-}
+/* Returns max */
+fun max(a: Int, b: Int) = if (a > b) a else b
 
-fun comparepage(multi_p : Int, sum_p : Int): Int
-{
-    if(multi_p < sum_p)
-        return (sum_p)
-    else
-        return (multi_p)
-}
