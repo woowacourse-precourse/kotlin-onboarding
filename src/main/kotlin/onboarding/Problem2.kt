@@ -12,10 +12,15 @@ fun stackToString(stack: Stack<Char>): String {
 
 fun solution2(cryptogram: String): String {
     val stack = Stack<Char>()
+    var save = '-'
     for (ch in cryptogram) {
-        if (!stack.empty() && stack.peek() == ch) {
+        if (ch == save) {
+            if (stack.peek() == ch) stack.pop()
+            continue
+        } else if (!stack.empty() && stack.peek() == ch) {
             stack.pop()
         } else {
+            save = ch
             stack.push(ch)
         }
     }
