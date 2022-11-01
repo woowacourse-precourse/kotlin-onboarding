@@ -16,6 +16,9 @@ fun solution4(word: String): String {
             val i_lower_index = lower.indexOf(i)
             code.append(lower[25-i_lower_index])
         }
+        else if (i.code < 65 || i.code > 90 || i.code < 97 || i.code > 122) {
+            code.append(i)
+        }
     }
 
     return code.toString()
