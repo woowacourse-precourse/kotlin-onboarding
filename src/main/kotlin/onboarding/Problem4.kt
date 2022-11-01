@@ -11,7 +11,7 @@ fun solution4(word: String): String {
                 (155 - str.code).toChar()
             }
             32 -> ' '
-            else -> continue
+            else -> str
         }
     }
     return result
