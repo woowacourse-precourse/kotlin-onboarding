@@ -62,5 +62,13 @@ fun solution7(user: String, friends: List<List<String>>, visitors: List<String>)
     var recSortMap = recSort.toMap()
     var recList = recSortMap.keys.toList()
 
-
+    //추천 친구 최대 5명까지 return
+    var fiveList = listOf<String>()
+    if (recList.size > 5){
+        for (i in (0..4)){
+            fiveList.plus(recList[i])
+        }
+        return  fiveList
+    }
+    return recList
 }
