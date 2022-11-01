@@ -1,5 +1,17 @@
 package onboarding
 
+/**
+기능 목록
+- cryptogram 길이가 index 이하인 경우 반복문 빠져나오기
+- cryptogram i번째, i-1번째가 같은 경우 continuousCnt 1 증가, totalCnt 1 증가
+- i번째와 i-1번째가 같지 않고 continuousCnt가 1이 아니면 answer은 연속된 문자열 부분을 삭제하고 continuousCnt 1로 초기화
+- answer에 문자열 추가
+- 문자열 끝까지 돌았는데 totalCnt가 0이면 반복문 빠져나오기
+- 문자열 끝까지 돈 결과 전부 다 연속된 값인 경우 ""로 반복문 빠져나오기
+- 문자열 끝까지 돌았는데 연속된 문자 수가 1이 아닌 경우 연속된 문자열 부분 삭제
+- 문자열 끝까지 돌았으면 각 변수들 모두 초기화시키기
+ */
+
 fun solution2(cryptogram: String): String {
     var parameter = cryptogram
     var answer = parameter[0].toString()
@@ -21,9 +33,7 @@ fun solution2(cryptogram: String): String {
         answer += parameter[index]
 
         if (index == parameter.length - 1) {
-            // 더 이상 연속된 값이 없는 경우 반복문 빠져나가기
             if (totalCnt == 0) break
-            // 전부 다 연속된 값인 경우 ""로 반복문 빠져나가기
             if (continuousCnt == parameter.length) {
                 answer = ""
                 break
@@ -31,7 +41,6 @@ fun solution2(cryptogram: String): String {
             if (continuousCnt != 1) {
                 answer = answer.substring(0, answer.length - continuousCnt)
             }
-            // 전부 다 돈 경우 reset 시키고 다시 반복
             index = 1
             continuousCnt = 1
             parameter = answer
