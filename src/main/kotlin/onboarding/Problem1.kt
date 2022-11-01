@@ -1,11 +1,11 @@
 package onboarding
 
-val POBI_WIN = 1
-val CRONG_WIN = 2
-val DRAW = 0
-val EXCEPTION = -1
-val MIN_PAGE = 1
-val MAX_PAGE = 400
+const val POBI_WIN = 1
+const val CRONG_WIN = 2
+const val DRAW = 0
+const val EXCEPTION = -1
+const val MIN_PAGE = 1
+const val MAX_PAGE = 400
 
 fun solution1(pobi: List<Int>, crong: List<Int>): Int {
     if (!isValidation(pobi, crong)) {
