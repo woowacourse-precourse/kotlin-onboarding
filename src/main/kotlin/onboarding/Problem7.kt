@@ -38,6 +38,10 @@ fun solution7(
             friendScore[visitors[i]] = 1
         }
     }
+
+    for (i in alreadyFriend.indices) {
+        friendScore.remove(alreadyFriend[i])
+    }
     return listOf()
 }
 
