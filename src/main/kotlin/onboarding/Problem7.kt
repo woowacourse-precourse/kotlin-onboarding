@@ -11,7 +11,7 @@ fun solution7(
     visitors: List<String>
 ): List<String> {
     checkThrowException(user, friends, visitors)
-    return listOf()
+    return recommendNewFriends(user, friends, visitors)
 }
 
 private fun checkThrowException(
@@ -55,4 +55,40 @@ private fun throwFriendFormException(size: Int) {
 
 private fun throwNicknameFormException(user: String) {
     if (!Pattern.matches("^[a-z]*$", user)) throw error("사용자 아이디는 알파벳 소문자로만 이루어져 있어야 합니다!")
+}
+
+private fun recommendNewFriends(
+    user: String,
+    friends: List<List<String>>,
+    visitors: List<String>
+): List<String> {
+    val result = mutableListOf<String>()
+    val myFriends = mutableListOf<String>()
+    val newFriends = mutableMapOf<String, Int>()
+
+    friends.forEach { friend ->
+        when (user) {
+            friend[0] -> myFriends.add(friend[1])
+            friend[1] -> myFriends.add(friend[0])
+        }
+    }
+
+    friends.forEach { other ->
+        if (other[1] != user && myFriends.contains(other[0]) && !myFriends.contains(other[1])) {
+            newFriends[other[1]] = newFriends[other[1]]?.plus(CONNECTED) ?: CONNECTED
+        } else if (other[0] != user && !myFriends.contains(other[0]) && myFriends.contains(other[1])) {
+            newFriends[other[0]] = newFriends[other[0]]?.plus(CONNECTED) ?: CONNECTED
+        }
+    }
+
+    visitors.forEach { visitor ->
+        if (!myFriends.contains(visitor)) {
+            newFriends[visitor] = newFriends[visitor]?.plus(VISITED) ?: VISITED
+        }
+    }
+
+    result.addAll(newFriends.toList()
+        .sortedByDescending { (key, value) -> value }
+        .toMap().keys)
+    return result
 }
