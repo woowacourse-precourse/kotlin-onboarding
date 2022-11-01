@@ -1,7 +1,13 @@
 package onboarding
 
 fun solution6(forms: List<List<String>>): List<String> {
-    TODO("프로그램 구현")
+    val chunkedList = mutableListOf<List<String>>()
+    val resultSet = mutableSetOf<String>()
+
+    for (info in forms) {
+        val userName = info[1]
+        chunkedList.add(splitTwoLength(userName))
+    }
 }
 
 
@@ -15,3 +21,16 @@ fun splitTwoLength(userName : String): ArrayList<String> {
 }
 
 
+
+fun checkDuplicated(index : Int, myList : List<String>, chunkedList : List<List<String>> ) : Boolean {
+    for (i in chunkedList.indices) {
+        if (i == index) continue
+
+        val candidateNameList = chunkedList[i]
+        for (m in myList) {
+            if (m in candidateNameList) return true
+        }
+    }
+
+    return false
+}
