@@ -1,7 +1,18 @@
 package onboarding
 
 fun solution1(pobi: List<Int>, crong: List<Int>):Int {
-    return 0
+    val pobiMax = findMaxValue(pobi)
+    val crongMax = findMaxValue(crong)
+
+    return if (pobiMax == crongMax){
+        0
+    }
+    else if (pobiMax > crongMax){
+        1
+    }
+    else {
+        2
+    }
 }
 
 fun findMaxValue(list: List<Int>) : Int {
