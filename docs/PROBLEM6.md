@@ -21,3 +21,8 @@
 | forms | result |
 | --- | --- |
 | [ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ] | ["jason@email.com", "jm@email.com", "mj@email.com"] |
+
+### 구현 기능 목록
+
+1. 전체 nickname을 탐색하면서 각 pair가 몇번 나오는지 확인 ( 한 nickName에서 나오는 중복 제거 필요)
+2. 각 닉네임에서 두번 이상 나온 pair가 있는 경우 result에 이메일 넣는 기능
