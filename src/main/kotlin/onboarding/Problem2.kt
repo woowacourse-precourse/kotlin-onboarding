@@ -1,25 +1,15 @@
 package onboarding
 
-fun eraseRepeatedChar(cryptogram: String): String {
-    var res = ""
-    val len = cryptogram.length
-    if (len < 2) return cryptogram
-    if (cryptogram[0] != cryptogram[1]) res += cryptogram[0]
-    for (i in 1 until len - 1) {
-        if (cryptogram[i] == cryptogram[i + 1]) continue
-        if (cryptogram[i] == cryptogram[i - 1]) continue
-        res += cryptogram[i]
-    }
-    if (cryptogram[len - 2] != cryptogram[len - 1]) res += cryptogram[len - 1]
-    return res
-}
+import java.util.Stack
 
 fun solution2(cryptogram: String): String {
-    var ans = cryptogram
-    while (true){
-        val decryptRes = eraseRepeatedChar(ans)
-        if(decryptRes==ans) break
-        ans = decryptRes
+    val stack = Stack<Char>()
+    for (ch in cryptogram) {
+        if (!stack.empty() && stack.peek() == ch) {
+            stack.pop()
+        } else {
+            stack.push(ch)
+        }
     }
-    return ans
+    TODO()
 }
