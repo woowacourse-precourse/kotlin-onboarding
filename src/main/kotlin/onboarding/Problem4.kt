@@ -13,3 +13,17 @@ fun isAlphabet(char: Char) : Boolean {
 
     return false
 }
+
+
+fun makeDict() : Map<Char, Char> {
+    var resultDict = mutableMapOf<Char, Char>()
+    for (i in 65..90) {
+        resultDict[i.toChar()] = (155-i).toChar()
+    }
+
+    for (i in 97..122) {
+        resultDict[i.toChar()] = (219-i).toChar()
+    }
+
+    return resultDict
+}
