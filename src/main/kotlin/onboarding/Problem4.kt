@@ -11,8 +11,16 @@ fun solution4(word: String): String {
         "G", "F", "E", "D", "C", "B", "A"
     )
 
+    for (i in word.indices) {
+        treeFrogWord += if (word[i] in 'a'..'z') {
+            (reverseOrderAlphabet[word[i] - 'a']).lowercase()
+        } else {
+        }
+    }
+
     return treeFrogWord
 }
+
 fun isAppropriateWord(word: String): Boolean {
     if (word.length !in 1..1000) {
         return false
