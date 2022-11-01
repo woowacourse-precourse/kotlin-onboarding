@@ -1,7 +1,13 @@
 package onboarding
 
 fun solution5(money: Int): List<Int> {
-    
+    //money는 1 이상 1,000,000 이하인 자연수
+    if(money in 1..1000000 && money%1 ==0){
+
+    }else{
+        println("잘못된 값 입력")
+    }
+
     //화폐단위 리스트
     //만 원권, 만 원권, 오천 원권, 천 원권, 오백원 동전, 백원 동전, 오십원 동전, 십원 동전, 일원 동전
     val unit_list : List<Int> = listOf(50000, 10000, 5000, 1000, 500, 100, 50, 10, 1)
