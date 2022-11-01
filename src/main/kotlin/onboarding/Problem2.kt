@@ -1,7 +1,7 @@
 package onboarding
 
 fun removeString(target: String, startIndex: Int):String {
-    return target.substring(startIndex, startIndex+1)
+    return target.substring(0, startIndex)+target.substring(startIndex+2, target.length)
 }
 
 fun solution2(cryptogram: String): String {
@@ -16,6 +16,7 @@ fun solution2(cryptogram: String): String {
                 target = i
                 break
             }
+            i++
         }
         if(target != -1) {
             crypt = removeString(crypt,i)
