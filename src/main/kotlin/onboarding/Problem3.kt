@@ -1,5 +1,15 @@
 package onboarding
 
 fun solution3(number: Int): Int {
-    TODO("프로그램 구현")
+    if (!isAppropriateNumber(number)) {
+        return -1
+    }
+    return -1
+}
+
+fun isAppropriateNumber(number: Int): Boolean {
+    if (number !in 1..10000) {
+        return false
+    }
+    return true
 }
