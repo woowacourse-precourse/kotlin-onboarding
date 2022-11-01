@@ -37,3 +37,23 @@ private fun isContinuedPageException(list: List<Int>): Boolean {
     if (list[SECOND_PAGE] - list[FIRST_PAGE] != 1) return true
     return false
 }
+
+fun calculateSumOfPageNumber(num: Int): Int {
+    var input = num
+    var result = 0
+    while (input != 0) {
+        result += input % 10
+        input /= 10
+    }
+    return result
+}
+
+fun calculateMultiplyOfPageNumber(num: Int): Int {
+    var input = num
+    var result = 1
+    while (input != 0) {
+        result *= input % 10
+        input /= 10
+    }
+    return result
+}
