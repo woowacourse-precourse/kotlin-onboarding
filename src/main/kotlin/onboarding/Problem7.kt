@@ -4,6 +4,7 @@ import problem2.AlphabetVerifier
 import problem2.LowerCaseVerifier
 import problem2.StringLengthVerifier
 import problem6.ListSizeVerifier
+import problem7.UserManager
 
 private fun validateUserId(id:String) {
     val idValidator = InputValidator(
@@ -71,6 +72,9 @@ fun solution7(
     validateFriendInfo(friends)
 
     validateVisitors(visitors)
+
+    val userManager = UserManager(user, friends, visitors)
+    userManager.setUsers()
 
     return listOf()
 }
