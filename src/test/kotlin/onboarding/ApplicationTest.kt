@@ -47,6 +47,7 @@ class ApplicationTest {
             val result = ""
             assertThat(solution2(cryptogram)).isEqualTo(result)
         }
+
     }
 
     @Nested
@@ -64,6 +65,7 @@ class ApplicationTest {
             val result = 14
             assertThat(solution3(number)).isEqualTo(result)
         }
+
     }
 
     @Nested
@@ -126,5 +128,6 @@ class ApplicationTest {
             val result = listOf("andole", "jun", "bedi")
             assertThat(solution7(user, friends, visitors)).isEqualTo(result)
         }
+
     }
 }
