@@ -19,9 +19,20 @@ private fun addTwoLengthWords(
 ) {
     for (j in 1 until form[1].length) {
         val word = "${form[1][j - 1]}${form[1][j]}"
-        if (map[word] == null) map[word] = arrayListOf(index)
-        else map[word]!!.add(index)
+        addTwoLengthWordWithIndex(map, word, index)
     }
+}
+
+private fun addTwoLengthWordWithIndex(
+    map: HashMap<String, ArrayList<Int>>,
+    word: String,
+    index: Int
+) {
+    if (map[word] == null) {
+        map[word] = arrayListOf(index)
+        return
+    }
+    map[word]!!.add(index)
 }
 
 fun solution6(forms: List<List<String>>): List<String> {
