@@ -9,7 +9,7 @@ fun solution6(forms: List<List<String>>): List<String> {
             if (e[0][i] == e[0][i+1]) break
             else if (e[0][i+1].toInt() - e[0][i].toInt() == 1) break
             else if (e[0][i+1] == '@') {
-                result.add(e[0])
+                if (e[0] !in result) result.add(e[0])
                 break
             }
         }
