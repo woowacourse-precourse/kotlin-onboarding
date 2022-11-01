@@ -23,12 +23,11 @@ fun removeSameAlphabet(cryptogram: String) : String{
 }
 fun solution2(cryptogram: String): String {
     //암호문 구하기
-    var temp : String = cryptogram
-    var answer : String = ""
+    var answer : String = cryptogram
     while(true){
-        answer=removeSameAlphabet(temp)
-        if(answer==temp) break // 종료 조건
-        temp=answer
+        temp=removeSameAlphabet(answer)
+        if(temp==answer) break // 종료 조건
+        answer=temp
     }
     return answer
 }
