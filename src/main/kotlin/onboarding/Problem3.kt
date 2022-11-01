@@ -1,11 +1,5 @@
 package onboarding
 
-import kotlin.contracts.contract
-
-fun main() {
-    println(solution3(13))
-}
-
 fun solution3(number: Int): Int {
     var count = 0
 
