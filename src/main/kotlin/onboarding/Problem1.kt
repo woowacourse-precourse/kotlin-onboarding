@@ -25,3 +25,14 @@ fun isPageValid(pageNumbers: List<Int>): Boolean {
 
     return true
 }
+
+fun getSumScore(number: Int): Int {
+    val str = number.toString()
+    var result = 0
+
+    for (c in str) {
+        result += c - '0'
+    }
+
+    return result
+}
