@@ -22,6 +22,20 @@ fun calculateFriendScore(user: String, friendGraph: Map<String, Set<String>>): M
     return result
 }
 
+/**
+ * Returns visitor score of each user.
+ */
+fun calculateVisitScore(user: String, visitors: List<String>, friendGraph: Map<String, Set<String>>): Map<String, Int> {
+    val result = mutableMapOf<String, Int>()
+    val userFriends = friendGraph[user]!!
+    for(visitor in visitors) {
+        if(userFriends.contains(visitor)) continue
+        if(result[visitor] == null) result[visitor] = VISITOR_SCORE
+        else result[visitor] = result[visitor]!! + VISITOR_SCORE
+    }
+    return result
+}
+
 
 /**
  * Returns a graph of [friends].
