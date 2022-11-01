@@ -24,3 +24,21 @@ fun isException(numberList : List<Int>) : Boolean {
 
     return false
 }
+
+
+fun pageNumberAdd(num: Int) : Int {
+    var input = num
+    var result = 0
+
+    while (input != 0) {
+        result += input % 10
+        input /= 10
+    }
+
+    return result
+}
+
+
+
+
+
