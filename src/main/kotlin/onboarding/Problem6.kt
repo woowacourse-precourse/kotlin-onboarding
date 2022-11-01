@@ -13,7 +13,7 @@ fun solution6(forms: List<List<String>>): List<String> {
             for(i3: Int in 0 until forms.size) {
                 if (i == i3)
                     continue
-                if(forms[i][1].contains(part)) {
+                if(forms[i3][1].contains(part)) {
                     emaillist.add(forms[i][0])
                     break//중복 있는거 확인하면 반복 종료
                 }
@@ -23,5 +23,5 @@ fun solution6(forms: List<List<String>>): List<String> {
 
 
 
-    return emaillist.sorted().toList()
+    return emaillist.sorted().distinct().toList()
 }
