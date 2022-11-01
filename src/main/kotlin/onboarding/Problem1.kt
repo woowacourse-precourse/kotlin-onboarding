@@ -29,6 +29,8 @@ fun solution1(pobi: List<Int>, crong: List<Int>): Int {
 
     val pobiLeftresult = compare(pobi[0])
     val crongLeftresult = compare(crong[0])
+    val pobiRightResult = compare(pobi[1])
+    val crongRightResult = compare(crong[1])
 
 }
 
