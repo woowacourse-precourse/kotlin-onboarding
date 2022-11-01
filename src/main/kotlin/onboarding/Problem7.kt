@@ -20,13 +20,6 @@ fun solution7(
             scoreMap[element[1]] = scoreMap.getOrDefault(element[1], 0) + 10
         else if(!element.contains(user) && friendList.contains(element[1]))
             scoreMap[element[0]] = scoreMap.getOrDefault(element[0], 0) + 10
-//        println("scoreMap : $scoreMap")
-//        if(!element.contains(user))
-//            if(friendList.contains(element[0]))
-//                scoreMap[element[1]] = scoreMap.getOrDefault(element[1], 0) + 10
-//            else if(friendList.contains(element[1]))
-//                scoreMap[element[0]] = scoreMap.getOrDefault(element[0], 0) + 10
-
     }
 
     for(element in visitors)
