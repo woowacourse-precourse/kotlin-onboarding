@@ -132,7 +132,7 @@ class ApplicationTest {
     // 직접 추가
     // Prob 4
     @Nested
-    inner class ChangeCharByFrogTest() {
+    inner class ChangeCharByFrogTest {
         @Test
         fun case1() {
             val word = 'A'
@@ -156,7 +156,7 @@ class ApplicationTest {
 
     // Prob 6
     @Nested
-    inner class GetSubWordsOfNameTest() {
+    inner class GetSubWordsOfNameTest {
         @Test
         fun case1() {
             val name = "제이엠"
@@ -172,7 +172,7 @@ class ApplicationTest {
     }
 
     @Nested
-    inner class GetSubWordsListTest() {
+    inner class GetSubWordsListTest {
         @Test
         fun case1() {
             val forms = listOf(
@@ -184,6 +184,31 @@ class ApplicationTest {
                 hashSetOf("제이", "이슨")
             )
             assertThat(getSubWordsList(forms)).isEqualTo(result)
+        }
+    }
+
+    @Nested
+    inner class IsDuplicatedNameTest {
+        @Test
+        fun case1() {
+            val index = 0
+            val list = arrayOf(
+                hashSetOf("제이", "이엠"),
+                hashSetOf("제이", "이슨")
+            )
+            val result = true
+            assertThat(isDuplicatedName(index, list)).isEqualTo(result)
+        }
+
+        @Test
+        fun case2() {
+            val index = 0
+            val list = arrayOf(
+                hashSetOf("제이", "이엠"),
+                hashSetOf("우테", "테코")
+            )
+            val result = false
+            assertThat(isDuplicatedName(index, list)).isEqualTo(result)
         }
     }
 }
