@@ -229,4 +229,24 @@ class ApplicationTest {
             assertThat(getMyFriendsList(user, friends)).isEqualTo(result)
         }
     }
+
+    @Nested
+    inner class GetRecommendFriendsTest {
+        @Test
+        fun case1() {
+            val user = "mrko"
+            val friends = listOf(
+                listOf("donut", "andole"),
+                listOf("donut", "jun"),
+                listOf("donut", "mrko"),
+                listOf("shakevan", "andole"),
+                listOf("shakevan", "jun"),
+                listOf("shakevan", "mrko")
+            )
+            val myFriends = hashSetOf("donut", "shakevan")
+            val visitors = listOf("bedi", "bedi", "donut", "bedi", "shakevan")
+            val result = hashMapOf("andole" to 20, "jun" to 20, "bedi" to 3)
+            assertThat(getRecommendFriends(user, friends, myFriends, visitors)).isEqualTo(result)
+        }
+    }
 }
