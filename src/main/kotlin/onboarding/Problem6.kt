@@ -33,7 +33,13 @@ fun getDuplicatedList(forms: List<List<String>>):List<String>{
 }
 
 fun compareTwoNickname(nickName1: String, nickName2: String): Boolean{
-    // TODO: 2022-11-01  
+    for(i in 0 until nickName1.length-1){
+        val pattern = nickName1.substring(i until i+2)
+        if(nickName2.contains(pattern)){
+            return true
+        }
+    }
+    return false
 }
 
 fun addToDuplicatedEmailList(duplicatedList: ArrayList<String>, email: String): ArrayList<String>{
