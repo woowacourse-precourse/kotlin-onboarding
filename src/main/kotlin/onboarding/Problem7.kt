@@ -5,7 +5,11 @@ fun solution7(
     friends: List<List<String>>,
     visitors: List<String>
 ): List<String> {
-    TODO("프로그램 구현")
+    val userList = getUserList(friends, visitors)
+    val friendsList = getFriendsList(friends, user)
+    val friendsFriendList = getFriendsFriendList(friends, friendsList, user)
+
+    return getSortedScore(userList, friendsFriendList, visitors, friendsList)
 }
 
 fun getUserList(friends: List<List<String>>, visitors: List<String>): List<String> {
