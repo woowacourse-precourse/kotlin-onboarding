@@ -13,3 +13,9 @@ private fun separateDigit(number: Int): List<Int> {
     }
     return digitList
 }
+
+private fun checkClap(x: Int): Int {
+    val gameList = listOf<Int>(3, 6, 9)
+    return if (x in gameList) 1
+    else 0
+}
