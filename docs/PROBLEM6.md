@@ -21,3 +21,9 @@
 | forms | result |
 | --- | --- |
 | [ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ] | ["jason@email.com", "jm@email.com", "mj@email.com"] |
+
+## 기능 목록
+1. 문자열을 두 글자씩 나눠서 리스트로 반환하는 기능
+2. (키, (이메일 셋))의 맵에 반환된 문자열을 삽입하는 기능
+3. 맵을 순회하며 value 셋의 크기가 2 이상인 경우 셋의 모든 원소를 결과 셋에 삽입하는 기능
+4. 결과 셋을 리스트로 옮기고 정렬한 결과를 반환하는 기능
