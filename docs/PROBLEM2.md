@@ -21,3 +21,7 @@
 | --- | --- |
 | "browoanoommnaon" | "brown" |
 | "zyelleyz" | "" |
+
+### 구현 방법
+
+- 중복된 문자열을 만나면 
