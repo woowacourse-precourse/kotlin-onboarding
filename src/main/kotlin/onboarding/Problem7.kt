@@ -6,6 +6,7 @@ fun solution7(
     visitors: List<String>
 ): List<String> {
     val userFriendList = mutableListOf<String>()
+    val recommendedFriends = mutableMapOf<String, Int>()
 
     searchUserFriends(user, userFriendList, friends)
 }
