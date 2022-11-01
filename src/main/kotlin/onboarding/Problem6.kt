@@ -23,5 +23,5 @@ fun solution6(forms: List<List<String>>): List<String> {
 
 
 
-    return emaillist.sorted().distinct().toList()
+    return emaillist.sorted().toList()
 }
