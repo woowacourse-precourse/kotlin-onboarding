@@ -55,9 +55,7 @@ private fun calculatePlusPoint(page: Int): Int {
 
     val tempPage = page.toString()
 
-    for (i: Char in tempPage) {
-        maxPoint += Character.getNumericValue(i)
-    }
+    for (i: Char in tempPage) maxPoint += Character.getNumericValue(i)
 
     return maxPoint
 }
@@ -67,9 +65,7 @@ private fun calculateMultiplyPoint(page: Int): Int {
 
     val tempPage = page.toString()
 
-    for (i: Char in tempPage) {
-        maxPoint *= Character.getNumericValue(i)
-    }
+    for (i: Char in tempPage) maxPoint *= Character.getNumericValue(i)
 
     return maxPoint
 }
