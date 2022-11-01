@@ -14,14 +14,14 @@ fun solution6(forms: List<List<String>>): List<String> {
 
             if (formsMapContainsNickNameSliceKey) {
                 val duplicateKeyEmail = formsMap[nickNameSliceKey]!!
-                val emailIsNotSame = duplicateKeyEmail != forms[i][0]
+                val emailIsNotSame = duplicateKeyEmail != forms[i][PRIMARY_ARRAY]
 
                 if (emailIsNotSame) {
                     emails.add(duplicateKeyEmail)
-                    emails.add(forms[i][0])
+                    emails.add(forms[i][PRIMARY_ARRAY])
                 }
             }
-            formsMap[nickNameSliceKey] = forms[i][0]
+            formsMap[nickNameSliceKey] = forms[i][PRIMARY_ARRAY]
         }
     }
     val result: List<String> = emails
