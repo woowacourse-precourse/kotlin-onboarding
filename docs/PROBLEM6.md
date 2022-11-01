@@ -21,3 +21,9 @@
 | forms | result |
 | --- | --- |
 | [ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ] | ["jason@email.com", "jm@email.com", "mj@email.com"] |
+
+## 기능목록
+1. 결과를 담을 해시맵 생성
+2. 입력값에서 닉네임만 추출
+3. 모든 닉네임들마다 2글자씩 잘라서 겹치는 닉네임은 결과 해시맵에 저장
+4. 결과 해시맵에서 이메일만 출력
