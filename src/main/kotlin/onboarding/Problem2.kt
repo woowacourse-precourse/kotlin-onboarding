@@ -8,6 +8,9 @@ fun solution2(cryptogram: String): String {
     var index = 1
 
     while (true) {
+        if (parameter.length <= index) {
+            break
+        }
         if (parameter[index] == parameter[index - 1]) {
             continuousCnt++ // 몇 개 중복인지
             totalCnt++ // 몇 번 중복인지
