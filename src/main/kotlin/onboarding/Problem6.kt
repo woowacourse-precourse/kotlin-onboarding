@@ -7,8 +7,8 @@ fun solution6(forms: List<List<String>>): List<String> {
     3. 최초로 키워드를 등록한 이메일은 dubplicateEmailSet에 들어가지 않았으므로, 반복문을 통해 duplicatekeywordSet에 있는 단어를 비교하여 duplicateEmailSet을 완성한다.
     4. 문자를 오름차순으로 정렬 후 리턴한다
      */
-    var nick:String=""
-    var str:String="" //두글자씩 조갤 데이터
+    lateinit var nick:String
+    lateinit var str:String //두글자씩 조갤 데이터
     val allKeywordSet =mutableSetOf<String>() //모든 두글자들의 집합
     val duplicateEmailSet =mutableSetOf<String>() //중복이 발생한 이메일 리스트
     val duplicateKeywordSet= mutableSetOf<String>() //중복 키워드 집합

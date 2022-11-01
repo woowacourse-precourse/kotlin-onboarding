@@ -2,7 +2,7 @@ package onboarding
 
 fun solution3(number: Int): Int {
 
-    var num:String=""
+    lateinit var num:String
     var count:Int=0
     if(number<=0){ //음수가 들어오면 0 반환
         return 0

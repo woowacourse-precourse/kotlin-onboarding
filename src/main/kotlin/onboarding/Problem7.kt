@@ -17,9 +17,9 @@ fun solution7(
     5. 친구 추천 목록 정렬
      */
     val graph = LinkedHashMap<String, LinkedList<String>>() //friends를 graph로 표현한다
-    var mFriend: String = "" //user의 인접 노드(현재 나랑 친구인 사람)
+    lateinit var mFriend: String  //user의 인접 노드(현재 나랑 친구인 사람)
     val map = mutableMapOf<String, Int>() //이름과 점수로 이루어진 map
-    var temp: String = "" //중복 연산을 막기위해 임시로 사용할 변수
+    lateinit var temp: String  //중복 연산을 막기위해 임시로 사용할 변수
     var result= mutableListOf<String>() //결과를 반환할 변수
 
 

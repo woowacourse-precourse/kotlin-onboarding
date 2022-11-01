@@ -1,7 +1,8 @@
 package onboarding
 
 fun solution5(money: Int): List<Int> {
-    val list=MutableList<Int>(9, {i->0}) //지폐와 동전의 갯수를 담을 리스트 생성
+    //val list=MutableList<Int>(9, {i->0}) //지폐와 동전의 갯수를 담을 리스트 생성
+    val list=mutableListOf(0, 0, 0, 0, 0, 0, 0, 0, 0)
     val unitList:List<Int> = listOf(50000,10000,5000,1000,500,100,50,10,1) //각 화폐의 단위가 저장된 리스트
 
     if(money<=0){  //0보다 작은 입력이 들어오면 빈 리스트 반환
