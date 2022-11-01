@@ -39,8 +39,19 @@ fun solution1(pobi: List<Int>, crong: List<Int>): Int {
     val pobiBiggest = if(pobiLeftResult >= pobiRightResult) pobiLeftResult if(pobiRightResult >= pobiLeftResult) pobiRightResult
     val crongBiggest = if(crongLeftResult >= crongRightResult) crongLeftResult if(crongRightResult >= crongLeftResult) crongRightResult
 
+    //4. 알맞은 값을 return
+    if(pobiBiggest > crongBiggest){
+        return 1
+    }
+    if(crongBiggest > pobiBiggest){
+        return 2
+    }
+    if(pobiBiggest == crongBiggest){
+        return 0
+    }
 
 }
+
 
 fun compare(pageNum : Int):Int{
 
