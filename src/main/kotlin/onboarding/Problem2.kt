@@ -1,39 +1,30 @@
 package onboarding
 
 fun solution2(cryptogram: String): String {
-    return checkDuplication(cryptogram)
-
+    return decodeCrypto(cryptogram)
 }
 
-fun checkDuplication(cryptogram: String): String {
-    var word = cryptogram
-    var resultCrypto = ""
-    var checkDuplication = false
-
-
+fun decodeCrypto(cryptogram: String): String { // 문자열 검사, 중복 시 이벤트 처리, 반복
+    var resultCrypto = cryptogram
+    var cryptoContainer = ""
+    var duplicationSwitch = false
 
     for (j in 0 until cryptogram.length / 2) {
-        word += " "
-        for (i in 0 until word.length - 1) {
-
-            if (word[i] != word[i + 1]) {
-                if (checkDuplication) {
-
-                    checkDuplication = false
+        resultCrypto += " "
+        for (i in 0 until resultCrypto.length - 1) {
+            if (resultCrypto[i] != resultCrypto[i + 1]) {
+                if (duplicationSwitch) {
+                    duplicationSwitch = false
                 } else {
-
-                    resultCrypto += word[i]
+                    cryptoContainer += resultCrypto[i]
                 }
             } else {
-
-                checkDuplication = true
+                duplicationSwitch = true
             }
         }
-
-        word = resultCrypto
-        checkDuplication = false
-        resultCrypto = ""
-
+        resultCrypto = cryptoContainer
+        duplicationSwitch = false
+        cryptoContainer = ""
     }
-    return word
+    return resultCrypto
 }
