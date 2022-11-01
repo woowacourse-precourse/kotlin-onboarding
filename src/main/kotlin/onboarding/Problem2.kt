@@ -6,11 +6,27 @@ fun solution2(cryptogram: String): String {
     }
 
     val cryptogramList = mutableListOf<String>()
+    var flag = true
 
     for (i in cryptogram.indices) {
         cryptogramList.add(cryptogram[i].toString())
     }
-    return ""
+    while (flag) {
+        if (cryptogramList.isEmpty()) {
+            break
+        }
+
+        for (i in 0 until cryptogramList.size - 1) {
+            flag = false
+            if (cryptogramList[i] == cryptogramList[i + 1]) {
+                cryptogramList.removeAt(i + 1)
+                cryptogramList.removeAt(i)
+                flag = true
+                break
+            }
+        }
+    }
+    return if (cryptogramList.isEmpty()) "" else cryptogramList.joinToString("")
 }
 
 fun isAppropriateCryptogram(cryptogram: String): String {
