@@ -21,3 +21,12 @@
 | forms | result |
 | --- | --- |
 | [ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ] | ["jason@email.com", "jm@email.com", "mj@email.com"] |
+
+---
+
+### 기능 목록 
+    1. 각 크루들의 닉네임이 서로 연속적으로 포함되는 닉네임을 갖고 있는지 확인
+    2. 1. 에서 연속적으로 포함되는 닉네임이 있다면, 해당 닉네임의 email을 리스트에 따로 저장
+    3. email 리스트를 오름차순으로 정렬하고 중복 제거 후 return
+
+---
