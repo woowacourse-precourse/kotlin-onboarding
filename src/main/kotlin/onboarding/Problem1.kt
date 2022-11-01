@@ -26,7 +26,7 @@ fun scoreCalculator(num: List<Int>): Int {
     }
 
     compareArray.sorted()
-    resultScore = compareArray[0]
+    resultScore = compareArray[3]
     return resultScore
 }
 
