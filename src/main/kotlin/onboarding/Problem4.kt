@@ -29,8 +29,8 @@ fun solution4(word: String): String {
         if (words[i] == "h") {
             words[i] = "s"
             continue }
-        if (words[i] == "I") { // Warning 예외
-            words[i] = "R"
+        if (words[i] == "i") {
+            words[i] = "r"
             continue }
         if (words[i] == "j") {
             words[i] = "q"
@@ -84,6 +84,86 @@ fun solution4(word: String): String {
             words[i] = "a"
             continue }
 
+        ////////////////////////////////////////////////////////////////////////////////////
+
+        if (words[i] == "A") {
+            words[i] = "Z"
+            continue }
+        if (words[i] == "B") {
+            words[i] = "Y"
+            continue }
+        if (words[i] == "C") {
+            words[i] = "X"
+            continue }
+        if (words[i] == "D") {
+            words[i] = "W"
+            continue }
+        if (words[i] == "E") {
+            words[i] = "V"
+            continue }
+        if (words[i] == "F") {
+            words[i] = "U"
+            continue }
+        if (words[i] == "G") {
+            words[i] = "T"
+            continue }
+        if (words[i] == "H") {
+            words[i] = "S"
+            continue }
+        if (words[i] == "I") { // Warning 예외
+            words[i] = "R"
+            continue }
+        if (words[i] == "J") {
+            words[i] = "Q"
+            continue }
+        if (words[i] == "K") {
+            words[i] = "P"
+            continue }
+        if (words[i] == "L") {
+            words[i] = "O"
+            continue }
+        if (words[i] == "M") {
+            words[i] = "N"
+            continue }
+        if (words[i] == "N") {
+            words[i] = "M"
+            continue }
+        if (words[i] == "O") {
+            words[i] = "L"
+            continue }
+        if (words[i] == "P") {
+            words[i] = "K"
+            continue }
+        if (words[i] == "Q") {
+            words[i] = "J"
+            continue }
+        if (words[i] == "R") {
+            words[i] = "I"
+            continue }
+        if (words[i] == "S") {
+            words[i] = "H"
+            continue }
+        if (words[i] == "T") {
+            words[i] = "G"
+            continue }
+        if (words[i] == "U") {
+            words[i] = "F"
+            continue }
+        if (words[i] == "V") {
+            words[i] = "E"
+            continue }
+        if (words[i] == "W") {
+            words[i] = "D"
+            continue }
+        if (words[i] == "X") {
+            words[i] = "C"
+            continue }
+        if (words[i] == "Y") {
+            words[i] = "B"
+            continue }
+        if (words[i] == "Z") {
+            words[i] = "A"
+            continue }
     }
 
     return words.joinToString("")
