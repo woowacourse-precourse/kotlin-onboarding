@@ -65,12 +65,23 @@ class UserManager(private val userId: String,
     }
 
     private fun addUserToRecommendList(otherUser:User) {
-        val user = users[userId]!!
-        val userFriends = user.getFriends()
-
-        if(otherUser.getId() !in userFriends) {
+        if(isRecommendable(otherUser)) {
             recommendList.add(otherUser)
         }
+    }
+
+    private fun isRecommendable(otherUser:User) : Boolean {
+        if(otherUser.getScore() == 0) {
+            return false
+        }
+
+        val user = users[userId]!!
+        val userFriends = user.getFriends()
+        if(otherUser.getId() in userFriends) {
+            return false
+        }
+
+        return true
     }
 
     fun setUsers() {
