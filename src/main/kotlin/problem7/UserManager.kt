@@ -11,7 +11,12 @@ class UserManager(private val user: String,
     }
 
     private fun addIfNotExists(id:String) : User{
-        return User(id)
+        var user = users[id]
+        if(user == null) {
+            user = User(id)
+            users[id] = user
+        }
+        return user
     }
 
     private fun addAsFriend(user1:User, user2:User) {}
