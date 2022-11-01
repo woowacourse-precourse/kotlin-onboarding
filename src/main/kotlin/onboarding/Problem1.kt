@@ -42,7 +42,7 @@ fun plusCalculation(num: Int): Int{
 /**
  * 각 자리수를 곱하는 함수이다.
  */
-fun productCalculation(num: Int): Int{ 
+fun productCalculation(num: Int): Int{
     var num = num
     var answer = 1
     if (num < 10){// 1의 자리 숫자이면 답은 숫자 값이 된다.
@@ -55,4 +55,13 @@ fun productCalculation(num: Int): Int{
         }
     }
     return answer * num // 마지막 자리 숫자를 마지막으로 곱한다.
+}
+
+/**
+ * 4개의 숫자를 비교하는 함수
+ */
+fun comparison(num1: Int, num2: Int, num3: Int, num4: Int): Int{
+    val array = listOf(num1, num2, num3, num4)
+    var answer = array.maxOrNull() // 가장 큰 숫자를 answer에 저장한다
+    return answer!!
 }
