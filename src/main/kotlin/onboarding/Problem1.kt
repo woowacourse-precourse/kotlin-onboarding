@@ -36,3 +36,14 @@ fun getSumScore(number: Int): Int {
 
     return result
 }
+
+fun getMulScore(number: Int): Int {
+    val str = number.toString()
+    var result = 1
+
+    for (c in str) {
+        result *= c - '0'
+    }
+
+    return result
+}
