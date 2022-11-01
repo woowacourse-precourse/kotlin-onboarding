@@ -6,7 +6,8 @@ fun solution3(number: Int): Int {
     }
 
     var countNumberOf369 = 0
-    val filterWith369 = (0..number).filter { it % 10 == 3 || it % 10 == 6 || it % 10 == 9 || it / 10 == 3 || it / 10 == 6 || it / 10 == 9 }
+    val filterWith369 =
+        (0..number).filter { it % 10 == 3 || it % 10 == 6 || it % 10 == 9 || it / 10 == 3 || it / 10 == 6 || it / 10 == 9 }
 
     for (element in filterWith369) {
         var element369 = element
@@ -20,9 +21,7 @@ fun solution3(number: Int): Int {
     return countNumberOf369
 }
 
-fun isAppropriateNumber(number: Int): Boolean {
-    if (number !in 1..10000) {
-        return false
-    }
-    return true
+fun isAppropriateNumber(number: Int) = when (number) {
+    !in 1..10000 -> false
+    else -> true
 }
