@@ -53,7 +53,8 @@ fun solution1(pobi: List<Int>, crong: List<Int>): Int {
 }
 
 
-fun compare(pageNum : Int):Int{
+
+fun comparePageNum(pageNum : Int):Int{
 
     var sum = 0; var mul = 0
 
