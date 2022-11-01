@@ -43,7 +43,9 @@ fun compareTwoNickname(nickName1: String, nickName2: String): Boolean{
 }
 
 fun addToDuplicatedEmailList(duplicatedList: ArrayList<String>, email: String): ArrayList<String>{
-    // TODO: 2022-11-01  
+    if(!isEmailDuplicated(duplicatedList, email))
+        duplicatedList.add(email)
+    return duplicatedList
 }
 
 fun isEmailDuplicated(duplicatedList: ArrayList<String>, email: String): Boolean{
