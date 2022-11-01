@@ -28,3 +28,13 @@ fun getUserList(friends: List<List<String>>, visitors: List<String>): List<Strin
 
     return userList
 }
+
+fun getFriendsList(friends: List<List<String>>, user: String): List<String> {
+    val friendsList: MutableList<String> = mutableListOf()
+    for (i: Int in friends.indices) {
+        if (friends[i][1] == user) {
+            friendsList.add(friends[i][0])
+        }
+    }
+    return friendsList.toList()
+}
