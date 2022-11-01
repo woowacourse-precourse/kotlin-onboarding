@@ -3,24 +3,33 @@ package onboarding
 fun solution6(forms: List<List<String>>): List<String> {
     val result = mutableListOf<String>()
     val crewInfoMap = mutableMapOf<String, String>()
-    val nicknameSet = mutableSetOf<String>()
+    var nicknameSet = mutableSetOf<String>()
 
     forms.forEach { crewInfo ->
-        crewInfoMap.keys.forEach { nickname ->
-            if (checkDuplicated(crewInfo[1], nickname)) {
-                nicknameSet.add(nickname)
-                nicknameSet.add(crewInfo[1])
-            }
-        }
-        crewInfoMap[crewInfo[1]] = crewInfo[0]
+        nicknameSet = getDuplicatedNicknames(crewInfo[1], crewInfoMap, nicknameSet)
+        crewInfoMap[crewInfo[0]] = crewInfo[1]
     }
 
-    result.run {
-        addAll(nicknameSet.mapNotNull { nickname -> crewInfoMap[nickname] })
-        sort()
+    nicknameSet.forEach { nickname ->
+        result.addAll(getEmailByNickname(nickname, crewInfoMap))
     }
+    result.sort()
 
     return result.toList()
+}
+
+private fun getDuplicatedNicknames(
+    nickname: String,
+    crewInfoMap: MutableMap<String, String>,
+    nicknameSet: MutableSet<String>
+): MutableSet<String> {
+    crewInfoMap.values.forEach { crewNickname ->
+        if (checkDuplicated(nickname, crewNickname)) {
+            nicknameSet.add(nickname)
+            nicknameSet.add(crewNickname)
+        }
+    }
+    return nicknameSet
 }
 
 private fun checkDuplicated(nickname1: String, nickname2: String): Boolean {
@@ -30,4 +39,10 @@ private fun checkDuplicated(nickname1: String, nickname2: String): Boolean {
         }
     }
     return false
+}
+
+private fun getEmailByNickname(nickname: String, crewInfoMap: MutableMap<String, String>): List<String> {
+    return crewInfoMap.filterValues { it == nickname }
+        .keys
+        .toList()
 }
