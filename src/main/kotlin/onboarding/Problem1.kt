@@ -22,6 +22,7 @@ package onboarding
     2. 왼쪽 페이지가 홀수가 아닌 경우
     3. 오른쪽 페이지가 짝수가 아닌 경우
     4. 페이지의 번호가 연속되는 수가 아닌 경우
+    5. 왼쪽 페이지가 오른쪽 페이지보다 더 클 경우
  */
 
 fun solution1(pobi: List<Int>, crong: List<Int>): Int {
