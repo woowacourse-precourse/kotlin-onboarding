@@ -17,7 +17,7 @@ fun solution7(
 fun	findFriends(user:String ,friends: List<List<String>>,):Pair<MutableList<String>,MutableList<String>>{
 
     var friendsML = friends.toMutableList()
-    var foundFriends = mutableListOf<String>(user)
+    var foundFriends = mutableListOf(user)
     var friendsSet = mutableListOf<String>()
 
     for(i in 0..1){
@@ -76,7 +76,7 @@ fun point(friendsList:MutableList<String>,knowEachFriend:MutableList<String>,vis
     for (i in visitorsML.indices){
         val vML = visitorsML[i]
         if(!namePointMap.containsKey(vML)){
-            namePointMap.put(vML,1)
+            namePointMap[vML] = 1
             continue
         }
         val value= namePointMap.get(vML)!!+1

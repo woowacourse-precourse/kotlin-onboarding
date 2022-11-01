@@ -14,13 +14,19 @@ fun solution6(forms: List<List<String>>): List<String> {
     }
     for (i in 0 until formsHash.size - 1) {
         val listI = formsHash[i]
-        for (j in i + 1 until formsHash.size) {
+        for (j in i + 1 until formsHash.size)
+        {
+            //불필요한 연산 삭제
+            if(arrOfRepeat[i]==1 && arrOfRepeat[j]==1) {
+                continue
+            }
+
             val listJ = formsHash[j]
             for (k in listI!!.indices)
                 for (l in listJ!!.indices)
                     if (listI[k] == listJ[l]) {
-                        arrOfRepeat[i]++
-                        arrOfRepeat[j]++
+                        arrOfRepeat[i]=1
+                        arrOfRepeat[j]=1
                     }
         }
     }
@@ -34,3 +40,4 @@ fun solution6(forms: List<List<String>>): List<String> {
     repeatName.sort()
     return repeatName
 }
+
