@@ -43,6 +43,15 @@ fun solution7(
         snsScore.remove(it)
     }
 
+    for (data in snsScore.toList().sortedWith(
+        compareBy({ -it.second },
+            { it.first })
+    )) {
+        if (data.second == 0)
+            break
+        ans.add(data.first)
+    }
+    
     return ans
 }
 
