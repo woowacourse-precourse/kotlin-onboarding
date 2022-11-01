@@ -1,6 +1,8 @@
 ### [제출 코드](https://github.com/briandr97/kotlin-onboarding/tree/briandr97/src/main/kotlin/onboarding) / [기능 목록](https://github.com/briandr97/kotlin-onboarding/tree/briandr97/docs/feature-list)
+<br/>
 
 ***
+<br/>
 
 # 미션 - 온보딩
 
