@@ -16,6 +16,12 @@ package onboarding
 fun solution6(forms: List<List<String>>): List<String> {
     //프로그램 구현
 
+    //3. email 리스트를 중복 제거
+    var result = duplicateNameList(forms).toSet().toList()
+    //3. email 리스트 오름차순으로 정렬
+    result = result.sortedBy { it }
+    //3. return
+    return result
 }
 
 //1. 각 크루들의 닉네임이 서로 연속적으로 포함되는 닉네임을 갖고 있는지 확인
