@@ -10,9 +10,10 @@ private fun convert(money: Int): List<Int> {
     val result = mutableListOf<Int>()
 
     var tempMoney = money
-    for (change in changeArray) {
+    changeArray.forEach { change ->
         result.add(tempMoney / change)
         tempMoney -= (change * (tempMoney / change))
     }
+
     return result
 }
