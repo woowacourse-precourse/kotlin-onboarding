@@ -8,32 +8,35 @@ fun solution7(
 
     val relation = mutableMapOf<String, MutableSet<String>>()
     val snsScore = mutableMapOf<String, Int>()
-    val ans = listOf<String>()
+    val ans = mutableListOf<String>()
 
     for (data in friends) {
         if (relation[data[0]] == null) {
             snsScore[data[0]] = 0
             relation[data[0]] = mutableSetOf()
-        } else {
-            relation[data[0]]?.add(data[1])
         }
+        relation[data[0]]?.add(data[1])
+
         if (relation[data[1]] == null) {
             relation[data[1]] = mutableSetOf()
             snsScore[data[1]] = 0
-        } else {
-            relation[data[1]]?.add(data[0])
-
         }
         relation[data[1]]?.add(data[0])
     }
-
+    for (data in visitors) {
+        if (snsScore[data] == null)
+            snsScore[data] = 1
+        else
+            snsScore[data] = snsScore[data]!! + 1
+    }
+    
     relation[user]?.forEach {
         relation[it]?.forEach { friend ->
+            if (snsScore[friend] == null)
+                snsScore[friend] = 0
             snsScore[friend] = snsScore[friend]!! + 10
         }
     }
-
-    
 
     return ans
 }
