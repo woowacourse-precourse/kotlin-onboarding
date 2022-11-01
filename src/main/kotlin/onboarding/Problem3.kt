@@ -10,9 +10,7 @@ private fun calcThreeSixNineRepeat(number: Int): Int {
         var stepNumber = i
         while (stepNumber != 0) {
             val processedStepNumber = stepNumber % 10
-            if (processedStepNumber == 3 || processedStepNumber == 6 || processedStepNumber == 9) {
-                result += 1
-            }
+            if (processedStepNumber == 3 || processedStepNumber == 6 || processedStepNumber == 9) result += 1
             stepNumber /= 10
         }
     }
