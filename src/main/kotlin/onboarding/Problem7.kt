@@ -95,19 +95,3 @@ fun solution7(
 
     return result
 }
-
-//fun main() {
-//    val user = "mrko"
-//    val friends = listOf(
-//        listOf("donut", "andole"),
-//        listOf("donut", "jun"),
-//        listOf("donut", "mrko"),
-//        listOf("shakevan", "andole"),
-//        listOf("shakevan", "jun"),
-//        listOf("shakevan", "mrko")
-//    )
-//    val visitors = listOf("bedi", "bedi", "donut", "bedi", "shakevan")
-//
-//    val result = solution7(user, friends, visitors)
-//    println(result)
-//}

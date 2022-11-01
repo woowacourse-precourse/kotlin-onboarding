@@ -32,14 +32,3 @@ fun solution6(forms: List<List<String>>): List<String> {
 
     return result.toList()
 }
-
-//fun main(){
-//    val forms = listOf(
-//        listOf("jm@email.com", "abc"), // 제이엠
-//        listOf("jason@email.com", "abd"), // 제이슨
-//        listOf("woniee@email.com", "ef"), // 워니
-//        listOf("mj@email.com", "cab"), // 엠제이
-//        listOf("nowm@email.com", "bac"), // 이제엠
-//    )
-//    println(solution6(forms))
-//}
