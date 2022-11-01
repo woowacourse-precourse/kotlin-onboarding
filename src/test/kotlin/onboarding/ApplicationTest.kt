@@ -160,14 +160,30 @@ class ApplicationTest {
         @Test
         fun case1() {
             val name = "제이엠"
-            val result = listOf("제이", "이엠")
+            val result = hashSetOf("제이", "이엠")
             assertThat(getSubWordsOfName(name)).isEqualTo(result)
         }
         @Test
         fun case2() {
             val name = "아이엠쑤"
-            val result = listOf("아이", "이엠", "엠쑤")
+            val result = hashSetOf("아이", "이엠", "엠쑤")
             assertThat(getSubWordsOfName(name)).isEqualTo(result)
+        }
+    }
+
+    @Nested
+    inner class GetSubWordsListTest() {
+        @Test
+        fun case1() {
+            val forms = listOf(
+                listOf("jm@email.com", "제이엠"),
+                listOf("jason@email.com", "제이슨")
+            )
+            val result = arrayOf(
+                hashSetOf("제이", "이엠"),
+                hashSetOf("제이", "이슨")
+            )
+            assertThat(getSubWordsList(forms)).isEqualTo(result)
         }
     }
 }
