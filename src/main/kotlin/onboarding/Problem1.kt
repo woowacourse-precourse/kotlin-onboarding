@@ -3,7 +3,16 @@ package onboarding
 import kotlin.math.*
 
 fun solution1(pobi: List<Int>, crong: List<Int>): Int {
-    TODO("프로그램 구현")
+
+    val pobiMaxNum = findMaxNum(pobi)
+    val crongMaxNum = findMaxNum(crong)
+
+    // pobi와 crong의 큰 수를 비교하고 리턴값 만들기
+    if(pobiMaxNum > crongMaxNum) return 1
+    else if(pobiMaxNum < crongMaxNum) return 2
+    else if(pobiMaxNum == crongMaxNum) return 0
+    else return -1
+
 }
 
 fun findMaxNum(list: List<Int>): Int{
