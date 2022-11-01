@@ -29,13 +29,18 @@ fun solution7(
         else
             snsScore[data] = snsScore[data]!! + 1
     }
-    
+
     relation[user]?.forEach {
         relation[it]?.forEach { friend ->
             if (snsScore[friend] == null)
                 snsScore[friend] = 0
             snsScore[friend] = snsScore[friend]!! + 10
         }
+    }
+
+    snsScore.remove(user)
+    relation[user]?.forEach {
+        snsScore.remove(it)
     }
 
     return ans
