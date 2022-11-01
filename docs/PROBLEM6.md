@@ -21,3 +21,8 @@
 | forms | result |
 | --- | --- |
 | [ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ] | ["jason@email.com", "jm@email.com", "mj@email.com"] |
+
+### 기능 목록
+1. 닉네임이 중복되면 이메일을 결과 값에 추가하는 기능
+2. 이름에서 두 글자 단어를 뽑아내는 기능
+3. 두 글자 단어 배열을 만드는 기능
