@@ -2,7 +2,7 @@ package onboarding
 
 fun solution2(_cryptogram: String): String {
     var cryptogram = _cryptogram
-    
+
     while(true) {
         val positions = getDuplicateCharIndex(cryptogram)
 
@@ -19,7 +19,7 @@ fun solution2(_cryptogram: String): String {
 fun getDuplicateCharIndex(cryptogram: String): MutableSet<Int> {
     val result = mutableSetOf<Int>()
 
-    for(i in cryptogram.indices) {
+    for(i in 0 until cryptogram.length - 1) {
         if(cryptogram[i] == cryptogram[i + 1]) {
             result.add(i)
             result.add(i + 1)
