@@ -1,7 +1,17 @@
 package onboarding
 
 fun solution6(forms: List<List<String>>): List<String> {
-    TODO("프로그램 구현")
+    val subWordsList = getSubWordsList(forms)
+    var resultList = arrayListOf<String>()
+
+    for(i in forms.indices) {
+        if(isDuplicatedName(i, subWordsList)) {
+            resultList.add(forms[i][0])
+        }
+    }
+
+    resultList.sort()
+    return resultList
 }
 
 fun isDuplicatedName(index: Int, subWordsList: Array<HashSet<String>>): Boolean {
