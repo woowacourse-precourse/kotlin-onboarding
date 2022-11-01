@@ -70,6 +70,17 @@ fun makeFriendGraph(friends: List<List<String>>): Map<String, Set<String>> {
 }
 
 /**
+ * Returns sorted list of [friendList] based on [scores].
+ */
+fun sortFriends(friendList: List<String>, scores: Map<String, Int>): List<String> {
+    var sortedList = listOf<String>()
+    sortedList = friendList.sorted()
+    sortedList = friendList.sortedWith(compareByDescending<String> {scores[it]})
+    return sortedList
+}
+
+
+/**
  * Returns list of recommended friends for [user].
  */
 fun recommendFriend(user: String, friends: List<List<String>>, visitors: List<String>): List<String> {
@@ -78,8 +89,7 @@ fun recommendFriend(user: String, friends: List<List<String>>, visitors: List<St
     val visitorScore = calculateVisitScore(user, visitors, friendGraph)
     val scores = calculateScore(visitorScore, friendScore)
     var userList = scores.keys.toList()
-    userList = userList.sorted()
-    userList = userList.sortedWith(compareByDescending<String> {scores[it]})
+    userList = sortFriends(userList, scores)
 
     if(userList.size <= MAX_USER) return userList
     else return userList.slice(0 until MAX_USER)
