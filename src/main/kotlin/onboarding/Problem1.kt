@@ -49,8 +49,8 @@ fun solsub1(sol: List<Int>): Int{
         a= a*sol[1]/100
     }
     if(sol[0]>=10){//10의 자리수
-        a= a * ((sol[0]%10)/10)
-        a= a * ((sol[1]%10)/10)
+        a= a * ((sol[0]%100)/10)
+        a= a * ((sol[1]%100)/10)
     }
     a=a*(sol[0]%10)//1의 자리수
     a=a*(sol[1]%10)
@@ -61,8 +61,8 @@ fun solsub1(sol: List<Int>): Int{
         b=b+sol[1]/100
     }
     if(sol[0]>=10){//10의자리수
-        b=b+((sol[0]%10)/10)
-        b=b+((sol[1]%10)/10)
+        b=b+((sol[0]%100)/10)
+        b=b+((sol[1]%100)/10)
         if(sol[0]==99){//sol[0]== 99 sol[1]==100 일때
             b+=1
         }
@@ -79,3 +79,5 @@ fun solsub1(sol: List<Int>): Int{
     return b
 
 }
+
+
