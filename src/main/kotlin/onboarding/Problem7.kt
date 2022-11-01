@@ -51,22 +51,6 @@ fun solution7(
             break
         ans.add(data.first)
     }
-    
+
     return ans
-}
-
-
-fun main() {
-    val user = "mrko"
-    val friends = listOf(
-        listOf("donut", "andole"),
-        listOf("donut", "jun"),
-        listOf("donut", "mrko"),
-        listOf("shakevan", "andole"),
-        listOf("shakevan", "jun"),
-        listOf("shakevan", "mrko")
-    )
-    val visitors = listOf("bedi", "bedi", "donut", "bedi", "shakevan")
-    val result = listOf("andole", "jun", "bedi")
-    print(solution7(user, friends, visitors).equals(result))
 }
