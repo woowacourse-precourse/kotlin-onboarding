@@ -21,3 +21,13 @@
 | forms | result |
 | --- | --- |
 | [ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ] | ["jason@email.com", "jm@email.com", "mj@email.com"] |
+
+
+
+-------------------------------
+
+### 작성한 기능 목록
+
+0. 유저들의 닉네임을 2글자씩 잘라서, List에 담는 함수 : splitTwoLength
+1. 0번에서 생성한 chunkedList를 가지고, 유저 순서대로, 자신의 닉네임이 중복되어 있는지 확인하는 함수 : checkDuplicated
+2. 주어진 함수를 사용하며, 중복되어 있다면 resultSet(중복방지)에 유저 이메일을 담고, 오름차순으로 정렬하여 리턴하는 함수 : solution6   
