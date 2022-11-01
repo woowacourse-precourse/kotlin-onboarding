@@ -114,6 +114,7 @@ class ApplicationTest {
 
     @Nested
     inner class Problem7Test {
+
         @Test
         fun case1() {
             val user = "mrko"
@@ -129,13 +130,8 @@ class ApplicationTest {
             val result = listOf("andole", "jun", "bedi")
             assertThat(solution7(user, friends, visitors)).isEqualTo(result)
         }
+
     }
-
-
-
-
-
-
 
 
 }
