@@ -12,7 +12,11 @@ fun solution1(pobi: List<Int>, crong: List<Int>): Int {
         return exception
     }
 
-    return exception
+    return when (compareWhichIsBigNumber(findGreatestPage(pobi), findGreatestPage(crong))) {
+        0 -> draw
+        1 -> pobiWin
+        else -> crongWin
+    }
 }
 fun isAppropriateList(pobi: List<Int>, crong: List<Int>): Boolean {
     return when {
@@ -21,6 +25,14 @@ fun isAppropriateList(pobi: List<Int>, crong: List<Int>): Boolean {
         abs(pobi[0] - pobi[1]) > 1 || abs(crong[0] - crong[1]) > 1 -> false
         pobi[0] > pobi[1] || crong[0] > crong[1] -> false
         else -> true
+    }
+}
+
+fun compareWhichIsBigNumber(pobysGreatestNumber: Int, crongsGreatesNumber: Int): Int {
+    return when {
+        (pobysGreatestNumber == crongsGreatesNumber) -> 0
+        (pobysGreatestNumber > crongsGreatesNumber) -> 1
+        else -> 2
     }
 }
 
