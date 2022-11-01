@@ -34,6 +34,10 @@ fun solution1(pobi: List<Int>, crong: List<Int>): Int {
     if(getArrangeError(pobi[1] == false)) return -1
     if(getArrangeError(crong[1] == false)) return -1
 
+//예외사항 2. 왼쪽 페이지가 홀수인지 확인
+    if(isOddNum(pobi[0] == false)) return -1
+    if(isOddNum(crong[0] == false)) return -1
+
     //1. 왼쪽 페이지 비교
     val pobiLeftResult = compare(pobi[0])
     val crongLeftResult = compare(crong[0])
@@ -63,6 +67,16 @@ fun solution1(pobi: List<Int>, crong: List<Int>): Int {
 fun getArrangeError(pageNum : Int):Boolean{
     if(pageNum in 2..399) return true
     else return false
+}
+
+//예외사항 2. 왼쪽 페이지가 홀수인지 확인
+fun isOddNum(pageNum: Int):Boolean{
+    if(pageNum % 2 == 0){
+        return false
+    }
+    if(pageNum % 2 != 0){
+        return true
+    }
 }
 
 fun comparePageNum(pageNum : Int):Int{
