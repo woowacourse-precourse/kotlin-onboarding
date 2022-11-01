@@ -3,6 +3,7 @@ package onboarding
 // 기능 1: string을 charArray로 변환
 // 기능 2: char을 int로 변환
 // 기능 3: 해당 int를 아스키 코드를 이용하여 대소문자를 바꾸고 문자를 바꿈
+// 기능 4: chararray를 string으로 변환
 fun solution4(word: String): String {
     var char = word.toCharArray()
     var num = char.size
