@@ -8,6 +8,23 @@ package onboarding
 fun solution2(cryptogram: String): String {
     var inputCrytoGram = cryptogram
 
+    while (true) {
+        // 중복 문자열을 찾는 함수의 리턴 값을 result에 할당
+        var result = overlapFind(inputCrytoGram)
+
+        // 중복이 없어서 리턴값이 초기 input과 일치할 경우
+        if (result == inputCrytoGram) {
+            break
+        }
+
+        // input을 리턴 값으로 변경
+        inputCrytoGram = result
+
+        // 중복 문자열을 모두 제거하고 공백만 남았을 경우
+        if (result == "") {
+            break
+        }
+    }
     return inputCrytoGram
 }
 
