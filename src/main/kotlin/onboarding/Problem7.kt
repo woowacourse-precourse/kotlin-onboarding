@@ -46,4 +46,19 @@ fun solution7(
         }
     }
 
+    for (i in visitors) {
+
+        if (!myFriend.contains(i)) {
+
+            if (i in resultScore) {
+                resultScore[i] = resultScore.getValue(i).plus(1)
+                continue
+            }
+            resultScore[i] = 1
+        }
+
+    }
+
+
+    return resultScore.toList().sortedBy { it.first }.sortedByDescending { it.second }.map { it.first }.take(5)
 }
