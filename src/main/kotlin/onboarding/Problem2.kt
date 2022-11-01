@@ -9,14 +9,14 @@ fun decodeCrypto(cryptogram: String): String { // 문자열 검사, 중복 시 �
     var cryptoContainer = ""
     var duplicationSwitch = false
 
-    for (j in 0 until cryptogram.length / 2) {
+    for (i in 0 until cryptogram.length / 2) {
         resultCrypto += " "
-        for (i in 0 until resultCrypto.length - 1) {
-            if (resultCrypto[i] != resultCrypto[i + 1]) {
+        for (j in 0 until resultCrypto.length - 1) {
+            if (resultCrypto[j] != resultCrypto[j + 1]) {
                 if (duplicationSwitch) {
                     duplicationSwitch = false
                 } else {
-                    cryptoContainer += resultCrypto[i]
+                    cryptoContainer += resultCrypto[j]
                 }
             } else {
                 duplicationSwitch = true
