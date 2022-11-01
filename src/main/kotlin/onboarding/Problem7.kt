@@ -5,7 +5,14 @@ fun solution7(
     friends: List<List<String>>,
     visitors: List<String>
 ): List<String> {
+    var scores = initScore(user, friends)
+    scores = updateScore(visitors, scores)
+}
 
+fun updateScore(visitors: List<String>, scores: MutableMap<String, Int>): MutableMap<String, Int> {
+    for(visitor in visitors) {
+        scores[visitor] = scores[visitor]!!.plus(1)
+    }
 }
 
 fun initScore(user: String, friends: List<List<String>>): MutableMap<String, Int> {
