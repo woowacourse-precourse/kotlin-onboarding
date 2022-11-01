@@ -231,7 +231,7 @@ class ApplicationTest {
     }
 
     @Nested
-    inner class GetRecommendFriendsTest {
+    inner class GetRecommendedFriendsTest {
         @Test
         fun case1() {
             val user = "mrko"
@@ -246,7 +246,7 @@ class ApplicationTest {
             val myFriends = hashSetOf("donut", "shakevan")
             val visitors = listOf("bedi", "bedi", "donut", "bedi", "shakevan")
             val result = hashMapOf("andole" to 20, "jun" to 20, "bedi" to 3)
-            assertThat(getRecommendFriends(user, friends, myFriends, visitors)).isEqualTo(result)
+            assertThat(getRecommendedFriends(user, friends, myFriends, visitors)).isEqualTo(result)
         }
     }
 }

@@ -8,13 +8,13 @@ fun solution7(
     TODO("프로그램 구현")
 }
 
-fun getRecommendFriends(
+fun getRecommendedFriends(
     user: String,
     friends: List<List<String>>,
     myFriends: HashSet<String>,
     visitors: List<String>
 ): HashMap<String, Int> {
-    var recommendFriendsMap = hashMapOf<String, Int>()
+    var recommendedFriendsMap = hashMapOf<String, Int>()
 
     for(friend in friends) {
         if(friend[0] == user || friend[1] == user) {
@@ -26,7 +26,7 @@ fun getRecommendFriends(
             myFriends.contains(friend[1]) -> { friend[0] }
             else -> { continue }
         }
-        recommendFriendsMap[commonFriend] = recommendFriendsMap.getOrDefault(commonFriend, 0) + 10
+        recommendedFriendsMap[commonFriend] = recommendedFriendsMap.getOrDefault(commonFriend, 0) + 10
     }
 
     for(visitor in visitors) {
@@ -34,10 +34,10 @@ fun getRecommendFriends(
             continue
         }
 
-        recommendFriendsMap[visitor] = recommendFriendsMap.getOrDefault(visitor, 0) + 1
+        recommendedFriendsMap[visitor] = recommendedFriendsMap.getOrDefault(visitor, 0) + 1
     }
 
-    return recommendFriendsMap
+    return recommendedFriendsMap
 }
 
 fun getMyFriendsList(
