@@ -18,15 +18,7 @@ private fun validateUserId(id:String) {
 }
 
 private fun validateUser(user:String) {
-    val userValidator = InputValidator(
-        listOf(
-            StringLengthVerifier(1, 30),
-            AlphabetVerifier(),
-            LowerCaseVerifier()
-        )
-    )
-
-    userValidator.validate(user)
+    validateUserId(user)
 }
 
 private fun validateFriends(friends: List<List<String>>) {
@@ -48,17 +40,9 @@ private fun validateFriends(friends: List<List<String>>) {
 }
 
 private fun validateFriendInfo(friends:List<List<String>>) {
-    val friendIdValidator = InputValidator(
-        listOf(
-            StringLengthVerifier(1, 30),
-            AlphabetVerifier(),
-            LowerCaseVerifier()
-        )
-    )
-
     for((user1, user2) in friends) {
-        friendIdValidator.validate(user1)
-        friendIdValidator.validate(user2)
+        validateUserId(user1)
+        validateUserId(user2)
     }
 }
 
@@ -70,16 +54,8 @@ private fun validateVisitors(visitors: List<String>) {
     )
     listValidator.validate(visitors)
 
-    val visitorIdValidator = InputValidator(
-        listOf(
-            StringLengthVerifier(1, 30),
-            AlphabetVerifier(),
-            LowerCaseVerifier()
-        )
-    )
-
     for(visitor in visitors) {
-        visitorIdValidator.validate(visitor)
+        validateUserId(visitor)
     }
 }
 
