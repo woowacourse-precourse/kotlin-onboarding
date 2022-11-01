@@ -1,0 +1,293 @@
+[33mcommit 99be8430272d23f769f13c08b8d09636344e9cfd[m[33m ([m[1;36mHEAD -> [m[1;32mlee989898[m[33m)[m
+Author: lee989898 <@@qwer1352>
+Date:   Tue Nov 1 21:58:24 2022 +0900
+
+    [refactor](Problem7) isAppropriateInput 함수 if문 when으로 변경
+
+[33mcommit 5edd2688a738db57d10d22069c8b2e102f4a3bbb[m
+Author: lee989898 <@@qwer1352>
+Date:   Tue Nov 1 21:57:14 2022 +0900
+
+    [refactor](Problem6) isAppropriateForms 함수 if문 when으로 변경
+
+[33mcommit c83b8755a3080cf7b61d9193438c51939e89c35f[m
+Author: lee989898 <@@qwer1352>
+Date:   Tue Nov 1 21:54:44 2022 +0900
+
+    [refactor](Problem4) isAppropriateMoney 함수 if문 when으로 변경
+
+[33mcommit e8f5f23ec0e0df3bd522e36c8f765f886fce4264[m
+Author: lee989898 <@@qwer1352>
+Date:   Tue Nov 1 21:53:34 2022 +0900
+
+    [refactor](Problem4) isAppropriateWord 함수 if문 when으로 변경
+
+[33mcommit 3af3c055f15ecf319daa15d63ebcb9fa52d2bb70[m
+Author: lee989898 <@@qwer1352>
+Date:   Tue Nov 1 21:52:38 2022 +0900
+
+    [refactor](Problem3) isAppropriateNumber 함수 if문 when으로 변경
+
+[33mcommit f48ba74a068957ff81afd09468addc02a467dc7a[m
+Author: lee989898 <@@qwer1352>
+Date:   Tue Nov 1 21:51:22 2022 +0900
+
+    [refactor](Problem2) ""반환 할수 있게 "" 에서 "\"\"" 로 변경
+
+[33mcommit 4fdb14aab5ca96ec1252ad33809db75a9d781ebb[m
+Author: lee989898 <@@qwer1352>
+Date:   Tue Nov 1 21:50:29 2022 +0900
+
+    [refactor](Problem2) isAppropriateCryptogram 함수 if문 when으로 변경
+
+[33mcommit 7f78632403ed6ecd5e502d375f7882a4cb17d44d[m
+Author: lee989898 <@@qwer1352>
+Date:   Tue Nov 1 21:48:15 2022 +0900
+
+    [refactor](Problem1) 변수명 직관적으로 이해하기 쉽게 변경
+
+[33mcommit d3eba897697f945f9079eced5bb2934147bf9a39[m[33m ([m[1;31morigin/lee989898[m[33m)[m
+Author: lee989898 <@@qwer1352>
+Date:   Tue Nov 1 14:41:04 2022 +0900
+
+    [docs](Problem7) 기능 목록 5번 이해하기 쉽게 수정
+
+[33mcommit 6a50e7f00449a40189162585cf53d95925f8ca05[m
+Author: lee989898 <@@qwer1352>
+Date:   Tue Nov 1 14:40:20 2022 +0900
+
+    [feat](Problem7) 친구 점수 Map에서 아이디는 알파벳 순으로 점수는 내림 차순으로 정렬하여 앞에서 5개 요소만 뽑는 기능 구현
+
+[33mcommit 28a7ac001531ea606b25daf58b51baa09e597dbf[m
+Author: lee989898 <@@qwer1352>
+Date:   Tue Nov 1 14:39:37 2022 +0900
+
+    [feat](Problem7) 이미 친구인 사람들을 친구 점수에서 삭제하는 기능 구현
+
+[33mcommit 6c8dc862173c86dd083995ba5cdea28917982908[m
+Author: lee989898 <@@qwer1352>
+Date:   Tue Nov 1 14:38:27 2022 +0900
+
+    [feat](Problem7) 친구 점수 Map에서 방문한 횟수만큼 1점을 추가하는 기능 구현
+
+[33mcommit 178fdf5b1255cc29d53295eb6d2671d45f4c96ac[m
+Author: lee989898 <@@qwer1352>
+Date:   Tue Nov 1 14:37:59 2022 +0900
+
+    [feat](Problem7) 친구 점수 Map에서 이미 친구인 친구가 아는 친구는 10점을 추가해준다.
+
+[33mcommit 79ee8dd5cb0b09fa5a67dc995a9e7169b913f27a[m
+Author: lee989898 <@@qwer1352>
+Date:   Tue Nov 1 14:37:06 2022 +0900
+
+    [feat](Problem7) 이미 친구인 사람들을 담는 리스트 선언 후 이미 친구인 사람들을 넣어준다.
+
+[33mcommit 86f08eb82c7759afac1deaf5dbe104761b3297dd[m
+Author: lee989898 <@@qwer1352>
+Date:   Tue Nov 1 14:36:38 2022 +0900
+
+    [feat](Problem7) 친구 점수를 담는 Map 선언
+
+[33mcommit 96f993a0c95ce7eeb553161f066bcf96d9ba5037[m
+Author: lee989898 <@@qwer1352>
+Date:   Tue Nov 1 14:36:06 2022 +0900
+
+    [feat](Problem7) 잘못된 값이 들어왔을때 원인을 알려주는 함수 구현
+
+[33mcommit 01abc534bfe692af81cbc60004f0505c88360140[m
+Author: lee989898 <@@qwer1352>
+Date:   Tue Nov 1 14:35:31 2022 +0900
+
+    [docs](Problem7) 기능 목록표 추가
+
+[33mcommit 91db9e5276b827587aa1d45414d0c8b53ccd502f[m
+Author: lee989898 <@@qwer1352>
+Date:   Tue Nov 1 14:21:40 2022 +0900
+
+    [feat](Problem6) 리스트로 변환하는 기능 구현
+
+[33mcommit 0971e94667e640f5ffe1064a2e5a9e5f4f8e7a6b[m
+Author: lee989898 <@@qwer1352>
+Date:   Tue Nov 1 14:18:57 2022 +0900
+
+    [feat](Problem6) 두 글자 이상의 문자가 연속적으로 순서에 맞추어 포함됐는지 확인하여 Set에 추가하는 기능 구현
+
+[33mcommit 3fe46d1ce102f439519343fb48a6853fec9e7f99[m
+Author: lee989898 <@@qwer1352>
+Date:   Tue Nov 1 14:18:06 2022 +0900
+
+    [feat](Problem6) nickname을 길이 2로 잘라 Map에 추가하는 기능 구현
+
+[33mcommit 3813f25e2925e67e5e0e5444a1de906b15153b4b[m
+Author: lee989898 <@@qwer1352>
+Date:   Tue Nov 1 14:17:16 2022 +0900
+
+    [feat](Problem6) email을 담는 Set과 email, 닉네임을 담는 Map 변수 선언
+
+[33mcommit 582132cbcdf9fb3692c9dd6df0d8b83c1e8cd4d8[m
+Author: lee989898 <@@qwer1352>
+Date:   Tue Nov 1 14:16:30 2022 +0900
+
+    [feat](Problem6) 잘못된 값이 들어왔을때 원인을 알려주는 함수 구현
+
+[33mcommit 900ba671d988c665b8398424d9e07d39c39ef1a2[m
+Author: lee989898 <@@qwer1352>
+Date:   Tue Nov 1 14:15:09 2022 +0900
+
+    [docs](Problem6) 기능 목록표 추가
+
+[33mcommit 7779134d5f5a68256b9836104c8cfc662b51beb5[m
+Author: lee989898 <@@qwer1352>
+Date:   Tue Nov 1 13:46:32 2022 +0900
+
+    [feat](Problem5) 각 화폐 종류로 나눈 몫을 화폐 종류별 개수 리스트/배열에 추가 구현
+
+[33mcommit 3d19f509bdc612064f3aa5040c4f5c96f762e192[m
+Author: lee989898 <@@qwer1352>
+Date:   Tue Nov 1 13:45:52 2022 +0900
+
+    [feat](Problem5) 화폐 종류별 개수 리스트/배열 및 화폐 종류 리스트/배열 변수 선언
+
+[33mcommit 7f9fc31b9fcadc6150b6ca7ef2f6e0fbfc1b00c5[m
+Author: lee989898 <@@qwer1352>
+Date:   Tue Nov 1 13:44:27 2022 +0900
+
+    [feat](Problem5) 잘못된 값이 들어왔을때 빈 배열을 반환하는 함수 구현
+
+[33mcommit a3228884490c2c585b0000e29dc92ece34d99fa9[m
+Author: lee989898 <@@qwer1352>
+Date:   Tue Nov 1 13:41:18 2022 +0900
+
+    [docs](Problem5) 기능 목록표 추가
+
+[33mcommit b73366ad5ccb1a6b264e58796c7899cdbebe954d[m
+Author: lee989898 <@@qwer1352>
+Date:   Tue Nov 1 13:11:45 2022 +0900
+
+    [feat](Problem4) 알파벳 외의 문자는 변환하지 않는 기능
+
+[33mcommit 90b7aaa89531de645bc4d070f0f822728cc5f31d[m
+Author: lee989898 <@@qwer1352>
+Date:   Tue Nov 1 13:11:17 2022 +0900
+
+    [feat](Problem4) 알파벳 대문자는 알파벳 역순 대문자로 변환하는 기능 구현
+
+[33mcommit 9279ff2d4d6da18b087b14a35efd6bd38809456f[m
+Author: lee989898 <@@qwer1352>
+Date:   Tue Nov 1 13:10:50 2022 +0900
+
+    [feat](Problem4) 알파벳 소문자는 알파벳 역순 소문자로 변환하는 기능 구현
+
+[33mcommit 1021e0197488c27d9239abce1801584db463fc97[m
+Author: lee989898 <@@qwer1352>
+Date:   Tue Nov 1 13:09:18 2022 +0900
+
+    [feat](Problem4) 알파벳을 역순으로 담은 리스트 변수 추가
+
+[33mcommit 8780ade138c65d0772fa38aeaeb6fbad2b018c62[m
+Author: lee989898 <@@qwer1352>
+Date:   Tue Nov 1 13:08:52 2022 +0900
+
+    [feat](Problem4) 결과를 담을treeFrogWord 변수 추가
+
+[33mcommit a211b22c32eaf0c816bfc59b3fd202ab47b30cbd[m
+Author: lee989898 <@@qwer1352>
+Date:   Tue Nov 1 13:08:12 2022 +0900
+
+    [feat](Problem4) 잘못된 값이 들어왔을때 원인을 알려주는 함수 구현
+
+[33mcommit ffd9122b5075318d16ccfcef914285b11b6c51bb[m
+Author: lee989898 <@@qwer1352>
+Date:   Tue Nov 1 13:07:30 2022 +0900
+
+    [docs](Problem4) 기능 목록표 추가
+
+[33mcommit 2af6f71b69c94bf3b08ef834abe35d7f91f5da47[m
+Author: lee989898 <@@qwer1352>
+Date:   Tue Nov 1 12:55:37 2022 +0900
+
+    [feat](Problem3) 333,666,999 같은 숫자를 하나씩 나눠서 세는 기능 구현
+
+[33mcommit 32fa2c6a35b83dcb5ad3d9f8479347c2b66851c7[m
+Author: lee989898 <@@qwer1352>
+Date:   Tue Nov 1 12:55:07 2022 +0900
+
+    [feat](Problem3) 3 혹은 6 혹은 9를 하나라도 포함하는 요소만 필터링 해서 담는 변수 추가
+
+[33mcommit 22ee7483b1740ac2a9053f63a30b1bd8289721f5[m
+Author: lee989898 <@@qwer1352>
+Date:   Tue Nov 1 12:54:34 2022 +0900
+
+    [feat](Problem3) 3,6,9 갯수를 담을 변수 추가
+
+[33mcommit 98a0d7d5de7cf359c408ad4315e539dff4e85d44[m
+Author: lee989898 <@@qwer1352>
+Date:   Tue Nov 1 12:53:45 2022 +0900
+
+    [feat](Problem3) 잘못된 값이 들어왔을때 -1을 리턴하는 함수 구현
+
+[33mcommit 6e6d37936a7b2bf1d84350844ba55b41c854dee0[m
+Author: lee989898 <@@qwer1352>
+Date:   Tue Nov 1 12:51:27 2022 +0900
+
+    [docs](Problem3) 기능 목록표 추가
+
+[33mcommit 9f335dccce62e6f75969367ec1d4aa1b9d8e9a88[m
+Author: lee989898 <@@qwer1352>
+Date:   Tue Nov 1 12:48:05 2022 +0900
+
+    [feat](Problem2) 연속하는 알파벳 삭제하는 기능 구현
+
+[33mcommit a5730c239f68e89bedcaa4e97dcdca0397c3bea3[m
+Author: lee989898 <@@qwer1352>
+Date:   Tue Nov 1 12:47:23 2022 +0900
+
+    [feat](Problem2) cryptogram 요소를 MutableList 요소로 추가
+
+[33mcommit 9e8af47ea89e21904a10dfee8fd3ad47e871d7d9[m
+Author: lee989898 <@@qwer1352>
+Date:   Tue Nov 1 12:46:22 2022 +0900
+
+    [feat](Problem2) 잘못된 값이 들어왔을때 원인을 알려주는 함수 구현
+
+[33mcommit 42f33a93c33494d5dc050043220101407259341d[m
+Author: lee989898 <@@qwer1352>
+Date:   Tue Nov 1 12:44:29 2022 +0900
+
+    [docs](Problem2) 기능 목록표 추가
+
+[33mcommit efea0c15fab7af58d942a87098475872e650779b[m
+Author: lee989898 <@@qwer1352>
+Date:   Tue Nov 1 12:33:19 2022 +0900
+
+    [feat](Problem1) 크롱, 포비의 가장 큰 값을 비교하는 함수 구현
+
+[33mcommit 4681239ecb6e36e12cce28faba0f30b8633f773a[m
+Author: lee989898 <@@qwer1352>
+Date:   Tue Nov 1 12:32:35 2022 +0900
+
+    [feat](Problem1) 크롱, 포비가 펼친 페이지 중 가장 큰 값을 구하는 함수 구현
+
+[33mcommit fda960a816f128a773f3a08405df4082e60a4255[m
+Author: lee989898 <@@qwer1352>
+Date:   Tue Nov 1 12:31:08 2022 +0900
+
+    [feat](Problem1) 무승부, 예외, 포비승, 크롱승에 대한 변수 추가
+
+[33mcommit eb695750126d48c674dcc56d442306e8bd1621fe[m
+Author: lee989898 <@@qwer1352>
+Date:   Tue Nov 1 12:29:15 2022 +0900
+
+    [feat](Problem1) 잘못된 값이 들어왔을때 -1을 리턴하는 함수 구현
+
+[33mcommit 63d178c1a0131947ee712feab02a9577e0735522[m
+Author: lee989898 <@@qwer1352>
+Date:   Tue Nov 1 12:27:01 2022 +0900
+
+    [docs](Problem1) 기능 목록표 추가
+
+[33mcommit 04c1d76981e0c01d0086290de8c29f83d3093987[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmain[m[33m)[m
+Author: leah <leah@woowahan.com>
+Date:   Tue Oct 18 14:26:07 2022 +0900
+
+    feat: setup precourse onboarding project
