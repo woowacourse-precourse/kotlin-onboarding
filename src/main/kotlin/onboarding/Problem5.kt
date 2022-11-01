@@ -8,6 +8,7 @@ fun solution5(_money: Int): List<Int> {
 
     for(face in faceValues) {
         result.add(money / face)
+        money %= face
     }
 
     return result
