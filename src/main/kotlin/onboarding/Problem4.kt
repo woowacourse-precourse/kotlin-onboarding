@@ -1,5 +1,34 @@
 package onboarding
 
+import java.util.regex.Pattern
+
+
 fun solution4(word: String): String {
-    TODO("프로그램 구현")
+    if(!checkValidInput(word))
+        throw IllegalArgumentException("invalid input found!")
+
+    return getConvertedWord(word)
 }
+fun checkValidInput(word: String): Boolean{
+    return Pattern.matches("^[a-zA-Z\\s]*\$",word )
+}
+
+fun getConvertedWord(word: String): String{
+    val sb = StringBuilder()
+    for(i in word.indices)
+        sb.append(convertChar(word[i]))
+    return sb.toString()
+}
+
+fun convertChar(originalChar: Char): Char {
+    var key = 0
+    key = if (originalChar.isUpperCase())
+        'N'.code
+    else if (originalChar.isLowerCase())
+        'n'.code
+    else
+        return originalChar
+
+    return (originalChar.code + 2 * (key - originalChar.code) - 1).toChar()
+}
+
