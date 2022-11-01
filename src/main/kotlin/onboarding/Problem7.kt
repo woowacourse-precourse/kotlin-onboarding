@@ -14,5 +14,13 @@ fun solution7(
     friends: List<List<String>>,
     visitors: List<String>
 ): List<String> {
-    TODO("프로그램 구현")
+    val userFriends = mutableListOf<String>()
+
+    for(index in friends.indices){
+        if(friends[index][1]==user){ //user 의 친구
+            userFriends.add(friends[index][0])
+        }
+    }
+
+    return listOf()
 }
