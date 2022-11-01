@@ -21,3 +21,16 @@
 | forms | result |
 | --- | --- |
 | [ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ] | ["jason@email.com", "jm@email.com", "mj@email.com"] |
+
+
+<br/><br/>
+***
+### 기능 구현
+| 함수 | 매개변수 | 반환형 | 내용 |
+| --- | --- | --- | --- |
+| isDuplicatedName | Int. Array<HashSet<String>> | Boolean | 해당 닉네임의 쪼갠 단어들이 다른 닉네임의 쪼갠 단어들과 중복이 있는지 여부 반환 |
+| getSubWordsOfName | String | HashSet<String> | 닉네임을 쪼개서 나올 수 있는, 연속된 두글자 단어들 리스트를 반환 |
+| getSubWordsList | List<List<String>> (forms) | Array<HashSet<String>> | 모든 닉네임에 대하여 각자의 쪼갠 단어 리스트들 구해서 반환 |
+
+- SubWordsList를 구해서 → 리스트들끼리 비교하며 중복값 여부 검사
+- 닉네임의 단어리스트들 중복 존재 필요 X → HashSet으로 수정

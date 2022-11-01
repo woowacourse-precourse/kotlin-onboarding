@@ -19,3 +19,11 @@
 | word | result |
 | --- | --- |
 | "I love you" | "R olev blf" |
+
+<br/><br/>
+***
+### 기능 구현
+| 함수 | 매개변수 | 반환형 | 내용 |
+| --- | --- | --- | --- |
+| changeCharByFrog | Char | Char | 청개구리 사전에 맞게 알파벳 변환해서 반환 <br/>- 소문자 대문자 구분하기 |
+| convertWord | String | String | 청개구리 사전에 맞게 문자열 변환 |

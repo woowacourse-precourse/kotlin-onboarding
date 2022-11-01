@@ -21,3 +21,11 @@
 | --- | --- |
 | "browoanoommnaon" | "brown" |
 | "zyelleyz" | "" |
+
+<br/><br/>
+***
+### 기능 구현
+| 함수 | 매개변수 | 반환형 | 내용 |
+| --- | --- | --- | --- |
+| decode | String (문자열) | String | 연속된 중복문자가 없을 때까지 removeDuplicates를 반복 |
+| removeDuplicates | String | String | 문자에서 연속하는 중복 문자들을 제거 |

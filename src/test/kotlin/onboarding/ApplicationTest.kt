@@ -1,5 +1,6 @@
 package onboarding
 
+import org.assertj.core.api.Assertions
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Nested
 import org.junit.jupiter.api.Test
@@ -125,6 +126,127 @@ class ApplicationTest {
             val visitors = listOf("bedi", "bedi", "donut", "bedi", "shakevan")
             val result = listOf("andole", "jun", "bedi")
             assertThat(solution7(user, friends, visitors)).isEqualTo(result)
+        }
+    }
+
+    // 직접 추가
+    // Prob 4
+    @Nested
+    inner class ChangeCharByFrogTest {
+        @Test
+        fun case1() {
+            val word = 'A'
+            val result = 'Z'
+            assertThat(changeCharByFrog(word)).isEqualTo(result)
+        }
+        @Test
+        fun case2() {
+            val word = 'g'
+            val result = 't'
+            assertThat(changeCharByFrog(word)).isEqualTo(result)
+        }
+
+        @Test
+        fun case3() {
+            val word = 'Q'
+            val result = 'J'
+            assertThat(changeCharByFrog(word)).isEqualTo(result)
+        }
+    }
+
+    // Prob 6
+    @Nested
+    inner class GetSubWordsOfNameTest {
+        @Test
+        fun case1() {
+            val name = "제이엠"
+            val result = hashSetOf("제이", "이엠")
+            assertThat(getSubWordsOfName(name)).isEqualTo(result)
+        }
+        @Test
+        fun case2() {
+            val name = "아이엠쑤"
+            val result = hashSetOf("아이", "이엠", "엠쑤")
+            assertThat(getSubWordsOfName(name)).isEqualTo(result)
+        }
+    }
+
+    @Nested
+    inner class GetSubWordsListTest {
+        @Test
+        fun case1() {
+            val forms = listOf(
+                listOf("jm@email.com", "제이엠"),
+                listOf("jason@email.com", "제이슨")
+            )
+            val result = arrayOf(
+                hashSetOf("제이", "이엠"),
+                hashSetOf("제이", "이슨")
+            )
+            assertThat(getSubWordsList(forms)).isEqualTo(result)
+        }
+    }
+
+    @Nested
+    inner class IsDuplicatedNameTest {
+        @Test
+        fun case1() {
+            val index = 0
+            val list = arrayOf(
+                hashSetOf("제이", "이엠"),
+                hashSetOf("제이", "이슨")
+            )
+            val result = true
+            assertThat(isDuplicatedName(index, list)).isEqualTo(result)
+        }
+
+        @Test
+        fun case2() {
+            val index = 0
+            val list = arrayOf(
+                hashSetOf("제이", "이엠"),
+                hashSetOf("우테", "테코")
+            )
+            val result = false
+            assertThat(isDuplicatedName(index, list)).isEqualTo(result)
+        }
+    }
+
+    @Nested
+    inner class GetMyFriendsListTest {
+        @Test
+        fun case1() {
+            val user = "mrko"
+            val friends = listOf(
+                listOf("donut", "andole"),
+                listOf("donut", "jun"),
+                listOf("donut", "mrko"),
+                listOf("shakevan", "andole"),
+                listOf("shakevan", "jun"),
+                listOf("shakevan", "mrko")
+            )
+            val result = hashSetOf("donut", "shakevan")
+            assertThat(getMyFriendsList(user, friends)).isEqualTo(result)
+        }
+    }
+
+    @Nested
+    inner class GetRecommendedFriendsTest {
+        @Test
+        fun case1() {
+            val user = "mrko"
+            val friends = listOf(
+                listOf("donut", "andole"),
+                listOf("donut", "jun"),
+                listOf("donut", "mrko"),
+                listOf("shakevan", "andole"),
+                listOf("shakevan", "jun"),
+                listOf("shakevan", "mrko")
+            )
+            val myFriends = hashSetOf("donut", "shakevan")
+            val visitors = listOf("bedi", "bedi", "donut", "bedi", "shakevan")
+            val result = hashMapOf("andole" to 20, "jun" to 20, "bedi" to 3)
+            assertThat(getRecommendedFriends(user, friends, myFriends, visitors)).isEqualTo(result)
         }
     }
 }
