@@ -40,5 +40,7 @@ fun solution2(cryptogram: String): Serializable {
         return ans
     }
 
+    deleteRepetition(chunkedCryp)
+
     return 0
 }
