@@ -3,9 +3,31 @@ package onboarding
 /**
  * 기능목록
  * (1) 문자열을 한 자리씩 나누기
- * (2) 문자 하나씩 양 옆 문자와 겹치는 지 확인 후, 중복되는 문자는 제외시킨 후 남은 문자를 조합한다
+ * (2) 문자 하나씩 양 옆 문자와 겹치는 지 확인 후, 겹치지 않는 문자들을 조합한다
  * (3) 중복된 문자를 제거한 문자열이 검증 전 문자열과 일치할 때까지 (기능 1~2) 반복
  * **/
 fun solution2(cryptogram: String): String {
     TODO("프로그램 구현")
+}
+private fun getRedundantWordRemoved(cryptogram: String): String{ //중복단어 제거
+    val cryptoPiece = cryptogram.toList() //(1) 한 글자씩 분리
+    var removedResult = "" //중복된 문자를 제외한 문자열
+    for(i in 0..cryptoPiece.size-1){
+        if((i == 0) && (cryptoPiece[i] != cryptoPiece[i+1])){ //첫번째 글자
+            removedResult += cryptoPiece[i]
+            continue
+        }
+        if((i==cryptoPiece.size-1) && cryptoPiece[i]!=cryptoPiece[i-1]){ //마지막 글자
+            removedResult += cryptoPiece[i]
+            continue
+        }
+        if(i>0 && i<cryptoPiece.size-1) {
+            if ((cryptoPiece[i] != cryptoPiece[i+1]) && (cryptoPiece[i] != cryptoPiece[i-1])) {
+                removedResult += cryptoPiece[i]
+                continue
+            }
+        }
+    }
+
+    return removedResult
 }
