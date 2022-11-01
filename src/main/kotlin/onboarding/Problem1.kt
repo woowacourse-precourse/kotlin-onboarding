@@ -1,26 +1,26 @@
 package onboarding
 
 fun solution1(pobi: List<Int>,crong:List<Int>): Int {
-    val pobiMaxList =mutableListOf<Int>()
-    val crongMaxList = mutableListOf<Int>()
-    for(i in pobi.indices) {
-        var pobiPageIntList = pobi[i].toString().map{it.digitToInt()}
-        var pobiTimes = 1
-        for(j in pobiPageIntList) { pobiTimes *= j }
-        pobiMaxList.add(if(pobiPageIntList.sum() >= pobiTimes) pobiPageIntList.sum() else pobiTimes)
+    return try {
+        when {
+            pobi[1]-pobi[0] !=1 && crong[1]-pobi[0] !=1 -> -1
+            GetPlayerScore(pobi) > GetPlayerScore(crong) -> 1
+            GetPlayerScore(pobi) > GetPlayerScore(crong) -> 2
+            else  -> 0
+        }
+    } catch (e:Exception) {
+        return -1
     }
-    val pobiMax = pobiMaxList.maxOf { it }
-    for(i in crong.indices) {
-        var crongPageIntList = crong[i].toString().map{ it.digitToInt() }
-        var crongTimes = 1
-        for(j in crongPageIntList) { crongTimes *= j }
-        crongMaxList.add(if (crongPageIntList.sum() >= crongTimes) crongPageIntList.sum() else crongTimes)
-    }
-    val crongMax = crongMaxList.maxOf { it }
-    return when {
-        pobi[1]-pobi[0] !=1 && crong[1]-pobi[0] !=1 -> -1
-        pobiMax > crongMax -> 1
-        pobiMax < crongMax -> 2
-        else  -> 0
-    }
+}
+
+private fun GetPlayerScore(palyer:List<Int>):Int{
+    var totalSum = 0
+    var totalTimes =1
+    for(i in palyer.indices) {
+        var playerPageIntList = palyer[i].toString().map{it.digitToInt() }
+           totalSum = playerPageIntList.sum()
+            totalTimes = 1
+            for(j in playerPageIntList) { totalTimes *= j }
+        }
+    return if(totalSum >= totalTimes) totalSum else return totalTimes
 }
