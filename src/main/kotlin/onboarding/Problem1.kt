@@ -4,18 +4,18 @@ fun solution1(pobi: List<Int>, crong: List<Int>): Int {
     //프로그램 구현
 
 // 예외사항 1. 페이지 수의 범위가 2~399를 벗어나는 경우 -1 return
-    if(getArrangeError(pobi[0] == false)) return -1
-    if(getArrangeError(crong[0] == false)) return -1
-    if(getArrangeError(pobi[1] == false)) return -1
-    if(getArrangeError(crong[1] == false)) return -1
+    if(getArrangeError(pobi[0]) == false) return -1
+    if(getArrangeError(crong[0]) == false) return -1
+    if(getArrangeError(pobi[1]) == false) return -1
+    if(getArrangeError(crong[1]) == false) return -1
 
 //예외사항 2. 왼쪽 페이지가 홀수인지 확인
-    if(isOddNum(pobi[0] == false)) return -1
-    if(isOddNum(crong[0] == false)) return -1
+    if(isOddNum(pobi[0]) == false) return -1
+    if(isOddNum(crong[0]) == false) return -1
 
 //예외사항 3. 오른쪽 페이지가 짝수인지 확인
-    if(isEvenNum(pobi[1] == false)) return -1
-    if(isEvenNum(crong[1] == false)) return -1
+    if(isEvenNum(pobi[1]) == false) return -1
+    if(isEvenNum(crong[1]) == false) return -1
 
 //예외사항 4. 페이지의 번호가 연속되는 수가 아닌 경우
     if(isContinuous(pobi) == false) return -1
@@ -26,28 +26,28 @@ fun solution1(pobi: List<Int>, crong: List<Int>): Int {
     if(rightisBigger(crong) == false) return -1
 
     //1. 왼쪽 페이지 비교
-    val pobiLeftResult = compare(pobi[0])
-    val crongLeftResult = compare(crong[0])
+    val pobiLeftResult = comparePageNum(pobi[0])
+    val crongLeftResult = comparePageNum(crong[0])
 
     //2. 오른쪽 페이지 비교
-    val pobiRightResult = compare(pobi[1])
-    val crongRightResult = compare(crong[1])
+    val pobiRightResult = comparePageNum(pobi[1])
+    val crongRightResult = comparePageNum(crong[1])
 
     //3. 왼쪽, 오른쪽 비교
-    val pobiBiggest = if(pobiLeftResult >= pobiRightResult) pobiLeftResult if(pobiRightResult >= pobiLeftResult) pobiRightResult
-    val crongBiggest = if(crongLeftResult >= crongRightResult) crongLeftResult if(crongRightResult >= crongLeftResult) crongRightResult
+    val pobiBiggest = if(pobiLeftResult >= pobiRightResult) pobiLeftResult else pobiRightResult
+    val crongBiggest = if(crongLeftResult >= crongRightResult) crongLeftResult else crongRightResult
 
     //4. 알맞은 값을 return
     if(pobiBiggest > crongBiggest){
         return 1
     }
-    if(crongBiggest > pobiBiggest){
+    else if(crongBiggest > pobiBiggest){
         return 2
     }
-    if(pobiBiggest == crongBiggest){
+    else if(pobiBiggest == crongBiggest){
         return 0
     }
-
+    return -1
 }
 
 // 예외사항 1. 페이지 수의 범위가 2~399를 벗어나는 경우
@@ -64,6 +64,7 @@ fun isOddNum(pageNum: Int):Boolean{
     if(pageNum % 2 != 0){
         return true
     }
+    return false
 }
 
 //예외사항 3. 오른쪽 페이지가 짝수인지 확인
@@ -74,23 +75,29 @@ fun isEvenNum(pageNum: Int):Boolean{
     if(pageNum % 2 != 0){
         return false
     }
+    return false
 }
 
 //예외사항 4. 페이지의 번호가 연속되는 수가 아닌 경우
 fun isContinuous(pageNums: List<Int>):Boolean{
     if(pageNums[1] == (pageNums[0]+1)) return true
-    if(pageNums[1] != (pageNums[0]+1)) return false
+    else if(pageNums[1] != (pageNums[0]+1)) return false
+    return false
 }
 
 //예외사항 5. 오른쪽 페이지가 큰지 확인
 fun rightisBigger(pageNums: List<Int>):Boolean{
     if(pageNums[1] > pageNums[0]) return true
-    if(pageNums[0] > pageNums[1]) return false
+    else if(pageNums[0] > pageNums[1]) return false
+    return false
 }
 
-fun comparePageNum(pageNum : Int):Int{
+fun comparePageNum(num : Int):Int{
 
-    var sum = 0; var mul = 0
+    var sum = 0; var mul = 1
+
+    var pageNum = num
+
 
     while(pageNum != 0){
         sum += pageNum % 10
@@ -101,8 +108,15 @@ fun comparePageNum(pageNum : Int):Int{
     if(sum >= mul){
         return sum
     }
-    if(mul >= sum){
+    else if(mul >= sum){
         return mul
     }
 
+    return -1
+}
+
+fun main(){
+    val pobi = listOf<Int>(97,98)
+    val crong = listOf<Int>(197,198)
+    print(solution1(pobi, crong))
 }
