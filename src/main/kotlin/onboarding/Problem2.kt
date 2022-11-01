@@ -4,7 +4,13 @@ fun solution2(cryptogram: String): String {
     var cryptogram = cryptogram
 
     if (isCorrect(cryptogram)) {
+        cryptogram  = cryptogram.lowercase()
+        while (true) {
+            val cryptogramNumList = arrayListOf<Int>()
+            for (i in 0..cryptogram.length - 2) if (cryptogram[i] == cryptogram[i + 1]) cryptogramNumList.add(i)
 
+        }
+        return cryptogram
     } else return "wrong cryptogram"
 }
 
