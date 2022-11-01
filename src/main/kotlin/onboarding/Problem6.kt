@@ -9,7 +9,16 @@ fun solution6(forms: List<List<String>>): List<String> {
 
     val emails = HashSet<String>()
     val crewMap: MutableMap<String, String> = HashMap()
+    checkConsecutiveChar(forms, crewMap, emails)
 
+    return streamToList(emails)
+}
+
+private fun checkConsecutiveChar(
+    forms: List<List<String>>,
+    crewMap: MutableMap<String, String>,
+    emails: HashSet<String>
+) {
     for (i in forms.indices) {
         val emailCheck = forms[i].first()
         val nicknameCheck = forms[i].last()
@@ -26,7 +35,6 @@ fun solution6(forms: List<List<String>>): List<String> {
             crewMap[nicknameKey] = emailCheck
         }
     }
-    return streamToList(emails)
 }
 
 private fun streamToList(emails: HashSet<String>): MutableList<String> {
@@ -56,4 +64,18 @@ private fun isAppropriateForms(forms: List<List<String>>): List<String> {
         }
     }
     return listOf()
+}
+
+fun main() {
+    println(
+        solution6(
+            listOf(
+                listOf("jm@email.com", "제이엠"),
+                listOf("jason@email.com", "제이슨"),
+                listOf("woniee@email.com", "워니"),
+                listOf("mj@email.com", "엠제이"),
+                listOf("nowm@email.com", "이제엠")
+            )
+        )
+    )
 }
