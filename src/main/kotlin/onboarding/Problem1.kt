@@ -1,5 +1,32 @@
 package onboarding
 
+
 fun solution1(pobi: List<Int>, crong: List<Int>): Int {
-    TODO("프로그램 구현")
+    if (pobi[0] + 1 != pobi[1] || crong[0] + 1 != crong[1]) return -1
+
+    val pobiScore = getScore(pobi)
+    val crongScore = getScore(crong)
+
+    return when {
+        pobiScore == crongScore -> 0
+        pobiScore > crongScore -> 1
+        pobiScore < crongScore -> 2
+        else -> -1
+    }
+}
+
+private fun getScore(pages: List<Int>): Int {
+    val leftNums = pages[0].toString().toCharArray().map { it.digitToInt() }
+    val rightNums = pages[1].toString().toCharArray().map { it.digitToInt() }
+
+    val leftSum = leftNums.sum()
+    val rightSum = rightNums.sum()
+
+    var leftProduct = 1
+    var rightProduct = 1
+
+    leftNums.forEach { leftProduct *= it }
+    rightNums.forEach { rightProduct *= it }
+
+    return maxOf(leftSum, rightSum, leftProduct, rightProduct)
 }
