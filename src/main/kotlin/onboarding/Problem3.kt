@@ -1,7 +1,13 @@
 package onboarding
 
 fun solution3(number: Int): Int {
+    var result = 0
 
+    for(i in 1..number) {
+        result += getNumOf369(i)
+    }
+
+    return result
 }
 
 fun getNumOf369(_number: Int): Int {
