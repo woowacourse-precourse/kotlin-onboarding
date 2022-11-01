@@ -4,7 +4,7 @@ fun solution2(cryptogram: String): String {
     TODO("프로그램 구현")
 }
 
-private fun checkRepetition(secretCode: String) {
+private fun checkRepetition(secretCode: String): RepetitionResult {
     val stack = mutableListOf<Char>()
     var previousChar: Char = ' '
     var isFinished: Boolean = true
@@ -18,4 +18,11 @@ private fun checkRepetition(secretCode: String) {
         if (previousChar == stack.lastOrNull()) stack.removeLast()
         isFinished = false
     }
+
+    return RepetitionResult(stack.joinToString(""), isFinished)
 }
+
+data class RepetitionResult(
+    val secretCode: String,
+    val isFinished: Boolean = false
+)
