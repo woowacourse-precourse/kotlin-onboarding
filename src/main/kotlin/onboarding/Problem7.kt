@@ -28,20 +28,17 @@ fun findUserFriends(user: String, friends: List<List<String>>): ArrayList<String
 }
 
 /* user의 친구와 친구인 이름을 찾는 메소드 */
-fun findFriendsFriends(user: String, userFriendsList: ArrayList<String>, friends: List<List<String>>): ArrayList<MutableMap<String, Int>> {
-    var friendsFriendsList = arrayListOf<MutableMap<String, Int>>()
-    var person = mutableMapOf<String, Int>()
+fun findFriendsFriends(user: String, userFriendsList: ArrayList<String>, friends: List<List<String>>): ArrayList<String> {
+    var friendsFriendsList = arrayListOf<String>()
 
     for(name in userFriendsList){
         for(i in friends.indices){
             if(friends[i][0] == name && friends[i][1] != user){
-                person[friends[i][1]] = 0
-                friendsFriendsList.add(person)
+                friendsFriendsList.add(friends[i][1])
                 continue
             }
             if(friends[i][1] == name && friends[i][0] != user){
-                person[friends[i][1]] = 0
-                friendsFriendsList.add(person)
+                friendsFriendsList.add(friends[i][0])
             }
         }
     }
