@@ -7,8 +7,9 @@ fun solution7(user: String, friends: List<List<String>>, visitors: List<String>)
 
     // friend of friend 점수 계산 함수
     calculateFriendOfFriend(friends, user, friendPointMap, userFriends)
+    // visitor 점수 계산 함수
+    calculateVisitor(friendPointMap, visitors)
 
-    
 }
 
 // 친구의 친구 점수 계산 함수
@@ -44,5 +45,21 @@ private fun add10(friendPointMap: HashMap<String, Int>, friendOfFriend: String) 
     // 그렇지 않다면 새로 10점으로 등록해준다.
     else {
         friendPointMap[friendOfFriend] = 10
+    }
+}
+
+// 방문자들에게 1점 주는 함수
+private fun calculateVisitor(friendPointMap: HashMap<String, Int>, visitors: List<String>) {
+    // visitor 점수 매기기
+    for (visitor in visitors) {
+        // 이미 추천 친구가 등록되어 있다면, 값을 가져와 plus 1 을 해준다.
+        if (friendPointMap.containsKey(visitor)) {
+            val point = friendPointMap[visitor]!!.plus(1)
+            friendPointMap[visitor] = point
+        }
+        // 아니라면 1점으로 초기화해준다.
+        else {
+            friendPointMap[visitor] = 1
+        }
     }
 }
