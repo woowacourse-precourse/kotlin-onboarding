@@ -47,7 +47,7 @@ fun solution7(
             if (samePoints == 0) sameUser else samePoints
         }
         .map { it.key }
-        .take(FIVE_ELEMENTS_FROM_THE_FRONT)
+        .take(FIVE_ELEMENTS_FROM_FRONT)
         .toList()
 
     return recommendFriend
@@ -59,4 +59,4 @@ const val VISITOR_DEFAULT_POINT_ONE = 1
 const val VISITOR_POINT_ONE = 1
 const val DEFAULT_POINT_ZERO = 0
 const val ACQUAINTANCE_POINT_TEN = 10
-const val FIVE_ELEMENTS_FROM_THE_FRONT = 5
+const val FIVE_ELEMENTS_FROM_FRONT = 5

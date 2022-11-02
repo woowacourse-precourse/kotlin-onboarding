@@ -10,15 +10,15 @@ fun solution2(cryptogram: String): String {
         val newCryptogramCharArray: CharArray = newCryptogram.toCharArray()
         var result = SPACE_CHARACTER
 
-        for (i in newCryptogramCharArray.indices) {
-            val consecutiveDuplicateCharactersExist = newCryptogramCharArray[i] == result
+        for (index in newCryptogramCharArray.indices) {
+            val consecutiveDuplicateCharactersExist = newCryptogramCharArray[index] == result
 
             if (consecutiveDuplicateCharactersExist) {
-                newCryptogramCharArray[i] = SIGN_CHARACTER
-                newCryptogramCharArray[i - 1] = SIGN_CHARACTER
+                newCryptogramCharArray[index] = SIGN_CHARACTER
+                newCryptogramCharArray[index - 1] = SIGN_CHARACTER
                 isChanged = true
             }
-            if (!consecutiveDuplicateCharactersExist) result = newCryptogramCharArray[i]
+            if (!consecutiveDuplicateCharactersExist) result = newCryptogramCharArray[index]
         }
 
         newCryptogram = String(newCryptogramCharArray)

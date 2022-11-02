@@ -8,14 +8,14 @@ fun solution5(money: Int): List<Int> {
 
     moneyList.map {
         val moneyCount = restMoney / it
-        val moneyCountIsZero = (moneyCount == 0)
+        val moneyCountIsNotZero = (moneyCount != 0)
 
-        if (!moneyCountIsZero) {
+        if (moneyCountIsNotZero) {
             moneyCountList.add(moneyCount)
             restMoney -= moneyCount * it
         }
 
-        if (moneyCountIsZero) {
+        if (!moneyCountIsNotZero) {
             moneyCountList.add(0)
         }
     }
