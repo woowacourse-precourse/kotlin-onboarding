@@ -6,7 +6,7 @@ fun solution6(forms: List<List<String>>): List<String> {
     val formsMap: HashMap<String, String> = HashMap()
 
     for (i in forms.indices) {
-        val nickName: String = forms[i][1]
+        val nickName: String = forms[i][SECOND_ROW]
 
         for (k in 0 until nickName.length - 1) {
             val nickNameSliceKey: String = nickName.substring(k, k + 2)
@@ -14,14 +14,14 @@ fun solution6(forms: List<List<String>>): List<String> {
 
             if (formsMapContainsNickNameSliceKey) {
                 val duplicateKeyEmail = formsMap[nickNameSliceKey]!!
-                val emailIsNotSame = duplicateKeyEmail != forms[i][PRIMARY_ARRAY]
+                val emailIsNotSame = duplicateKeyEmail != forms[i][FIRST_ROW]
 
                 if (emailIsNotSame) {
                     emails.add(duplicateKeyEmail)
-                    emails.add(forms[i][PRIMARY_ARRAY])
+                    emails.add(forms[i][FIRST_ROW])
                 }
             }
-            formsMap[nickNameSliceKey] = forms[i][PRIMARY_ARRAY]
+            formsMap[nickNameSliceKey] = forms[i][FIRST_ROW]
         }
     }
     val result: List<String> = emails
@@ -30,4 +30,7 @@ fun solution6(forms: List<List<String>>): List<String> {
 
     return result
 }
+
+const val SECOND_ROW = 1
+const val FIRST_ROW = 0
 

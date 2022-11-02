@@ -4,11 +4,11 @@ fun solution3(number: Int): Int {
 
     var clapCount: Int = 0
 
-    for(i in 1..number) {
-        var currentNumber = i
+    for(increasedNumber in 1..number) {
+        var currentNumber = increasedNumber
 
         while(currentNumber != 0) {
-        val meetCriteriaClap = currentNumber % 10 == 3 || currentNumber % 10 == 6 || currentNumber % 10 == 9
+        val meetCriteriaClap = currentNumber % 10 == THREE || currentNumber % 10 == SIX || currentNumber % 10 == NINE
 
             if(meetCriteriaClap) {
                 clapCount++
@@ -19,3 +19,8 @@ fun solution3(number: Int): Int {
 
     return clapCount
 }
+
+
+const val THREE = 3
+const val SIX = 6
+const val NINE = 9

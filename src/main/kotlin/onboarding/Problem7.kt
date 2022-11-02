@@ -10,33 +10,33 @@ fun solution7(
     val userHashSet: HashSet<String> = HashSet()
 
     friends.map {
-        val userInPrimaryArray: Boolean = (it[PRIMARY_ARRAY] == user)
-        val userInSecondArray: Boolean = (it[SECOND_ARRAY] == user)
+        val userInPrimaryArray: Boolean = (it[FIRST_COLUMNS] == user)
+        val userInSecondArray: Boolean = (it[SECOND_COLUMNS] == user)
 
-        if (userInPrimaryArray) userHashSet.add(it[SECOND_ARRAY])
-        if (userInSecondArray) userHashSet.add(it[PRIMARY_ARRAY])
+        if (userInPrimaryArray) userHashSet.add(it[SECOND_COLUMNS])
+        if (userInSecondArray) userHashSet.add(it[FIRST_COLUMNS])
     }
 
     friends.map {
         val notFollowerInPrimaryArray: Boolean =
-            (it[PRIMARY_ARRAY] in userHashSet && user != it[SECOND_ARRAY])
+            (it[FIRST_COLUMNS] in userHashSet && user != it[SECOND_COLUMNS])
         val notFollowerInSecondArray: Boolean =
-            (it[SECOND_ARRAY] in userHashSet && user != it[PRIMARY_ARRAY])
+            (it[SECOND_COLUMNS] in userHashSet && user != it[FIRST_COLUMNS])
 
         val notFollower: String = when {
-            notFollowerInPrimaryArray -> it[SECOND_ARRAY]
-            notFollowerInSecondArray -> it[PRIMARY_ARRAY]
+            notFollowerInPrimaryArray -> it[SECOND_COLUMNS]
+            notFollowerInSecondArray -> it[FIRST_COLUMNS]
             else -> return@map
         }
         userPointHashMap[notFollower] = userPointHashMap
-            .getOrDefault(notFollower, 0) + 10
+            .getOrDefault(notFollower, DEFAULT_POINT_ZERO) + ACQUAINTANCE_POINT_TEN
     }
 
     visitors
         .filterNot { it in userHashSet }
         .map {
             userPointHashMap[it] = userPointHashMap
-                .getOrDefault(it + 1, 1) + 1
+                .getOrDefault(it + 1, VISITOR_DEFAULT_POINT_ONE) + VISITOR_POINT_ONE
         }
 
     val recommendFriend = userPointHashMap.asSequence()
@@ -47,11 +47,16 @@ fun solution7(
             if (samePoints == 0) sameUser else samePoints
         }
         .map { it.key }
-        .take(5)
+        .take(FIVE_ELEMENTS_FROM_THE_FRONT)
         .toList()
 
     return recommendFriend
 }
 
-const val PRIMARY_ARRAY = 0
-const val SECOND_ARRAY = 1
+const val FIRST_COLUMNS = 0
+const val SECOND_COLUMNS = 1
+const val VISITOR_DEFAULT_POINT_ONE = 1
+const val VISITOR_POINT_ONE = 1
+const val DEFAULT_POINT_ZERO = 0
+const val ACQUAINTANCE_POINT_TEN = 10
+const val FIVE_ELEMENTS_FROM_THE_FRONT = 5

@@ -4,29 +4,29 @@ package onboarding
 fun solution1(pobi: List<Int>, crong: List<Int>): Int {
 
     val pobiPagePointList = listOf(
-        getSumPagePlaceValue(pobi[PRIMARY_ARRAY]),
-        getSumPagePlaceValue(pobi[SECOND_ARRAY]),
-        getMultiplePagePlaceValue(pobi[PRIMARY_ARRAY]),
-        getMultiplePagePlaceValue(pobi[SECOND_ARRAY])
+        getSumPagePlaceValue(pobi[LEFT_PAGE]),
+        getSumPagePlaceValue(pobi[RIGHT_PAGE]),
+        getMultiplePagePlaceValue(pobi[LEFT_PAGE]),
+        getMultiplePagePlaceValue(pobi[RIGHT_PAGE])
     )
     val ascendPobiPagePointList = pobiPagePointList.sorted()
-    val maxPobiPagePoint = ascendPobiPagePointList[3]
+    val maxPobiPagePoint = ascendPobiPagePointList[MAX_POINT_INDEX]
 
     val crongPagePointList = listOf(
-        getSumPagePlaceValue(crong[PRIMARY_ARRAY]),
-        getSumPagePlaceValue(crong[SECOND_ARRAY]),
-        getMultiplePagePlaceValue(crong[PRIMARY_ARRAY]),
-        getMultiplePagePlaceValue(crong[SECOND_ARRAY])
+        getSumPagePlaceValue(crong[LEFT_PAGE]),
+        getSumPagePlaceValue(crong[RIGHT_PAGE]),
+        getMultiplePagePlaceValue(crong[LEFT_PAGE]),
+        getMultiplePagePlaceValue(crong[RIGHT_PAGE])
     )
     val ascendCrongPagePointList = crongPagePointList.sorted()
-    val maxCrongPagePoint = ascendCrongPagePointList[3]
+    val maxCrongPagePoint = ascendCrongPagePointList[MAX_POINT_INDEX]
 
-    val invalidPage = pobi[SECOND_ARRAY] - pobi[PRIMARY_ARRAY] > 1 || crong[SECOND_ARRAY]- crong[PRIMARY_ARRAY] > 1
-    if (invalidPage) return -1
+    val invalidPage = pobi[RIGHT_PAGE] - pobi[LEFT_PAGE] > 1 || crong[RIGHT_PAGE]- crong[LEFT_PAGE] > 1
+    if (invalidPage) return INVALID_PAGE
 
-    if (maxPobiPagePoint == maxCrongPagePoint) return 0
-    if (maxPobiPagePoint > maxCrongPagePoint) return 1
-    if (maxPobiPagePoint < maxCrongPagePoint) return 2
+    if (maxPobiPagePoint == maxCrongPagePoint) return DRAW
+    if (maxPobiPagePoint > maxCrongPagePoint) return POBI_WIN
+    if (maxPobiPagePoint < maxCrongPagePoint) return CRONG_WIN
 
     return -1
 }
@@ -53,7 +53,13 @@ fun getMultiplePagePlaceValue(inputPage: Int): Int {
 }
 
 
-
+const val LEFT_PAGE = 0
+const val RIGHT_PAGE = 1
+const val MAX_POINT_INDEX = 3
+const val DRAW = 0
+const val POBI_WIN = 1
+const val CRONG_WIN = 2
+const val INVALID_PAGE = -1
 
 
 

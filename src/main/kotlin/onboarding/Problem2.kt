@@ -8,25 +8,28 @@ fun solution2(cryptogram: String): String {
     while (isChanged) {
         isChanged = false
         val newCryptogramCharArray: CharArray = newCryptogram.toCharArray()
-        var result = ' '
+        var result = SPACE_CHARACTER
 
         for (i in newCryptogramCharArray.indices) {
             val consecutiveDuplicateCharactersExist = newCryptogramCharArray[i] == result
 
             if (consecutiveDuplicateCharactersExist) {
-                newCryptogramCharArray[i] = '-'
-                newCryptogramCharArray[i - 1] = '-'
+                newCryptogramCharArray[i] = SIGN_CHARACTER
+                newCryptogramCharArray[i - 1] = SIGN_CHARACTER
                 isChanged = true
             }
             if (!consecutiveDuplicateCharactersExist) result = newCryptogramCharArray[i]
         }
 
         newCryptogram = String(newCryptogramCharArray)
-            .replace("-", "")
+            .replace(SIGN_STRING, EMPTY_VALUE)
 
     }
     return newCryptogram
 
 }
 
-
+const val SPACE_CHARACTER = ' '
+const val EMPTY_VALUE = ""
+const val SIGN_CHARACTER = '-'
+const val SIGN_STRING = "-"
