@@ -8,9 +8,9 @@ fun solution3(number: Int): Int {
         var currentNumber = increasedNumber
 
         while(currentNumber != 0) {
-        val meetCriteriaClap = currentNumber % 10 == THREE || currentNumber % 10 == SIX || currentNumber % 10 == NINE
+        val isMetCriteriaClap = currentNumber % 10 == THREE || currentNumber % 10 == SIX || currentNumber % 10 == NINE
 
-            if(meetCriteriaClap) {
+            if(isMetCriteriaClap) {
                 clapCount++
             }
             currentNumber /= 10

@@ -28,7 +28,7 @@ fun solution1(pobi: List<Int>, crong: List<Int>): Int {
     if (maxPobiPagePoint > maxCrongPagePoint) return POBI_WIN
     if (maxPobiPagePoint < maxCrongPagePoint) return CRONG_WIN
 
-    return -1
+    return INVALID_PAGE
 }
 
 

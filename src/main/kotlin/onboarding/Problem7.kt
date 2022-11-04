@@ -9,7 +9,7 @@ fun solution7(
     val userPointHashMap: HashMap<String, Int> = HashMap()
     val userHashSet: HashSet<String> = HashSet()
 
-    friends.map {
+    friends.forEach {
         val userInPrimaryArray: Boolean = (it[FIRST_COLUMNS] == user)
         val userInSecondArray: Boolean = (it[SECOND_COLUMNS] == user)
 
@@ -17,7 +17,7 @@ fun solution7(
         if (userInSecondArray) userHashSet.add(it[FIRST_COLUMNS])
     }
 
-    friends.map {
+    friends.forEach {
         val notFollowerInPrimaryArray: Boolean =
             (it[FIRST_COLUMNS] in userHashSet && user != it[SECOND_COLUMNS])
         val notFollowerInSecondArray: Boolean =
@@ -26,7 +26,7 @@ fun solution7(
         val notFollower: String = when {
             notFollowerInPrimaryArray -> it[SECOND_COLUMNS]
             notFollowerInSecondArray -> it[FIRST_COLUMNS]
-            else -> return@map
+            else -> return@forEach
         }
         userPointHashMap[notFollower] = userPointHashMap
             .getOrDefault(notFollower, DEFAULT_POINT_ZERO) + ACQUAINTANCE_POINT_TEN

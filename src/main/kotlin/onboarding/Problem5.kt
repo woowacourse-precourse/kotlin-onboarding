@@ -2,7 +2,18 @@ package onboarding
 
 fun solution5(money: Int): List<Int> {
 
-    val moneyList: List<Int> = listOf(오만원, 만원, 오천원, 천원, 오백원, 백원, 오십원, 십원, 일원)
+    val moneyList: List<Int> = listOf(
+            FIFTY_THOUS,
+            TEN_THOUS,
+            FIVE_THOUS,
+            ONE_THOUS,
+            FIVE_HUND,
+            ONE_HUND,
+            FIFTY,
+            TEN,
+            ONE
+        )
+
     val moneyCountList = mutableListOf<Int>()
     var restMoney = money
 
@@ -24,12 +35,12 @@ fun solution5(money: Int): List<Int> {
 
 }
 
-const val 오만원 = 50000
-const val 만원 = 10000
-const val 오천원 = 5000
-const val 천원 = 1000
-const val 오백원 = 500
-const val 백원 = 100
-const val 오십원 = 50
-const val 십원 = 10
-const val 일원 = 1
+const val FIFTY_THOUS = 50_000
+const val TEN_THOUS = 10_000
+const val FIVE_THOUS = 5_000
+const val ONE_THOUS = 1_000
+const val FIVE_HUND = 500
+const val ONE_HUND = 100
+const val FIFTY = 50
+const val TEN = 10
+const val ONE = 1
