@@ -5,6 +5,7 @@ import java.lang.StringBuilder
 const val OTHER = 0
 const val LOWER = 1
 const val UPPER = 2
+const val NOTHING = 3
 fun createLowerDictionary(): Map<Char, Char> {
     val lowerDictionary = mutableMapOf<Char, Char>()
     for (i in 0..25) {
@@ -23,6 +24,7 @@ fun createUpperDictionary(): Map<Char, Char> {
 
 fun checkAlphabet(alphabet: Char): Int {
     when {
+        alphabet in 'a'..'z' -> return NOTHING
         alphabet.isLowerCase() -> return LOWER
         alphabet.isUpperCase() -> return UPPER
     }
@@ -39,6 +41,7 @@ fun solution4(word: String): String {
             LOWER -> result.append(lowerDictionary[alphabet].toString())
             UPPER -> result.append(upperDictionary[alphabet].toString())
             OTHER -> result.append(" ")
+            NOTHING -> continue
         }
     }
     return result.toString()
