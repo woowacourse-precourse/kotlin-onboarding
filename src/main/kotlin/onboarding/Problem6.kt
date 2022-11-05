@@ -5,32 +5,23 @@ import java.util.regex.Pattern
 
 const val DOMAIN = "@email.com"
 
-fun emailLength(email: String): Boolean {
-    return email.length in 11 until 20
-}
+fun emailLength(email: String): Boolean = email.length in 11 until 20
 
-fun nickNameLength(nickname: String): Boolean {
-    return nickname.length in 1 until 20
-}
+fun nicknameLength(nickname: String): Boolean = nickname.length in 1 until 20
 
-fun isLength(email: String, nickname: String): Boolean {
-    return emailLength(email) && nickNameLength(nickname)
-}
+fun isLength(email: String, nickname: String): Boolean = emailLength(email) && nicknameLength(nickname)
 
-fun isDomain(email: String): Boolean {
-    return email.contains(DOMAIN)
-}
+fun isDomain(email: String): Boolean = email.contains(DOMAIN)
 
-fun isNickName(nickname: String): Boolean {
+fun isNickname(nickname: String): Boolean {
     val pattern = Pattern.compile("^[ㄱ-ㅣ가-힣]+$")
     return pattern.matcher(nickname).matches()
 }
 
-fun isException(email: String, nickname: String): Boolean {
-    return isDomain(email) && isLength(email, nickname) && isNickName(nickname)
-}
+fun isException(email: String, nickname: String): Boolean = isDomain(email) && isLength(email, nickname) && isNickname(nickname)
 
-fun createNickNames(forms: List<List<String>>): Map<String, Set<String>> {
+
+fun createNicknames(forms: List<List<String>>): Map<String, Set<String>> {
     val nicknames = mutableMapOf<String, MutableSet<String>>()
     for ((email, nickname) in forms) {
         if (!isException(email, nickname)) {
@@ -60,5 +51,5 @@ fun compareNicknames(nicknames: Map<String, Set<String>>): List<String> {
 }
 
 fun solution6(forms: List<List<String>>): List<String> {
-    return compareNicknames(createNickNames(forms))
+    return compareNicknames(createNicknames(forms))
 }
