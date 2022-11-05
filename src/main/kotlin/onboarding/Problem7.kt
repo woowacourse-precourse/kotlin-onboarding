@@ -11,10 +11,12 @@ fun getFollower(friends: List<List<String>>): MutableMap<String, MutableSet<Stri
         val name = element[0]
         val friend = element[1]
 
-        if (follower[name] == null)
+        if (follower[name] == null) {
             follower[name] = mutableSetOf()
-        if (follower[friend] == null)
+        }
+        if (follower[friend] == null) {
             follower[friend] = mutableSetOf()
+        }
 
         follower[friend]!!.add(name)
         follower[name]!!.add(friend)
