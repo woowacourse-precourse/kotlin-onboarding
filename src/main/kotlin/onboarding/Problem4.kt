@@ -1,5 +1,7 @@
 package onboarding
 
+import org.assertj.core.api.Assertions
+import org.junit.jupiter.api.Test
 import java.lang.StringBuilder
 
 const val OTHER = 0
@@ -24,11 +26,14 @@ fun createUpperDictionary(): Map<Char, Char> {
 
 fun checkAlphabet(alphabet: Char): Int {
     when {
-        alphabet in 'a'..'z' -> return NOTHING
         alphabet.isLowerCase() -> return LOWER
         alphabet.isUpperCase() -> return UPPER
     }
     return OTHER
+}
+
+fun isCondition(alphabet: Char) : Boolean{
+    return alphabet.isLetter() || alphabet == ' '
 }
 
 fun solution4(word: String): String {
@@ -37,12 +42,13 @@ fun solution4(word: String): String {
     val result = StringBuilder("")
 
     for (alphabet in word) {
-        when (checkAlphabet(alphabet)) {
-            LOWER -> result.append(lowerDictionary[alphabet].toString())
-            UPPER -> result.append(upperDictionary[alphabet].toString())
-            OTHER -> result.append(" ")
-            NOTHING -> continue
-        }
+        if (isCondition(alphabet))
+            when (checkAlphabet(alphabet)) {
+                LOWER -> result.append(lowerDictionary[alphabet].toString())
+                UPPER -> result.append(upperDictionary[alphabet].toString())
+                OTHER -> result.append(" ")
+                NOTHING -> continue
+            }
     }
     return result.toString()
 }
