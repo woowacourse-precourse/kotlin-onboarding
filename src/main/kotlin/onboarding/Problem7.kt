@@ -18,8 +18,8 @@ fun getFollower(friends: List<List<String>>): MutableMap<String, MutableSet<Stri
             follower[friend] = mutableSetOf()
         }
 
-        follower[friend]!!.add(name)
-        follower[name]!!.add(friend)
+        follower[friend]?.add(name)
+        follower[name]?.add(friend)
     }
     return follower
 }
