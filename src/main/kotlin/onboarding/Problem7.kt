@@ -49,15 +49,12 @@ fun calculateVisitorScore(
 }
 
 fun sortResult(score: MutableMap<String, Int>): List<String> {
-    val toList = score.toList()
-    val sortedWith = toList.sortedWith(compareByDescending<Pair<String, Int>> { it.second }.thenBy { it.first })
-    val toMap = sortedWith.toMap().toMutableMap()
-    val result: MutableList<String> = mutableListOf()
-    for (key in toMap.keys) {
-        if (result.size < 5)
-            result.add(key)
-    }
-    return result
+    return score.toList()
+        .asSequence()
+        .sortedWith(compareByDescending<Pair<String, Int>> { it.second }.thenBy { it.first })
+        .toMap()
+        .keys
+        .take(5)
 }
 
 fun solution7(
