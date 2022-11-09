@@ -3,36 +3,47 @@ package onboarding
 
 fun solution1(pobi: List<Int>, crong: List<Int>): Int {
 
-    val pobiPagePointList = listOf(
-        getSumPagePlaceValue(pobi[LEFT_PAGE]),
-        getSumPagePlaceValue(pobi[RIGHT_PAGE]),
-        getMultiplePagePlaceValue(pobi[LEFT_PAGE]),
-        getMultiplePagePlaceValue(pobi[RIGHT_PAGE])
-    )
-    val ascendPobiPagePointList = pobiPagePointList.sorted()
-    val maxPobiPagePoint = ascendPobiPagePointList[MAX_POINT_INDEX]
+    val pobiPoint = createMaxPobiPoint(pobi)
+    val crongPoint = createMaxCrongPoint(crong)
 
-    val crongPagePointList = listOf(
-        getSumPagePlaceValue(crong[LEFT_PAGE]),
-        getSumPagePlaceValue(crong[RIGHT_PAGE]),
-        getMultiplePagePlaceValue(crong[LEFT_PAGE]),
-        getMultiplePagePlaceValue(crong[RIGHT_PAGE])
-    )
-    val ascendCrongPagePointList = crongPagePointList.sorted()
-    val maxCrongPagePoint = ascendCrongPagePointList[MAX_POINT_INDEX]
-
-    val invalidPage = pobi[RIGHT_PAGE] - pobi[LEFT_PAGE] > 1 || crong[RIGHT_PAGE]- crong[LEFT_PAGE] > 1
+    val invalidPage =
+        pobi[RIGHT_PAGE] - pobi[LEFT_PAGE] > 1 || crong[RIGHT_PAGE] - crong[LEFT_PAGE] > 1
     if (invalidPage) return INVALID_PAGE
 
-    if (maxPobiPagePoint == maxCrongPagePoint) return DRAW
-    if (maxPobiPagePoint > maxCrongPagePoint) return POBI_WIN
-    if (maxPobiPagePoint < maxCrongPagePoint) return CRONG_WIN
+    if (pobiPoint == crongPoint) return DRAW
+    if (pobiPoint > crongPoint) return POBI_WIN
+    if (pobiPoint < crongPoint) return CRONG_WIN
 
     return INVALID_PAGE
 }
 
+fun createMaxPobiPoint(pobi: List<Int>): Int {
+    val pobiPointList = listOf(
+        createSumPage(pobi[LEFT_PAGE]),
+        createSumPage(pobi[RIGHT_PAGE]),
+        createMultiplePage(pobi[LEFT_PAGE]),
+        createMultiplePage(pobi[RIGHT_PAGE])
+    )
 
-fun getSumPagePlaceValue(inputPage: Int): Int {
+    val pobiMaxPoint = pobiPointList.maxOrNull()!!
+
+    return pobiMaxPoint
+}
+
+fun createMaxCrongPoint(crong: List<Int>): Int {
+    val crongPointList = listOf(
+        createSumPage(crong[LEFT_PAGE]),
+        createSumPage(crong[RIGHT_PAGE]),
+        createMultiplePage(crong[LEFT_PAGE]),
+        createMultiplePage(crong[RIGHT_PAGE])
+    )
+    val crongMaxPoint = crongPointList.maxOrNull()!!
+
+    return crongMaxPoint
+}
+
+
+fun createSumPage(inputPage: Int): Int {
     var pagePoint = 1
     var input = inputPage
     while (input >= 1) {
@@ -42,7 +53,7 @@ fun getSumPagePlaceValue(inputPage: Int): Int {
     return pagePoint
 }
 
-fun getMultiplePagePlaceValue(inputPage: Int): Int {
+fun createMultiplePage(inputPage: Int): Int {
     var pagePoint = 1
     var input = inputPage
     while (input >= 1) {
@@ -55,7 +66,6 @@ fun getMultiplePagePlaceValue(inputPage: Int): Int {
 
 const val LEFT_PAGE = 0
 const val RIGHT_PAGE = 1
-const val MAX_POINT_INDEX = 3
 const val DRAW = 0
 const val POBI_WIN = 1
 const val CRONG_WIN = 2

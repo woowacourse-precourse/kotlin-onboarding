@@ -8,8 +8,8 @@ fun solution6(forms: List<List<String>>): List<String> {
     for (index in forms.indices) {
         val name: String = forms[index][SECOND_ROW]
 
-        for (name_i in 0 until name.length - 1) {
-            val nameSliceKey: String = name.substring(name_i, name_i + 2)
+        for (nameIndex in 0 until name.length - 1) {
+            val nameSliceKey: String = name.substring(nameIndex, nameIndex + 2)
             val formsMapContainsNameSliceKey = formsMap.containsKey(nameSliceKey)
 
             if (formsMapContainsNameSliceKey) {
