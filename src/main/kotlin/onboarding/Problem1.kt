@@ -3,19 +3,24 @@ package onboarding
 
 fun solution1(pobi: List<Int>, crong: List<Int>): Int {
 
+    return updateWinner(pobi, crong)
+}
+
+fun updateWinner(pobi: List<Int>, crong: List<Int>): Int {
     val pobiPoint = createMaxPobiPoint(pobi)
     val crongPoint = createMaxCrongPoint(crong)
 
     val invalidPage =
         pobi[RIGHT_PAGE] - pobi[LEFT_PAGE] > 1 || crong[RIGHT_PAGE] - crong[LEFT_PAGE] > 1
     if (invalidPage) return INVALID_PAGE
-
     if (pobiPoint == crongPoint) return DRAW
     if (pobiPoint > crongPoint) return POBI_WIN
     if (pobiPoint < crongPoint) return CRONG_WIN
 
     return INVALID_PAGE
+
 }
+
 
 fun createMaxPobiPoint(pobi: List<Int>): Int {
     val pobiPointList = listOf(
