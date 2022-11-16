@@ -52,7 +52,7 @@ fun createSumPage(inputPage: Int): Int {
     var pagePoint = 1
     var input = inputPage
     while (input >= 1) {
-        pagePoint *= input % 10
+        pagePoint += input % 10
         input /= 10
     }
     return pagePoint

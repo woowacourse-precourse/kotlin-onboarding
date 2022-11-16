@@ -3,14 +3,14 @@ package onboarding
 fun solution4(word: String): String {
 
     return word.toCharArray()
-        .map {
-            val capitalLetterReturn = ('A'.code + 'Z'.code - it.code).toChar()
-            val smallLetterReturn = ('a'.code + 'z'.code - it.code).toChar()
+        .map { alphabet ->
+            val capitalLetterReturn = ('A'.code + 'Z'.code - alphabet.code).toChar()
+            val smallLetterReturn = ('a'.code + 'z'.code - alphabet.code).toChar()
 
-            when (it) {
+            when (alphabet) {
                 in 'A'..'Z' -> capitalLetterReturn
                 in 'a'..'z' -> smallLetterReturn
-                else -> it
+                else -> alphabet
             }
         }.joinToString(AS_DELETE_BLANK)
 }
