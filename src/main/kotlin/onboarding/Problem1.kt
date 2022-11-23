@@ -1,4 +1,5 @@
 package onboarding
+
 //### 기능 목록 작성
 //
 //- 각 페이지 번호 더하기 (페이지)
@@ -15,4 +16,5 @@ fun solution1(pobi: List<Int>, crong: List<Int>): Int {
 
 fun addDigits(page: Int) = page.toString().toCharArray().sumOf { it.digitToInt() }
 
-
+fun multiplyDigits(page: Int) =
+    page.toString().toCharArray().map { it.digitToInt() }.reduce { total, num -> total * num }
