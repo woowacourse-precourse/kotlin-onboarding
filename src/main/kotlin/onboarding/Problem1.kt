@@ -10,27 +10,28 @@ package onboarding
 //- 예외 : 책 페이지는 1 부터 400 까지이다.
 const val minPage = 1
 const val maxPage = 400
+
 fun solution1(pobi: List<Int>, crong: List<Int>): Int {
-    require(isPagesRange(pobi) || isPagesRange(crong)) {return -1}
-    require(isPages(pobi) && isPages(crong)) {return -1}
+    require(isPagesRange(pobi) || isPagesRange(crong)) { return -1 }
+    require(isPages(pobi) && isPages(crong)) { return -1 }
     return result(getScore(pobi), getScore(crong))
 }
 
-fun addDigits(page: Int) = page.toString().toCharArray().sumOf { it.digitToInt() }
+fun addDigits(page: Int) = page.toString().toCharArray().sumOf { pageDigit -> pageDigit.digitToInt() }
 
 fun multiplyDigits(page: Int) =
-    page.toString().toCharArray().map { it.digitToInt() }.reduce { total, num -> total * num }
+    page.toString().toCharArray().map { it.digitToInt() }.reduce { total, pageDigit -> total * pageDigit }
 
-fun maxScore(scoreList: List<Int>) = scoreList.maxOf { it }
+fun maxScore(scoreList: List<Int>) = scoreList.maxOf { score -> score }
 
 fun getScore(pages: List<Int>): Int {
-    val addDigitsMax = maxScore(pages.map { addDigits(it) })
-    val multiplyDigits = maxScore(pages.map { multiplyDigits(it) })
+    val addDigitsMax = maxScore(pages.map { page -> addDigits(page) })
+    val multiplyDigits = maxScore(pages.map { page -> multiplyDigits(page) })
     return maxScore(listOf(addDigitsMax, multiplyDigits))
 }
 
 fun isPagesRange(pages: List<Int>): Boolean {
-    return pages.minOf { it > minPage } || pages.maxOf { it < maxPage }
+    return pages.minOf { page -> page > minPage } || pages.maxOf { page -> page < maxPage }
 }
 
 fun isPages(pages: List<Int>): Boolean {
