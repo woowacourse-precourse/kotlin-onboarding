@@ -5,6 +5,10 @@ import net.bytebuddy.implementation.bytecode.collection.ArrayLength
 //- 문자 해독
 //- 문자 재해독
 //- 현 글자가 다음 글자랑 중복인지
+
+const val REMOVE_RANGE_ADD_INDEX = 2
+const val COMPARE_NEXT = 1
+const val COMPARE_PREVIOUS = -1
 fun solution2(cryptogram: String): String {
     return repeatDecode(cryptogram)
 }
@@ -21,12 +25,15 @@ private fun repeatDecode(cryptogram: String): String {
 
 private fun decode(cryptogram: String): Pair<String, Boolean> {
     for (index in cryptogram.indices) {
-        if (hasDuplicate(index, cryptogram.length)) return Pair(cryptogram, false)
-        if (isDuplicate(cryptogram, index)) return Pair(cryptogram.removeRange(index, index + 2), true)
+        if (!hasDuplicate(index, cryptogram.length)) return Pair(cryptogram, false)
+        if (isDuplicate(cryptogram, index)) return Pair(
+            cryptogram.removeRange(index, index + REMOVE_RANGE_ADD_INDEX),
+            true
+        )
     }
     return Pair(cryptogram, false)
 }
 
-private fun isDuplicate(cryptogram: String, index: Int) = cryptogram[index] == cryptogram[index + 1]
+private fun isDuplicate(cryptogram: String, index: Int) = cryptogram[index] == cryptogram[index + COMPARE_NEXT]
 
-private fun hasDuplicate(index: Int, length: Int) = index == length - 1
+private fun hasDuplicate(index: Int, length: Int) = index != length + COMPARE_PREVIOUS
