@@ -4,6 +4,16 @@ fun solution2AnotherCase(cryptogram: String): String {
     return ""
 }
 
+private fun repeatDecode(cryptogram: String): String {
+    var loop = true
+    var decode = Pair(cryptogram, false)
+    while (loop) {
+        decode = decode(decode.first)
+        loop = decode.second
+    }
+    return decode.first
+}
+
 private fun decode(cryptogram: String): Pair<String, Boolean> {
     var count = 1
     var minusCount = 1
