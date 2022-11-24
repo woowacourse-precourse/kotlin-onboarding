@@ -1,11 +1,5 @@
 package onboarding
 
-import net.bytebuddy.implementation.bytecode.collection.ArrayLength
-
-//- 문자 해독
-//- 문자 재해독
-//- 현 글자가 다음 글자랑 중복인지
-
 const val REMOVE_RANGE_ADD_INDEX = 2
 const val COMPARE_NEXT = 1
 const val COMPARE_PREVIOUS = -1
