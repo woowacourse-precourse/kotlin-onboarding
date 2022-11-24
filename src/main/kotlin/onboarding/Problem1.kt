@@ -34,3 +34,11 @@ fun isPagesRange(pages: List<Int>): Boolean {
 fun isPages(pages: List<Int>): Boolean {
     return pages.sorted().mapIndexed { index, page -> page - index }.distinct().size == 1
 }
+
+fun result(pobiScore: Int, crongScore: Int): Int {
+    return when {
+        pobiScore > crongScore -> return 1
+        pobiScore < crongScore -> return 2
+        else -> 0
+    }
+}
