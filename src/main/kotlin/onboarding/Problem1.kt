@@ -26,6 +26,11 @@ fun getScore(pages: List<Int>): Int {
     val multiplyDigits = maxScore(pages.map { multiplyDigits(it) })
     return maxScore(listOf(addDigitsMax, multiplyDigits))
 }
-fun isPagesRange(pages: List<Int>) :Boolean {
-    return  pages.minOf { it > minPage } || pages.maxOf { it < maxPage }
+
+fun isPagesRange(pages: List<Int>): Boolean {
+    return pages.minOf { it > minPage } || pages.maxOf { it < maxPage }
+}
+
+fun isPages(pages: List<Int>): Boolean {
+    return pages.sorted().mapIndexed { index, page -> page - index }.distinct().size == 1
 }
