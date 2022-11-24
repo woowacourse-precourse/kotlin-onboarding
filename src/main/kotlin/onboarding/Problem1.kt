@@ -19,4 +19,10 @@ fun addDigits(page: Int) = page.toString().toCharArray().sumOf { it.digitToInt()
 fun multiplyDigits(page: Int) =
     page.toString().toCharArray().map { it.digitToInt() }.reduce { total, num -> total * num }
 
-fun maxScore(scoreList:List<Int>) = scoreList.maxOf { it }
+fun maxScore(scoreList: List<Int>) = scoreList.maxOf { it }
+
+fun getScore(pages: List<Int>): Int {
+    val addDigitsMax = maxScore(pages.map { addDigits(it) })
+    val multiplyDigits = maxScore(pages.map { multiplyDigits(it) })
+    return maxScore(listOf(addDigitsMax, multiplyDigits))
+}
