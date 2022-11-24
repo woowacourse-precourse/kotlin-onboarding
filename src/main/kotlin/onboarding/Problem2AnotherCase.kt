@@ -1,8 +1,7 @@
 package onboarding
 
-fun solution2AnotherCase(cryptogram: String): String {
-    return ""
-}
+fun solution2AnotherCase(cryptogram: String): String  = repeatDecode(cryptogram)
+
 
 private fun repeatDecode(cryptogram: String): String {
     var loop = true
