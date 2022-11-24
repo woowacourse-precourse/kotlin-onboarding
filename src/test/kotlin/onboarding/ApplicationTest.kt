@@ -48,7 +48,6 @@ class ApplicationTest {
             assertThat(solution2(cryptogram)).isEqualTo(result)
         }
     }
-
     @Nested
     inner class Problem3Test {
         @Test
