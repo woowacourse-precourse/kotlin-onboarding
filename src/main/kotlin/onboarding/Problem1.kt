@@ -11,7 +11,9 @@ package onboarding
 const val minPage = 1
 const val maxPage = 400
 fun solution1(pobi: List<Int>, crong: List<Int>): Int {
-    TODO("프로그램 구현")
+    require(isPagesRange(pobi) || isPagesRange(crong)) {return -1}
+    require(isPages(pobi) && isPages(crong)) {return -1}
+    return result(getScore(pobi), getScore(crong))
 }
 
 fun addDigits(page: Int) = page.toString().toCharArray().sumOf { it.digitToInt() }
