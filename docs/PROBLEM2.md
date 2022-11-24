@@ -21,3 +21,9 @@
 | --- | --- |
 | "browoanoommnaon" | "brown" |
 | "zyelleyz" | "" |
+
+
+### 기능 목록 작성
+
+- 문자 해독
+- 문자 재해독
