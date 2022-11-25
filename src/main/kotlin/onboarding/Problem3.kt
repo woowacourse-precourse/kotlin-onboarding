@@ -10,4 +10,12 @@ fun solution3(number: Int): Int {
     TODO("프로그램 구현")
 }
 
+private fun countClap(number: Int): Int {
+    val clapNumber = listOf(THREE, SIX, NINE)
+    var clap = INITIAL_NUMBER
+    for (i in LOOP_START_NUMBER .. number ) {
+        i.toString().map { if (clapNumber.contains(it)) clap++ }
+    }
+    return clap
+}
 
