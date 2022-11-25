@@ -6,11 +6,7 @@ fun solution1(pobi: List<Int>, crong: List<Int>): Int {
     if(!isException(pobi, crong)) return -1
     val pobiBest = getUserScore(pobi)
     val crongBest = getUserScore(crong)
-    return if (pobiBest > crongBest) {
-        1
-    } else if (pobiBest == crongBest) {
-        0
-    } else 2
+    return translateToReturnForm(pobiBest, crongBest)
 }
 
 private fun isException(pobi : List<Int>, crong : List<Int>) : Boolean {
@@ -81,3 +77,10 @@ private fun getMultiplyScore(int: Int): Int {
     return result
 }
 
+private fun translateToReturnForm(pobi : Int, crong : Int) : Int {
+    return if (pobi > crong) {
+        1
+    } else if (pobi == crong) {
+        0
+    } else 2
+}
