@@ -3,7 +3,11 @@ package onboarding
 private val priceList = mutableListOf(50000, 10000, 5000, 1000, 500, 100, 50, 10, 1)
 fun solution5(money: Int): List<Int> {
     val resultList = mutableListOf<Int>()
-    var mMoney = money // 파라미터로 들어오는 변수는 val 이므로, 루프마다 값을 변경해주기 위해 var로 재선언했다.
+    return loopExchange(money, resultList)
+}
+
+fun loopExchange(money : Int, resultList : MutableList<Int> ) : List<Int> {
+    var mMoney = money
     for(i in priceList) {
         val mList = checkHowMuch(mMoney, i)
         resultList.add(mList[0]) //위의 mList의 0번째에는 몫의 값, 즉 몇 번 바꿀 수 있는지가 들어간다. 그러므로 결과값을 리턴해줄 List에 추가한다.
