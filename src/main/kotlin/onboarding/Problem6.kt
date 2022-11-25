@@ -10,7 +10,7 @@ fun solution6(forms: List<List<String>>): List<String> {
             mCrewList.removeAt(i)
         }
         for(o in mCrewList[i][1].indices -1) { // 맨 뒤에 -1을 붙인 이유는 맨 마지막 닉네임은 이미 앞의 모든 닉네임에 의해 검증이 완료된 상태이므로
-            val targetWord = getWord(o, mCrewList[i][1]) //여기서 o는 현재 닉네임 안에서 몇번째 글자부터 시작할지 (3글자일 경우 (0,1), (1,2)를 모두 판별해야 하므로) 를 리턴해주기 위해 사ㅍ미
+            val targetWord = getWord(o, mCrewList[i][1]) //여기서 o는 현재 닉네임 안에서 몇번째 글자부터 시작할지 (3글자일 경우 (0,1), (1,2)를 모두 판별해야 하므로) 를 리턴해주기 위해
             for(u in mCrewList.indices) {
                 if(checkAvailable(targetWord, mCrewList[u][1]) && i != u) { // i != u 는 2중 for문을 활용하므로, 본인의 닉네임을 중복이라고 인식하는 경우를 배제하기 위해 추가
                     mEmailList.add(mCrewList[u][0])

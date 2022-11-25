@@ -3,9 +3,7 @@ package onboarding
 import kotlin.math.max
 
 fun solution1(pobi: List<Int>, crong: List<Int>): Int {
-    if (!checkIsRight(pobi) || !checkIsRight(crong)) { //예외사항 체크 (둘 중 하나라도 false 이면 예외사항이므로 -1 리턴)
-        return -1
-    }
+    if(!isException(pobi, crong)) return -1
     val pobiBest = getUserScore(pobi)
     val crongBest = getUserScore(crong)
     return if (pobiBest > crongBest) {
@@ -13,6 +11,10 @@ fun solution1(pobi: List<Int>, crong: List<Int>): Int {
     } else if (pobiBest == crongBest) {
         0
     } else 2
+}
+
+private fun isException(pobi : List<Int>, crong : List<Int>) : Boolean {
+    return (!checkIsRight(pobi) || !checkIsRight(crong))
 }
 
 /**
