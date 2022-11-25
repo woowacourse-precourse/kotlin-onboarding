@@ -24,12 +24,10 @@ private fun convertToChar(word: String): Char {
 private fun checkItsLetter(list: List<String>) : String{
     val concat = mutableListOf<Char>() // 변환 후 새롭게 변경되는 문자들이 담겨질 배열
     for (i in list) {
-        if (convertToChar(i).code == EMPTY_CODE) {
-            concat.add(convertEmptyLetter(convertToChar(i).code))
-        } else if (convertToChar(i).code in CAPITAL_START..CAPITAL_END) {
-            concat.add(convertPrimeLetter(convertToChar(i).code))
-        } else if (convertToChar(i).code in SMALL_START..SMALL_END) {
-            concat.add(convertSmallLetter(convertToChar(i).code))
+        when(convertToChar(i).code) {
+            EMPTY_CODE -> concat.add(convertEmptyLetter(convertToChar(i).code))
+            in CAPITAL_START..CAPITAL_END -> concat.add(convertPrimeLetter(convertToChar(i).code))
+            in SMALL_START..SMALL_END -> concat.add(convertSmallLetter(convertToChar(i).code))
         }
     }
     return String(concat.toCharArray()) // char 문자열을 String으로 취합하기 위해 사용했다. joinToString 의 경우는 공백과 , 부분이 같이 붙어서 기존에 위치해있는 공백과 구분이 어렵다고 판단되어 사용하지 않았다.
