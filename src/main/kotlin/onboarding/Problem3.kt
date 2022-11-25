@@ -6,9 +6,7 @@ const val SIX = '6'
 const val NINE = '9'
 const val INITIAL_NUMBER = 0
 const val LOOP_START_NUMBER = 1
-fun solution3(number: Int): Int {
-    TODO("프로그램 구현")
-}
+fun solution3(number: Int): Int = countClap(number)
 
 private fun countClap(number: Int): Int {
     val clapNumber = listOf(THREE, SIX, NINE)
