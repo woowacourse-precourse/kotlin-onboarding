@@ -1,7 +1,7 @@
 package onboarding
 
 fun solution3(number: Int): Int {
-    return checkContain(number, 3) + checkContain(number, 6) + checkContain(number, 9)
+    return calculateTotal(number)
 }
 
 /**
@@ -22,4 +22,8 @@ private fun checkContain(num : Int, standard : Int) : Int {
  */
 private fun checkHowMuch(param : String, num : Int) : Int{
     return param.split("").count {it.contains(num.toString())} //숫자 각 자리별 비교를 위해 split() 사용하여 분할 후, 각 아이템을 원하는 숫자 (3,6,9)와 비교했다. ex) 33 -> 3, 3
+}
+
+private fun calculateTotal(number : Int) : Int {
+    return checkContain(number, 3) + checkContain(number, 6) + checkContain(number, 9)
 }
