@@ -3,10 +3,8 @@ package onboarding
 import kotlin.math.max
 
 fun solution1(pobi: List<Int>, crong: List<Int>): Int {
-    if(!isException(pobi, crong)) return -1
-    val pobiBest = getUserScore(pobi)
-    val crongBest = getUserScore(crong)
-    return translateToReturnForm(pobiBest, crongBest)
+    if(isException(pobi, crong)) return -1
+    return translateToReturnForm(getUserScore(pobi), getUserScore(crong))
 }
 
 private fun isException(pobi : List<Int>, crong : List<Int>) : Boolean {
