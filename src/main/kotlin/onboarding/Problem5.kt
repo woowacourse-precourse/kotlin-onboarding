@@ -1,8 +1,6 @@
 package onboarding
 
-fun solution5(money: Int): List<Int> {
-    TODO("프로그램 구현")
-}
+fun solution5(money: Int): List<Int> = getBillUnitCount(money, billUnits())
 
 fun getBillUnitCount(money: Int, billUnits: List<Int>): List<Int> {
     var restMoney = money
