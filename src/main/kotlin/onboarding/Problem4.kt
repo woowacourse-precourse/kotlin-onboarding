@@ -10,5 +10,8 @@ fun solution4(word: String): String {
     TODO("프로그램 구현")
 }
 
-
+private fun isAlphabet(alphabet: Char): Boolean {
+    val allAlphabets = (UPPER_START_ALPHABET..LOWER_END_ALPHABET).toList()
+    return allAlphabets.contains(alphabet)
+}
 
