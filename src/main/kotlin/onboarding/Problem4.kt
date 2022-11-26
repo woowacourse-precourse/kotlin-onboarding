@@ -10,6 +10,16 @@ fun solution4(word: String): String {
     TODO("프로그램 구현")
 }
 
+private fun reverseLowerAlphabets(): Map<Char, Char> {
+    val lowerAlphabetsMap = mutableMapOf<Char, Char>()
+    val lowerAlphabets = (LOWER_START_ALPHABET..LOWER_END_ALPHABET).toList()
+    for (i in lowerAlphabets.indices) {
+        lowerAlphabetsMap[lowerAlphabets[i]] = lowerAlphabets.reversed()[i]
+    }
+
+    return lowerAlphabetsMap
+}
+
 private fun reverseUpperAlphabets(): Map<Char, Char> {
     val upperAlphabetsMap = mutableMapOf<Char, Char>()
     val upperAlphabets = (UPPER_START_ALPHABET..UPPER_END_ALPHABET).toList()
