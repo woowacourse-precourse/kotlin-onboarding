@@ -16,3 +16,4 @@ private fun countClap(number: Int): Int {
     return clap
 }
 
+
