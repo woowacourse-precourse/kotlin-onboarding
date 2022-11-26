@@ -15,7 +15,7 @@ fun solution4(word: String): String {
 private fun alphabetRange(start:Char,end:Char) = (start..end).toList()
 private fun reverseLowerAlphabets(): Map<Char, Char> {
     val lowerAlphabetsMap = mutableMapOf<Char, Char>()
-    val lowerAlphabets = (LOWER_START_ALPHABET..LOWER_END_ALPHABET).toList()
+    val lowerAlphabets = alphabetRange(LOWER_START_ALPHABET,LOWER_END_ALPHABET)
     for (i in lowerAlphabets.indices) {
         lowerAlphabetsMap[lowerAlphabets[i]] = lowerAlphabets.reversed()[i]
     }
@@ -25,7 +25,7 @@ private fun reverseLowerAlphabets(): Map<Char, Char> {
 
 private fun reverseUpperAlphabets(): Map<Char, Char> {
     val upperAlphabetsMap = mutableMapOf<Char, Char>()
-    val upperAlphabets = (UPPER_START_ALPHABET..UPPER_END_ALPHABET).toList()
+    val upperAlphabets = alphabetRange(UPPER_START_ALPHABET,UPPER_END_ALPHABET)
     for (upperAlphabet in upperAlphabets.indices) {
         upperAlphabetsMap[upperAlphabets[upperAlphabet]] = upperAlphabets.reversed()[upperAlphabet]
     }
@@ -33,6 +33,6 @@ private fun reverseUpperAlphabets(): Map<Char, Char> {
 }
 
 private fun isAlphabet(alphabet: Char): Boolean {
-    val allAlphabets = (UPPER_START_ALPHABET..LOWER_END_ALPHABET).toList()
+    val allAlphabets = alphabetRange(UPPER_START_ALPHABET,LOWER_END_ALPHABET)
     return allAlphabets.contains(alphabet)
 }
