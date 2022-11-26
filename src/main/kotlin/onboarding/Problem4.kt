@@ -10,8 +10,16 @@ fun solution4(word: String): String {
     TODO("프로그램 구현")
 }
 
-private fun isAlphabet(alphabet: Char): Boolean {
-    val allAlphabets = (UPPER_START_ALPHABET..LOWER_END_ALPHABET).toList()
-    return allAlphabets.contains(alphabet)
+private fun reverseUpperAlphabets(): Map<Char, Char> {
+    val upperAlphabetsMap = mutableMapOf<Char, Char>()
+    val upperAlphabets = (UPPER_START_ALPHABET..UPPER_END_ALPHABET).toList()
+    for (upperAlphabet in upperAlphabets.indices) {
+        upperAlphabetsMap[upperAlphabets[upperAlphabet]] = upperAlphabets.reversed()[upperAlphabet]
+    }
+    return upperAlphabetsMap
 }
 
+private fun isAlphabet(alphabet: Char): Boolean {
+    val regex = (UPPER_START_ALPHABET..LOWER_END_ALPHABET).toList()
+    return regex.contains(alphabet)
+}
