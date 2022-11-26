@@ -41,8 +41,3 @@ private fun reverseUpperAlphabets(): Map<Char, Char> {
     }
     return upperAlphabetsMap
 }
-
-private fun isAlphabet(alphabet: Char): Boolean {
-    val allAlphabets = alphabetRange(UPPER_START_ALPHABET, LOWER_END_ALPHABET)
-    return allAlphabets.contains(alphabet)
-}
