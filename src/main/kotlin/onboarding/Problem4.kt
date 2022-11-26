@@ -7,9 +7,7 @@ const val LOWER_END_ALPHABET = 'z'
 const val UPPER_START_ALPHABET = 'A'
 const val UPPER_END_ALPHABET = 'Z'
 const val INITIAL_STRING = ""
-fun solution4(word: String): String {
-    TODO("프로그램 구현")
-}
+fun solution4(word: String): String = getReverseWord(word)
 
 private fun alphabetRange(start: Char, end: Char) = (start..end).toList()
 
@@ -19,7 +17,7 @@ private fun getReverseWord(word: String): String {
         reverseWord += if (alphabetRange(LOWER_START_ALPHABET, LOWER_END_ALPHABET).contains(alphabet)) {
             reverseLowerAlphabets()[alphabet]
         } else if (alphabetRange(UPPER_START_ALPHABET, UPPER_END_ALPHABET).contains(alphabet)) {
-            reverseLowerAlphabets()[alphabet]
+            reverseUpperAlphabets()[alphabet]
         } else alphabet
     }
     return reverseWord
