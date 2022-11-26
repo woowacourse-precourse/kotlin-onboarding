@@ -4,6 +4,18 @@ fun solution5(money: Int): List<Int> {
     TODO("프로그램 구현")
 }
 
+fun billUnits() = listOf(
+    BillUnits.FIFTY_THOUSAND.unit,
+    BillUnits.TEN_THOUSAND.unit,
+    BillUnits.FIVE_THOUSAND.unit,
+    BillUnits.ONE_THOUSAND.unit,
+    BillUnits.FIVE_HUNDRED.unit,
+    BillUnits.ONE_HUNDRED.unit,
+    BillUnits.FIFTY.unit,
+    BillUnits.TEN.unit,
+    BillUnits.ONE.unit
+)
+
 enum class BillUnits(val unit : Int) {
     FIFTY_THOUSAND(50000),
     TEN_THOUSAND(10000),
