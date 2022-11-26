@@ -4,6 +4,17 @@ fun solution5(money: Int): List<Int> {
     TODO("프로그램 구현")
 }
 
+fun getBillUnitCount(money: Int, billUnits: List<Int>): List<Int> {
+    var restMoney = money
+    val billUnitCountList = mutableListOf<Int>()
+    for (billUnit in billUnits) {
+        var billUnitCount: Int = restMoney / billUnit
+        restMoney %= billUnit
+        billUnitCountList.add(billUnitCount)
+    }
+    return billUnitCountList
+}
+
 fun billUnits() = listOf(
     BillUnits.FIFTY_THOUSAND.unit,
     BillUnits.TEN_THOUSAND.unit,
@@ -16,7 +27,7 @@ fun billUnits() = listOf(
     BillUnits.ONE.unit
 )
 
-enum class BillUnits(val unit : Int) {
+enum class BillUnits(val unit: Int) {
     FIFTY_THOUSAND(50000),
     TEN_THOUSAND(10000),
     FIVE_THOUSAND(5000),
