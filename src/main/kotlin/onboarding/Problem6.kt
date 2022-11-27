@@ -1,25 +1,34 @@
 package onboarding
 
 //- 연속된 글자 추출 기능
-//- 연속된 글자가 있는지 확인하는 기능
+//- 형식에 맞는지 확인하는 기능
+//- 형식에 맞지 않을 경우 예외를 호출하는 기능
+//- 연속된 글자중에 중복되는 글자를 목록에 담는 기능
 //- 이메일을 추출 하는 기능
 
 const val NICKNAME_INDEX = 1
 const val EMAIL_INDEX = 0
 const val NEXT_NUMBER = 1
 const val MAXIMUM_HEADCOUNT = 10000
+const val EMAIL_ERROR ="이메일 형식에 맞지 않는 회원이 있습니다."
+const val NICKNAME_ERROR = "닉네임 형식에 맞지 않는 회원이 있습니다."
+const val OVER_CREW_RANGE ="크루 인원수가 10000명 초과입니다"
 
 private val EMAIL_FORM = "^[A-Za-z0-9._-]{1,9}@email.com\$".toRegex()
 private val NICKNAME_FORM = "^[ㄱ-힣]{1,19}\$".toRegex()
 fun solution6(forms: List<List<String>>): List<String> {
-    forms.forEach { userInfo ->
-        require(isEmailForm(userInfo[EMAIL_INDEX])) { println("이메일 형식에 맞지 않는 회원이 있습니다.") }
-        require(isNickNameForm(userInfo[NICKNAME_INDEX])) { println("닉네임 형식에 맞지 않는 회원이 있습니다.") }
-        require(isCrewHeadCountRange(forms)) { println("크루 인원수가 10000명 초과입니다") }
-    }
+    exceptionForm(forms)
     val separateNicknameList = getSeparateNicknames(forms)
     val duplicateNicknameList = findDuplicatesInSeparateNicknames(separateNicknameList)
     return getDuplicateNicknameEmails(forms, duplicateNicknameList)
+}
+
+fun exceptionForm(forms: List<List<String>>) {
+    forms.forEach { userInfo ->
+        require(isEmailForm(userInfo[EMAIL_INDEX])) { println(EMAIL_ERROR) }
+        require(isNickNameForm(userInfo[NICKNAME_INDEX])) { println(NICKNAME_ERROR) }
+        require(isCrewHeadCountRange(forms)) { println(OVER_CREW_RANGE) }
+    }
 }
 
 private fun getSeparateNicknames(forms: List<List<String>>): MutableList<String> {
