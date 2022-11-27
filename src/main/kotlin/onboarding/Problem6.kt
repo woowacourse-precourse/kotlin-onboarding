@@ -12,7 +12,14 @@ const val MAXIMUM_HEADCOUNT = 10000
 private val EMAIL_FORM = "^[A-Za-z0-9._-]{1,9}@email.com\$".toRegex()
 private val NICKNAME_FORM = "^[ㄱ-힣]{1,19}\$".toRegex()
 fun solution6(forms: List<List<String>>): List<String> {
-    TODO("프로그램 구현")
+    forms.forEach { userInfo ->
+        require(isEmailForm(userInfo[EMAIL_INDEX])) { println("이메일 형식에 맞지 않는 회원이 있습니다.") }
+        require(isNickNameForm(userInfo[NICKNAME_INDEX])) { println("닉네임 형식에 맞지 않는 회원이 있습니다.") }
+        require(isCrewHeadCountRange(forms)) { println("크루 인원수가 10000명 초과입니다") }
+    }
+    val separateNicknameList = getSeparateNicknames(forms)
+    val duplicateNicknameList = findDuplicatesInSeparateNicknames(separateNicknameList)
+    return getDuplicateNicknameEmails(forms, duplicateNicknameList)
 }
 
 private fun getSeparateNicknames(forms: List<List<String>>): MutableList<String> {
@@ -58,4 +65,4 @@ private fun isEmailForm(email: String): Boolean = EMAIL_FORM.matches(email)
 
 private fun isNickNameForm(nickname: String): Boolean = NICKNAME_FORM.matches(nickname)
 
-private fun isCrewHeadCountRange(forms: List<List<String>>): Boolean = forms.isNotEmpty() && forms.size <= MAXIMUM_HEADCOUNT
+private fun isCrewHeadCountRange(forms: List<List<String>>): Boolean = forms.size <= MAXIMUM_HEADCOUNT
