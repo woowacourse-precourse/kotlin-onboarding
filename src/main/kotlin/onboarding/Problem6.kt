@@ -7,9 +7,10 @@ package onboarding
 const val NICKNAME_INDEX = 1
 const val EMAIL_INDEX = 0
 const val NEXT_NUMBER = 1
+const val MAXIMUM_HEADCOUNT = 10000
 
 private val EMAIL_FORM = "^[A-Za-z0-9._-]{1,9}@email.com\$".toRegex()
-private val NICKNAME_FORM  = "^[기-힣]{1,19}\$".toRegex()
+private val NICKNAME_FORM = "^[ㄱ-힣]{1,19}\$".toRegex()
 fun solution6(forms: List<List<String>>): List<String> {
     TODO("프로그램 구현")
 }
@@ -56,3 +57,5 @@ private fun getDuplicateNicknameEmails(
 private fun isEmailForm(email: String): Boolean = EMAIL_FORM.matches(email)
 
 private fun isNickNameForm(nickname: String): Boolean = NICKNAME_FORM.matches(nickname)
+
+private fun isCrewHeadCountRange(forms: List<List<String>>): Boolean = forms.isNotEmpty() && forms.size <= MAXIMUM_HEADCOUNT
