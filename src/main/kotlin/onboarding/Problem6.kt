@@ -11,3 +11,13 @@ fun solution6(forms: List<List<String>>): List<String> {
     TODO("프로그램 구현")
 }
 
+private fun getSeparateNicknames(forms: List<List<String>>): MutableList<String> {
+    val list = mutableListOf<String>()
+    forms.map { userInfo ->
+        for (index in userInfo[NICKNAME_INDEX].indices) {
+            if (index + NEXT_NUMBER == userInfo[NICKNAME_INDEX].length) break
+            list.add("${userInfo[NICKNAME_INDEX][index]}${userInfo[NICKNAME_INDEX][index + NEXT_NUMBER]}")
+        }
+    }
+    return list
+}
