@@ -54,3 +54,5 @@ private fun getDuplicateNicknameEmails(
 
 // 조성록 개발자님 코드 참고 (우테코 덕분에 많이 배웁니다.)
 private fun isEmailForm(email: String): Boolean = EMAIL_FORM.matches(email)
+
+private fun isNickNameForm(nickname: String): Boolean = NICKNAME_FORM.matches(nickname)
