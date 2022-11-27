@@ -21,3 +21,14 @@ private fun getSeparateNicknames(forms: List<List<String>>): MutableList<String>
     }
     return list
 }
+
+private fun findDuplicatesInList(
+    separateNicknames: List<String>
+): MutableSet<String> {
+    val duplicateNicknames = mutableSetOf<String>()
+    separateNicknames.map { separateNickname ->
+        if (separateNicknames.indexOf(separateNickname) != separateNicknames.lastIndexOf(separateNickname))
+            duplicateNicknames.add(separateNickname)
+    }
+    return duplicateNicknames
+}
