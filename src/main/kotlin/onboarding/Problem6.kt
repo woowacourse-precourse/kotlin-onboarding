@@ -22,7 +22,7 @@ private fun getSeparateNicknames(forms: List<List<String>>): MutableList<String>
     return list
 }
 
-private fun findDuplicatesInList(
+private fun findDuplicatesInSeparateNicknames(
     separateNicknames: List<String>
 ): MutableSet<String> {
     val duplicateNicknames = mutableSetOf<String>()
@@ -31,4 +31,20 @@ private fun findDuplicatesInList(
             duplicateNicknames.add(separateNickname)
     }
     return duplicateNicknames
+}
+
+private fun getDuplicateNicknameEmails(
+    forms: List<List<String>>,
+    duplicateNicknames: MutableSet<String>
+): List<String> {
+    val duplicateNicknameEmails = mutableListOf<String>()
+    forms.map { userInfo ->
+        for (duplicateNickname in duplicateNicknames) {
+            if (userInfo[NICKNAME_INDEX].indexOf(duplicateNickname) != -1) {
+                duplicateNicknameEmails.add(userInfo[EMAIL_INDEX])
+                break
+            }
+        }
+    }
+    return duplicateNicknameEmails.distinct().sorted()
 }
