@@ -114,11 +114,16 @@ private fun sortSameValue(list : List<Pair<String, Int>>) : List<Pair<String, In
     var lastKey = ""
     var lastValue = 0
     for(i in list.indices) {
-        if(list[i].second == lastValue && list[i].first < lastKey) {
-            Collections.swap(list, i, i-1)
-        }
+        swapLists(list, i, lastKey, lastValue)
         lastKey = list[i].first
         lastValue = list[i].second
+    }
+    return list
+}
+
+private fun swapLists(list : List<Pair<String, Int>>, position : Int, lastKey : String, lastValue : Int) : List<Pair<String, Int>> {
+    if(list[position].second == lastValue && list[position].first < lastKey) {
+        Collections.swap(list, position, position - 1)
     }
     return list
 }
