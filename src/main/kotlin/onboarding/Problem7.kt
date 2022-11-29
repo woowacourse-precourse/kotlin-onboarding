@@ -42,16 +42,20 @@ private fun commonFriends(user: String, friends: List<List<String>>, scoreMap: M
     var mScoreMap = scoreMap
     for (i in friends) {
         val friend = checkUserFriends(user, i) // 현재 유저와 친구인 유저의 닉네임이 담기는 변수
-        for (o in friends) {
-            if (friend != null) {
-                val commonFriend = getCommonFriend(user, friend, o) // 현재 유자와 친구인 유저의 친구인 유저명 (다만 null도 들어올 수 있으므로 체크 해야함)
-                if (commonFriend != null) {
-                    mScoreMap = addCommonFriendScore(commonFriend, scoreMap)
-                }
-            }
-        }
+        checkCommonFriends(friends, friend, user, scoreMap)
     }
     return mScoreMap
+}
+
+private fun checkCommonFriends(friends : List<List<String>>, friend : String? , user : String, scoreMap : MutableMap<String, Int>) : MutableMap<String, Int> {
+    var mMap = scoreMap
+    for (o in friends) {
+        friend?.let {
+            val commonFriend = getCommonFriend(user, it, o) // 현재 유자와 친구인 유저의 친구인 유저명 (다만 null도 들어올 수 있으므로 체크 해야함)
+            commonFriend?.let { mMap = addCommonFriendScore(commonFriend, mMap) }
+        }
+    }
+    return mMap
 }
 
 /**
@@ -59,14 +63,8 @@ private fun commonFriends(user: String, friends: List<List<String>>, scoreMap: M
  */
 private fun checkUserFriends(user: String, friends: List<String>): String? {
     return when (user) {
-        friends[0] -> {
-            friends[1]
-        }
-
-        friends[1] -> {
-            friends[0]
-        }
-
+        friends[0] -> { friends[1] }
+        friends[1] -> { friends[0] }
         else -> null
     }
 }
@@ -77,9 +75,9 @@ private fun checkUserFriends(user: String, friends: List<String>): String? {
 private fun getCommonFriend(user: String, curFriend: String, friendList: List<String>): String? {
     val mFriend = checkUserFriends(curFriend, friendList)
 
-    if (mFriend != null && mFriend != user) { // != user를 넣은 이유는, 현재 유저 역시도 친구이므로 이를 배제하기 위해서이다.
-        return mFriend
-    } else return null
+    return if (mFriend != null && mFriend != user) { // != user를 넣은 이유는, 현재 유저 역시도 친구이므로 이를 배제하기 위해서이다.
+        mFriend
+    } else null
 }
 
 /**
