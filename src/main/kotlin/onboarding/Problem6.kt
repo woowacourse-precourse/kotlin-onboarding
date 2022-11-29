@@ -6,7 +6,7 @@ fun solution6(forms: List<List<String>>): List<String> {
     val mCrewList = removeExceptedCrew(forms)
     val mEmailList = mutableListOf<String>() // 리턴해줄 이메일을 담을 배열
     for (i in mCrewList.indices) {
-        mEmailList += depth1(i, mCrewList[i], mCrewList)
+        mEmailList += getTargetWords(i, mCrewList[i], mCrewList)
     }
     return returnProcessing(mEmailList)
 }
@@ -20,22 +20,22 @@ private fun removeExceptedCrew(forms: List<List<String>>): MutableList<List<Stri
     return forms.toMutableList()
 }
 
-private fun depth1(loop1: Int, list: List<String>, forms: List<List<String>>): List<String> {
-    val mList = mutableListOf<String>()
+private fun getTargetWords(loop1: Int, list: List<String>, forms: List<List<String>>): List<String> {
+    val matchedNameList = mutableListOf<String>()
     for (o in list[1].indices) {
-        mList += depth2(loop1, getWord(o, list[1]), forms)
+        matchedNameList += checkNicknameWithTargetWords(loop1, getWord(o, list[1]), forms)
     }
-    return mList
+    return matchedNameList
 }
 
-private fun depth2(loop1: Int, word: String?, list: List<List<String>>): MutableList<String> {
-    val mList = mutableListOf<String>()
+private fun checkNicknameWithTargetWords(loop1: Int, word: String?, list: List<List<String>>): MutableList<String> {
+    val matchedNameList = mutableListOf<String>()
     for (u in list.indices) {
         if (checkAvailable(word, list[u][1]) && loop1 != u) {
-            mList.add(list[u][0])
+            matchedNameList.add(list[u][0])
         }
     }
-    return mList
+    return matchedNameList
 }
 
 /**
