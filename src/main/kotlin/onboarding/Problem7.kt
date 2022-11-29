@@ -2,33 +2,30 @@ package onboarding
 
 import java.util.*
 
-fun solution7(
-        user: String,
-        friends: List<List<String>>,
-        visitors: List<String>
-): List<String> {
-    var scoreMap = mutableMapOf<String, Int>() // 유저 목록 + 점수를 담을 Map 객체
-    var resultFriends = mutableListOf<String>() // 최종적으로 리턴될 유저 닉네임을 담을 배열
+fun solution7(user: String, friends: List<List<String>>, visitors: List<String>): List<String> {
+    var scoreMap = mutableMapOf<String, Int>()
+    scoreMap = setDefaultDataToMap(scoreMap, friends, visitors) // 유저 목록 + 점수를 담을 Map 객체
+
+    val sortList = addScoreToVisitors(visitors, commonFriends(user, friends, scoreMap)).toList().sortedByDescending { it.second }
+    scoreMap = sortSameValue(sortList).toMap() as MutableMap //같은 value를 가질 경우에는 이름순으로 정렬해줘야 한다.
+    return setResults(scoreMap).subList(0, 3) // 유저명이 모두 정렬 후 저장되어있는 상태이므로, 0번에서 2번까지 총 3개만 반환하도록 한다.
+}
+
+private fun setDefaultDataToMap(scoreMap : MutableMap<String, Int>, friends: List<List<String>>, visitors: List<String>) : MutableMap<String, Int> {
     for (i in returnAllUser(friends, visitors)) { // 현재 존재하는 유저명을 담는 Map에 초기 데이터 주입하기
         scoreMap[i] = 0
     }
+    return scoreMap
+}
 
-    //scoreMap = commonFriends(user, friends, scoreMap) // 점수를 추가한 후 map 객체를 반환하므로 기존에 선언해둔 map 에 덮어씌운다.
-    //scoreMap = visitors(visitors, scoreMap) // 점수를 추가한 후 map 객체를 반환하므로 기존에 선언해둔 map 에 덮어씌운다.
-
-    /* 위의 2줄의 재선언이 비효율적이라고 생각되어, 하나의 코드로 합친 후, value 값을 기준으로 정렬했다.
-    * List로 변환 후 value (it.second) 로 정렬했다. */
-    val sortList = visitors(visitors, commonFriends(user, friends, scoreMap)).toList().sortedByDescending { it.second }
-
-
-    scoreMap = sortSameValue(sortList).toMap() as MutableMap //같은 value를 가질 경우에는 이름순으로 정렬해줘야 한다.
-
+private fun setResults(scoreMap: MutableMap<String, Int>) : MutableList<String> {
+    val mList = mutableListOf<String>()
     for((key, value) in scoreMap) {
         if(value != 0) { // 예외사항! -> 추천 점수가 0점인 경우 추천하지 않으므로, 제외했다.
-            resultFriends.add(key) // 실질적으로 반환해줄 리스트에 key값, 즉 유저명을 저장한다.
+            mList.add(key) // 실질적으로 반환해줄 리스트에 key값, 즉 유저명을 저장한다.
         }
     }
-    return resultFriends.subList(0, 3) // 유저명이 모두 정렬 후 저장되어있는 상태이므로, 0번에서 2번까지 총 3개만 반환하도록 한다.
+    return mList
 }
 
 /**
@@ -96,7 +93,7 @@ private fun addCommonFriendScore(friend: String, map: MutableMap<String, Int>): 
 /**
  * 방문자에게도 점수를 추가해줘야하므로, 각 방문자에게 점수를 추가하도록 하는 함수
  */
-private fun visitors(visitors : List<String>, scoreMap: MutableMap<String, Int>) : MutableMap<String, Int> {
+private fun addScoreToVisitors(visitors : List<String>, scoreMap: MutableMap<String, Int>) : MutableMap<String, Int> {
     var mScoreMap = scoreMap
     for(i in visitors) {
         mScoreMap = addVisitorScore(i, scoreMap)
