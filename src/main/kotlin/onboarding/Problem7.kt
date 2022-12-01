@@ -7,14 +7,16 @@ package onboarding
 //- visitors 길이 제한 기능
 //- 사용자 아이디 알파벳 소문자 제한 기능
 fun solution7(
-    user: String,
-    friends: List<List<String>>,
-    visitors: List<String>
+    user: String, friends: List<List<String>>, visitors: List<String>
 ): List<String> {
+    val friends = setFriendsSize(friends)
+    val visitors = setVisitorsSize(visitors)
+    validateUsersIdForm(user, friends, visitors)
     val friendOfFriends = getFriendOfFriends(user, friends)
     val everyone = getRecommendFriends(friendOfFriends, visitors, getFriends(friends))
     return getRecommendedUsersSequence(visitors, friendOfFriends, everyone)
 }
+
 fun setFriendsSize(friends: List<List<String>>) = friends.take(10000)
 
 fun setVisitorsSize(visitors: List<String>) = visitors.take(10000)
@@ -28,6 +30,7 @@ fun validateUsersIdForm(user: String, friends: List<List<String>>, visitors: Lis
     }
     visitors.map { visitor -> require(userForm.matches(visitor)) { println("사용자 이름은 1 부터 30개의 소문자 알파벳으로 수정 해주세요") } }
 }
+
 fun getFriends(friends: List<List<String>>): Set<String> {
     val friendsName = mutableSetOf<String>()
     friends.forEach { friend -> friendsName.add(friend[0]) }
