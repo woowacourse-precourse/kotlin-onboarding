@@ -25,3 +25,6 @@ fun getFriendOfFriends(user: String, friends: List<List<String>>): List<String> 
     friends.forEach { friend -> if (user != friend[1]) friendOfFriends.add(friend[1]) }
     return friendOfFriends
 }
+
+fun getRecommendFriends(visitors: List<String>, friendOfFriends: List<String>, friends: Set<String>) =
+    visitors.plus(friendOfFriends).minus(friends).toSet()
