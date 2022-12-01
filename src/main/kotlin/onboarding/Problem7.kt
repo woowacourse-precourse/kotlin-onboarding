@@ -13,3 +13,9 @@ fun solution7(
 ): List<String> {
     TODO("프로그램 구현")
 }
+
+fun getFriends(friends: List<List<String>>): Set<String> {
+    val friendsName = mutableSetOf<String>()
+    friends.forEach { friend -> friendsName.add(friend[0]) }
+    return friendsName
+}
