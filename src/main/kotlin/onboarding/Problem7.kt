@@ -28,3 +28,6 @@ fun getFriendOfFriends(user: String, friends: List<List<String>>): List<String> 
 
 fun getRecommendFriends(visitors: List<String>, friendOfFriends: List<String>, friends: Set<String>) =
     visitors.plus(friendOfFriends).minus(friends).toSet()
+
+fun getFriendOfFriendsEachCount(friendOfFriends: List<String>) =
+    friendOfFriends.groupingBy { friendOfFriend -> friendOfFriend }.eachCount()
