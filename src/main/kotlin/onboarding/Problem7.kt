@@ -3,10 +3,9 @@ package onboarding
 fun solution7(
     user: String, friends: List<List<String>>, visitors: List<String>
 ): List<String> {
-    validateFriendsIsNotEmpty(friends)
+    validateSolution7(user, friends, visitors)
     val friends = setFriendsSize(friends)
     val visitors = setVisitorsSize(visitors)
-    validateUsersIdForm(user, friends, visitors)
     val friendOfFriends = getFriendOfFriends(user, friends)
     val everyone = getRecommendFriends(friendOfFriends, visitors, getFriends(friends))
     return getRecommendedUsersSequence(visitors, friendOfFriends, everyone)
