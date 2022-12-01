@@ -13,7 +13,7 @@ fun solution7(
 }
 
 fun validateDuplicateFriends(friends: List<List<String>>) {
-    require(friends.distinct().size == friends.size) { println("동일한 친구 관계 중복해서 주어지지 않습니다.") }
+    require(friends.distinct().size == friends.size) { println(ErrorMessage.DUPLICATE_FRIENDS.outputText) }
 }
 
 fun setFriendsSize(friends: List<List<String>>): List<List<String>> = friends.take(FRIENDS_MAX_SIZE)
@@ -93,5 +93,6 @@ const val USER_FORM = "^[a-z]{1,30}\$"
 
 enum class ErrorMessage(val outputText: String) {
     USER_ID_FORM("사용자 이름은 1 부터 30개의 소문자 알파벳으로 수정 해주세요"),
-    FRIENDS_IS_NOT_EMPTY("친구가 한명 이상 있어야 합니다")
+    FRIENDS_IS_NOT_EMPTY("친구가 한명 이상 있어야 합니다"),
+    DUPLICATE_FRIENDS("동일한 친구 관계가 중복해서 주어지지 않습니다.")
 }
