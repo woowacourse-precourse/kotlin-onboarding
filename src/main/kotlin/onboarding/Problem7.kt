@@ -17,17 +17,17 @@ fun setFriendsSize(friends: List<List<String>>): List<List<String>> = friends.ta
 fun setVisitorsSize(visitors: List<String>) = visitors.take(VISITORS_MAX_SIZE)
 
 fun validateFriendsIsNotEmpty(friends: List<List<String>>) {
-    require(friends.isNotEmpty()) { println("친구가 한명 이상 있어야 합니다") }
+    require(friends.isNotEmpty()) { ErrorMessage.FRIENDS_IS_NOT_EMPTY.outputText }
 }
 
 fun validateUsersIdForm(user: String, friends: List<List<String>>, visitors: List<String>) {
     val userForm = USER_FORM.toRegex()
-    require(userForm.matches(user)) { println("사용자 이름은 1 부터 30개의 소문자 알파벳으로 수정 해주세요") }
+    require(userForm.matches(user)) { println(ErrorMessage.USER_ID_FORM.outputText) }
     friends.map { (friend, friendOfFriend) ->
-        require(userForm.matches(friend)) { println("사용자 이름은 1 부터 30개의 소문자 알파벳으로 수정 해주세요") }
-        require(userForm.matches(friendOfFriend)) { println("사용자 이름은 1 부터 30개의 소문자 알파벳으로 수정 해주세요") }
+        require(userForm.matches(friend)) { println(ErrorMessage.USER_ID_FORM.outputText) }
+        require(userForm.matches(friendOfFriend)) { println(ErrorMessage.USER_ID_FORM.outputText) }
     }
-    visitors.map { visitor -> require(userForm.matches(visitor)) { println("사용자 이름은 1 부터 30개의 소문자 알파벳으로 수정 해주세요") } }
+    visitors.map { visitor -> require(userForm.matches(visitor)) { println(ErrorMessage.USER_ID_FORM.outputText) } }
 }
 
 fun getFriends(friends: List<List<String>>): Set<String> {
