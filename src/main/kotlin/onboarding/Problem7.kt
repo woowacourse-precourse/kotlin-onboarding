@@ -86,3 +86,8 @@ const val VISITORS_SCORE = 1
 const val DEFAULT_VALUE = 0
 const val RECOMMEND_USERS_SIZE = 5
 const val USER_FORM = "^[a-z]{1,30}\$"
+
+enum class ErrorMessage(val outputText:String) {
+    USER_ID_FORM("사용자 이름은 1 부터 30개의 소문자 알파벳으로 수정 해주세요"),
+    FRIENDS_IS_NOT_EMPTY("친구가 한명 이상 있어야 합니다")
+}
