@@ -76,3 +76,12 @@ fun getRecommendedUsersSequence(
             .sortedByDescending { recommendUserScore -> recommendUserScore.second }.take(5).toMap()
     return recommendUsersSequence.keys.toList()
 }
+
+const val FRIENDS_MAX_SIZE = 10_000
+const val VISITORS_MAX_SIZE = 10_000
+const val FRIEND_INDEX = 0
+const val FRIEND_OF_FRIEND_INDEX = 1
+const val FRIEND_OF_FRIEND_SCORE = 10
+const val VISITORS_SCORE = 1
+const val DEFAULT_VALUE = 0
+const val RECOMMEND_USERS_SIZE = 5
