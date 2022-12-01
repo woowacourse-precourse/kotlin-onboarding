@@ -29,5 +29,22 @@ fun getFriendOfFriends(user: String, friends: List<List<String>>): List<String> 
 fun getRecommendFriends(visitors: List<String>, friendOfFriends: List<String>, friends: Set<String>) =
     visitors.plus(friendOfFriends).minus(friends).toSet()
 
-fun getFriendOfFriendsEachCount(friendOfFriends: List<String>) =
-    friendOfFriends.groupingBy { friendOfFriend -> friendOfFriend }.eachCount()
+private fun setFriendOfFriendsScore(
+    recommendFriends: Set<String>, recommendFriendsScore: MutableMap<String, Int>, friendOfFriends: List<String>
+) {
+    val friendOfFriends = friendOfFriends.groupingBy { friendOfFriend -> friendOfFriend }.eachCount()
+    for (recommendFriend in recommendFriends) {
+        recommendFriendsScore[recommendFriend] = recommendFriendsScore.getOrDefault(recommendFriend, 0)
+            .plus(friendOfFriends.getOrDefault(recommendFriend, 0).times(10))
+    }
+}
+
+private fun setVisitorsScore(
+    recommendFriends: Set<String>, recommendFriendsScore: MutableMap<String, Int>, visitors: List<String>
+) {
+    val visitors = visitors.groupingBy { visitor -> visitor }.eachCount()
+    for (recommendFriend in recommendFriends) {
+        recommendFriendsScore[recommendFriend] = recommendFriendsScore.getOrDefault(recommendFriend, 0)
+            .plus(visitors.getOrDefault(recommendFriend, 0).times(1))
+    }
+}
