@@ -21,7 +21,7 @@ fun validateFriendsIsNotEmpty(friends: List<List<String>>) {
 }
 
 fun validateUsersIdForm(user: String, friends: List<List<String>>, visitors: List<String>) {
-    val userForm = "^[a-z]{1,30}\$".toRegex()
+    val userForm = USER_FORM.toRegex()
     require(userForm.matches(user)) { println("사용자 이름은 1 부터 30개의 소문자 알파벳으로 수정 해주세요") }
     friends.map { (friend, friendOfFriend) ->
         require(userForm.matches(friend)) { println("사용자 이름은 1 부터 30개의 소문자 알파벳으로 수정 해주세요") }
@@ -85,3 +85,4 @@ const val FRIEND_OF_FRIEND_SCORE = 10
 const val VISITORS_SCORE = 1
 const val DEFAULT_VALUE = 0
 const val RECOMMEND_USERS_SIZE = 5
+const val USER_FORM = "^[a-z]{1,30}\$"
