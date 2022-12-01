@@ -17,6 +17,9 @@ fun solution7(
 }
 fun setFriendsSize(friends: List<List<String>>) = friends.take(10000)
 
+fun setVisitorsSize(visitors: List<String>) = visitors.take(10000)
+
+
 fun getFriends(friends: List<List<String>>): Set<String> {
     val friendsName = mutableSetOf<String>()
     friends.forEach { friend -> friendsName.add(friend[0]) }
