@@ -9,6 +9,7 @@ package onboarding
 fun solution7(
     user: String, friends: List<List<String>>, visitors: List<String>
 ): List<String> {
+    validateFriendsIsNotEmpty(friends)
     val friends = setFriendsSize(friends)
     val visitors = setVisitorsSize(visitors)
     validateUsersIdForm(user, friends, visitors)
