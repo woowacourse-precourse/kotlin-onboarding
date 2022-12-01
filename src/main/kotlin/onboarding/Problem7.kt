@@ -19,7 +19,15 @@ fun setFriendsSize(friends: List<List<String>>) = friends.take(10000)
 
 fun setVisitorsSize(visitors: List<String>) = visitors.take(10000)
 
-
+fun validateUsersIdForm(user: String, friends: List<List<String>>, visitors: List<String>) {
+    val userForm = "^[a-z]{1,30}\$".toRegex()
+    require(userForm.matches(user)) { println("사용자 이름은 1 부터 30개의 소문자 알파벳으로 수정 해주세요") }
+    friends.map { (friend, friendOfFriend) ->
+        require(userForm.matches(friend)) { println("사용자 이름은 1 부터 30개의 소문자 알파벳으로 수정 해주세요") }
+        require(userForm.matches(friendOfFriend)) { println("사용자 이름은 1 부터 30개의 소문자 알파벳으로 수정 해주세요") }
+    }
+    visitors.map { visitor -> require(userForm.matches(visitor)) { println("사용자 이름은 1 부터 30개의 소문자 알파벳으로 수정 해주세요") } }
+}
 fun getFriends(friends: List<List<String>>): Set<String> {
     val friendsName = mutableSetOf<String>()
     friends.forEach { friend -> friendsName.add(friend[0]) }
