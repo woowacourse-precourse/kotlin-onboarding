@@ -17,9 +17,13 @@ fun solution7(
     return getRecommendedUsersSequence(visitors, friendOfFriends, everyone)
 }
 
-fun setFriendsSize(friends: List<List<String>>) = friends.take(10000)
+fun setFriendsSize(friends: List<List<String>>): List<List<String>> = friends.take(10000)
 
 fun setVisitorsSize(visitors: List<String>) = visitors.take(10000)
+
+fun validateFriendsIsNotEmpty(friends: List<List<String>>) {
+    require(friends.isNotEmpty()) { println("친구가 한명 이상 있어야 합니다") }
+}
 
 fun validateUsersIdForm(user: String, friends: List<List<String>>, visitors: List<String>) {
     val userForm = "^[a-z]{1,30}\$".toRegex()
