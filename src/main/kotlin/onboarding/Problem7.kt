@@ -48,3 +48,15 @@ private fun setVisitorsScore(
             .plus(visitors.getOrDefault(recommendFriend, 0).times(1))
     }
 }
+
+fun getRecommendedUsersSequence(
+    visitors: List<String>, friendOfFriends: List<String>, recommendFriends: Set<String>
+): List<String> {
+    val recommendUsersScore = mutableMapOf<String, Int>()
+    setFriendOfFriendsScore(recommendFriends, recommendUsersScore, friendOfFriends)
+    setVisitorsScore(recommendFriends, recommendUsersScore, visitors)
+    val recommendUsersSequence =
+        recommendUsersScore.toSortedMap().toList()
+            .sortedByDescending { recommendUserScore -> recommendUserScore.second }.take(5).toMap()
+    return recommendUsersSequence.keys.toList()
+}
