@@ -15,8 +15,7 @@ fun solution7(
     val everyone = getRecommendFriends(friendOfFriends, visitors, getFriends(friends))
     return getRecommendedUsersSequence(visitors, friendOfFriends, everyone)
 }
-fun validateUserLength(user: String) = require(user.length in 1..30) { println("사용자 이름의 길이는 1 부터 30까지 입니다.")}
-
+fun setFriendsSize(friends: List<List<String>>) = friends.take(10000)
 
 fun getFriends(friends: List<List<String>>): Set<String> {
     val friendsName = mutableSetOf<String>()
