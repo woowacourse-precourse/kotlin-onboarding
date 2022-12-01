@@ -12,9 +12,9 @@ fun solution7(
     return getRecommendedUsersSequence(visitors, friendOfFriends, everyone)
 }
 
-fun setFriendsSize(friends: List<List<String>>): List<List<String>> = friends.take(10000)
+fun setFriendsSize(friends: List<List<String>>): List<List<String>> = friends.take(FRIENDS_MAX_SIZE)
 
-fun setVisitorsSize(visitors: List<String>) = visitors.take(10000)
+fun setVisitorsSize(visitors: List<String>) = visitors.take(VISITORS_MAX_SIZE)
 
 fun validateFriendsIsNotEmpty(friends: List<List<String>>) {
     require(friends.isNotEmpty()) { println("친구가 한명 이상 있어야 합니다") }
@@ -32,13 +32,13 @@ fun validateUsersIdForm(user: String, friends: List<List<String>>, visitors: Lis
 
 fun getFriends(friends: List<List<String>>): Set<String> {
     val friendsName = mutableSetOf<String>()
-    friends.forEach { friend -> friendsName.add(friend[0]) }
+    friends.forEach { friend -> friendsName.add(friend[FRIEND_INDEX]) }
     return friendsName
 }
 
 fun getFriendOfFriends(user: String, friends: List<List<String>>): List<String> {
     val friendOfFriends = mutableListOf<String>()
-    friends.forEach { friend -> if (user != friend[1]) friendOfFriends.add(friend[1]) }
+    friends.forEach { friend -> if (user != friend[1]) friendOfFriends.add(friend[FRIEND_OF_FRIEND_INDEX]) }
     return friendOfFriends
 }
 
@@ -50,8 +50,8 @@ private fun setFriendOfFriendsScore(
 ) {
     val friendOfFriends = friendOfFriends.groupingBy { friendOfFriend -> friendOfFriend }.eachCount()
     for (recommendFriend in recommendFriends) {
-        recommendFriendsScore[recommendFriend] = recommendFriendsScore.getOrDefault(recommendFriend, 0)
-            .plus(friendOfFriends.getOrDefault(recommendFriend, 0).times(10))
+        recommendFriendsScore[recommendFriend] = recommendFriendsScore.getOrDefault(recommendFriend, DEFAULT_VALUE)
+            .plus(friendOfFriends.getOrDefault(recommendFriend, DEFAULT_VALUE).times(FRIEND_OF_FRIEND_SCORE))
     }
 }
 
@@ -60,8 +60,8 @@ private fun setVisitorsScore(
 ) {
     val visitors = visitors.groupingBy { visitor -> visitor }.eachCount()
     for (recommendFriend in recommendFriends) {
-        recommendFriendsScore[recommendFriend] = recommendFriendsScore.getOrDefault(recommendFriend, 0)
-            .plus(visitors.getOrDefault(recommendFriend, 0).times(1))
+        recommendFriendsScore[recommendFriend] = recommendFriendsScore.getOrDefault(recommendFriend, DEFAULT_VALUE)
+            .plus(visitors.getOrDefault(recommendFriend, DEFAULT_VALUE).times(VISITORS_SCORE))
     }
 }
 
@@ -73,7 +73,7 @@ fun getRecommendedUsersSequence(
     setVisitorsScore(recommendFriends, recommendUsersScore, visitors)
     val recommendUsersSequence =
         recommendUsersScore.toSortedMap().toList()
-            .sortedByDescending { recommendUserScore -> recommendUserScore.second }.take(5).toMap()
+            .sortedByDescending { recommendUserScore -> recommendUserScore.second }.take(RECOMMEND_USERS_SIZE).toMap()
     return recommendUsersSequence.keys.toList()
 }
 
@@ -87,7 +87,7 @@ const val DEFAULT_VALUE = 0
 const val RECOMMEND_USERS_SIZE = 5
 const val USER_FORM = "^[a-z]{1,30}\$"
 
-enum class ErrorMessage(val outputText:String) {
+enum class ErrorMessage(val outputText: String) {
     USER_ID_FORM("사용자 이름은 1 부터 30개의 소문자 알파벳으로 수정 해주세요"),
     FRIENDS_IS_NOT_EMPTY("친구가 한명 이상 있어야 합니다")
 }
