@@ -12,6 +12,11 @@ fun solution7(
     return getRecommendedUsersSequence(visitors, friendOfFriends, everyone)
 }
 
+fun validateSolution7(user: String, friends: List<List<String>>, visitors: List<String>){
+    validateFriendsIsNotEmpty(friends)
+    validateUsersIdForm(user, friends, visitors)
+    validateDuplicateFriends(friends)
+}
 fun validateDuplicateFriends(friends: List<List<String>>) {
     require(friends.distinct().size == friends.size) { println(ErrorMessage.DUPLICATE_FRIENDS.outputText) }
 }
