@@ -27,9 +27,24 @@
 
 ### 기능 목록 작성 
 
-- 사용자가 함께 아는 친구 목록 반환 기능
-- 사용자의 타임라인에 방문한 사람들과 그 횟수 구하는 기능
-- user 길이 제한 기능
-- friends 길이 제한 기능
-- visitors 길이 제한 기능
-- 사용자 아이디 알파벳 소문자 제한 기능
+- friends 형식 제한 기능
+  - 10,000까지 제한 (`setFriendsSize`)
+  - 친구가 1명 이상이도록 제한 (`validateFriendsIsNotEmpty`)
+  - 동일한 친구 관계가 없도록 제한 (`validateDuplicateFriends`)
+- visitors 형식 제한 기능
+  - 길이 10,000까지 제한 (`setVisitorsSize`)
+- 사용자 아이디 형식 제한 기능 (`validateUsersIdForm`)
+  - 알파벳 소문자로만 구성
+  - 길이는 1 부터 30까지 제한
+- 현 친구 목록을 반환하는 기능 (`getFriends`)
+  - 추천할 친구 목록에서 제외하기 위해
+- 친구의 친구 목록을 반환하는 기능 (`getFriendOfFriends`)
+  - 추천할 친구의 점수를 구하기 위해
+- 추천할 친구 목록을 구하는 기능 (`getRecommendFriends`)
+- 추천할 친구의 친구의 친구 점수를 구성 하는 기능 (`setFriendOfFriendsScore`)
+- 추천할 친구의 방문 점수를 구성 하는 기능 (`setVisitorsScore`)
+- 추천할 친구 목록을 반환하는 기능 (`getRecommendedUsersSequence`)
+  - 추천 점수가 가장 높은순으로 정렬
+  - 최대 5명 반환
+  - 추천 점수가 0점일 경우 추천하지 않음
+  - 추천 점수가 같을 경우 이름순으로 정렬
