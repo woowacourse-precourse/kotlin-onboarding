@@ -19,3 +19,9 @@ fun getFriends(friends: List<List<String>>): Set<String> {
     friends.forEach { friend -> friendsName.add(friend[0]) }
     return friendsName
 }
+
+fun getFriendOfFriends(user: String, friends: List<List<String>>): List<String> {
+    val friendOfFriends = mutableListOf<String>()
+    friends.forEach { friend -> if (user != friend[1]) friendOfFriends.add(friend[1]) }
+    return friendOfFriends
+}
