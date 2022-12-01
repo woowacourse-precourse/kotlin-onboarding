@@ -12,12 +12,16 @@ fun solution7(
     return getRecommendedUsersSequence(visitors, friendOfFriends, everyone)
 }
 
+fun validateDuplicateFriends(friends: List<List<String>>) {
+    require(friends.distinct().size == friends.size) { println("동일한 친구 관계 중복해서 주어지지 않습니다.") }
+}
+
 fun setFriendsSize(friends: List<List<String>>): List<List<String>> = friends.take(FRIENDS_MAX_SIZE)
 
 fun setVisitorsSize(visitors: List<String>) = visitors.take(VISITORS_MAX_SIZE)
 
 fun validateFriendsIsNotEmpty(friends: List<List<String>>) {
-    require(friends.isNotEmpty()) { ErrorMessage.FRIENDS_IS_NOT_EMPTY.outputText }
+    require(friends.isNotEmpty()) { println(ErrorMessage.FRIENDS_IS_NOT_EMPTY.outputText) }
 }
 
 fun validateUsersIdForm(user: String, friends: List<List<String>>, visitors: List<String>) {
