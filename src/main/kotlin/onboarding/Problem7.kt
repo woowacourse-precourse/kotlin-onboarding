@@ -11,7 +11,9 @@ fun solution7(
     friends: List<List<String>>,
     visitors: List<String>
 ): List<String> {
-    TODO("프로그램 구현")
+    val friendOfFriends = getFriendOfFriends(user, friends)
+    val everyone = getRecommendFriends(friendOfFriends, visitors, getFriends(friends))
+    return getRecommendedUsersSequence(visitors, friendOfFriends, everyone)
 }
 
 fun getFriends(friends: List<List<String>>): Set<String> {
