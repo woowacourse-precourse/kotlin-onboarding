@@ -22,6 +22,7 @@
 
 ### 기능 목록 작성
 
-- 알파벳을 반대로 출력 하는 기능
-- 소문자 알파벳을 반대로 호출 가능한 기능
-- 대문자 알파벳을 반대로 호출 가능한 기능
+- 알파벳의 범위를 구하는 기능 alphabetRange()
+- 소문자 알파벳을 반대로 호출 가능한 기능 reverseLowerAlphabets()
+- 대문자 알파벳을 반대로 호출 가능한 기능 reverseUpperAlphabets()
+- 알파벳을 반대로 바꿔서 단어를 출력하는 기능 getReverseWord()

@@ -28,7 +28,6 @@ private fun reverseLowerAlphabets(): Map<Char, Char> {
     for (i in lowerAlphabets.indices) {
         lowerAlphabetsMap[lowerAlphabets[i]] = lowerAlphabets.reversed()[i]
     }
-
     return lowerAlphabetsMap
 }
 
