@@ -24,8 +24,7 @@
 
 ### 기능 목록 작성 
 
-- 연속된 글자 추출 기능
-- 형식에 맞는지 확인하는 기능
-- 형식에 맞지 않을 경우 예외를 호출하는 기능
-- 연속된 글자중에 중복되는 글자를 목록에 담는 기능
-- 이메일을 추출 하는 기능
+- 형식에 맞는지 확인하는 기능 isEmailForm(),isNickNameForm(),isCrewHeadCountRange()
+- 형식에 맞지 않을 경우 예외를 호출하는 기능 exceptionForm()
+- 연속된 글자중에 중복되는 글자를 목록에 담는 기능 findDuplicatesInSeparateNicknames()
+- 이메일을 추출 하는 기능 getDuplicateNicknameEmails()
