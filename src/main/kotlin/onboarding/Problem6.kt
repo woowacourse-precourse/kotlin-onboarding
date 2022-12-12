@@ -5,34 +5,34 @@ import java.util.regex.Pattern
 fun solution6(forms: List<List<String>>): List<String> {
     val mCrewList = removeExceptedCrew(forms)
     val mEmailList = mutableListOf<String>() // 리턴해줄 이메일을 담을 배열
-    for (i in mCrewList.indices) {
-        mEmailList += getTargetWords(i, mCrewList[i], mCrewList)
+    for (crew in mCrewList.indices) {
+        mEmailList += getTargetWords(crew, mCrewList[crew], mCrewList)
     }
     return returnProcessing(mEmailList)
 }
 
 private fun removeExceptedCrew(forms: List<List<String>>): MutableList<List<String>> {
-    for (i in forms.indices) {
-        if (!checkException(forms[i])) { //예외사항에 부합될 시에만 실행됨
-            forms.toMutableList().removeAt(i)
+    for (crewInfo in forms.indices) {
+        if (!checkException(forms[crewInfo])) { //예외사항에 부합될 시에만 실행됨
+            forms.toMutableList().removeAt(crewInfo)
         }
     }
     return forms.toMutableList()
 }
 
-private fun getTargetWords(loop1: Int, list: List<String>, forms: List<List<String>>): List<String> {
+private fun getTargetWords(loop1: Int, crewList: List<String>, forms: List<List<String>>): List<String> {
     val matchedNameList = mutableListOf<String>()
-    for (o in list[1].indices) {
-        matchedNameList += checkNicknameWithTargetWords(loop1, getWord(o, list[1]), forms)
+    for (crew in crewList[1].indices) {
+        matchedNameList += checkNicknameWithTargetWords(loop1, getWord(crew, crewList[1]), forms)
     }
     return matchedNameList
 }
 
-private fun checkNicknameWithTargetWords(loop1: Int, word: String?, list: List<List<String>>): MutableList<String> {
+private fun checkNicknameWithTargetWords(loop1: Int, word: String?, forms: List<List<String>>): MutableList<String> {
     val matchedNameList = mutableListOf<String>()
-    for (u in list.indices) {
-        if (checkAvailable(word, list[u][1]) && loop1 != u) {
-            matchedNameList.add(list[u][0])
+    for (crew in forms.indices) {
+        if (checkAvailable(word, forms[crew][1]) && loop1 != crew) {
+            matchedNameList.add(forms[crew][0])
         }
     }
     return matchedNameList
