@@ -3,29 +3,28 @@ package onboarding
 import java.util.*
 
 fun solution7(user: String, friends: List<List<String>>, visitors: List<String>): List<String> {
-    var scoreMap = mutableMapOf<String, Int>()
-    scoreMap = setDefaultDataToMap(scoreMap, friends, visitors) // 유저 목록 + 점수를 담을 Map 객체
+    var scoreMap = mutableMapOf<String, Int>().setDefaultDataToMap(friends, visitors) // 유저 목록 + 점수를 담을 Map 객체
 
     val sortList = addScoreToVisitors(visitors, commonFriends(user, friends, scoreMap)).toList().sortedByDescending { it.second }
     scoreMap = sortSameValue(sortList).toMap() as MutableMap //같은 value를 가질 경우에는 이름순으로 정렬해줘야 한다.
     return setResults(scoreMap).subList(0, 3) // 유저명이 모두 정렬 후 저장되어있는 상태이므로, 0번에서 2번까지 총 3개만 반환하도록 한다.
 }
 
-private fun setDefaultDataToMap(scoreMap : MutableMap<String, Int>, friends: List<List<String>>, visitors: List<String>) : MutableMap<String, Int> {
-    for (i in returnAllUser(friends, visitors)) { // 현재 존재하는 유저명을 담는 Map에 초기 데이터 주입하기
-        scoreMap[i] = 0
+private fun MutableMap<String, Int>.setDefaultDataToMap(friends: List<List<String>>, visitors: List<String>) : MutableMap<String, Int> {
+    for (user in returnAllUser(friends, visitors)) { // 현재 존재하는 유저명을 담는 Map에 초기 데이터 주입하기
+        this[user] = 0
     }
-    return scoreMap
+    return this
 }
 
 private fun setResults(scoreMap: MutableMap<String, Int>) : MutableList<String> {
-    val mList = mutableListOf<String>()
+    val userNameList = mutableListOf<String>()
     for((key, value) in scoreMap) {
         if(value != 0) { // 예외사항! -> 추천 점수가 0점인 경우 추천하지 않으므로, 제외했다.
-            mList.add(key) // 실질적으로 반환해줄 리스트에 key값, 즉 유저명을 저장한다.
+            userNameList.add(key) // 실질적으로 반환해줄 리스트에 key값, 즉 유저명을 저장한다.
         }
     }
-    return mList
+    return userNameList
 }
 
 /**
@@ -40,8 +39,8 @@ private fun returnAllUser(friends: List<List<String>>, visitors: List<String>): 
  */
 private fun commonFriends(user: String, friends: List<List<String>>, scoreMap: MutableMap<String, Int>): MutableMap<String, Int> {
     var mScoreMap = scoreMap
-    for (i in friends) {
-        val friend = checkUserFriends(user, i) // 현재 유저와 친구인 유저의 닉네임이 담기는 변수
+    for (friend in friends) {
+        val friend = checkUserFriends(user, friend) // 현재 유저와 친구인 유저의 닉네임이 담기는 변수
         checkCommonFriends(friends, friend, user, scoreMap)
     }
     return mScoreMap
@@ -49,9 +48,9 @@ private fun commonFriends(user: String, friends: List<List<String>>, scoreMap: M
 
 private fun checkCommonFriends(friends : List<List<String>>, friend : String? , user : String, scoreMap : MutableMap<String, Int>) : MutableMap<String, Int> {
     var mMap = scoreMap
-    for (o in friends) {
+    for (otherFriend in friends) {
         friend?.let {
-            val commonFriend = getCommonFriend(user, it, o) // 현재 유자와 친구인 유저의 친구인 유저명 (다만 null도 들어올 수 있으므로 체크 해야함)
+            val commonFriend = getCommonFriend(user, it, otherFriend) // 현재 유자와 친구인 유저의 친구인 유저명 (다만 null도 들어올 수 있으므로 체크 해야함)
             commonFriend?.let { mMap = addCommonFriendScore(commonFriend, mMap) }
         }
     }
@@ -93,8 +92,8 @@ private fun addCommonFriendScore(friend: String, map: MutableMap<String, Int>): 
  */
 private fun addScoreToVisitors(visitors : List<String>, scoreMap: MutableMap<String, Int>) : MutableMap<String, Int> {
     var mScoreMap = scoreMap
-    for(i in visitors) {
-        mScoreMap = addVisitorScore(i, scoreMap)
+    for(visitor in visitors) {
+        mScoreMap = addVisitorScore(visitor, scoreMap)
     }
     return mScoreMap
 }
@@ -113,17 +112,17 @@ private fun addVisitorScore (friend : String, map : MutableMap<String, Int>) : M
 private fun sortSameValue(list : List<Pair<String, Int>>) : List<Pair<String, Int>>{
     var lastKey = ""
     var lastValue = 0
-    for(i in list.indices) {
-        swapLists(list, i, lastKey, lastValue)
-        lastKey = list[i].first
-        lastValue = list[i].second
+    for(sameScoreFriend in list.indices) {
+        list.swapLists(sameScoreFriend, lastKey, lastValue)
+        lastKey = list[sameScoreFriend].first
+        lastValue = list[sameScoreFriend].second
     }
     return list
 }
 
-private fun swapLists(list : List<Pair<String, Int>>, position : Int, lastKey : String, lastValue : Int) : List<Pair<String, Int>> {
-    if(list[position].second == lastValue && list[position].first < lastKey) {
-        Collections.swap(list, position, position - 1)
+private fun List<Pair<String, Int>>.swapLists(position : Int, lastKey : String, lastValue : Int) : List<Pair<String, Int>> {
+    if(this[position].second == lastValue && this[position].first < lastKey) {
+        Collections.swap(this, position, position - 1)
     }
-    return list
+    return this
 }
