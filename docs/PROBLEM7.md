@@ -24,3 +24,13 @@
 | user | friends | visitors | result |
 | --- | --- | --- | --- |
 | "mrko" | [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ] | ["bedi", "bedi", "donut", "bedi", "shakevan"] | ["andole", "jun", "bedi"] |
+
+### 기능 목록
+1. 친구 및 방문자 목록의 이름들을 전부 추려낸다.
+2. 유저명과 점수를 담을 Map 을 만든다.
+3. 현재 유저와 친구인 유저들을 추려낸다. 
+4. 3번에서 추려낸 유저와 친구인 유저들을 추려낸다.
+5. 4번에서 추려낸 유저들에게 10점씩 부여한다.
+6. 방문자에 있는 사람들에게 횟수당 1점씩 부여한다.
+7. 결과를 Value 값이 큰 기준으로 정렬한다.
+8. 7번에서 정렬한 Map의 Key값만 담은 배열에서 상위 3개만 리턴한다.
